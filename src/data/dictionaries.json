@@ -1,36 +1,36 @@
 [{
-    "Formula": "Gaffiot",
-    "Dictionary": "http://micmap.org/dicfro/search/gaffiot/INPUT"
+    "Dictionary": "Gaffiot",
+    "Formula": "http://micmap.org/dicfro/search/gaffiot/INPUT"
     },{
     "Dictionary": "Glosbe",
     "Formula": "https://glosbe.com/la/en/INPUT"
     },{
-    "Formula": "LatDict",
-    "Dictionary": "http://www.latin-dictionary.net/search/latin/INPUT#search-results-list"
+    "Dictionary": "LatDict",
+    "Formula": "http://www.latin-dictionary.net/search/latin/INPUT#search-results-list"
     },{
     "Dictionary": "Logeion",
     "Formula": "http://logeion.uchicago.edu/INPUT"
     },{
-    "Formula": "Morganianum",
-    "Dictionary": "http://neolatinlexicon.org/search/latin?search=INPUT"
+    "Dictionary": "Morganianum",
+    "Formula": "http://neolatinlexicon.org/search/latin?search=INPUT"
     },{
     "Dictionary": "Numen",
     "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1"
     },{
-    "Formula": "PackHum",
-    "Dictionary": "http://latin.packhum.org/search?q=%23INPUT%23"
+    "Dictionary": "PackHum",
+    "Formula": "http://latin.packhum.org/search?q=%23INPUT%23"
     },{
     "Dictionary": "Perseus",
     "Formula": "http://www.perseus.tufts.edu/hopper/searchresults?target=la&all_words=INPUT&all_words_expand=on&phrase=&any_words=&exclude_words=&documents="
     },{
-    "Formula": "Thesaurus",
-    "Dictionary": "https://www.degruyter.com/databasecontent?dbf_0=tll-fulltext&dbid=tll&dbq_0=INPUT&dbsource=%2Fdb%2Ftll&dbt_0=fulltext&o_0=AND&sort=ttl-lemma-sort"
+    "Dictionary": "Thesaurus",
+    "Formula": "https://www.degruyter.com/databasecontent?dbf_0=tll-fulltext&dbid=tll&dbq_0=INPUT&dbsource=%2Fdb%2Ftll&dbt_0=fulltext&o_0=AND&sort=ttl-lemma-sort"
     },{
     "Dictionary": "Tower of Babel",
     "Formula": "http://starling.rinet.ru/cgi-bin/response.cgi?root=config&morpho=0&basename=%5Cdata%5Cie%5Cpiet&first=1&text_lat=INPUT&method_lat=substring&ww_lat=on&ic_lat=on&text_any=&method_any=substring&sort=proto&ic_any=on"
     },{
-    "Formula": "Whitaker's",
-    "Dictionary": "http://archives.nd.edu/cgi-bin/wordz.pl?keyword=INPUT"
+    "Dictionary": "Whitaker's",
+    "Formula": "http://archives.nd.edu/cgi-bin/wordz.pl?keyword=INPUT"
     },{
     "Dictionary": "Wiktionary",
     "Formula": "https://en.wiktionary.org/wiki/INPUT#Latin"
