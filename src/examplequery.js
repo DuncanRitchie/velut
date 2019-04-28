@@ -1,27 +1,26 @@
-// // This is the node.js code for a Mongo query
+// Requires official Node.js MongoDB Driver 3.0.0+
+var mongodb = require("mongodb");
 
-let mongodb = require('mongodb');
-let client = mongodb.MongoClient;
-let url = "mongodb://host:port/";
+var client = mongodb.MongoClient;
+var url = "mongodb://host:port/";
 
 client.connect(url, function (err, client) {
     
-    let db = client.db("local");
-    let collection = db.collection("words");
+    var db = client.db("local");
+    var collection = db.collection("words");
     
-    let query = {
-        "Scansion": "\u02D8\u02D8\u00AF\u02D8"
+    var query = {
+        "Perfect rhyme": "ernus",
+        "Syllable count": 3
     };
     
-    let projection = {
+    var projection = {
         "Word": 1.0
     };
     
-    let sort = [ ["Sort column", 1] ];
-    let skip = 116;
-    let limit = 50;
+    var sort = [ ["Syllable count", 1], ["Sort column", 1], ["Word", 1] ];
     
-    let cursor = collection.find(query).project(projection).sort(sort).skip(skip).limit(limit);
+    var cursor = collection.find(query).project(projection).sort(sort);
     
     cursor.forEach(
         function(doc) {
@@ -31,4 +30,5 @@ client.connect(url, function (err, client) {
             client.close();
         }
     );
+    
 });
