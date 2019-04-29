@@ -2,7 +2,7 @@ import React from 'react';
 
 let Lemma = (props) => {
     return (
-        <div>
+        <div className="lemma">
             <h2>{props.lemma}</h2>
             <p>Part of speech: {props.partOfSpeech.toLowerCase()}</p>
             <p>Meaning: {props.meaning}</p>
