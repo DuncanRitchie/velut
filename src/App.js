@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <Router>
         <Route path="/" exact component={Home} />
-        <Route path="/:word" component={Word} />
+        <Route path="/:word" component={Word}/>
         <Footer />
       </Router>
     );
