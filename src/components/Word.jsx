@@ -8,12 +8,13 @@ let Word = (props) => {
     let input = window.location.pathname.replace("/","");
     document.title = input+" on velut"
     let lemmaObjects = lemmata.filter((lemma)=>{return lemma["No Macra"].toLowerCase() === input.toLowerCase()});
-    console.log(lemmaObjects)
-    console.log("Total lemmata count: "+lemmata.length)
     let randomLemma = lemmata[Math.ceil(Math.random()*lemmata.length)]["No Macra"];
     let mappedLemmata = lemmaObjects.map((lemma,index)=>{
         let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === lemma.Root});
-        console.log(cognates)
+        let cognatesMessage = "";
+        if (!lemma.Root) {
+            cognatesMessage = "I have not assigned cognates for this word, or any of these..."
+        }
         let sortedCognates = cognates.sort((a,b)=>{
             if(b["No Macra"].toLowerCase() < a["No Macra"].toLowerCase()) {
                 return 1
@@ -22,9 +23,18 @@ let Word = (props) => {
                 return -1
             }
         });
-        console.log(sortedCognates)
         let mappedCognates = sortedCognates.map((cognate,index)=>{return <Link to={`/${cognate["No Macra"]}`} key={index}> {cognate.Lemma} </Link>})
-        return <Lemma key="index" lemma={lemma.Lemma} partOfSpeech={lemma["Part of Speech"]} meaning={lemma.Meaning} scansion={lemma.Scansion} cognates={mappedCognates}/>
+        return (
+            <Lemma 
+            key={index} 
+            lemma={lemma.Lemma} 
+            partOfSpeech={lemma["Part of Speech"]} 
+            meaning={lemma.Meaning} 
+            scansion={lemma.Scansion} 
+            cognates={mappedCognates}
+            cognatesMessage={cognatesMessage}
+            /> 
+        )
     })
     return (
         <div className="word">

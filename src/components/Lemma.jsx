@@ -7,7 +7,7 @@ let Lemma = (props) => {
             <p>Part of speech: {props.partOfSpeech.toLowerCase()}</p>
             <p>Meaning: {props.meaning}</p>
             <p>Scansion: {props.scansion}</p>
-            <p>Cognates: {props.cognates}</p>
+            <p>Cognates: {props.cognatesMessage} {props.cognates}</p>
         </div>
     )
 }
