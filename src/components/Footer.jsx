@@ -5,7 +5,7 @@ import "./Footer.css"
 let Footer = (props) => {
     return (
         <div className="footer">
-            <p>A project &copy; Duncan Ritchie. See my <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s website">website</a>.</p>
+            <p>&copy; Duncan Ritchie. See my <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s website">website</a>.</p>
         </div>
     )
 }

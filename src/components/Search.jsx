@@ -20,16 +20,12 @@ class Search extends Component {
         }
     }
 
-    setStateRedirect = () => {
-        this.setState({redirect: false})
-    }
-
     render() {
         // This gives warnings in the console because we're setting state within the render method. 
         // We need to set state back to redirect:false to avoid infinite redirects.
         if (this.state.redirect) {
-            this.setStateRedirect()
-            return <Redirect to={`/${this.state.input}`} push={true}/>
+            this.setState({redirect: false})
+            return <Redirect to={{pathname: `/${this.state.input}`, state: {input: window.location.pathname.replace("/",""), redirect: false}}} push={true}/>
         }
         else {
             return (
