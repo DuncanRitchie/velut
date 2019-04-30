@@ -7,7 +7,7 @@ import Lemma from "./Lemma"
 let Word = (props) => {
     let input = window.location.pathname.replace("/","");
     document.title = input+" on velut"
-    let lemmaObjects = lemmata.filter((lemma)=>{return lemma["No Macra"] === input});
+    let lemmaObjects = lemmata.filter((lemma)=>{return lemma["No Macra"].toLowerCase() === input.toLowerCase()});
     console.log(lemmaObjects)
     console.log("Total lemmata count: "+lemmata.length)
     let randomLemma = lemmata[Math.ceil(Math.random()*lemmata.length)]["No Macra"];
