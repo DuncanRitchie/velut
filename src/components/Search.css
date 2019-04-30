@@ -1,13 +1,15 @@
 input {
     margin-right: 12px;
     text-align: center;
-    border: 2px solid rgba(196, 226, 196, 1);
+    border: 2px solid rgba(196, 226, 196, 1); /* light green */
+    height: 20px;
     font-size: 16px;
     font-family: "Monaco", "Consolas", monospace;
-    padding: 6px 0;
+    padding: 6px 6px;
 }
 
 .searchLink {
-    padding: 3px 6px;
-    border: 2px solid rgba(196, 226, 196, 1)
+    padding: 6px 9px;
+    height: 20px;
+    border: 2px solid hsl(208, 56%, 82%) /* Same colour as Footer */
 }
