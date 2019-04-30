@@ -1,3 +1,13 @@
 input {
-    margin-right: 12px
+    margin-right: 12px;
+    text-align: center;
+    border: 2px solid rgba(196, 226, 196, 1);
+    font-size: 16px;
+    font-family: "Monaco", "Consolas", monospace;
+    padding: 6px 0;
+}
+
+.searchLink {
+    padding: 3px 6px;
+    border: 2px solid rgba(196, 226, 196, 1)
 }

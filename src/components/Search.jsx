@@ -7,10 +7,13 @@ class Search extends Component {
         input: window.location.pathname.replace("/",""),
         redirect: false
     }
+
+    // This handles the <input> value.
     handleInput = (e) => {
         this.setState({input: e.target.value})
     }
     
+    // This is to search when the enter key is pressed within the <input>.
     handleKeyUp = (e) => {
         if (e.keyCode === 13 ) {
             this.setState({redirect: true})
@@ -22,15 +25,17 @@ class Search extends Component {
     }
 
     render() {
+        // This gives warnings in the console because we're setting state within the render method. 
+        // We need to set state back to redirect:false to avoid infinite redirects.
         if (this.state.redirect) {
             this.setStateRedirect()
             return <Redirect to={`/${this.state.input}`} push={true}/>
         }
         else {
             return (
-                <div>
-                    <input value={this.state.input} onChange={this.handleInput} onKeyUp={this.handleKeyUp}></input>
-                    <Link to={"/"+this.state.input} title={`Search for ${this.state.input}`}>Search!</Link>    
+                <div className="search">
+                    <input className="searchInput" value={this.state.input} onChange={this.handleInput} onKeyUp={this.handleKeyUp}></input>
+                    <Link className="searchLink" to={"/"+this.state.input} title={`Search for ${this.state.input}`}>Search!</Link>    
                 </div>
             )
         }
