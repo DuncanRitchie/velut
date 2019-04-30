@@ -1,4 +1,15 @@
 body {
   text-align: center;
-  font-family: "Alegreya", serif
+  font-family: "Alegreya", serif;
+  margin-bottom: 60px
+}
+
+.word {
+  padding: 6px
+}
+
+h1 {
+  background-color: rgb(196, 226, 196);
+  margin: -6px -6px 3px -6px;
+  padding: 6px 0;
 }
