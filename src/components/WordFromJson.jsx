@@ -40,7 +40,7 @@ let WordFromJson = (props) => {
         })
         // A react-router-dom Link is rendered for every rhyme.
         mappedRhymes = sortedRhymes.map((rhyme,index)=>{return (
-            <Link to={"/"+rhyme["No macra"]}>{rhyme.Word} </Link>
+            <Link key={index} to={"/"+rhyme["No macra"]}>{rhyme.Word} </Link>
         )})
         // Let's do the lemmata. We will render an element for every lemma listed against the input.
         wordLemmata = foundWord.Lemmata.split(" ")
@@ -65,7 +65,7 @@ let WordFromJson = (props) => {
             });
             // A react-router-dom Link is rendered for every cognate.
             let mappedCognates = sortedCognates.map((cognate,index)=>{
-                return <span><Link to={`/${cognate["No Macra"]}`} key={index}> {cognate.Lemma}</Link> </span>
+                return <span key={index}><Link to={`/${cognate["No Macra"]}`} key={index}> {cognate.Lemma}</Link> </span>
             })
             // Cognates are done. Let's put everything into the Lemma element.
             return (
@@ -91,7 +91,7 @@ let WordFromJson = (props) => {
             {foundWord ? <div><p>The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}</p>
             <p>Perfect rhymes: {mappedRhymes}</p>
             <div className="divider"/>
-            <p>{foundWord.Word} belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found.</p>}
+            <p><strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found.</p>}
             {mappedLemmata ? mappedLemmata : null}
         </div>
     )
