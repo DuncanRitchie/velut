@@ -57,7 +57,7 @@ let Lemmata = (props) => {
             <Search />
             {/* Telling the user what they searched for and how many results were found. */}
             <p>
-                You searched for <strong>{window.location.pathname.replace("/lemma","").replace("/","")}</strong>. {lemmaObjects.length} matching {lemmaObjects.length===1 ? "lemma" : "lemmata"} found.
+                You searched for the lemma <strong>{window.location.pathname.replace("/lemma","").replace("/","")}</strong>. {lemmaObjects.length} matching {lemmaObjects.length===1 ? "lemma" : "lemmata"} found.
             </p>
             {/* If there are no results, it suggests the random lemma. If there are results, they're displayed. */}
             {lemmaObjects.length===0 ? 
