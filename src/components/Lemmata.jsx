@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import Search from "./Search";
 import lemmata from "../data/lemmata.json";
+import words from "../data/words.json";
 import Lemma from "./Lemma"
 
 let Lemmata = (props) => {
@@ -14,12 +15,16 @@ let Lemmata = (props) => {
     let lemmaObjects = lemmata.filter((lemma)=>{return lemma["No Macra"].toLowerCase() === input.toLowerCase()});
     // mappedLemmata will be an array of JSX elements.
     let mappedLemmata = lemmaObjects.map((lemma,index)=>{
+        // Let's get the inflected forms.
+        let forms = words.filter(word=>{return word.Lemmata.split(" ").includes(lemma.Lemma)})
+        // Let's render a Link for every form.
+        let mappedForms = forms.map((form,index)=>{return <Link key={index} title={form["No macra"]} to={"/"+form["No macra"]}>{form.Word} </Link>})
         // Let's get the cognates.
         let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === lemma.Root});
         // If no etymology is given in the data, a message should appear in the cognates paragraph.
         let cognatesMessage = "";
         if (!lemma.Root) {
-            cognatesMessage = "I have not assigned cognates for this word, or any of these..."
+            cognatesMessage = "I have not assigned cognates for this word, sorry!"
         }
         // This sorts the cognates alphabetically.
         let sortedCognates = cognates.sort((a,b)=>{
@@ -42,6 +47,7 @@ let Lemmata = (props) => {
             partOfSpeech={lemma["Part of Speech"]} 
             meaning={lemma.Meaning} 
             scansion={lemma.Scansion} 
+            forms={mappedForms}
             cognates={mappedCognates}
             cognatesMessage={cognatesMessage}
             /> 

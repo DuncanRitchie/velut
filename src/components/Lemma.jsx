@@ -7,7 +7,8 @@ let Lemma = (props) => {
             <p>Part of speech: {props.partOfSpeech.toLowerCase()}</p>
             <p>Meaning: {props.meaning}</p>
             {props.scansion ? <p>Scansion of lemma: {props.scansion}</p> : null}
-            <p>Cognates: {props.cognatesMessage} {props.cognates}</p>
+            {props.forms ? <p>Forms: {props.forms}</p> : null}
+            <p>{props.cognatesMessage ? props.cognatesMessage : <span>Cognates: {props.cognates}</span>}</p>
         </div>
     )
 }

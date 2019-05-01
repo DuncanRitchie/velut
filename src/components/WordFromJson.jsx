@@ -65,6 +65,10 @@ let WordFromJson = (props) => {
         mappedLemmata = wordLemmata.map((lemma,index)=>{ 
             // Let's find the lemma in the Json.
             let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
+            // Let's get the inflected forms.
+            let forms = words.filter(word=>{return word.Lemmata.split(" ").includes(foundLemma.Lemma)})
+            // Let's render a Link for every form.
+            let mappedForms = forms.map((form,index)=>{return <Link key={index} title={form["No macra"]} to={"/"+form["No macra"]}>{form.Word} </Link>})
             // Let's get the cognates.
             let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
             // If no etymology is given in the data, a message should appear in the cognates paragraph.
@@ -92,7 +96,8 @@ let WordFromJson = (props) => {
                 lemma={foundLemma.Lemma} 
                 partOfSpeech={foundLemma["Part of Speech"]} 
                 meaning={foundLemma.Meaning} 
-                scansion={foundLemma.Scansion} 
+                scansion={foundLemma.Scansion}
+                forms={mappedForms}
                 cognates={mappedCognates}
                 cognatesMessage={cognatesMessage}
                 /> 
