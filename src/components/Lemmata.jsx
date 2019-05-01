@@ -6,7 +6,7 @@ import Lemma from "./Lemma"
 
 let Lemmata = (props) => {
     // The word searched for comes from the window location.
-    let input = window.location.pathname.replace("/","");
+    let input = window.location.pathname.replace("/lemma","").replace("/","");
     document.title = input+" on velut"
     // Let's pick a random lemma to show if no lemmata match the search.
     let randomLemma = lemmata[Math.ceil(Math.random()*lemmata.length)]["No Macra"];
@@ -32,7 +32,7 @@ let Lemmata = (props) => {
         });
         // A react-router Link is rendered for every cognate.
         let mappedCognates = sortedCognates.map((cognate,index)=>{
-            return <Link to={`/${cognate["No Macra"]}`} key={index}> {cognate.Lemma} </Link>
+            return <Link to={`/lemma/${cognate["No Macra"]}`} key={index}> {cognate.Lemma} </Link>
         })
         // Cognates are done. Let's put everything into the Lemma element.
         return (
@@ -57,7 +57,7 @@ let Lemmata = (props) => {
             <Search />
             {/* Telling the user what they searched for and how many results were found. */}
             <p>
-                You searched for <strong>{window.location.pathname.replace("/","")}</strong>. {lemmaObjects.length} matching {lemmaObjects.length===1 ? "lemma" : "lemmata"} found.
+                You searched for <strong>{window.location.pathname.replace("/lemma","").replace("/","")}</strong>. {lemmaObjects.length} matching {lemmaObjects.length===1 ? "lemma" : "lemmata"} found.
             </p>
             {/* If there are no results, it suggests the random lemma. If there are results, they're displayed. */}
             {lemmaObjects.length===0 ? 

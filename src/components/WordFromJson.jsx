@@ -11,10 +11,8 @@ let WordFromJson = (props) => {
     document.title = input+" on velut"
     // foundWord is the first object that matches the input (macron-insensitive but case-sensitive).
     let foundWord = words.find(word=>{return word["No macra"]===input})
-    console.log(foundWord)
     // We will render an element for every lemma listed against the input.
     let wordLemmata = foundWord.Lemmata.split(" ")
-    console.log(wordLemmata)
     let mappedLemmata = wordLemmata.map((lemma,index)=>{ 
         // Let's find the lemma in the Json.
         let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
@@ -36,7 +34,7 @@ let WordFromJson = (props) => {
         });
         // A react-router-dom Link is rendered for every cognate.
         let mappedCognates = sortedCognates.map((cognate,index)=>{
-            return <Link to={`/${cognate["No Macra"]}`} key={index}> {cognate.Lemma} </Link>
+            return <Link to={`/lemma/${cognate["No Macra"]}`} key={index}> {cognate.Lemma} </Link>
         })
         // Cognates are done. Let's put everything into the Lemma element.
         return (

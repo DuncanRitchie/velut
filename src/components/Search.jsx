@@ -4,7 +4,7 @@ import "./Search.css"
 
 class Search extends Component {
     state = {
-        input: window.location.pathname.replace("/word","").replace("/",""),
+        input: window.location.pathname.replace("/lemma","").replace("/",""),
         redirect: false
     }
 

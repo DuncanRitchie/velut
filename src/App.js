@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <Router>
         <Route path="/" exact component={Home} />
-        <Route path="/:lemma" exact component={Lemmata} />
-        <Route path="/word/:word" component={WordFromJson} />
+        <Route path="/lemma/:word" component={Lemmata} />
+        <Route path="/:word" exact component={WordFromJson} />
         <Footer />
       </Router>
     );
