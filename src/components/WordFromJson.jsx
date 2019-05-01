@@ -9,6 +9,8 @@ let WordFromJson = (props) => {
     // The word searched for comes from the window location.
     let input = window.location.pathname.replace("/word","").replace("/","");
     document.title = input+" on velut"
+    // Let's pick a random word to show if no words match the search.
+    let randomWord = words[Math.ceil(Math.random()*words.length)]["No macra"];
     // foundWord is the first object that matches the input.
     // It looks for an exact match, then ignores macra and looks again, then ignores case and looks again.
     let foundWord = words.find(word=>{return word.Word===input})
@@ -109,7 +111,7 @@ let WordFromJson = (props) => {
             <p>Perfect rhymes: {mappedRhymes}</p>
             <p>Anagrams: {mappedAnagrams}</p>
             <div className="divider"/>
-            <p><strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found.</p>}
+            <p><strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found. Try <Link to={"/"+randomWord} title={randomWord}>{randomWord}</Link>.</p>}
             {mappedLemmata ? mappedLemmata : null}
         </div>
     )
