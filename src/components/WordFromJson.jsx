@@ -18,7 +18,8 @@ let WordFromJson = (props) => {
     if (!foundWord) {
         foundWord = words.find(word=>{return word["No macra"].toLowerCase()===input.toLowerCase()})
     }
-    let mappedRhymes = []
+    let mappedRhymes = [];
+    let mappedAnagrams = [];
     let wordLemmata = [];
     let mappedLemmata = [];
     if (foundWord) {
@@ -41,6 +42,21 @@ let WordFromJson = (props) => {
         // A react-router-dom Link is rendered for every rhyme.
         mappedRhymes = sortedRhymes.map((rhyme,index)=>{return (
             <Link key={index} to={"/"+rhyme["No macra"]}>{rhyme.Word} </Link>
+        )})
+        // Let's find the anagrams.
+        let anagrams = words.filter((word)=>{return word["Alph order no macra"]===foundWord["Alph order no macra"]})
+        // The anagrams get sorted alphabetically.
+        let sortedAnagrams = anagrams.sort((a,b)=>{
+            if (a["No macra"].toLowerCase()>b["No macra"].toLowerCase()) {
+                return 1
+            }
+            else {
+                return -1
+            }
+        })
+        // A react-router-dom Link is rendered for every anagram.
+        mappedAnagrams = sortedAnagrams.map((anagram,index)=>{return (
+            <Link key={index} to={"/"+anagram["No macra"]}>{anagram.Word} </Link>
         )})
         // Let's do the lemmata. We will render an element for every lemma listed against the input.
         wordLemmata = foundWord.Lemmata.split(" ")
@@ -88,8 +104,10 @@ let WordFromJson = (props) => {
             <p>I&rsquo;m still in the initial stages of creating this app&hellip;</p>
             <Search/>
             <p>You searched for the word <strong>{input}</strong>.</p>
+            <div className="divider"/>
             {foundWord ? <div><p>The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}</p>
             <p>Perfect rhymes: {mappedRhymes}</p>
+            <p>Anagrams: {mappedAnagrams}</p>
             <div className="divider"/>
             <p><strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found.</p>}
             {mappedLemmata ? mappedLemmata : null}
