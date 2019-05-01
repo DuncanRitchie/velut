@@ -17,3 +17,11 @@ h1 {
   margin: -6px -6px 3px -6px;
   padding: 6px 0;
 }
+
+.divider {
+  height: 2px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  border-bottom: 2px solid rgb(196, 226, 196)
+}
