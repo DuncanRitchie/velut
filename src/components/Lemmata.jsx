@@ -37,7 +37,7 @@ let Lemmata = (props) => {
         });
         // A react-router Link is rendered for every cognate.
         let mappedCognates = sortedCognates.map((cognate,index)=>{
-            return <Link to={`/lemma/${cognate["No Macra"]}`} key={index}> {cognate.Lemma} </Link>
+            return <Link to={`/lemma/${cognate["No Macra"]}`} key={index} title={cognate["No Macra"]}> {cognate.Lemma} </Link>
         })
         // Cognates are done. Let's put everything into the Lemma element.
         return (
@@ -68,7 +68,7 @@ let Lemmata = (props) => {
             {/* If there are no results, it suggests the random lemma. If there are results, they're displayed. */}
             {lemmaObjects.length===0 ? 
                 <p>
-                    Try searching for a Latin lemma, such as <strong><Link to={"./"+randomLemma}>{randomLemma}</Link></strong>. 
+                    Try searching for a Latin lemma, such as <strong><Link to={"./"+randomLemma} title={randomLemma}>{randomLemma}</Link></strong>. 
                     (If my app is vaguely working; maybe it&rsquo;s not!)
                 </p>
             : mappedLemmata}
