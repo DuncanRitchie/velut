@@ -74,7 +74,7 @@ let WordFromJson = (props) => {
             // If no etymology is given in the data, a message should appear in the cognates paragraph.
             let cognatesMessage = "";
             if (!foundLemma.Root) {
-                cognatesMessage = "I have not assigned cognates for this word, or any of these..."
+                cognatesMessage = "I have not assigned cognates for this word, sorry!"
             }
             // This sorts the cognates alphabetically.
             let sortedCognates = cognates.sort((a,b)=>{
