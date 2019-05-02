@@ -17,7 +17,7 @@ const {
     AnonymousCredential
 } = require('mongodb-stitch-browser-sdk');
 
-const client = Stitch.initializeDefaultAppClient('velutweb-yybap');
+const client = Stitch.initializeDefaultAppClient('velutweb-pmabw');
 
 const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas').db('velut');
 
