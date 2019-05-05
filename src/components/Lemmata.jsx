@@ -16,7 +16,7 @@ let Lemmata = (props) => {
     // mappedLemmata will be an array of JSX elements.
     let mappedLemmata = lemmaObjects.map((lemma,index)=>{
         // Let's get the inflected forms.
-        let forms = words.filter(word=>{return word.Lemmata.split(" ").includes(lemma.Lemma)})
+        let forms = words.filter(word=>{return word.LemmaArray.includes(lemma.Lemma)})
         // Let's render a Link for every form.
         let mappedForms = forms.map((form,index)=>{return <Link key={index} title={form["No macra"]} to={"/"+form["No macra"]}>{form.Word} </Link>})
         // Let's get the cognates.
@@ -56,7 +56,7 @@ let Lemmata = (props) => {
     // Building the actual page.
     return (
         <div className="word">
-            <h1>velut</h1>
+            <h1><span className="title">velut</span> &mdash; lemma &mdash; {input}</h1>
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
             <p>I&rsquo;m still in the initial stages of creating this app&hellip;</p>
             {/* Search bar and submit link */}

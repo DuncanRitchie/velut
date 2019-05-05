@@ -1,7 +1,7 @@
 body {
   text-align: center;
   font-family: "Alegreya", serif;
-  margin-bottom: 48px
+  margin-bottom: 72px
 }
 
 .home {
@@ -16,6 +16,11 @@ h1 {
   background-color: rgb(196, 226, 196); /* pale green */
   margin: -6px -6px 3px -6px;
   padding: 6px 0;
+  color: rgb(58, 114, 58) /* a darker, brighter green */
+}
+
+.title {
+  color: black
 }
 
 .divider {

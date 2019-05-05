@@ -4,19 +4,20 @@ import "./Search.css"
 
 class Search extends Component {
     state = {
-        input: window.location.pathname.replace("/lemma","").replace("/",""),
-        redirect: false
+        input: "",
+        redirect: false,
+        fromUrl: true
     }
-
+    
     // This handles the <input> value.
     handleInput = (e) => {
-        this.setState({input: e.target.value})
+        this.setState({input: e.target.value, fromUrl: false})
     }
     
     // This is to search when the enter key is pressed within the <input>.
     handleKeyUp = (e) => {
         if (e.keyCode === 13 ) {
-            this.setState({redirect: true})
+            this.setState({redirect: true, fromUrl: true})
         }
     }
 
@@ -30,7 +31,7 @@ class Search extends Component {
         else {
             return (
                 <div className="search">
-                    <input className="searchInput" value={this.state.input} onChange={this.handleInput} onKeyUp={this.handleKeyUp}></input>
+                    <input className="searchInput" value={this.state.fromUrl ? window.location.pathname.replace("/lemma","").replace("/","") : this.state.input} onChange={this.handleInput} onKeyUp={this.handleKeyUp}></input>
                     <Link className="searchLink" to={"/"+this.state.input} title={`Search for ${this.state.input}`}>Search!</Link>    
                 </div>
             )
