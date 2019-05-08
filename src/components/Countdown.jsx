@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Search from "./Search";
 import words from "../data/words.json";
-import macraToHyphens from "./macraToHyphens"
 
 const delChars = (superword,subword) => {
     let string = superword
@@ -16,7 +14,7 @@ const delChars = (superword,subword) => {
 let Countdown = () => {
     let input = window.location.pathname.replace("/countdown","").replace("/","").toLowerCase();
     let filteredWordObjects = words.filter(word=>{
-        if (delChars(input,word["Alph order no macra"]).length == input.length-word["Alph order no macra"].length) {
+        if (delChars(input,word["Alph order no macra"]).length === input.length-word["Alph order no macra"].length) {
             return true
         }
         else {
