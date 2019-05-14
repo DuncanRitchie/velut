@@ -29,6 +29,8 @@ let WordFromJson = (props) => {
     let wordLemmata = [];
     let mappedLemmata = [];
     if (foundWord) {
+        // Let's set the document title to the word we found.
+        document.title = foundWord["Word"]+" on velut"
         // Let's find the rhymes.
         let rhymes = words.filter((word)=>{return word["Perfect rhyme"]===foundWord["Perfect rhyme"]})
         // The rhymes get sorted by syllable count, then by Sort Column.

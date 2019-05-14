@@ -5,6 +5,7 @@ import "./Search.css"
 class Search extends Component {
     state = {
         input: "",
+        menu: "Perfect rhyme",
         redirect: false,
         fromUrl: true
     }
@@ -12,6 +13,11 @@ class Search extends Component {
     // This handles the <input> value.
     handleInput = (e) => {
         this.setState({input: e.target.value, fromUrl: false})
+    }
+
+    // This handles the menu value.
+    handleMenu = (e) => {
+        this.setState({menu: e.target.value})
     }
     
     // This is to search when the enter key is pressed within the <input>.
@@ -31,8 +37,32 @@ class Search extends Component {
         else {
             return (
                 <div className="search">
-                    <input className="searchInput" value={this.state.fromUrl ? window.location.pathname.replace("/lemma","").replace("/","") : this.state.input} onChange={this.handleInput} onKeyUp={this.handleKeyUp}></input>
-                    <Link className="searchLink" to={"/"+this.state.input} title={`Search for ${this.state.input}`}>Search!</Link>    
+                    {/* The box the word will be typed into */}
+                    <input 
+                     className="searchInput"
+                     value={ this.state.fromUrl ? window.location.pathname.replace("/lemma","").replace("/","") : this.state.input }
+                     onChange={this.handleInput}
+                     onKeyUp={this.handleKeyUp}
+                     />
+                    {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
+                    <input
+                     className="menuInput"
+                     list="rhymeOptions"
+                     value={this.state.menu}
+                     onChange={this.handleMenu}
+                     />
+                    <datalist id="rhymeOptions">
+                        <option>Perfect rhyme</option>
+                        <option>Rhyme vowels and final consonants</option>
+                        <option>Ecclesiastical perfect rhyme</option>
+                        <option>All consonants (consonyms)</option>
+                    </datalist>
+                    {/* What would be a "submit" button in a normal form */}
+                    <Link
+                     className="searchLink" 
+                     to={"/"+this.state.input} 
+                     title={`Search for ${this.state.input}`}
+                     >Search!</Link>    
                 </div>
             )
         }
