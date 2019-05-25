@@ -12,7 +12,7 @@ input {
     padding: 6px 6px;
 }
 
-.searchLink {
+.search-link {
     padding: 6px 9px;
     height: 20px;
     border: 2px solid hsl(208, 56%, 82%) /* Same colour as Footer */

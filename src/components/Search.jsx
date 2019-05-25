@@ -39,27 +39,28 @@ class Search extends Component {
                 <div className="search">
                     {/* The box the word will be typed into */}
                     <input 
-                     className="searchInput"
+                     className="search-input"
                      value={ this.state.fromUrl ? window.location.pathname.replace("/lemma","").replace("/","") : this.state.input }
                      onChange={this.handleInput}
                      onKeyUp={this.handleKeyUp}
                      />
                     {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
-                    <input
-                     className="menuInput"
-                     list="rhymeOptions"
-                     value={this.state.menu}
-                     onChange={this.handleMenu}
-                     />
-                    <datalist id="rhymeOptions">
-                        <option>Perfect rhyme</option>
-                        <option>Rhyme vowels and final consonants</option>
-                        <option>Ecclesiastical perfect rhyme</option>
-                        <option>All consonants (consonyms)</option>
-                    </datalist>
+                    {/* <div className="dropdown">
+                        <input
+                        className="menu-input"
+                        value={this.state.menu}
+                        onChange={this.handleMenu}
+                        />
+                        <div className="dropdown-content">
+                            <Link className="dropdown-link" to={"/perfect/"+this.state.input}>Perfect rhyme</Link>
+                            <Link className="dropdown-link" to={"/rvfc/"+this.state.input}>Rhyme vowels and final consonants</Link>
+                            <Link className="dropdown-link" to={"/ecclesperfect/"+this.state.input}>Ecclesiastical perfect rhyme</Link>
+                            <Link className="dropdown-link" to={"/consonyms/"+this.state.input}>All consonants (consonyms)</Link>
+                        </div>
+                    </div> */}
                     {/* What would be a "submit" button in a normal form */}
                     <Link
-                     className="searchLink" 
+                     className="search-link" 
                      to={"/"+this.state.input} 
                      title={`Search for ${this.state.input}`}
                      >Search!</Link>    
