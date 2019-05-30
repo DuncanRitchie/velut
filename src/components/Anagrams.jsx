@@ -1,5 +1,5 @@
 import React from 'react';
-import words from "../data/words.json";
+import words from "../data/words_batch1.json";
 import {delChars, subwordObjects} from "./Countdown"
 
 // anagrams() returns an array of strings that are multiword anagrams of input
