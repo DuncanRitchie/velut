@@ -66,6 +66,7 @@ const subwordStringsNoMacra = (input,wordObjects) => {
 
 const Countdown = () => {
     let input = window.location.pathname.replace("/countdown","").replace("/","")
+    document.title = "Subwords of "+input+" on velut"
     let sortedWordObjects = subwordObjects(input,words)
     let mappedWords = sortedWordObjects.map((word,index)=>{
         return <Link key={index} to={"./"+delChars(input,word["Alph order no macra"])} title={"delete "+word.Word+" from "+input}>{word.Word} </Link>

@@ -2,7 +2,8 @@ import React from 'react';
 import WarningMessage from './WarningMessage';
 import Search from './Search';
 
-let Home = (props) => {
+let Home = () => {
+    document.title = "Duncan Ritchie's velut"
     return (
         <div className="home">
             <h1><span className="title">velut</span> &mdash; Vocābulōrum Excellentium Latīnōrum Ūtilēs Tabulae</h1>

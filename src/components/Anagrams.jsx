@@ -54,6 +54,7 @@ const anagrams = (input) => {
 
 const Anagrams = () => {
     let input = window.location.pathname.replace("/anagrams","").replace("/","")
+    document.title = "Anagrams of "+input+" on velut"
     let mappedAnagrams = anagrams(input).map((anagram,index)=>{
         return <span key={index}>{anagram}<br/></span>
     })
