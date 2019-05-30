@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import Search from "./Search";
 import lemmata from "../data/lemmata.json";
-import words from "../data/words_batch1.json";
+import words from "../data/words_8fields.json";
 import Lemma from "./Lemma"
 
 let Lemmata = (props) => {

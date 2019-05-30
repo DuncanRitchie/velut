@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import words from "../data/words_batch1.json";
+import words from "../data/words_8fields.json";
 
 // delChars() removes every character (case-sensitive) in the second parameter from the first parameter, 
 // e.g. delChars("Duncanus","nunc") = "Daus"
