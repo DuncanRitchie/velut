@@ -3,9 +3,10 @@ import {Link} from "react-router-dom";
 import Search from "./Search";
 import words from "../data/words_8fields.json";
 import lemmata from "../data/lemmata.json";
-import Lemma from "./Lemma"
-import macraToHyphens from "./macraToHyphens"
-import WarningMessage from "./WarningMessage"
+import dictionaries from "../data/dictionaries.json";
+import Lemma from "./Lemma";
+import macraToHyphens from "./macraToHyphens";
+import WarningMessage from "./WarningMessage";
 
 let WordFromJson = (props) => {
     // The word searched for comes from the window location.
@@ -29,6 +30,11 @@ let WordFromJson = (props) => {
     let mappedAnagrams = [];
     let wordLemmata = [];
     let mappedLemmata = [];
+    // Let's do dictionaries.
+    let plainInput = input.replace(/\-/g,"").replace(/\./g,"")
+    let mappedDics = dictionaries.map((dic,index)=>{
+        return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
+    })
     if (foundWord) {
         // Let's set the document title to the word we found.
         document.title = foundWord["Word"]+" on velut"
@@ -124,6 +130,9 @@ let WordFromJson = (props) => {
             <div className="divider"/>
             <p><strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found. Try <Link to={"/"+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.</p>}
             {mappedLemmata ? mappedLemmata : null}
+            <div className="divider"/>
+            <div className="divider"/>
+            <p className="dictionaries">Links to external sites: {mappedDics}</p>
         </div>
     )
 }

@@ -30,3 +30,9 @@ h1 {
   margin-right: 25%;
   border-bottom: 2px solid rgb(196, 226, 196)
 }
+
+.dictionaries {
+  background-color: rgb(221, 236, 255);
+  padding: 12px 6px;
+  margin: 18px -6px -6px
+}
