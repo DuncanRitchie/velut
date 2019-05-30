@@ -36,7 +36,7 @@ let WordFromJson = (props) => {
         let rhymes = words.filter((word)=>{return word["Perfect rhyme"]===foundWord["Perfect rhyme"]})
         // The rhymes get sorted by syllable count, then by Sort Column.
         let sortedRhymes = rhymes.sort((a,b)=>{
-            if (a["Syllable count"]===b["Syllable count"]) {
+            if (a["Scansion"].length===b["Scansion"].length) {
                 if (a["Sort column"]>b["Sort column"]) {
                 return 1
             }
@@ -45,7 +45,7 @@ let WordFromJson = (props) => {
             }
             }
             else {
-                return a["Syllable count"]-b["Syllable count"]
+                return a["Scansion"].length-b["Scansion"].length
             }
         })
         // A react-router-dom Link is rendered for every rhyme.
