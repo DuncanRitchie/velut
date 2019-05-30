@@ -5,7 +5,7 @@ import words from "../data/words_8fields.json";
 import lemmata from "../data/lemmata.json";
 import Lemma from "./Lemma"
 import macraToHyphens from "./macraToHyphens"
-import './WordFromJson.css'
+import WarningMessage from "./WarningMessage"
 
 let WordFromJson = (props) => {
     // The word searched for comes from the window location.
@@ -115,10 +115,7 @@ let WordFromJson = (props) => {
         <div className="word">
             <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : input}</h1>
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
-            <p className="warning-message">
-                This is a demonstration of the user experience without connection to the database I will be using, so this website will be slow to load initially.<br/>
-                Eventually I&rsquo;ll have connected my database up successfully, and this website will load a lot quicker. 
-            </p>
+            <WarningMessage/>
             <Search/>
             <div className="divider"/>
             {foundWord ? <div><p>The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}</p>
