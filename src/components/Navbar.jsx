@@ -9,11 +9,15 @@ const Navbar = (props) => {
     if (currentPage === "word") {
         root = "./"
     }
+    let inputTrunc = input
+    if (inputTrunc.length>9) {
+        inputTrunc = input.substr(0,9)
+    }
     return (
         <ul className="navbar">
-            {currentPage==="word" ? null : <li><Link to={root+input}>Latin word look-up</Link></li>}
-            {currentPage==="countdown" ? null : <li><Link to={root+"countdown/"+input}>Play Latin Countdown</Link></li>}
-            {currentPage==="anagrams" ? null : <li><Link to={root+"anagrams/"+input}>Find Latin anagrams</Link></li>}
+            {currentPage==="word" ? null : <li><Link to={root+input} title="Find lemmata, rhymes, etc.">Latin word look-up</Link></li>}
+            {currentPage==="countdown" ? null : <li><Link to={root+"countdown/"+input} title="Find subwords">Play Latin Countdown</Link></li>}
+            {currentPage==="anagrams" ? null : <li><Link to={root+"anagrams/"+inputTrunc} title="Find anagrams">Find Latin anagrams</Link></li>}
         </ul>
     )
 }
