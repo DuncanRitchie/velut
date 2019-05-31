@@ -1,7 +1,6 @@
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    grid-area: footer;
+    padding: 6px;
     /* This is the color of links, but lighter */
     background-color: hsl(208, 56%, 82%);
 }

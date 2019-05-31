@@ -1,26 +1,45 @@
-body {
+.App {
   text-align: center;
   font-family: "Alegreya", serif;
-  margin-bottom: 72px
+  margin: 0 0 0 0;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  /* background-color: rgb(254, 252, 250) */
+  background: rgb(238, 243, 238);
+  background: linear-gradient(180deg, rgba(196,226,196,0.05) 0%, rgba(183,211,235,0.05) 100%);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "body" "footer";
 }
 
-.home {
-  padding: 6px
+p {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 9px 0
 }
 
-.word {
-  padding: 6px
+.word,.home,.anagrams,.anagrams-home,.countdown,.countdown-home {
+  grid-area: body;
+  overflow-y: auto
 }
 
 h1 {
+  width: inherit;
+  padding: 3px 6px;
+  margin: 0 0 6px;
   background-color: rgb(196, 226, 196); /* pale green */
-  margin: -6px -6px 3px -6px;
-  padding: 6px 0;
   color: rgb(58, 114, 58) /* a darker, brighter green */
 }
 
 .title {
   color: black
+}
+
+h2 {
+  margin-top: 12px;
+  margin-bottom: 3px
 }
 
 .divider {
@@ -32,7 +51,8 @@ h1 {
 }
 
 .dictionaries {
-  background-color: rgb(221, 236, 255);
+  background-color: rgb(215, 247, 247);
   padding: 12px 6px;
-  margin: 18px -6px -6px
+  margin-top: 12px;
+  margin-bottom: 0
 }
