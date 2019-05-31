@@ -7,6 +7,7 @@ import dictionaries from "../data/dictionaries.json";
 import Lemma from "./Lemma";
 import macraToHyphens from "./macraToHyphens";
 import WarningMessage from "./WarningMessage";
+import Navbar from "./Navbar"
 
 let WordFromJson = (props) => {
     // The word searched for comes from the window location.
@@ -120,6 +121,7 @@ let WordFromJson = (props) => {
     return (
         <div className="word">
             <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : input}</h1>
+            <Navbar input={input} currentPage="word"/>
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
             <WarningMessage/>
             <Search prefix=""/>

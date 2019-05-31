@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Search from './Search'
+import Navbar from './Navbar'
 import words from "../data/words_8fields.json";
 
 // delChars() removes every character (case-insensitive) in the second parameter from the first parameter, 
@@ -81,6 +82,7 @@ const Countdown = () => {
     return (
         <div className="word">
             <h1><span className="title">velut</span> &mdash; Countdown &mdash; {input}</h1>
+            <Navbar input={input} currentPage="countdown"/>
             {mappedWords.length ? (
                 <div>
                     <Search prefix="countdown/"/>
@@ -90,7 +92,6 @@ const Countdown = () => {
             ) : (
                 <p>No words found! Try a different input, such as <Link to="./DuncanusRichardus" title="Subwords of DuncanusRichardus">DuncanusRichardus</Link></p>
             )}
-            
         </div>
     )
 }
