@@ -1,14 +1,16 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
+import Search from './Search'
 import words from "../data/words_8fields.json";
 
-// delChars() removes every character (case-sensitive) in the second parameter from the first parameter, 
+// delChars() removes every character (case-insensitive) in the second parameter from the first parameter, 
 // e.g. delChars("Duncanus","nunc") = "Daus"
 // e.g. delChars("Rīchardus","hinc") = "Rīardus"
 // e.g. delChars("Richardus","hinc") = "Rardus"
 
 const delChars = (superword,subword) => {
-    let string = superword
+    let string = superword.toLowerCase()
+    subword = subword.toLowerCase()
     let chars = subword.split("")
     for (let i=0; i<subword.length; i++) {
         string = string.replace(chars[i],"")
@@ -69,12 +71,26 @@ const Countdown = () => {
     document.title = "Subwords of "+input+" on velut"
     let sortedWordObjects = subwordObjects(input,words)
     let mappedWords = sortedWordObjects.map((word,index)=>{
-        return <Link key={index} to={"./"+delChars(input,word["Alph order no macra"])} title={"delete "+word.Word+" from "+input}>{word.Word} </Link>
+        if (delChars(input,word["Alph order no macra"])) {
+            return <span key={index}><Link to={"./"+delChars(input,word["Alph order no macra"])} title={"delete "+word.Word+" from "+input}>{word.Word}</Link> </span>
+        }
+        else {
+            return <span key={index}><strong>{word.Word}</strong> </span>
+        }
     })
     return (
         <div className="word">
             <h1><span className="title">velut</span> &mdash; Countdown &mdash; {input}</h1>
-            <p>{mappedWords}</p>
+            {mappedWords.length ? (
+                <div>
+                    <Search prefix="countdown/"/>
+                    <p>Here are the Latin words that can be made out of letters in {input}. You can click on a word (other than a perfect anagram) to delete its letters from {input}.</p>
+                    <p>{mappedWords}</p>
+                </div>
+            ) : (
+                <p>No words found! Try a different input, such as <Link to="./DuncanusRichardus" title="Subwords of DuncanusRichardus">DuncanusRichardus</Link></p>
+            )}
+            
         </div>
     )
 }

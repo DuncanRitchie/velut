@@ -60,7 +60,7 @@ let Lemmata = (props) => {
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
             <p>I&rsquo;m still in the initial stages of creating this app&hellip;</p>
             {/* Search bar and submit link */}
-            <Search />
+            <Search prefix="lemma/" />
             {/* Telling the user what they searched for and how many results were found. */}
             <p>
                 You searched for the lemma <strong>{window.location.pathname.replace("/lemma","").replace("/","")}</strong>. {lemmaObjects.length} matching {lemmaObjects.length===1 ? "lemma" : "lemmata"} found.

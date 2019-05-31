@@ -3,13 +3,16 @@ import {Link, Redirect} from "react-router-dom";
 import "./Search.css"
 
 class Search extends Component {
-    state = {
-        input: "",
-        menu: "Perfect rhyme",
-        redirect: false,
-        fromUrl: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            input: "",
+            menu: "Perfect rhyme",
+            redirect: false,
+            fromUrl: true
+        }
     }
-    
+
     // This handles the <input> value.
     handleInput = (e) => {
         this.setState({input: e.target.value, fromUrl: false})
@@ -32,7 +35,7 @@ class Search extends Component {
         // We need to set state back to redirect:false to avoid infinite redirects.
         if (this.state.redirect) {
             this.setState({redirect: false})
-            return <Redirect to={{pathname: `/${this.state.input}`, state: {input: window.location.pathname.replace("/",""), redirect: false}}} push={true}/>
+            return <Redirect to={{pathname: `/${this.props.prefix}${this.state.input}`, state: {input: window.location.pathname.replace("/",""), redirect: false}}} push={true}/>
         }
         else {
             return (
@@ -40,7 +43,7 @@ class Search extends Component {
                     {/* The box the word will be typed into */}
                     <input 
                      className="search-input"
-                     value={ this.state.fromUrl ? window.location.pathname.replace("/lemma","").replace("/","") : this.state.input }
+                     value={ this.state.fromUrl ? window.location.pathname.replace("/lemma/","").replace("/countdown","").replace("/anagrams","").replace("/","") : this.state.input }
                      onChange={this.handleInput}
                      onKeyUp={this.handleKeyUp}
                      />
@@ -61,7 +64,7 @@ class Search extends Component {
                     {/* What would be a "submit" button in a normal form */}
                     <Link
                      className="search-link" 
-                     to={"/"+this.state.input} 
+                     to={"/"+this.props.prefix+this.state.input} 
                      title={`Search for ${this.state.input}`}
                      >Search!</Link>    
                 </div>

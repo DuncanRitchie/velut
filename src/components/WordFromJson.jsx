@@ -31,7 +31,7 @@ let WordFromJson = (props) => {
     let wordLemmata = [];
     let mappedLemmata = [];
     // Let's do dictionaries.
-    let plainInput = input.replace(/\-/g,"").replace(/\./g,"")
+    let plainInput = input.replace(/-/g,"").replace(/\./g,"")
     let mappedDics = dictionaries.map((dic,index)=>{
         return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
     })
@@ -122,7 +122,7 @@ let WordFromJson = (props) => {
             <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : input}</h1>
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
             <WarningMessage/>
-            <Search/>
+            <Search prefix=""/>
             <div className="divider"/>
             {foundWord ? <div><p>The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}</p>
             <p>Perfect rhymes: {mappedRhymes}</p>

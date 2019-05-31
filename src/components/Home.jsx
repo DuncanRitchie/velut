@@ -10,7 +10,7 @@ let Home = () => {
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
             <p>Search for a Latin word!</p>
             <WarningMessage />
-            <Search />
+            <Search prefix="" />
         </div>
     )
 }

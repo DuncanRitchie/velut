@@ -1,6 +1,7 @@
 import React from 'react';
 import words from "../data/words_8fields.json";
 import {delChars, subwordObjects} from "./Countdown"
+import Search from './Search'
 
 // anagrams() returns an array of strings that are multiword anagrams of input
 
@@ -61,7 +62,8 @@ const Anagrams = () => {
     return (
         <div className="word">
             <h1><span className="title">velut</span> &mdash; Anagrams &mdash; {input}</h1>
-            <p>{mappedAnagrams.length ? mappedAnagrams : "No anagrams found"}</p>
+            <Search prefix="anagrams/" />
+            <p>{mappedAnagrams.length ? mappedAnagrams : "No anagrams found. Try another search."}</p>
         </div>
     )
 }
