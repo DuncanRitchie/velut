@@ -41,19 +41,19 @@ let WordFromJson = (props) => {
         document.title = foundWord["Word"]+" on velut"
         // Let's find the rhymes.
         let rhymes = words.filter((word)=>{return word["Perfect rhyme"]===foundWord["Perfect rhyme"]})
-        // The rhymes get sorted by syllable count, then by Sort Column.
+        // The rhymes get sorted by Sort Column. Uncomment the enclosing if-else-statement to sort by syllable count.
         let sortedRhymes = rhymes.sort((a,b)=>{
-            if (a["Scansion"].length===b["Scansion"].length) {
-                if (a["Sort column"]>b["Sort column"]) {
-                return 1
-            }
-            else {
-                return -1
-            }
-            }
-            else {
-                return a["Scansion"].length-b["Scansion"].length
-            }
+            // if (a["Scansion"].length===b["Scansion"].length) {
+                if (a["Sort column"].replace(/•/g,"-")>b["Sort column"].replace(/•/g,"-")) {
+                    return 1
+                }
+                else {
+                    return -1
+                }
+            // }
+            // else {
+            //     return a["Scansion"].length-b["Scansion"].length
+            // }
         })
         // A react-router-dom Link is rendered for every rhyme.
         mappedRhymes = sortedRhymes.map((rhyme,index)=>{return (
@@ -88,7 +88,7 @@ let WordFromJson = (props) => {
             // If no etymology is given in the data, a message should appear in the cognates paragraph.
             let cognatesMessage = "";
             if (!foundLemma.Root) {
-                cognatesMessage = "I have not assigned cognates for this word, sorry!"
+                cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
             }
             // This sorts the cognates alphabetically.
             let sortedCognates = cognates.sort((a,b)=>{
