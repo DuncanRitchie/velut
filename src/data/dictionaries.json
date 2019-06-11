@@ -29,7 +29,7 @@
     "Dictionary": "Tower of Babel",
     "Formula": "http://starling.rinet.ru/cgi-bin/response.cgi?root=config&morpho=0&basename=%5Cdata%5Cie%5Cpiet&first=1&text_lat=INPUT&method_lat=substring&ww_lat=on&ic_lat=on&text_any=&method_any=substring&sort=proto&ic_any=on"
 },{
-    "Dictionary": "Whitaker's Words",
+    "Dictionary": "Whitaker’s Words",
     "Formula": "http://archives.nd.edu/cgi-bin/wordz.pl?keyword=INPUT"
 },{
     "Dictionary": "Wiktionary",
