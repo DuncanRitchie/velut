@@ -47,24 +47,6 @@ const subwordObjects = (input,wordObjects) => {
     return sortedWordObjects
 }
 
-// subwordStrings() returns an array of strings, e.g. subwordStrings("duncanusrichardus",words) = 
-// ["charādrius","Dīnarchus","Hadriacus","Hadriānus","Rīchardus","cachinnās","cachinnus","candidāns", ...]
-
-const subwordStrings = (input,wordObjects) => {
-    return subwordObjects(input,wordObjects).map((object,index)=>{
-        return object.Word
-    })
-}
-
-// subwordStringsNoMacra() returns an array of demacronized strings, e.g. subwordStrings("duncanusrichardus") = 
-// ["charadrius","Dinarchus","Hadriacus","Hadrianus","Richardus","cachinnas","cachinnus","candidans", ...]
-
-const subwordStringsNoMacra = (input,wordObjects) => {
-    return subwordObjects(input,wordObjects).map((object,index)=>{
-        return object["No macra"]
-    })
-}
-
 // <Countdown/> is a JSX element rendered at /countdown/:input
 
 const Countdown = () => {
