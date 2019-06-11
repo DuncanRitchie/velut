@@ -76,7 +76,7 @@ let WordFromJson = (props) => {
         )})
         // Let's do the lemmata. We will render an element for every lemma listed against the input.
         wordLemmata = foundWord.LemmaArray
-        mappedLemmata = wordLemmata.map((lemma,index)=>{ 
+        mappedLemmata = wordLemmata.map((lemma,index)=>{
             // Let's find the lemma in the Json.
             let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
             if (foundLemma) {
@@ -119,6 +119,9 @@ let WordFromJson = (props) => {
                     cognatesMessage={cognatesMessage}
                     /> 
                 )
+            }
+            else {
+                return null
             }
         })
             
