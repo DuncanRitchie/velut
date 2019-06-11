@@ -57,7 +57,7 @@ let WordFromJson = (props) => {
         })
         // A react-router-dom Link is rendered for every rhyme.
         mappedRhymes = sortedRhymes.map((rhyme,index)=>{return (
-            <Link key={index} to={"/"+macraToHyphens(rhyme.Word)} title={rhyme.Word}>{rhyme.Word} </Link>
+            <span key={index}><Link to={"/"+macraToHyphens(rhyme.Word)} title={rhyme.Word}>{rhyme.Word}</Link> </span>
         )})
         // Let's find the anagrams.
         let anagrams = words.filter((word)=>{return word["Alph order no macra"]===foundWord["Alph order no macra"]})
@@ -72,7 +72,7 @@ let WordFromJson = (props) => {
         })
         // A react-router-dom Link is rendered for every anagram.
         mappedAnagrams = sortedAnagrams.map((anagram,index)=>{return (
-            <Link key={index} to={"/"+macraToHyphens(anagram.Word)} title={anagram.Word}>{anagram.Word} </Link>
+            <span key={index}><Link to={"/"+macraToHyphens(anagram.Word)} title={anagram.Word}>{anagram.Word}</Link> </span>
         )})
         // Let's do the lemmata. We will render an element for every lemma listed against the input.
         wordLemmata = foundWord.LemmaArray
@@ -82,7 +82,9 @@ let WordFromJson = (props) => {
             // Let's get the inflected forms.
             let forms = words.filter(word=>{return word.LemmaArray.includes(foundLemma.Lemma)})
             // Let's render a Link for every form.
-            let mappedForms = forms.map((form,index)=>{return <Link key={index} title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word} </Link>})
+            let mappedForms = forms.map((form,index)=>{
+                return <span key={index}><Link title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word}</Link> </span>
+            })
             // Let's get the cognates.
             let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
             // If no etymology is given in the data, a message should appear in the cognates paragraph.
