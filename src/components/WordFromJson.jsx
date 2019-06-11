@@ -79,46 +79,49 @@ let WordFromJson = (props) => {
         mappedLemmata = wordLemmata.map((lemma,index)=>{ 
             // Let's find the lemma in the Json.
             let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
-            // Let's get the inflected forms.
-            let forms = words.filter(word=>{return word.LemmaArray.includes(foundLemma.Lemma)})
-            // Let's render a Link for every form.
-            let mappedForms = forms.map((form,index)=>{
-                return <span key={index}><Link title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word}</Link> </span>
-            })
-            // Let's get the cognates.
-            let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
-            // If no etymology is given in the data, a message should appear in the cognates paragraph.
-            let cognatesMessage = "";
-            if (!foundLemma.Root) {
-                cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
-            }
-            // This sorts the cognates alphabetically.
-            let sortedCognates = cognates.sort((a,b)=>{
-                if(b["No Macra"].toLowerCase() < a["No Macra"].toLowerCase()) {
-                    return 1
-                } 
-                else {
-                    return -1
+            if (foundLemma) {
+                // Let's get the inflected forms.
+                let forms = words.filter(word=>{return word.LemmaArray.includes(foundLemma.Lemma)})
+                // Let's render a Link for every form.
+                let mappedForms = forms.map((form,index)=>{
+                    return <span key={index}><Link title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word}</Link> </span>
+                })
+                // Let's get the cognates.
+                let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
+                // If no etymology is given in the data, a message should appear in the cognates paragraph.
+                let cognatesMessage = "";
+                if (!foundLemma.Root) {
+                    cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
                 }
-            });
-            // A react-router-dom Link is rendered for every cognate.
-            let mappedCognates = sortedCognates.map((cognate,index)=>{
-                return <span key={index}><Link to={`/${macraToHyphens(cognate.Lemma).replace(/\[.*\]/g,"")}`} key={index} title={cognate.Lemma}> {cognate.Lemma}</Link> </span>
-            })
-            // Cognates are done. Let's put everything into the Lemma element.
-            return (
-                <Lemma 
-                key={index} 
-                lemma={foundLemma.Lemma} 
-                partOfSpeech={foundLemma["Part of Speech"]} 
-                meaning={foundLemma.Meaning} 
-                scansion={foundLemma.Scansion}
-                forms={mappedForms}
-                cognates={mappedCognates}
-                cognatesMessage={cognatesMessage}
-                /> 
-            )
+                // This sorts the cognates alphabetically.
+                let sortedCognates = cognates.sort((a,b)=>{
+                    if(b["No Macra"].toLowerCase() < a["No Macra"].toLowerCase()) {
+                        return 1
+                    } 
+                    else {
+                        return -1
+                    }
+                });
+                // A react-router-dom Link is rendered for every cognate.
+                let mappedCognates = sortedCognates.map((cognate,index)=>{
+                    return <span key={index}><Link to={`/${macraToHyphens(cognate.Lemma).replace(/\[.*\]/g,"")}`} key={index} title={cognate.Lemma}> {cognate.Lemma}</Link> </span>
+                })
+                // Cognates are done. Let's put everything into the Lemma element.
+                return (
+                    <Lemma 
+                    key={index} 
+                    lemma={foundLemma.Lemma} 
+                    partOfSpeech={foundLemma["Part of Speech"]} 
+                    meaning={foundLemma.Meaning} 
+                    scansion={foundLemma.Scansion}
+                    forms={mappedForms}
+                    cognates={mappedCognates}
+                    cognatesMessage={cognatesMessage}
+                    /> 
+                )
+            }
         })
+            
     }
     return (
         <div className="word">
