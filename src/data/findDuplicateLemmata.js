@@ -13,3 +13,17 @@ const findDuplicateLemmata = () => {
 }
 
 console.log(findDuplicateLemmata())
+
+const words = require('./words_8fields.json')
+
+const findDuplicateWords = () => {
+    let duplicates = []
+    for (let i=1; i<words.length; i++) {
+        for (let j=0; j<i; j++) {
+            if (words[i].Word === words[j].Word) {
+                duplicates.push(words[i].Ord)
+            }
+        }
+    }
+    return duplicates
+}
