@@ -8,6 +8,9 @@
 # comma-separated values files
 src/data/*.csv
 
+src/data/words.json
+src/data/words_8fields.json
+
 # testing
 /coverage
 
