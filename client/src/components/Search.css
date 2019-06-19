@@ -1,0 +1,20 @@
+.search {
+    padding-top: 6px;
+    padding-bottom: 12px
+}
+
+input {
+    margin-right: 12px;
+    text-align: center;
+    border: 2px solid rgba(196, 226, 196, 1); /* light green */
+    height: 20px;
+    font-size: 16px;
+    font-family: "Monaco", "Consolas", monospace;
+    padding: 6px 6px;
+}
+
+.search-link {
+    padding: 6px 9px;
+    height: 20px;
+    border: 2px solid hsl(208, 56%, 82%) /* Same colour as Footer */
+}

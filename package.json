@@ -1,27 +1,32 @@
 {
-  "name": "velut",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "mongodb": "^3.2.3",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"name": "velut",
+	"version": "0.0.1",
+	"description": "Useful Tables of Excellent Latin Vocabulary",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"velut",
+		"latin",
+		"latin language",
+		"dictionary",
+		"lexicon",
+		"rhyme",
+		"rhymes",
+		"rhyming",
+		"words",
+		"lookup",
+		"Duncan Ritchie"
+	],
+	"author": "Duncan Ritchie",
+	"dependencies": {
+		"express": "^4.16.3",
+		"mongoose": "^5.3.2"
+	},
+	"devDependencies": {
+		"nodemon": "^1.18.4"
+	}
 }
