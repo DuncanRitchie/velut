@@ -14,22 +14,22 @@ const wordsSchema = new mongoose.Schema({
     "Stress": Number,
     "Ultima rhyme": String,
     "Rhyme vowels": String,
-    "Perfect rhyme": String,
+    "PerfectRhyme": String,
     "Rhyme consonants": String,
     "Ultima": String,
     "Rhyme vowels & ultima coda": String,
     "Ecclesiastical phonetic": String,
     "Ecclesiastical vowels": String,
     "Ecclesiastical rhyme vowels": String,
-    "Ecclesiastical perfect rhyme": String,
+    "Ecclesiastical PerfectRhyme": String,
     "Ecclesiastical sort column": String,
     "IsLemma": Bool,
     "IsNonLemma": Bool,
     "Macra as hyphens": String,
-    "No macra": String,
-    "Alph order no macra": String,
+    "NoMacra": String,
+    "AlphOrderNoMacra": String,
     "Keypad code": String,
-    "Sort column": String
+    "Sort": String
 })
 
 // Making the Mongoose model

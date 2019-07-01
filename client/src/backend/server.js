@@ -41,7 +41,7 @@ stitchClient.auth.authenticate('anon').then(credential => {
 //   };
   
 //   var projection = {
-//       "Perfect rhyme": 1.0
+//       "PerfectRhyme": 1.0
 //   };
   
 //   var cursor = collection.find(query).project(projection);
@@ -73,7 +73,7 @@ stitchClient.auth.authenticate('anon').then(credential => {
 //         "Lemmata": 1.0
 //     };
     
-//     let sort = [ ["Syllable count", 1], ["Sort column", 1] ];
+//     let sort = [ ["Syllable count", 1], ["Sort", 1] ];
     
 //     let cursor = collection.find(query).project(projection).sort(sort);
     

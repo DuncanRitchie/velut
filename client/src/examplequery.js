@@ -10,15 +10,15 @@ client.connect(url, function (err, client) {
     var collection = db.collection("words");
     
     var query = {
-        "Perfect rhyme": "ernus",
-        "Syllable count": 3
+        "PerfectRhyme": "ernus",
+        "SyllableCount": 3
     };
     
     var projection = {
         "Word": 1.0
     };
     
-    var sort = [ ["Syllable count", 1], ["Sort column", 1], ["Word", 1] ];
+    var sort = [ ["SyllableCount", 1], ["Sort", 1], ["Word", 1] ];
     
     var cursor = collection.find(query).project(projection).sort(sort);
     
