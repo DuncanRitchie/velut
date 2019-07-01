@@ -4,12 +4,13 @@ const wordsController = require('../controllers/words-controller');
 router
 	.route('/')
 	.get(wordsController.findAll)
-	// .post(wordsController.create)
 
 router
-	.route('/:id')
+	.route('/:query')
+	.get(wordsController.findAll)
+
+router
+	.route('/id/:id')
 	.get(wordsController.findById)
-	// .put(wordsController.update)
-	// .delete(wordsController.remove)
 
 module.exports = router;

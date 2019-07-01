@@ -15,19 +15,18 @@ class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          currentWordObject: {}
+          currentWordObject: {},
+          currentWordsArray: []
       }
   }
   
   fetchData() {
-    console.log("Trying to fetch data for fu-ra-cius")
-    // Let's fetch some data from MongoDB.
-    axios.getWord('5d1893251e9e911077fd99fc')
-        .then((data)=>{this.setState({currentWordObject: data.data})})
+    // Let's fetch some data from MongoDB. The example here is listing all words of fifteen letters.
+    axios.getWords({"Length": 15})
+        .then((data)=>{this.setState({"currentWordsArray": data.data})})
   }
 
   componentDidMount() {
-    console.log("App component has mounted!")
     this.fetchData()
   }
 
