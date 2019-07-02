@@ -3,6 +3,17 @@ const Word = require('../models/word-model')
 // Defining all methods and logic for routes
 
 module.exports = {
+	// .count() may not actually work
+	count: function(req, res) {
+		Word.estimatedDocumentCount().exec((err, count) => {
+			if (err) {
+				res.send(err);
+				return;
+			}
+		
+			res.json({ "count": count });
+		})
+	},
 	findAll: function(req, res) {
 		Word.find(req.query)
 			.then(words => res.json(words))

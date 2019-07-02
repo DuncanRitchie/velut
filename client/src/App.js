@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import axios from "./axios/axios";
 import Home from "./components/word/Home";
-import WordFromJson from "./components/word/WordFromJson";
+import WordFromJson from "./components/word/Word";
 import Lemmata from "./components/lemmata/Lemmata";
 import CountdownHome from "./components/countdown/CountdownHome";
 import Countdown from "./components/countdown/Countdown";
@@ -12,24 +11,6 @@ import Footer from "./components/footer/Footer";
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          currentWordObject: {},
-          currentWordsArray: []
-      }
-  }
-  
-  fetchData() {
-    // Let's fetch some data from MongoDB. The example here is listing all words of fifteen letters.
-    axios.getWords({"Length": 15})
-        .then((data)=>{this.setState({"currentWordsArray": data.data})})
-  }
-
-  componentDidMount() {
-    this.fetchData()
-  }
-
   render() {
     return (
       <div className="App">

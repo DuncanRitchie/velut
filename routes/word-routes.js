@@ -6,6 +6,10 @@ router
 	.get(wordsController.findAll)
 
 router
+	.route('/count')
+	.get(wordsController.count)
+	
+router
 	.route('/:query')
 	.get(wordsController.findAll)
 
