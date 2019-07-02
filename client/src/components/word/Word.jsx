@@ -186,20 +186,12 @@ class Word extends Component {
                 )})
             }
             // Let's find the anagrams.
-            let anagrams = words.filter((word)=>{return word.AlphOrderNoMacra===foundWord.AlphOrderNoMacra})
-            // The anagrams get sorted alphabetically.
-            let sortedAnagrams = anagrams.sort((a,b)=>{
-                if (a.NoMacra.toLowerCase()>b.NoMacra.toLowerCase()) {
-                    return 1
-                }
-                else {
-                    return -1
-                }
-            })
-            // A react-router-dom Link is rendered for every anagram.
-            mappedAnagrams = sortedAnagrams.map((anagram,index)=>{return (
-                <span key={index}><Link to={"/"+macraToHyphens(anagram.Word)} title={anagram.Word}>{anagram.Word}</Link> </span>
-            )})
+            if (this.state.anagrams) {
+                // A react-router-dom Link is rendered for every anagram.
+                mappedAnagrams = this.state.anagrams.map((anagram,index)=>{return (
+                    <span key={index}><Link to={"/"+macraToHyphens(anagram)} title={anagram}>{anagram}</Link> </span>
+                )})
+            }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
             wordLemmata = foundWord.LemmaArray || []
             if (!wordLemmata) {}
