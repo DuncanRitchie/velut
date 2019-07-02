@@ -20,7 +20,7 @@ class Word extends Component {
             count: null,
             input: "",
             randomWord: "",
-            currentWordObject: {},
+            foundWord: {},
             currentWordsArray: []
         }
     }
@@ -33,31 +33,31 @@ class Word extends Component {
         axios.getWords({"Word": input})
             .then((data)=>{
                 foundWord = data.data[0]
-                this.setState({currentWordObject: foundWord})
+                this.setState({foundWord: foundWord})
                 if (!foundWord) {
                     console.log(`Looking for: ${hyphensToMacra(input)}`)
                     axios.getWords({"Word": hyphensToMacra(input)})
                         .then((data)=>{
                             foundWord = data.data[0]
-                            this.setState({currentWordObject: foundWord})
+                            this.setState({foundWord: foundWord})
                             if (!foundWord) {
                                 console.log(`Looking for: ${noMacra(input)}`)
                                 axios.getWords({"NoMacra": noMacra(input)})
                                 .then((data)=>{
                                     foundWord = data.data[0]
-                                    this.setState({currentWordObject: foundWord})
+                                    this.setState({foundWord: foundWord})
                                     if (!foundWord) {
                                         console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
                                         axios.getWords({"NoMacra": noMacra(input).toLowerCase()})
                                         .then((data)=>{
                                             foundWord = data.data[0]
-                                            this.setState({currentWordObject: foundWord})
+                                            this.setState({foundWord: foundWord})
                                             if (!foundWord) {
                                                 console.log(`Looking for: ${toProperCase(noMacra(input))}`)
                                                 axios.getWords({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
                                                         foundWord = data.data[0]
-                                                        this.setState({currentWordObject: foundWord})
+                                                        this.setState({foundWord: foundWord})
                                                     })
                                             }})
                                     }})
@@ -96,25 +96,25 @@ class Word extends Component {
     }
 
     render() {
-        let {input, randomWord} = this.state
-        // foundWord is the first object that matches the input.
-        // It looks for an exact match, then ignores macra and looks again, then ignores case and looks again.
-        let foundWord = words.find(word=>{return macraToHyphens(word.Word)===input})
-        if (!foundWord) {
-            foundWord = words.find(word=>{return word.Word===input})
-        }
-        if (!foundWord) {
-            foundWord = words.find(word=>{return word.NoMacra===input.replace(/[-/.]/g,"").replace(/\[.*\]/g,"")})
-        }
-        if (!foundWord) {
-            foundWord = words.find(word=>{return word.NoMacra.toLowerCase()===input.replace(/[-/.]/g,"").replace(/\[.*\]/g,"").toLowerCase()})
-        }
+        let {input, randomWord, foundWord} = this.state
+        // // foundWord is the first object that matches the input.
+        // // It looks for an exact match, then ignores macra and looks again, then ignores case and looks again.
+        // let foundWord = words.find(word=>{return macraToHyphens(word.Word)===input})
+        // if (!foundWord) {
+        //     foundWord = words.find(word=>{return word.Word===input})
+        // }
+        // if (!foundWord) {
+        //     foundWord = words.find(word=>{return word.NoMacra===input.replace(/[-/.]/g,"").replace(/\[.*\]/g,"")})
+        // }
+        // if (!foundWord) {
+        //     foundWord = words.find(word=>{return word.NoMacra.toLowerCase()===input.replace(/[-/.]/g,"").replace(/\[.*\]/g,"").toLowerCase()})
+        // }
         let mappedRhymes = [];
         let mappedAnagrams = [];
         let wordLemmata = [];
         let mappedLemmata = [];
         // Let's do dictionaries.
-        let plainInput = input.replace(/-/g,"").replace(/\./g,"")
+        let plainInput = input.replace(/-/g,"").replace(/\./g,"").replace(/\:/g,"")
         let mappedDics = dictionaries.map((dic,index)=>{
             return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
         })
@@ -157,55 +157,59 @@ class Word extends Component {
                 <span key={index}><Link to={"/"+macraToHyphens(anagram.Word)} title={anagram.Word}>{anagram.Word}</Link> </span>
             )})
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
-            wordLemmata = foundWord.LemmaArray
-            mappedLemmata = wordLemmata.map((lemma,index)=>{
-                // Let's find the lemma in the Json.
-                let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
-                if (foundLemma) {
-                    // Let's get the inflected forms.
-                    let forms = words.filter(word=>{return word.LemmaArray.includes(foundLemma.Lemma)})
-                    // Let's render a Link for every form.
-                    let mappedForms = forms.map((form,index)=>{
-                        return <span key={index}><Link title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word}</Link> </span>
-                    })
-                    // Let's get the cognates.
-                    let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
-                    // If no etymology is given in the data, a message should appear in the cognates paragraph.
-                    let cognatesMessage = "";
-                    if (!foundLemma.Root) {
-                        cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
-                    }
-                    // This sorts the cognates alphabetically.
-                    let sortedCognates = cognates.sort((a,b)=>{
-                        if(b.NoMacra.toLowerCase() < a.NoMacra.toLowerCase()) {
-                            return 1
-                        } 
-                        else {
-                            return -1
+            wordLemmata = foundWord.LemmaArray || []
+            if (!wordLemmata) {}
+            else {
+                mappedLemmata = wordLemmata.map((lemma,index)=>{
+                    // Let's find the lemma in the Json.
+                    let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
+                    if (foundLemma) {
+                        // Let's get the inflected forms.
+                        let forms = words.filter(word=>{return word.LemmaArray.includes(foundLemma.Lemma)})
+                        // Let's render a Link for every form.
+                        let mappedForms = forms.map((form,index)=>{
+                            return <span key={index}><Link title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word}</Link> </span>
+                        })
+                        // Let's get the cognates.
+                        let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
+                        // If no etymology is given in the data, a message should appear in the cognates paragraph.
+                        let cognatesMessage = "";
+                        if (!foundLemma.Root) {
+                            cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
                         }
-                    });
-                    // A react-router-dom Link is rendered for every cognate.
-                    let mappedCognates = sortedCognates.map((cognate,index)=>{
-                        return <span key={index}><Link to={`/${macraToHyphens(cognate.Lemma).replace(/\[.*\]/g,"")}`} key={index} title={cognate.Lemma}> {cognate.Lemma}</Link> </span>
-                    })
-                    // Cognates are done. Let's put everything into the Lemma element.
-                    return (
-                        <Lemma 
-                        key={index} 
-                        lemma={foundLemma.Lemma} 
-                        partOfSpeech={foundLemma.PartOfSpeech} 
-                        meaning={foundLemma.Meaning} 
-                        scansion={foundLemma.Scansion}
-                        forms={mappedForms}
-                        cognates={mappedCognates}
-                        cognatesMessage={cognatesMessage}
-                        /> 
-                    )
-                }
-                else {
-                    return null
-                }
-            }) 
+                        // This sorts the cognates alphabetically.
+                        let sortedCognates = cognates.sort((a,b)=>{
+                            if(b.NoMacra.toLowerCase() < a.NoMacra.toLowerCase()) {
+                                return 1
+                            } 
+                            else {
+                                return -1
+                            }
+                        });
+                        // A react-router-dom Link is rendered for every cognate.
+                        let mappedCognates = sortedCognates.map((cognate,index)=>{
+                            return <span key={index}><Link to={`/${macraToHyphens(cognate.Lemma).replace(/\[.*\]/g,"")}`} key={index} title={cognate.Lemma}> {cognate.Lemma}</Link> </span>
+                        })
+                        // Cognates are done. Let's put everything into the Lemma element.
+                        return (
+                            <Lemma 
+                            key={index} 
+                            lemma={foundLemma.Lemma} 
+                            partOfSpeech={foundLemma.PartOfSpeech} 
+                            meaning={foundLemma.Meaning} 
+                            scansion={foundLemma.Scansion}
+                            forms={mappedForms}
+                            cognates={mappedCognates}
+                            cognatesMessage={cognatesMessage}
+                            /> 
+                        )
+                    }
+                    else {
+                        return null
+                    }
+                }) 
+            }
+            
         }
         return (
             <div className="word">
