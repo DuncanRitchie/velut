@@ -111,6 +111,8 @@ class Word extends Component {
             this.setState({anagrams: anagrams})
         })
         // Let's find the forms. An array is generated for each lemma.
+        // THIS DOESN'T YET WORK.
+        // (Though the console logs do.)
         Promise.all(wordObject.LemmaArray.map((lemma,index)=>{
             return this.fetchFormsForALemma(lemma)
         })).then((arrays)=>{
@@ -154,7 +156,9 @@ class Word extends Component {
     componentDidUpdate() {
         if (this.state.input !== window.location.pathname.replace("/word","").replace("/","")) {
             this.getInput()
-            this.fetchRandomWord()
+            if (!this.state.foundWord) {
+                this.fetchRandomWord()
+            }
         }
     }
 
