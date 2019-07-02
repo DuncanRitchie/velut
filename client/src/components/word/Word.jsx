@@ -24,9 +24,10 @@ class Word extends Component {
         }
     }
     
+    // fetchData() doesn't work yet.
     fetchData() {
         let foundWord = {}
-        // Let's fetch some data from MongoDB. The example here is listing all words of fifteen letters.
+        // Let's fetch some data from MongoDB.
         axios.getWords({"Word": this.state.input})
             .then((data)=>{
                 foundWord = data.data
