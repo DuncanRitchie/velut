@@ -21,12 +21,12 @@ class Word extends Component {
             input: "",
             randomWord: "",
             foundWord: {},
-            currentWordsArray: []
+            rhymes: []
         }
     }
     
-    // fetchData() doesn't work yet.
-    fetchData(input) {
+    // fetchFoundWord() queries Mongo for variations on the input until it finds a match, which it adds to state.
+    fetchFoundWord(input) {
         let foundWord = {}
         // Let's fetch some data from MongoDB.
         console.log(`Looking for: ${input}`)
@@ -52,17 +52,52 @@ class Word extends Component {
                                         .then((data)=>{
                                             foundWord = data.data[0]
                                             this.setState({foundWord: foundWord})
+                                            this.fetchRhymes(foundWord)
                                             if (!foundWord) {
                                                 console.log(`Looking for: ${toProperCase(noMacra(input))}`)
                                                 axios.getWords({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
                                                         foundWord = data.data[0]
                                                         this.setState({foundWord: foundWord})
+                                                        this.fetchRhymes(foundWord)
                                                     })
-                                            }})
-                                    }})
+                                            }
+                                            else {
+                                                this.fetchRhymes(foundWord)
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        this.fetchRhymes(foundWord)
+                                    }
+                                })
+                            }
+                            else {
+                                this.fetchRhymes(foundWord)
                             }})
+                }
+                else {
+                    this.fetchRhymes(foundWord)
                 }})
+    }
+
+    fetchRhymes(wordObject) {
+        let value = wordObject.PerfectRhyme
+        console.log("Rhymes end in "+value)
+        axios.getWords({"PerfectRhyme": value}).then((data)=>{
+            let rhymes = data.data.sort((a,b)=>{
+                if (a.Sort > b.Sort) {
+                    return 1
+                }
+                else {
+                    return -1
+                }
+            })
+            rhymes = rhymes.map((wordObject,index)=>{
+                return wordObject.Word
+            })
+            this.setState({rhymes: rhymes})
+        })
     }
 
     fetchRandomWord() {
@@ -78,7 +113,7 @@ class Word extends Component {
         let input = window.location.pathname.replace("/word","").replace("/","");
         this.setState({input: input})
         document.title = input+" on velut"
-        this.fetchData(input)
+        this.fetchFoundWord(input)
     }
   
     componentDidMount() {
@@ -89,7 +124,7 @@ class Word extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.input != window.location.pathname.replace("/word","").replace("/","")) {
+        if (this.state.input !== window.location.pathname.replace("/word","").replace("/","")) {
             this.getInput()
             this.fetchRandomWord()
         }
@@ -114,7 +149,7 @@ class Word extends Component {
         let wordLemmata = [];
         let mappedLemmata = [];
         // Let's do dictionaries.
-        let plainInput = input.replace(/-/g,"").replace(/\./g,"").replace(/\:/g,"")
+        let plainInput = input.replace(/-/g,"").replace(/\./g,"").replace(/:/g,"")
         let mappedDics = dictionaries.map((dic,index)=>{
             return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
         })
