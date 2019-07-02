@@ -52,39 +52,40 @@ class Word extends Component {
                                         .then((data)=>{
                                             foundWord = data.data[0]
                                             this.setState({foundWord: foundWord})
-                                            this.fetchRhymes(foundWord)
+                                            this.fetchRelatedWords(foundWord)
                                             if (!foundWord) {
                                                 console.log(`Looking for: ${toProperCase(noMacra(input))}`)
                                                 axios.getWords({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
                                                         foundWord = data.data[0]
                                                         this.setState({foundWord: foundWord})
-                                                        this.fetchRhymes(foundWord)
+                                                        this.fetchRelatedWords(foundWord)
                                                     })
                                             }
                                             else {
-                                                this.fetchRhymes(foundWord)
+                                                this.fetchRelatedWords(foundWord)
                                             }
                                         })
                                     }
                                     else {
-                                        this.fetchRhymes(foundWord)
+                                        this.fetchRelatedWords(foundWord)
                                     }
                                 })
                             }
                             else {
-                                this.fetchRhymes(foundWord)
+                                this.fetchRelatedWords(foundWord)
                             }})
                 }
                 else {
-                    this.fetchRhymes(foundWord)
+                    this.fetchRelatedWords(foundWord)
                 }})
     }
 
-    fetchRhymes(wordObject) {
-        let value = wordObject.PerfectRhyme
-        console.log("Rhymes end in "+value)
-        axios.getWords({"PerfectRhyme": value}).then((data)=>{
+    fetchRelatedWords(wordObject) {
+        // Let's find the rhymes.
+        let rhymeValue = wordObject.PerfectRhyme
+        console.log("Rhymes end in "+rhymeValue)
+        axios.getWords({"PerfectRhyme": rhymeValue}).then((data)=>{
             let rhymes = data.data.sort((a,b)=>{
                 if (a.Sort > b.Sort) {
                     return 1
@@ -97,6 +98,27 @@ class Word extends Component {
                 return wordObject.Word
             })
             this.setState({rhymes: rhymes})
+        })
+        // Let's find the anagrams.
+        let anagramLetters = wordObject.AlphOrderNoMacra
+        console.log("Anagrams have the letters "+anagramLetters)
+        axios.getWords({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
+            let anagrams = data.data.sort((a,b)=>{
+                if (a.NoMacra.toLowerCase() > b.NoMacra.toLowerCase()) {
+                    return 1
+                }
+                else if (a.Word.toLowerCase() > b.Word.toLowerCase()) {
+                    return 1
+                }
+                else if (a.Word > b.Word) {
+                    return 1
+                }
+                else {return -1}
+            })
+            anagrams = anagrams.map((anagram,index)=>{
+                return anagram.Word
+            })
+            this.setState({anagrams: anagrams})
         })
     }
 
