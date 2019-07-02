@@ -157,25 +157,12 @@ class Word extends Component {
             // Let's set the document title to the word we found.
             document.title = foundWord.Word+" on velut"
             // Let's find the rhymes.
-            let rhymes = words.filter((word)=>{return word.PerfectRhyme===foundWord.PerfectRhyme})
-            // The rhymes get sorted by Sort Column. Uncomment the enclosing if-else-statement to sort by syllable count.
-            let sortedRhymes = rhymes.sort((a,b)=>{
-                // if (a.Scansion.length===b.Scansion.length) {
-                    if (a.Sort.replace(/•/g,"-")>b.Sort.replace(/•/g,"-")) {
-                        return 1
-                    }
-                    else {
-                        return -1
-                    }
-                // }
-                // else {
-                //     return a.Scansion.length-b.Scansion.length
-                // }
-            })
-            // A react-router-dom Link is rendered for every rhyme.
-            mappedRhymes = sortedRhymes.map((rhyme,index)=>{return (
-                <span key={index}><Link to={"/"+macraToHyphens(rhyme.Word)} title={rhyme.Word}>{rhyme.Word}</Link> </span>
-            )})
+            if (this.state.rhymes) {
+                // A react-router-dom Link is rendered for every rhyme.
+                mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
+                    <span key={index}><Link to={"/"+macraToHyphens(rhyme)} title={rhyme}>{rhyme}</Link> </span>
+                )})
+            }
             // Let's find the anagrams.
             let anagrams = words.filter((word)=>{return word.AlphOrderNoMacra===foundWord.AlphOrderNoMacra})
             // The anagrams get sorted alphabetically.
