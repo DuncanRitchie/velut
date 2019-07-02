@@ -9,6 +9,7 @@ import Lemma from "./Lemma";
 import macraToHyphens from "./macraToHyphens";
 import hyphensToMacra from "./hyphensToMacra";
 import toProperCase from "./toProperCase";
+import noMacra from "./noMacra";
 import WarningMessage from "./WarningMessage";
 import Navbar from "../navbar/Navbar"
 
@@ -25,32 +26,43 @@ class Word extends Component {
     }
     
     // fetchData() doesn't work yet.
-    fetchData() {
+    fetchData(input) {
         let foundWord = {}
         // Let's fetch some data from MongoDB.
-        axios.getWords({"Word": this.state.input})
+        console.log(`Looking for: ${input}`)
+        axios.getWords({"Word": input})
             .then((data)=>{
-                foundWord = data.data
+                foundWord = data.data[0]
+                this.setState({currentWordObject: foundWord})
                 if (!foundWord) {
-                    axios.getWords({"Word": hyphensToMacra(this.state.input)})
+                    console.log(`Looking for: ${hyphensToMacra(input)}`)
+                    axios.getWords({"Word": hyphensToMacra(input)})
                         .then((data)=>{
-                            foundWord = data.data
+                            foundWord = data.data[0]
+                            this.setState({currentWordObject: foundWord})
                             if (!foundWord) {
-                                axios.getWords({"Word": hyphensToMacra(this.state.input).toLowerCase()})
-                                    .then((data)=>{
-                                        foundWord = data.data
-                                        if (!foundWord) {
-                                            axios.getWords({"Word": toProperCase(hyphensToMacra(this.state.input))})
-                                                .then((data)=>{
-                                                    foundWord = data.data
-                                                })}})}})}}).then(()=>{
-                                                    if (!foundWord) {
-                                                        this.setState({currentWordObject: null})
-                                                    }
-                                                    else {
+                                console.log(`Looking for: ${noMacra(input)}`)
+                                axios.getWords({"NoMacra": noMacra(input)})
+                                .then((data)=>{
+                                    foundWord = data.data[0]
+                                    this.setState({currentWordObject: foundWord})
+                                    if (!foundWord) {
+                                        console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
+                                        axios.getWords({"NoMacra": noMacra(input).toLowerCase()})
+                                        .then((data)=>{
+                                            foundWord = data.data[0]
+                                            this.setState({currentWordObject: foundWord})
+                                            if (!foundWord) {
+                                                console.log(`Looking for: ${toProperCase(noMacra(input))}`)
+                                                axios.getWords({"NoMacra": toProperCase(noMacra(input))})
+                                                    .then((data)=>{
+                                                        foundWord = data.data[0]
                                                         this.setState({currentWordObject: foundWord})
-                                                    }
-                                                })
+                                                    })
+                                            }})
+                                    }})
+                            }})
+                }})
     }
 
     fetchRandomWord() {
@@ -66,17 +78,20 @@ class Word extends Component {
         let input = window.location.pathname.replace("/word","").replace("/","");
         this.setState({input: input})
         document.title = input+" on velut"
+        this.fetchData(input)
     }
   
     componentDidMount() {
-        this.getInput()
+        if (!this.state.input) {
+            this.getInput()
+        }
         this.fetchRandomWord()
-        this.fetchData()
     }
 
     componentDidUpdate() {
         if (this.state.input != window.location.pathname.replace("/word","").replace("/","")) {
             this.getInput()
+            this.fetchRandomWord()
         }
     }
 
