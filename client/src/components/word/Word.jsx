@@ -10,6 +10,7 @@ import macraToHyphens from "./macraToHyphens";
 import hyphensToMacra from "./hyphensToMacra";
 import toProperCase from "./toProperCase";
 import noMacra from "./noMacra";
+import sortAlphabetically from "./sortAlphabetically"
 import WarningMessage from "./WarningMessage";
 import Navbar from "../navbar/Navbar"
 
@@ -87,7 +88,7 @@ class Word extends Component {
         console.log("Rhymes end in "+rhymeValue)
         axios.getWords({"PerfectRhyme": rhymeValue}).then((data)=>{
             let rhymes = data.data.sort((a,b)=>{
-                if (a.Sort > b.Sort) {
+                if (a.Sort.replace(/•/g,"-") > b.Sort.replace(/•/g,"-")) {
                     return 1
                 }
                 else {
@@ -103,23 +104,28 @@ class Word extends Component {
         let anagramLetters = wordObject.AlphOrderNoMacra
         console.log("Anagrams have the letters "+anagramLetters)
         axios.getWords({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
-            let anagrams = data.data.sort((a,b)=>{
-                if (a.NoMacra.toLowerCase() > b.NoMacra.toLowerCase()) {
-                    return 1
-                }
-                else if (a.Word.toLowerCase() > b.Word.toLowerCase()) {
-                    return 1
-                }
-                else if (a.Word > b.Word) {
-                    return 1
-                }
-                else {return -1}
-            })
+            let anagrams = sortAlphabetically(data.data)
             anagrams = anagrams.map((anagram,index)=>{
                 return anagram.Word
             })
             this.setState({anagrams: anagrams})
         })
+        // Let's find the forms. An array is generated for each lemma.
+        Promise.all(wordObject.LemmaArray.map((lemma,index)=>{
+            return this.fetchFormsForALemma(lemma)
+        })).then((arrays)=>{
+            this.setState({formsArrays: arrays})
+        })
+    }
+
+    async fetchFormsForALemma(lemma) {
+        axios.getWords({"LemmaArray": lemma}).then((data)=>{
+            let forms = sortAlphabetically(data.data)
+            forms = forms.map((form,index)=>{
+                return form.Word
+            })
+            console.log(forms)
+        }).then(async (sortedForms)=>{return await sortedForms})
     }
 
     fetchRandomWord() {
@@ -194,8 +200,7 @@ class Word extends Component {
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
             wordLemmata = foundWord.LemmaArray || []
-            if (!wordLemmata) {}
-            else {
+            if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     // Let's find the lemma in the Json.
                     let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
