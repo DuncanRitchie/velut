@@ -15,8 +15,18 @@ module.exports = {
 		})
 	},
 	findAll: function(req, res) {
-		Word.find(req.query)
+		Word.find(req.query).sort({Sort: 1})
 			.then(words => res.json(words))
+			.catch(err => res.status(422).json(err))
+	},
+	findAllWord: function(req, res) {
+		Word.find(req.query,{Word: 1}).sort({Sort: 1})
+			.then(words => res.json(words))
+			.catch(err => res.status(422).json(err))
+	},
+	// findAllWordsShorterThan() doesn't actually work.
+	findAllWordsShorterThan: function(req,res) {
+		Word.find({}).where("Length").lte(req.params.id).exec(words=>res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
 	findById: function(req, res) {
