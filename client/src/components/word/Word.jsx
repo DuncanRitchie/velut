@@ -111,23 +111,25 @@ class Word extends Component {
             this.setState({anagrams: anagrams})
         })
         // Let's find the forms. An array is generated for each lemma.
-        // THIS DOESN'T YET WORK.
-        // (Though the console logs do.)
-        Promise.all(wordObject.LemmaArray.map((lemma,index)=>{
-            return this.fetchFormsForALemma(lemma)
-        })).then((arrays)=>{
-            this.setState({formsArrays: arrays})
+        // We iniitalise state with an array of empty arrays.
+        let emptyArrays = wordObject.LemmaArray.map((lemma,index)=>{
+            return []
         })
-    }
-
-    async fetchFormsForALemma(lemma) {
-        axios.getWords({"LemmaArray": lemma}).then((data)=>{
-            let forms = sortAlphabetically(data.data)
-            forms = forms.map((form,index)=>{
-                return form.Word
+        this.setState({formsArrays: emptyArrays})
+        // Next we map across LemmaArray, querying the database for each lemma and adding the results 
+        // to the correct element in the array in state as the results come in.
+        wordObject.LemmaArray.map((lemma,i)=>{
+            axios.getWords({"LemmaArray": lemma}).then((data)=>{
+                let forms = sortAlphabetically(data.data)
+                forms = forms.map((form,index)=>{
+                    return form.Word
+                })
+                console.log(forms)
+                let formsArrays = this.state.formsArrays
+                formsArrays[i] = forms
+                this.setState({formsArrays: formsArrays})
             })
-            console.log(forms)
-        }).then(async (sortedForms)=>{return await sortedForms})
+        })
     }
 
     fetchRandomWord() {
