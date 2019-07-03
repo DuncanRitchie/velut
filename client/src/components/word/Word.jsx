@@ -11,7 +11,7 @@ import toProperCase from "./toProperCase";
 import noMacra from "./noMacra";
 import sortAlphabetically from "./sortAlphabetically"
 import WarningMessage from "./WarningMessage";
-import Navbar from "../navbar/Navbar"
+// import Navbar from "../navbar/Navbar"
 
 class Word extends Component {
     constructor(props) {
@@ -38,35 +38,35 @@ class Word extends Component {
         }
         this.setState({sanitisedInput: input})
         // Let's fetch some data from MongoDB. First we search for the exact input.
-        console.log(`Looking for: ${input}`)
+        // console.log(`Looking for: ${input}`)
         axios.getWords({"Word": input})
             .then((data)=>{
                 foundWord = data.data[0]
                 this.setState({foundWord: foundWord})
                 // If the input isn't exactly in Mongo, parse any hyphens/cola/dots.
                 if (!foundWord) {
-                    console.log(`Looking for: ${hyphensToMacra(input)}`)
+                    // console.log(`Looking for: ${hyphensToMacra(input)}`)
                     axios.getWords({"Word": hyphensToMacra(input)})
                         .then((data)=>{
                             foundWord = data.data[0]
                             this.setState({foundWord: foundWord})
                             // If the parsed input isn't in Mongo, look for it without macra.
                             if (!foundWord) {
-                                console.log(`Looking for: ${noMacra(input)}`)
+                                // console.log(`Looking for: ${noMacra(input)}`)
                                 axios.getWords({"NoMacra": noMacra(input)})
                                 .then((data)=>{
                                     foundWord = data.data[0]
                                     this.setState({foundWord: foundWord})
                                     // If the demacronized input isn't in Mongo, look for it lowercased.
                                     if (!foundWord) {
-                                        console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
+                                        // console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
                                         axios.getWords({"NoMacra": noMacra(input).toLowerCase()})
                                         .then((data)=>{
                                             foundWord = data.data[0]
                                             this.setState({foundWord: foundWord})
                                             // If the lowercased demacronized input isn't in Mongo, look for it propercased.
                                             if (!foundWord) {
-                                                console.log(`Looking for: ${toProperCase(noMacra(input))}`)
+                                                // console.log(`Looking for: ${toProperCase(noMacra(input))}`)
                                                 axios.getWords({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
                                                         foundWord = data.data[0]
@@ -98,7 +98,7 @@ class Word extends Component {
     fetchRelatedWords(wordObject) {
         // Let's find the rhymes.
         let rhymeValue = wordObject.PerfectRhyme
-        console.log("Rhymes end in "+rhymeValue)
+        // console.log("Rhymes end in "+rhymeValue)
         axios.getWords({"PerfectRhyme": rhymeValue}).then((data)=>{
             let rhymes = data.data.sort((a,b)=>{
                 if (a.Sort.replace(/•/g,"-") > b.Sort.replace(/•/g,"-")) {
@@ -115,7 +115,7 @@ class Word extends Component {
         })
         // Let's find the anagrams.
         let anagramLetters = wordObject.AlphOrderNoMacra
-        console.log("Anagrams have the letters "+anagramLetters)
+        // console.log("Anagrams have the letters "+anagramLetters)
         axios.getWords({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
             let anagrams = sortAlphabetically(data.data)
             anagrams = anagrams.map((anagram,index)=>{
@@ -137,7 +137,7 @@ class Word extends Component {
                 forms = forms.map((form,index)=>{
                     return form.Word
                 })
-                console.log(forms)
+                // console.log(forms)
                 let formsArrays = this.state.formsArrays
                 formsArrays[i] = forms
                 this.setState({formsArrays: formsArrays})
@@ -262,7 +262,7 @@ class Word extends Component {
         return (
             <div className="word">
                 <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : sanitisedInput}</h1>
-                <Navbar input={sanitisedInput} currentPage="word"/>
+                {/* <Navbar input={sanitisedInput} currentPage="word"/> */}
                 <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
                 <WarningMessage/>
                 <Search prefix=""/>
