@@ -185,7 +185,7 @@ class Word extends Component {
         let wordLemmata = [];
         let mappedLemmata = [];
         // Let's do dictionaries.
-        let plainInput = sanitisedInput.replace(/-/g,"").replace(/\./g,"").replace(/:/g,"")
+        let plainInput = noMacra(sanitisedInput)
         let mappedDics = dictionaries.map((dic,index)=>{
             return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
         })
