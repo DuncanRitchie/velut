@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from "../../axios/axios";
 import Search from "../search/Search";
-import words from "../../data/words_8fields.json";
 import lemmata from "../../data/lemmata.json";
 import dictionaries from "../../data/dictionaries.json";
 import Lemma from "./Lemma";
@@ -53,14 +52,15 @@ class Word extends Component {
                                         .then((data)=>{
                                             foundWord = data.data[0]
                                             this.setState({foundWord: foundWord})
-                                            this.fetchRelatedWords(foundWord)
                                             if (!foundWord) {
                                                 console.log(`Looking for: ${toProperCase(noMacra(input))}`)
                                                 axios.getWords({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
                                                         foundWord = data.data[0]
                                                         this.setState({foundWord: foundWord})
-                                                        this.fetchRelatedWords(foundWord)
+                                                        if (foundWord) {
+                                                            this.fetchRelatedWords(foundWord)
+                                                        }
                                                     })
                                             }
                                             else {
@@ -211,12 +211,18 @@ class Word extends Component {
                     // Let's find the lemma in the Json.
                     let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
                     if (foundLemma) {
-                        // Let's get the inflected forms.
-                        let forms = words.filter(word=>{return word.LemmaArray.includes(foundLemma.Lemma)})
-                        // Let's render a Link for every form.
-                        let mappedForms = forms.map((form,index)=>{
-                            return <span key={index}><Link title={form.Word} to={"/"+macraToHyphens(form.Word)}>{form.Word}</Link> </span>
-                        })
+                        // Let's get the inflected forms. They are stored in an array within the formsArray in state.
+                        let mappedForms = []
+                        if (this.state.formsArrays) {
+                            let forms = []
+                            if (this.state.formsArrays[index]) {
+                                forms = this.state.formsArrays[index]
+                            }
+                            // Let's render a Link for every form.
+                            mappedForms = forms.map((form,index)=>{
+                                return <span key={index}><Link title={form} to={"/"+macraToHyphens(form)}>{form}</Link> </span>
+                            })
+                        }
                         // Let's get the cognates.
                         let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
                         // If no etymology is given in the data, a message should appear in the cognates paragraph.
@@ -225,14 +231,7 @@ class Word extends Component {
                             cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
                         }
                         // This sorts the cognates alphabetically.
-                        let sortedCognates = cognates.sort((a,b)=>{
-                            if(b.NoMacra.toLowerCase() < a.NoMacra.toLowerCase()) {
-                                return 1
-                            } 
-                            else {
-                                return -1
-                            }
-                        });
+                        let sortedCognates = sortAlphabetically(cognates)
                         // A react-router-dom Link is rendered for every cognate.
                         let mappedCognates = sortedCognates.map((cognate,index)=>{
                             return <span key={index}><Link to={`/${macraToHyphens(cognate.Lemma).replace(/\[.*\]/g,"")}`} key={index} title={cognate.Lemma}> {cognate.Lemma}</Link> </span>
