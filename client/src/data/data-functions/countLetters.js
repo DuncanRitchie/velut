@@ -1,3 +1,8 @@
+// Only use these functions when updating letterCounts.json
+
+
+
+const objectToArray = require('./objectToArray')
 // const lemmata = require('../lemmata.json')
 // const words = require('../words_8fields.json')
 
@@ -19,13 +24,7 @@ const countLettersArray = (json) => {
         }
     }
     // Make the keys (letters) of the object into an array.
-    let lettersArray = Object.getOwnPropertyNames(letterCounts)
-    // The keys and their values will go into a new array.
-    let letterCountsArray = []
-    // For every letter, add an array containing it and its frequency to letterCountsArray.
-    for (let i = 0; i < lettersArray.length; i++) {
-        letterCountsArray[i] = [lettersArray[i],letterCounts[lettersArray[i]]]
-    }
+    let letterCountsArray = objectToArray(letterCounts)
     // Sort the array in descending letter frequency.
     letterCountsArray.sort((a,b)=>{return b[1]-a[1]})
     // Return the array
@@ -37,6 +36,8 @@ const countLettersArray = (json) => {
 // Because countLettersArray() sorts by frequency, countLettersObject() will also sort by frequency.
 // countLettersObject(words) = { i: 79766,  e: 77876,  a: 67422,  r: 56797,  s: 56207,  t: 50333,  u: 43595,  n: 40309,  c: 36754,  o: 36288,  m: 31885,  l: 29075,  p: 23236,  d: 18192,  b: 12294,  g: 11006,  v: 8976,  f: 8730,  h: 6941,  x: 4084,  q: 2481,  y: 2372,  z: 318,  k: 19 }
 
+// If the Json is unavailable (e.g. when deployed), use ../letterCounts.json instead.
+
 const countLettersObject = (json) => {
     let letterCountsArray = countLettersArray(json)
     let letterCountsSorted = {}
@@ -46,29 +47,4 @@ const countLettersObject = (json) => {
     return letterCountsSorted
 }
 
-// getWeightedLetters(words) = {vowels: ["o","o","o","o","o","o","o","u","u","u","u", ... ],
-//                              consonants: ["k","y","y","q","q","q","x","x","x","x", ... ]}
-// I.e. it's an object with two keys, each referring to an array of letters.
-// The least frequent letter appears once, the second least frequent twice, etc.
-// This is the function that the Countdown page uses to generate random Countdown strings.
-
-const getWeightedLetters = (json) => {
-    let weightedVowels = []
-    let weightedConsonants = []
-    let letterCountsArray = countLettersArray(json).reverse()
-    for (let i = 0; i < letterCountsArray.length; i++) {
-        let currentLetter = letterCountsArray[i][0]
-        for (let j = 0; j < i; j++) {
-            if (currentLetter === "a" || currentLetter === "e" || currentLetter === "i" || currentLetter === "o" || currentLetter === "u") {
-                weightedVowels.push(currentLetter)
-            }
-            else {
-                weightedConsonants.push(currentLetter)
-            }
-        }
-    }
-    return {vowels: weightedVowels, consonants: weightedConsonants}
-}
-
-export default getWeightedLetters
-export {countLettersObject}
+export default countLettersObject

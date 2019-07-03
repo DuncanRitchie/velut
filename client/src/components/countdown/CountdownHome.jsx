@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import Search from '../search/Search'
 import Navbar from '../navbar/Navbar'
-import {randomCountdownQuestionWeighted} from './Countdown'
+import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
 
 const CountdownHome = () => {
     let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
