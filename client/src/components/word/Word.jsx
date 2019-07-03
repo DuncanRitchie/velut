@@ -17,17 +17,26 @@ class Word extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: null,
             input: "",
+            sanitisedInput: "",
             randomWord: "",
             foundWord: {},
-            rhymes: []
+            rhymes: [],
+            anagrams: [],
+            formsArray: []
         }
     }
     
-    // fetchFoundWord() queries Mongo for variations on the input until it finds a match, which it adds to state.
+    // fetchFoundWord() queries Mongo for variations on the input
+    // until it finds a match, which it adds to state.
     fetchFoundWord(input) {
         let foundWord = {}
+        // If special characters are input, we can get percent-encoding problems.
+        // Let's correct for that.
+        if (input.search("%")>-1) {
+            input = decodeURIComponent(input)
+        }
+        this.setState({sanitisedInput: input})
         // Let's fetch some data from MongoDB.
         console.log(`Looking for: ${input}`)
         axios.getWords({"Word": input})
@@ -129,6 +138,7 @@ class Word extends Component {
                 formsArrays[i] = forms
                 this.setState({formsArrays: formsArrays})
             })
+            return null
         })
     }
 
@@ -165,25 +175,13 @@ class Word extends Component {
     }
 
     render() {
-        let {input, randomWord, foundWord} = this.state
-        // // foundWord is the first object that matches the input.
-        // // It looks for an exact match, then ignores macra and looks again, then ignores case and looks again.
-        // let foundWord = words.find(word=>{return macraToHyphens(word.Word)===input})
-        // if (!foundWord) {
-        //     foundWord = words.find(word=>{return word.Word===input})
-        // }
-        // if (!foundWord) {
-        //     foundWord = words.find(word=>{return word.NoMacra===input.replace(/[-/.]/g,"").replace(/\[.*\]/g,"")})
-        // }
-        // if (!foundWord) {
-        //     foundWord = words.find(word=>{return word.NoMacra.toLowerCase()===input.replace(/[-/.]/g,"").replace(/\[.*\]/g,"").toLowerCase()})
-        // }
+        let {sanitisedInput, randomWord, foundWord} = this.state
         let mappedRhymes = [];
         let mappedAnagrams = [];
         let wordLemmata = [];
         let mappedLemmata = [];
         // Let's do dictionaries.
-        let plainInput = input.replace(/-/g,"").replace(/\./g,"").replace(/:/g,"")
+        let plainInput = sanitisedInput.replace(/-/g,"").replace(/\./g,"").replace(/:/g,"")
         let mappedDics = dictionaries.map((dic,index)=>{
             return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
         })
@@ -259,8 +257,8 @@ class Word extends Component {
         }
         return (
             <div className="word">
-                <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : input}</h1>
-                <Navbar input={input} currentPage="word"/>
+                <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : sanitisedInput}</h1>
+                <Navbar input={sanitisedInput} currentPage="word"/>
                 <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
                 <WarningMessage/>
                 <Search prefix=""/>

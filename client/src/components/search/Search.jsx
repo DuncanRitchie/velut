@@ -7,6 +7,7 @@ class Search extends Component {
         super(props);
         this.state = {
             input: "",
+            sanitisedInput: "",
             menu: "Perfect rhyme",
             redirect: false,
             fromUrl: true
@@ -15,7 +16,14 @@ class Search extends Component {
 
     // This handles the <input> value.
     handleInput = (e) => {
-        this.setState({input: e.target.value, fromUrl: false})
+        let input = e.target.value
+        this.setState({input: input, fromUrl: false})
+        // If special characters are input, we can get percent-encoding problems.
+        // Let's correct for that.
+        if (input.search("%")>-1) {
+            input = decodeURIComponent(input)
+        }
+        this.setState({sanitisedInput: input})
     }
 
     // This handles the menu value.
@@ -43,7 +51,7 @@ class Search extends Component {
                     {/* The box the word will be typed into */}
                     <input 
                      className="search-input"
-                     value={ this.state.fromUrl ? window.location.pathname.replace("/lemma/","").replace("/countdown","").replace("/anagrams","").replace("/","") : this.state.input }
+                     value={ this.state.fromUrl ? decodeURIComponent(window.location.pathname.replace("/lemma/","").replace("/countdown","").replace("/anagrams","").replace("/","")) : this.state.sanitisedInput }
                      onChange={this.handleInput}
                      onKeyUp={this.handleKeyUp}
                      />
@@ -65,7 +73,7 @@ class Search extends Component {
                     <Link
                      className="search-link" 
                      to={"/"+this.props.prefix+this.state.input} 
-                     title={`Search for ${this.state.input}`}
+                     title={`Search for ${this.state.sanitisedInput}`}
                      >Search!</Link>    
                 </div>
             )
