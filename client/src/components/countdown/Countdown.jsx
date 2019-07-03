@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Search from '../search/Search'
 import Navbar from '../navbar/Navbar'
-import axios from "../../axios/axios"
+import words from '../../data/words_8fields.json'
+// import axios from "../../axios/axios"
 import delChars from './delChars'
 import subwords from './subwords'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
@@ -18,7 +19,8 @@ class Countdown extends Component {
     }
 
     fetchWords() {
-        axios.getWords({"Length": 4}).then((data)=>{this.setState({allWords: data.data})})
+        // axios.getWords({"Length": 4}).then((data)=>{this.setState({allWords: data.data})})
+        this.setState({allWords: words})
     }
 
     componentDidMount() {
