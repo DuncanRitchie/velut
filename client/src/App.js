@@ -7,6 +7,7 @@ import WordFromJson from "./components/word/Word";
 // import Countdown from "./components/countdown/Countdown";
 // import AnagramsHome from "./components/anagrams/AnagramsHome";
 // import Anagrams from "./components/anagrams/Anagrams";
+import About from "./components/about/About";
 import Footer from "./components/footer/Footer";
 import './App.css';
 
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/countdown" component={CountdownHome} />
             <Route path="/anagrams/:word" component={Anagrams} />
             <Route path="/anagrams" component={AnagramsHome} /> */}
+            <Route path="/about" component={About} />
             <Route path="/:word" component={WordFromJson} />
           </Switch>
           <Footer />

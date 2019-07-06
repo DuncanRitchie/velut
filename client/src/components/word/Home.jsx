@@ -1,6 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 // import Navbar from '../navbar/Navbar';
-import WarningMessage from './WarningMessage';
 import Search from '../search/Search';
 
 let Home = () => {
@@ -11,7 +11,7 @@ let Home = () => {
             {/* <Navbar input="" currentPage="word"/> */}
             <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
             <p>Search for a Latin word using the searchbar below!</p>
-            <WarningMessage />
+            <p>For more information, see the <Link to="./about" title="About velut">about page</Link>.</p>
             <Search prefix="" />
         </div>
     )
