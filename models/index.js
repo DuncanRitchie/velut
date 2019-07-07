@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
-const URI = require('../mongodb_uri');
 
-mongoose.connect(process.env.MONGODB_URI || URI);
+if (process.env.ENVIRONMENT != "PRODUCTION") {
+	const dotenv = require('dotenv');
+	dotenv.config()
+}
+
+mongoose.connect(process.env.MONGODB_URI);
 
 // When successfully connected
 mongoose.connection.on('connected', () => {
