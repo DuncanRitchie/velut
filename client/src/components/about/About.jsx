@@ -95,8 +95,16 @@ const About = (props) => {
                 I stress all encliticized forms on the penultimate syllable, as the syllable immediately prior to the enclitic.
             </p>
             <p>
-                If you find a word is not in velut (or suspect I&rsquo;ve made a mistake somewhere!), please check in other resources. 
-                I hope the links at the base of the word&rsquo;s page are of use.
+                If you discover that a word is not in velut (or suspect I&rsquo;ve made a mistake somewhere!), please check in other resources. 
+                I hope the links at the base of the word&rsquo;s page are of use. (Thesaurus Linguae Latinae requires a subscription.)
+            </p>
+            <h2>Word order</h2>
+            <p>
+                Rhymes are sorted such that the words that sound most similar are listed next to each other. This is determined 
+                primarily by the vowel(s) before the stressed syllable.
+            </p>
+            <p>
+                Anagrams, forms, and cognates are in alphabetical order.
             </p>
             <h2>Future plans</h2>
             <p>
