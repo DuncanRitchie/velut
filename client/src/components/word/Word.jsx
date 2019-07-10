@@ -39,35 +39,35 @@ class Word extends Component {
         this.setState({sanitisedInput: input})
         // Let's fetch some data from MongoDB. First we search for the exact input.
         // console.log(`Looking for: ${input}`)
-        axios.getWords({"Word": input})
+        axios.getOneWord({"Word": input})
             .then((data)=>{
                 foundWord = data.data[0]
                 this.setState({foundWord: foundWord})
                 // If the input isn't exactly in Mongo, parse any hyphens/cola/dots.
                 if (!foundWord) {
                     // console.log(`Looking for: ${hyphensToMacra(input)}`)
-                    axios.getWords({"Word": hyphensToMacra(input)})
+                    axios.getOneWord({"Word": hyphensToMacra(input)})
                         .then((data)=>{
                             foundWord = data.data[0]
                             this.setState({foundWord: foundWord})
                             // If the parsed input isn't in Mongo, look for it without macra.
                             if (!foundWord) {
                                 // console.log(`Looking for: ${noMacra(input)}`)
-                                axios.getWords({"NoMacra": noMacra(input)})
+                                axios.getOneWord({"NoMacra": noMacra(input)})
                                 .then((data)=>{
                                     foundWord = data.data[0]
                                     this.setState({foundWord: foundWord})
                                     // If the demacronized input isn't in Mongo, look for it lowercased.
                                     if (!foundWord) {
                                         // console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
-                                        axios.getWords({"NoMacra": noMacra(input).toLowerCase()})
+                                        axios.getOneWord({"NoMacra": noMacra(input).toLowerCase()})
                                         .then((data)=>{
                                             foundWord = data.data[0]
                                             this.setState({foundWord: foundWord})
                                             // If the lowercased demacronized input isn't in Mongo, look for it propercased.
                                             if (!foundWord) {
                                                 // console.log(`Looking for: ${toProperCase(noMacra(input))}`)
-                                                axios.getWords({"NoMacra": toProperCase(noMacra(input))})
+                                                axios.getOneWord({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
                                                         foundWord = data.data[0]
                                                         this.setState({foundWord: foundWord})

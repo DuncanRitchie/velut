@@ -10,16 +10,20 @@ router
 	.get(wordsController.findWordsShorterThan)
 
 router
-	.route('/one/:query')
-	.get(wordsController.findOneWord)
-
-router
 	.route('/alph/:query')
 	.get(wordsController.findWordsAlphabetical)
 
 router
+	.route('/class/:query')
+	.get(wordsController.findWordsClassical)
+
+router
 	.route('/:query')
 	.get(wordsController.findWordsClassical)
+
+router
+	.route('/one/:query')
+	.get(wordsController.findOneWord)
 
 router
 	.route('/id/:id')
