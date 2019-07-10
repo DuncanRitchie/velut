@@ -99,16 +99,8 @@ class Word extends Component {
         // Let's find the rhymes.
         let rhymeValue = wordObject.PerfectRhyme
         // console.log("Rhymes end in "+rhymeValue)
-        axios.getWords({"PerfectRhyme": rhymeValue}).then((data)=>{
-            let rhymes = data.data.sort((a,b)=>{
-                if (a.Sort > b.Sort) {
-                    return 1
-                }
-                else {
-                    return -1
-                }
-            })
-            rhymes = rhymes.map((wordObject,index)=>{
+        axios.getWordsClass({"PerfectRhyme": rhymeValue}).then((data)=>{
+            let rhymes = data.data.map((wordObject,index)=>{
                 return wordObject.Word
             })
             this.setState({rhymes: rhymes})
@@ -116,7 +108,7 @@ class Word extends Component {
         // Let's find the anagrams.
         let anagramLetters = wordObject.AlphOrderNoMacra
         // console.log("Anagrams have the letters "+anagramLetters)
-        axios.getWords({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
+        axios.getWordsAlph({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
             let anagrams = sortAlphabetically(data.data)
             anagrams = anagrams.map((anagram,index)=>{
                 return anagram.Word
@@ -132,7 +124,7 @@ class Word extends Component {
         // Next we map across LemmaArray, querying the database for each lemma and adding the results 
         // to the correct element in the array in state as the results come in.
         wordObject.LemmaArray.map((lemma,i)=>{
-            axios.getWords({"LemmaArray": lemma}).then((data)=>{
+            axios.getWordsAlph({"LemmaArray": lemma}).then((data)=>{
                 let forms = sortAlphabetically(data.data)
                 forms = forms.map((form,index)=>{
                     return form.Word
@@ -151,7 +143,7 @@ class Word extends Component {
         // totalCount should really be derived from Mongoose, but let's use an underestimate for the time being.
         let totalCount = 92000
         let randomOrd = Math.ceil(Math.random()*totalCount)
-        axios.getWords({"Ord": randomOrd}).then((array)=>{this.setState({randomWord: array.data[0].Word})})
+        axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{this.setState({randomWord: array.data[0].Word})})
     }
 
     getInput() {

@@ -19,7 +19,7 @@ class Countdown extends Component {
     }
 
     fetchWords() {
-        // axios.getWords({"Length": 4}).then((data)=>{this.setState({allWords: data.data})})
+        // axios.getWordsAlph({"Length": 4}).then((data)=>{this.setState({allWords: data.data})})
         this.setState({allWords: words})
     }
 

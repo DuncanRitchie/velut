@@ -14,7 +14,7 @@ export default {
 		return axios.get('/api/words/one/',{params: query})
 	},
 	// Gets words in alphabetical order.
-	getWords: (query) => {
+	getWordsAlph: (query) => {
 		return axios.get('/api/words/alph/',{params: query})
 	},
 	// Gets words in classical-rhyme order.
