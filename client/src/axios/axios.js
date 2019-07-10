@@ -7,18 +7,18 @@ export default {
     },
 	// Gets all words with Length less than or equal to the given number.
 	getWordsShorterThan: (number) => {
-		return axios.get('/api/words/lte',{params: {lte: number}})
+		return axios.get('/api/words/lte/',{params: {lte: number}})
 	},
-	// Gets only the Id and Word of all words.
-	getWordsOnlyWord: (query) => {
-		return axios.get('/api/words/word',{params: query})
+	// Gets words in classical-rhyme order.
+	getWordsClass: (query) => {
+		return axios.get('/api/words/',{params: query})
 	},
-	// Gets all properties of all words.
+	// Gets words in alphabetical order.
 	getWords: (query) => {
-		return axios.get('/api/words',{params: query})
+		return axios.get('/api/words/alph',{params: query})
 	},
 	// Gets the word with the given id.
 	getWordById: (id) => {
-		return axios.get('/api/words/' + id)
+		return axios.get('/api/words/id/' + id)
 	}
 }

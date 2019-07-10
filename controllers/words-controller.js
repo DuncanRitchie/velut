@@ -14,19 +14,19 @@ module.exports = {
 			res.json({ "count": count });
 		})
 	},
-	findAll: function(req, res) {
-		Word.find(req.query).sort({Sort: 1})
+	findWordsClassical: function(req, res) {
+		Word.find(req.query).sort("Sort")
+			.then(words => {res.json(words)})
+			.catch(err => res.status(422).json(err))
+	},
+	findWordsAlphabetical: function(req, res) {
+		Word.find(req.query).sort("NoMacra Word")
 			.then(words => res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
-	findAllWord: function(req, res) {
-		Word.find(req.query,{Word: 1}).sort({Sort: 1})
-			.then(words => res.json(words))
-			.catch(err => res.status(422).json(err))
-	},
-	// findAllWordsShorterThan() doesn't actually work.
-	findAllWordsShorterThan: function(req,res) {
-		Word.find({}).where("Length").lte(req.params.id).exec(words=>res.json(words))
+	// findWordsShorterThan() doesn't actually work.
+	findWordsShorterThan: function(req,res) {
+		Word.find({}).lte("Length",req.params.lte).exec(words=>res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
 	findById: function(req, res) {

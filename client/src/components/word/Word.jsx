@@ -101,7 +101,7 @@ class Word extends Component {
         // console.log("Rhymes end in "+rhymeValue)
         axios.getWords({"PerfectRhyme": rhymeValue}).then((data)=>{
             let rhymes = data.data.sort((a,b)=>{
-                if (a.Sort.replace(/•/g,"-") > b.Sort.replace(/•/g,"-")) {
+                if (a.Sort > b.Sort) {
                     return 1
                 }
                 else {
@@ -167,6 +167,7 @@ class Word extends Component {
             this.getInput()
         }
         this.fetchRandomWord()
+        axios.getWordsClass({"PerfectRhyme": "īca"}).then((data)=>{console.log(data.data)})
     }
 
     componentDidUpdate() {
