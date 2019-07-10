@@ -6,31 +6,31 @@ router
 	.get(wordsController.count)
 
 router
-	.route('/lte/:query')
+	.route('/lte/')
 	.get(wordsController.findWordsShorterThan)
 
 router
-	.route('/alph/:query')
+	.route('/alph/')
 	.get(wordsController.findWordsAlphabetical)
 
 router
-	.route('/class/:query')
+	.route('/class/')
 	.get(wordsController.findWordsClassical)
-
-router
-	.route('/:query')
-	.get(wordsController.findWordsClassical)
-
-router
-	.route('/one/:query')
-	.get(wordsController.findOneWord)
-
-router
-	.route('/id/:id')
-	.get(wordsController.findById)
 
 router
 	.route('/')
-	.get(wordsController.findWordsAlphabetical)
+	.get(wordsController.findWordsClassical)
+
+router
+	.route('/one/')
+	.get(wordsController.findOneWord)
+
+router
+	.route('/id/')
+	.get(wordsController.findById)
+
+// router
+// 	.route('/')
+// 	.get(wordsController.findWordsAlphabetical)
 
 module.exports = router;

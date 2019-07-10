@@ -41,35 +41,35 @@ class Word extends Component {
         // console.log(`Looking for: ${input}`)
         axios.getOneWord({"Word": input})
             .then((data)=>{
-                foundWord = data.data[0]
+                foundWord = data.data
                 this.setState({foundWord: foundWord})
                 // If the input isn't exactly in Mongo, parse any hyphens/cola/dots.
                 if (!foundWord) {
                     // console.log(`Looking for: ${hyphensToMacra(input)}`)
                     axios.getOneWord({"Word": hyphensToMacra(input)})
                         .then((data)=>{
-                            foundWord = data.data[0]
+                            foundWord = data.data
                             this.setState({foundWord: foundWord})
                             // If the parsed input isn't in Mongo, look for it without macra.
                             if (!foundWord) {
                                 // console.log(`Looking for: ${noMacra(input)}`)
                                 axios.getOneWord({"NoMacra": noMacra(input)})
                                 .then((data)=>{
-                                    foundWord = data.data[0]
+                                    foundWord = data.data
                                     this.setState({foundWord: foundWord})
                                     // If the demacronized input isn't in Mongo, look for it lowercased.
                                     if (!foundWord) {
                                         // console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
                                         axios.getOneWord({"NoMacra": noMacra(input).toLowerCase()})
                                         .then((data)=>{
-                                            foundWord = data.data[0]
+                                            foundWord = data.data
                                             this.setState({foundWord: foundWord})
                                             // If the lowercased demacronized input isn't in Mongo, look for it propercased.
                                             if (!foundWord) {
                                                 // console.log(`Looking for: ${toProperCase(noMacra(input))}`)
                                                 axios.getOneWord({"NoMacra": toProperCase(noMacra(input))})
                                                     .then((data)=>{
-                                                        foundWord = data.data[0]
+                                                        foundWord = data.data
                                                         this.setState({foundWord: foundWord})
                                                         if (foundWord) {
                                                             this.fetchRelatedWords(foundWord)
@@ -167,7 +167,6 @@ class Word extends Component {
             this.getInput()
         }
         this.fetchRandomWord()
-        axios.getWordsClass({"PerfectRhyme": "īca"}).then((data)=>{console.log(data.data)})
     }
 
     componentDidUpdate() {

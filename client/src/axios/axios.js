@@ -19,7 +19,7 @@ export default {
 	},
 	// Gets words in classical-rhyme order.
 	getWordsClass: (query) => {
-		return axios.get('/api/words/',{params: query})
+		return axios.get('/api/words/class/',{params: query})
 	},
 	// Gets the word with the given id.
 	getWordById: (id) => {

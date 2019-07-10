@@ -1,4 +1,4 @@
-// The objects parameter must contain a NoMacra field.
+// The objects parameter must contain a NoMacra field and either a Word or a Lemma field.
 const sortAlphabetically = (objects) => {
     let wordOrLemma = "Lemma"
     if (objects[0].Word) {

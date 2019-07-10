@@ -15,17 +15,17 @@ module.exports = {
 		})
 	},
 	findOneWord: function(req, res) {
-		Word.findOne(req.query).select({"Word": 1, "PerfectRhyme": 1, "AlphOrderNoMacra": 1, "LemmaArray": 1, "Scansion": 1, "_id": 0})
+		Word.findOne(req.query).select({"Word": 1, "NoMacra": 1, "PerfectRhyme": 1, "AlphOrderNoMacra": 1, "LemmaArray": 1, "Scansion": 1, "_id": 0})
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsClassical: function(req, res) {
-		Word.find(req.query).sort("Sort").select({"Word": 1, "_id": 0})
+		Word.find(req.query).sort("Sort").select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsAlphabetical: function(req, res) {
-		Word.find(req.query).sort("NoMacra Word").select({"Word": 1, "_id": 0})
+		Word.find(req.query).sort("NoMacra Word").select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
