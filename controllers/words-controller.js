@@ -24,6 +24,11 @@ module.exports = {
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
+	findWordsEcclesiastical: function(req, res) {
+		Word.find(req.query).sort("EcclesSort").select({"Word": 1, "NoMacra": 1, "_id": 0})
+			.then(words => {res.json(words)})
+			.catch(err => res.status(422).json(err))
+	},
 	findWordsAlphabetical: function(req, res) {
 		Word.find(req.query).sort("NoMacra Word").select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => res.json(words))

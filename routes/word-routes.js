@@ -18,6 +18,10 @@ router
 	.get(wordsController.findWordsClassical)
 
 router
+	.route('/eccles/')
+	.get(wordsController.findWordsEcclesiastical)
+
+router
 	.route('/')
 	.get(wordsController.findWordsClassical)
 

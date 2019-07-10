@@ -21,6 +21,10 @@ export default {
 	getWordsClass: (query) => {
 		return axios.get('/api/words/class/',{params: query})
 	},
+	// Gets words in ecclesiastical-rhyme order.
+	getWordsEccles: (query) => {
+		return axios.get('/api/words/eccles/',{params: query})
+	},
 	// Gets the word with the given id.
 	getWordById: (id) => {
 		return axios.get('/api/words/id/' + id)
