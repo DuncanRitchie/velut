@@ -14,6 +14,11 @@ module.exports = {
 			res.json({ "count": count });
 		})
 	},
+	findOneWord: function(req, res) {
+		Word.findOne(req.query)
+			.then(words => {res.json(words)})
+			.catch(err => res.status(422).json(err))
+	},
 	findWordsClassical: function(req, res) {
 		Word.find(req.query).sort("Sort")
 			.then(words => {res.json(words)})

@@ -9,9 +9,13 @@ export default {
 	getWordsShorterThan: (number) => {
 		return axios.get('/api/words/lte/',{params: {lte: number}})
 	},
+	// Gets one word only.
+	getOneWord: (query) => {
+		return axios.get('/api/words/one/',{params: query})
+	},
 	// Gets words in alphabetical order.
 	getWords: (query) => {
-		return axios.get('/api/words/alph',{params: query})
+		return axios.get('/api/words/alph/',{params: query})
 	},
 	// Gets words in classical-rhyme order.
 	getWordsClass: (query) => {

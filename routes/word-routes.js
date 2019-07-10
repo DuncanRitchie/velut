@@ -10,7 +10,11 @@ router
 	.get(wordsController.findWordsShorterThan)
 
 router
-	.route('/alph:query')
+	.route('/one/:query')
+	.get(wordsController.findOneWord)
+
+router
+	.route('/alph/:query')
 	.get(wordsController.findWordsAlphabetical)
 
 router
