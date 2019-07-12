@@ -28,5 +28,17 @@ export default {
 	// Gets the word with the given id.
 	getWordById: (id) => {
 		return axios.get('/api/words/id/' + id)
+	},
+	// Gets one lemma only.
+	getOneLemma: (query) => {
+		return axios.get('/api/lemmata/one/',{params: query})
+	},
+	// Gets lemmata in alphabetical order.
+	getLemmataAlph: (query) => {
+		return axios.get('/api/lemmata/',{params: query})
+	},
+	// Gets the lemma with the given id.
+	getLemmaById: (id) => {
+		return axios.get('/api/lemmata/id/' + id)
 	}
 }

@@ -33,8 +33,4 @@ router
 	.route('/id/')
 	.get(wordsController.findById)
 
-// router
-// 	.route('/')
-// 	.get(wordsController.findWordsAlphabetical)
-
 module.exports = router;

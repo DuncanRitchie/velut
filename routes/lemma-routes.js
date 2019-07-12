@@ -6,6 +6,10 @@ router
 	.get(lemmataController.findOneLemma)
 
 router
+	.route('/id/')
+	.get(lemmataController.findLemmaById)
+
+router
 	.route('/')
 	.get(lemmataController.findLemmata)
 
