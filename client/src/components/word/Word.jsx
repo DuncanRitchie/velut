@@ -38,62 +38,52 @@ class Word extends Component {
             input = decodeURIComponent(input)
         }
         this.setState({sanitisedInput: input})
-        // Let's fetch some data from MongoDB. First we search for the exact input.
-        // console.log(`Looking for: ${input}`)
-        axios.getOneWord({"Word": input})
+        // Let's fetch some data from MongoDB. First we search for the input, parsing any hyphens/cola/dots.
+        // console.log(`Looking for: Word = ${hyphensToMacra(input)}`)
+        axios.getOneWord({"Word": hyphensToMacra(input)})
             .then((data)=>{
                 foundWord = data.data
                 this.setState({foundWord: foundWord})
-                // If the input isn't exactly in Mongo, parse any hyphens/cola/dots.
+                // If the parsed input isn't in Mongo, look for it without macra.
                 if (!foundWord) {
-                    // console.log(`Looking for: ${hyphensToMacra(input)}`)
-                    axios.getOneWord({"Word": hyphensToMacra(input)})
-                        .then((data)=>{
-                            foundWord = data.data
-                            this.setState({foundWord: foundWord})
-                            // If the parsed input isn't in Mongo, look for it without macra.
-                            if (!foundWord) {
-                                // console.log(`Looking for: ${noMacra(input)}`)
-                                axios.getOneWord({"NoMacra": noMacra(input)})
-                                .then((data)=>{
-                                    foundWord = data.data
-                                    this.setState({foundWord: foundWord})
-                                    // If the demacronized input isn't in Mongo, look for it lowercased.
-                                    if (!foundWord) {
-                                        // console.log(`Looking for: ${noMacra(input).toLowerCase()}`)
-                                        axios.getOneWord({"NoMacra": noMacra(input).toLowerCase()})
+                    // console.log(`Looking for: NoMacra = ${noMacra(input)}`)
+                    axios.getOneWord({"NoMacra": noMacra(input)})
+                    .then((data)=>{
+                        foundWord = data.data
+                        this.setState({foundWord: foundWord})
+                        // If the demacronized input isn't in Mongo, look for it lowercased.
+                        if (!foundWord) {
+                            // console.log(`Looking for: NoMacra = ${noMacra(input).toLowerCase()}`)
+                            axios.getOneWord({"NoMacra": noMacra(input).toLowerCase()})
+                            .then((data)=>{
+                                foundWord = data.data
+                                this.setState({foundWord: foundWord})
+                                // If the lowercased demacronized input isn't in Mongo, look for it propercased.
+                                if (!foundWord) {
+                                    // console.log(`Looking for: NoMacra = ${toProperCase(noMacra(input))}`)
+                                    axios.getOneWord({"NoMacra": toProperCase(noMacra(input))})
                                         .then((data)=>{
                                             foundWord = data.data
                                             this.setState({foundWord: foundWord})
-                                            // If the lowercased demacronized input isn't in Mongo, look for it propercased.
-                                            if (!foundWord) {
-                                                // console.log(`Looking for: ${toProperCase(noMacra(input))}`)
-                                                axios.getOneWord({"NoMacra": toProperCase(noMacra(input))})
-                                                    .then((data)=>{
-                                                        foundWord = data.data
-                                                        this.setState({foundWord: foundWord})
-                                                        if (foundWord) {
-                                                            this.fetchRelatedWords(foundWord)
-                                                        }
-                                                    })
-                                            }
-                                            else {
+                                            if (foundWord) {
                                                 this.fetchRelatedWords(foundWord)
                                             }
                                         })
-                                    }
-                                    else {
-                                        this.fetchRelatedWords(foundWord)
-                                    }
-                                })
-                            }
-                            else {
-                                this.fetchRelatedWords(foundWord)
-                            }})
+                                }
+                                else {
+                                    this.fetchRelatedWords(foundWord)
+                                }
+                            })
+                        }
+                        else {
+                            this.fetchRelatedWords(foundWord)
+                        }
+                    })
                 }
-                else {
-                    this.fetchRelatedWords(foundWord)
-                }})
+            else {
+                this.fetchRelatedWords(foundWord)
+            }
+        })
     }
 
     fetchRelatedWords(wordObject) {
