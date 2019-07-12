@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from "../../axios/axios";
 import Search from "../search/Search";
-import lemmata from "../../data/lemmata.json";
 import dictionaries from "../../data/dictionaries.json";
 import Lemma from "./Lemma";
 import macraToHyphens from "./macraToHyphens";
@@ -24,7 +23,7 @@ class Word extends Component {
             rhymes: [],
             anagrams: [],
             formsArrays: [],
-            lemmaRoots: [],
+            lemmata: [],
             cognatesArrays: []
         }
     }
@@ -138,12 +137,12 @@ class Word extends Component {
             })
             return null
         })
-        // Let's now prepare for finding cognates. To do this we need the Root for every lemma.
-        // We initialise state with an array of empty arrays.
-        let emptyRootArray = wordObject.LemmaArray.map((lemmma,index)=>{
-            return []
+        // Let's now prepare for finding cognates. To do this we need to fetch all the lemmata.
+        // We initialise state with an array of empty objects.
+        let emptyLemmaArray = wordObject.LemmaArray.map((lemmma,index)=>{
+            return {}
         })
-        this.setState({lemmaRoots: emptyRootArray})
+        this.setState({lemmata: emptyLemmaArray})
         // And the same for cognatesArrays.
         let emptyCognateArrays = wordObject.LemmaArray.map((lemma,index)=>{
             return []
@@ -153,22 +152,22 @@ class Word extends Component {
         // to the correct element in the array in state as the results come in.
         wordObject.LemmaArray.map((lemma,i)=>{
             axios.getOneLemma({"Lemma": lemma}).then((data)=>{
-                let root = data.data.Root
-                // console.log(root)
-                let lemmaRoots = this.state.lemmaRoots
-                lemmaRoots[i] = root
-                this.setState({lemmaRoots: lemmaRoots})
+                let lemmata = this.state.lemmata
+                lemmata[i] = data.data
+                this.setState({lemmata: lemmata})
             }).then(()=>{
-                axios.getLemmataAlph({"Root": this.state.lemmaRoots[i]}).then((data)=>{
-                    let cognates = sortAlphabetically(data.data)
-                    cognates = cognates.map((cognate,index)=>{
-                        return cognate.Lemma
+                if (this.state.lemmata[i].Root) {
+                    axios.getLemmataAlph({"Root": this.state.lemmata[i].Root}).then((data)=>{
+                        let cognates = sortAlphabetically(data.data)
+                        cognates = cognates.map((cognate,index)=>{
+                            return cognate.Lemma
+                        })
+                        // console.log(cognates)
+                        let cognatesArrays = this.state.cognatesArrays
+                        cognatesArrays[i] = cognates
+                        this.setState({cognatesArrays: cognatesArrays})
                     })
-                    // console.log(forms)
-                    let cognatesArrays = this.state.cognatesArrays
-                    cognatesArrays[i] = cognates
-                    this.setState({cognatesArrays: cognatesArrays})
-                })
+                }
                 return null
             })
             return null
@@ -240,13 +239,11 @@ class Word extends Component {
                 )})
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
-            wordLemmata = foundWord.LemmaArray || []
+            wordLemmata = this.state.lemmata || []
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
-                    // Let's find the lemma in the Json.
-                    let foundLemma = lemmata.find(jsonLemma=>{return jsonLemma.Lemma===lemma})
-                    if (foundLemma) {
-                        // Let's get the inflected forms. They are stored in an array within the formsArray in state.
+                    if (lemma) {
+                        // Let's do the inflected forms. They are stored in an array within the formsArray in state.
                         let mappedForms = []
                         if (this.state.formsArrays) {
                             let forms = []
@@ -258,27 +255,30 @@ class Word extends Component {
                                 return <span key={index}><Link title={form} to={"/"+macraToHyphens(form)}>{form}</Link> </span>
                             })
                         }
-                        // Let's get the cognates.
-                        let cognates = lemmata.filter((lemmaForCognates)=>{return lemmaForCognates.Root === foundLemma.Root});
+                        // Let's do the cognates. They are stored in an array within the cognatesArray in state.
+                        let mappedCognates = []
+                        if (this.state.cognatesArrays) {
+                            let cognates = []
+                            if (this.state.cognatesArrays[index]) {
+                                cognates = this.state.cognatesArrays[index]
+                            }
+                            // Let's render a Link for every cognate.
+                            mappedCognates = cognates.map((cognate,index)=>{
+                                return <span key={index}><Link title={cognate} to={"/"+macraToHyphens(cognate).replace(/\[.*\]/g,"")}>{cognate}</Link> </span>
+                            })
+                        }
                         // If no etymology is given in the data, a message should appear in the cognates paragraph.
                         let cognatesMessage = "";
-                        if (!foundLemma.Root) {
+                        if (!lemma.Root) {
                             cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
                         }
-                        // This sorts the cognates alphabetically.
-                        let sortedCognates = sortAlphabetically(cognates)
-                        // A react-router-dom Link is rendered for every cognate.
-                        let mappedCognates = sortedCognates.map((cognate,index)=>{
-                            return <span key={index}><Link to={`/${macraToHyphens(cognate.Lemma).replace(/\[.*\]/g,"")}`} key={index} title={cognate.Lemma}> {cognate.Lemma}</Link> </span>
-                        })
                         // Cognates are done. Let's put everything into the Lemma element.
                         return (
                             <Lemma 
                             key={index} 
-                            lemma={foundLemma.Lemma} 
-                            partOfSpeech={foundLemma.PartOfSpeech} 
-                            meaning={foundLemma.Meaning} 
-                            scansion={foundLemma.Scansion}
+                            lemma={lemma.Lemma} 
+                            partOfSpeech={lemma.PartOfSpeech} 
+                            meaning={lemma.Meaning} 
                             forms={mappedForms}
                             cognates={mappedCognates}
                             cognatesMessage={cognatesMessage}
