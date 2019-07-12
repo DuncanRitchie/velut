@@ -23,7 +23,9 @@ class Word extends Component {
             foundWord: {},
             rhymes: [],
             anagrams: [],
-            formsArrays: []
+            formsArrays: [],
+            lemmaRoots: [],
+            cognatesArrays: []
         }
     }
     
@@ -116,7 +118,7 @@ class Word extends Component {
             this.setState({anagrams: anagrams})
         })
         // Let's find the forms. An array is generated for each lemma.
-        // We iniitalise state with an array of empty arrays.
+        // We initialise state with an array of empty arrays.
         let emptyArrays = wordObject.LemmaArray.map((lemma,index)=>{
             return []
         })
@@ -133,6 +135,41 @@ class Word extends Component {
                 let formsArrays = this.state.formsArrays
                 formsArrays[i] = forms
                 this.setState({formsArrays: formsArrays})
+            })
+            return null
+        })
+        // Let's now prepare for finding cognates. To do this we need the Root for every lemma.
+        // We initialise state with an array of empty arrays.
+        let emptyRootArray = wordObject.LemmaArray.map((lemmma,index)=>{
+            return []
+        })
+        this.setState({lemmaRoots: emptyRootArray})
+        // And the same for cognatesArrays.
+        let emptyCognateArrays = wordObject.LemmaArray.map((lemma,index)=>{
+            return []
+        })
+        this.setState({cognatesArrays: emptyCognateArrays})
+        // Next we map across LemmaArray, querying the database for each lemma and adding the results 
+        // to the correct element in the array in state as the results come in.
+        wordObject.LemmaArray.map((lemma,i)=>{
+            axios.getOneLemma({"Lemma": lemma}).then((data)=>{
+                let root = data.data.Root
+                // console.log(root)
+                let lemmaRoots = this.state.lemmaRoots
+                lemmaRoots[i] = root
+                this.setState({lemmaRoots: lemmaRoots})
+            }).then(()=>{
+                axios.getLemmataAlph({"Root": this.state.lemmaRoots[i]}).then((data)=>{
+                    let cognates = sortAlphabetically(data.data)
+                    cognates = cognates.map((cognate,index)=>{
+                        return cognate.Lemma
+                    })
+                    // console.log(forms)
+                    let cognatesArrays = this.state.cognatesArrays
+                    cognatesArrays[i] = cognates
+                    this.setState({cognatesArrays: cognatesArrays})
+                })
+                return null
             })
             return null
         })
