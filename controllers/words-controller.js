@@ -15,28 +15,37 @@ module.exports = {
 		})
 	},
 	findOneWord: function(req, res) {
-		Word.findOne(req.query).select({"Word": 1, "NoMacra": 1, "PerfectRhyme": 1, "AlphOrderNoMacra": 1, "LemmaArray": 1, "Scansion": 1, "_id": 0})
+		Word.findOne(req.query)
+			.select({"Word": 1, "NoMacra": 1, "PerfectRhyme": 1, "AlphOrderNoMacra": 1, "LemmaArray": 1, "Scansion": 1, "_id": 0})
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsClassical: function(req, res) {
-		Word.find(req.query).sort("Sort").select({"Word": 1, "NoMacra": 1, "_id": 0})
+		Word.find(req.query)
+			.sort("Sort")
+			.select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsEcclesiastical: function(req, res) {
-		Word.find(req.query).sort("EcclesSort").select({"Word": 1, "NoMacra": 1, "_id": 0})
+		Word.find(req.query)
+			.sort("EcclesSort")
+			.select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsAlphabetical: function(req, res) {
-		Word.find(req.query).sort("NoMacra Word").select({"Word": 1, "NoMacra": 1, "_id": 0})
+		Word.find(req.query)
+			.sort("NoMacra Word")
+			.select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
-	// findWordsShorterThan() doesn't actually work.
 	findWordsShorterThan: function(req,res) {
-		Word.find({}).lte("Length",req.params.lte).exec(words=>res.json(words))
+		Word.find({"Length": {"$lte": req.query.lte}})
+			.sort("-Length NoMacra Word")
+			.select({"Word": 1, "NoMacra": 1, "_id": 0})
+			.then(words=>res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
 	findById: function(req, res) {
