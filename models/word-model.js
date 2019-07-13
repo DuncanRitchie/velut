@@ -28,6 +28,7 @@ const wordSchema = new Schema({
     "MacraAsHyphens": String,
     "NoMacra": String,
     "AlphOrderNoMacra": String,
+    "NoMacraLowerCase": String,
     "KeypadCode": String,
     "Sort": String
 });

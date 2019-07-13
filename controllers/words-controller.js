@@ -36,14 +36,14 @@ module.exports = {
 	},
 	findWordsAlphabetical: function(req, res) {
 		Word.find(req.query)
-			.sort("NoMacra Word")
+			.sort("NoMacraLowerCase NoMacra Word")
 			.select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words => res.json(words))
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsShorterThan: function(req,res) {
 		Word.find({"Length": {"$lte": req.query.lte}})
-			.sort("-Length NoMacra Word")
+			.sort("-Length NoMacraLowerCase NoMacra Word")
 			.select({"Word": 1, "NoMacra": 1, "_id": 0})
 			.then(words=>res.json(words))
 			.catch(err => res.status(422).json(err))

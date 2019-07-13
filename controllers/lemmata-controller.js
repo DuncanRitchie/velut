@@ -17,7 +17,7 @@ module.exports = {
 	},
 	// .findLemmata() is accessed from route e.g. /api/lemma/?Root=veniō
 	findLemmata: function(req, res) {
-		Lemma.find(req.query).sort("NoMacra NoTypeTag Lemma").select({
+		Lemma.find(req.query).sort("NoMacraLowerCase NoMacra NoTypeTag Lemma").select({
 			"Lemma": 1,
 			"NoMacra": 1,
 			"_id": 0

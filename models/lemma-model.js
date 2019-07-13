@@ -11,7 +11,8 @@ const lemmaSchema = new Schema({
     "Root": String,
     "FormCount": Number,
     "NoTypeTag": String,
-    "NoMacra": String
+    "NoMacra": String,
+    "NoMacraLowerCase": String
 },{collection: 'lemmata'})
 
 const Lemma = mongoose.model('Lemma', lemmaSchema)
