@@ -25,7 +25,7 @@ const About = (props) => {
                 rhyming is all about finding words that are 
                 &ldquo;just like&rdquo; a given word with respect to their endings. (And also it can be an acronym 
                 for &ldquo;Useful Tables of Excellent Latin Vocabulary&rdquo;, or 
-                &ldquo;<Link to="./vocābulōrum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Latīnōrum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./ūtilēs" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link>&rdquo;.)
+                &ldquo;<Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link>&rdquo;.)
                 </p>
                 <h2>As a website</h2>
                 <p>

@@ -69,6 +69,7 @@ class Search extends Component {
                             <Link className="dropdown-link" to={"/consonyms/"+this.state.input}>All consonants (consonyms)</Link>
                         </div>
                     </div> */}
+                    <br/>
                     {/* What would be a "submit" button in a normal form */}
                     <Link
                      className="search-link" 
