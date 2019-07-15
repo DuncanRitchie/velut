@@ -14,7 +14,7 @@ h1 {
   
 .title {
     color: black;
-    background: linear-gradient(to bottom, black, rgb(64, 60, 36));
+    background: linear-gradient(to bottom, black, rgb(80, 74, 42));
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 80px;
