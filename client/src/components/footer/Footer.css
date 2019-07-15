@@ -1,8 +1,8 @@
 .footer {
     grid-area: footer;
     padding: 6px;
-    /* This is the color of links, but lighter */
-    background-color: hsl(208, 56%, 82%);
+    /* This is a bright turquoise */
+    background-color: rgb(122, 239, 179)
 }
 
 a:link {

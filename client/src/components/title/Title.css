@@ -1,0 +1,27 @@
+h1 {
+    width: inherit;
+    padding: 9px 6px 6px;
+    margin: 3px 0 -6px;
+    /* background-color: rgb(196, 226, 196); pale green */
+    color: rgb(58, 114, 58) /* a darker, brighter green */
+  }
+  
+  .title-author {
+    font-size: 14px;
+    font-weight: normal;
+    padding-right: 144px;
+  }
+  
+  .title {
+    color: black;
+    font-size: 72px;
+    font-weight: normal;
+    line-height: 0px
+  }
+
+  .title-full {
+      margin-top: 0px;
+      margin-bottom: 18px;
+      color: darkslategrey;
+      font-size: 12px
+  }

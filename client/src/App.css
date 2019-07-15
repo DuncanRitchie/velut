@@ -5,9 +5,11 @@
   width: 100%;
   height: 100vh;
   padding: 0;
+  background-image: linear-gradient(180deg, rgb(206,227,242) 0%, rgb(227,239,248) 100%);
+  background-attachment: fixed;
   /* background-color: rgb(254, 252, 250) */
-  background: rgb(238, 243, 238);
-  background: linear-gradient(180deg, rgba(196,226,196,0.05) 0%, rgba(183,211,235,0.05) 100%);
+  /* background: rgb(238, 243, 238); */
+  /* background: linear-gradient(180deg, rgba(196,226,196,0.05) 0%, rgba(183,211,235,0.05) 100%); */
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 1fr auto;
@@ -20,46 +22,23 @@ p {
   margin: 9px 0
 }
 
-.word,.home,.anagrams,.anagrams-home,.countdown,.countdown-home {
+.word,.home,.anagrams,.anagrams-home,.countdown,.countdown-home,.about {
   grid-area: body;
   overflow-y: auto
 }
 
-.about p {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
+.home {
+  background-image:  url('./images/FulmarFlying.png');
+  background-size: calc((80vh + 80vw)/2);
+  background-position: -20vw 75%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
-h1 {
-  width: inherit;
-  padding: 9px 6px;
-  margin: 0 0 6px;
-  background-color: rgb(196, 226, 196); /* pale green */
-  color: rgb(58, 114, 58) /* a darker, brighter green */
-}
-
-.title {
-  color: black
-}
-
-h2 {
-  margin-top: 12px;
-  margin-bottom: 3px
-}
-
-.divider {
-  height: 2px;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
-  border-bottom: 2px solid rgb(196, 226, 196)
-}
-
-.dictionaries {
-  background-color: rgb(215, 247, 247);
-  padding: 12px 6px;
-  margin-top: 12px;
-  margin-bottom: 0
+.word,.about {
+  background-image:  url('./images/FulmarFlying.png');
+  background-size: calc((80vh + 80vw)/2);
+  background-position: -30vw -30vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }

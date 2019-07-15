@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from "../../axios/axios";
+import Title from "../title/Title";
 import Search from "../search/Search";
 import dictionaries from "../../data/dictionaries.json";
 import Lemma from "./Lemma";
@@ -9,8 +10,8 @@ import hyphensToMacra from "./hyphensToMacra";
 import toProperCase from "./toProperCase";
 import noMacra from "./noMacra";
 import sortAlphabetically from "./sortAlphabetically"
-import WarningMessage from "./WarningMessage";
 // import Navbar from "../navbar/Navbar"
+import './Word.css'
 
 class Word extends Component {
     constructor(props) {
@@ -284,21 +285,54 @@ class Word extends Component {
         }
         return (
             <div className="word">
-                <h1><span className="title">velut</span> &mdash; {foundWord ? foundWord.Word : sanitisedInput}</h1>
+                <Title />
                 {/* <Navbar input={sanitisedInput} currentPage="word"/> */}
-                <p>Welcome to my Useful Tables of Excellent Latin Vocabulary!</p>
-                <WarningMessage/>
                 <Search prefix=""/>
-                <div className="divider"/>
-                {foundWord ? <div><p>The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}</p>
-                <p>Perfect rhymes: {mappedRhymes}</p>
-                <p>Anagrams: {mappedAnagrams}</p>
-                <div className="divider"/>
-                <p><strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:</p></div> : <p>Nothing was found. Try <Link to={"/"+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.</p>}
-                {mappedLemmata ? mappedLemmata : null}
-                <div className="divider"/>
-                <div className="divider"/>
-                <p className="dictionaries">Links to external sites: {mappedDics}</p>
+                <p className="showing-results-for">
+                    Showing results for
+                </p>
+                <h2 className="found-word">
+                    {foundWord ? foundWord.Word : sanitisedInput}
+                </h2>
+                <div className="word-info">
+                    {foundWord ? (
+                        <div>
+                            <p>
+                                The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}
+                            </p>
+                            <h2>
+                                Anagrams
+                            </h2>
+                            <p>
+                                {mappedAnagrams}
+                            </p>
+                            <h2>
+                                Perfect rhymes
+                            </h2>
+                            <p>
+                                {mappedRhymes}
+                            </p>
+                            <h2>
+                                Lemma information
+                            </h2>
+                            <p>
+                                <strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:
+                            </p>
+                        </div>
+                    )
+                    : (
+                        <p>
+                            Nothing was found. Try <Link to={"/"+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.
+                        </p>
+                    )}
+                    {mappedLemmata ? mappedLemmata : null}
+                </div>
+                <h2 className="dictionaries-heading">
+                    Links to external sites
+                </h2>
+                <p className="dictionaries">
+                    {mappedDics}
+                </p>
             </div>
         )
     }
