@@ -7,19 +7,10 @@
   padding: 0;
   background-image: linear-gradient(180deg, rgb(206,227,242) 0%, rgb(227,239,248) 100%);
   background-attachment: fixed;
-  /* background-color: rgb(254, 252, 250) */
-  /* background: rgb(238, 243, 238); */
-  /* background: linear-gradient(180deg, rgba(196,226,196,0.05) 0%, rgba(183,211,235,0.05) 100%); */
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 1fr auto;
   grid-template-areas: "body" "footer";
-}
-
-p {
-  padding-left: 6px;
-  padding-right: 6px;
-  margin: 9px 0
 }
 
 .word,.home,.anagrams,.anagrams-home,.countdown,.countdown-home,.about {

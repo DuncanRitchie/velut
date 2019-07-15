@@ -325,14 +325,14 @@ class Word extends Component {
                             Nothing was found. Try <Link to={"/"+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.
                         </p>
                     )}
-                    {mappedLemmata ? mappedLemmata : null}
-                    <h2 className="dictionaries-heading">
-                        Links to external sites
-                    </h2>
-                    <p className="dictionaries">
-                        {mappedDics}
-                    </p>
+                {mappedLemmata ? mappedLemmata : null}
                 </div>
+                <h2 className="dictionaries-heading">
+                    Links to external sites
+                </h2>
+                <p className="dictionaries">
+                    {mappedDics}
+                </p>
             </div>
         )
     }
