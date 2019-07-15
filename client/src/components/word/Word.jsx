@@ -308,7 +308,7 @@ class Word extends Component {
                     Showing results for
                 </p>
                 <h2 className="found-word">
-                    {foundWord ? foundWord.Word : sanitisedInput}
+                    {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
                 </h2>
                 <div className="word-info">
                     {foundWord ? (
