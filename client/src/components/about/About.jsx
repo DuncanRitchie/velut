@@ -69,6 +69,11 @@ const About = (props) => {
                 I assume that final vowels are not elided and I assume that any syllable that could be short is short.
                 </p>
                 <p>
+                    Many words have been coined for different combinations of long and short syllables &mdash; such
+                    as iamb, trochee, dactyl, anapaest&hellip; &mdash; and velut will suggest the appropriate term 
+                    (or several) for most words it contains.
+                </p>
+                <p>
                 &ldquo;Perfect rhymes&rdquo; are words that sound identical from the stressed vowel to the end, under strict classical pronunciation.
                 The ancient Romans didn&rsquo;t care so much for rhymes (scansion was what they really valued), and, by the time mediaeval 
                 or Renaissance writers were composing Latin with rhymes, several vowels and diphthongs had converged in pronunciation,
