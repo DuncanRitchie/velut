@@ -4,6 +4,7 @@ import axios from "../../axios/axios";
 import Title from "../title/Title";
 import Search from "../search/Search";
 import dictionaries from "../../data/dictionaries.json";
+import feet from "../../data/feet.json";
 import Lemma from "./Lemma";
 import macraToHyphens from "./macraToHyphens";
 import hyphensToMacra from "./hyphensToMacra";
@@ -198,10 +199,12 @@ class Word extends Component {
 
     render() {
         let {sanitisedInput, randomWord, foundWord} = this.state
-        let mappedRhymes = [];
-        let mappedAnagrams = [];
-        let wordLemmata = [];
-        let mappedLemmata = [];
+        let footName = ""
+        let footNameArticle = "a"
+        let mappedRhymes = []
+        let mappedAnagrams = []
+        let wordLemmata = []
+        let mappedLemmata = []
         // Let's do dictionaries.
         let plainInput = noMacra(sanitisedInput)
         let mappedDics = dictionaries.map((dic,index)=>{
@@ -214,6 +217,20 @@ class Word extends Component {
         if (foundWord) {
             // Let's set the document title to the word we found.
             document.title = foundWord.Word+" on velut"
+            // Let's find what metrical foot it is.
+            if (foundWord.Scansion) {
+                let foot = feet.find((foot)=>{return foot.Foot===foundWord.Scansion})
+                if (foot) {
+                    footName = foot.Name.replace(/,/g, " or")
+                    if (footName.substr(0,1)==="a" || 
+                        footName.substr(0,1)==="e" || 
+                        footName.substr(0,1)==="i" || 
+                        footName.substr(0,1)==="o" || 
+                        footName.substr(0,1)==="u") {
+                            footNameArticle = "an"
+                        }
+                }
+            }
             // Let's find the rhymes.
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
@@ -298,6 +315,7 @@ class Word extends Component {
                         <div>
                             <p>
                                 The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}
+                                {footName ? <span> which is called {footNameArticle} {footName}.</span> : null }
                             </p>
                             <h2>
                                 Anagrams
