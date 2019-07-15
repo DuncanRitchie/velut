@@ -1,7 +1,7 @@
 h1 {
     width: inherit;
     padding: 9px 6px 6px;
-    margin: 3px 0 -6px;
+    margin: 12px 0 -6px;
     color: rgb(33, 58, 33) /* a darker, brighter green */
 }
   
@@ -9,7 +9,10 @@ h1 {
     font-size: 14px;
     font-weight: normal;
     padding-right: 144px;
-    color: rgb(55, 105, 55)
+    color: rgb(55, 105, 55);
+    /* A shadow the same colour as the background.
+    in case the text is overlaying the fulmar picture */
+    text-shadow: 1px 1px 1px rgb(206,227,242)
 }
   
 .title {
@@ -22,9 +25,17 @@ h1 {
     line-height: 30px
 }
 
+.title::after {
+    content: text;
+    text-shadow: 2px 2px white
+}
+
 .title-full {
     margin-top: 0px;
     margin-bottom: 18px;
     color: rgb(39, 65, 65);
-    font-size: 12px
+    font-size: 12px;
+    /* A shadow the same colour as the background.
+    in case the text is overlaying the fulmar picture */
+    text-shadow: 1px 1px 1px rgb(206,227,242)
 }

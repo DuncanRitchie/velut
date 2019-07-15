@@ -42,3 +42,9 @@ p {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
+.home-rubric {
+  /* A shadow the same colour as the background.
+  in case the text is overlaying the fulmar picture */
+  text-shadow: 1px 1px 1px rgb(206,227,242)
+}
