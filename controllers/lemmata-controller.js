@@ -19,7 +19,6 @@ module.exports = {
 	findLemmata: function(req, res) {
 		Lemma.find(req.query).sort("NoMacraLowerCase NoMacra NoTypeTag Lemma").select({
 			"Lemma": 1,
-			"NoMacra": 1,
 			"_id": 0
 		}).then(words=>{res.json(words)})
 	},

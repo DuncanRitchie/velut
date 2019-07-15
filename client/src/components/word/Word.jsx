@@ -9,7 +9,6 @@ import macraToHyphens from "./macraToHyphens";
 import hyphensToMacra from "./hyphensToMacra";
 import toProperCase from "./toProperCase";
 import noMacra from "./noMacra";
-import sortAlphabetically from "./sortAlphabetically"
 // import Navbar from "../navbar/Navbar"
 import './Word.css'
 
@@ -101,7 +100,7 @@ class Word extends Component {
         let anagramLetters = wordObject.AlphOrderNoMacra
         // console.log("Anagrams have the letters "+anagramLetters)
         axios.getWordsAlph({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
-            let anagrams = sortAlphabetically(data.data)
+            let anagrams = data.data
             anagrams = anagrams.map((anagram,index)=>{
                 return anagram.Word
             })
@@ -117,7 +116,7 @@ class Word extends Component {
         // to the correct element in the array in state as the results come in.
         wordObject.LemmaArray.map((lemma,i)=>{
             axios.getWordsAlph({"LemmaArray": lemma}).then((data)=>{
-                let forms = sortAlphabetically(data.data)
+                let forms = data.data
                 forms = forms.map((form,index)=>{
                     return form.Word
                 })
@@ -149,7 +148,7 @@ class Word extends Component {
             }).then(()=>{
                 if (this.state.lemmata[i].Root) {
                     axios.getLemmataAlph({"Root": this.state.lemmata[i].Root}).then((data)=>{
-                        let cognates = sortAlphabetically(data.data)
+                        let cognates = data.data
                         cognates = cognates.map((cognate,index)=>{
                             return cognate.Lemma
                         })
