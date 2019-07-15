@@ -2,7 +2,7 @@
     grid-area: footer;
     padding: 6px;
     /* This is a bright turquoise */
-    background-color: rgb(122, 239, 179)
+    background: linear-gradient(to bottom, rgb(121, 192, 181), rgb(159, 243, 200))
 }
 
 a:link {

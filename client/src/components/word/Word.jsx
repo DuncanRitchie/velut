@@ -326,13 +326,13 @@ class Word extends Component {
                         </p>
                     )}
                     {mappedLemmata ? mappedLemmata : null}
+                    <h2 className="dictionaries-heading">
+                        Links to external sites
+                    </h2>
+                    <p className="dictionaries">
+                        {mappedDics}
+                    </p>
                 </div>
-                <h2 className="dictionaries-heading">
-                    Links to external sites
-                </h2>
-                <p className="dictionaries">
-                    {mappedDics}
-                </p>
             </div>
         )
     }

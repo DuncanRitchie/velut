@@ -23,9 +23,9 @@ input {
     float: right;
     padding: 6px 9px;
     height: 20px;
-    background-color: rgb(148, 235, 242)
+    background-color: rgb(122, 239, 179)
 }
 
 .search-link:hover {
-    background-color: rgb(197, 251, 255)
+    background-color: rgb(184, 248, 215)
 }

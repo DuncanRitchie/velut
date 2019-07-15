@@ -7,7 +7,7 @@
 .showing-results-for,.word-info {
     background-color: rgba(255,253,244,0.95);
     padding: 6px 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 .found-word {
@@ -23,14 +23,13 @@ h2 {
     font-size: 24px
 }
 
-.word-info h2 {
+.word-info h2:not(.dictionaries-heading) {
     margin-top: 6px;
     margin-bottom: 0;
     background-color: rgb(239, 225, 171);
 }
 
-.word-info p {
-    /* background: rgba(255,253,244,0.95); */
+.word-info p:not(.dictionaries) {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 0;
@@ -54,5 +53,5 @@ h2 {
   .dictionaries {
     background-color: rgb(202, 237, 234);
     padding: 12px 6px;
-    margin: 0
+    margin: 0 0 -6px
   }
