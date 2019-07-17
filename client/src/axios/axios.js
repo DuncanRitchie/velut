@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
     // Counts the words in the MongoDB collection. Should be more than 90000.
-    count: () => {
+    countWords: () => {
         return axios.get('/api/words/count')
     },
 	// Gets all words with Length less than or equal to the given number.

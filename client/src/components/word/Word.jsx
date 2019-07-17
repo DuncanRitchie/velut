@@ -18,6 +18,7 @@ class Word extends Component {
         this.state = {
             input: "",
             sanitisedInput: "",
+            totalWordsCount: null,
             randomWord: "",
             foundWord: {},
             rhymes: [],
@@ -154,10 +155,26 @@ class Word extends Component {
 
     fetchRandomWord() {
         // Let's pick a random word to show if no words match the search.
-        // totalCount should really be derived from Mongoose, but let's use an underestimate for the time being.
-        let totalCount = 92000
-        let randomOrd = Math.ceil(Math.random()*totalCount)
-        axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{this.setState({randomWord: array.data[0].Word})})
+        // We query MongoDB for the total words count if we don't have it.
+        // Then we query for a word whose Ord is less than or equal to it.
+        if (!this.state.totalWordsCount) {
+            axios.countWords().then((data)=>{
+                this.setState({totalWordsCount: data.data.count})
+                let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
+                axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{
+                    this.setState({randomWord: array.data[0].Word})
+                })
+            })
+        }
+        // If we've already found the total words count, we don't need to query for it.
+        // We just query for the random word.
+        else {
+            let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
+            axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{
+                this.setState({randomWord: array.data[0].Word})
+            })
+        }
+        
     }
 
     getInput() {
