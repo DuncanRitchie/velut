@@ -80,9 +80,6 @@ const About = () => {
                     so most rhyming Latin poets would have generally been a lot more permissive in their rhymes than I have been.
                 </p>
                 <p>
-                    Scansion, rhymes, and anagrams are determined by my Excel formulae and JavaScript functions.
-                </p>
-                <p>
                     The &ldquo;lemma&rdquo; (plural &ldquo;lemmata&rdquo;) of a word is the form you would find in a dictionary as the headword. A
                     given word may belong to multiple lemmata. Sometimes a word might even be multiple lemmata 
                     — for example in English &ldquo;make&rdquo; can be a verb lemma or a noun lemma — so I&rsquo;ve chosen to distinguish 
@@ -90,6 +87,11 @@ const About = () => {
                 </p>
                 <p>
                     &ldquo;Cognates&rdquo; are lemmata that come from the same etymological origin.
+                </p>
+                <p>
+                    &ldquo;<Link to="/subwords/" title="Subwords on velut">Subwords</Link>&rdquo; are words whose letters
+                    all appear in the input you specify. If the British TV show &ldquo;Countdown&rdquo; or the French 
+                    &ldquo;Des chiffres et des lettres&rdquo; were played in Latin, my subwords would be valid answers.
                 </p>
                 <h2>Lexicography</h2>
                 <p>
@@ -119,18 +121,18 @@ const About = () => {
                 <p>
                     Anagrams, forms, and cognates are in alphabetical order.
                 </p>
+                <p>
+                    Subwords are in descending length order, then alphabetical.
+                </p>
                 <h2>Future plans</h2>
                 <p>
-                    The rhymes are currently restricted to perfect rhymes under classical pronunciation. Soon I will provide a dropdown menu
-                    allowing you to choose less stringent rules for determining rhymes.
+                    The rhymes are currently restricted to perfect rhymes under classical pronunciation. 
+                    Soon I will provide a dropdown menu allowing you to choose less stringent rules for 
+                    determining rhymes.
                 </p>
                 <p>
-                    I have written code that finds words made from only the letters you specify, like in a letters game 
-                    in the TV show Countdown (albeit in Latin). I have written code that finds multiword anagrams, also.
-                    Once I&rsquo;ve connected these bits of code up to my database, I will add them to this site.
-                </p>
-                <p>
-                    And, of course, I will continue to add words to the data.
+                    And I will continue to add words to the data. I have over 93,000 words belonging to 
+                    over 11,000 lemmata, but there are plenty more I can add!
                 </p>
                 <Search prefix=""/>
             </div>

@@ -16,6 +16,9 @@ let Footer = (props) => {
                 {props.history.location.pathname==="/"
                     ? null 
                     : <li><Link to="/" title="velut homepage">Home</Link>.</li> }
+                {props.history.location.pathname.substr(0,9)==="/subwords"
+                        ? null 
+                        : <li><Link to="/subwords" title="Subwords on velut">Subwords</Link>.</li> }
                 {props.history.location.pathname==="/about"
                     ? null 
                     : <li><Link to="/about" title="About velut">About velut</Link>.</li> }
