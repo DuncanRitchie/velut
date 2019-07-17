@@ -48,9 +48,9 @@ module.exports = {
 			.then(words=>res.json(words))
 			.catch((err1) => {
 				// If an error occurs, it's probably because Mongo failed to sort.
-				// So we try again, without sort, but projecting AlphOrderNoMacra for sorting front-end.
+				// So we try again, without sort, but projecting NoMacraLowerCase for sorting front-end.
 				Word.find({"Length": {"$lte": req.query.lte}})
-					.select({"Word": 1, "AlphOrderNoMacra": 1, "_id": 0})
+					.select({"Word": 1, "NoMacraLowerCase": 1, "_id": 0})
 					.then(words=>res.json(words))
 					.catch(err2 => {
 						res.status(422).json(err2)

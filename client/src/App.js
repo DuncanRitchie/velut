@@ -17,7 +17,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/subwords/:word" component={Subwords} />
+            <Route path="/subwords/:word" component={Subwords}/>
             <Route path="/subwords" component={CountdownHome} />
             {/* <Route path="/anagrams/:word" component={Anagrams} />
             <Route path="/anagrams" component={AnagramsHome} /> */}
