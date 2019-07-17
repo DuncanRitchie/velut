@@ -8,7 +8,6 @@ import feet from "../../data/feet.json";
 import Lemma from "./Lemma";
 import macraToHyphens from "./macraToHyphens";
 import hyphensToMacra from "./hyphensToMacra";
-import toProperCase from "./toProperCase";
 import noMacra from "./noMacra";
 // import Navbar from "../navbar/Navbar"
 import './Word.css'
@@ -55,23 +54,11 @@ class Word extends Component {
                         // If the demacronized input isn't in Mongo, look for it lowercased.
                         if (!foundWord) {
                             // console.log(`Looking for: NoMacra = ${noMacra(input).toLowerCase()}`)
-                            axios.getOneWord({"NoMacra": noMacra(input).toLowerCase()})
+                            axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
                             .then((data)=>{
                                 foundWord = data.data
                                 this.setState({foundWord: foundWord})
-                                // If the lowercased demacronized input isn't in Mongo, look for it propercased.
-                                if (!foundWord) {
-                                    // console.log(`Looking for: NoMacra = ${toProperCase(noMacra(input))}`)
-                                    axios.getOneWord({"NoMacra": toProperCase(noMacra(input))})
-                                        .then((data)=>{
-                                            foundWord = data.data
-                                            this.setState({foundWord: foundWord})
-                                            if (foundWord) {
-                                                this.fetchRelatedWords(foundWord)
-                                            }
-                                        })
-                                }
-                                else {
+                                if (foundWord) {
                                     this.fetchRelatedWords(foundWord)
                                 }
                             })
