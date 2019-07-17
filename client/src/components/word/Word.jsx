@@ -54,7 +54,7 @@ class Word extends Component {
                         this.setState({foundWord: foundWord})
                         // If the demacronized input isn't in Mongo, look for it lowercased.
                         if (!foundWord) {
-                            // console.log(`Looking for: NoMacra = ${noMacra(input).toLowerCase()}`)
+                            // console.log(`Looking for: NoMacraLowerCase = ${noMacra(input).toLowerCase()}`)
                             axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
                             .then((data)=>{
                                 foundWord = data.data
@@ -335,7 +335,7 @@ class Word extends Component {
                         <div>
                             <p>
                                 The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}
-                                {footName ? <span> which is called {footNameArticle} {footName}.</span> : null }
+                                {footName ? <span> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</span> : null }
                             </p>
                             <h2>
                                 Anagrams
