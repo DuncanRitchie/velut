@@ -26,7 +26,7 @@
   background-repeat: no-repeat;
 }
 
-.word,.about {
+.word,.about,.subwords-home,.subwords {
   background-image:  url('./images/FulmarFlying.png');
   background-size: 75vh;
   background-position: calc(48px + 5vw - 54vh) calc(10vw - 28vh - 20px);

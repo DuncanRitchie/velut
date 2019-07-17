@@ -87,7 +87,7 @@ class Subwords extends Component {
             )
         }
         return (
-            <div className="word">
+            <div className="subwords">
                 <Title textBeforeTitle="Subwords" />
                 <h1>{input}</h1>
                 {/* <Navbar input={input} currentPage="Subwords"/> */}
