@@ -13,7 +13,7 @@
   grid-template-areas: "body" "footer";
 }
 
-.word,.home,.anagrams,.anagrams-home,.countdown,.countdown-home,.about {
+.word,.home,.anagrams,.anagrams-home,.subwords,.subwords-home,.about {
   grid-area: body;
   overflow-y: auto
 }

@@ -5,7 +5,7 @@ import objectToArray from '../../data/data-functions/objectToArray'
 //                         consonants: ["k","y","y","q","q","q","x","x","x","x", ... ]}
 // I.e. it's an object with two keys, each referring to an array of letters.
 // The least frequent letter appears once, the second least frequent twice, etc.
-// This is the function that the Countdown page uses to generate random Countdown strings.
+// This is the function that the Subwords page uses to generate random Subwords strings.
 
 const getWeightedLetters = () => {
     let weightedVowels = []

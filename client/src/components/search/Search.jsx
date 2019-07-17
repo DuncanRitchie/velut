@@ -51,7 +51,7 @@ class Search extends Component {
                     {/* The box the word will be typed into */}
                     <input 
                      className="search-input"
-                     value={ this.state.fromUrl ? decodeURIComponent(window.location.pathname.replace("/lemma/","").replace("/countdown","").replace("/anagrams","").replace("/","")) : this.state.sanitisedInput }
+                     value={ this.state.fromUrl ? decodeURIComponent(window.location.pathname.replace("/lemma/","").replace("/subwords","").replace("/anagrams","").replace("/","")) : this.state.sanitisedInput }
                      onChange={this.handleInput}
                      onKeyUp={this.handleKeyUp}
                      />

@@ -1,7 +1,7 @@
 import React from 'react';
 import words from "../../data/words_8fields.json";
-import delChars from '../countdown/delChars'
-import subwords from "../countdown/subwords"
+import delChars from '../Subwords/delChars'
+import subwords from "../Subwords/subwords"
 import Search from '../search/Search'
 import Navbar from '../navbar/Navbar'
 

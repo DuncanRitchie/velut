@@ -1,4 +1,4 @@
-import subwordObjects from './Countdown'
+import subwordObjects from './Subwords'
 
 // In these two functions, wordObjects is an array of objects, such as words.json
 

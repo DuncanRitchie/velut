@@ -3,7 +3,7 @@ const delChars = require('./delChars')
 
 // subwords() returns an array of objects. The array of objects from Mongo should be passed in as the second parameter.
 
-const subwords = (input,wordObjects) => {
+const findSubwords = (input,wordObjects) => {
     if (wordObjects[0].Word) {
         let filteredWordObjects = wordObjects.filter(word=>{
             if (delChars(input.toLowerCase(),noMacra(word.Word)).length === input.length-word.Word.length) {
@@ -32,8 +32,8 @@ const subwords = (input,wordObjects) => {
     else {return null}
 }
 
-export default subwords
+export default findSubwords
 
 // const jsonExample = require('./jsonExample.json')
 
-// console.log(subwords("duncanusrichardus",jsonExample))
+// console.log(findSubwords("duncanusrichardus",jsonExample))

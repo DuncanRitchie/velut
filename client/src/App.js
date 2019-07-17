@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "./components/word/Home";
 import WordFromJson from "./components/word/Word";
-// import Lemmata from "./components/lemmata/Lemmata";
-// import CountdownHome from "./components/countdown/CountdownHome";
-// import Countdown from "./components/countdown/Countdown";
+import CountdownHome from "./components/subwords/SubwordsHome";
+import Subwords from "./components/subwords/Subwords";
 // import AnagramsHome from "./components/anagrams/AnagramsHome";
 // import Anagrams from "./components/anagrams/Anagrams";
 import About from "./components/about/About";
@@ -18,9 +17,9 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
-            {/* <Route path="/countdown/:word" component={Countdown} />
-            <Route path="/countdown" component={CountdownHome} />
-            <Route path="/anagrams/:word" component={Anagrams} />
+            <Route path="/subwords/:word" component={Subwords} />
+            <Route path="/subwords" component={CountdownHome} />
+            {/* <Route path="/anagrams/:word" component={Anagrams} />
             <Route path="/anagrams" component={AnagramsHome} /> */}
             <Route path="/about" component={About} />
             <Route path="/:word" component={WordFromJson} />

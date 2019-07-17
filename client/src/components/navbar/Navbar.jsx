@@ -16,7 +16,7 @@ const Navbar = (props) => {
     return (
         <ul className="navbar">
             {currentPage==="word" ? null : <li><Link to={root+input} title="Find lemmata, rhymes, etc.">Latin word look-up</Link></li>}
-            {currentPage==="countdown" ? null : <li><Link to={root+"countdown/"+input} title="Find subwords">Play Latin Countdown</Link></li>}
+            {currentPage==="subwords" ? null : <li><Link to={root+"subwords/"+input} title="Find subwords">Play Latin Countdown</Link></li>}
             {currentPage==="anagrams" ? null : <li><Link to={root+"anagrams/"+inputTrunc} title="Find anagrams">Find Latin anagrams</Link></li>}
         </ul>
     )
