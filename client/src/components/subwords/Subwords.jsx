@@ -8,6 +8,7 @@ import noMacra from '../word/noMacra'
 import delChars from './delChars'
 import findSubwords from './findSubwords'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
+import './Subwords.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:input
 
@@ -60,7 +61,7 @@ class Subwords extends Component {
         let mappedWords = []
         if (this.state.subwords) {
             mappedWords = this.state.subwords.map((word,index)=>{
-                if (delChars(input,noMacra(word))) {
+                if (delChars(noMacra(input),noMacra(word))) {
                     return <span key={index}><Link to={"./"+delChars(input,noMacra(word))} title={"delete "+word+" from "+input}>{word}</Link> </span>
                 }
                 else {
@@ -71,29 +72,30 @@ class Subwords extends Component {
         let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
         let result = null
         if (this.state.loading) {
-            result = (<p>Loading subwords&hellip; This can take a minute.</p>)
+            result = (<p>Loading subwords&hellip;&nbsp; This can take a minute.</p>)
         }
         else if (mappedWords.length) {
             result = (
                 <div>
-                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in {input}. You can click on a word (other than a perfect anagram) to delete its letters from {input}.</p>
+                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in {input}.&nbsp; You can click on a word (other than a perfect anagram) to delete its letters from {input}.</p>
                     <p>{mappedWords}</p>
                 </div> 
             )
         }
         else {
             result = (
-                <p>No words found! Try a different input, such as <Link to={"./"+randomCountdownQuestionExample} title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.</p>
+                <p>No subwords found!&nbsp; Try a different input, such as <Link to={"./"+randomCountdownQuestionExample} title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.</p>
             )
         }
         return (
             <div className="subwords">
                 <Title textBeforeTitle="Subwords" />
-                <h1>{input}</h1>
                 {/* <Navbar input={input} currentPage="Subwords"/> */}
                 <div>
                     <Search prefix="subwords/"/>
-                    {result}
+                    <div className="subwords-result">
+                        {result}
+                    </div>
                 </div>
             </div>
         )
