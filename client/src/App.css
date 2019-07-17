@@ -28,8 +28,8 @@
 
 .word,.about {
   background-image:  url('./images/FulmarFlying.png');
-  background-size: calc((80vh + 80vw)/2);
-  background-position: -30vw -30vh;
+  background-size: 75vh;
+  background-position: calc(50px + 5vw - 50vh) calc(10vw - 28vh - 20px);
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
