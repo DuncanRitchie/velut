@@ -1,21 +1,19 @@
 .about-text {
+  width: calc(100% - 18px);
   max-width: 720px;
   margin-left: auto;
-  margin-right: auto;
-  padding-left: auto;
-  padding-right: auto
+  margin-right: auto
 }
 
 .about-text h2 {
-  width: inherit;
   background-color: rgb(239, 225, 171);
   margin-bottom: 0;
-  padding: 3px 0
+  padding: 3px 6px
 }
 
 .about-text p {
-  max-width: 720px;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   padding: 6px;
   text-align: left;
   background: rgba(255,253,244,0.95)
