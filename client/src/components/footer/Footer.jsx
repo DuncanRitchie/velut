@@ -15,10 +15,10 @@ let Footer = (props) => {
                     : null}
                 {props.history.location.pathname==="/"
                     ? null 
-                    : <li><Link to="./" title="velut homepage">Home</Link>.</li> }
+                    : <li><Link to="/" title="velut homepage">Home</Link>.</li> }
                 {props.history.location.pathname==="/about"
                     ? null 
-                    : <li><Link to="./about" title="About velut">About velut</Link>.</li> }
+                    : <li><Link to="/about" title="About velut">About velut</Link>.</li> }
                 <li>
                     <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s website">My website</a>.
                 </li>

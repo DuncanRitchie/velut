@@ -74,7 +74,7 @@ class Search extends Component {
                     <Link
                      className="search-link" 
                      to={"/"+this.props.prefix+this.state.input} 
-                     title={this.state.sanitisedInput==="" ? "Please type a Latin word in the searchbar" : `Search for ${this.state.sanitisedInput}`}
+                     title={this.state.sanitisedInput==="" ? "Please type something in the searchbar" : `Search for ${this.state.sanitisedInput}`}
                      >Search!</Link>    
                 </div>
             )

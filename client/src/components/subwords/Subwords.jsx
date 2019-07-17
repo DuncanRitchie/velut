@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Title from '../title/Title'
 import Search from '../search/Search'
-// import Navbar from '../navbar/Navbar'
 import axios from "../../axios/axios"
 import noMacra from '../word/noMacra'
 import delChars from './delChars'
@@ -90,7 +89,6 @@ class Subwords extends Component {
         return (
             <div className="subwords">
                 <Title textBeforeTitle="Subwords" />
-                {/* <Navbar input={input} currentPage="Subwords"/> */}
                 <div>
                     <Search prefix="subwords/"/>
                     <div className="subwords-result">
