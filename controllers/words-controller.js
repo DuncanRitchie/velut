@@ -46,7 +46,16 @@ module.exports = {
 			.sort("-Length NoMacraLowerCase NoMacra Word")
 			.select({"Word": 1, "_id": 0})
 			.then(words=>res.json(words))
-			.catch(err => res.status(422).json(err))
+			.catch((err1) => {
+				// If an error occurs, it's probably because Mongo failed to sort.
+				// So we try again, without sort, but projecting AlphOrderNoMacra for sorting front-end.
+				Word.find({"Length": {"$lte": req.query.lte}})
+					.select({"Word": 1, "AlphOrderNoMacra": 1, "_id": 0})
+					.then(words=>res.json(words))
+					.catch(err2 => {
+						res.status(422).json(err2)
+					})
+			})
 	},
 	findById: function(req, res) {
 		Word.findById(req.params.id)
