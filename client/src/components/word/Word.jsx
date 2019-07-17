@@ -76,6 +76,13 @@ class Word extends Component {
     }
 
     fetchRelatedWords(wordObject) {
+        this.fetchRhymes(wordObject)
+        this.fetchAnagrams(wordObject)
+        this.fetchForms(wordObject)
+        this.fetchCognates(wordObject)
+    }
+
+    fetchRhymes(wordObject) {
         // Let's find the rhymes.
         let rhymeValue = wordObject.PerfectRhyme
         // console.log("Rhymes end in "+rhymeValue)
@@ -85,6 +92,9 @@ class Word extends Component {
             })
             this.setState({rhymes: rhymes})
         })
+    }
+
+    fetchAnagrams(wordObject) {
         // Let's find the anagrams.
         let anagramLetters = wordObject.AlphOrderNoMacra
         // console.log("Anagrams have the letters "+anagramLetters)
@@ -95,6 +105,9 @@ class Word extends Component {
             })
             this.setState({anagrams: anagrams})
         })
+    }
+
+    fetchForms (wordObject) {
         // Let's find the forms. An array is generated for each lemma.
         // We initialise state with an array of empty arrays.
         let emptyArrays = wordObject.LemmaArray.map((lemma,index)=>{
@@ -116,6 +129,9 @@ class Word extends Component {
             })
             return null
         })
+    }
+
+    fetchCognates(wordObject) {
         // Let's now prepare for finding cognates. To do this we need to fetch all the lemmata.
         // We initialise state with an array of empty objects.
         let emptyLemmaArray = wordObject.LemmaArray.map((lemmma,index)=>{
