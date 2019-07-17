@@ -1,14 +1,29 @@
 .footer {
     grid-area: footer;
-    padding: 6px;
     /* This is a bright turquoise */
     background: linear-gradient(to bottom, rgb(121, 192, 181), rgb(159, 243, 200))
 }
 
-a:link {
+ul {
+    width: calc(100vw - 12px);
+    max-width: 732px;
+    margin: 0 auto;
+    padding: 6px 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap
+}
+
+li {
+    padding: 0 6px
+}
+
+a:link,.go-back {
     font-weight: bold;
     color: #337ab7;
-    text-decoration: none
+    text-decoration: none;
+    cursor: pointer;
 }
 
 a:visited {
@@ -17,7 +32,7 @@ a:visited {
     text-decoration: none
 }
 
-a:hover {
+a:hover,.go-back:hover {
     color: #23527c;
     text-decoration: underline
 }  

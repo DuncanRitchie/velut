@@ -18,15 +18,14 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact component={Home} />
-            {/* <Route path="/lemma/:word" component={Lemmata} />
-            <Route path="/countdown/:word" component={Countdown} />
+            {/* <Route path="/countdown/:word" component={Countdown} />
             <Route path="/countdown" component={CountdownHome} />
             <Route path="/anagrams/:word" component={Anagrams} />
             <Route path="/anagrams" component={AnagramsHome} /> */}
             <Route path="/about" component={About} />
             <Route path="/:word" component={WordFromJson} />
           </Switch>
-          <Footer />
+          <Footer history={this.props.history}/>
         </Router>
       </div>
     );
