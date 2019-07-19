@@ -10,6 +10,10 @@ router
 	.get(wordsController.findWordsShorterThan)
 
 router
+	.route('/subwords/')
+	.get(wordsController.findSubwords)
+
+router
 	.route('/alph/')
 	.get(wordsController.findWordsAlphabetical)
 

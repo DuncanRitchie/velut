@@ -1,4 +1,5 @@
 const Word = require('../models/word-model')
+const findSubwordsFromMongo = require('./findSubwordsFromMongo')
 
 // Defining all methods and logic for routes
 
@@ -56,6 +57,19 @@ module.exports = {
 						res.status(422).json(err2)
 					})
 			})
+	},
+	findSubwords: function(req,res) {
+		let input = req.query.input
+		Word.find({"Length": {"$lte": input.length}})
+			.select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
+			.then(words=>{
+				let sortedSubwords = findSubwordsFromMongo(input,words)
+				let subwordsOnlyWord = sortedSubwords.map((object)=>{
+					return object.Word
+				})
+				return subwordsOnlyWord
+			})
+			.then(subwords=>{res.json(subwords)})
 	},
 	findById: function(req, res) {
 		Word.findById(req.params.id)
