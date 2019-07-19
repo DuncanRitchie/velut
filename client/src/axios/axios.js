@@ -5,10 +5,6 @@ export default {
     countWords: () => {
         return axios.get('/api/words/count')
     },
-	// Gets all words with Length less than or equal to the given number.
-	getWordsShorterThan: (number) => {
-		return axios.get('/api/words/lte/',{params: {lte: number}})
-	},
 	// Gets all words whose letters are all found in the input string.
 	getSubwords: (string) => {
 		return axios.get('/api/words/subwords/',{params: {input: string}})
@@ -45,4 +41,10 @@ export default {
 	getLemmaById: (id) => {
 		return axios.get('/api/lemmata/id/' + id)
 	}
+
+	
+	// Gets all words with Length less than or equal to the given number.
+	// ,getWordsShorterThan: (number) => {
+	// 	return axios.get('/api/words/lte/',{params: {lte: number}})
+	// }
 }

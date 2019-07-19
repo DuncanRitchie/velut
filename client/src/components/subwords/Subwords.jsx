@@ -65,9 +65,11 @@ class Subwords extends Component {
         let mappedWords = []
         if (this.state.subwords) {
             mappedWords = this.state.subwords.map((word,index)=>{
+                // If we can delete from the input all the letters of the word and still have letters left over, we render a Link.
                 if (delChars(noMacra(input),noMacra(word))) {
                     return <span key={index}><Link to={"./"+delChars(input,noMacra(word))} title={"delete "+word+" from "+input}>{word}</Link> </span>
                 }
+                // Otherwise the word is an anagram of input and we don't render a Link.
                 else {
                     return <span key={index}><strong>{word}</strong> </span>
                 }
@@ -81,7 +83,7 @@ class Subwords extends Component {
         else if (mappedWords.length) {
             result = (
                 <div>
-                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in {input}.&nbsp; You can click on a word (other than a perfect anagram) to delete its letters from {input}.</p>
+                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in {input}.&nbsp; You can click on a word (if it&rsquo;s not a perfect anagram) to delete its letters from {input}.</p>
                     <p>{mappedWords}</p>
                 </div> 
             )

@@ -5,9 +5,9 @@ router
 	.route('/count')
 	.get(wordsController.count)
 
-router
-	.route('/lte/')
-	.get(wordsController.findWordsShorterThan)
+// router
+// 	.route('/lte/')
+// 	.get(wordsController.findWordsShorterThan)
 
 router
 	.route('/subwords/')
