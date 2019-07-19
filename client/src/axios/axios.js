@@ -9,6 +9,10 @@ export default {
 	getWordsShorterThan: (number) => {
 		return axios.get('/api/words/lte/',{params: {lte: number}})
 	},
+	// Gets all words whose letters are all found in the input string.
+	getSubwords: (string) => {
+		return axios.get('/api/words/subwords/',{params: {input: string}})
+	},
 	// Gets one word only.
 	getOneWord: (query) => {
 		return axios.get('/api/words/one/',{params: query})

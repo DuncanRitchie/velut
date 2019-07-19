@@ -5,7 +5,6 @@ import Search from '../search/Search'
 import axios from "../../axios/axios"
 import noMacra from '../word/noMacra'
 import delChars from './delChars'
-import findSubwords from './findSubwords'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
 import './Subwords.css'
 
@@ -23,21 +22,27 @@ class Subwords extends Component {
 
     fetchWords(input) {
         this.setState({loading: true})
-        axios.getWordsShorterThan(input.length).then((data)=>{
-            let words = data.data
-            if (words[0]) {
-                if (words[0].Word) {
-                    let sortedWords = findSubwords(input, words)
-                    sortedWords = sortedWords.map((object)=>{return object.Word})
-                    this.setState({subwords: sortedWords})
-                    this.setState({loading: false})
-                }
-            }
-            else {
-                console.log(words)
-                this.setState({loading: false})
-            }
+        axios.getSubwords(noMacra(input).toLowerCase()).then((data)=>{
+            // data.data is a simple array of strings.
+            this.setState({subwords: data.data})
+            this.setState({loading: false})
         })
+        // This is the code that would run if we were using the /lte/ route.
+        // axios.getWordsShorterThan(input.length).then((data)=>{
+        //     let words = data.data
+        //     if (words[0]) {
+        //         if (words[0].Word) {
+        //             let sortedWords = findSubwords(input, words)
+        //             sortedWords = sortedWords.map((object)=>{return object.Word})
+        //             this.setState({subwords: sortedWords})
+        //             this.setState({loading: false})
+        //         }
+        //     }
+        //     else {
+        //         console.log(words)
+        //         this.setState({loading: false})
+        //     }
+        // })
                
     }
 
