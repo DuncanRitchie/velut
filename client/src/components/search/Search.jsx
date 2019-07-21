@@ -48,7 +48,13 @@ class Search extends Component {
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
-            this.setState({fromUrl: true})
+            const input = this.props.match.params.word
+            this.setState({fromUrl: true, input: input})
+            try {
+                this.setState({sanitisedInput: decodeURIComponent(input)})
+            } catch(err) {
+                this.setState({sanitisedInput: input})
+            }
         }
     }
 
