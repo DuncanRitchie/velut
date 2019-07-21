@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Link, Redirect} from "react-router-dom";
+import React, {Component} from "react"
+import {withRouter} from 'react-router-dom'
 import "./Search.css"
 
 class Search extends Component {
@@ -9,7 +9,6 @@ class Search extends Component {
             input: "",
             sanitisedInput: "",
             menu: "Perfect rhyme",
-            redirect: false,
             fromUrl: true
         }
     }
@@ -20,10 +19,13 @@ class Search extends Component {
         this.setState({input: input, fromUrl: false})
         // If special characters are input, we can get percent-encoding problems.
         // Let's correct for that.
-        if (input.search("%")>-1) {
+        try {
             input = decodeURIComponent(input)
+            this.setState({sanitisedInput: input})
+        } catch(err) {
+            input = e.target.value
+            this.setState({sanitisedInput: input})
         }
-        this.setState({sanitisedInput: input})
     }
 
     // This handles the menu value.
@@ -34,52 +36,70 @@ class Search extends Component {
     // This is to search when the enter key is pressed within the <input>.
     handleKeyUp = (e) => {
         if (e.keyCode === 13 ) {
-            this.setState({redirect: true, fromUrl: true})
+            this.search()
+        }
+    }
+
+    // search() simply pushes the new URL to the react-router history.
+    search = () => {
+        this.props.history.push(`/${this.props.prefix}${this.state.input}`)
+    }
+
+    componentDidUpdate(prevProps) {
+        const locationChanged = this.props.location !== prevProps.location
+        if (locationChanged) {
+            this.setState({fromUrl: true})
         }
     }
 
     render() {
-        // This gives warnings in the console because we're setting state within the render method. 
-        // We need to set state back to redirect:false to avoid infinite redirects.
-        if (this.state.redirect) {
-            this.setState({redirect: false})
-            return <Redirect to={{pathname: `/${this.props.prefix}${this.state.input}`, state: {input: window.location.pathname.replace("/",""), redirect: false}}} push={true}/>
+        // Let's work out what the value of the input should be.
+        let inputValue
+        if (this.state.fromUrl) {
+            if (this.props.match.params.word) {
+                inputValue = decodeURIComponent(this.props.match.params.word)
+            }
+            else {
+                inputValue = ""
+            }
         }
         else {
-            return (
-                <div className="search">
-                    {/* The box the word will be typed into */}
-                    <input 
-                     className="search-input"
-                     value={ this.state.fromUrl ? decodeURIComponent(window.location.pathname.replace("/lemma/","").replace("/subwords","").replace("/anagrams","").replace("/","")) : this.state.sanitisedInput }
-                     onChange={this.handleInput}
-                     onKeyUp={this.handleKeyUp}
-                     />
-                    {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
-                    {/* <div className="dropdown">
-                        <input
-                        className="menu-input"
-                        value={this.state.menu}
-                        onChange={this.handleMenu}
-                        />
-                        <div className="dropdown-content">
-                            <Link className="dropdown-link" to={"/perfect/"+this.state.input}>Perfect rhyme</Link>
-                            <Link className="dropdown-link" to={"/rvfc/"+this.state.input}>Rhyme vowels and final consonants</Link>
-                            <Link className="dropdown-link" to={"/ecclesperfect/"+this.state.input}>Ecclesiastical perfect rhyme</Link>
-                            <Link className="dropdown-link" to={"/consonyms/"+this.state.input}>All consonants (consonyms)</Link>
-                        </div>
-                    </div> */}
-                    <br/>
-                    {/* What would be a "submit" button in a normal form */}
-                    <Link
-                     className="search-link" 
-                     to={"/"+this.props.prefix+this.state.input} 
-                     title={this.state.sanitisedInput==="" ? "Please type something in the searchbar" : `Search for ${this.state.sanitisedInput}`}
-                     >Search!</Link>    
-                </div>
-            )
+            inputValue = this.state.sanitisedInput
         }
+        // Now we're ready to return JSX.
+        return (
+            <div className="search">
+                {/* The box the word will be typed into */}
+                <input 
+                    className="search-input"
+                    value={ inputValue }
+                    onChange={this.handleInput}
+                    onKeyUp={this.handleKeyUp}
+                    />
+                {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
+                {/* <div className="dropdown">
+                    <input
+                    className="menu-input"
+                    value={this.state.menu}
+                    onChange={this.handleMenu}
+                    />
+                    <div className="dropdown-content">
+                        <Link className="dropdown-link" to={"/perfect/"+this.state.input}>Perfect rhyme</Link>
+                        <Link className="dropdown-link" to={"/rvfc/"+this.state.input}>Rhyme vowels and final consonants</Link>
+                        <Link className="dropdown-link" to={"/ecclesperfect/"+this.state.input}>Ecclesiastical perfect rhyme</Link>
+                        <Link className="dropdown-link" to={"/consonyms/"+this.state.input}>All consonants (consonyms)</Link>
+                    </div>
+                </div> */}
+                <br/>
+                {/* What would be a "submit" button in a normal form */}
+                <span
+                    className="search-link" 
+                    onClick={this.search} 
+                    title={this.state.sanitisedInput==="" ? "Please type something in the searchbar" : `Search for ${this.state.sanitisedInput}`}
+                    >Search!</span>    
+            </div>
+        )
     }
 }
 
-export default Search
+export default withRouter(Search)
