@@ -57,7 +57,8 @@ const About = () => {
                 </p>
                 <p>
                     Typing diacritics is not necessary: as long as the letters are right (and in the right order), velut will find 
-                    a word that matches. You may find the list of anagrams useful. You can also specify diacritics 
+                    a word that matches. If there are several words spelt the same, they will be offered as &ldquo;other homographs&rdquo;. 
+                    You can also specify diacritics 
                     by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis; 
                     thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut">Tibe.ri-</Link> will be interpreted as <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut">Tib&eacute;rī</Link>.
                 </p>
@@ -81,9 +82,20 @@ const About = () => {
                 </p>
                 <p>
                     The &ldquo;lemma&rdquo; (plural &ldquo;lemmata&rdquo;) of a word is the form you would find in a dictionary as the headword. A
-                    given word may belong to multiple lemmata. Sometimes a word might even be multiple lemmata 
-                    — for example in English &ldquo;make&rdquo; can be a verb lemma or a noun lemma — so I&rsquo;ve chosen to distinguish 
-                    by use of additional information (such as part of speech) in square brackets.
+                    given word may belong to multiple lemmata.</p>
+                <p>
+                    Sometimes a word might even be multiple lemmata &mdash; for example in English &ldquo;make&rdquo; 
+                    can be a verb lemma or a noun lemma &mdash; so I&rsquo;ve chosen to put a piece of distinguishing 
+                    information in square brackets after the lemma. Thus:{" "}
+                    <Link to="/Caecilius" title="Caecilius on velut">Caecilius[prn]</Link>{" "}and{" "}
+                    <Link to="/Caecilius" title="Caecilius on velut">Caecilius[adj]</Link>{" "}are different parts of speech;{" "}
+                    <Link to="/be-ta" title="bēta on velut">bēta[bētae]</Link>{" "}and{" "}
+                    <Link to="/be-ta" title="bēta on velut">bēta[bēta]</Link>{" "}have different genitives (letter names are indeclinable!);{" "}
+                    <Link to="/sero-" title="serō on velut">serō[satum]</Link>,{" "}
+                    <Link to="/sero-" title="serō on velut">serō[sertum]</Link>,{" "}and{" "}
+                    <Link to="/sero-" title="serō on velut">serō[serātum]</Link>{" "}have different participles;{" "}
+                    <Link to="/iu-s" title="iūs on velut">iūs[>iūrō]</Link>{" "}and{" "}
+                    <Link to="/iu-s" title="iūs on velut">iūs[>iūsculum]</Link>{" "}have different etymological derivatives.
                 </p>
                 <p>
                     &ldquo;Cognates&rdquo; are lemmata that come from the same etymological origin.

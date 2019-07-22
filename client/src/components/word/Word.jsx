@@ -22,7 +22,7 @@ class Word extends Component {
             randomWord: "",
             foundWord: {},
             rhymes: [],
-            anagrams: [],
+            homographs: [],
             formsArrays: [],
             lemmata: [],
             cognatesArrays: []
@@ -77,33 +77,77 @@ class Word extends Component {
 
     fetchRelatedWords(wordObject) {
         this.fetchRhymes(wordObject)
-        this.fetchAnagrams(wordObject)
+        this.fetchHomographs(wordObject)
         this.fetchForms(wordObject)
         this.fetchCognates(wordObject)
     }
 
     fetchRhymes(wordObject) {
         // Let's find the rhymes.
-        let rhymeValue = wordObject.PerfectRhyme
+        let searchField // This is the MongoDB fieldname.
+        let axiosFuncName // This is one of "getWordsAlph", "getWordsClass", "getWordsEccles" depending on the sort wanted.
+        let searchFieldFull // This will be rendered onscreen as a heading.
+        // The route determines which type of rhyme will be wanted.
+        switch (this.props.match.path) {
+            case "/ecclesperfect/:word":
+                searchField = "EcclesPerfectRhyme"
+                axiosFuncName = "getWordsEccles"
+                searchFieldFull = "Perfect rhymes (ecclesiastical)"
+                break;
+            case "/vowels/:word":
+                searchField = "RhymeVowels"
+                axiosFuncName = "getWordsClass"
+                searchFieldFull = "Vowel rhymes (classical)"
+                break;
+            case "/vowelsend/:word":
+                searchField = "RhymeVowelsAndUltimaCoda"
+                axiosFuncName = "getWordsClass"
+                searchFieldFull = "Vowel-and-end-consonants rhymes (classical)"
+                break;
+            case "/ecclesvowels/:word":
+                searchField = "EcclesRhymeVowels"
+                axiosFuncName = "getWordsEccles"
+                searchFieldFull = "Vowel rhymes (ecclesiastical)"
+                break;
+            case "/consonyms/:word":
+                searchField = "AllConsonants"
+                axiosFuncName = "getWordsAlph"
+                searchFieldFull = "Consonyms"
+                break;
+            case "/anagrams/:word":
+                searchField = "AlphOrderNoMacra"
+                axiosFuncName = "getWordsAlph"
+                searchFieldFull = "Anagrams"
+                break;
+            case "/scansion/:word":
+                searchField = "Scansion"
+                axiosFuncName = "getWordsAlph"
+                searchFieldFull = "Words that scan the same"
+                break;
+            default:
+                searchField = "PerfectRhyme"
+                axiosFuncName = "getWordsClass"
+                searchFieldFull = "Perfect rhymes (classical)"
+        }
+        let query = {[searchField]: wordObject[searchField]}
         // console.log("Rhymes end in "+rhymeValue)
-        axios.getWordsClass({"PerfectRhyme": rhymeValue}).then((data)=>{
+        axios[axiosFuncName](query).then((data)=>{
             let rhymes = data.data.map((wordObject,index)=>{
                 return wordObject.Word
             })
-            this.setState({rhymes: rhymes})
+            this.setState({rhymes: rhymes, searchFieldFull: searchFieldFull})
         })
     }
 
-    fetchAnagrams(wordObject) {
-        // Let's find the anagrams.
-        let anagramLetters = wordObject.AlphOrderNoMacra
-        // console.log("Anagrams have the letters "+anagramLetters)
-        axios.getWordsAlph({"AlphOrderNoMacra": anagramLetters}).then((data)=>{
-            let anagrams = data.data
-            anagrams = anagrams.map((anagram,index)=>{
-                return anagram.Word
+    fetchHomographs(wordObject) {
+        // Let's find the homographs.
+        let noMacraLowerCase = wordObject.NoMacra.toLowerCase()
+        axios.getWordsAlph({"NoMacraLowerCase": noMacraLowerCase}).then((data)=>{
+            let homographs = data.data
+            homographs = homographs.map((homograph,index)=>{
+                return homograph.Word
             })
-            this.setState({anagrams: anagrams})
+            this.setState({homographs: homographs})
         })
     }
 
@@ -194,8 +238,8 @@ class Word extends Component {
     }
 
     getInput() {
-        // The word searched for comes from the window location.
-        let input = window.location.pathname.replace("/word","").replace("/","");
+        // The word searched for comes from the routing.
+        let input = this.props.match.params.word
         this.setState({input: input})
         document.title = input+" on velut"
         this.fetchFoundWord(input)
@@ -209,7 +253,7 @@ class Word extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.input !== window.location.pathname.replace("/word","").replace("/","")) {
+        if (this.state.input !== this.props.match.params.word) {
             this.getInput()
             if (!this.state.foundWord) {
                 this.fetchRandomWord()
@@ -222,9 +266,11 @@ class Word extends Component {
         let footName = ""
         let footNameArticle = "a"
         let mappedRhymes = []
-        let mappedAnagrams = []
+        let mappedHomographs = []
         let wordLemmata = []
         let mappedLemmata = []
+        // All Links to other velut words will begin with linkBase.
+        const linkBase = this.props.match.path.replace(":word","")
         // Let's do dictionaries.
         let plainInput = noMacra(sanitisedInput)
         let mappedDics = dictionaries.map((dic,index)=>{
@@ -255,14 +301,14 @@ class Word extends Component {
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
                 mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
-                    <span key={index}><Link to={"/"+macraToHyphens(rhyme)} title={rhyme}>{rhyme}</Link> </span>
+                    <span key={index}><Link to={linkBase+macraToHyphens(rhyme)} title={rhyme}>{rhyme}</Link> </span>
                 )})
             }
-            // Let's find the anagrams.
-            if (this.state.anagrams) {
-                // A react-router-dom Link is rendered for every anagram.
-                mappedAnagrams = this.state.anagrams.map((anagram,index)=>{return (
-                    <span key={index}><Link to={"/"+macraToHyphens(anagram)} title={anagram}>{anagram}</Link> </span>
+            // Let's find the homographs.
+            if (this.state.homographs) {
+                // A react-router-dom Link is rendered for every homograph.
+                mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
+                    <span key={index}> <Link to={linkBase+macraToHyphens(homograph)} title={homograph}>{homograph}</Link></span>
                 )})
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
@@ -279,7 +325,7 @@ class Word extends Component {
                             }
                             // Let's render a Link for every form.
                             mappedForms = forms.map((form,index)=>{
-                                return <span key={index}><Link title={form} to={"/"+macraToHyphens(form)}>{form}</Link> </span>
+                                return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)}>{form}</Link> </span>
                             })
                         }
                         // Let's do the cognates. They are stored in an array within the cognatesArray in state.
@@ -291,7 +337,7 @@ class Word extends Component {
                             }
                             // Let's render a Link for every cognate.
                             mappedCognates = cognates.map((cognate,index)=>{
-                                return <span key={index}><Link title={cognate} to={"/"+macraToHyphens(cognate).replace(/\[.*\]/g,"")}>{cognate}</Link> </span>
+                                return <span key={index}><Link title={cognate} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")}>{cognate}</Link> </span>
                             })
                         }
                         // If no etymology is given in the data, a message should appear in the cognates paragraph.
@@ -333,18 +379,17 @@ class Word extends Component {
                 <div className="word-info">
                     {foundWord ? (
                         <div>
+                            {mappedHomographs.length>1
+                                ? ( <p>
+                                    (Other homographs:{mappedHomographs})
+                                    </p> ) 
+                                : null}
                             <p>
                                 The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}
                                 {footName ? <span> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</span> : null }
                             </p>
                             <h2>
-                                Anagrams
-                            </h2>
-                            <p>
-                                {mappedAnagrams}
-                            </p>
-                            <h2>
-                                Perfect rhymes
+                                {this.state.searchFieldFull}
                             </h2>
                             <p>
                                 {mappedRhymes}
@@ -359,7 +404,7 @@ class Word extends Component {
                     )
                     : (
                         <p>
-                            Nothing was found. Try <Link to={"/"+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.
+                            Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.
                         </p>
                     )}
                 {mappedLemmata ? mappedLemmata : null}

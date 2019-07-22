@@ -17,7 +17,20 @@ module.exports = {
 	},
 	findOneWord: function(req, res) {
 		Word.findOne(req.query)
-			.select({"Word": 1, "NoMacra": 1, "PerfectRhyme": 1, "AlphOrderNoMacra": 1, "LemmaArray": 1, "Scansion": 1, "_id": 0})
+			.select({
+				"Word": 1, 
+				"NoMacra": 1, 
+				"PerfectRhyme": 1, 
+				"AlphOrderNoMacra": 1, 
+				"LemmaArray": 1, 
+				"Scansion": 1, 
+				"EcclesPerfectRhyme": 1, 
+				"RhymeVowels": 1, 
+				"RhymeVowelsAndUltimaCoda": 1, 
+				"EcclesRhymeVowels": 1, 
+				"AllConsonants": 1,
+				"_id": 0
+			})
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},

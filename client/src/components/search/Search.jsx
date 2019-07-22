@@ -8,7 +8,6 @@ class Search extends Component {
         this.state = {
             input: "",
             sanitisedInput: "",
-            menu: "Perfect rhyme",
             fromUrl: true
         }
     }
@@ -40,9 +39,16 @@ class Search extends Component {
         }
     }
 
-    // search() simply pushes the new URL to the react-router history.
+    // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
-        this.props.history.push(`/${this.props.prefix}${this.state.input}`)
+        let newUrl
+        if (this.props.match.params.word) {
+            newUrl = this.props.match.path.replace(":word",this.state.input)
+        }
+        else {
+            newUrl = this.props.match.path+"/"+this.state.input
+        }
+        this.props.history.push(newUrl)
     }
 
     componentDidUpdate(prevProps) {
