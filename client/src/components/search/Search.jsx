@@ -39,6 +39,19 @@ class Search extends Component {
         }
     }
 
+    componentDidMount() {
+        this.getInput()
+        this.getType()
+    }
+
+    getInput() {
+
+    }
+
+    getType() {
+        
+    }
+
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
         let newUrl = ""

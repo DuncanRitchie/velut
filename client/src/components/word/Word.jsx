@@ -10,6 +10,7 @@ import macraToHyphens from "./macraToHyphens";
 import hyphensToMacra from "./hyphensToMacra";
 import noMacra from "./noMacra";
 // import Navbar from "../navbar/Navbar"
+import routes from "../../routes.json"
 import './Word.css'
 
 class Word extends Component {
@@ -84,50 +85,18 @@ class Word extends Component {
 
     fetchRhymes(wordObject) {
         // Let's find the rhymes.
-        let searchField // This is the MongoDB fieldname.
-        let axiosFuncName // This is one of "getWordsAlph", "getWordsClass", "getWordsEccles" depending on the sort wanted.
-        let searchFieldFull // This will be rendered onscreen as a heading.
+        // We will be using the following three values if route-specific values are not found in routes.json.
+        let searchField = "PerfectRhyme" // This is the MongoDB fieldname.
+        let axiosFuncName = "getWordsClass" // This is one of "getWordsAlph", "getWordsClass", "getWordsEccles" depending on the sort wanted.
+        let searchFieldFull = "Perfect rhymes (classical)" // This will be rendered onscreen as a heading.
         // The route determines which type of rhyme will be wanted.
-        switch (this.props.match.path) {
-            case "/ecclesperfect/:word":
-                searchField = "EcclesPerfectRhyme"
-                axiosFuncName = "getWordsEccles"
-                searchFieldFull = "Perfect rhymes (ecclesiastical)"
-                break;
-            case "/vowels/:word":
-                searchField = "RhymeVowels"
-                axiosFuncName = "getWordsClass"
-                searchFieldFull = "Vowel rhymes (classical)"
-                break;
-            case "/vowelsend/:word":
-                searchField = "RhymeVowelsAndUltimaCoda"
-                axiosFuncName = "getWordsClass"
-                searchFieldFull = "Vowel-and-end-consonants rhymes (classical)"
-                break;
-            case "/ecclesvowels/:word":
-                searchField = "EcclesRhymeVowels"
-                axiosFuncName = "getWordsEccles"
-                searchFieldFull = "Vowel rhymes (ecclesiastical)"
-                break;
-            case "/consonyms/:word":
-                searchField = "AllConsonants"
-                axiosFuncName = "getWordsAlph"
-                searchFieldFull = "Consonyms"
-                break;
-            case "/anagrams/:word":
-                searchField = "AlphOrderNoMacra"
-                axiosFuncName = "getWordsAlph"
-                searchFieldFull = "Anagrams"
-                break;
-            case "/scansion/:word":
-                searchField = "Scansion"
-                axiosFuncName = "getWordsAlph"
-                searchFieldFull = "Words that scan the same"
-                break;
-            default:
-                searchField = "PerfectRhyme"
-                axiosFuncName = "getWordsClass"
-                searchFieldFull = "Perfect rhymes (classical)"
+        // routes is routes.json, which matches routes to searchField, axiosFuncName, and searchFieldFull.
+        // Let's retrieve the values we want.
+        const routeObject = routes.find(route=>{return (this.props.match.path === route.route+"/:word")})
+        if (routeObject) {
+            searchField = routeObject.searchField
+            axiosFuncName = routeObject.axiosFuncName
+            searchFieldFull = routeObject.searchFieldFull
         }
         let query = {[searchField]: wordObject[searchField]}
         // console.log("Rhymes end in "+rhymeValue)
