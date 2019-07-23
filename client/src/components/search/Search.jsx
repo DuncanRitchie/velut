@@ -21,7 +21,7 @@ class Search extends Component {
         // If special characters are input, we can get percent-encoding problems.
         // Let's correct for that.
         try {
-            input = decodeURIComponent(input)
+            input = decodeURIComponent(input) || ""
             this.setState({sanitisedInput: input})
         } catch(err) {
             input = e.target.value
@@ -52,8 +52,12 @@ class Search extends Component {
         // if (window.location.port) {
         //     newUrl += ":"+window.location.port
         // }
-        newUrl += this.state.type+"/"+this.state.input
-        if(this.state.input!==undefined) {this.props.history.push(newUrl)}
+        let input = this.state.input
+        if(input===undefined) {
+            input = ""
+        }
+        newUrl += this.state.type+"/"+input
+        this.props.history.push(newUrl)
     }
 
     componentDidUpdate(prevProps) {
@@ -87,7 +91,7 @@ class Search extends Component {
             }
         }
         // Let's work out what the dropdown-select should be.
-        let selectedRouteObject = routes.find(route=>{return (route.route===this.state.type)})
+        let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type)})
         let dropdownSelect
         if (selectedRouteObject) {
             dropdownSelect = selectedRouteObject.searchFieldFull
