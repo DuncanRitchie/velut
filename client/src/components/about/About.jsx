@@ -143,7 +143,7 @@ const About = () => {
                     determining rhymes.
                 </p>
                 <p>
-                    And I will continue to add words to the data. I have over 93,000 words belonging to 
+                    And I will continue to add words to the data. I have over 94,000 words belonging to 
                     over 11,000 lemmata, but there are plenty more I can add!
                 </p>
                 <Search prefix=""/>

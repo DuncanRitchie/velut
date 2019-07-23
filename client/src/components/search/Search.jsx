@@ -41,12 +41,16 @@ class Search extends Component {
 
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
-        let newUrl
+        let newUrl = ""
+        // newUrl = window.location.protocol+"//"+window.location.hostname
+        // if (window.location.port) {
+        //     newUrl += ":"+window.location.port
+        // }
         if (this.props.match.params.word) {
-            newUrl = this.props.match.path.replace(":word",this.state.input)
+            newUrl += this.props.match.path.replace(":word",this.state.input)
         }
         else {
-            newUrl = this.props.match.path+"/"+this.state.input
+            newUrl += this.props.match.path+this.state.input
         }
         this.props.history.push(newUrl)
     }
