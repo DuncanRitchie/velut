@@ -41,34 +41,46 @@ class Search extends Component {
         }
     }
 
-    handleType = (searchField) => {
-        this.setState({type: searchField})
+    handleType = (route) => {
+        this.setState({type: route})
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
-        let newUrl = ""
+        let newUrl = "../../"
         // newUrl = window.location.protocol+"//"+window.location.hostname
         // if (window.location.port) {
         //     newUrl += ":"+window.location.port
         // }
+        // newUrl += "/"
+        let type = this.state.type
+        if(type===undefined) {
+            type = ""
+        }
         let input = this.state.input
         if(input===undefined) {
             input = ""
         }
-        newUrl += this.state.type+"/"+input
+        newUrl += type+"/"+input
         this.props.history.push(newUrl)
+    }
+
+    componentDidMount() {
+        try {
+            this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
+        } catch(err) {
+            this.setState({sanitisedInput: this.state.input})
+        }
     }
 
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
             const input = this.props.match.params.word
-            this.setState({fromUrl: true, input: input})
+            this.setState({fromUrl: true, input: input, sanitisedInput: input})
             try {
                 this.setState({sanitisedInput: decodeURIComponent(input)})
             } catch(err) {
-                this.setState({sanitisedInput: input})
             }
         }
     }
@@ -91,7 +103,7 @@ class Search extends Component {
             }
         }
         // Let's work out what the dropdown-select should be.
-        let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type)})
+        let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type || route.route===this.state.type)})
         let dropdownSelect
         if (selectedRouteObject) {
             dropdownSelect = selectedRouteObject.searchFieldFull
