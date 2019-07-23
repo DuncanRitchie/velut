@@ -21,6 +21,7 @@ const wordSchema = new Schema({
     "EcclesPhonetic": String,
     "EcclesVowels": String,
     "EcclesRhymeVowels": String,
+    "EcclesRhymeVowelsAndUltimaCoda": String,
     "EcclesPerfectRhyme": String,
     "EcclesSort": String,
     "IsLemma": Boolean,
@@ -29,7 +30,6 @@ const wordSchema = new Schema({
     "NoMacra": String,
     "AlphOrderNoMacra": String,
     "NoMacraLowerCase": String,
-    "KeypadCode": String,
     "Sort": String
 });
 
