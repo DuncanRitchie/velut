@@ -1,14 +1,16 @@
 import React, {Component} from "react"
 import {withRouter} from 'react-router-dom'
+import routes from '../../routes.json'
 import "./Search.css"
 
 class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: "",
+            input: this.props.match.params.word || "",
             sanitisedInput: "",
-            fromUrl: true
+            fromUrl: true,
+            type: this.props.match.params.type || ""
         }
     }
 
@@ -39,17 +41,8 @@ class Search extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getInput()
-        this.getType()
-    }
-
-    getInput() {
-
-    }
-
-    getType() {
-        
+    handleType = (searchField) => {
+        this.setState({type: searchField})
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
@@ -59,13 +52,8 @@ class Search extends Component {
         // if (window.location.port) {
         //     newUrl += ":"+window.location.port
         // }
-        if (this.props.match.params.word) {
-            newUrl += this.props.match.path.replace(":word",this.state.input)
-        }
-        else {
-            newUrl += this.props.match.path+this.state.input
-        }
-        this.props.history.push(newUrl)
+        newUrl += this.state.type+"/"+this.state.input
+        if(this.state.input!==undefined) {this.props.history.push(newUrl)}
     }
 
     componentDidUpdate(prevProps) {
@@ -93,39 +81,50 @@ class Search extends Component {
             }
         }
         else {
-            inputValue = this.state.sanitisedInput
+            inputValue = ""
+            if (this.state.sanitisedInput) {
+                inputValue = this.state.sanitisedInput
+            }
         }
+        // Let's work out what the dropdown-select should be.
+        let selectedRouteObject = routes.find(route=>{return (route.route===this.state.type)})
+        let dropdownSelect
+        if (selectedRouteObject) {
+            dropdownSelect = selectedRouteObject.searchFieldFull
+        }
+        // Let's create the dropdown menu items.
+        let dropdownContent = routes.map((route,i)=>{
+            return <span key={i} className="dropdown-link" onClick={()=>{this.handleType(route.route)}}>{route.searchFieldFull}</span>
+        })
         // Now we're ready to return JSX.
         return (
             <div className="search">
                 {/* The box the word will be typed into */}
                 <input 
                     className="search-input"
-                    value={ inputValue }
+                    value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
                     />
-                {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
-                {/* <div className="dropdown">
-                    <input
-                    className="menu-input"
-                    value={this.state.menu}
-                    onChange={this.handleMenu}
-                    />
-                    <div className="dropdown-content">
-                        <Link className="dropdown-link" to={"/perfect/"+this.state.input}>Perfect rhyme</Link>
-                        <Link className="dropdown-link" to={"/rvfc/"+this.state.input}>Rhyme vowels and final consonants</Link>
-                        <Link className="dropdown-link" to={"/ecclesperfect/"+this.state.input}>Ecclesiastical perfect rhyme</Link>
-                        <Link className="dropdown-link" to={"/consonyms/"+this.state.input}>All consonants (consonyms)</Link>
-                    </div>
-                </div> */}
+             
                 <br/>
                 {/* What would be a "submit" button in a normal form */}
                 <span
                     className="search-link" 
                     onClick={this.search} 
                     title={this.state.sanitisedInput==="" ? "Please type something in the searchbar" : `Search for ${this.state.sanitisedInput}`}
-                    >Search!</span>    
+                    >Search!
+                </span>
+                <br/>
+                {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
+                <div className="dropdown">
+                    <p className="dropdown-selected">
+                        {dropdownSelect}
+                    </p>
+                    <div className="dropdown-content">
+                        {dropdownContent}
+                    </div>
+                </div>
             </div>
         )
     }

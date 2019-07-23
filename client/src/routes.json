@@ -1,9 +1,9 @@
 [
     {
-        "route": "/ecclesperfect",
-        "searchField": "EcclesPerfectRhyme",
-        "axiosFuncName": "getWordsEccles",
-        "searchFieldFull": "Perfect rhymes (ecclesiastical)"
+        "route": "",
+        "searchField": "PerfectRhyme",
+        "axiosFuncName": "getWordsClass",
+        "searchFieldFull": "Perfect rhymes (classical)"
     },{
         "route": "/vowels",
         "searchField": "RhymeVowels",
@@ -13,12 +13,22 @@
         "route": "/vowelsend",
         "searchField": "RhymeVowelsAndUltimaCoda",
         "axiosFuncName": "getWordsClass",
-        "searchFieldFull": "Vowel-and-end-consonants rhymes (classical)"
+        "searchFieldFull": "Vowel-and-end-consonant rhymes (classical)"
+    },{
+        "route": "/ecclesperfect",
+        "searchField": "EcclesPerfectRhyme",
+        "axiosFuncName": "getWordsEccles",
+        "searchFieldFull": "Perfect rhymes (ecclesiastical)"
     },{
         "route": "/ecclesvowels",
         "searchField": "EcclesRhymeVowels",
         "axiosFuncName": "getWordsEccles",
         "searchFieldFull": "Vowel rhymes (ecclesiastical)"
+    },{
+        "route": "/ecclesvowelsend",
+        "searchField": "EcclesRhymeVowelsAndUltimaCoda",
+        "axiosFuncName": "getWordsEccles",
+        "searchFieldFull": "Vowel-and-end-consonant rhymes (ecclesiastical)"
     },{
         "route": "/consonyms",
         "searchField": "AllConsonants",
@@ -34,10 +44,5 @@
         "searchField": "Scansion",
         "axiosFuncName": "getWordsAlph",
         "searchFieldFull": "Words that scan the same"
-    },{
-        "route": "/perfect",
-        "searchField": "PerfectRhyme",
-        "axiosFuncName": "getWordsClass",
-        "searchFieldFull": "Perfect rhymes (classical)"
     }
 ]

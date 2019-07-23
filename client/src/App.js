@@ -19,14 +19,9 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/subwords/:word" component={Subwords} />
             <Route path="/subwords" component={SubwordsHome} />
-            <Route path="/perfect/:word" component={Word} />
-            <Route path="/vowels/:word" component={Word} />
-            <Route path="/vowelsend/:word" component={Word} />
-            <Route path="/ecclesperfect/:word" component={Word} />
-            <Route path="/ecclesvowels/:word" component={Word} />
-            <Route path="/consonyms/:word" component={Word} />
-            <Route path="/anagrams/:word" component={Word} />
-            <Route path="/scansion/:word" component={Word} />
+            {/* <Route path="/anagramphrases/:word" component={Anagrams} />
+            <Route path="/anagramphrases" component={AnagramsHome} /> */}
+            <Route path="/:type/:word" component={Word} />
             <Route path="/perfect" component={Home} />
             <Route path="/vowels" component={Home} />
             <Route path="/vowelsend" component={Home} />
@@ -35,8 +30,6 @@ class App extends Component {
             <Route path="/consonyms" component={Home} />
             <Route path="/anagrams" component={Home} />
             <Route path="/scansion" component={Home} />
-            {/* <Route path="/anagramphrases/:word" component={Anagrams} />
-            <Route path="/anagramphrases" component={AnagramsHome} /> */}
             <Route path="/about" component={About} />
             <Route path="/:word" component={Word} />
           </Switch>

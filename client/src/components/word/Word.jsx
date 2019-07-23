@@ -22,6 +22,7 @@ class Word extends Component {
             totalWordsCount: null,
             randomWord: "",
             foundWord: {},
+            type: this.props.match.params.type || "",
             rhymes: [],
             homographs: [],
             formsArrays: [],
@@ -92,7 +93,7 @@ class Word extends Component {
         // The route determines which type of rhyme will be wanted.
         // routes is routes.json, which matches routes to searchField, axiosFuncName, and searchFieldFull.
         // Let's retrieve the values we want.
-        const routeObject = routes.find(route=>{return (this.props.match.path === route.route+"/:word")})
+        const routeObject = routes.find(route=>{return ("/"+this.props.match.params.type === route.route)})
         if (routeObject) {
             searchField = routeObject.searchField
             axiosFuncName = routeObject.axiosFuncName
@@ -221,11 +222,20 @@ class Word extends Component {
         this.fetchRandomWord()
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
+        const type = this.props.match.params.type
         if (this.state.input !== this.props.match.params.word) {
             this.getInput()
             if (!this.state.foundWord) {
                 this.fetchRandomWord()
+            }
+        }
+        else if (prevProps.match.params.type !== type) {
+            console.log("type is now "+type)
+            this.setState({type: type})
+            if (this.state.foundWord) {
+                console.log("Fetching new rhymes!")
+                this.fetchRhymes(this.state.foundWord)
             }
         }
     }
@@ -239,7 +249,7 @@ class Word extends Component {
         let wordLemmata = []
         let mappedLemmata = []
         // All Links to other velut words will begin with linkBase.
-        const linkBase = this.props.match.path.replace(":word","")
+        const linkBase = this.props.match.path.replace(":word","").replace(":type",this.props.match.params.type)
         // Let's do dictionaries.
         let plainInput = noMacra(sanitisedInput)
         let mappedDics = dictionaries.map((dic,index)=>{
