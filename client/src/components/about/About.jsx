@@ -115,7 +115,8 @@ const About = () => {
                 <h2>Consonyms, anagrams, and subwords</h2>
                 <p>
                     &ldquo;<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>&rdquo; are words 
-                    whose consonants are the same and in the same order.
+                    whose consonants (i.e. bcdfghklmnpqrstvxz) are the same and in the same order. (velut currently 
+                    doesn&rsquo;t find consonyms for words that have no consonants.)
                 </p>
                 <p>
                     &ldquo;<Link to="/anagrams" title="Search for anagrams on velut">Anagrams</Link>&rdquo; are words 
@@ -175,6 +176,9 @@ const About = () => {
                     which your university or library might be able to furnish you with.)
                 </p>
                 <h2>Future plans</h2>
+                <p>
+                    Searching for consonyms doesn&rsquo;t work on words with no consonants. I will fix this.
+                </p>
                 <p>
                     I recently discovered that none of Cleopatra, Neptūnus, Propertius, Styx, Sulla, and Vulcānus are in velut.
                     (At least at the time of writing this!) These are just some of the most egregious omissions. 
