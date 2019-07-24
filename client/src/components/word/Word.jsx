@@ -231,10 +231,8 @@ class Word extends Component {
             }
         }
         else if (prevProps.match.params.type !== type) {
-            console.log("type is now "+type)
             this.setState({type: type})
             if (this.state.foundWord) {
-                console.log("Fetching new rhymes!")
                 this.fetchRhymes(this.state.foundWord)
             }
         }
