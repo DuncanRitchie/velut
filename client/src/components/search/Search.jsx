@@ -69,6 +69,7 @@ class Search extends Component {
             input = ""
         }
         newUrl += type+"/"+input
+        this.setState({dropdownOpen: false})
         this.props.history.push(newUrl)
     }
 
