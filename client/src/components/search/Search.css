@@ -43,14 +43,20 @@ input {
     padding: 3px 6px;
 }
 
-.dropdown-content {
+.dropdown-content-none,.dropdown-content-open,.dropdown-content-close {
     width: 100%;
     margin: -3px -6px;
     padding: 3px 6px;
     cursor: pointer;
 }
 
-.dropdown-content-closed {
+/* This is how dropdown-content starts out */
+.dropdown-content-none {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    height: 0
+}
+
+.dropdown-content-close {
     animation-name: dropdown-animation-close;
     animation-duration: 1.5s;
     animation-timing-function: linear;
@@ -99,7 +105,6 @@ input {
 }
 
 .dropdown-item {
-    /* font-weight: bold; */
     color: #1c4e50;
     text-decoration: none;
     background: linear-gradient(to bottom right, rgb(199, 228, 230), rgb(147, 202, 204));

@@ -5,6 +5,7 @@ import Search from "../search/Search"
 import './About.css'
 
 const About = () => {
+    document.title = "About velut"
     return (
         <div className="about">
             <Title textBeforeTitle="About" />

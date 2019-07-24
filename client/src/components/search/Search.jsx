@@ -11,7 +11,7 @@ class Search extends Component {
             sanitisedInput: "",
             fromUrl: true,
             type: this.props.match.params.type || "",
-            dropdownOpen: false
+            dropdownAnimationClass: "dropdown-content-none"
         }
     }
 
@@ -43,13 +43,13 @@ class Search extends Component {
     }
 
     // This toggles whether the dropdown menu is visible.
-    handleDropdown = (bool) => {
-        this.setState({dropdownOpen: bool})
+    handleDropdown = (animationClass) => {
+        this.setState({dropdownAnimationClass: animationClass})
     }
 
     // This sets the selected route to the menu item clicked and hides the dropdown menu again.
     handleType = (route) => {
-        this.setState({type: route, dropdownOpen: false})
+        this.setState({type: route, dropdownAnimationClass: "dropdown-content-close"})
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
@@ -69,7 +69,7 @@ class Search extends Component {
             input = ""
         }
         newUrl += type+"/"+input
-        this.setState({dropdownOpen: false})
+        this.setState({dropdownAnimationClass: "dropdown-content-none"})
         this.props.history.push(newUrl)
     }
 
@@ -145,11 +145,11 @@ class Search extends Component {
                 {this.props.match.path.substr(0,9)==="/subwords"
                  ? null
                   : ( 
-                    <div className="dropdown" onMouseLeave={()=>{this.handleDropdown(false)}}>
-                        <p className="dropdown-select" onMouseOver={()=>this.handleDropdown(true)} onClick={()=>this.handleDropdown(true)}>
+                    <div className="dropdown" onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}}>
+                        <p className="dropdown-select" onMouseOver={()=>this.handleDropdown("dropdown-content-open")} onClick={()=>this.handleDropdown("dropdown-content-open")}>
                             {dropdownSelect}
                         </p>
-                        <ul className={this.state.dropdownOpen ? "dropdown-content dropdown-content-open" : "dropdown-content dropdown-content-closed"}>
+                        <ul className={this.state.dropdownAnimationClass}>
                             {dropdownContent}
                         </ul>
                     </div>
