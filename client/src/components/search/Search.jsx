@@ -10,7 +10,8 @@ class Search extends Component {
             input: this.props.match.params.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.match.params.type || ""
+            type: this.props.match.params.type || "",
+            dropdownOpen: false
         }
     }
 
@@ -41,8 +42,14 @@ class Search extends Component {
         }
     }
 
+    // This toggles whether the dropdown menu is visible.
+    handleDropdown = () => {
+        this.setState({dropdownOpen: !this.state.dropdownOpen})
+    }
+
+    // This sets the selected route to the menu item clicked and hides the dropdown menu again.
     handleType = (route) => {
-        this.setState({type: route})
+        this.setState({type: route, dropdownOpen: false})
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
@@ -128,18 +135,18 @@ class Search extends Component {
                 <span
                     className="search-link" 
                     onClick={this.search} 
-                    title={this.state.sanitisedInput==="" ? "Please type something in the searchbar" : `Search for ${this.state.sanitisedInput}`}
+                    title={this.state.sanitisedInput ? `Search for ${this.state.sanitisedInput}` : "Please type something in the searchbar"}
                     >Search!
                 </span>
                 <br/>
                 {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
                 <div className="dropdown">
-                    <p className="dropdown-selected">
+                    <p className="dropdown-selected" onClick={this.handleDropdown}>
                         {dropdownSelect}
                     </p>
-                    <div className="dropdown-content">
+                    {this.state.dropdownOpen ? (<div className="dropdown-content">
                         {dropdownContent}
-                    </div>
+                    </div>) : null}
                 </div>
             </div>
         )
