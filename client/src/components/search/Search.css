@@ -50,6 +50,54 @@ input {
     cursor: pointer;
 }
 
+.dropdown-content-closed {
+    animation-name: dropdown-animation-close;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards
+}
+
+.dropdown-content-open {
+    animation-name: dropdown-animation-open;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards
+}
+
+@keyframes dropdown-animation-close {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        height: 180px
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        height: 0
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        height: 0
+    }
+}
+
+@keyframes dropdown-animation-open {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        height: 0
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%);
+        height: 135px
+    }
+    99% {
+        clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);
+        height: 180px
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        height: initial
+    }
+}
+
 .dropdown-item {
     /* font-weight: bold; */
     color: #1c4e50;
@@ -61,5 +109,5 @@ input {
 
 .dropdown-item:hover {
     color: black;
-    background: rgb(255, 253, 244)
+    background: rgb(211, 236, 238)
 }  

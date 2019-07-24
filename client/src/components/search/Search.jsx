@@ -149,9 +149,9 @@ class Search extends Component {
                         <p className="dropdown-select" onMouseOver={()=>this.handleDropdown(true)} onClick={()=>this.handleDropdown(true)}>
                             {dropdownSelect}
                         </p>
-                        {this.state.dropdownOpen ? (<ul className="dropdown-content">
+                        <ul className={this.state.dropdownOpen ? "dropdown-content dropdown-content-open" : "dropdown-content dropdown-content-closed"}>
                             {dropdownContent}
-                        </ul>) : null}
+                        </ul>
                     </div>
                 )}
                 
