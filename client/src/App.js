@@ -27,6 +27,7 @@ class App extends Component {
             <Route path="/vowelsend" component={Home} />
             <Route path="/ecclesperfect" component={Home} />
             <Route path="/ecclesvowels" component={Home} />
+            <Route path="/ecclesvowelsend" component={Home} />
             <Route path="/consonyms" component={Home} />
             <Route path="/anagrams" component={Home} />
             <Route path="/scansion" component={Home} />
