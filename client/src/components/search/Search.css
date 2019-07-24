@@ -4,7 +4,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 12px;
-    margin-bottom: 48px
+    margin-bottom: 0
 }
 
 input {
@@ -34,7 +34,8 @@ input {
 .dropdown {
     font-size: 15px;
     text-align: left;
-    width: 50%
+    width: 50%;
+    margin: 0
 }
 
 .dropdown-select {
@@ -45,14 +46,15 @@ input {
 
 .dropdown-content-none,.dropdown-content-open,.dropdown-content-close {
     width: 100%;
-    margin: -3px -6px;
-    padding: 3px 6px;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
 }
 
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transform: translateY(-500px);
     height: 0
 }
 
@@ -73,14 +75,22 @@ input {
 @keyframes dropdown-animation-close {
     0% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
         height: 180px
     }
     50% {
         clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        transform: translateY(0);
+        height: 0
+    }
+    99% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translateY(0);
         height: 0
     }
     100% {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translateY(-500px);
         height: 0
     }
 }
@@ -88,18 +98,27 @@ input {
 @keyframes dropdown-animation-open {
     0% {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translateY(-500px);
+        height: 0
+    }
+    1% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translateY(0);
         height: 0
     }
     75% {
         clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%);
+        transform: translateY(0);
         height: 135px
     }
     99% {
         clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);
+        transform: translateY(0);
         height: 180px
     }
     100% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
         height: initial
     }
 }

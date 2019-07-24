@@ -142,7 +142,7 @@ class Search extends Component {
                 <br/>
                 {/* The menu to change the rhyme type displayed
                 Only appears if /subwords is not in the path. */}
-                {this.props.match.path.substr(0,9)==="/subwords"
+                {this.props.match.path.substr(0,9)==="/subwords" || this.props.match.path==="/about"
                  ? null
                   : ( 
                     <div className="dropdown" onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}}>
