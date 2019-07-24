@@ -30,3 +30,36 @@ input {
 .search-link:hover {
     background-color: rgb(184, 248, 215)
 }
+
+.dropdown {
+    font-size: 15px;
+    text-align: left;
+    width: 50%
+}
+
+.dropdown-select {
+    background-color: rgb(156, 218, 211);
+    margin-bottom: 0;
+    padding: 3px 6px;
+}
+
+.dropdown-content {
+    width: 100%;
+    margin: -3px -6px;
+    padding: 3px 6px;
+    cursor: pointer;
+}
+
+.dropdown-item {
+    /* font-weight: bold; */
+    color: #1c4e50;
+    text-decoration: none;
+    background: linear-gradient(to bottom right, rgb(199, 228, 230), rgb(147, 202, 204));
+    width: inherit;
+    margin: 0
+}
+
+.dropdown-item:hover {
+    color: black;
+    background: rgb(255, 253, 244)
+}  

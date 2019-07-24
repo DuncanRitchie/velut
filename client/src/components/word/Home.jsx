@@ -9,7 +9,7 @@ let Home = () => {
         <div className="home">
             <Title />
             {/* <Navbar input="" currentPage="word"/> */}
-            <p className="home-rubric">Search for a Latin word using the searchbar below!</p>
+            <p className="home-rubric">Search for a Latin word using the searchbar and menu below!</p>
             <Search prefix="" />
         </div>
     )

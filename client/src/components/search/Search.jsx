@@ -43,8 +43,8 @@ class Search extends Component {
     }
 
     // This toggles whether the dropdown menu is visible.
-    handleDropdown = () => {
-        this.setState({dropdownOpen: !this.state.dropdownOpen})
+    handleDropdown = (bool) => {
+        this.setState({dropdownOpen: bool})
     }
 
     // This sets the selected route to the menu item clicked and hides the dropdown menu again.
@@ -118,7 +118,7 @@ class Search extends Component {
         }
         // Let's create the dropdown menu items.
         let dropdownContent = routes.map((route,i)=>{
-            return <span key={i} className="dropdown-link" onClick={()=>{this.handleType(route.route)}}>{route.searchFieldFull}</span>
+            return <li key={i} className="dropdown-item" onClick={()=>{this.handleType(route.route)}}>{route.searchFieldFull}</li>
         })
         // Now we're ready to return JSX.
         return (
@@ -140,15 +140,21 @@ class Search extends Component {
                     >Search!
                 </span>
                 <br/>
-                {/* The menu to change the rhyme type displayed NOT HAVING AN EFFECT YET*/}
-                <div className="dropdown">
-                    <p className="dropdown-selected" onClick={this.handleDropdown}>
-                        {dropdownSelect}
-                    </p>
-                    {this.state.dropdownOpen ? (<div className="dropdown-content">
-                        {dropdownContent}
-                    </div>) : null}
-                </div>
+                {/* The menu to change the rhyme type displayed
+                Only appears if /subwords is not in the path. */}
+                {this.props.match.path.substr(0,9)==="/subwords"
+                 ? null
+                  : ( 
+                    <div className="dropdown" onMouseLeave={()=>{this.handleDropdown(false)}}>
+                        <p className="dropdown-select" onMouseOver={()=>this.handleDropdown(true)} onClick={()=>this.handleDropdown(true)}>
+                            {dropdownSelect}
+                        </p>
+                        {this.state.dropdownOpen ? (<ul className="dropdown-content">
+                            {dropdownContent}
+                        </ul>) : null}
+                    </div>
+                )}
+                
             </div>
         )
     }
