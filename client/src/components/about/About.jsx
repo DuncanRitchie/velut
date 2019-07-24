@@ -62,11 +62,12 @@ const About = () => {
                     by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis; 
                     thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut">Tibe.ri-</Link> will be interpreted as <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut">Tib&eacute;rī</Link>.
                 </p>
-                <h2>Terminology</h2>
+                <h2>Scansion</h2>
                 <p>
                     &ldquo;Scansion&rdquo; refers to whether the syllables of a word are classed as &ldquo;long&rdquo; or &ldquo;short&rdquo; in classical Latin poetry.
                     Long syllables (denoted by a macron ¯) theoretically take twice as long to pronounce as short syllables 
-                    (denoted by a breve ˘), and the rhythm of ancient poetry comes from the arrangement of long and short syllables.
+                    (denoted by a breve ˘), and the rhythm of ancient Latin (or Greek or Sanskrit) poetry comes from the arrangement 
+                    of long and short syllables. Such poetry can be called quantitative verse.
                     I assume that final vowels are not elided and I assume that any syllable that could be short is short.
                 </p>
                 <p>
@@ -75,11 +76,63 @@ const About = () => {
                     (or several) for most words it contains.
                 </p>
                 <p>
-                    &ldquo;Perfect rhymes&rdquo; are words that sound identical from the stressed vowel to the end, under strict classical pronunciation.
-                    The ancient Romans didn&rsquo;t care so much for rhymes (scansion was what they really valued), and, by the time mediaeval 
-                    or Renaissance writers were composing Latin with rhymes, several vowels and diphthongs had converged in pronunciation,
-                    so most rhyming Latin poets would have generally been a lot more permissive in their rhymes than I have been.
+                    velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
+                    legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="tenebra on velut">tenebra</Link>{" "}
+                    (noun meaning &ldquo;darkness&rdquo;, usually pluralised), for instance, is scanned by velut as ˘˘˘ but may otherwise fit quite plausibly
+                    ˘˘¯ or ˘˘ or ˘¯˘ or ˘¯¯ or ˘¯ depending on the rest of the line of poetry. Therefore, velut remains a somewhat crude tool
+                    with respect to scansion.
                 </p>
+                <h2>Rhymes</h2>
+                <p>
+                    velut allows you to find rhymes under classical or ecclesiastical pronunciation. &ldquo;Classical&rdquo; pronunciation
+                    is (theoretically) how an educated citizen of the Roman Republic or early Roman Empire would have pronounced Latin;
+                    &ldquo;ecclesiastical&rdquo; pronunciation is a more mediaeval/modern style, heavily influenced by contemporary Italian and
+                    often used in churches. Since the ancients wrote in (mostly unrhymed) quantitative verse, any Latin-language poem/song with a
+                    rhyme scheme is almost certainly following ecclesiastical, or at least not strictly classical, pronunciation.
+                </p>
+                <p>
+                    The most important change from classical to ecclesiastical pronunciation, as far as velut is concerned, is the loss
+                    of distinction between certain vowels, such that (for example) e, ē, ae, and oe are pronounced the same. 
+                    I have also assumed that the letter h is irrelevant to ecclesiastical pronunciation.
+                </p>
+                <p>
+                    &ldquo;<Link to="/" title="Search for perfect rhymes on velut">Perfect</Link>&rdquo; rhymes are words pronounced identically from the stressed vowel to the end.
+                </p>
+                <p>
+                    &ldquo;<Link to="/vowels" title="Search for vowel rhymes on velut">Vowel</Link>&rdquo; rhymes are words with the same vowel sounds from the stressed vowel to the end.
+                </p>
+                <p>
+                    &ldquo;<Link to="/vowelsend" title="Search for vowel-and-end-consonant rhymes on velut">Vowel-and-end-consonant</Link>&rdquo; rhymes are words with the same vowel sounds from the stressed vowel to the end,
+                    and with the same consonants (if any) after the final vowel.
+                </p>
+                <p>
+                    Rhymes are ordered such that the words that rhyme the closest are listed next to each other. This sounds
+                    simple, but my implementation of this turned out to be a bit more complicated. The order is determined 
+                    primarily by the vowel(s) in and after the stressed syllable, then by the consonants between the stressed vowel and the end,
+                    then by any vowels preceding the stressed syllable, then by any consonants between the stressed vowel and the beginning. 
+                </p>
+                <h2>Consonyms, anagrams, and subwords</h2>
+                <p>
+                    &ldquo;<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>&rdquo; are words 
+                    whose consonants are the same and in the same order.
+                </p>
+                <p>
+                    &ldquo;<Link to="/anagrams" title="Search for anagrams on velut">Anagrams</Link>&rdquo; are words 
+                    whose letters are the same, but not necessarily in the same order.
+                </p>
+                <p>
+                    Anagrams and consonyms (as with forms, cognates, and words that scan the same) are listed in alphabetical order.
+                </p>
+                <p>
+                    &ldquo;<Link to="/subwords" title="Search for subwords on velut">Subwords</Link>&rdquo; are words whose letters
+                    all appear in the input you specify. The input doesn&rsquo;t have to be a real Latin word.
+                    If the British TV show &ldquo;Countdown&rdquo; or the French 
+                    &ldquo;Des chiffres et des lettres&rdquo; were played in Latin, my subwords would be valid answers.
+                </p>
+                <p>
+                    Subwords are in descending length order, then alphabetical.
+                </p>
+                <h2>Lemmata</h2>
                 <p>
                     The &ldquo;lemma&rdquo; (plural &ldquo;lemmata&rdquo;) of a word is the form you would find in a dictionary as the headword. A
                     given word may belong to multiple lemmata.</p>
@@ -100,15 +153,10 @@ const About = () => {
                 <p>
                     &ldquo;Cognates&rdquo; are lemmata that come from the same etymological origin.
                 </p>
-                <p>
-                    &ldquo;<Link to="/subwords/" title="Subwords on velut">Subwords</Link>&rdquo; are words whose letters
-                    all appear in the input you specify. If the British TV show &ldquo;Countdown&rdquo; or the French 
-                    &ldquo;Des chiffres et des lettres&rdquo; were played in Latin, my subwords would be valid answers.
-                </p>
                 <h2>Lexicography</h2>
                 <p>
                     All the data have been compiled by me, so please be aware that there are several lemmata that 
-                    I&rsquo;ve omitted. I may simply have never come across them, I may have judged them too obscure 
+                    I don&rsquo;t have. I may simply have never come across them, I may have judged them too obscure 
                     for inclusion, or &mdash; if they begin with a prefix or are stressed on a suffix &mdash; 
                     I may have decided that I should come back to them later. Forms stressed on the grammatical 
                     ending have typically been left out.
@@ -125,29 +173,14 @@ const About = () => {
                     I hope the links at the base of the word&rsquo;s page are of use. (Thesaurus Linguae Latinae requires a subscription,
                     which your university or library might be able to furnish you with.)
                 </p>
-                <h2>Word order</h2>
-                <p>
-                    Rhymes are sorted such that the words that sound most similar are listed next to each other. This is determined 
-                    primarily by the vowel(s) before the stressed syllable.
-                </p>
-                <p>
-                    Anagrams, forms, and cognates are in alphabetical order.
-                </p>
-                <p>
-                    Subwords are in descending length order, then alphabetical.
-                </p>
                 <h2>Future plans</h2>
                 <p>
-                    The rhymes are currently restricted to perfect rhymes under classical pronunciation. 
-                    Soon I will provide a dropdown menu allowing you to choose less stringent rules for 
-                    determining rhymes.
+                    I recently discovered that none of Cleopatra, Neptūnus, Propertius, Styx, Sulla, and Vulcānus are in velut.
+                    (At least at the time of writing this!) These are just some of the most egregious omissions. 
+                    I have over 94,000 words belonging to over 11,000 lemmata, but there are plenty more I will add!
                 </p>
-                <p>
-                    And I will continue to add words to the data. I have over 94,000 words belonging to 
-                    over 11,000 lemmata, but there are plenty more I can add!
-                </p>
-                <Search prefix=""/>
             </div>
+            <Search prefix=""/>
         </div>
     )
 }
