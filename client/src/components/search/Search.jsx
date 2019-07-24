@@ -10,7 +10,7 @@ class Search extends Component {
             input: this.props.match.params.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.match.params.type || "",
+            type: this.props.match.params.type || this.props.match.path.replace("/","") || "",
             dropdownAnimationClass: "dropdown-content-none"
         }
     }
