@@ -180,7 +180,7 @@ const About = () => {
                     Searching for consonyms doesn&rsquo;t work on words with no consonants. I will fix this.
                 </p>
                 <p>
-                    I recently discovered that none of Cleopatra, Neptūnus, Propertius, Styx, Sulla, and Vulcānus are in velut.
+                    I recently discovered that none of Cleopatra, Lesbia, Neptūnus, Propertius, Styx, Sulla, Tibullus, and Vulcānus are in velut.
                     (At least at the time of writing this!) These are just some of the most egregious omissions. 
                     I have over 94,000 words belonging to over 11,000 lemmata, but there are plenty more I will add!
                 </p>
