@@ -66,8 +66,8 @@ const About = () => {
                 <h2>Scansion</h2>
                 <p>
                     &ldquo;Scansion&rdquo; refers to whether the syllables of a word are classed as &ldquo;long&rdquo; or &ldquo;short&rdquo; in classical Latin poetry.
-                    Long syllables (denoted by a macron ¯) theoretically take twice as long to pronounce as short syllables 
-                    (denoted by a breve ˘), and the rhythm of ancient Latin (or Greek or Sanskrit) poetry comes from the arrangement 
+                    Long syllables (denoted by a macron –) theoretically take twice as long to pronounce as short syllables 
+                    (denoted by a breve ⏑), and the rhythm of ancient Latin (or Greek or Sanskrit) poetry comes from the arrangement 
                     of long and short syllables. Such poetry can be called quantitative verse.
                     I assume that final vowels are not elided and I assume that any syllable that could be short is short.
                 </p>
@@ -79,9 +79,9 @@ const About = () => {
                 <p>
                     velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
                     legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="tenebra on velut">tenebra</Link>{" "}
-                    (noun meaning &ldquo;darkness&rdquo;, usually pluralised), for instance, is scanned by velut as ˘˘˘ but may otherwise fit quite plausibly
-                    ˘˘¯ or ˘˘ or ˘¯˘ or ˘¯¯ or ˘¯ depending on the rest of the line of poetry. Therefore, velut remains a somewhat crude tool
-                    with respect to scansion.
+                    (noun meaning &ldquo;darkness&rdquo;, usually pluralised), for instance, is scanned by velut as ⏑⏑⏑ but may otherwise fit quite plausibly
+                    ⏑⏑– or ⏑⏑ or ⏑–⏑ or ⏑–– or ⏑– depending on the rest of the line of poetry and the poet&rsquo;s intentions.
+                    Therefore, velut remains a somewhat crude tool with respect to scansion.
                 </p>
                 <h2>Rhymes</h2>
                 <p>
@@ -97,13 +97,16 @@ const About = () => {
                     I have also assumed that the letter h is irrelevant to ecclesiastical pronunciation.
                 </p>
                 <p>
-                    &ldquo;<Link to="/" title="Search for perfect rhymes on velut">Perfect</Link>&rdquo; rhymes are words pronounced identically from the stressed vowel to the end.
+                    &ldquo;<Link to="/" title="Search for perfect rhymes on velut">Perfect</Link>&rdquo; rhymes are words pronounced 
+                    identically from the stressed vowel to the end.
                 </p>
                 <p>
-                    &ldquo;<Link to="/vowels" title="Search for vowel rhymes on velut">Vowel</Link>&rdquo; rhymes are words with the same vowel sounds from the stressed vowel to the end.
+                    &ldquo;<Link to="/vowels" title="Search for vowel rhymes on velut">Vowel</Link>&rdquo; rhymes are words with 
+                    the same vowel sounds from the stressed vowel to the end.
                 </p>
                 <p>
-                    &ldquo;<Link to="/vowelsend" title="Search for vowel-and-end-consonant rhymes on velut">Vowel-and-end-consonant</Link>&rdquo; rhymes are words with the same vowel sounds from the stressed vowel to the end,
+                    &ldquo;<Link to="/vowelsend" title="Search for vowel-and-end-consonant rhymes on velut">Vowel-and-end-consonant</Link>&rdquo; 
+                    rhymes are words with the same vowel sounds from the stressed vowel to the end,
                     and with the same consonants (if any) after the final vowel.
                 </p>
                 <p>
@@ -115,8 +118,7 @@ const About = () => {
                 <h2>Consonyms, anagrams, and subwords</h2>
                 <p>
                     &ldquo;<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>&rdquo; are words 
-                    whose consonants (i.e. bcdfghklmnpqrstvxz) are the same and in the same order. (velut currently 
-                    doesn&rsquo;t find consonyms for words that have no consonants.)
+                    whose consonants (i.e. bcdfghklmnpqrstvxz) are the same and in the same order.
                 </p>
                 <p>
                     &ldquo;<Link to="/anagrams" title="Search for anagrams on velut">Anagrams</Link>&rdquo; are words 
@@ -177,12 +179,7 @@ const About = () => {
                 </p>
                 <h2>Future plans</h2>
                 <p>
-                    Searching for consonyms doesn&rsquo;t work on words with no consonants. I will fix this.
-                </p>
-                <p>
-                    I recently discovered that none of Cleopatra, Lesbia, Neptūnus, Propertius, Styx, Sulla, Tibullus, and Vulcānus are in velut.
-                    (At least at the time of writing this!) These are just some of the most egregious omissions. 
-                    I have over 94,000 words belonging to over 11,000 lemmata, but there are plenty more I will add!
+                    As of writing this, velut contains 94904 words belonging to 11865 lemmata. There are plenty more I will add!
                 </p>
             </div>
             <Search prefix=""/>
