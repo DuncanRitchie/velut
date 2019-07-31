@@ -118,7 +118,22 @@ class Search extends Component {
         }
         // Let's create the dropdown menu items.
         let dropdownContent = routes.map((route,i)=>{
-            return <li key={i} className="dropdown-item" tabIndex="0" onClick={()=>{this.handleType(route.route)}}>{route.searchFieldFull}</li>
+            return (
+                <li 
+                key={i} 
+                className="dropdown-item" 
+                tabIndex="0" 
+                onClick={()=>{this.handleType(route.route)}} 
+                onKeyUp={(e)=>{
+                    if(e.keyCode===13){
+                        this.handleType(route.route)
+                        this.search()
+                    }
+                }}
+                >
+                    {route.searchFieldFull}
+                </li>
+            )
         })
         // Now we're ready to return JSX.
         return (
@@ -146,11 +161,16 @@ class Search extends Component {
                 {this.props.match.path.substr(0,9)==="/subwords" || this.props.match.path==="/about"
                  ? null
                   : ( 
-                    <div className="dropdown" onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}}>
+                    <div 
+                    className="dropdown" 
+                    onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}} 
+                    onFocus={()=>this.handleDropdown("dropdown-content-open")}
+                    >
                         <p 
                         className="dropdown-select" 
                         tabIndex="0"
                         onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
+                        onFocus={()=>this.handleDropdown("dropdown-content-open")}
                         onClick={()=>this.handleDropdown("dropdown-content-open")}
                         >
                             {dropdownSelect}
