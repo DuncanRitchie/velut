@@ -19,6 +19,14 @@ li {
     padding: 0 6px
 }
 
+button {
+    box-shadow: 0;
+    border: 0;
+    background: 0;
+    font: inherit;
+    padding: 0
+}
+
 a:link,.go-back {
     font-weight: bold;
     color: #337ab7;

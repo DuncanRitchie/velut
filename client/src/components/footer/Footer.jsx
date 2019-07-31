@@ -11,7 +11,7 @@ let Footer = (props) => {
                     &copy; Duncan Ritchie.
                 </li>
                 {props.history.length>2
-                    ? (<li><span className="go-back" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</span>.</li>)
+                    ? (<li><button className="go-back" tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button>.</li>)
                     : null}
                 {props.history.location.pathname==="/"
                     ? null 

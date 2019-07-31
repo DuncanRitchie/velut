@@ -118,7 +118,7 @@ class Search extends Component {
         }
         // Let's create the dropdown menu items.
         let dropdownContent = routes.map((route,i)=>{
-            return <li key={i} className="dropdown-item" onClick={()=>{this.handleType(route.route)}}>{route.searchFieldFull}</li>
+            return <li key={i} className="dropdown-item" tabIndex="0" onClick={()=>{this.handleType(route.route)}}>{route.searchFieldFull}</li>
         })
         // Now we're ready to return JSX.
         return (
@@ -133,12 +133,13 @@ class Search extends Component {
              
                 <br/>
                 {/* What would be a "submit" button in a normal form */}
-                <span
+                <button
                     className="search-link" 
+                    tabIndex="0"
                     onClick={this.search} 
                     title={this.state.sanitisedInput ? `Search for ${this.state.sanitisedInput}` : "Please type something in the searchbar"}
                     >Search!
-                </span>
+                </button>
                 <br/>
                 {/* The menu to change the rhyme type displayed
                 Only appears if /subwords is not in the path. */}
@@ -146,7 +147,12 @@ class Search extends Component {
                  ? null
                   : ( 
                     <div className="dropdown" onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}}>
-                        <p className="dropdown-select" onMouseOver={()=>this.handleDropdown("dropdown-content-open")} onClick={()=>this.handleDropdown("dropdown-content-open")}>
+                        <p 
+                        className="dropdown-select" 
+                        tabIndex="0"
+                        onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
+                        onClick={()=>this.handleDropdown("dropdown-content-open")}
+                        >
                             {dropdownSelect}
                         </p>
                         <ul className={this.state.dropdownAnimationClass}>

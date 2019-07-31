@@ -21,8 +21,11 @@ input {
 
 .search-link {
     float: right;
+    font: inherit;
+    box-shadow: 0;
+    border: 0;
     padding: 6px 9px;
-    height: 20px;
+    height: 2em;
     background-color: rgb(122, 239, 179);
     cursor: pointer
 }
@@ -134,4 +137,4 @@ input {
 .dropdown-item:hover {
     color: black;
     background: rgb(211, 236, 238)
-}  
+}
