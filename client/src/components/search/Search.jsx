@@ -47,9 +47,11 @@ class Search extends Component {
         this.setState({dropdownAnimationClass: animationClass})
     }
 
-    // This sets the selected route to the menu item clicked and hides the dropdown menu again.
+    // This sets the selected route to the menu item clicked, 
+    // hides the dropdown menu again, and returns focus to the input.
     handleType = (route) => {
         this.setState({type: route, dropdownAnimationClass: "dropdown-content-close"})
+        document.getElementById("search-input").focus()
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
@@ -79,6 +81,7 @@ class Search extends Component {
         } catch(err) {
             this.setState({sanitisedInput: this.state.input})
         }
+        document.getElementById("search-input").focus()
     }
 
     componentDidUpdate(prevProps) {
@@ -140,6 +143,7 @@ class Search extends Component {
             <div className="search">
                 {/* The box the word will be typed into */}
                 <input 
+                    id="search-input"
                     className="search-input"
                     value={inputValue}
                     onChange={this.handleInput}
@@ -147,7 +151,7 @@ class Search extends Component {
                     />
              
                 <br/>
-                {/* What would be a "submit" button in a normal form */}
+                {/* The button to load the new page. */}
                 <button
                     className="search-link" 
                     tabIndex="0"
@@ -157,7 +161,7 @@ class Search extends Component {
                 </button>
                 <br/>
                 {/* The menu to change the rhyme type displayed
-                Only appears if /subwords is not in the path. */}
+                Only appears if neither /subwords nor /about is in the path. */}
                 {this.props.match.path.substr(0,9)==="/subwords" || this.props.match.path==="/about"
                  ? null
                   : ( 
@@ -168,7 +172,7 @@ class Search extends Component {
                     >
                         <p 
                         className="dropdown-select" 
-                        tabIndex="0"
+                        tabIndex={this.state.dropdownAnimationClass==="open" ? "0" : ""}
                         onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
                         onFocus={()=>this.handleDropdown("dropdown-content-open")}
                         onClick={()=>this.handleDropdown("dropdown-content-open")}
