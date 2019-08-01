@@ -57,11 +57,6 @@ class Search extends Component {
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
         let newUrl = "../../"
-        // newUrl = window.location.protocol+"//"+window.location.hostname
-        // if (window.location.port) {
-        //     newUrl += ":"+window.location.port
-        // }
-        // newUrl += "/"
         let type = this.state.type
         if(type===undefined) {
             type = ""
@@ -75,15 +70,18 @@ class Search extends Component {
         this.props.history.push(newUrl)
     }
 
+    // Initial value of sanitisedInput is "". Let's put something useful there.
     componentDidMount() {
         try {
             this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
         } catch(err) {
             this.setState({sanitisedInput: this.state.input})
         }
+        // The input is always initially focussed.
         document.getElementById("search-input").focus()
     }
 
+    // If the location changes we need new data.
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
@@ -130,7 +128,6 @@ class Search extends Component {
                 onKeyUp={(e)=>{
                     if(e.keyCode===13){
                         this.handleType(route.route)
-                        this.search()
                     }
                 }}
                 >
