@@ -27,20 +27,16 @@ button {
     padding: 0
 }
 
-a:link,.go-back {
+/* These styles also apply to all the <a> tags throughout the app. */
+
+a:link,.go-back,a:visited {
     font-weight: bold;
     color: #337ab7;
     text-decoration: none;
     cursor: pointer;
 }
 
-a:visited {
-    font-weight: bold;
-    color: #337ab7;
-    text-decoration: none
-}
-
 a:hover,.go-back:hover {
-    color: #23527c;
+    color: #4d88bb;
     text-decoration: underline
-}  
+}
