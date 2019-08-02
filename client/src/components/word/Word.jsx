@@ -1,21 +1,20 @@
-import React, {Component} from 'react';
-import {Link} from "react-router-dom";
-import axios from "../../axios/axios";
-import Title from "../title/Title";
-import Search from "../search/Search";
-import dictionaries from "../../data/dictionaries.json";
-import feet from "../../data/feet.json";
-import Lemma from "./Lemma";
-import macraToHyphens from "./macraToHyphens";
-import hyphensToMacra from "./hyphensToMacra";
-import noMacra from "./noMacra";
-// import Navbar from "../navbar/Navbar"
+import React, {Component} from 'react'
+import {Link} from "react-router-dom"
+import axios from "../../axios/axios"
+import Title from "../title/Title"
+import Search from "../search/Search"
+import dictionaries from "../../data/dictionaries.json"
+import feet from "../../data/feet.json"
+import Lemma from "./Lemma"
+import macraToHyphens from "./macraToHyphens"
+import hyphensToMacra from "./hyphensToMacra"
+import noMacra from "./noMacra"
 import routes from "../../routes.json"
 import './Word.css'
 
 class Word extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             input: "",
             sanitisedInput: "",
@@ -278,14 +277,14 @@ class Word extends Component {
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
                 mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
-                    <span key={index}><Link to={linkBase+macraToHyphens(rhyme)} title={rhyme}>{rhyme}</Link> </span>
+                    <span key={index}><Link to={linkBase+macraToHyphens(rhyme)} title={rhyme} lang="la">{rhyme}</Link> </span>
                 )})
             }
             // Let's find the homographs.
             if (this.state.homographs) {
                 // A react-router-dom Link is rendered for every homograph.
                 mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
-                    <span key={index}> <Link to={linkBase+macraToHyphens(homograph)} title={homograph}>{homograph}</Link></span>
+                    <span key={index}> <Link to={linkBase+macraToHyphens(homograph)} title={homograph} lang="la">{homograph}</Link></span>
                 )})
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
@@ -302,7 +301,7 @@ class Word extends Component {
                             }
                             // Let's render a Link for every form.
                             mappedForms = forms.map((form,index)=>{
-                                return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)}>{form}</Link> </span>
+                                return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)} lang="la">{form}</Link> </span>
                             })
                         }
                         // Let's do the cognates. They are stored in an array within the cognatesArray in state.
@@ -314,11 +313,11 @@ class Word extends Component {
                             }
                             // Let's render a Link for every cognate.
                             mappedCognates = cognates.map((cognate,index)=>{
-                                return <span key={index}><Link title={cognate} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")}>{cognate}</Link> </span>
+                                return <span key={index}><Link title={cognate} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">{cognate}</Link> </span>
                             })
                         }
                         // If no etymology is given in the data, a message should appear in the cognates paragraph.
-                        let cognatesMessage = "";
+                        let cognatesMessage = ""
                         if (!lemma.Root) {
                             cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
                         }
@@ -345,12 +344,11 @@ class Word extends Component {
         return (
             <div className="word">
                 <Title />
-                {/* <Navbar input={sanitisedInput} currentPage="word"/> */}
                 <Search prefix=""/>
                 <p className="showing-results-for">
                     Showing results for
                 </p>
-                <h2 className="found-word">
+                <h2 className="found-word" lang="la">
                     {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
                 </h2>
                 <div className="word-info">
@@ -381,7 +379,7 @@ class Word extends Component {
                     )
                     : (
                         <p>
-                            Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord}>{randomWord}</Link>.
+                            Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord} lang="la">{randomWord}</Link>.
                         </p>
                     )}
                 {mappedLemmata ? mappedLemmata : null}

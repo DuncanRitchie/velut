@@ -145,6 +145,7 @@ class Search extends Component {
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
+                    lang="la"
                     />
              
                 <br/>

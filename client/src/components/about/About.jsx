@@ -9,7 +9,6 @@ const About = () => {
     return (
         <div className="about">
             <Title textBeforeTitle="About" />
-            {/* <Navbar input={sanitisedInput} currentPage="word"/> */}
             <div className="about-text">
                 <h2>velut&rsquo;s backstory</h2>
                 <p>
@@ -22,11 +21,11 @@ const About = () => {
                 <p>
                     So I wrote the Excel formulae that found rhyming words, kept adding more words, wrote more formulae to manage my 
                     words and find out more things about them, and three years later was close to 90,000 words. I named the 
-                    file <Link to="./velut" title="velut on velut">velut</Link>, which is Latin for &ldquo;just like&rdquo;, because 
-                    rhyming is all about finding words that are 
+                    file <Link to="./velut" title="velut on velut" lang="la">velut</Link>, which is Latin for &ldquo;just like&rdquo;,
+                    because rhyming is all about finding words that are 
                     &ldquo;just like&rdquo; a given word with respect to their endings. (And also it can be an acronym 
                     for &ldquo;Useful Tables of Excellent Latin Vocabulary&rdquo;, or 
-                    &ldquo;<Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link>&rdquo;.)
+                    &ldquo;<span lang="la"><Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link></span>&rdquo;.)
                 </p>
                 <h2>As a website</h2>
                 <p>
@@ -43,7 +42,7 @@ const About = () => {
                     with it. Plus it all looks cool on my portfolio!
                 </p>
                 <p>
-                    Speaking of &ldquo;cool&rdquo;, the bird pictured is a fulmar, <em><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
+                    Speaking of &ldquo;cool&rdquo;, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
                 </p>
                 <h2>Spelling</h2>
                 <p>
@@ -51,8 +50,8 @@ const About = () => {
                     with the letters abcdefghiklmnopqrstuvxyz &mdash; j is always written as i, w does not appear. 
                     Any long vowel is marked with an macron (ĀāĒēĪīŌōŪūȲȳ). 
                     In words where the stress is ambiguous, the presence or absence of an acute accent will distinguish 
-                    &mdash; e.g. <Link to="./Tiberī" title="Tiberī on velut">Tiberī</Link> (dative of the river Tiber) 
-                    is stressed on the first syllable, <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut">Tib&eacute;rī</Link> (vocative 
+                    &mdash; e.g. <Link to="./Tiberī" title="Tiberī on velut" lang="la">Tiberī</Link> (dative of the river Tiber) 
+                    is stressed on the first syllable, <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut" lang="la">Tib&eacute;rī</Link> (vocative 
                     of the name Tiberius) is stressed on the second. I&rsquo;ve also used diaereses 
                     (&auml;&euml;&iuml;&ouml;&uuml;&yuml;) on occasion.
                 </p>
@@ -61,7 +60,8 @@ const About = () => {
                     a word that matches. If there are several words spelt the same, they will be offered as &ldquo;other homographs&rdquo;. 
                     You can also specify diacritics 
                     by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis; 
-                    thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut">Tibe.ri-</Link> will be interpreted as <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut">Tib&eacute;rī</Link>.
+                    thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted {" "}
+                    <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut" lang="la">Tib&eacute;rī</Link>.
                 </p>
                 <h2>Scansion</h2>
                 <p>
@@ -78,7 +78,7 @@ const About = () => {
                 </p>
                 <p>
                     velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
-                    legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="tenebra on velut">tenebra</Link>{" "}
+                    legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="tenebra on velut" lang="la">tenebra</Link>{" "}
                     (noun meaning &ldquo;darkness&rdquo;, usually pluralised), for instance, is scanned by velut as ⏑⏑⏑ but may otherwise fit quite plausibly
                     ⏑⏑– or ⏑⏑ or ⏑–⏑ or ⏑–– or ⏑– depending on the rest of the line of poetry and the poet&rsquo;s intentions.
                     Therefore, velut remains a somewhat crude tool with respect to scansion.
@@ -144,15 +144,15 @@ const About = () => {
                     Sometimes a word might even be multiple lemmata &mdash; for example in English &ldquo;make&rdquo; 
                     can be a verb lemma or a noun lemma &mdash; so I&rsquo;ve chosen to put a piece of distinguishing 
                     information in square brackets after the lemma. Thus:{" "}
-                    <Link to="/Caecilius" title="Caecilius on velut">Caecilius[prn]</Link>{" "}and{" "}
-                    <Link to="/Caecilius" title="Caecilius on velut">Caecilius[adj]</Link>{" "}are different parts of speech;{" "}
-                    <Link to="/be-ta" title="bēta on velut">bēta[bētae]</Link>{" "}and{" "}
-                    <Link to="/be-ta" title="bēta on velut">bēta[bēta]</Link>{" "}have different genitives (letter names are indeclinable!);{" "}
-                    <Link to="/sero-" title="serō on velut">serō[satum]</Link>,{" "}
-                    <Link to="/sero-" title="serō on velut">serō[sertum]</Link>,{" "}and{" "}
-                    <Link to="/sero-" title="serō on velut">serō[serātum]</Link>{" "}have different participles;{" "}
-                    <Link to="/iu-s" title="iūs on velut">iūs[>iūrō]</Link>{" "}and{" "}
-                    <Link to="/iu-s" title="iūs on velut">iūs[>iūsculum]</Link>{" "}have different etymological derivatives.
+                    <Link to="/Caecilius" title="Caecilius on velut" lang="la">Caecilius[prn]</Link>{" "}and{" "}
+                    <Link to="/Caecilius" title="Caecilius on velut" lang="la">Caecilius[adj]</Link>{" "}are different parts of speech;{" "}
+                    <Link to="/be-ta" title="bēta on velut" lang="la">bēta[bētae]</Link>{" "}and{" "}
+                    <Link to="/be-ta" title="bēta on velut" lang="la">bēta[bēta]</Link>{" "}have different genitives (letter names are indeclinable!);{" "}
+                    <Link to="/sero-" title="serō on velut" lang="la">serō[satum]</Link>,{" "}
+                    <Link to="/sero-" title="serō on velut" lang="la">serō[sertum]</Link>,{" "}and{" "}
+                    <Link to="/sero-" title="serō on velut" lang="la">serō[serātum]</Link>{" "}have different participles;{" "}
+                    <Link to="/iu-s" title="iūs on velut" lang="la">iūs[>iūrō]</Link>{" "}and{" "}
+                    <Link to="/iu-s" title="iūs on velut" lang="la">iūs[>iūsculum]</Link>{" "}have different etymological derivatives.
                 </p>
                 <p>
                     &ldquo;Cognates&rdquo; are lemmata that come from the same etymological origin.
@@ -169,7 +169,8 @@ const About = () => {
                     There are, however, some words stressed on a suffix or grammatical ending that I have included, at my own discretion.
                 </p>
                 <p>
-                    There are even some encliticized forms (i.e. ending in -ne implying a question, -que meaning &ldquo;and&rdquo;, or -ve meaning &ldquo;or&rdquo;). 
+                    There are even some encliticized forms (i.e. ending in <span lang="la">-ne</span> implying a question,{" "}
+                    <span lang="la">-que</span> meaning &ldquo;and&rdquo;, or <span lang="la">-ve</span> meaning &ldquo;or&rdquo;). 
                     I stress all encliticized forms on the penultimate syllable, as the syllable immediately prior to the enclitic.
                 </p>
                 <p>

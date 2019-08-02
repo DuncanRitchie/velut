@@ -3,7 +3,6 @@ import words from "../../data/words_8fields.json";
 import delChars from '../Subwords/delChars'
 import subwords from "../Subwords/subwords"
 import Search from '../search/Search'
-import Navbar from '../navbar/Navbar'
 
 // anagrams() returns an array of strings that are multiword anagrams of input
 // anagramsArray() is the newer version of this function.
@@ -208,12 +207,11 @@ const Anagrams = () => {
     let input = window.location.pathname.replace("/anagrams","").replace("/","")
     document.title = "Anagrams of "+input+" on velut"
     let mappedAnagrams = anagramsArray(input).map((anagram,index)=>{
-        return <span key={index}>{anagram}<br/></span>
+        return <span key={index} lang="la">{anagram}<br/></span>
     })
     return (
         <div className="word">
             <h1><span className="title">velut</span> &mdash; Anagrams &mdash; {input}</h1>
-            <Navbar input={input} currentPage="anagrams"/>
             <p>Caution &mdash; searches longer than ten characters may take some minutes or fail completely. Anagrams longer than thirteen words will not be found.</p>
             <p>{mappedAnagrams.length} anagrams have been found for <strong>{input}</strong>.</p>
             <Search prefix="anagrams/" />
