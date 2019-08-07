@@ -74,21 +74,4 @@ module.exports = {
 			.then(word => res.json(word))
 			.catch(err => res.status(422).json(err))
 	}
-	// // This is no longer being used.
-	//  , findWordsShorterThan: function(req,res) {
-	// 	Word.find({"Length": {"$lte": req.query.lte}})
-	// 		.sort("-Length NoMacraLowerCase NoMacra Word")
-	// 		.select({"Word": 1, "_id": 0})
-	// 		.then(words=>res.json(words))
-	// 		.catch((err1) => {
-	// 			// If an error occurs, it's probably because Mongo failed to sort.
-	// 			// So we try again, without sort, but projecting NoMacraLowerCase for sorting front-end.
-	// 			Word.find({"Length": {"$lte": req.query.lte}})
-	// 				.select({"Word": 1, "NoMacraLowerCase": 1, "_id": 0})
-	// 				.then(words=>res.json(words))
-	// 				.catch(err2 => {
-	// 					res.status(422).json(err2)
-	// 				})
-	// 		})
-	// }
 }
