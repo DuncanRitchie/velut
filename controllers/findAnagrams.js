@@ -1,61 +1,6 @@
-import React from 'react';
-import words from "../../data/words_8fields.json";
-import delChars from '../subwords/delChars'
-import findSubwords from "../subwords/findSubwords"
-import Search from '../search/Search'
+const findSubwords = require('./findSubwords')
 
-// anagrams() returns an array of strings that are multiword anagrams of input
-// anagramsArray() is the newer version of this function.
-
-// const anagrams = (input) => {
-//     input = input.toLowerCase()
-//     let arrayOfAnagrams = []
-//     let allSubwords = findSubwords(input,words)
-//     console.log("Number of findSubwords: "+allSubwords.length)
-//     for (let i=0; i<allSubwords.length; i++) {
-//         let remainingLetters = delChars(input,allSubwords[i].AlphOrderNoMacra)
-//         if (remainingLetters.length === 0) {
-//             arrayOfAnagrams.push(allSubwords[i].Word)
-//         }
-//         else {
-//             let subwordsOne = findSubwords(remainingLetters,allSubwords)
-//             for (let j=0; j<subwordsOne.length; j++) {
-//                 let remainingLettersOne = delChars(remainingLetters,subwordsOne[j].AlphOrderNoMacra)
-//                 if (remainingLettersOne.length === 0) {
-//                     arrayOfAnagrams.push(allSubwords[i].Word+" "+subwordsOne[j].Word)
-//                 }
-//                 else {
-//                     let subwordsTwo = findSubwords(remainingLettersOne,allSubwords)
-//                     for (let k=0; k<subwordsTwo.length; k++) {
-//                         let remainingLettersTwo = delChars(remainingLettersOne,subwordsTwo[k].AlphOrderNoMacra)
-//                         if (remainingLettersTwo.length === 0) {
-//                             arrayOfAnagrams.push(allSubwords[i].Word+" "+subwordsOne[j].Word+" "+subwordsTwo[k].Word)
-//                         }
-//                         else {
-//                             let subwordsThree = findSubwords(remainingLettersTwo,allSubwords)
-//                             for (let l=0; l<subwordsThree.length; l++) {
-//                                 let remainingLettersThree = delChars(remainingLettersTwo,subwordsThree[l].AlphOrderNoMacra)
-//                                 if (remainingLettersThree.length === 0) {
-//                                     arrayOfAnagrams.push(allSubwords[i].Word+" "+subwordsOne[j].Word+" "+subwordsTwo[k].Word+" "+subwordsThree[l].Word)
-//                                 }
-//                                 else {
-//                                     let subwordsFour = findSubwords(remainingLettersThree,allSubwords)
-//                                     for (let m=0; m<subwordsFour.length; m++) {
-//                                         let remainingLettersFour = delChars(remainingLettersThree,subwordsFour[m].AlphOrderNoMacra)
-//                                         arrayOfAnagrams.push(allSubwords[i].Word+" "+subwordsOne[j].Word+" "+subwordsTwo[k].Word+" "+subwordsThree[l].Word+" "+subwordsFour[m].Word+" - "+remainingLettersFour)
-//                                     }
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     return arrayOfAnagrams
-// }
-
-const anagramsArray = (input) => {
+const findAnagrams = (input, words) => {
     input = input.toLowerCase()
     let anagrams = []
     let increments = []
@@ -203,21 +148,4 @@ const anagramsArray = (input) => {
     return anagrams
 }
 
-const Anagrams = () => {
-    let input = window.location.pathname.replace("/anagramphrases","").replace("/","")
-    document.title = "Anagrams of "+input+" on velut"
-    let mappedAnagrams = anagramsArray(input).map((anagram,index)=>{
-        return <span key={index} lang="la">{anagram}<br/></span>
-    })
-    return (
-        <div className="word">
-            <h1><span className="title">velut</span> &mdash; Anagrams &mdash; {input}</h1>
-            <p>Caution &mdash; searches longer than ten characters may take some minutes or fail completely. Anagrams longer than thirteen words will not be found.</p>
-            <p>{mappedAnagrams.length} anagrams have been found for <strong>{input}</strong>.</p>
-            <Search prefix="anagramphrases/" />
-            <p>{mappedAnagrams.length ? mappedAnagrams : "No anagrams found. Try another search."}</p>
-        </div>
-    )
-}
-
-export default Anagrams
+export default findAnagrams
