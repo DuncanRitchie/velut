@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
+import Title from '../title/Title'
 import Search from '../search/Search'
 import axios from "../../axios/axios"
 import noMacra from '../word/noMacra'
+// Anagrams and Subwords use the same styles.
+import '../subwords/Subwords.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word
 
@@ -65,11 +68,13 @@ class Anagrams extends Component {
         }
         
         return (
-            <div className="word">
-                <h1><span className="title">velut</span> &mdash; Anagrams &mdash; {input}</h1>
-                <p>Caution &mdash; searches longer than ten characters may take some minutes or fail completely. Anagrams longer than thirteen words will not be found.</p>
-                <Search prefix="anagramphrases/" />
-                {result}
+            <div className="anagrams">
+                <Title textBeforeTitle="Anagram phrases" />
+                <p>Caution &mdash; searches may take some minutes or fail completely. Anagrams longer than thirteen words will not be found.</p>
+                <Search prefix="anagramphrases/"/>
+                <div className="anagrams-result">
+                    {result}
+                </div>
             </div>
         )
     }

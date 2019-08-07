@@ -1,4 +1,4 @@
-.subwords-home p:not(.title-full) {
+.anagrams-home p:not(.title-full),.subwords-home p:not(.title-full) {
     width: calc(100% - 36px);
     max-width: 708px;
     margin-left: auto;
@@ -8,7 +8,7 @@
     background-color: rgba(255,253,244, 0.95)
 }
 
-.subwords-result {
+.subwords-result,.anagrams-result {
     width: calc(100% - 48px);
     max-width: 696px;
     margin-top: 18px;
@@ -19,6 +19,6 @@
     background-color: rgba(255,253,244,0.95)
 }
 
-.subwords-result p {
+.subwords-result,.anagrams-result p {
     margin: 3px 0
 }
