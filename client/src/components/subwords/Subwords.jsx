@@ -26,24 +26,7 @@ class Subwords extends Component {
             // data.data is a simple array of strings.
             this.setState({subwords: data.data})
             this.setState({loading: false})
-        })
-        // This is the code that would run if we were using the /lte/ route.
-        // axios.getWordsShorterThan(input.length).then((data)=>{
-        //     let words = data.data
-        //     if (words[0]) {
-        //         if (words[0].Word) {
-        //             let sortedWords = findSubwords(input, words)
-        //             sortedWords = sortedWords.map((object)=>{return object.Word})
-        //             this.setState({subwords: sortedWords})
-        //             this.setState({loading: false})
-        //         }
-        //     }
-        //     else {
-        //         console.log(words)
-        //         this.setState({loading: false})
-        //     }
-        // })
-               
+        })     
     }
 
     componentDidMount() {

@@ -9,6 +9,10 @@ export default {
 	getSubwords: (string) => {
 		return axios.get('/api/words/subwords/',{params: {input: string}})
 	},
+	// Gets all multiword anagrams of the input string.
+	getAnagrams: (string) => {
+		return axios.get('/api/words/anagrams/',{params: {input: string}})
+	},
 	// Gets one word only.
 	getOneWord: (query) => {
 		return axios.get('/api/words/one/',{params: query})
