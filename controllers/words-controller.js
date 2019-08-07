@@ -75,11 +75,7 @@ module.exports = {
 		Word.find({"Length": {"$lte": input.length}})
 			.select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
 			.then(words=>{
-				let sortedSubwords = findSubwordsFromMongo(input,words)
-				let subwordsOnlyWord = sortedSubwords.map((object)=>{
-					return object.Word
-				})
-				return subwordsOnlyWord
+				return sortedSubwords = findSubwordsFromMongo(input,words)
 			})
 			.then(subwords=>{
 				return findAnagrams(input,subwords)

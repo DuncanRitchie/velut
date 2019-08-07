@@ -1,4 +1,4 @@
-import delChars from './delChars'
+const delChars = require('./delChars')
 
 // subwords() returns an array of objects. The array of objects from Mongo should be passed in as the second parameter.
 
@@ -38,7 +38,7 @@ const findSubwords = (input,wordObjects) => {
     else {return null}
 }
 
-export default findSubwords
+module.exports = findSubwords
 
 // const jsonExample = require('./jsonExample.json')
 
