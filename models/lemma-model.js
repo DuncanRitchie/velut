@@ -6,6 +6,8 @@ const lemmaSchema = new Schema({
     "Word": String,
     "PartOfSpeech": String,
     "Meaning": String,
+    "Notes": String,
+    "Transliteration": String,
     "Scansion": String,
     "SyllableCount": Number,
     "Root": String,
