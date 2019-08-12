@@ -323,15 +323,17 @@ class Word extends Component {
                         }
                         // Cognates are done. Let's put everything into the Lemma element.
                         return (
-                            <Lemma 
-                            key={index} 
-                            lemma={lemma.Lemma} 
-                            partOfSpeech={lemma.PartOfSpeech} 
-                            meaning={lemma.Meaning} 
+                            <Lemma
+                            key={index}
+                            lemma={lemma.Lemma}
+                            partOfSpeech={lemma.PartOfSpeech}
+                            meaning={lemma.Meaning}
+                            notes={lemma.Notes}
+                            transliteration={lemma.Transliteration}
                             forms={mappedForms}
                             cognates={mappedCognates}
                             cognatesMessage={cognatesMessage}
-                            /> 
+                            />
                         )
                     }
                     else {
