@@ -7,7 +7,7 @@ let Lemma = (props) => {
             {props.partOfSpeech ? <p>Part of speech: {props.partOfSpeech.toLowerCase()}</p> : null}
             {props.meaning ? <p>Meaning: {props.meaning}</p> : null}
             {props.notes ? <p>Notes: {props.notes}</p> : null}
-            {props.transliteration ? <p>Transliteration: <span lang="el">{props.transliteration}</span></p> : null}
+            {props.transliteration ? <p>Transliteration: <span lang="grc">{props.transliteration}</span></p> : null}
             {props.forms ? <p>Forms: {props.forms}</p> : null}
             <p>{props.cognatesMessage ? props.cognatesMessage : <span>Cognates: {props.cognates}</span>}</p>
         </div>
