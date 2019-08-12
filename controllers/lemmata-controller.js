@@ -7,6 +7,8 @@ module.exports = {
 				"Lemma": 1,
 				"PartOfSpeech": 1,
 				"Meaning": 1,
+				"Notes": 1,
+				"Transliteration": 1,
 				"Root": 1,
 				"NoTypeTag": 1,
 				"NoMacra": 1,
