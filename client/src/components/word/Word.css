@@ -56,6 +56,11 @@ h3 {
     background-color: rgb(252, 240, 190)
 }
 
+.lemma-tag {
+    vertical-align: super;
+    font-size: 60%;
+}
+
 .dictionaries-heading {
     margin-top: 30px;
     margin-bottom: 0;

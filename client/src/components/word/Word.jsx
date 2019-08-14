@@ -9,6 +9,7 @@ import Lemma from "./Lemma"
 import macraToHyphens from "./macraToHyphens"
 import hyphensToMacra from "./hyphensToMacra"
 import noMacra from "./noMacra"
+import superscriptLemmaTag from "./superscriptLemmaTag"
 import routes from "../../routes.json"
 import './Word.css'
 
@@ -313,7 +314,13 @@ class Word extends Component {
                             }
                             // Let's render a Link for every cognate.
                             mappedCognates = cognates.map((cognate,index)=>{
-                                return <span key={index}><Link title={cognate} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">{cognate}</Link> </span>
+                                return (
+                                    <span key={index}>
+                                        <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
+                                            {superscriptLemmaTag(cognate)}
+                                        </Link>{" "}
+                                    </span>
+                                )
                             })
                         }
                         // If no etymology is given in the data, a message should appear in the cognates paragraph.
