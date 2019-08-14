@@ -58,7 +58,8 @@ h3 {
 
 .lemma-tag {
     vertical-align: super;
-    font-size: 60%;
+    font-size: 75%;
+    line-height: 75%;
 }
 
 .dictionaries-heading {

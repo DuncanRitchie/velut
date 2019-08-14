@@ -2,6 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom"
 import Title from "../title/Title"
 import Search from "../search/Search"
+import superscriptLemmaTag from '../word/superscriptLemmaTag'
 import './About.css'
 
 const About = () => {
@@ -143,16 +144,16 @@ const About = () => {
                 <p>
                     Sometimes a word might even be multiple lemmata &mdash; for example in English &ldquo;make&rdquo; 
                     can be a verb lemma or a noun lemma &mdash; so I&rsquo;ve chosen to put a piece of distinguishing 
-                    information in square brackets after the lemma. Thus:{" "}
-                    <Link to="/Caecilius" title="Caecilius on velut" lang="la">Caecilius[prn]</Link>{" "}and{" "}
-                    <Link to="/Caecilius" title="Caecilius on velut" lang="la">Caecilius[adj]</Link>{" "}are different parts of speech;{" "}
-                    <Link to="/be-ta" title="bēta on velut" lang="la">bēta[bētae]</Link>{" "}and{" "}
-                    <Link to="/be-ta" title="bēta on velut" lang="la">bēta[bēta]</Link>{" "}have different genitives (letter names are indeclinable!);{" "}
-                    <Link to="/sero-" title="serō on velut" lang="la">serō[satum]</Link>,{" "}
-                    <Link to="/sero-" title="serō on velut" lang="la">serō[sertum]</Link>,{" "}and{" "}
-                    <Link to="/sero-" title="serō on velut" lang="la">serō[serātum]</Link>{" "}have different participles;{" "}
-                    <Link to="/iu-s" title="iūs on velut" lang="la">iūs[>iūrō]</Link>{" "}and{" "}
-                    <Link to="/iu-s" title="iūs on velut" lang="la">iūs[>iūsculum]</Link>{" "}have different etymological derivatives.
+                    information in brackets after the lemma. Thus:{" "}
+                    <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</Link>{" "}and{" "}
+                    <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</Link>{" "}are different parts of speech;{" "}
+                    <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</Link>{" "}and{" "}
+                    <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</Link>{" "}have different genitives (letter names are indeclinable!);{" "}
+                    <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</Link>,{" "}
+                    <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</Link>,{" "}and{" "}
+                    <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</Link>{" "}have different participles;{" "}
+                    <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</Link>{" "}and{" "}
+                    <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</Link>{" "}have different etymological derivatives.
                 </p>
                 <p>
                     &ldquo;Cognates&rdquo; are lemmata that come from the same etymological origin.

@@ -39,3 +39,7 @@
   in case the text is overlaying the fulmar picture */
   text-shadow: 1px 1px 1px rgb(206,227,242)
 }
+
+p {
+  line-height: 1.6em;
+}
