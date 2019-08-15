@@ -191,8 +191,10 @@ class Word extends Component {
             axios.countWords().then((data)=>{
                 this.setState({totalWordsCount: data.data.count})
                 let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
-                axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{
-                    this.setState({randomWord: array.data[0].Word})
+                axios.getWordsAlph({"Ord": randomOrd}).then((data)=>{
+                    if (data.data[0].Word) {
+                        this.setState({randomWord: data.data[0].Word})
+                    }
                 })
             })
         }
