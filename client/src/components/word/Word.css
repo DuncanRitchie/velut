@@ -24,9 +24,9 @@
 .found-word {
     margin-top: 0;
     margin-bottom: 0;
-    padding: 0 6px;
+    padding: 3px 6px;
     background-color: rgb(144, 203, 209);
-    font-size: 36px;
+    font-size: 40px;
     font-weight: normal
 }
 
@@ -39,7 +39,7 @@ h2 {
 .word-info h2:not(.dictionaries-heading) {
     margin-top: 3px;
     margin-bottom: 3px;
-    padding: 0;
+    padding: 6px 12px;
     background-color: rgb(239, 225, 171);
 }
 
@@ -50,8 +50,8 @@ h2 {
   
 h3 {
     margin: 0;
-    padding: 3px 6px;
-    font-size: 20px;
+    padding: 6px 12px;
+    font-size: 21px;
     background-color: rgb(252, 240, 190)
 }
 
@@ -69,7 +69,8 @@ h3 {
 }
 
 .dictionaries-heading {
-    margin-top: 30px;
+    margin-top: 42px;
+    padding: 6px 6px;
     margin-bottom: 0;
     background-color: rgb(125, 211, 211)
 }
@@ -78,5 +79,4 @@ h3 {
     background-color: rgb(202, 237, 234);
     padding: 12px 6px;
     margin-top: 0;
-    margin-bottom: -6px
 }
