@@ -9,15 +9,20 @@ const delChars = require('./delChars')
 // or an object containing more words as keys recursively.
 const findAnagrams = (input, words) => {
     let anagrams = {}
+    // For every subword, an iteration of the for-loop runs.
     for (let i = 0; i < words.length; i++) {
+        // If there are no letters remaining after the subword is deleted from the input,
+        // we add the word to 'anagrams' as a key with the value true.
         remaining = delChars(input,words[i].NoMacra)
         if (remaining.length === 0) {
             anagrams[words[i].Word] = true
         }
+        // But if there are letters remaining, we recurse.
         else {
-            subwords = findSubwords(remaining,words)
+            subwords = findSubwords(remaining,words) // subwords is an array.
             if (subwords && subwords.length) {
-                subanagrams = findAnagrams(remaining, subwords)
+                subanagrams = findAnagrams(remaining, subwords) // subanagrams is an object.
+                // We only add 'subanagrams' into 'anagrams' if it is not empty.
                 if (subanagrams && Object.keys(subanagrams).length) {
                     anagrams[words[i].Word] = subanagrams
                 }
