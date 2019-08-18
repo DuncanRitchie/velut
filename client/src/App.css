@@ -18,7 +18,7 @@
   overflow-y: auto
 }
 
-.home,.subwords-home,.anagrams-home {
+.home {
   background-image:  url('./images/FulmarFlying.png');
   background-size: calc((80vh + 80vw)/2);
   background-position: -20vw 75%;
@@ -26,10 +26,10 @@
   background-repeat: no-repeat;
 }
 
-.word,.about,.subwords,.anagrams {
+.word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home {
   background-image:  url('./images/FulmarFlying.png');
   background-size: 75vh;
-  background-position: calc(48px + 5vw - 54vh) calc(10vw - 28vh - 20px);
+  background-position: calc(48px + 5vw - 54vh) calc(10vw - 21vh - 20px);
   background-attachment: fixed;
   background-repeat: no-repeat;
 }

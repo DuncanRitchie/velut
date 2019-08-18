@@ -6,9 +6,9 @@ h1 {
 }
   
 .title-author {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: normal;
-    padding-right: 144px;
+    padding-right: 154px;
     color: rgb(55, 105, 55);
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
@@ -20,9 +20,9 @@ h1 {
     background: linear-gradient(to bottom, rgb(17, 16, 7), rgb(88, 82, 44));
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 80px;
+    font-size: 90px;
     font-weight: normal;
-    line-height: 30px
+    line-height: 42px
 }
 
 .title::after {
