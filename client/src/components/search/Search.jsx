@@ -77,8 +77,13 @@ class Search extends Component {
         } catch(err) {
             this.setState({sanitisedInput: this.state.input})
         }
-        // The input is always initially focussed.
-        document.getElementById("search-input").focus()
+        // The input is always initially focussed, unless the page is About.
+        if (this.props.match.path === "/about") {
+            document.getElementById("search-input").blur()
+        }
+        else {
+            document.getElementById("search-input").focus()
+        }
     }
 
     // If the location changes we need new data.

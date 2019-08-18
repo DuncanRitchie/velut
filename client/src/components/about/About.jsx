@@ -197,8 +197,8 @@ class About extends Component {
                     </p>
                     <h2>Future plans</h2>
                     <p>
-                        velut contains {this.state.wordCount || "more than 95000"} words 
-                        belonging to {this.state.lemmaCount || "more than 11000"} lemmata. 
+                        velut contains {this.state.wordCount || "96000+"} words 
+                        belonging to {this.state.lemmaCount || "11000+"} lemmata. 
                         There are plenty more I will add!
                     </p>
                 </div>
