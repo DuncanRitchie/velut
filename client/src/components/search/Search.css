@@ -1,6 +1,6 @@
 .search {
     width: calc(60vw + 16px);
-    max-width: 720px;
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 12px;
@@ -11,7 +11,7 @@ input {
     text-align: center;
     margin: 0;
     width: 60vw;
-    max-width: 704px;
+    max-width: 734px;
     border: 2px solid rgb(133, 167, 133); /* a pale grey-green */
     height: 20px;
     font-size: 16px;

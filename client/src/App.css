@@ -42,4 +42,7 @@
 
 p {
   line-height: 1.6em;
+  padding: 9px 18px;
+  margin-top: 6px;
+  margin-bottom: 0
 }

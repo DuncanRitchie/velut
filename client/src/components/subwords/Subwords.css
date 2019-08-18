@@ -1,6 +1,7 @@
 .anagrams-home p:not(.title-full),.subwords-home p:not(.title-full) {
     width: calc(100% - 36px);
-    max-width: 708px;
+    max-width: 738px;
+    margin-top: 0;
     margin-left: auto;
     margin-right: auto;
     padding: 6px;
@@ -10,15 +11,11 @@
 
 .subwords-result,.anagrams-result {
     width: calc(100% - 48px);
-    max-width: 696px;
+    max-width: 750px;
     margin-top: 18px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0;
     border-top: 3px solid rgb(144, 203, 209);
-    padding: 6px 12px;
     background-color: rgba(255,253,244,0.95)
-}
-
-.subwords-result,.anagrams-result p {
-    margin: 3px 0
 }
