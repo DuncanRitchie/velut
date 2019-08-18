@@ -21,7 +21,7 @@ class Anagrams extends Component {
     fetchWords(input) {
         this.setState({loading: true})
         axios.getAnagrams(noMacra(input).toLowerCase().replace(/ /g,"")).then((data)=>{
-            // data.data is a simple array of strings.
+            // data.data is a simple array of strings, eg ['fēlēs','flēs ē','fel ēs','fel es','fel sē', ...]
             this.setState({anagrams: data.data})
             this.setState({loading: false})
         })     
@@ -53,6 +53,9 @@ class Anagrams extends Component {
         if (loading) {
             result = (<p>Loading anagrams&hellip;&nbsp; This can take a few minutes.</p>)
         }
+        else if (anagrams[0]==="Internal server error") {
+            result = <p>There was an error in fetching your anagrams! Please try again later, or try another search.</p>
+        }
         else if (mappedAnagrams.length) {
             result = (
                 <div>
@@ -70,7 +73,7 @@ class Anagrams extends Component {
         return (
             <div className="anagrams">
                 <Title textBeforeTitle="Anagram phrases" />
-                <p>Caution &mdash; searches may take some minutes or fail completely. Anagrams longer than thirteen words will not be found.</p>
+                <p>Caution &mdash; searches may take some minutes or fail completely.</p>
                 <Search prefix="anagramphrases/"/>
                 <div className="anagrams-result">
                     {result}

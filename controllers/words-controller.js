@@ -80,10 +80,10 @@ module.exports = {
 			})
 			.then(subwords => {
 				try {
-					anagrams = Object.getOwnPropertyNames(flatten(findAnagrams(input,subwords)))
+					anagrams = Object.getOwnPropertyNames(flatten(findAnagrams(input,subwords),{delimiter: " "}))
 					return anagrams
 				} catch {
-					return "Internal server error"
+					return ["Internal server error"]
 				}})
 				.then(anagrams=>{res.json(anagrams)})
 	},
