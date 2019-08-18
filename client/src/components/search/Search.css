@@ -84,12 +84,12 @@ input {
     1% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         transform: translateY(0);
-        height: 180px
+        height: 234px
     }
     50% {
         clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
         transform: translateY(0);
-        height: 90px
+        height: 117px
     }
     99% {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -117,12 +117,12 @@ input {
     50% {
         clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
         transform: translateY(0);
-        height: 90px
+        height: 117px
     }
     99% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         transform: translateY(0);
-        height: 180px
+        height: 234px
     }
     100% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -136,7 +136,8 @@ input {
     text-decoration: none;
     background: linear-gradient(to bottom right, rgb(199, 228, 230), rgb(147, 202, 204));
     width: inherit;
-    margin: 0
+    margin: 0;
+    padding: 3px 6px
 }
 
 .dropdown-item:hover {
