@@ -40,16 +40,16 @@ footer a,.footer-copyright,.go-back {
 }
 
 footer a,.go-back {
-    color: #25415c;
+    color: #0c457a;
     /* background: linear-gradient(to top, rgb(89, 209, 191), rgba(159, 243, 200, 0)) */
 }
 
 footer a span {
-    color: #25415c;
+    color: #0c457a;
 }
 
 footer a:hover,.go-back:hover {
-    color: #25415c;
+    color: #0c457a;
     background: linear-gradient(to top, rgb(209, 248, 228), rgba(209, 248, 228, 0));
 }
 
