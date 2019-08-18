@@ -79,12 +79,17 @@ input {
     0% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         transform: translateY(0);
+        height: initial
+    }
+    1% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
         height: 180px
     }
     50% {
         clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
         transform: translateY(0);
-        height: 0
+        height: 90px
     }
     99% {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -109,13 +114,13 @@ input {
         transform: translateY(0);
         height: 0
     }
-    75% {
-        clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%);
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
         transform: translateY(0);
-        height: 135px
+        height: 90px
     }
     99% {
-        clip-path: polygon(0 0, 100% 0, 100% 99%, 0 99%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         transform: translateY(0);
         height: 180px
     }
