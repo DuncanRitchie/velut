@@ -1,6 +1,17 @@
 const Lemma = require('../models/lemma-model')
 
 module.exports = {
+	// .count() is accessed from route /api/lemma/count
+	count: function(req, res) {
+		Lemma.estimatedDocumentCount().exec((err, count) => {
+			if (err) {
+				res.send(err);
+				return;
+			}
+		
+			res.json({ "count": count });
+		})
+	},
 	// .findOneLemma() is accessed from route e.g. /api/lemma/one/?Lemma=pīca
 	findOneLemma: function(req, res) {
 		Lemma.findOne(req.query).select({

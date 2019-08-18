@@ -6,7 +6,6 @@ const flatten = require('flat')
 // Defining all methods and logic for routes
 
 module.exports = {
-	// .count() may not actually work
 	count: function(req, res) {
 		Word.estimatedDocumentCount().exec((err, count) => {
 			if (err) {

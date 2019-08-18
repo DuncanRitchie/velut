@@ -33,6 +33,10 @@ export default {
 	getWordById: (id) => {
 		return axios.get('/api/words/id/' + id)
 	},
+    // Counts the lemmata in the MongoDB collection. Should be more than 11000.
+    countLemmata: () => {
+        return axios.get('/api/lemmata/count')
+    },
 	// Gets one lemma only.
 	getOneLemma: (query) => {
 		return axios.get('/api/lemmata/one/',{params: query})

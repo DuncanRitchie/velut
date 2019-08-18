@@ -11,7 +11,7 @@ import Footer from "./components/footer/Footer";
 import './App.css';
 
 class App extends Component {
-  render() {
+render() {
     return (
       <div className="App" lang="en">
         <Router>
@@ -31,7 +31,7 @@ class App extends Component {
             <Route path="/consonyms" component={Home} />
             <Route path="/anagrams" component={Home} />
             <Route path="/scansion" component={Home} />
-            <Route path="/about" component={About} />
+            <Route path="/about" component={About}/>
             <Route path="/:word" component={Word} />
           </Switch>
           <Footer history={this.props.history}/>
