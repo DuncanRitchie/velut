@@ -46,7 +46,7 @@ class Anagrams extends Component {
         let mappedAnagrams = []
         if (anagrams) {
             mappedAnagrams = anagrams.map((anagram,index)=>{
-                return <span key={index} lang="la">{anagram}<br/></span>
+                return <span key={index} lang="la">{anagram.replace(/\./g," ")}<br/></span>
             })
         }
         let result = null

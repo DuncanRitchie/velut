@@ -30,6 +30,7 @@
 	"author": "Duncan Ritchie",
 	"dependencies": {
 		"express": "^4.16.3",
+		"flat": "^4.1.0",
 		"mongoose": "^5.3.2"
 	},
 	"devDependencies": {

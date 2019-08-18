@@ -1,6 +1,7 @@
 const Word = require('../models/word-model')
 const findSubwordsFromMongo = require('./findSubwordsFromMongo')
 const findAnagrams = require('./findAnagrams')
+const flatten = require('flat')
 
 // Defining all methods and logic for routes
 
@@ -77,10 +78,14 @@ module.exports = {
 			.then(words=>{
 				return sortedSubwords = findSubwordsFromMongo(input,words)
 			})
-			.then(subwords=>{
-				return findAnagrams(input,subwords)
-			})
-			.then(anagrams=>{res.json(anagrams)})
+			.then(subwords => {
+				try {
+					anagrams = Object.getOwnPropertyNames(flatten(findAnagrams(input,subwords)))
+					return anagrams
+				} catch {
+					return "Internal server error"
+				}})
+				.then(anagrams=>{res.json(anagrams)})
 	},
 	findById: function(req, res) {
 		Word.findById(req.params.id)
