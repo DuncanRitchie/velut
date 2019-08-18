@@ -5,28 +5,30 @@ import "./Footer.css"
 
 let Footer = (props) => {
     return (
-        <div className="footer">
+        <footer className="footer">
             <ul>
                 <li>
-                    &copy; Duncan Ritchie.
+                    <span className="footer-copyright">
+                        &copy; Duncan Ritchie
+                    </span>
                 </li>
                 {props.history.length>2
-                    ? (<li><button className="go-back" tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button>.</li>)
+                    ? (<li><button className="go-back" tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button></li>)
                     : null}
                 {props.history.location.pathname==="/"
                     ? null 
-                    : <li><Link to="/" title="velut homepage">Home</Link>.</li> }
+                    : <li><Link to="/" title="velut homepage"><span>Home</span></Link></li> }
                 {props.history.location.pathname.substr(0,9)==="/subwords"
                         ? null 
-                        : <li><Link to="/subwords" title="Subwords on velut">Subwords</Link>.</li> }
+                        : <li><Link to="/subwords" title="Subwords on velut"><span>Subwords</span></Link></li> }
                 {props.history.location.pathname==="/about" || props.history.location.pathname==="/about/"
                     ? null 
-                    : <li><Link to="/about" title="About velut">About velut</Link>.</li> }
+                    : <li><Link to="/about" title="About velut"><span>About velut</span></Link></li> }
                 <li>
-                    <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s website">My website</a>.
+                    <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s website"><span>My website</span></a>
                 </li>
             </ul>
-        </div>
+        </footer>
     )
 }
 

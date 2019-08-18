@@ -8,24 +8,13 @@ ul {
     width: calc(100vw - 12px);
     max-width: 762px;
     margin: 0 auto;
-    padding: 6px 0;
+    padding: 0;
     list-style: none;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap
 }
 
-li {
-    padding: 0 6px
-}
-
-button {
-    box-shadow: 0;
-    border: 0;
-    background: 0;
-    font: inherit;
-    padding: 0
-}
 
 /* These styles also apply to all the <a> tags throughout the app. */
 
@@ -39,4 +28,35 @@ a:link,.go-back,a:visited {
 a:hover,.go-back:hover {
     color: #4d88bb;
     text-decoration: underline
+}
+
+/* The following styles apply only within footer */
+
+footer a,.footer-copyright,.go-back {
+    transform: translateX(calc(-1vw + 6px));
+    padding: 6px 2vw;
+    display: flex;
+    align-content: center;
+}
+
+footer a,.go-back {
+    color: #25415c;
+    /* background: linear-gradient(to top, rgb(89, 209, 191), rgba(159, 243, 200, 0)) */
+}
+
+footer a span {
+    color: #25415c;
+}
+
+footer a:hover,.go-back:hover {
+    color: #25415c;
+    background: linear-gradient(to top, rgb(209, 248, 228), rgba(209, 248, 228, 0));
+}
+
+button {
+    box-shadow: 0;
+    border: 0;
+    background: 0;
+    font: inherit;
+    padding: 0
 }
