@@ -25,7 +25,7 @@ let Lemma = (props) => {
                 // emoji = "🇬🇷"
                 flagSrc = greece
             }
-            return <span key={i} lang={langCode}><img className="inline-flag" src={flagSrc} alt={lang}/> {word} </span>
+            return <span key={i} lang={langCode}><img className="inline-flag" src={flagSrc} alt={lang}/>&nbsp;{word} </span>
         })
     }
     
