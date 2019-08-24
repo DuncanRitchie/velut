@@ -33,15 +33,14 @@ a:hover,.go-back:hover {
 /* The following styles apply only within footer */
 
 footer a,.footer-copyright,.go-back {
-    transform: translateX(calc(-1vw + 6px));
-    padding: 6px 2vw;
+    transform: translateX(calc(-0.5vw + 3px));
+    padding: 6px calc(18px + 0.1vw);
     display: flex;
     align-content: center;
 }
 
 footer a,.go-back {
     color: #0c457a;
-    /* background: linear-gradient(to top, rgb(89, 209, 191), rgba(159, 243, 200, 0)) */
 }
 
 footer a span {
