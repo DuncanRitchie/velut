@@ -56,77 +56,50 @@ input {
 
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transform: translateY(-500px);
-    height: 0
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
+    transform: translateY(-500px); /* Changed with a transition */
+    height: 0px; /* Changed with an animation to 234px then initial  */
 }
 
 .dropdown-content-close {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transform: translateY(-500px);
+    height: 0px;
+    transition: clip-path 1.5s ease, transform 0.25s 1.5s;
     animation-name: dropdown-animation-close;
     animation-duration: 1.5s;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-fill-mode: forwards
 }
 
 .dropdown-content-open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateY(0);
+    height: initial;
+    transition: clip-path 1.5s ease, transform 0s;
     animation-name: dropdown-animation-open;
     animation-duration: 1.5s;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
     animation-fill-mode: forwards
 }
 
 @keyframes dropdown-animation-close {
     0% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transform: translateY(0);
-        height: initial
-    }
-    1% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transform: translateY(0);
-        height: 234px
-    }
-    50% {
-        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-        transform: translateY(0);
-        height: 117px
-    }
-    99% {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transform: translateY(0);
-        height: 0
+        height: 234px /* This is the correct offset height of dropdown-content if screenwidth > 1019px */
     }
     100% {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transform: translateY(-500px);
         height: 0
     }
 }
 
 @keyframes dropdown-animation-open {
     0% {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transform: translateY(-500px);
         height: 0
     }
-    1% {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transform: translateY(0);
-        height: 0
-    }
-    50% {
-        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-        transform: translateY(0);
-        height: 117px
-    }
-    99% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transform: translateY(0);
-        height: 234px
+    99.5% {
+        height: 234px /* This is the correct offset height of dropdown-content if screenwidth > 1019px */
     }
     100% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transform: translateY(0);
         height: initial
     }
 }
