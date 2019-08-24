@@ -64,7 +64,6 @@ input {
 .dropdown-content-close {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     transform: translateY(-500px);
-    height: 0px;
     transition: clip-path 1.5s ease, transform 0.25s 1.5s;
     animation-name: dropdown-animation-close;
     animation-duration: 1.5s;
@@ -75,7 +74,6 @@ input {
 .dropdown-content-open {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     transform: translateY(0);
-    height: initial;
     transition: clip-path 1.5s ease, transform 0s;
     animation-name: dropdown-animation-open;
     animation-duration: 1.5s;
