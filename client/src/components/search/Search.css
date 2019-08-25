@@ -57,14 +57,12 @@ input {
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
-    transform: translateY(-500px); /* Changed with a transition */
     height: 0px; /* Changed with an animation to 234px then initial  */
 }
 
 .dropdown-content-close {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transform: translateY(-500px);
-    transition: clip-path 1.5s ease, transform 0.25s 1.5s;
+    transition: clip-path 1.5s ease;
     animation-name: dropdown-animation-close;
     animation-duration: 1.5s;
     animation-timing-function: ease;
@@ -73,8 +71,7 @@ input {
 
 .dropdown-content-open {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transform: translateY(0);
-    transition: clip-path 1.5s ease, transform 0s;
+    transition: clip-path 1.5s ease;
     animation-name: dropdown-animation-open;
     animation-duration: 1.5s;
     animation-timing-function: ease;
