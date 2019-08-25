@@ -20,6 +20,7 @@
 
 .home {
   background-image:  url('./images/FulmarFlying.png');
+  background-image:  url('./images/FulmarFlying.webp');
   background-size: calc((80vh + 80vw)/2);
   background-position: -20vw 75%;
   background-attachment: fixed;
@@ -28,6 +29,7 @@
 
 .word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home {
   background-image:  url('./images/FulmarFlying.png');
+  background-image:  url('./images/FulmarFlying.webp');
   background-size: 75vh;
   background-position: calc(48px + 5vw - 54vh) calc(10vw - 21vh - 20px);
   background-attachment: fixed;
