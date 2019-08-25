@@ -54,15 +54,36 @@ input {
     cursor: pointer;
 }
 
+/*
+   Chrome, Firefox, Opera support clip-path.
+   Safari supports -webkit-clip-path.
+   Edge supports neither, so opacity values are needed.
+*/
+
+/*
+   height: 0 avoids leaving a gap when dropdown is closed.
+*/
+
+/*
+   If CSS transition/animation would allow changing the height to
+   or from "initial" or "auto", we could use a simple transition.
+   But we need an animation on the height to animate smoothly from 
+   height: 0 to height: 234px, then change to initial at the end.
+*/
+
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
     height: 0px; /* Changed with an animation to 234px then initial  */
+    opacity: 0; /* Changed with a transition */
 }
 
 .dropdown-content-close {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: clip-path 1.5s ease;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    opacity: 0;
+    transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
     animation-name: dropdown-animation-close;
     animation-duration: 1.5s;
     animation-timing-function: ease;
@@ -71,7 +92,9 @@ input {
 
 .dropdown-content-open {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transition: clip-path 1.5s ease;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 100%;
+    transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
     animation-name: dropdown-animation-open;
     animation-duration: 1.5s;
     animation-timing-function: ease;
@@ -83,13 +106,13 @@ input {
         height: 234px /* This is the correct offset height of dropdown-content if screenwidth > 1019px */
     }
     100% {
-        height: 0
+        height: 0px
     }
 }
 
 @keyframes dropdown-animation-open {
     0% {
-        height: 0
+        height: 0px
     }
     99.5% {
         height: 234px /* This is the correct offset height of dropdown-content if screenwidth > 1019px */
