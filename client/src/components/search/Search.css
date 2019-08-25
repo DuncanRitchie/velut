@@ -65,6 +65,12 @@ input {
 */
 
 /*
+   transform moves the dropdown offscreen.
+   If it remained where it was, Edge would still let users
+   click on it even when it was closed!
+*/
+
+/*
    If CSS transition/animation would allow changing the height to
    or from "initial" or "auto", we could use a simple transition.
    But we need an animation on the height to animate smoothly from 
@@ -77,13 +83,15 @@ input {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
     height: 0px; /* Changed with an animation to 234px then initial  */
     opacity: 0; /* Changed with a transition */
+    transform: translateX(-50vw); /* Changed with a delayed transition */
 }
 
 .dropdown-content-close {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     opacity: 0;
-    transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
+    transform: translateX(-50vw);
+    transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease, transform 0s 1.5s;
     animation-name: dropdown-animation-close;
     animation-duration: 1.5s;
     animation-timing-function: ease;
@@ -94,6 +102,7 @@ input {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     opacity: 100%;
+    transform: translateX(0);
     transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
     animation-name: dropdown-animation-open;
     animation-duration: 1.5s;
