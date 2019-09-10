@@ -65,8 +65,8 @@ class About extends Component {
                     <p>
                         Words in velut are spelt 
                         with the letters abcdefghiklmnopqrstuvxyz &mdash; j is always written as i, w does not appear. 
-                        Any long vowel is marked with an macron (ĀāĒēĪīŌōŪūȲȳ). 
-                        In words where the stress is ambiguous, the presence or absence of an acute accent will distinguish 
+                        Any long vowel is marked with a macron (ĀāĒēĪīŌōŪūȲȳ). 
+                        In words where the stress is otherwise ambiguous, the presence or absence of an acute accent will distinguish 
                         &mdash; e.g. <Link to="./Tiberī" title="Tiberī on velut" lang="la">Tiberī</Link> (dative of the river Tiber) 
                         is stressed on the first syllable, <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut" lang="la">Tib&eacute;rī</Link> (vocative 
                         of the name Tiberius) is stressed on the second. I&rsquo;ve also used diaereses 
@@ -77,13 +77,13 @@ class About extends Component {
                         a word that matches. If there are several words spelt the same, they will be offered as &ldquo;other homographs&rdquo;. 
                         You can also specify diacritics 
                         by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis; 
-                        thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted {" "}
+                        thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted as{" "}
                         <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut" lang="la">Tib&eacute;rī</Link>.
                     </p>
                     <h2>Scansion</h2>
                     <p>
                         &ldquo;Scansion&rdquo; refers to whether the syllables of a word are classed as &ldquo;long&rdquo; or &ldquo;short&rdquo; in classical Latin poetry.
-                        Long syllables (denoted by a macron –) theoretically take twice as long to pronounce as short syllables 
+                        Long syllables (which I denote by a dash –) theoretically take twice as long to pronounce as short syllables 
                         (denoted by a breve ⏑), and the rhythm of ancient Latin (or Greek or Sanskrit) poetry comes from the arrangement 
                         of long and short syllables. Such poetry can be called quantitative verse.
                         I assume that final vowels are not elided and I assume that any syllable that could be short is short.
@@ -135,7 +135,7 @@ class About extends Component {
                     <h2>Consonyms, anagrams, and subwords</h2>
                     <p>
                         &ldquo;<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>&rdquo; are words 
-                        whose consonants (i.e. bcdfghklmnpqrstvxz) are the same and in the same order.
+                        whose consonant letters (i.e. bcdfghklmnpqrstvxz) are the same and in the same order.
                     </p>
                     <p>
                         &ldquo;<Link to="/anagrams" title="Search for anagrams on velut">Anagrams</Link>&rdquo; are words 
@@ -158,7 +158,7 @@ class About extends Component {
                         The &ldquo;lemma&rdquo; (plural &ldquo;lemmata&rdquo;) of a word is the form you would find in a dictionary as the headword. A
                         given word may belong to multiple lemmata.</p>
                     <p>
-                        Sometimes a word might even be multiple lemmata &mdash; for example in English &ldquo;make&rdquo; 
+                        Sometimes a word might even be multiple lemmata &mdash; for example in English &ldquo;take&rdquo; 
                         can be a verb lemma or a noun lemma &mdash; so I&rsquo;ve chosen to put a piece of distinguishing 
                         information in brackets after the lemma. Thus:{" "}
                         <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</Link>{" "}and{" "}
@@ -172,12 +172,18 @@ class About extends Component {
                         <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</Link>{" "}have different etymological derivatives.
                     </p>
                     <p>
+                        Lemmata that derive from (or are morphologically similar to) Ancient Greek and/or Hebrew may be accompanied
+                        by transliterations in those languages, along with the flags of modern Greece and Israel as appropriate.
+                    </p>
+                    <p>
                         &ldquo;Cognates&rdquo; are lemmata that come from the same etymological origin.
+                        I try to be as accurate as I can justify in my compilation of cognates; however, etymology 
+                        can be a field full of controversy and obscurity, and is not one I&rsquo;m any expert in.
                     </p>
                     <h2>Lexicography</h2>
                     <p>
                         All the data have been compiled by me, so please be aware that there are several lemmata that 
-                        I don&rsquo;t have. I may simply have never come across them, I may have judged them too obscure 
+                        I don&rsquo;t have. I may simply have never come across them, I may have judged them too arcane 
                         for inclusion, or &mdash; if they begin with a prefix or are stressed on a suffix &mdash; 
                         I may have decided that I should come back to them later. Forms stressed on the grammatical 
                         ending have typically been left out.
