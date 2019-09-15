@@ -40,7 +40,7 @@ class About extends Component {
                 </ul> */}
 
                 <div className="about-text">
-                    <h2>velut&rsquo;s backstory</h2>
+                    <h2 id="veluts-backstory">velut&rsquo;s backstory</h2>
                     <p>
                         When I was studying Latin at uni (I have a master&rsquo;s), I found it useful to keep an Excel spreadsheet of any vocabulary I came across. 
                         On occasions in my spare time, I have enjoyed writing poetry, most notably lyrics (in English) for a children&rsquo;s 
@@ -57,7 +57,7 @@ class About extends Component {
                         for &ldquo;Useful Tables of Excellent Latin Vocabulary&rdquo;, or 
                         &ldquo;<span lang="la"><Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link></span>&rdquo;.)
                     </p>
-                    <h2>As a website</h2>
+                    <h2 id="as-a-website">As a website</h2>
                     <p>
                         In January 2019 I started my formal training in web development. I then had the skills and 
                         confidence to begin to try to make my velut into a website.
@@ -74,7 +74,7 @@ class About extends Component {
                     <p>
                         Speaking of &ldquo;cool&rdquo;, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
                     </p>
-                    <h2>Spelling</h2>
+                    <h2 id="spelling">Spelling</h2>
                     <p>
                         Words in velut are spelt 
                         with the letters abcdefghiklmnopqrstuvxyz &mdash; j is always written as i, w does not appear. 
@@ -93,7 +93,7 @@ class About extends Component {
                         thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted as{" "}
                         <Link to="./Tib&eacute;rī" title="Tib&eacute;rī on velut" lang="la">Tib&eacute;rī</Link>.
                     </p>
-                    <h2>Scansion</h2>
+                    <h2 id="scansion">Scansion</h2>
                     <p>
                         &ldquo;Scansion&rdquo; refers to whether the syllables of a word are classed as &ldquo;long&rdquo; or &ldquo;short&rdquo; in classical Latin poetry.
                         Long syllables (which I denote by a dash –) theoretically take twice as long to pronounce as short syllables 
@@ -113,7 +113,7 @@ class About extends Component {
                         ⏑⏑– or ⏑⏑ or ⏑–⏑ or ⏑–– or ⏑– depending on the rest of the line of poetry and the poet&rsquo;s intentions.
                         Therefore, velut remains a somewhat crude tool with respect to scansion.
                     </p>
-                    <h2>Rhymes</h2>
+                    <h2 id="rhymes">Rhymes</h2>
                     <p>
                         velut allows you to find rhymes under classical or ecclesiastical pronunciation. &ldquo;Classical&rdquo; pronunciation
                         is (theoretically) how an educated citizen of the Roman Republic or early Roman Empire would have pronounced Latin;
@@ -145,7 +145,7 @@ class About extends Component {
                         primarily by the vowel(s) in and after the stressed syllable, then by the consonants between the stressed vowel and the end,
                         then by any vowels preceding the stressed syllable, then by any consonants between the stressed vowel and the beginning. 
                     </p>
-                    <h2>Consonyms, anagrams, and subwords</h2>
+                    <h2 id="consonyms-anagrams-and-subwords">Consonyms, anagrams, and subwords</h2>
                     <p>
                         &ldquo;<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>&rdquo; are words 
                         whose consonant letters (i.e. bcdfghklmnpqrstvxz) are the same and in the same order.
@@ -166,7 +166,7 @@ class About extends Component {
                     <p>
                         Subwords are in descending length order, then alphabetical.
                     </p>
-                    <h2>Lemmata</h2>
+                    <h2 id="lemmata">Lemmata</h2>
                     <p>
                         The &ldquo;lemma&rdquo; (plural &ldquo;lemmata&rdquo;) of a word is the form you would find in a dictionary as the headword. A
                         given word may belong to multiple lemmata.</p>
@@ -193,7 +193,7 @@ class About extends Component {
                         I try to be as accurate as I can justify in my compilation of cognates; however, etymology 
                         can be a field full of controversy and obscurity, and is not one I&rsquo;m any expert in.
                     </p>
-                    <h2>Lexicography</h2>
+                    <h2 id="lexicography">Lexicography</h2>
                     <p>
                         All the data have been compiled by me, so please be aware that there are several lemmata that 
                         I don&rsquo;t have. I may simply have never come across them, I may have judged them too arcane 
@@ -216,7 +216,7 @@ class About extends Component {
                         (Thesaurus Linguae Latinae requires a subscription,
                         which your university or library might be able to furnish you with.)
                     </p>
-                    <h2>Future plans</h2>
+                    <h2 id="future-plans">Future plans</h2>
                     <p>
                         Roughly 6% of lemmata are missing information regarding cognates.
                         I&rsquo;m working to redress this.
