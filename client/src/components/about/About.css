@@ -28,3 +28,11 @@ p + p {
   padding-top: 0px;
   padding-bottom: 12px
 }
+
+
+
+@media print {
+  .about-text {
+    max-width: initial;
+  }
+}

@@ -48,3 +48,25 @@ p {
   margin-top: 6px;
   margin-bottom: 0
 }
+
+
+
+@media print {
+  /* Remove the CSS Grid layout. */
+  .App {
+    display: block;
+    grid-template-columns: initial;
+    grid-template-rows: initial;
+    grid-template-areas: initial;
+  }
+
+  .home,.word,.anagrams,.anagrams-home,.subwords,.subwords-home,.about {
+    grid-area: initial;
+    overflow-y: initial;
+  }
+
+  /* No reason to have a shadow. */
+  .home-rubric {
+    text-shadow: none;
+  }
+}

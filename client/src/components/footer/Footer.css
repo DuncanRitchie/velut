@@ -1,4 +1,4 @@
-.footer {
+footer {
     grid-area: footer;
     /* This is a bright turquoise */
     background: linear-gradient(to bottom, rgb(121, 192, 181), rgb(159, 243, 200))
@@ -30,7 +30,8 @@ a:hover,.go-back:hover {
     text-decoration: underline
 }
 
-/* The following styles apply only within footer */
+
+/* The following styles (except the print media query) apply only within footer */
 
 footer a,.footer-copyright,.go-back {
     transform: translateX(calc(-0.5vw + 3px));
@@ -58,4 +59,14 @@ button {
     background: 0;
     font: inherit;
     padding: 0
+}
+
+
+
+@media print {
+    footer {
+        /* This is the same border as the sections in Subwords and AnagramPhrases have */
+        border-top: 3px solid rgb(144, 203, 209);
+        margin-top: 36px;
+    }
 }

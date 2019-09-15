@@ -39,3 +39,20 @@ h1 {
     in case the text is overlaying the fulmar picture */
     text-shadow: 1px 1px 1px rgb(206,227,242)
 }
+
+
+
+@media print {
+    /* Title should be solid grey on print. */
+    .title {
+        color: rgb(63, 63, 63);
+        background: none;
+        background-clip: initial;
+        -webkit-text-fill-color: initial;
+    }
+
+    /* No reason to have a shadow. */
+    .title-author,.title-full {
+        text-shadow: none;
+    }
+}

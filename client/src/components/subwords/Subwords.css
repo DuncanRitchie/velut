@@ -19,3 +19,22 @@
     border-top: 3px solid rgb(144, 203, 209);
     background-color: rgba(255,253,244,0.95)
 }
+
+
+
+@media print {
+    /* Allow elements to be full-width. */
+    .subwords-result,.anagrams-result,p {
+        max-width: initial;
+    }
+
+    /* Display a grey bullet between anagrams instead of a line-break. */
+    .anagrams-result br {
+        display: none;
+    }
+
+    .anagrams-result span:not(:first-of-type)::before {
+        color: rgb(173, 173, 173);
+        content: " • "
+    }
+}
