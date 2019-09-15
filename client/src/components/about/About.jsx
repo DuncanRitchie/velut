@@ -197,8 +197,10 @@ class About extends Component {
                         I stress all encliticized forms on the penultimate syllable, as the syllable immediately prior to the enclitic.
                     </p>
                     <p>
-                        If you discover that a word is not in velut (or suspect I&rsquo;ve made a mistake somewhere!), please check in other resources. 
-                        I hope the links at the base of the word&rsquo;s page are of use. (Thesaurus Linguae Latinae requires a subscription,
+                        If you discover that a word is not in velut, or you suspect I&rsquo;ve made a mistake somewhere 
+                        (it does happen!), or you want more detail than I provide, please look in other resources. 
+                        I hope the &ldquo;links to external sites&rdquo; at the base of the word&rsquo;s page are of use. 
+                        (Thesaurus Linguae Latinae requires a subscription,
                         which your university or library might be able to furnish you with.)
                     </p>
                     <h2>Future plans</h2>
