@@ -203,6 +203,10 @@ class About extends Component {
                     </p>
                     <h2>Future plans</h2>
                     <p>
+                        Roughly 6% of lemmata are missing information regarding cognates.
+                        I&rsquo;m working to redress this.
+                    </p>
+                    <p>
                         velut contains {this.state.wordCount || "96000+"} words 
                         belonging to {this.state.lemmaCount || "11000+"} lemmata. 
                         There are plenty more I will add!
