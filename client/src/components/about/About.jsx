@@ -26,6 +26,19 @@ class About extends Component {
         return (
             <div className="about">
                 <Title textBeforeTitle="About" />
+
+                {/* <ul className="table-of-contents">
+                    <li>velut&rsquo;s backstory</li>
+                    <li>As a website</li>
+                    <li>Spelling</li>
+                    <li>Scansion</li>
+                    <li>Rhymes</li>
+                    <li>Consonyms, anagrams, and subwords</li>
+                    <li>Lemmata</li>
+                    <li>Lexicography</li>
+                    <li>Future plans</li>
+                </ul> */}
+
                 <div className="about-text">
                     <h2>velut&rsquo;s backstory</h2>
                     <p>
