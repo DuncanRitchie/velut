@@ -27,17 +27,17 @@ class About extends Component {
             <div className="about">
                 <Title textBeforeTitle="About" />
 
-                {/* <ul className="table-of-contents">
-                    <li>velut&rsquo;s backstory</li>
-                    <li>As a website</li>
-                    <li>Spelling</li>
-                    <li>Scansion</li>
-                    <li>Rhymes</li>
-                    <li>Consonyms, anagrams, and subwords</li>
-                    <li>Lemmata</li>
-                    <li>Lexicography</li>
-                    <li>Future plans</li>
-                </ul> */}
+                <ul className="table-of-contents">
+                    <li><a href="#veluts-backstory" title="velut&rsquo;s backstory">velut&rsquo;s backstory</a></li>
+                    <li><a href="#as-a-website" title="As a website">As a website</a></li>
+                    <li><a href="#spelling" title="Spelling">Spelling</a></li>
+                    <li><a href="#scansion" title="Scansion">Scansion</a></li>
+                    <li><a href="#rhymes" title="Rhymes">Rhymes</a></li>
+                    <li><a href="#consonyms-anagrams-and-subwords" title="Consonyms, anagrams, and subwords">Consonyms, anagrams, and subwords</a></li>
+                    <li><a href="#lemmata" title="Lemmata">Lemmata</a></li>
+                    <li><a href="#lexicography" title="Lexicography">Lexicography</a></li>
+                    <li><a href="#future-plans" title="Future plans">Future plans</a></li>
+                </ul>
 
                 <div className="about-text">
                     <h2 id="veluts-backstory">velut&rsquo;s backstory</h2>
