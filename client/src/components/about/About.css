@@ -1,4 +1,13 @@
-.about-text {
+.table-of-contents {
+  display: none;
+}
+
+.table-of-contents li {
+  padding: 6px 3px;
+  width: 100%;
+}
+
+.table-of-contents,.about-text {
   width: calc(100% - 18px);
   max-width: 750px;
   margin-left: auto;
