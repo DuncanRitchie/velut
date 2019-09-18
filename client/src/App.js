@@ -4,8 +4,8 @@ import Home from "./components/word/Home";
 import Word from "./components/word/Word";
 import SubwordsHome from "./components/subwords/SubwordsHome";
 import Subwords from "./components/subwords/Subwords";
-import AnagramsHome from "./components/anagrams/AnagramsHome";
-import Anagrams from "./components/anagrams/Anagrams";
+import AnagramPhrasesHome from "./components/anagramphrases/AnagramPhrasesHome";
+import AnagramPhrases from "./components/anagramphrases/AnagramPhrases";
 import About from "./components/about/About";
 import Footer from "./components/footer/Footer";
 import './App.css';
@@ -19,8 +19,8 @@ render() {
             <Route path="/" exact component={Home} />
             <Route path="/subwords/:word" component={Subwords} />
             <Route path="/subwords" component={SubwordsHome} />
-            <Route path="/anagramphrases/:word" component={Anagrams} />
-            <Route path="/anagramphrases" component={AnagramsHome} />
+            <Route path="/anagramphrases/:word" component={AnagramPhrases} />
+            <Route path="/anagramphrases" component={AnagramPhrasesHome} />
             <Route path="/:type/:word" component={Word} />
             <Route path="/perfect" component={Home} />
             <Route path="/vowels" component={Home} />
