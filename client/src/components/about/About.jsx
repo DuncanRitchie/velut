@@ -26,20 +26,20 @@ class About extends Component {
     render() {
         document.title = "About velut"
 
-        const tableOfContents = sectionHeads.map((head,i)=>{
-            return (
-                <li key={i}><a href={"#"+sectionIds[i]} title={head}>{head}</a></li>
-            )
-        })
+        // const tableOfContents = sectionHeads.map((head,i)=>{
+        //     return (
+        //         <li key={i}><a href={"#"+sectionIds[i]} title={head}>{head}</a></li>
+        //     )
+        // })
 
         return (
             <div className="about">
                 <Title textBeforeTitle="About" />
 
-                <h2>Table of contents</h2>
+                {/* <h2>Table of contents</h2>
                 <ul className="table-of-contents">
                     {tableOfContents}
-                </ul>
+                </ul> */}
 
                 <div className="about-text">
                     <AboutSection i={0}>
