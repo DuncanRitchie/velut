@@ -1,5 +1,6 @@
 .table-of-contents {
-  display: none;
+  /* display: none; */
+  font-size: initial;
 }
 
 .table-of-contents li {
@@ -14,9 +15,14 @@
   margin-right: auto;
 }
 
+.about-section {
+  margin-bottom: 12px;
+  padding-top: 12px;
+}
+
 .about-text h2 {
   background-color: rgb(239, 225, 171);
-  margin-top: 24px;
+  margin-top: 0;
   margin-bottom: 0;
   padding: 6px 12px
 }

@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
   font-family: "Alegreya", serif;
@@ -16,6 +20,7 @@
 .home,.word,.anagrams,.anagrams-home,.subwords,.subwords-home,.about {
   grid-area: body;
   overflow-y: auto;
+  scroll-behavior: smooth;
   background-image:  url('./images/FulmarFlying.png'); /* Overruled in browsers with WebP support */
   background-attachment: fixed;
   background-repeat: no-repeat;
