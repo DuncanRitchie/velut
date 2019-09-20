@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import {Link} from "react-router-dom"
 import Title from "../title/Title"
 import Search from "../search/Search"
-import {sectionHeads, sectionIds} from "./AboutSectionHeads"
+// import {sectionHeads, sectionIds} from "./AboutSectionHeads"
 import AboutSection from "./AboutSection"
 import superscriptLemmaTag from '../word/superscriptLemmaTag'
 import axios from '../../axios/axios'
