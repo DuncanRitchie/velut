@@ -129,6 +129,7 @@ class Search extends Component {
                 key={i} 
                 className="dropdown-item" 
                 tabIndex="0" 
+                aria-label={"Select to return "+route.searchFieldFull.toLowerCase()}
                 onClick={()=>{this.handleType(route.route)}} 
                 onKeyUp={(e)=>{
                     if(e.keyCode===13){
@@ -150,6 +151,7 @@ class Search extends Component {
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
+                    aria-label="Enter a Latin word"
                     lang="la"
                     spellCheck="false"
                     />
@@ -182,6 +184,7 @@ class Search extends Component {
                         onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
                         onFocus={()=>this.handleDropdown("dropdown-content-open")}
                         onClick={()=>this.handleDropdown("dropdown-content-open")}
+                        aria-label={"You have selected "+dropdownSelect.toLowerCase()}
                         >
                             {dropdownSelect}
                         </p>
