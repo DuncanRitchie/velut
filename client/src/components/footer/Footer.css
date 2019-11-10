@@ -35,7 +35,7 @@ a:hover,.go-back:hover {
 
 footer a,.footer-copyright,.go-back {
     transform: translateX(calc(-0.5vw + 3px));
-    padding: 6px calc(18px + 0.1vw);
+    padding: 9px calc(18px + 0.1vw);
     display: flex;
     align-content: center;
 }
