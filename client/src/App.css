@@ -32,8 +32,8 @@ html {
 }
 
 .home {
-  background-size: calc((80vh + 80vw)/2);
-  background-position: -20vw 75%;
+  background-size: calc(40vh + 40vw);
+  background-position: -20vw calc(-16vw - 2vh + 180px);
 }
 
 .word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home {
