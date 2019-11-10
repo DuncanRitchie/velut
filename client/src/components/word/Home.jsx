@@ -7,7 +7,7 @@ let Home = () => {
     return (
         <div className="home">
             <Title />
-            <p className="home-rubric">Search for a Latin word using the searchbar and menu below!</p>
+            <p className="home-rubric">Enter a Latin word into the searchbar below!</p>
             <Search prefix="" />
         </div>
     )
