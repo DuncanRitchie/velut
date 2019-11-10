@@ -82,14 +82,14 @@ input {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
     height: 0px; /* Changed with an animation to 234px then initial  */
-    opacity: 0%; /* Changed with a transition */
+    opacity: 0; /* Changed with a transition */
     transform: translateX(-50vw); /* Changed with a delayed transition */
 }
 
 .dropdown-content-close {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    opacity: 0%;
+    opacity: 0;
     transform: translateX(-50vw);
     transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease, transform 0s 1.5s;
     animation-name: dropdown-animation-close;
@@ -101,7 +101,7 @@ input {
 .dropdown-content-open {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 99.9%;
+    opacity: 1;
     transform: translateX(0);
     transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
     animation-name: dropdown-animation-open;
