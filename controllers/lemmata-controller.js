@@ -25,15 +25,40 @@ module.exports = {
 				"NoMacra": 1,
 				"_id": 0
 			})
-			.then(words => {res.json(words)})
+			.then(lemma => {res.json(lemma)})
 			.catch(err => res.status(422).json(err))
 	},
-	// .findLemmata() is accessed from route e.g. /api/lemma/?Root=veniō
+	// .findLemmata() is accessed from route e.g. /api/lemmata/?Root=veniō
 	findLemmata: function(req, res) {
 		Lemma.find(req.query).sort("NoMacraLowerCase NoMacra NoTypeTag Lemma").select({
 			"Lemma": 1,
 			"_id": 0
-		}).then(words=>{res.json(words)})
+		})
+		.then(lemmata=>{res.json(lemmata)})
+		.catch(err => res.status(422).json(err))
+	},
+	// .findFromEnglish() is accessed from route /api/lemmata/english/:english
+	findFromEnglish: function(req, res) {
+		Lemma.find({
+			"Meaning": {
+				"$regex": req.params.english, 
+				"$options": "i"
+			}
+		})
+		.sort("NoMacraLowerCase NoMacra NoTypeTag Lemma")
+		.select({
+			"Lemma": 1,
+			"PartOfSpeech": 1,
+			"Meaning": 1,
+			"Notes": 1,
+			"Transliteration": 1,
+			"Root": 1,
+			"NoTypeTag": 1,
+			"NoMacra": 1,
+			"_id": 0
+		})
+		.then(lemmata=>{res.json(lemmata)})
+		.catch(err => res.status(422).json(err))
 	},
 	// .findLemmaById() does not get used, but its route is /api/lemma/id/:id
 	findLemmaById: function(req, res) {

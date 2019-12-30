@@ -10,7 +10,11 @@ router
 	.get(lemmataController.findOneLemma)
 
 router
-	.route('/id/')
+	.route('/english/:english')
+	.get(lemmataController.findFromEnglish)
+
+router
+	.route('/id/:id')
 	.get(lemmataController.findLemmaById)
 
 router
