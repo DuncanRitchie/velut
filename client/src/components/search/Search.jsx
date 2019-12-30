@@ -7,10 +7,10 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: this.props.match.params.word || "",
+            input: this.props.match.params.word || this.props.match.params.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.match.params.type || this.props.match.path.replace("/:word","").replace("/about","").replace("/","") || "",
+            type: this.props.match.params.type || this.props.match.path.replace("/:word","").replace("/:word","").replace("/about","").replace("/","") || "",
             dropdownAnimationClass: "dropdown-content-none"
         }
     }
@@ -167,9 +167,10 @@ class Search extends Component {
                 </button>
                 <br/>
                 {/* The menu to change the rhyme type displayed
-                Only appears if neither /subwords nor /anagramphrases nor /about is in the path. */}
+                Only appears if neither /subwords nor /anagramphrases nor /about nor /english is in the path. */}
                 {this.props.match.path.substr(0,9)==="/subwords"
                  || this.props.match.path.substr(0,15)==="/anagramphrases"
+                 || this.props.match.path.substr(0,8)==="/english"
                  || this.props.match.path==="/about"
                  ? null
                   : ( 

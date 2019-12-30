@@ -37,11 +37,12 @@ module.exports = {
 		.then(lemmata=>{res.json(lemmata)})
 		.catch(err => res.status(422).json(err))
 	},
-	// .findFromEnglish() is accessed from route /api/lemmata/english/:english
+	// .findFromEnglish() is accessed from route /api/lemmata/english/:word
 	findFromEnglish: function(req, res) {
 		Lemma.find({
 			"Meaning": {
-				"$regex": req.params.english, 
+				"$regex": req.params.word, 
+				// "$regex": "/[^ ,;\.\-]" + req.params.word + "[$ ,;\.\-]/", 
 				"$options": "i"
 			}
 		})

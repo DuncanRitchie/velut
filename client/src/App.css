@@ -17,7 +17,7 @@ html {
   grid-template-areas: "body" "footer";
 }
 
-.home,.word,.anagrams,.anagrams-home,.subwords,.subwords-home,.about {
+.home,.word,.anagrams,.anagrams-home,.subwords,.subwords-home,.english,.about {
   grid-area: body;
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -27,7 +27,7 @@ html {
 }
 
 /* Modernizr injects class-name of webp into <html> if WebP is supported. */
-.webp .home,.word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home {
+.webp .home,.word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home,.english {
   background-image:  url('./images/FulmarFlying.webp');
 }
 
@@ -36,7 +36,7 @@ html {
   background-position: -20vw calc(-16vw - 2vh + 180px);
 }
 
-.word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home {
+.word,.about,.subwords,.anagrams,.subwords-home,.anagrams-home,.english {
   background-size: 75vh;
   background-position: calc(48px + 5vw - 54vh) calc(10vw - 21vh - 20px);
 }

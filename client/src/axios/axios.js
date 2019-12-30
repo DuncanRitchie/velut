@@ -45,6 +45,10 @@ export default {
 	getLemmataAlph: (query) => {
 		return axios.get('/api/lemmata/',{params: query})
 	},
+	// Gets lemmata from an English substring.
+	getLemmataEnglish: (english) => {
+		return axios.get('/api/lemmata/english/' + english)
+	},
 	// Gets the lemma with the given id.
 	getLemmaById: (id) => {
 		return axios.get('/api/lemmata/id/' + id)

@@ -10,7 +10,7 @@ router
 	.get(lemmataController.findOneLemma)
 
 router
-	.route('/english/:english')
+	.route('/english/:word')
 	.get(lemmataController.findFromEnglish)
 
 router
