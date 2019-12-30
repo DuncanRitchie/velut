@@ -41,12 +41,11 @@ module.exports = {
 	findFromEnglish: function(req, res) {
 		Lemma.find({
 			"Meaning": {
-				"$regex": req.params.word, 
-				// "$regex": "/[^ ,;\.\-]" + req.params.word + "[$ ,;\.\-]/", 
+				"$regex": req.params.word,
 				"$options": "i"
 			}
 		})
-		.sort("NoMacraLowerCase NoMacra NoTypeTag Lemma")
+		// .sort("NoMacraLowerCase NoMacra NoTypeTag Lemma")
 		.select({
 			"Lemma": 1,
 			"PartOfSpeech": 1,
@@ -58,7 +57,26 @@ module.exports = {
 			"NoMacra": 1,
 			"_id": 0
 		})
-		.then(lemmata=>{res.json(lemmata)})
+		.then(lemmata=>{
+			let sortedLemmata = lemmata.sort((a,b)=>{
+                const regex = RegExp("[\\b\\s\\W\\A ]" + req.params.word + "[\\b\\s\\W\\Z ]", "i");
+                const aContainsWholeWord = regex.test(" " + a.Meaning + " ");
+                const bContainsWholeWord = regex.test(" " + b.Meaning + " ");
+                if (aContainsWholeWord && !bContainsWholeWord) {
+                    return -1
+                }
+                else if (!aContainsWholeWord && bContainsWholeWord) {
+                    return 1
+                }
+                else if (a.Meaning.length === b.Meaning.length) {
+                    return a.Meaning > b.Meaning
+                }
+                else {
+                    return a.Meaning.length - b.Meaning.length
+                }
+            })
+			res.json(sortedLemmata.slice(0,100))
+		})
 		.catch(err => res.status(422).json(err))
 	},
 	// .findLemmaById() does not get used, but its route is /api/lemma/id/:id

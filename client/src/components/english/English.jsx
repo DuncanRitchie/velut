@@ -1,9 +1,7 @@
 import React, {Component} from "react"
-import {Link} from "react-router-dom"
 import Title from "../title/Title"
 import Search from "../search/Search"
 import Lemma from "../word/Lemma"
-import superscriptLemmaTag from '../word/superscriptLemmaTag'
 import axios from '../../axios/axios'
 import "../word/Word.css"
 
@@ -18,15 +16,7 @@ class English extends Component {
     fetchLemmata(english) {
         axios.getLemmataEnglish(english).then((data)=>{
             // data.data is an array of objects.
-            let lemmata = data.data.sort((a,b)=>{
-                if (a.Meaning.length === b.Meaning.length) {
-                    return a.Meaning > b.Meaning
-                }
-                else {
-                    return a.Meaning.length - b.Meaning.length
-                }
-            })
-            this.setState({lemmata: lemmata})
+            this.setState({lemmata: data.data})
         })     
     }
 
@@ -76,7 +66,7 @@ class English extends Component {
                       )
                     : "No results were found for “"+this.state.input+"”. Please try a different search."}
                 </p>
-                <div class="word-info">
+                <div className="word-info">
                     {lemmata}
                 </div>
             </div>
