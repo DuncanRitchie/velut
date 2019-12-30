@@ -342,6 +342,7 @@ class Word extends Component {
                             forms={mappedForms}
                             cognates={mappedCognates}
                             cognatesMessage={cognatesMessage}
+                            linkBase={linkBase}
                             />
                         )
                     }
