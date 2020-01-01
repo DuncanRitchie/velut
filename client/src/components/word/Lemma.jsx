@@ -10,20 +10,27 @@ class Lemma extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            partOfSpeech: "",
+            meaning: "",
+            notes: "",
+            root: "",
             forms: [],
             cognates: []
         }
     }
 
-    getLemmaData(lemma) {
+    getLemmaData() {
         try {
-            axios.getOneLemma({"Lemma":lemma}).then(data=>{
+            axios.getOneLemma({"Lemma": this.props.lemma}).then(data=>{
                 this.setState({
                     partOfSpeech: data.data.PartOfSpeech,
                     meaning: data.data.Meaning,
                     notes: data.data.Notes,
                     root: data.data.Root
                 })
+            }).then(()=>{
+                this.getCognates(this.state.root)
+                this.getForms(this.props.lemma)
             })
         }
         catch {
@@ -42,7 +49,6 @@ class Lemma extends Component {
             })
         }
         catch {
-            this.setState({"forms": ["Forms not found"]})
         }
     }
 
@@ -61,24 +67,15 @@ class Lemma extends Component {
                 this.setState({"cognates": []})
             }
         }
-        else {
-            this.setState({"cognates": []})
-        }
-    }
-
-    refreshAll() {
-        this.getForms(this.props.lemma)
-        // this.getCognates(this.props.root)
-        this.getLemmaData(this.props.lemma)
     }
 
     componentDidMount() {
-        this.refreshAll()
+        this.getLemmaData()
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.lemma !== prevProps.lemma) {
-            this.refreshAll()
+            this.getLemmaData()
         }
     }
 
@@ -109,15 +106,15 @@ class Lemma extends Component {
         }
         
         let {linkBase, lemma} = this.props
-        let {partOfSpeech, meaning, notes, root} = this.state
+        let {partOfSpeech, meaning, notes, root, forms, cognates} = this.state
 
         // Create JSX for the forms.
-        let mappedForms = this.state.forms.map((form,index)=>{
+        let mappedForms = forms.map((form,index)=>{
             return <span key={index}><Link title={form} to={linkBase + macraToHyphens(form)} lang="la">{form}</Link> </span>
         })
 
         // Create JSX for the cognates.
-        let mappedCognates = this.state.cognates.map((cognate,index)=>{
+        let mappedCognates = cognates.map((cognate,index)=>{
             return (
                 <span key={index}>
                     <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase + macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
@@ -144,11 +141,11 @@ class Lemma extends Component {
                     ? <p>Transliterations: {transliterations}</p>
                     : null}
                 {mappedForms
-                    ? <p>Forms: {mappedForms}</p>
+                    ? <p>{mappedForms[0] ? <span>Forms: {mappedForms}</span> : "Loading forms..."}</p>
                     : null}
                 <p>
                     {root
-                        ? (mappedCognates ? <span>Cognates: {mappedCognates}</span> : "Please wait...")
+                        ? (mappedCognates[0] ? <span>Cognates: {mappedCognates}</span> : "Loading cognates...")
                         : "I have not assigned cognates for this lemma, sorry!"}
                 </p>
             </div>
