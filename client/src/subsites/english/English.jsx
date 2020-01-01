@@ -70,7 +70,7 @@ class English extends Component {
                 <p className="showing-results-for">
                     {this.state.lemmata.length 
                     ? (
-                        "Showing "+this.state.lemmata.length+" lemmata with meanings containing “"+this.state.input+"”."
+                        "Showing "+this.state.lemmata.length+" "+(this.state.lemmata.length===1 ? "lemma" : "lemmata")+" with meanings containing “"+this.state.input+"”."
                       )
                     : "No results were found for “"+this.state.input+"”. Please try a different search."}
                 </p>
