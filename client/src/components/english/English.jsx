@@ -9,19 +9,25 @@ class English extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            input: this.props.match.params.word || "",
             lemmata: []
         }
     }
 
     fetchLemmata(english) {
-        axios.getLemmataEnglish(english).then((data)=>{
-            // data.data is an array of objects.
-            this.setState({lemmata: data.data})
-        })     
+        try {
+            axios.getLemmataEnglish(english).then((data)=>{
+                // data.data is an array of objects.
+                this.setState({"lemmata": data.data})
+            })    
+        }
+        catch {
+            this.setState({"lemmata": []})
+        }
     }
 
     componentDidMount() {
-        this.fetchLemmata(this.props.match.params.english)
+        this.fetchLemmata(this.state.input)
     }
 
     componentDidUpdate() {
@@ -50,6 +56,8 @@ class English extends Component {
                 forms={mappedForms}
                 cognates={mappedCognates}
                 cognatesMessage={cognatesMessage}
+                root={lemma.Root}
+                linkBase="../"
                 />
             )
         })

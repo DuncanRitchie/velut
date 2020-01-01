@@ -9,7 +9,6 @@ import Lemma from "./Lemma"
 import macraToHyphens from "./macraToHyphens"
 import hyphensToMacra from "./hyphensToMacra"
 import noMacra from "./noMacra"
-import superscriptLemmaTag from "./superscriptLemmaTag"
 import routes from "../../routes.json"
 import './Word.css'
 
@@ -80,8 +79,8 @@ class Word extends Component {
     fetchRelatedWords(wordObject) {
         this.fetchRhymes(wordObject)
         this.fetchHomographs(wordObject)
-        this.fetchForms(wordObject)
-        this.fetchCognates(wordObject)
+        // this.fetchForms(wordObject)
+        // this.fetchCognates(wordObject)
     }
 
     fetchRhymes(wordObject) {
@@ -100,7 +99,6 @@ class Word extends Component {
             searchFieldFull = routeObject.searchFieldFull
         }
         let query = {[searchField]: wordObject[searchField]}
-        // console.log("Rhymes end in "+rhymeValue)
         axios[axiosFuncName](query).then((data)=>{
             let rhymes = data.data.map((wordObject,index)=>{
                 return wordObject.Word
@@ -249,7 +247,7 @@ class Word extends Component {
         let wordLemmata = []
         let mappedLemmata = []
         // All Links to other velut words will begin with linkBase.
-        const linkBase = this.props.match.path.replace(":word","").replace(":type",this.props.match.params.type)
+        const linkBase = this.props.match.path.replace(":word","").replace(":type",this.props.match.params.type) || ""
         // Let's do dictionaries.
         let plainInput = noMacra(sanitisedInput)
         let mappedDics = dictionaries.map((dic,index)=>{
@@ -291,57 +289,58 @@ class Word extends Component {
                 )})
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
-            wordLemmata = this.state.lemmata || []
+            wordLemmata = this.state.foundWord.LemmaArray || []
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     if (lemma) {
-                        // Let's do the inflected forms. They are stored in an array within the formsArray in state.
-                        let mappedForms = []
-                        if (this.state.formsArrays) {
-                            let forms = []
-                            if (this.state.formsArrays[index]) {
-                                forms = this.state.formsArrays[index]
-                            }
-                            // Let's render a Link for every form.
-                            mappedForms = forms.map((form,index)=>{
-                                return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)} lang="la">{form}</Link> </span>
-                            })
-                        }
-                        // Let's do the cognates. They are stored in an array within the cognatesArray in state.
-                        let mappedCognates = []
-                        if (this.state.cognatesArrays) {
-                            let cognates = []
-                            if (this.state.cognatesArrays[index]) {
-                                cognates = this.state.cognatesArrays[index]
-                            }
-                            // Let's render a Link for every cognate.
-                            mappedCognates = cognates.map((cognate,index)=>{
-                                return (
-                                    <span key={index}>
-                                        <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
-                                            {superscriptLemmaTag(cognate)}
-                                        </Link>{" "}
-                                    </span>
-                                )
-                            })
-                        }
-                        // If no etymology is given in the data, a message should appear in the cognates paragraph.
-                        let cognatesMessage = ""
-                        if (!lemma.Root) {
-                            cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
-                        }
+                        // // Let's do the inflected forms. They are stored in an array within the formsArray in state.
+                        // let mappedForms = []
+                        // if (this.state.formsArrays) {
+                        //     let forms = []
+                        //     if (this.state.formsArrays[index]) {
+                        //         forms = this.state.formsArrays[index]
+                        //     }
+                        //     // Let's render a Link for every form.
+                        //     mappedForms = forms.map((form,index)=>{
+                        //         return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)} lang="la">{form}</Link> </span>
+                        //     })
+                        // }
+                        // // Let's do the cognates. They are stored in an array within the cognatesArray in state.
+                        // let mappedCognates = []
+                        // if (this.state.cognatesArrays) {
+                        //     let cognates = []
+                        //     if (this.state.cognatesArrays[index]) {
+                        //         cognates = this.state.cognatesArrays[index]
+                        //     }
+                        //     // Let's render a Link for every cognate.
+                        //     mappedCognates = cognates.map((cognate,index)=>{
+                        //         return (
+                        //             <span key={index}>
+                        //                 <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
+                        //                     {superscriptLemmaTag(cognate)}
+                        //                 </Link>{" "}
+                        //             </span>
+                        //         )
+                        //     })
+                        // }
+                        // // If no etymology is given in the data, a message should appear in the cognates paragraph.
+                        // let cognatesMessage = ""
+                        // if (!lemma.Root) {
+                        //     cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
+                        // }
                         // Cognates are done. Let's put everything into the Lemma element.
                         return (
                             <Lemma
                             key={index}
-                            lemma={lemma.Lemma}
+                            lemma={lemma.Lemma || lemma}
                             partOfSpeech={lemma.PartOfSpeech}
                             meaning={lemma.Meaning}
                             notes={lemma.Notes}
                             transliteration={lemma.Transliteration}
-                            forms={mappedForms}
-                            cognates={mappedCognates}
-                            cognatesMessage={cognatesMessage}
+                            root={lemma.Root}
+                            // forms={mappedForms}
+                            // cognates={mappedCognates}
+                            // cognatesMessage={cognatesMessage}
                             linkBase={linkBase}
                             />
                         )

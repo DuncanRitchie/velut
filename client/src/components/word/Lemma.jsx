@@ -10,22 +10,82 @@ class Lemma extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            forms: []
+            forms: [],
+            cognates: []
+        }
+    }
+
+    getLemmaData(lemma) {
+        try {
+            console.log("Getting lemma data...")
+            axios.getOneLemma({"Lemma":lemma}).then(data=>{
+                this.setState({
+                    partOfSpeech: data.data.PartOfSpeech,
+                    meaning: data.data.Meaning,
+                    notes: data.data.Notes,
+                    root: data.data.Root
+                })
+                console.log(data.data)
+            })
+        }
+        catch (e) {
+            console.log("Failed to get lemma data!")
+            console.log(e)
         }
     }
 
     getForms(lemma) {
-        axios.getWordsAlph({"LemmaArray": lemma}).then((data)=>{
-            let forms = data.data
-            forms = forms.map((form)=>{
-                return form.Word
+        console.log("Running getForms(" + lemma + ")")
+        try {
+            console.log("Fetching forms of " + lemma)
+            axios.getWordsAlph({"LemmaArray": lemma})
+            .then((data)=>{
+                let forms = data.data
+                forms = forms.map((form)=>{
+                    return form.Word
+                })
+                this.setState({"forms": forms})
             })
-            this.setState({"forms": forms})
-        })
+        }
+        catch {
+            this.setState({"forms": ["Forms not found"]})
+        }
+    }
+
+    getCognates(root) {
+        if (root) {
+            try {
+                axios.getLemmataAlph({"Root": root}).then((data)=>{
+                    let cognates = data.data
+                    cognates = cognates.map((cognate)=>{
+                        return cognate.Lemma
+                    })
+                    this.setState({"cognates": cognates})
+                })
+            }
+            catch {
+                this.setState({"cognates": []})
+            }
+        }
+        else {
+            this.setState({"cognates": []})
+        }
+    }
+
+    refreshAll() {
+        this.getForms(this.props.lemma)
+        // this.getCognates(this.props.root)
+        this.getLemmaData(this.props.lemma)
     }
 
     componentDidMount() {
-        this.getForms(this.props.lemma)
+        this.refreshAll()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.lemma !== prevProps.lemma) {
+            this.refreshAll()
+        }
     }
 
     render() {
@@ -53,13 +113,25 @@ class Lemma extends Component {
                 return <span key={i} lang={langCode}><img className="inline-flag" src={flagSrc} alt={lang}/>&nbsp;{word} </span>
             })
         }
+        
+        let {linkBase, lemma} = this.props
+        let {partOfSpeech, meaning, notes, root} = this.state
 
         // Create JSX for the forms.
         let mappedForms = this.state.forms.map((form,index)=>{
-            return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)} lang="la">{form}</Link> </span>
+            return <span key={index}><Link title={form} to={linkBase + macraToHyphens(form)} lang="la">{form}</Link> </span>
         })
-        
-        let {linkBase, lemma, partOfSpeech, meaning, notes, cognatesMessage, cognates} = this.props
+
+        // Create JSX for the cognates.
+        let mappedCognates = this.state.cognates.map((cognate,index)=>{
+            return (
+                <span key={index}>
+                    <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase + macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
+                        {superscriptLemmaTag(cognate)}
+                    </Link>{" "}
+                </span>
+            )
+        })
 
         return (
             <div className="lemma">
@@ -81,9 +153,9 @@ class Lemma extends Component {
                     ? <p>Forms: {mappedForms}</p>
                     : null}
                 <p>
-                    {cognatesMessage
-                        ? cognatesMessage
-                        : <span>Cognates: {cognates}</span>}
+                    {root
+                        ? (mappedCognates ? <span>Cognates: {mappedCognates}</span> : "Please wait...")
+                        : "I have not assigned cognates for this lemma, sorry!"}
                 </p>
             </div>
         )
