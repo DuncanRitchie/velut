@@ -81,7 +81,7 @@ class Subwords extends Component {
                 <Title textBeforeTitle="Subwords" />
                 <div>
                     <Search prefix="subwords/"/>
-                    <div className="subwords-result">
+                    <div className="subsite-result">
                         {result}
                     </div>
                 </div>

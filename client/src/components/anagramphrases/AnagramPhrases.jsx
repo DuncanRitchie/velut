@@ -75,7 +75,7 @@ class Anagrams extends Component {
                 <Title textBeforeTitle="Anagram phrases" />
                 <p>Caution &mdash; searches may take some minutes or fail completely.</p>
                 <Search prefix="anagramphrases/"/>
-                <div className="anagrams-result">
+                <div className="subsite-result">
                     {result}
                 </div>
             </div>
