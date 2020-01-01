@@ -17,7 +17,6 @@ class Lemma extends Component {
 
     getLemmaData(lemma) {
         try {
-            console.log("Getting lemma data...")
             axios.getOneLemma({"Lemma":lemma}).then(data=>{
                 this.setState({
                     partOfSpeech: data.data.PartOfSpeech,
@@ -25,19 +24,14 @@ class Lemma extends Component {
                     notes: data.data.Notes,
                     root: data.data.Root
                 })
-                console.log(data.data)
             })
         }
-        catch (e) {
-            console.log("Failed to get lemma data!")
-            console.log(e)
+        catch {
         }
     }
 
     getForms(lemma) {
-        console.log("Running getForms(" + lemma + ")")
         try {
-            console.log("Fetching forms of " + lemma)
             axios.getWordsAlph({"LemmaArray": lemma})
             .then((data)=>{
                 let forms = data.data
