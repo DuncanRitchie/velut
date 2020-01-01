@@ -10,7 +10,7 @@ class Search extends Component {
             input: this.props.match.params.word || this.props.match.params.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.match.params.type || this.props.match.path.replace("/:word","").replace("/:word","").replace("/about","").replace("/","") || "",
+            type: this.props.match.params.type || this.props.match.path.replace("/:word","").replace("/about","").replace("/","") || "",
             dropdownAnimationClass: "dropdown-content-none"
         }
     }
@@ -66,6 +66,7 @@ class Search extends Component {
             input = ""
         }
         newUrl += type+"/"+input
+        newUrl = newUrl.replace("//","/")
         this.setState({dropdownAnimationClass: "dropdown-content-none"})
         this.props.history.push(newUrl)
     }
