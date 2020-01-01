@@ -4,7 +4,7 @@ import Search from '../search/Search'
 import axios from "../../axios/axios"
 import noMacra from '../word/noMacra'
 // Anagrams and Subwords use the same styles.
-import '../subwords/Subwords.css'
+import '../subsites/Subsites.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word
 

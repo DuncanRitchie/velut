@@ -2,7 +2,7 @@ import React from 'react';
 // import {Link} from 'react-router-dom'
 import Title from '../title/Title'
 import Search from '../search/Search'
-import '../subwords/Subwords.css'
+import '../subsites/Subsites.css'
 
 const EnglishHome = () => {
     document.title = "English to Latin on velut"

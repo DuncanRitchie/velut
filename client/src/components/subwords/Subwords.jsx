@@ -6,7 +6,7 @@ import axios from "../../axios/axios"
 import noMacra from '../word/noMacra'
 import delChars from './delChars'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
-import './Subwords.css'
+import '../subsites/Subsites.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:input
 
