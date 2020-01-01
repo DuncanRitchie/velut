@@ -41,21 +41,18 @@ class Word extends Component {
         }
         this.setState({sanitisedInput: input})
         // Let's fetch some data from MongoDB. First we search for the input, parsing any hyphens/cola/dots.
-        // console.log(`Looking for: Word = ${hyphensToMacra(input)}`)
         axios.getOneWord({"Word": hyphensToMacra(input)})
             .then((data)=>{
                 foundWord = data.data
                 this.setState({foundWord: foundWord})
                 // If the parsed input isn't in Mongo, look for it without macra.
                 if (!foundWord) {
-                    // console.log(`Looking for: NoMacra = ${noMacra(input)}`)
                     axios.getOneWord({"NoMacra": noMacra(input)})
                     .then((data)=>{
                         foundWord = data.data
                         this.setState({foundWord: foundWord})
                         // If the demacronized input isn't in Mongo, look for it lowercased.
                         if (!foundWord) {
-                            // console.log(`Looking for: NoMacraLowerCase = ${noMacra(input).toLowerCase()}`)
                             axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
                             .then((data)=>{
                                 foundWord = data.data
@@ -79,8 +76,6 @@ class Word extends Component {
     fetchRelatedWords(wordObject) {
         this.fetchRhymes(wordObject)
         this.fetchHomographs(wordObject)
-        // this.fetchForms(wordObject)
-        // this.fetchCognates(wordObject)
     }
 
     fetchRhymes(wordObject) {
@@ -293,42 +288,6 @@ class Word extends Component {
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     if (lemma) {
-                        // // Let's do the inflected forms. They are stored in an array within the formsArray in state.
-                        // let mappedForms = []
-                        // if (this.state.formsArrays) {
-                        //     let forms = []
-                        //     if (this.state.formsArrays[index]) {
-                        //         forms = this.state.formsArrays[index]
-                        //     }
-                        //     // Let's render a Link for every form.
-                        //     mappedForms = forms.map((form,index)=>{
-                        //         return <span key={index}><Link title={form} to={linkBase+macraToHyphens(form)} lang="la">{form}</Link> </span>
-                        //     })
-                        // }
-                        // // Let's do the cognates. They are stored in an array within the cognatesArray in state.
-                        // let mappedCognates = []
-                        // if (this.state.cognatesArrays) {
-                        //     let cognates = []
-                        //     if (this.state.cognatesArrays[index]) {
-                        //         cognates = this.state.cognatesArrays[index]
-                        //     }
-                        //     // Let's render a Link for every cognate.
-                        //     mappedCognates = cognates.map((cognate,index)=>{
-                        //         return (
-                        //             <span key={index}>
-                        //                 <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase+macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
-                        //                     {superscriptLemmaTag(cognate)}
-                        //                 </Link>{" "}
-                        //             </span>
-                        //         )
-                        //     })
-                        // }
-                        // // If no etymology is given in the data, a message should appear in the cognates paragraph.
-                        // let cognatesMessage = ""
-                        // if (!lemma.Root) {
-                        //     cognatesMessage = "I have not assigned cognates for this lemma, sorry!"
-                        // }
-                        // Cognates are done. Let's put everything into the Lemma element.
                         return (
                             <Lemma
                             key={index}
@@ -338,9 +297,6 @@ class Word extends Component {
                             notes={lemma.Notes}
                             transliteration={lemma.Transliteration}
                             root={lemma.Root}
-                            // forms={mappedForms}
-                            // cognates={mappedCognates}
-                            // cognatesMessage={cognatesMessage}
                             linkBase={linkBase}
                             />
                         )
