@@ -39,7 +39,7 @@ class English extends Component {
     }
 
     render() {
-        document.title = "Latin for “" + this.state.input + "” on velut"
+        document.title = "English “" + this.state.input + "” to Latin on velut"
 
         let lemmata = this.state.lemmata.map((lemma, index) => {
             let mappedCognates = []

@@ -9,7 +9,7 @@ const EnglishHome = () => {
     return (
         <div className="english subwords-home">
             <Title textBeforeTitle="English to Latin"/>
-            <p>Enter something English and this will return Latin translations!</p>
+            <p>Enter something English and this will suggest Latin translations!</p>
             <Search prefix="english/" />
         </div>
     )
