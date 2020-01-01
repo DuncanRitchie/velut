@@ -43,7 +43,7 @@ class Subwords extends Component {
 
     render() {
         let input = this.state.input
-        document.title = "Subwords of "+input+" on velut"
+        document.title = "Subwords of “"+input+"” on velut"
 
         let mappedWords = []
         if (this.state.subwords) {

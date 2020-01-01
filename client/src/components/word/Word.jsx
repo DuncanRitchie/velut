@@ -246,15 +246,15 @@ class Word extends Component {
         // Let's do dictionaries.
         let plainInput = noMacra(sanitisedInput)
         let mappedDics = dictionaries.map((dic,index)=>{
-            return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for "+plainInput}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
+            return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for “"+plainInput+"”"}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
         })
         if (!foundWord) {
             // If no word was found, the document title needs to come from the input.
-            document.title = sanitisedInput+" (word not found) on velut"
+            document.title = "“" + sanitisedInput + "” (word not found) on velut"
         }
         if (foundWord) {
             // Let's set the document title to the word we found.
-            document.title = foundWord.Word+" on velut"
+            document.title = "“" + foundWord.Word + "” on velut"
             // Let's find what metrical foot it is.
             if (foundWord.Scansion) {
                 let foot = feet.find((foot)=>{return foot.Foot===foundWord.Scansion})
