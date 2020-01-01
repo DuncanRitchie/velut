@@ -345,9 +345,14 @@ class Word extends Component {
                         </div>
                     )
                     : (
-                        <p>
-                            Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord} lang="la">{randomWord}</Link>.
-                        </p>
+                        <>
+                            <p>
+                                Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord} lang="la">{randomWord}</Link>.
+                            </p>
+                            <p>
+                                Or do you want to search from <Link to={"english/"+sanitisedInput} title={"Search for Latin words with the English meaning “"+sanitisedInput+"”"}>English to Latin</Link>?
+                            </p>
+                        </>
                     )}
                 {mappedLemmata ? mappedLemmata : null}
                 </div>
