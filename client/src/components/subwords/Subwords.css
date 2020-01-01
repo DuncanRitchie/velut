@@ -1,4 +1,4 @@
-.anagrams-home p:not(.title-full),.subwords-home p:not(.title-full) {
+.subsite-home p:not(.title-full),.subsite-home p:not(.title-full) {
     width: calc(100% - 36px);
     max-width: 738px;
     margin-top: 0;

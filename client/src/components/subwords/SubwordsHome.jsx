@@ -9,7 +9,7 @@ const SubwordsHome = () => {
     document.title = "Subwords on velut"
     let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
     return (
-        <div className="subwords-home">
+        <div className="subsite-home">
             <Title textBeforeTitle="Subwords"/>
             <p>This will help you find Latin words that can be made with the letters you specify. Type some letters below!</p>
             <Search prefix="subwords/" />

@@ -7,7 +7,7 @@ import '../subwords/Subwords.css'
 const AnagramsHome = () => {
     document.title='Anagram phrases on velut'
     return (
-        <div className="anagrams-home">
+        <div className="subsite-home">
             <Title textBeforeTitle="Anagram phrases" />
             <p>This will help you find Latin phrases that are anagrams!</p>
             <p>Caution &mdash; searches may take some minutes. Searches longer than ten characters may fail completely.</p>
