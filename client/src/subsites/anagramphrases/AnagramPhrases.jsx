@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import Title from '../title/Title'
-import Search from '../search/Search'
+import Title from '../../components/title/Title'
+import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
-import noMacra from '../word/noMacra'
-// Anagrams and Subwords use the same styles.
-import '../subsites/Subsites.css'
+import noMacra from '../../components/word/noMacra'
+import '../Subsites.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word
 

@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Title from '../title/Title'
-import Search from '../search/Search'
+import Title from '../../components/title/Title'
+import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
-import noMacra from '../word/noMacra'
+import noMacra from '../../components/word/noMacra'
 import delChars from './delChars'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
-import '../subsites/Subsites.css'
+import '../Subsites.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:input
 

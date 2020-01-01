@@ -1,8 +1,7 @@
 import React from 'react'
-import Title from '../title/Title'
-import Search from '../search/Search'
-// Anagrams and Subwords use the same styles.
-import '../subsites/Subsites.css'
+import Title from '../../components/title/Title'
+import Search from '../../components/search/Search'
+import '../Subsites.css'
 
 const AnagramsHome = () => {
     document.title='Anagram phrases on velut'

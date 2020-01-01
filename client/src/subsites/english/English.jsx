@@ -1,9 +1,9 @@
 import React, {Component} from "react"
-import Title from "../title/Title"
-import Search from "../search/Search"
-import Lemma from "../word/Lemma"
+import Title from "../../components/title/Title"
+import Search from "../../components/search/Search"
+import Lemma from "../../components/word/Lemma"
 import axios from '../../axios/axios'
-import "../word/Word.css"
+import "../../components/word/Word.css"
 
 class English extends Component {
     constructor(props) {
