@@ -70,3 +70,10 @@ button {
         margin-top: 36px;
     }
 }
+
+@media screen and (min-width: 762px) {
+    .footerContaining7 ul {
+        max-width: unset;
+        justify-content: center;
+    }
+}
