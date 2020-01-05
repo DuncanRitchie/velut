@@ -4,12 +4,12 @@ import "../../App.css"
 import "./Footer.css"
 
 let Footer = (props) => {
-    let showBack = props.history.length > 2
-    let showHome = props.history.location.pathname !== "/"
-    let showEnglish = props.history.location.pathname.substr(0,8) !== "/english"
-    let showSubwords = props.history.location.pathname.substr(0,9) !== "/subwords"
-    let showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
-    let countListItems = 2 + showBack + showHome + showEnglish + showSubwords + showAbout
+    const showBack = props.history.length > 2
+    const showHome = props.history.location.pathname !== "/"
+    const showEnglish = props.history.location.pathname.substr(0,8) !== "/english"
+    const showSubwords = props.history.location.pathname.substr(0,9) !== "/subwords"
+    const showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
+    const countListItems = 2 + showBack + showHome + showEnglish + showSubwords + showAbout
 
     return (
         <footer className={"footer" + " footerContaining" + countListItems}>
