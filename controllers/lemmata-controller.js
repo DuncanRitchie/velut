@@ -1,4 +1,5 @@
 const Lemma = require('../models/lemma-model')
+const sortLemmataOnMeaning = require('./sortLemmataOnMeaning')
 
 module.exports = {
 	// .count() is accessed from route /api/lemma/count
@@ -58,23 +59,7 @@ module.exports = {
 			"_id": 0
 		})
 		.then(lemmata=>{
-			let sortedLemmata = lemmata.sort((a,b)=>{
-                const regex = RegExp("[\\b\\s\\W\\A ]" + req.params.word + "[\\b\\s\\W\\Z ]", "i");
-                const aContainsWholeWord = regex.test(" " + a.Meaning + " ");
-                const bContainsWholeWord = regex.test(" " + b.Meaning + " ");
-                if (aContainsWholeWord && !bContainsWholeWord) {
-                    return -1
-                }
-                else if (!aContainsWholeWord && bContainsWholeWord) {
-                    return 1
-                }
-                else if (a.Meaning.length === b.Meaning.length) {
-                    return a.Meaning > b.Meaning
-                }
-                else {
-                    return a.Meaning.length - b.Meaning.length
-                }
-            })
+			let sortedLemmata = sortLemmataOnMeaning(lemmata, req.params.word)
 			res.json(sortedLemmata.slice(0,100))
 		})
 		.catch(err => res.status(422).json(err))

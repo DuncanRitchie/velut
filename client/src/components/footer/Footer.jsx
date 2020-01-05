@@ -12,7 +12,7 @@ let Footer = (props) => {
     const countListItems = 2 + showBack + showHome + showEnglish + showSubwords + showAbout
 
     return (
-        <footer className={"footer" + " footerContaining" + countListItems}>
+        <footer className={"footer footerContaining" + countListItems}>
             <ul>
                 <li>
                     <span className="footer-copyright">
