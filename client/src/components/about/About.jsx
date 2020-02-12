@@ -211,6 +211,39 @@ class About extends Component {
                     
                     <AboutSection i={7}>
                         <p>
+                            One of the newest features of velut is its <Link to="/english" title="English to Latin on velut">English 
+                            to Latin</Link> section, which returns Latin lemmata whose English meanings match what you enter.
+                        </p>
+                        <p>
+                            This is not restricted to whole words, so searching for 
+                            &ldquo;<Link to="/english/book" title="English &ldquo;book&rdquo; to Latin on velut">book</Link>&rdquo; 
+                            includes <span lang="la">commentārius</span> (&ldquo;notebook&rdquo;) and <span lang="la">bibliopōla</span> (&ldquo;bookseller&rdquo;).
+                            Perhaps less usefully, a search for 
+                            &ldquo;<Link to="/english/pie" title="English &ldquo;pie&rdquo; to Latin on velut">pie</Link>&rdquo; 
+                            gives words meaning &ldquo;piety&rdquo;, &ldquo;magpie&rdquo;, &ldquo;pierce&rdquo;, etc, rather than anything pastry-related.
+                        </p>
+                        <p>
+                            When compiling meanings, I tend to be quite terse. The 
+                            adjective <Link to="/laetus" title="&ldquo;laetus&rdquo; on velut" lang="la">laetus</Link> is given simply as &ldquo;happy&rdquo;,
+                            so it will not show up when you search for &ldquo;glad&rdquo;, 
+                            &ldquo;willing&rdquo;, &ldquo;pleasant&rdquo;, &ldquo;fertile&rdquo;, et cetera.
+                            It can therefore be worthwhile trying different synonyms.
+                        </p>
+                        <p>
+                            Various other websites can be more fertile than velut in the field of translation into Latin.{" "}
+                            <a href="http://www.perseus.tufts.edu/hopper/definitionlookup?q=glad&amp;sort=freq&amp;target=la" title="English &ldquo;glad&rdquo; to Latin on Perseus">Perseus</a>,{" "}
+                            <a href="https://en.wiktionary.org/wiki/glad#Translations" title="English &ldquo;glad&rdquo; to Latin on Wiktionary">Wiktionary</a>,{" "}
+                            and <a href="http://archives.nd.edu/cgi-bin/wordz.pl?english=glad" title="English &ldquo;glad&rdquo; to Latin on Whitaker&rsquo;s Words">William Whitaker&rsquo;s Words</a> are some of my favourites.
+                            Even <a href="https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=la&amp;text=glad" title="English &ldquo;glad&rdquo; to Latin on Google Translate">Google Translate</a> will be helpful, though its computerised attempts at combining words into phrases remain woeful.
+                            Each of these resources will correctly suggest <Link to="/laetus" title="&ldquo;laetus&rdquo; on velut" lang="la">laetus</Link> for &ldquo;glad&rdquo;, though velut does not.
+                        </p>
+                        <p>
+                            Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell&rsquo;s from 1970!
+                        </p>
+                    </AboutSection>
+                    
+                    <AboutSection i={8}>
+                        <p>
                             All the data have been compiled by me, so please be aware that there are several lemmata that 
                             I don&rsquo;t have. I may simply have never come across them, I may have judged them too arcane 
                             for inclusion, or &mdash; if they begin with a prefix or are stressed on a suffix &mdash; 
@@ -234,14 +267,14 @@ class About extends Component {
                         </p>
                     </AboutSection>
                     
-                    <AboutSection i={8}>
+                    <AboutSection i={9}>
                         <p>
                             Roughly 5% of lemmata are missing information regarding cognates.
                             I&rsquo;m working to redress this.
                         </p>
                         <p>
-                            velut contains {this.state.wordCount || "96000+"} words 
-                            belonging to {this.state.lemmaCount || "11000+"} lemmata. 
+                            velut contains {this.state.wordCount || "101000+"} words 
+                            belonging to {this.state.lemmaCount || "12000+"} lemmata. 
                             There are plenty more I will add!
                         </p>
                     </AboutSection>
