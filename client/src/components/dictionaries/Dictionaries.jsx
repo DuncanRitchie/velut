@@ -1,5 +1,5 @@
 import React from 'react'
-import dictionariesLatin from '../../data/dictionaries.json'
+import dictionariesLatin from '../../data/dictionariesLatin.json'
 import dictionariesEnglish from '../../data/dictionariesEnglish.json'
 import noMacra from '../word/noMacra'
 import './Dictionaries.css'
