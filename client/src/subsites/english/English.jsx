@@ -78,8 +78,8 @@ class English extends Component {
                 <div className="word-info">
                     {lemmata}
                 </div>
-                
-                <Dictionaries set="English" sanitisedInput={this.state.input} />
+
+                <Dictionaries category="English" sanitisedInput={this.state.input} />
             </div>
         )
     }

@@ -4,6 +4,11 @@
     margin-bottom: 0;
     background-color: rgb(125, 211, 211)
 }
+
+.dictionaries-category {
+    display: block;
+    font-size: 14px;
+}
   
 .dictionaries {
     background-color: rgb(202, 237, 234);

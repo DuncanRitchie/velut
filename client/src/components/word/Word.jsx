@@ -351,7 +351,7 @@ class Word extends Component {
                     )}
                 {mappedLemmata ? mappedLemmata : null}
                 </div>
-                <Dictionaries set="Latin" sanitisedInput={sanitisedInput} />
+                <Dictionaries category="Latin" sanitisedInput={sanitisedInput} />
             </div>
         )
     }
