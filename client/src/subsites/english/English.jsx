@@ -3,6 +3,7 @@ import Title from "../../components/title/Title"
 import Search from "../../components/search/Search"
 import Lemma from "../../components/word/Lemma"
 import axios from '../../axios/axios'
+import dictionaries from "../../data/dictionariesEnglish.json"
 import "../../components/word/Word.css"
 
 class English extends Component {
@@ -61,6 +62,10 @@ class English extends Component {
                 />
             )
         })
+        
+        let mappedDics = dictionaries.map((dic,index)=>{
+            return <span key={index}><a href={dic.Formula.replace("INPUT",this.state.input)} title={"Search "+dic.Dictionary+" for “"+this.state.input+"”"}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
+        })
 
         return (
             <div className="english">
@@ -77,6 +82,12 @@ class English extends Component {
                 <div className="word-info">
                     {lemmata}
                 </div>
+                <h2 className="dictionaries-heading">
+                    Links to external sites
+                </h2>
+                <p className="dictionaries">
+                    {mappedDics}
+                </p>
             </div>
         )
     }
