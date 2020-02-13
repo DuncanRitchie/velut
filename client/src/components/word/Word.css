@@ -68,24 +68,11 @@ h3 {
     margin-right: 2px;
 }
 
-.dictionaries-heading {
-    margin-top: 42px;
-    padding: 6px 6px;
-    margin-bottom: 0;
-    background-color: rgb(125, 211, 211)
-}
-  
-.dictionaries {
-    background-color: rgb(202, 237, 234);
-    padding: 12px 6px;
-    margin-top: 0;
-}
-
 
 
 @media print {
     /* Allow elements to be full-width. */
-    .showing-results-for,.found-word,.word-info,.dictionaries-heading,.dictionaries {
+    .showing-results-for,.found-word,.word-info {
     max-width: initial;
   }
 }

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import axios from "../../axios/axios"
 import Title from "../title/Title"
 import Search from "../search/Search"
-import dictionaries from "../../data/dictionaries.json"
+import Dictionaries from "../dictionaries/Dictionaries"
 import feet from "../../data/feet.json"
 import Lemma from "./Lemma"
 import macraToHyphens from "./macraToHyphens"
@@ -243,11 +243,6 @@ class Word extends Component {
         let mappedLemmata = []
         // All Links to other velut words will begin with linkBase.
         const linkBase = this.props.match.path.replace(":word","").replace(":type",this.props.match.params.type) || ""
-        // Let's do dictionaries.
-        let plainInput = noMacra(sanitisedInput)
-        let mappedDics = dictionaries.map((dic,index)=>{
-            return <span key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for “"+plainInput+"”"}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </span>
-        })
         if (!foundWord) {
             // If no word was found, the document title needs to come from the input.
             document.title = "“" + sanitisedInput + "” (word not found) on velut"
@@ -356,12 +351,7 @@ class Word extends Component {
                     )}
                 {mappedLemmata ? mappedLemmata : null}
                 </div>
-                <h2 className="dictionaries-heading">
-                    Links to external sites
-                </h2>
-                <p className="dictionaries">
-                    {mappedDics}
-                </p>
+                <Dictionaries set="Latin" sanitisedInput={sanitisedInput} />
             </div>
         )
     }
