@@ -230,12 +230,9 @@ class About extends Component {
                             It can therefore be worthwhile trying different synonyms.
                         </p>
                         <p>
-                            Various other websites can be more fertile than velut in the field of translation into Latin.{" "}
-                            <a href="http://www.perseus.tufts.edu/hopper/definitionlookup?q=glad&amp;sort=freq&amp;target=la" title="English &ldquo;glad&rdquo; to Latin on Perseus">Perseus</a>,{" "}
-                            <a href="https://en.wiktionary.org/wiki/glad#Translations" title="English &ldquo;glad&rdquo; to Latin on Wiktionary">Wiktionary</a>,{" "}
-                            and <a href="http://archives.nd.edu/cgi-bin/wordz.pl?english=glad" title="English &ldquo;glad&rdquo; to Latin on Whitaker&rsquo;s Words">William Whitaker&rsquo;s Words</a> are some of my favourites.
-                            Even <a href="https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=la&amp;text=glad" title="English &ldquo;glad&rdquo; to Latin on Google Translate">Google Translate</a> will be helpful, though its computerised attempts at combining words into phrases remain woeful.
-                            Each of these resources will correctly suggest <Link to="/laetus" title="&ldquo;laetus&rdquo; on velut" lang="la">laetus</Link> for &ldquo;glad&rdquo;, though velut does not.
+                            Various other websites can be more fertile than velut in the field of translation into Latin.
+                            I include links to some of them.
+                            Each of these resources will correctly suggest <span lang="la">laetus</span> for &ldquo;glad&rdquo;, though velut does not.
                         </p>
                         <p>
                             Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell&rsquo;s from 1970!
