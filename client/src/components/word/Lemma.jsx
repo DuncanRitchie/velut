@@ -11,8 +11,9 @@ class Lemma extends Component {
         super(props)
         this.state = {
             partOfSpeech: "",
-            meaning: "",
+            meanings: "",
             notes: "",
+            transliterations: "",
             root: "",
             forms: [],
             cognates: []
@@ -24,8 +25,9 @@ class Lemma extends Component {
             axios.getOneLemma({"Lemma": this.props.lemma}).then(data=>{
                 this.setState({
                     partOfSpeech: data.data.PartOfSpeech,
-                    meaning: data.data.Meaning,
+                    meanings: data.data.Meaning,
                     notes: data.data.Notes,
+                    transliterations: data.data.Transliteration,
                     root: data.data.Root
                 })
             }).then(()=>{
@@ -83,11 +85,11 @@ class Lemma extends Component {
         // If there are transliterations in Ancient Greek, they will appear next to a Greek flag
         // and be labelled as lang="grc". Ditto for Hebrew with the Israeli flag and lang="he".
         // All the transliterations for the lemma come into props as a single string to be processed here.
-        let transliterations
-        if (this.props.transliteration) {
+        let mappedTransliterations
+        if (this.state.transliterations) {
             // props.transliteration could look like "Ἰησοῦς/יֵשׁוּעַ"
-            let transliterationsArray = this.props.transliteration.split("/")
-            transliterations = transliterationsArray.map((word,i)=>{
+            let transliterationsArray = this.state.transliterations.split("/")
+            mappedTransliterations = transliterationsArray.map((word,i)=>{
                 let lang = "Hebrew"
                 let langCode = "he"
                 // We would be using emoji, but Windows won't display national flag emoji.
@@ -106,7 +108,7 @@ class Lemma extends Component {
         }
         
         let {linkBase, lemma} = this.props
-        let {partOfSpeech, meaning, notes, root, forms, cognates} = this.state
+        let {partOfSpeech, meanings, notes, root, forms, cognates} = this.state
 
         // Create JSX for the forms.
         let mappedForms = forms.map((form,index)=>{
@@ -131,14 +133,14 @@ class Lemma extends Component {
                 {partOfSpeech
                     ? <p>Part of speech: {partOfSpeech.toLowerCase()}</p>
                     : null}
-                {meaning
-                    ? <p>Meanings: {meaning}</p>
+                {meanings
+                    ? <p>Meanings: {meanings}</p>
                     : null}
                 {notes
                     ? <p>Notes: {notes}</p>
                     : null}
-                {transliterations
-                    ? <p>Transliterations: {transliterations}</p>
+                {mappedTransliterations
+                    ? <p>Transliterations: {mappedTransliterations}</p>
                     : null}
                 {mappedForms
                     ? <p>{mappedForms[0] ? <span>Forms: {mappedForms}</span> : "Loading forms..."}</p>

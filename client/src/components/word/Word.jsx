@@ -287,11 +287,6 @@ class Word extends Component {
                             <Lemma
                             key={index}
                             lemma={lemma.Lemma || lemma}
-                            partOfSpeech={lemma.PartOfSpeech}
-                            meaning={lemma.Meaning}
-                            notes={lemma.Notes}
-                            transliteration={lemma.Transliteration}
-                            root={lemma.Root}
                             linkBase={linkBase}
                             />
                         )
