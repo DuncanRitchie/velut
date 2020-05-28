@@ -17,6 +17,10 @@ html {
   grid-template-areas: "body" "footer";
 }
 
+.App *[lang=he] {
+  font-family: "Alegreya", "Tinos", serif;
+}
+
 .home,.word,.anagrams,.subsite-home,.subwords,.english,.about {
   grid-area: body;
   overflow-y: auto;

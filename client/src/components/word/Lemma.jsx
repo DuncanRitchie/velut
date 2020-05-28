@@ -90,20 +90,20 @@ class Lemma extends Component {
             // props.transliteration could look like "Ἰησοῦς/יֵשׁוּעַ"
             let transliterationsArray = this.state.transliterations.split("/")
             mappedTransliterations = transliterationsArray.map((word,i)=>{
-                let lang = "Hebrew"
-                let langCode = "he"
-                // We would be using emoji, but Windows won't display national flag emoji.
+                let alt = "Hebrew"
+                let lang = "he"
+                // We would be using emoji, but Windows won’t display national flag emoji.
                 // let emoji = "🇮🇱"
-                let flagSrc = israel
+                let flag = israel
                 if("αβγδεζηθικλμνξοπρςτυφχψωάᾶώ".includes(word.substr(-1).toLowerCase())
                 || "αβγδεζηθικλμνξοπρςτυφχψωάᾶώ".includes(word.substr(-2,1).toLowerCase())
                 ) {
-                    lang = "Ancient Greek"
-                    langCode = "grc"
+                    alt = "Ancient Greek"
+                    lang = "grc"
                     // emoji = "🇬🇷"
-                    flagSrc = greece
+                    flag = greece
                 }
-                return <span key={i} lang={langCode}><img className="inline-flag" src={flagSrc} alt={lang}/>&nbsp;{word} </span>
+                return <span key={i} lang={lang}><img className="inline-flag" src={flag} alt={alt}/>&nbsp;{word} </span>
             })
         }
         
