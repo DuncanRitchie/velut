@@ -1,25 +1,25 @@
 .subsite-home p:not(.title-full) {
-    width: calc(100% - 36px);
-    max-width: 738px;
+    width: calc(100% - 2.25rem);
+    max-width: 46.125rem;
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
-    padding: 6px;
-    border-top: 3px solid rgb(144, 203, 209);
+    padding: 0.375rem;
+    border-top: 0.1875rem solid rgb(144, 203, 209);
     background-color: rgba(255,253,244, 0.95)
 }
 
 .subsite-result {
-    width: calc(100% - 48px);
-    max-width: 750px;
+    width: calc(100% - 3rem);
+    max-width: 46.875rem;
 }
 
 .subsite-result,.showing-results-for {
-    margin-top: 18px;
+    margin-top: 1.125rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0;
-    border-top: 3px solid rgb(144, 203, 209);
+    border-top: 0.1875rem solid rgb(144, 203, 209);
     background-color: rgba(255,253,244,0.95)
 }
 

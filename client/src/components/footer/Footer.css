@@ -5,8 +5,8 @@ footer {
 }
 
 ul {
-    width: calc(100vw - 12px);
-    max-width: 762px;
+    width: calc(100vw - 0.75rem);
+    max-width: 47.625rem;
     margin: 0 auto;
     padding: 0;
     list-style: none;
@@ -34,8 +34,8 @@ a:hover,.go-back:hover {
 /* The following styles (except the print media query) apply only within footer */
 
 footer a,.footer-copyright,.go-back {
-    transform: translateX(calc(-0.5vw + 3px));
-    padding: 6px calc(18px + 0.1vw);
+    transform: translateX(calc(-0.5vw + 0.1875rem));
+    padding: 0.375rem calc(1.125rem + 0.1vw);
     display: flex;
     align-content: center;
 }
@@ -66,12 +66,12 @@ button {
 @media print {
     footer {
         /* This is the same border as the sections in Subwords and AnagramPhrases have */
-        border-top: 3px solid rgb(144, 203, 209);
-        margin-top: 36px;
+        border-top: 0.1875rem solid rgb(144, 203, 209);
+        margin-top: 2.25rem;
     }
 }
 
-@media screen and (min-width: 762px) {
+@media screen and (min-width: 47.625rem) {
     .footerContaining7 ul {
         max-width: unset;
         justify-content: center;

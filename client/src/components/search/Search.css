@@ -1,22 +1,22 @@
 .search {
-    width: calc(60vw + 16px);
-    max-width: 750px;
-    min-height: 68px;
+    width: calc(60vw + 1rem);
+    max-width: 46.875rem;
+    min-height: 4.25rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 24px;
+    margin-top: 1.5rem;
 }
 
 input {
     text-align: center;
     margin: 0;
     width: 60vw;
-    max-width: 734px;
+    max-width: 45.875rem;
     border: 2px solid rgb(133, 167, 133); /* a pale grey-green */
-    height: 20px;
-    font-size: 16px;
+    height: 1.25rem;
+    font-size: 1rem;
     font-family: "Monaco", "Consolas", monospace;
-    padding: 6px 6px;
+    padding: 0.375rem 0.375rem;
 }
 
 .search-link {
@@ -24,7 +24,7 @@ input {
     font: inherit;
     box-shadow: 0;
     border: 0;
-    padding: 6px 9px;
+    padding: 0.375rem 0.5625rem;
     height: 2em;
     background-color: rgb(122, 239, 179);
     cursor: pointer
@@ -35,16 +35,16 @@ input {
 }
 
 .dropdown {
-    font-size: 15px;
+    font-size: 0.9rem;
     text-align: left;
     width: 50%;
-    margin: 9px 0 30px;
+    margin: 0.5625rem 0 1.875rem;
 }
 
 .dropdown-select {
     background-color: rgb(156, 218, 211);
     margin-bottom: 0;
-    padding: 3px 6px;
+    padding: 0.1875rem 0.375rem;
 }
 
 .dropdown-content-none,.dropdown-content-open,.dropdown-content-close {
@@ -74,14 +74,14 @@ input {
    If CSS transition/animation would allow changing the height to
    or from "initial" or "auto", we could use a simple transition.
    But we need an animation on the height to animate smoothly from 
-   height: 0 to height: 234px, then change to initial at the end.
+   height: 0 to height: 14.625rem, then change to initial at the end.
 */
 
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
-    height: 0px; /* Changed with an animation to 234px then initial  */
+    height: 0; /* Changed with an animation to 14.5rem then initial  */
     opacity: 0; /* Changed with a transition */
     transform: translateX(-50vw); /* Changed with a delayed transition */
 }
@@ -112,19 +112,19 @@ input {
 
 @keyframes dropdown-animation-close {
     0% {
-        height: 234px /* This is the correct offset height of dropdown-content if screenwidth > 1019px */
+        height: 14.5rem /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
     }
     100% {
-        height: 0px
+        height: 0
     }
 }
 
 @keyframes dropdown-animation-open {
     0% {
-        height: 0px
+        height: 0
     }
     99.5% {
-        height: 234px /* This is the correct offset height of dropdown-content if screenwidth > 1019px */
+        height: 14.5rem /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
     }
     100% {
         height: initial
@@ -137,7 +137,7 @@ input {
     background: linear-gradient(to bottom right, rgb(199, 228, 230), rgb(147, 202, 204));
     width: inherit;
     margin: 0;
-    padding: 3px 6px
+    padding: 0.1875rem 0.375rem
 }
 
 .dropdown-item:hover {

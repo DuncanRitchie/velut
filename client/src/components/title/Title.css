@@ -1,14 +1,14 @@
 h1 {
     width: inherit;
-    padding: 9px 6px 6px;
-    margin: 12px 0 -6px;
+    padding: 0.5625rem 0.375rem 0.375rem;
+    margin: 0.75rem 0 -0.375rem;
     color: rgb(33, 58, 33) /* a darker, brighter green */
 }
   
 .title-author {
-    font-size: 15px;
+    font-size: 0.9rem;
     font-weight: normal;
-    padding-right: 154px;
+    padding-right: calc(11.25rem - 1rem);
     color: rgb(55, 105, 55);
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
@@ -20,9 +20,9 @@ h1 {
     background: linear-gradient(to bottom, rgb(17, 16, 7), rgb(88, 82, 44));
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 90px;
+    font-size: 5.625rem;
     font-weight: normal;
-    line-height: 42px
+    line-height: 2.625rem;
 }
 
 .title::after {
@@ -31,10 +31,10 @@ h1 {
 }
 
 .title-full {
-    margin-top: 0px;
-    margin-bottom: 18px;
+    margin-top: 0;
+    margin-bottom: 1.125rem;
     color: rgb(39, 65, 65);
-    font-size: 12px;
+    font-size: 0.75rem;
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
     text-shadow: 1px 1px 1px rgb(206,227,242)
