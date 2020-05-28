@@ -95,8 +95,8 @@ class Lemma extends Component {
                 // We would be using emoji, but Windows won't display national flag emoji.
                 // let emoji = "🇮🇱"
                 let flagSrc = israel
-                if("αβγδεζηθικλμνξοπρςτυφχψω".includes(word.substr(-1).toLowerCase())
-                || "αβγδεζηθικλμνξοπρςτυφχψω".includes(word.substr(-2,1).toLowerCase())
+                if("αβγδεζηθικλμνξοπρςτυφχψωάᾶώ".includes(word.substr(-1).toLowerCase())
+                || "αβγδεζηθικλμνξοπρςτυφχψωάᾶώ".includes(word.substr(-2,1).toLowerCase())
                 ) {
                     lang = "Ancient Greek"
                     langCode = "grc"
