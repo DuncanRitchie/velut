@@ -270,7 +270,7 @@ class About extends Component {
                             I&rsquo;m working to redress this.
                         </p>
                         <p>
-                            velut contains {this.state.wordCount || "101000+"} words 
+                            velut contains {this.state.wordCount || "104000+"} words 
                             belonging to {this.state.lemmaCount || "12000+"} lemmata. 
                             There are plenty more I will add!
                         </p>

@@ -25,6 +25,10 @@ a:link,.go-back,a:visited {
     cursor: pointer;
 }
 
+a:visited {
+    color: #664763;
+}
+
 a:hover,.go-back:hover {
     color: #4d88bb;
     text-decoration: underline
@@ -40,11 +44,11 @@ footer a,.footer-copyright,.go-back {
     align-content: center;
 }
 
-footer a,.go-back {
-    color: #0c457a;
+footer a:visited,.go-back {
+    color: #4d314a;
 }
 
-footer a span {
+footer a:not(:visited) {
     color: #0c457a;
 }
 
