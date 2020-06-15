@@ -18,9 +18,9 @@ module.exports = {
 		Lemma.findOne(req.query).select({
 				"Lemma": 1,
 				"PartOfSpeech": 1,
-				"Meaning": 1,
+				"Meanings": 1,
 				"Notes": 1,
-				"Transliteration": 1,
+				"Transliterations": 1,
 				"Root": 1,
 				"NoTypeTag": 1,
 				"NoMacra": 1,
@@ -41,7 +41,7 @@ module.exports = {
 	// .findFromEnglish() is accessed from route /api/lemmata/english/:word
 	findFromEnglish: function(req, res) {
 		Lemma.find({
-			"Meaning": {
+			"Meanings": {
 				"$regex": req.params.word,
 				"$options": "i"
 			}
@@ -50,9 +50,9 @@ module.exports = {
 		.select({
 			"Lemma": 1,
 			"PartOfSpeech": 1,
-			"Meaning": 1,
+			"Meanings": 1,
 			"Notes": 1,
-			"Transliteration": 1,
+			"Transliterations": 1,
 			"Root": 1,
 			"NoTypeTag": 1,
 			"NoMacra": 1,

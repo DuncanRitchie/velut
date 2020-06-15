@@ -51,9 +51,9 @@ class English extends Component {
                 key={index}
                 lemma={lemma.Lemma}
                 partOfSpeech={lemma.PartOfSpeech}
-                meaning={lemma.Meaning}
+                meaning={lemma.Meanings}
                 notes={lemma.Notes}
-                transliteration={lemma.Transliteration}
+                transliteration={lemma.Transliterations}
                 forms={mappedForms}
                 cognates={mappedCognates}
                 cognatesMessage={cognatesMessage}

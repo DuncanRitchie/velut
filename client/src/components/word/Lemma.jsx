@@ -25,9 +25,9 @@ class Lemma extends Component {
             axios.getOneLemma({"Lemma": this.props.lemma}).then(data=>{
                 this.setState({
                     partOfSpeech: data.data.PartOfSpeech,
-                    meanings: data.data.Meaning,
+                    meanings: data.data.Meanings,
                     notes: data.data.Notes,
-                    transliterations: data.data.Transliteration,
+                    transliterations: data.data.Transliterations,
                     root: data.data.Root
                 })
             }).then(()=>{

@@ -23,8 +23,8 @@ const sortLemmataOnMeaning = (lemmata, queryWord) => {
         // A lemma with Meanings containing query as an entire word gets prioritised.
         // E.g. Oriēns “the East” precedes belua “beast” if query is “east”.
         const regex = RegExp("[\\b\\s\\W\\A ]" + queryWord + "[\\b\\s\\W\\Z ]", "i")
-        const aContainsWholeWord = regex.test(" " + a.Meaning + " ");
-        const bContainsWholeWord = regex.test(" " + b.Meaning + " ");
+        const aContainsWholeWord = regex.test(" " + a.Meanings + " ");
+        const bContainsWholeWord = regex.test(" " + b.Meanings + " ");
         if (aContainsWholeWord && !bContainsWholeWord) {
             return -1
         }
@@ -34,11 +34,11 @@ const sortLemmataOnMeaning = (lemmata, queryWord) => {
     
         // A lemma with shorter Meanings gets prioritised.
         // E.g. Thalīa “muse of comedy” (14 chars) precedes Ūrania “muse of astronomy” (17 chars) if query is “muse”.
-        else if (a.Meaning.length === b.Meaning.length) {
-            return a.Meaning > b.Meaning
+        else if (a.Meanings.length === b.Meanings.length) {
+            return a.Meanings > b.Meanings
         }
         else {
-            return a.Meaning.length - b.Meaning.length
+            return a.Meanings.length - b.Meanings.length
         }
     })
     return sortedLemmata
