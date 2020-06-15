@@ -266,7 +266,7 @@ class About extends Component {
                     
                     <AboutSection i={9}>
                         <p>
-                            Roughly 5% of lemmata are missing information regarding cognates.
+                            Roughly 3% of lemmata are missing information regarding cognates.
                             I&rsquo;m working to redress this.
                         </p>
                         <p>
