@@ -112,13 +112,14 @@ class About extends Component {
                         <p>
                             Many words have been coined for different combinations of long and short syllables &mdash; such
                             as iamb, trochee, dactyl, anapaest&hellip; &mdash; and velut will suggest the appropriate term 
-                            (or several) for most words it contains.
+                            (or several) for most Latin words it contains.
                         </p>
                         <p>
                             velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
                             legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="tenebra on velut" lang="la">tenebra</Link>{" "}
-                            (noun meaning &ldquo;darkness&rdquo;, usually pluralised), for instance, is scanned by velut as ⏑⏑⏑ but may otherwise fit quite plausibly
-                            ⏑⏑– or ⏑⏑ or ⏑–⏑ or ⏑–– or ⏑– depending on the rest of the line of poetry and the poet&rsquo;s intentions.
+                            (noun meaning &ldquo;darkness&rdquo;, usually pluralised), for instance, is scanned by velut
+                            as <span className="scansion">⏑⏑⏑</span> but may otherwise fit quite plausibly
+                            <span className="scansion">⏑⏑–</span> or <span className="scansion">⏑⏑</span> or <span className="scansion">⏑–⏑</span> or <span className="scansion">⏑––</span> or <span className="scansion">⏑–</span> depending on the rest of the line of poetry and the poet&rsquo;s intentions.
                             Therefore, velut remains a somewhat crude tool with respect to scansion.
                         </p>
                     </AboutSection>

@@ -317,8 +317,8 @@ class Word extends Component {
                                     </p> ) 
                                 : null}
                             <p>
-                                The word <strong>{foundWord.Word}</strong> could scan as {foundWord.Scansion}
-                                {footName ? <span> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</span> : null }
+                                The word <strong lang="la">{foundWord.Word}</strong> could scan as <span className="scansion">{foundWord.Scansion}</span>
+                                {footName ? <> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</> : null }
                             </p>
                             <h2>
                                 {this.state.searchFieldFull}

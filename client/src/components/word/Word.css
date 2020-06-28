@@ -47,6 +47,11 @@ h2 {
     margin-bottom: 0;
     margin-top: 0;
 }
+
+.scansion {
+    padding-left: 0.125em;
+    letter-spacing: 0.125em;
+}
   
 h3 {
     margin: 0;
