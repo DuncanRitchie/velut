@@ -9,7 +9,7 @@
 src/data/*.csv
 
 # This Json file — containing all the words in velut — is convenient for generating letter-counts, but should not be committed.
-#**/allWords.json
+**/allWords.json
 
 # Uncomment these if updating data and Git is not coping
 # src/data/words.json
