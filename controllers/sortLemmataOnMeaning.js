@@ -13,10 +13,12 @@ const sortLemmataOnMeaning = (lemmata, queryWord) => {
     const sortedLemmata = lemmata.sort((a,b)=>{
         // A lemma with the query as an entire meaning gets prioritised.
         // E.g. homō “man; person...” precedes adulēscentulus “young man” if the query is “man”.
-        if (lemmaHasTheQueriedMeaning(a) && !lemmaHasTheQueriedMeaning(b)) {
+        const aHasTheQueriedMeaning = lemmaHasTheQueriedMeaning(a);
+        const bHasTheQueriedMeaning = lemmaHasTheQueriedMeaning(b);
+        if (aHasTheQueriedMeaning && !bHasTheQueriedMeaning) {
             return -1
         }
-        else if (!lemmaHasTheQueriedMeaning(a) && lemmaHasTheQueriedMeaning(b)) {
+        else if (!aHasTheQueriedMeaning && bHasTheQueriedMeaning) {
             return 1
         }
 
