@@ -1,7 +1,7 @@
 const sortLemmataOnMeaning = (lemmata, queryWord) => {
 
     const lemmaHasTheQueriedMeaning = (lemma) => {
-        const meaningsArray = lemma.Meaning.split("; ")
+        const meaningsArray = lemma.Meanings.split("; ")
         for (let i = 0; i < meaningsArray.length; i++) {
             if (meaningsArray[i].toLowerCase() === queryWord.toLowerCase()) {
                 return true;
