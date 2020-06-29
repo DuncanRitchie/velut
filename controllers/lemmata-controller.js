@@ -1,5 +1,5 @@
 const Lemma = require('../models/lemma-model')
-const sortLemmataOnMeaning = require('./sortLemmataOnMeaning')
+const sortLemmataOnMeanings = require('./sortLemmataOnMeanings')
 
 module.exports = {
 	// .count() is accessed from route /api/lemma/count
@@ -59,7 +59,7 @@ module.exports = {
 			"_id": 0
 		})
 		.then(lemmata=>{
-			let sortedLemmata = sortLemmataOnMeaning(lemmata, req.params.word)
+			let sortedLemmata = sortLemmataOnMeanings(lemmata, req.params.word)
 			res.json(sortedLemmata.slice(0,100))
 		})
 		.catch(err => res.status(422).json(err))

@@ -1,4 +1,4 @@
-const sortLemmataOnMeaning = (lemmata, queryWord) => {
+const sortLemmataOnMeanings = (lemmata, queryWord) => {
 
     const lemmaHasTheQueriedMeaning = (lemma) => {
         const meaningsArray = lemma.Meanings.split("; ")
@@ -46,4 +46,4 @@ const sortLemmataOnMeaning = (lemmata, queryWord) => {
     return sortedLemmata
 }
 
-module.exports = sortLemmataOnMeaning
+module.exports = sortLemmataOnMeanings
