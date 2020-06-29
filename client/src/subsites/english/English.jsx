@@ -75,7 +75,6 @@ class English extends Component {
                       )
                     : "No results were found for “"+this.state.input+"”. Please try a different search."}
                 </p>
-                <p>NOT CURRENTLY WORKING, SORRY, I WILL FIX IT WHEN I CAN!</p>
                 <div className="word-info">
                     {lemmata}
                 </div>
