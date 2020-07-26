@@ -106,19 +106,19 @@ class Lemma extends Component {
             })
         }
         
-        let {linkBase, lemma} = this.props
+        let {linkBase, lemma, currentWordHyphenated} = this.props
         let {partOfSpeech, meanings, notes, root, forms, cognates} = this.state
 
         // Create JSX for the forms.
         let mappedForms = forms.map((form,index)=>{
-            return <span key={index}><LatinLink linkBase={linkBase} word={form}/> </span>
+            return <span key={index}><LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}/> </span>
         })
 
         // Create JSX for the cognates.
         let mappedCognates = cognates.map((cognate,index)=>{
             return (
                 <span key={index}>
-                    <LatinLink linkBase={linkBase} word={cognate} isLemma={true}/>{" "}
+                    <LatinLink linkBase={linkBase} targetWord={cognate} currentWordHyphenated={currentWordHyphenated} isLemma={true}/>{" "}
                 </span>
             )
         })

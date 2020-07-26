@@ -249,6 +249,7 @@ class Word extends Component {
             document.title = "“" + sanitisedInput + "” (word not found) on velut"
         }
         if (foundWord) {
+            const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
             // Let's set the document title to the word we found.
             document.title = "“" + foundWord.Word + "” on velut"
             // Let's find what metrical foot it is.
@@ -269,14 +270,14 @@ class Word extends Component {
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
                 mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
-                    <span key={index}><LatinLink linkBase={linkBase} word={rhyme}/> </span>
+                    <span key={index}><LatinLink linkBase={linkBase} targetWord={rhyme} currentWordHyphenated={currentWordHyphenated}/> </span>
                 )})
             }
             // Let's find the homographs.
             if (this.state.homographs) {
                 // A react-router-dom Link is rendered for every homograph.
                 mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
-                    <span key={index}> <LatinLink linkBase={linkBase} word={homograph}/></span>
+                    <span key={index}> <LatinLink linkBase={linkBase} targetWord={homograph} currentWordHyphenated={currentWordHyphenated}/></span>
                 )})
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
@@ -289,6 +290,7 @@ class Word extends Component {
                             key={index}
                             lemma={lemma.Lemma || lemma}
                             linkBase={linkBase}
+                            currentWordHyphenated={currentWordHyphenated}
                             />
                         )
                     }
