@@ -2,7 +2,7 @@
     margin-top: 2.625rem;
     padding: 0.375rem 0.375rem;
     margin-bottom: 0;
-    background-color: rgb(125, 211, 211)
+    background-color: #7dd3d3;
 }
 
 .dictionaries-category {
@@ -11,7 +11,7 @@
 }
   
 .dictionaries {
-    background-color: rgb(202, 237, 234);
+    background-color: #caedea;
     padding: 0.75rem 0.375rem;
     margin-top: 0;
 }

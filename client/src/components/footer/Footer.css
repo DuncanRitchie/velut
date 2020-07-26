@@ -70,7 +70,7 @@ button {
 @media print {
     footer {
         /* This is the same border as the sections in Subwords and AnagramPhrases have */
-        border-top: 0.1875rem solid rgb(144, 203, 209);
+        border-top: 0.1875rem solid #90cbd1;
         margin-top: 2.25rem;
     }
 }

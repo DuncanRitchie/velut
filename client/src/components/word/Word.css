@@ -25,7 +25,7 @@
     margin-top: 0;
     margin-bottom: 0;
     padding: 0.1875rem 0.375rem;
-    background-color: rgb(144, 203, 209);
+    background-color: #90cbd1;
     font-size: 2.5rem;
     font-weight: normal
 }
@@ -40,7 +40,7 @@ h2 {
     margin-top: 0.1875rem;
     margin-bottom: 0.1875rem;
     padding: 0.375rem 0.75rem;
-    background-color: rgb(239, 225, 171);
+    background-color: #efe1ab;
 }
 
 .word-info p:not(.dictionaries) {
@@ -57,7 +57,7 @@ h3 {
     margin: 0;
     padding: 0.375rem 0.75rem;
     font-size: 1.375rem;
-    background-color: rgb(252, 240, 190)
+    background-color: #fcf0be
 }
 
 .lemma-tag {
