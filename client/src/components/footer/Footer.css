@@ -20,9 +20,12 @@ ul {
 
 a:link,.go-back,a:visited {
     font-weight: bold;
-    color: #337ab7;
     text-decoration: none;
     cursor: pointer;
+}
+
+a:link,.go-back {
+    color: #2d6a9f;
 }
 
 a:visited {
