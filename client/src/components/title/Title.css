@@ -2,22 +2,22 @@ h1 {
     width: inherit;
     padding: 0.5625rem 0.375rem 0.375rem;
     margin: 0.75rem 0 -0.375rem;
-    color: rgb(33, 58, 33) /* a darker, brighter green */
+    color: #213a21 /* a darker, brighter green */;
 }
   
 .title-author {
     font-size: 0.9rem;
     font-weight: normal;
     padding-right: calc(11.25rem - 1rem);
-    color: rgb(55, 105, 55);
+    color: #376937;
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
-    text-shadow: 1px 1px 1px rgb(206,227,242)
+    text-shadow: 1px 1px 1px #cee3f2;
 }
   
 .title {
-    color: rgb(17, 16, 7);
-    background: linear-gradient(to bottom, rgb(17, 16, 7), rgb(88, 82, 44));
+    color: #34311a /* Average of the gradient colours */;
+    background: linear-gradient(to bottom, #111007, #58522c);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 5.625rem;
@@ -27,17 +27,17 @@ h1 {
 
 .title::after {
     content: text;
-    text-shadow: 2px 2px white
+    text-shadow: 2px 2px white;
 }
 
 .title-full {
     margin-top: 0;
     margin-bottom: 1.125rem;
-    color: rgb(39, 65, 65);
+    color: #274141;
     font-size: 0.75rem;
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
-    text-shadow: 1px 1px 1px rgb(206,227,242)
+    text-shadow: 1px 1px 1px #cee3f2;
 }
 
 
@@ -45,7 +45,7 @@ h1 {
 @media print {
     /* Title should be solid grey on print. */
     .title {
-        color: rgb(63, 63, 63);
+        color: #3f3f3f;
         background: none;
         background-clip: initial;
         -webkit-text-fill-color: initial;

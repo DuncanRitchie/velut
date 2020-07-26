@@ -12,7 +12,7 @@ html {
   width: 100%;
   height: 100vh;
   padding: 0;
-  background-image: linear-gradient(180deg, rgb(206,227,242) 0%, rgb(227,239,248) 100%);
+  background-image: linear-gradient(180deg, #cee3f2 0%, #e3eff8 100%);
   background-attachment: fixed;
   display: grid;
   grid-template-columns: 100%;
@@ -22,6 +22,10 @@ html {
 
 .App *[lang=he] {
   font-family: "Alegreya", "Tinos", serif;
+}
+
+body :focus {
+  outline: dashed 2px #34311a /* Average of the Title gradient colours */;
 }
 
 .home,.word,.anagrams,.subsite-home,.subwords,.english,.about {
@@ -51,7 +55,7 @@ html {
 .home-rubric {
   /* A shadow the same colour as the background.
   in case the text is overlaying the fulmar picture */
-  text-shadow: 1px 1px 1px rgb(206,227,242)
+  text-shadow: 1px 1px 1px #cee3f2
 }
 
 p {
