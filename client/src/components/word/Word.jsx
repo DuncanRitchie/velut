@@ -6,6 +6,7 @@ import Search from "../search/Search"
 import Dictionaries from "../dictionaries/Dictionaries"
 import feet from "../../data/feet.json"
 import Lemma from "./Lemma"
+import LatinLink from "./LatinLink"
 import macraToHyphens from "./macraToHyphens"
 import hyphensToMacra from "./hyphensToMacra"
 import noMacra from "./noMacra"
@@ -268,14 +269,14 @@ class Word extends Component {
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
                 mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
-                    <span key={index}><Link to={linkBase+macraToHyphens(rhyme)} title={rhyme} lang="la">{rhyme}</Link> </span>
+                    <span key={index}><LatinLink linkBase={linkBase} word={rhyme}/> </span>
                 )})
             }
             // Let's find the homographs.
             if (this.state.homographs) {
                 // A react-router-dom Link is rendered for every homograph.
                 mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
-                    <span key={index}> <Link to={linkBase+macraToHyphens(homograph)} title={homograph} lang="la">{homograph}</Link></span>
+                    <span key={index}> <LatinLink linkBase={linkBase} word={homograph}/></span>
                 )})
             }
             // Let's do the lemmata. We will render an element for every lemma listed against the input.
