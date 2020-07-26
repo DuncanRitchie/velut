@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import superscriptLemmaTag from './superscriptLemmaTag'
 import greece from '../../images/greece.png'
 import israel from '../../images/israel.png'
 import axios from '../../axios/axios'
-import macraToHyphens from '../word/macraToHyphens'
+import LatinLink from './LatinLink'
 
 class Lemma extends Component {
     constructor(props) {
@@ -112,16 +111,14 @@ class Lemma extends Component {
 
         // Create JSX for the forms.
         let mappedForms = forms.map((form,index)=>{
-            return <span key={index}><Link title={form} to={linkBase + macraToHyphens(form)} lang="la">{form}</Link> </span>
+            return <span key={index}><LatinLink linkBase={linkBase} word={form}/> </span>
         })
 
         // Create JSX for the cognates.
         let mappedCognates = cognates.map((cognate,index)=>{
             return (
                 <span key={index}>
-                    <Link title={cognate.replace("["," (").replace("]",")")} to={linkBase + macraToHyphens(cognate).replace(/\[.*\]/g,"")} lang="la">
-                        {superscriptLemmaTag(cognate)}
-                    </Link>{" "}
+                    <LatinLink linkBase={linkBase} word={cognate} isLemma={true}/>{" "}
                 </span>
             )
         })
