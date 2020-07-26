@@ -5,18 +5,12 @@ import superscriptLemmaTag from "./superscriptLemmaTag"
 
 const LatinLink = (props) => {
     const { linkBase, word, isLemma } = props;
-    if (isLemma) {
-        return (
-            <Link title={word.replace("["," (").replace("]",")")} to={linkBase + macraToHyphens(word).replace(/\[.*\]/g,"")} lang="la">
-                {superscriptLemmaTag(word)}
-            </Link>
-        )
-    }
-    else {    
-        return (
-            <Link to={linkBase+macraToHyphens(word)} title={word} lang="la">{word}</Link>
-        );
-    }
+    const text = isLemma ? superscriptLemmaTag(word) : word;
+    const title = isLemma ? word.replace("["," (").replace("]",")") : word;
+    const to = linkBase + (isLemma ? macraToHyphens(word).replace(/\[[^\]]*\]/g,"") : macraToHyphens(word));
+    return (
+        <Link title={title} to={to} lang="la">{text}</Link>
+    );
 }
 
 export default LatinLink;
