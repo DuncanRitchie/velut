@@ -55,14 +55,14 @@ body :focus {
 .home-rubric {
   /* A shadow the same colour as the background.
   in case the text is overlaying the fulmar picture */
-  text-shadow: 1px 1px 1px #cee3f2
+  text-shadow: 1px 1px 1px #cee3f2;
 }
 
 p {
   line-height: 1.6em;
   padding: 0.5625rem 1.125rem;
   margin-top: 0.375rem;
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 

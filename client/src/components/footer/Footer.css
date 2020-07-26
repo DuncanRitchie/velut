@@ -1,7 +1,7 @@
 footer {
     grid-area: footer;
     /* This is a bright turquoise */
-    background: linear-gradient(to bottom, rgb(121, 192, 181), rgb(159, 243, 200))
+    background: linear-gradient(to bottom, #79c0b5, #9ff3c8);
 }
 
 ul {
@@ -12,7 +12,7 @@ ul {
     list-style: none;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 
@@ -34,7 +34,7 @@ a:visited {
 
 a:hover,.go-back:hover {
     color: #4d88bb;
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 
@@ -57,7 +57,7 @@ footer a:not(:visited) {
 
 footer a:hover,.go-back:hover {
     color: #0c457a;
-    background: linear-gradient(to top, rgb(209, 248, 228), rgba(209, 248, 228, 0));
+    background: linear-gradient(to top, #d1f8e4, #d1f8e4);
 }
 
 button {
@@ -65,7 +65,7 @@ button {
     border: 0;
     background: 0;
     font: inherit;
-    padding: 0
+    padding: 0;
 }
 
 
