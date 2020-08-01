@@ -5,7 +5,7 @@ import Search from '../search/Search'
 let Home = () => {
     document.title = "Duncan Ritchie’s velut"
     return (
-        <div className="home">
+        <div className="home fulmar-background">
             <Title />
             <p className="home-rubric">Enter a Latin word into the searchbar below!</p>
             <Search prefix="" />

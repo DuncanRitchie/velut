@@ -33,7 +33,7 @@ class About extends Component {
         // })
 
         return (
-            <div className="about">
+            <div className="about fulmar-background">
                 <Title textBeforeTitle="About" />
 
                 {/* <h2>Table of contents</h2>

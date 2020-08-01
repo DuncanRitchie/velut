@@ -70,7 +70,7 @@ class Anagrams extends Component {
         }
         
         return (
-            <div className="anagrams">
+            <div className="anagram-phrases fulmar-background">
                 <Title textBeforeTitle="Anagram phrases" />
                 <p>Caution &mdash; searches may take some minutes or fail completely.</p>
                 <Search prefix="anagramphrases/"/>

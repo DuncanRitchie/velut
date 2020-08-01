@@ -6,7 +6,7 @@ import '../Subsites.css'
 const EnglishHome = () => {
     document.title = "English to Latin on velut"
     return (
-        <div className="english subsite-home">
+        <div className="english subsite-home fulmar-background">
             <Title textBeforeTitle="English to Latin"/>
             <p>Enter something English and this will suggest Latin translations!</p>
             <Search prefix="english/" />

@@ -302,7 +302,7 @@ class Word extends Component {
             
         }
         return (
-            <div className="word">
+            <div className="word fulmar-background">
                 <Title />
                 <Search prefix=""/>
                 <p className="showing-results-for">

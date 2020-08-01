@@ -64,7 +64,7 @@ class English extends Component {
         })
         
         return (
-            <div className="english">
+            <div className="english fulmar-background">
                 <Title textBeforeTitle="English to Latin" />
                 <Search prefix="english/"/>
 
