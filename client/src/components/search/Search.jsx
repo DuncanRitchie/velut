@@ -154,6 +154,9 @@ class Search extends Component {
                     onKeyUp={this.handleKeyUp}
                     aria-label="Enter a Latin word"
                     lang="la"
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    autoCorrect="off"
                     spellCheck="false"
                     />
              
