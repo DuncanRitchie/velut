@@ -5,6 +5,9 @@
     "Dictionary": "LatDict",
     "Formula": "http://www.latin-dictionary.net/search/english/INPUT#search-results-list"
 },{
+    "Dictionary": "Liddell–Scott–Jones",
+    "Formula": "https://lsj.gr/wiki/INPUT"
+},{
     "Dictionary": "Numen",
     "Formula": "https://latinlexicon.org/search_english.php"
 },{
