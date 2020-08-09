@@ -124,24 +124,26 @@ class Search extends Component {
             dropdownSelect = selectedRouteObject.searchFieldFull
         }
         // Let's create the dropdown menu items.
-        let dropdownContent = routes.map((route,i)=>{
-            return (
-                <li 
-                key={i} 
-                className="dropdown-item" 
-                tabIndex="0" 
-                aria-label={"Select to return "+route.searchFieldFull.toLowerCase()}
-                onClick={()=>{this.handleType(route.route)}} 
-                onKeyUp={(e)=>{
-                    if(e.keyCode===13){
-                        this.handleType(route.route)
-                    }
-                }}
-                >
-                    {route.searchFieldFull}
-                </li>
-            )
-        })
+        let dropdownContent = routes
+            .filter(route=>route.searchField!=null)
+            .map((route,i)=>{
+                return (
+                    <li 
+                    key={i} 
+                    className="dropdown-item" 
+                    tabIndex="0" 
+                    aria-label={"Select to return "+route.searchFieldFull.toLowerCase()}
+                    onClick={()=>{this.handleType(route.route)}} 
+                    onKeyUp={(e)=>{
+                        if(e.keyCode===13){
+                            this.handleType(route.route)
+                        }
+                    }}
+                    >
+                        {route.searchFieldFull}
+                    </li>
+                )
+            })
         // Now we're ready to return JSX.
         return (
             <div className="search">
@@ -158,7 +160,7 @@ class Search extends Component {
                     autoComplete="off"
                     autoCorrect="off"
                     spellCheck="false"
-                    />
+                />
              
                 <br/>
                 {/* The button to load the new page. */}
@@ -167,7 +169,7 @@ class Search extends Component {
                     tabIndex="0"
                     onClick={this.search} 
                     title={this.state.sanitisedInput ? `Search for ${this.state.sanitisedInput}` : "Please type something in the searchbar"}
-                    >Search!
+                >Search!
                 </button>
                 <br/>
                 {/* The menu to change the rhyme type displayed
@@ -179,17 +181,17 @@ class Search extends Component {
                  ? null
                   : ( 
                     <div 
-                    className="dropdown" 
-                    onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}} 
-                    onFocus={()=>this.handleDropdown("dropdown-content-open")}
+                        className="dropdown" 
+                        onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}} 
+                        onFocus={()=>this.handleDropdown("dropdown-content-open")}
                     >
                         <p 
-                        className="dropdown-select" 
-                        tabIndex={this.state.dropdownAnimationClass==="open" ? "0" : ""}
-                        onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
-                        onFocus={()=>this.handleDropdown("dropdown-content-open")}
-                        onClick={()=>this.handleDropdown("dropdown-content-open")}
-                        aria-label={"You have selected "+dropdownSelect.toLowerCase()}
+                            className="dropdown-select" 
+                            tabIndex={this.state.dropdownAnimationClass==="open" ? "0" : ""}
+                            onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
+                            onFocus={()=>this.handleDropdown("dropdown-content-open")}
+                            onClick={()=>this.handleDropdown("dropdown-content-open")}
+                            aria-label={"You have selected "+dropdownSelect.toLowerCase()}
                         >
                             {dropdownSelect}
                         </p>

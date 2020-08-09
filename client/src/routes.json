@@ -44,5 +44,20 @@
         "searchField": "Scansion",
         "axiosFuncName": "getWordsAlph",
         "searchFieldFull": "Words that scan the same"
+    },{
+        "route": "/subwords",
+        "searchField": null,
+        "axiosFuncName": "getSubwords",
+        "searchFieldFull": "Subwords"
+    },{
+        "route": "/anagramphrases",
+        "searchField": null,
+        "axiosFuncName": "getAnagrams",
+        "searchFieldFull": "Anagram phrases"
+    },{
+        "route": "/english",
+        "searchField": null,
+        "axiosFuncName": "getLemmataEnglish",
+        "searchFieldFull": "English to Latin"
     }
 ]
