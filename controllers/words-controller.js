@@ -1,6 +1,7 @@
 const Word = require('../models/word-model')
 const findSubwordsFromMongo = require('./findSubwordsFromMongo')
 const findAnagrams = require('./findAnagrams')
+const makeRegexForSubwords = require('./subwordsRegex')
 const flatten = require('flat')
 
 // Defining all methods and logic for routes
@@ -59,9 +60,14 @@ module.exports = {
 	},
 	findSubwords: function(req,res) {
 		let input = req.query.input
-		Word.find({"Length": {"$lte": input.length}})
+		Word.find({"Length": {
+					"$lte": input.length
+					// "$regex": makeRegexForSubwords(input)
+				}
+			})
 			.select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
 			.then(words=>{
+				// let sortedSubwords = words;
 				let sortedSubwords = findSubwordsFromMongo(input,words)
 				let subwordsOnlyWord = sortedSubwords.map((object)=>{
 					return object.Word
