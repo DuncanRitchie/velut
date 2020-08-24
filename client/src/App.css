@@ -34,6 +34,24 @@ body :focus {
   outline: dashed 2px #34311a /* Average of the Title gradient colours */;
 }
 
+.home h2 {
+  color: #3f3b1f /* One of the midtones in the Title gradient. */;
+}
+
+.home-rubric span {
+  /* A shadow the same colour as the background.
+  in case the text is overlaying the fulmar picture */
+  text-shadow: 1px 1px 1px rgb(206,227,242);
+  background-image: linear-gradient(180deg, rgb(206,227,242) 0%, rgb(227,239,248) 100%);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+p.home-rubric {
+  margin-top: calc(12vw + 5vh - 4rem);
+}
+
 p {
   line-height: 1.6em;
   padding: 0.5625rem 1.125rem;

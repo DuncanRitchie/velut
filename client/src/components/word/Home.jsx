@@ -7,8 +7,14 @@ let Home = () => {
     return (
         <div className="home fulmar-background">
             <Title />
-            <p className="home-rubric">Enter a Latin word into the searchbar below!</p>
+            <h2 className="home-rubric">
+                <span>Latin rhymes &amp;&nbsp;more!</span>
+            </h2>
             <Search prefix="" />
+            <p className="home-rubric">
+                <span>Enter a Latin word in the searchbar above,</span><br/>
+                <span>or see the navigation bar below for other options.</span>
+            </p>
         </div>
     )
 }
