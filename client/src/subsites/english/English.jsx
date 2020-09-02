@@ -66,7 +66,7 @@ class English extends Component {
         return (
             <div className="english fulmar-background">
                 <Title textBeforeTitle="English to Latin" />
-                <Search prefix="english/"/>
+                <Search prefix="english/" searchbarTitle="Type an English word"/>
 
                 <p className="showing-results-for">
                     {this.state.lemmata.length 

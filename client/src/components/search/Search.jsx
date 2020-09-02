@@ -161,15 +161,14 @@ class Search extends Component {
             })
         // Now we're ready to return JSX.
         return (
-            <div className="search">
-                {/* The box the word will be typed into */}
+            <div id="search">
+                {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
-                    className="search-input"
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
-                    title="Enter a Latin word"
+                    title={this.props.searchbarTitle || "Type something here"}
                     lang="la"
                     autoCapitalize="off"
                     autoComplete="off"
@@ -180,7 +179,7 @@ class Search extends Component {
                 <br/>
                 {/* The button to load the new page. */}
                 <button
-                    className="search-link" 
+                    id="search-button" 
                     tabIndex="0"
                     onClick={this.search} 
                     title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}

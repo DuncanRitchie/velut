@@ -304,7 +304,7 @@ class Word extends Component {
         return (
             <div className="word fulmar-background">
                 <Title />
-                <Search prefix=""/>
+                <Search prefix="" searchbarTitle="Type a Latin word" />
                 <p className="showing-results-for">
                     Showing results for
                 </p>

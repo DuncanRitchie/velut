@@ -81,7 +81,7 @@ class Subwords extends Component {
             <div className="subwords fulmar-background">
                 <Title textBeforeTitle="Subwords" />
                 <div>
-                    <Search prefix="subwords/"/>
+                    <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" />
                     <div className="subsite-result">
                         {result}
                     </div>

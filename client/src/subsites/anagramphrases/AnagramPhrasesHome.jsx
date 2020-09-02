@@ -10,7 +10,7 @@ const AnagramsHome = () => {
             <Title textBeforeTitle="Anagram phrases" />
             <p>This will help you find Latin phrases that are anagrams!</p>
             <p>Caution &mdash; searches may take some minutes. Searches longer than ten characters may fail completely.</p>
-            <Search prefix="anagramphrases/"/>
+            <Search prefix="anagramphrases/" searchbarTitle="Type something to find anagrams of" />
         </div>
     )
 }

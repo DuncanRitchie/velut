@@ -1,4 +1,4 @@
-.search {
+#search{
     width: calc(60vw + 1rem);
     max-width: 46.875rem;
     min-height: 4.25rem;
@@ -19,11 +19,11 @@ input {
     padding: 0.375rem 0.375rem;
 }
 
-.search :focus {
+#search:focus {
     outline-color: #58522c; /* lighter colour of Title gradient */
 }
 
-.search-link {
+#search-button {
     float: right;
     font: inherit;
     box-shadow: 0;
@@ -33,7 +33,7 @@ input {
     cursor: pointer;
 }
 
-.search-link:hover {
+#search-button:hover {
     background-color: #b8f8d7;
 }
 

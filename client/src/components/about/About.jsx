@@ -277,7 +277,7 @@ class About extends Component {
                         </p>
                     </AboutSection>
                 </div>
-                <Search prefix=""/>
+                <Search prefix="" searchbarTitle="Type a Latin word"/>
             </div>
         )
     }

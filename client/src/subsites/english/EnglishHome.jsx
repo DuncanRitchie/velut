@@ -9,7 +9,7 @@ const EnglishHome = () => {
         <div className="english subsite-home fulmar-background">
             <Title textBeforeTitle="English to Latin"/>
             <p>Enter something English and this will suggest Latin translations!</p>
-            <Search prefix="english/" />
+            <Search prefix="english/" searchbarTitle="Type an English word" />
         </div>
     )
 }
