@@ -9,10 +9,12 @@ h1 {
     font-size: 0.9rem;
     font-weight: normal;
     padding-right: 10.5rem;
+    padding-right: calc(7.5rem + 3vw);
     color: #376937;
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
     text-shadow: 1px 1px 1px #cee3f2;
+    display: inline-block;
 }
   
 .title {
