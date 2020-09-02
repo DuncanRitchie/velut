@@ -140,6 +140,7 @@ class Search extends Component {
         // Let’s do the title of dropdown-select.
         let dropdownSelectTitle = `“${dropdownSelect}” is selected; click to ${this.state.dropdownAnimationClass==="dropdown-content-open" ? "close" : "open"} the menu`;
         // Let's create the dropdown menu items.
+        let menuDisabled = this.state.dropdownAnimationClass!=="dropdown-content-open" ? true : false;
         let dropdownContent = routes
             .filter(route=>route.searchField!=null)
             .map((route,i)=>{
@@ -150,7 +151,8 @@ class Search extends Component {
                     >
                         <button
                             title={"Select to return "+route.searchFieldFull.toLowerCase()}
-                            onClick={()=>{this.handleType(route.route)}} 
+                            onClick={()=>{this.handleType(route.route)}}
+                            disabled={menuDisabled}
                         >
                             {route.searchFieldFull}
                         </button>
