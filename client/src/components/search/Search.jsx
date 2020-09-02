@@ -183,7 +183,7 @@ class Search extends Component {
                     className="search-link" 
                     tabIndex="0"
                     onClick={this.search} 
-                    title={this.state.sanitisedInput ? `Search for ${this.state.sanitisedInput}` : "Please type something in the searchbar"}
+                    title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                 >Search!
                 </button>
                 <br/>
