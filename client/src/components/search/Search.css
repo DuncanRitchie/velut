@@ -150,7 +150,7 @@ input {
 
 @keyframes dropdown-animation-close {
     0% {
-        height: 14.5rem /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
+        height: calc(12.375rem + 72px) /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
     }
     100% {
         height: 0
@@ -162,7 +162,7 @@ input {
         height: 0
     }
     99.5% {
-        height: 14.5rem /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
+        height: calc(12.375rem + 72px) /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
     }
     100% {
         height: initial
