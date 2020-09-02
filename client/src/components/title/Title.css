@@ -8,7 +8,7 @@ h1 {
 .title-author {
     font-size: 0.9rem;
     font-weight: normal;
-    padding-right: calc(11.25rem - 1rem);
+    padding-right: 10.5rem;
     color: #376937;
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
