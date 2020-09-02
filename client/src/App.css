@@ -26,6 +26,9 @@ html {
   }
 }
 
+/* Alegreya doesn’t have Hebrew characters, so any Hebrew gets displayed in Tinos. */
+@import url(https://fonts.googleapis.com/css2?family=Tinos&display=swap);
+
 .App *[lang=he] {
   font-family: "Alegreya", "Tinos", serif;
 }
