@@ -47,6 +47,14 @@ class Search extends Component {
         this.setState({dropdownAnimationClass: animationClass})
     }
 
+    handleDropdownClick = () => {
+        if (this.state.dropdownAnimationClass === "dropdown-content-open") {
+            this.handleDropdown("dropdown-content-close");
+        } else {
+            this.handleDropdown("dropdown-content-open");
+        }
+    }
+
     // This sets the selected route to the menu item clicked, 
     // hides the dropdown menu again, and returns focus to the input.
     handleType = (route) => {
@@ -124,7 +132,7 @@ class Search extends Component {
             dropdownSelect = selectedRouteObject.searchFieldFull
         }
         // Let’s do the title of dropdown-select.
-        let dropdownSelectTitle = `“${dropdownSelect}” is selected${this.state.dropdownAnimationClass==="dropdown-content-open" ? "" : "; click to open the menu"}`;
+        let dropdownSelectTitle = `“${dropdownSelect}” is selected; click to ${this.state.dropdownAnimationClass==="dropdown-content-open" ? "close" : "open"} the menu`;
         // Let's create the dropdown menu items.
         let dropdownContent = routes
             .filter(route=>route.searchField!=null)
@@ -182,19 +190,14 @@ class Search extends Component {
                  || this.props.match.path==="/about"
                  ? null
                   : ( 
-                    <div 
-                        className="dropdown" 
-                        onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}} 
-                        onFocus={()=>this.handleDropdown("dropdown-content-open")}
-                    >
+                    <div id="dropdown">
                         <button 
-                            className="dropdown-select"
-                            onFocus={()=>this.handleDropdown("dropdown-content-open")}
-                            onClick={()=>this.handleDropdown("dropdown-content-open")}
+                            id="dropdown-select"
+                            onClick={this.handleDropdownClick}
                             title={dropdownSelectTitle}
                         >
                             <p>{dropdownSelect}</p>
-                            <p className="dropdown-arrow"></p>
+                            <p id="dropdown-arrow"></p>
                         </button>
                         <ul className={this.state.dropdownAnimationClass}>
                             {dropdownContent}

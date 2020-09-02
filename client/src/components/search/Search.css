@@ -38,14 +38,14 @@ input {
     background-color: #b8f8d7;
 }
 
-.dropdown {
+#dropdown {
     font-size: 0.9rem;
     text-align: left;
     width: 50%;
     margin: 0.5625rem 0 1.875rem;
 }
 
-.dropdown-select {
+#dropdown-select {
     background-color: #9cdad3;
     margin-top: 0.3333rem;
     margin-bottom: 0;
@@ -55,24 +55,24 @@ input {
     text-align: left;
 }
 
-.dropdown-select :first-child {
+#dropdown-select :first-child {
     padding: 0.1875rem 0.5rem;
     margin: 0;
 }
 
 /* Give some space for the arrow. */
-.dropdown-select :first-child::after {
+#dropdown-select :first-child::after {
     content: '    ';
 }
 
-.dropdown-arrow {
+#dropdown-arrow {
     height: 0;
     margin: 0;
     padding: 0;
     transform: translateY(-1em);
 }
 
-.dropdown-arrow::after {
+#dropdown-arrow::after {
     content: ' ';
     background-image: url(https://www.duncanritchie.co.uk/images/arrow-down.svg);
     background-repeat: no-repeat;
