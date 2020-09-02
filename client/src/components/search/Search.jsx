@@ -20,7 +20,7 @@ class Search extends Component {
         let input = e.target.value
         this.setState({input: input, fromUrl: false})
         // If special characters are input, we can get percent-encoding problems.
-        // Let's correct for that.
+        // Let’s correct for that.
         try {
             input = decodeURIComponent(input) || ""
             this.setState({sanitisedInput: input})
@@ -85,7 +85,7 @@ class Search extends Component {
         this.props.history.push(newUrl)
     }
 
-    // Initial value of sanitisedInput is "". Let's put something useful there.
+    // Initial value of sanitisedInput is "". Let’s put something useful there.
     componentDidMount() {
         try {
             this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
@@ -115,7 +115,7 @@ class Search extends Component {
     }
 
     render() {
-        // Let's work out what the value of the input should be.
+        // Let’s work out what the value of the input should be.
         let inputValue
         if (this.state.fromUrl) {
             if (this.props.match.params.word) {
@@ -131,7 +131,7 @@ class Search extends Component {
                 inputValue = this.state.sanitisedInput
             }
         }
-        // Let's work out what the dropdown-select should be.
+        // Let’s work out what the dropdown-select should be.
         let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type || route.route===this.state.type)})
         let dropdownSelect
         if (selectedRouteObject) {
@@ -139,7 +139,7 @@ class Search extends Component {
         }
         // Let’s do the title of dropdown-select.
         let dropdownSelectTitle = `“${dropdownSelect}” is selected; click to ${this.state.dropdownAnimationClass==="dropdown-content-open" ? "close" : "open"} the menu`;
-        // Let's create the dropdown menu items.
+        // Let’s create the dropdown menu items.
         let menuDisabled = this.state.dropdownAnimationClass!=="dropdown-content-open" ? true : false;
         let dropdownContent = routes
             .filter(route=>route.searchField!=null)
@@ -159,7 +159,7 @@ class Search extends Component {
                     </li>
                 )
             })
-        // Now we're ready to return JSX.
+        // Now we’re ready to return JSX.
         return (
             <div id="search">
                 {/* The box the word will be typed into. */}

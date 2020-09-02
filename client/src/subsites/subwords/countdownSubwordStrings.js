@@ -22,5 +22,5 @@ const subwordStringsNoMacra = (input,wordObjects) => {
     })
 }
 
-// The two functions are not actually used anywhere, but let's make them available regardless.
+// The two functions are not actually used anywhere, but let’s make them available regardless.
 export default {subwordStrings, subwordStringsNoMacra}

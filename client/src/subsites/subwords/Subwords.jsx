@@ -53,7 +53,7 @@ class Subwords extends Component {
                 if (remainingLetters) {
                     return <span key={index}><Link to={"./"+remainingLetters} title={"delete “"+word+"” from “"+input+"” to leave “"+remainingLetters+"”"} lang="la">{word}</Link> </span>
                 }
-                // Otherwise the word is an anagram of input and we don't render a Link.
+                // Otherwise the word is an anagram of input and we don’t render a Link.
                 else {
                     return <span key={index} lang="la"><strong>{word}</strong> </span>
                 }

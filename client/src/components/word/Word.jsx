@@ -36,23 +36,23 @@ class Word extends Component {
     fetchFoundWord(input) {
         let foundWord = {}
         // If special characters are input, we can get percent-encoding problems.
-        // Let's correct for that.
+        // Let’s correct for that.
         if (input.search("%")>-1) {
             input = decodeURIComponent(input)
         }
         this.setState({sanitisedInput: input})
-        // Let's fetch some data from MongoDB. First we search for the input, parsing any hyphens/cola/dots.
+        // Let’s fetch some data from MongoDB. First we search for the input, parsing any hyphens/cola/dots.
         axios.getOneWord({"Word": hyphensToMacra(input)})
             .then((data)=>{
                 foundWord = data.data
                 this.setState({foundWord: foundWord})
-                // If the parsed input isn't in Mongo, look for it without macra.
+                // If the parsed input isn’t in Mongo, look for it without macra.
                 if (!foundWord) {
                     axios.getOneWord({"NoMacra": noMacra(input)})
                     .then((data)=>{
                         foundWord = data.data
                         this.setState({foundWord: foundWord})
-                        // If the demacronized input isn't in Mongo, look for it lowercased.
+                        // If the demacronized input isn’t in Mongo, look for it lowercased.
                         if (!foundWord) {
                             axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
                             .then((data)=>{
@@ -80,14 +80,14 @@ class Word extends Component {
     }
 
     fetchRhymes(wordObject) {
-        // Let's find the rhymes.
+        // Let’s find the rhymes.
         // We will be using the following three values if route-specific values are not found in routes.json.
         let searchField = "PerfectRhyme" // This is the MongoDB fieldname.
         let axiosFuncName = "getWordsClass" // This is one of "getWordsAlph", "getWordsClass", "getWordsEccles" depending on the sort wanted.
         let searchFieldFull = "Perfect rhymes (classical)" // This will be rendered onscreen as a heading.
         // The route determines which type of rhyme will be wanted.
         // routes is routes.json, which matches routes to searchField, axiosFuncName, and searchFieldFull.
-        // Let's retrieve the values we want.
+        // Let’s retrieve the values we want.
         const routeObject = routes.find(route=>{return ("/"+this.props.match.params.type === route.route)})
         if (routeObject) {
             searchField = routeObject.searchField
@@ -104,7 +104,7 @@ class Word extends Component {
     }
 
     fetchHomographs(wordObject) {
-        // Let's find the homographs.
+        // Let’s find the homographs.
         let noMacraLowerCase = wordObject.NoMacra.toLowerCase()
         axios.getWordsAlph({"NoMacraLowerCase": noMacraLowerCase}).then((data)=>{
             let homographs = data.data
@@ -116,7 +116,7 @@ class Word extends Component {
     }
 
     fetchForms (wordObject) {
-        // Let's find the forms. An array is generated for each lemma.
+        // Let’s find the forms. An array is generated for each lemma.
         // We initialise state with an array of empty arrays.
         let emptyArrays = wordObject.LemmaArray.map((lemma,index)=>{
             return []
@@ -140,7 +140,7 @@ class Word extends Component {
     }
 
     fetchCognates(wordObject) {
-        // Let's now prepare for finding cognates. To do this we need to fetch all the lemmata.
+        // Let’s now prepare for finding cognates. To do this we need to fetch all the lemmata.
         // We initialise state with an array of empty objects.
         let emptyLemmaArray = wordObject.LemmaArray.map((lemmma,index)=>{
             return {}
@@ -178,8 +178,8 @@ class Word extends Component {
     }
 
     fetchRandomWord() {
-        // Let's pick a random word to show if no words match the search.
-        // We query MongoDB for the total words count if we don't have it.
+        // Let’s pick a random word to show if no words match the search.
+        // We query MongoDB for the total words count if we don’t have it.
         // Then we query for a word whose Ord is less than or equal to it.
         if (!this.state.totalWordsCount) {
             axios.countWords().then((data)=>{
@@ -192,7 +192,7 @@ class Word extends Component {
                 })
             })
         }
-        // If we've already found the total words count, we don't need to query for it.
+        // If we’ve already found the total words count, we don’t need to query for it.
         // We just query for the random word.
         else {
             let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
@@ -250,9 +250,9 @@ class Word extends Component {
         }
         if (foundWord) {
             const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
-            // Let's set the document title to the word we found.
+            // Let’s set the document title to the word we found.
             document.title = "“" + foundWord.Word + "” on velut"
-            // Let's find what metrical foot it is.
+            // Let’s find what metrical foot it is.
             if (foundWord.Scansion) {
                 let foot = feet.find((foot)=>{return foot.Foot===foundWord.Scansion})
                 if (foot) {
@@ -266,21 +266,21 @@ class Word extends Component {
                         }
                 }
             }
-            // Let's find the rhymes.
+            // Let’s find the rhymes.
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
                 mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
                     <span key={index}><LatinLink linkBase={linkBase} targetWord={rhyme} currentWordHyphenated={currentWordHyphenated}/> </span>
                 )})
             }
-            // Let's find the homographs.
+            // Let’s find the homographs.
             if (this.state.homographs) {
                 // A react-router-dom Link is rendered for every homograph.
                 mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
                     <span key={index}> <LatinLink linkBase={linkBase} targetWord={homograph} currentWordHyphenated={currentWordHyphenated}/></span>
                 )})
             }
-            // Let's do the lemmata. We will render an element for every lemma listed against the input.
+            // Let’s do the lemmata. We will render an element for every lemma listed against the input.
             wordLemmata = this.state.foundWord.LemmaArray || []
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
