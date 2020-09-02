@@ -55,6 +55,12 @@ class Search extends Component {
         }
     }
 
+    handleDropdownMouseLeave = () => {
+        if (this.state.dropdownAnimationClass === "dropdown-content-open") {
+            this.handleDropdown("dropdown-content-close");
+        }
+    }
+
     // This sets the selected route to the menu item clicked, 
     // hides the dropdown menu again, and returns focus to the input.
     handleType = (route) => {
@@ -190,7 +196,7 @@ class Search extends Component {
                  || this.props.match.path==="/about"
                  ? null
                   : ( 
-                    <div id="dropdown">
+                    <div id="dropdown" onMouseLeave={this.handleDropdownMouseLeave}>
                         <button 
                             id="dropdown-select"
                             onClick={this.handleDropdownClick}
