@@ -145,18 +145,15 @@ class Search extends Component {
             .map((route,i)=>{
                 return (
                     <li 
-                    key={i} 
-                    className="dropdown-item" 
-                    tabIndex="0" 
-                    aria-label={"Select to return "+route.searchFieldFull.toLowerCase()}
-                    onClick={()=>{this.handleType(route.route)}} 
-                    onKeyUp={(e)=>{
-                        if(e.keyCode===13){
-                            this.handleType(route.route)
-                        }
-                    }}
+                        key={i} 
+                        className="dropdown-item"
                     >
-                        {route.searchFieldFull}
+                        <button
+                            title={"Select to return "+route.searchFieldFull.toLowerCase()}
+                            onClick={()=>{this.handleType(route.route)}} 
+                        >
+                            {route.searchFieldFull}
+                        </button>
                     </li>
                 )
             })
@@ -170,7 +167,7 @@ class Search extends Component {
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
-                    aria-label="Enter a Latin word"
+                    title="Enter a Latin word"
                     lang="la"
                     autoCapitalize="off"
                     autoComplete="off"

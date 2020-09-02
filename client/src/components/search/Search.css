@@ -175,10 +175,17 @@ input {
     background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
     width: inherit;
     margin: 0;
-    padding: 0.1875rem 0.375rem;
+    padding: 2px;
 }
 
 .dropdown-item:hover {
     color: black;
     background: #d3ecee;
+}
+
+.dropdown-item button {
+    width: 100%;
+    text-align: inherit;
+    padding: 0.1875rem 0.375rem;
+    cursor: pointer;
 }
