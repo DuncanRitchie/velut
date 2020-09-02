@@ -186,7 +186,7 @@ class Search extends Component {
                 >Search!
                 </button>
                 <br/>
-                {/* The menu to change the rhyme type displayed
+                {/* The menu to change the rhyme type displayed.
                 Only appears if neither /subwords nor /anagramphrases nor /about nor /english is in the path. */}
                 {this.props.match.path.substr(0,9)==="/subwords"
                  || this.props.match.path.substr(0,15)==="/anagramphrases"
