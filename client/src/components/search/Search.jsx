@@ -123,6 +123,8 @@ class Search extends Component {
         if (selectedRouteObject) {
             dropdownSelect = selectedRouteObject.searchFieldFull
         }
+        // Let’s do the title of dropdown-select.
+        let dropdownSelectTitle = `“${dropdownSelect}” is selected${this.state.dropdownAnimationClass==="dropdown-content-open" ? "" : "; click to open the menu"}`;
         // Let's create the dropdown menu items.
         let dropdownContent = routes
             .filter(route=>route.searchField!=null)
@@ -185,16 +187,15 @@ class Search extends Component {
                         onMouseLeave={()=>{this.handleDropdown("dropdown-content-close")}} 
                         onFocus={()=>this.handleDropdown("dropdown-content-open")}
                     >
-                        <p 
-                            className="dropdown-select" 
-                            tabIndex={this.state.dropdownAnimationClass==="open" ? "0" : ""}
-                            onMouseOver={()=>this.handleDropdown("dropdown-content-open")} 
+                        <button 
+                            className="dropdown-select"
                             onFocus={()=>this.handleDropdown("dropdown-content-open")}
                             onClick={()=>this.handleDropdown("dropdown-content-open")}
-                            aria-label={"You have selected "+dropdownSelect.toLowerCase()}
+                            title={dropdownSelectTitle}
                         >
-                            {dropdownSelect}
-                        </p>
+                            <p>{dropdownSelect}</p>
+                            <p className="dropdown-arrow"></p>
+                        </button>
                         <ul className={this.state.dropdownAnimationClass}>
                             {dropdownContent}
                         </ul>
