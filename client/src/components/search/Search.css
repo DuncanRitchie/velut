@@ -1,5 +1,5 @@
 #search{
-    width: calc(60vw + 1rem);
+    width: calc(66vw + 1rem);
     max-width: 46.875rem;
     min-height: 4.25rem;
     margin-left: auto;
@@ -10,7 +10,7 @@
 input {
     text-align: center;
     margin: 0;
-    width: 60vw;
+    width: 66vw;
     max-width: 45.875rem;
     border: 2px solid #85a785; /* a pale grey-green */
     height: 1.25rem;
