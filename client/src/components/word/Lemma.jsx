@@ -4,6 +4,7 @@ import greece from '../../images/greece.png'
 import israel from '../../images/israel.png'
 import axios from '../../axios/axios'
 import LatinLink from './LatinLink'
+import EnglishTextContainingLatin from './EnglishTextContainingLatin'
 
 class Lemma extends Component {
     constructor(props) {
@@ -131,10 +132,10 @@ class Lemma extends Component {
                     ? <p>Part of speech: {partOfSpeech.toLowerCase()}</p>
                     : null}
                 {meanings
-                    ? <p>Meanings: {meanings}</p>
+                    ? <p>Meanings: {EnglishTextContainingLatin(linkBase, meanings, currentWordHyphenated)}</p>
                     : null}
                 {notes
-                    ? <p>Notes: {notes}</p>
+                    ? <p>Notes: {EnglishTextContainingLatin(linkBase, notes, currentWordHyphenated)}</p>
                     : null}
                 {mappedTransliterations
                     ? <p>Transliterations: {mappedTransliterations}</p>
