@@ -200,6 +200,8 @@ class Search extends Component {
                             id="dropdown-select"
                             onClick={this.handleDropdownClick}
                             title={dropdownSelectTitle}
+                            aria-haspopup="true"
+                            aria-expanded={!menuDisabled}
                         >
                             <p>{dropdownSelect}</p>
                             <p id="dropdown-arrow"></p>
