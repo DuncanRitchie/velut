@@ -42,9 +42,6 @@ body :focus {
 }
 
 .home-rubric span {
-  /* A shadow the same colour as the background.
-  in case the text is overlaying the fulmar picture */
-  text-shadow: 1px 1px 1px rgb(206,227,242);
   background-image: linear-gradient(180deg, rgb(206,227,242) 0%, rgb(227,239,248) 100%);
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
@@ -89,11 +86,5 @@ p + p {
   .fulmar-background:not(.home) {
     background-size: 75vh;
     background-position: calc(3rem + 5vw - 54vh) calc(10vw - 21vh - 1.25rem);
-  }
-
-  .home-rubric {
-    /* A shadow the same colour as the background.
-    in case the text is overlaying the fulmar picture */
-    text-shadow: 1px 1px 1px #cee3f2;
   }
 }
