@@ -165,6 +165,7 @@ class Search extends Component {
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
+                    type="search"
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
