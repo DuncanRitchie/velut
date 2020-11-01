@@ -2,6 +2,7 @@ const Word = require('../models/word-model')
 const findSubwordsFromMongo = require('./findSubwordsFromMongo')
 const findAnagrams = require('./findAnagrams')
 const flatten = require('flat')
+const e = require('express')
 
 // Defining all methods and logic for routes
 
@@ -117,7 +118,11 @@ module.exports = {
 				.replace(/C/g, "[bcdfghklmnpqrstvxz]")
 				.replace(/V/g, "[aeiouy]")
 				.replace(/_/g, ".*");
-			let elisionSubregex = elisionAllowed ? "(?<=.a|.e|.i|.o|.u|.y|am|em|im|om|um|ym)" : "";
+			let elisionSubregex = "";
+			if (elisionAllowed
+			  && "abcdefghiklmnopqrstuvxyz".includes(spelling.substr(-1))) {
+				elisionSubregex = "(a|e|i|o|u|y|ae|au|oe|am|em|im|om|um|ym)?";
+			}
 			spelling = `^${spelling}${elisionSubregex}$`;
 			console.log("spelling: ", spelling);
 			findObject.NoMacra = {"$regex": spelling};
