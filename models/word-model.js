@@ -10,6 +10,7 @@ const wordSchema = new Schema({
     "Uncompounded": String,
     "Phonetic": String,
     "Scansion": String,
+    "ScansionWithElision": String,
     "AllVowels": String,
     "SyllableCount": Number,
     "Stress": Number,

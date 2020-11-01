@@ -89,25 +89,33 @@ module.exports = {
 				.then(anagrams=>{res.json(anagrams)})
 	},
 	findByPattern: function(req, res) {
-		// console.log("req: ", req);
-		// console.log("query: ", req.query);
+		//// req = { scansion: String, spelling: String, elision: Boolean, sort: String }
 		let findObject = {};
-		let elisionAllowed = false;
+		let elisionAllowed = req.query.elision == "true";
+		let sortInput = req.query.sort || "classical"
+		const sortStrings = {
+			"alphabetical": "NoMacraLowerCase NoMacra Word",
+			"classical": "Sort",
+			"ecclesiastical": "EcclesSort"
+		}
 
 		let scansionInput = req.query.scansion;
 		console.log("scansionInput: ", scansionInput);
 		if (scansionInput) {
-			elisionAllowed = scansionInput.includes("e") || scansionInput.includes("E");
 			let scansion = scansionInput
-				.replace(/[^lsxe_–⏑]/gi, "")
+				.replace(/[^lsx_–⏑]/gi, "")
 				.replace(/l/gi, "–")
 				.replace(/s/gi, "⏑")
 				.replace(/x/gi, "[–⏑]")
-				.replace(/e/gi, "[–⏑]?$")
 				.replace(/_/g, ".*");
 			scansion = `^${scansion}$`;
 			console.log("scansion: ", scansion);
-			findObject.Scansion = {"$regex": scansion};
+			if (elisionAllowed) {
+				findObject.ScansionWithElision = {"$regex": scansion};
+			}
+			else {
+				findObject.Scansion = {"$regex": scansion};
+			}
 		}
 
 		let spellingInput = req.query.spelling;
@@ -130,7 +138,7 @@ module.exports = {
 		
 		if (scansionInput || spellingInput) {
 			Word.find(findObject)
-			.sort("Sort")
+			.sort(sortStrings[sortInput])
 			.select({"Word": 1, "_id": 0})
 			.then(words => {
 				res.json(words)
