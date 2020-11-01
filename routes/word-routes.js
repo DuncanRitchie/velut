@@ -18,6 +18,10 @@ router
 	.get(wordsController.findAnagrams)
 
 router
+	.route('/pattern/')
+	.get(wordsController.findByPattern)
+
+router
 	.route('/alph/')
 	.get(wordsController.findWordsAlphabetical)
 

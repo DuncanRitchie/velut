@@ -37,6 +37,7 @@ module.exports = {
 			.catch(err => res.status(422).json(err))
 	},
 	findWordsClassical: function(req, res) {
+		console.log(req);
 		Word.find(req.query)
 			.sort("Sort")
 			.select({"Word": 1, "_id": 0})
@@ -85,6 +86,54 @@ module.exports = {
 					return ["Internal server error"]
 				}})
 				.then(anagrams=>{res.json(anagrams)})
+	},
+	findByPattern: function(req, res) {
+		// console.log("req: ", req);
+		// console.log("query: ", req.query);
+		let findObject = {};
+		let elisionAllowed = false;
+
+		let scansionInput = req.query.scansion;
+		console.log("scansionInput: ", scansionInput);
+		if (scansionInput) {
+			elisionAllowed = scansionInput.includes("e") || scansionInput.includes("E");
+			let scansion = scansionInput
+				.replace(/[^lsxe_–⏑]/gi, "")
+				.replace(/l/gi, "–")
+				.replace(/s/gi, "⏑")
+				.replace(/x/gi, "[–⏑]")
+				.replace(/e/gi, "[–⏑]?$")
+				.replace(/_/g, ".*");
+			scansion = `^${scansion}$`;
+			console.log("scansion: ", scansion);
+			findObject.Scansion = {"$regex": scansion};
+		}
+
+		let spellingInput = req.query.spelling;
+		console.log("spellingInput: ", spellingInput);
+		if (spellingInput) {
+			let spelling = spellingInput
+				.replace(/[^abcdefghiklmnopqrstuvxyzCV_]/g, "")
+				.replace(/C/g, "[bcdfghklmnpqrstvxz]")
+				.replace(/V/g, "[aeiouy]")
+				.replace(/_/g, ".*");
+			let elisionSubregex = elisionAllowed ? "(?<=.a|.e|.i|.o|.u|.y|am|em|im|om|um|ym)" : "";
+			spelling = `^${spelling}${elisionSubregex}$`;
+			console.log("spelling: ", spelling);
+			findObject.NoMacra = {"$regex": spelling};
+		}
+		
+		if (scansionInput || spellingInput) {
+			Word.find(findObject)
+			.sort("Sort")
+			.select({"Word": 1, "_id": 0})
+			.then(words => {
+				res.json(words)
+			});
+		}
+		else {
+			res.status(400).json("Please specify scansion or spelling.");
+		}
 	},
 	findById: function(req, res) {
 		Word.findById(req.params.id)
