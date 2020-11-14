@@ -18,10 +18,7 @@ class AdvancedSearch extends Component {
                 unsanitised: false,
                 sanitised: false
             },
-            sort: {
-                unsanitised: "",
-                sanitised: ""
-            },
+            sort: "alphabetical",
             fromUrl: true,
         }
     }// This handles the <input> value.
@@ -51,6 +48,13 @@ class AdvancedSearch extends Component {
         }
     }
 
+    // When a radio button is checked, this updates state.
+    handleRadioChange = (e) => {
+        let newState = {};
+        newState[e.target.name] = e.target.value; // eg, state.sort = "alphabetical"
+        this.setState(newState);
+    }
+
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
         let newUrl = "../../advanced/?"
@@ -63,8 +67,8 @@ class AdvancedSearch extends Component {
         if (this.state.elision.unsanitised) {
             newUrl = `${newUrl}&elision=${this.state.elision.sanitised}`;
         }
-        if (this.state.sort.unsanitised) {
-            newUrl = `${newUrl}&sort=${this.state.sort.sanitised}`;
+        if (this.state.sort) {
+            newUrl = `${newUrl}&sort=${this.state.sort}`;
         }
         newUrl = newUrl.replace("?&","?");
         this.props.history.push(newUrl)
@@ -105,7 +109,7 @@ class AdvancedSearch extends Component {
         return (
             <div id="search">
                 {/* Form fields */}
-                <form>
+                {/* <form> */}
                     <label htmlFor="spelling-input">Spelling:</label>
                     <input 
                         id="spelling-input"
@@ -136,6 +140,33 @@ class AdvancedSearch extends Component {
                         spellCheck="false"
                     />
                     <br/>
+                    <div>
+                    <input
+                        type="radio"
+                        name="sort"
+                        onChange={this.handleRadioChange}
+                        id="sort-alphabetical"
+                        value="alphabetical"
+                    />
+                    <label for="sort-alphabetical">Sort alphabetically</label>
+                    <input
+                        type="radio"
+                        name="sort"
+                        onChange={this.handleRadioChange}
+                        id="sort-classical"
+                        value="classical"
+                    />
+                    <label for="sort-classical">Sort by classical rhyme</label>
+                    <input
+                        type="radio"
+                        name="sort"
+                        onChange={this.handleRadioChange}
+                        id="sort-ecclesiastical"
+                        value="ecclesiastical"
+                    />
+                    <label for="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
+                    </div>
+
                     {/* The button to load the new page. */}
                     <button
                         id="search-button" 
@@ -143,7 +174,7 @@ class AdvancedSearch extends Component {
                         title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                     >Search!
                     </button>
-                </form>
+                {/* </form> */}
             </div>
         )
     }
