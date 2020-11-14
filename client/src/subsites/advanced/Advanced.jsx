@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Title from '../../components/title/Title'
 import AdvancedSearch from './AdvancedSearch'
 import axios from "../../axios/axios"
+import macraToHyphens from "../../components/word/macraToHyphens"
 import '../Subsites.css'
 
 // <Advanced/> is a JSX element rendered at /advanced/?<query>
@@ -69,8 +70,18 @@ class Advanced extends Component {
     
             let mappedWords = []
             if (this.state.results) {
+                // Render a Link and a space for every word.
                 mappedWords = this.state.results.map((word,index)=>{
-                    return <span key={index} lang="la"><strong>{word.Word}</strong> </span>
+                    return (
+                        <><Link
+                            key={index}
+                            lang="la"
+                            to={`../${macraToHyphens(word.Word)}`}
+                            title={word.Word}
+                        >
+                            <strong>{word.Word}</strong>
+                        </Link> </>
+                    )
                 })
             }
             let result = null
