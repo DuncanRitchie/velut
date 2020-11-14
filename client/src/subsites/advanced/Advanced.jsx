@@ -14,23 +14,30 @@ class Advanced extends Component {
             search: this.props.location.search,
             advancedHome: (this.props.location.search === ""),
             results: [],
-            loading: false
+            loading: false,
+            error: false,
         }
     }
 
     setAdvancedHome() {
-        this.setState({advancedHome: this.props.location.search === ""});
+        const typedQueryInputs = this.props.location.search
+            .replace(/sort=\w*/g, "")
+            .replace(/elision=\w*/g, "")
+            .replace(/[?&]/g, "");
+        this.setState({advancedHome: typedQueryInputs === ""});
     }
 
     fetchWords(queryString) {
         this.setAdvancedHome()
         if (!this.state.advancedHome) {
-            this.setState({loading: true})
+            this.setState({loading: true, error: false})
             axios.getAdvanced(queryString).then((data)=>{
                 // data.data is an array of objects with a Word field.
                 this.setState({results: data.data})
-                this.setState({loading: false})
-            })    
+                this.setState({loading: false, error: false})
+            }).catch(()=>{
+                this.setState({error: true});
+            })
         }
     }
 
@@ -67,7 +74,10 @@ class Advanced extends Component {
                 })
             }
             let result = null
-            if (this.state.loading) {
+            if (this.state.error) {
+                result = (<p>There was an error. Please try a different search.</p>)
+            }
+            else if (this.state.loading) {
                 result = (<p>Loading advanced&hellip;&nbsp; This can take a minute.</p>)
             }
             else if (mappedWords.length) {
