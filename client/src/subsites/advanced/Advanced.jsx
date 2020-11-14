@@ -2,9 +2,11 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Title from '../../components/title/Title'
 import AdvancedSearch from './AdvancedSearch'
+import AdvancedRubric from './AdvancedRubric'
 import axios from "../../axios/axios"
 import macraToHyphens from "../../components/word/macraToHyphens"
 import '../Subsites.css'
+import './Advanced.css'
 
 // <Advanced/> is a JSX element rendered at /advanced/?<query>
 
@@ -62,6 +64,7 @@ class Advanced extends Component {
                     <Title textBeforeTitle="Advanced search"/>
                     <p>Search for Latin words that fit some criteria!</p>
                     <AdvancedSearch/>
+                    <AdvancedRubric/>
                 </div>
             )
         }
@@ -109,6 +112,7 @@ class Advanced extends Component {
                     <Title textBeforeTitle="Advanced search" />
                     <div>
                         <AdvancedSearch/>
+                        <AdvancedRubric/>
                         <div className="subsite-result">
                             {result}
                         </div>
