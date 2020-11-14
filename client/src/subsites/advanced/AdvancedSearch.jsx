@@ -10,8 +10,6 @@ class AdvancedSearch extends Component {
             input: this.props.match.params.word || this.props.match.params.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.match.params.type || this.props.match.path.replace("/:word","").replace("/about","").replace("/","") || "",
-            dropdownAnimationClass: "dropdown-content-none"
         }
     }// This handles the <input> value.
     handleInput = (e) => {
@@ -27,35 +25,11 @@ class AdvancedSearch extends Component {
             this.setState({sanitisedInput: input})
         }
     }
-
-    // This handles the menu value.
-    handleMenu = (e) => {
-        this.setState({menu: e.target.value})
-    }
     
     // This is to search when the enter key is pressed within the <input>.
     handleKeyUp = (e) => {
         if (e.keyCode === 13 ) {
             this.search()
-        }
-    }
-
-    // This toggles whether the dropdown menu is visible.
-    handleDropdown = (animationClass) => {
-        this.setState({dropdownAnimationClass: animationClass})
-    }
-
-    handleDropdownClick = () => {
-        if (this.state.dropdownAnimationClass === "dropdown-content-open") {
-            this.handleDropdown("dropdown-content-close");
-        } else {
-            this.handleDropdown("dropdown-content-open");
-        }
-    }
-
-    handleDropdownMouseLeave = () => {
-        if (this.state.dropdownAnimationClass === "dropdown-content-open") {
-            this.handleDropdown("dropdown-content-close");
         }
     }
 
@@ -92,10 +66,10 @@ class AdvancedSearch extends Component {
         }
         // The input is always initially focussed, unless the page is About.
         if (this.props.match.path === "/about") {
-            document.getElementById("search-input").blur()
+            document.getElementById("spelling-input").blur()
         }
         else {
-            document.getElementById("search-input").focus()
+            document.getElementById("spelling-input").focus()
         }
     }
 
@@ -129,44 +103,16 @@ class AdvancedSearch extends Component {
                 inputValue = this.state.sanitisedInput
             }
         }
-        // Let’s work out what the dropdown-select should be.
-        let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type || route.route===this.state.type)})
-        let dropdownSelect
-        if (selectedRouteObject) {
-            dropdownSelect = selectedRouteObject.searchFieldFull
-        }
-        // Let’s do the title of dropdown-select.
-        let dropdownSelectTitle = `“${dropdownSelect}” is selected; click to ${this.state.dropdownAnimationClass==="dropdown-content-open" ? "close" : "open"} the menu`;
-        // Let’s create the dropdown menu items.
-        let menuDisabled = this.state.dropdownAnimationClass!=="dropdown-content-open" ? true : false;
-        let dropdownContent = routes
-            .filter(route=>route.searchField!=null)
-            .map((route,i)=>{
-                return (
-                    <li 
-                        key={i} 
-                        className="dropdown-item"
-                    >
-                        <button
-                            title={"Select to return "+route.searchFieldFull.toLowerCase()}
-                            onClick={()=>{this.handleType(route.route)}}
-                            disabled={menuDisabled}
-                        >
-                            {route.searchFieldFull}
-                        </button>
-                    </li>
-                )
-            })
         // Now we’re ready to return JSX.
         return (
             <div id="search">
                 {/* The box the word will be typed into. */}
                 <input 
-                    id="search-input"
+                    id="spelling-input"
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
-                    title={this.props.searchbarTitle || "Type something here"}
+                    title="Letters that will be in the words returned"
                     lang="la"
                     autoCapitalize="off"
                     autoComplete="off"
@@ -178,7 +124,6 @@ class AdvancedSearch extends Component {
                 {/* The button to load the new page. */}
                 <button
                     id="search-button" 
-                    tabIndex="0"
                     onClick={this.search} 
                     title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                 >Search!
