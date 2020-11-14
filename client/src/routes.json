@@ -45,6 +45,11 @@
         "axiosFuncName": "getWordsAlph",
         "searchFieldFull": "Words that scan the same"
     },{
+        "route": "/advanced",
+        "searchField": null,
+        "axiosFuncName": "getAdvanced",
+        "searchFieldFull": "Advanced search"
+    },{
         "route": "/subwords",
         "searchField": null,
         "axiosFuncName": "getSubwords",

@@ -29,6 +29,10 @@ export default {
 	getWordsEccles: (query) => {
 		return axios.get('/api/words/eccles/',{params: query})
 	},
+	// Gets words from the Advanced component.
+	getAdvanced: (queryString) => {
+		return axios.get("/api/words/pattern/"+queryString)
+	},
 	// Gets the word with the given id.
 	getWordById: (id) => {
 		return axios.get('/api/words/id/' + id)

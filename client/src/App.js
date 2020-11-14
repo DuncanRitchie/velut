@@ -5,6 +5,8 @@ import './App.css';
 // Code-splitting.
 const Home               = lazy(() => import("./components/word/Home"));
 const Word               = lazy(() => import("./components/word/Word"));
+const AdvancedHome       = lazy(() => import("./subsites/advanced/AdvancedHome"));
+const Advanced           = lazy(() => import("./subsites/advanced/Advanced"));
 const SubwordsHome       = lazy(() => import("./subsites/subwords/SubwordsHome"));
 const Subwords           = lazy(() => import("./subsites/subwords/Subwords"));
 const AnagramPhrasesHome = lazy(() => import("./subsites/anagramphrases/AnagramPhrasesHome"));
@@ -23,6 +25,8 @@ render() {
           <Suspense fallback={loading()}>
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/advanced" component={Advanced} />
+              {/* <Route path="/advanced" component={AdvancedHome} /> */}
               <Route path="/subwords/:word" component={Subwords} />
               <Route path="/subwords" component={SubwordsHome} />
               <Route path="/anagramphrases/:word" component={AnagramPhrases} />
