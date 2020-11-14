@@ -91,6 +91,7 @@ module.exports = {
 	findAdvanced: function(req, res) {
 		//// req.query = { scansion: String, spelling: String, elision: Boolean, sort: String }
 		let findObject = {};
+		let criteriaAreValid = false;
 		let elisionAllowed = req.query.elision == "true";
 		const sortStrings = {
 			"alphabetical": "NoMacraLowerCase NoMacra Word",
@@ -102,33 +103,43 @@ module.exports = {
 			sortInput = "alphabetical";
 		}
 
-		let scansionInput = req.query.scansion;
+		const scansionInput = req.query.scansion;
 		console.log("scansionInput: ", scansionInput);
+		// If there is anything in the scansion input...
 		if (scansionInput) {
 			let scansion = scansionInput
-				.replace(/[^lsx_–⏑]/gi, "")
-				.replace(/l/gi, "–")
-				.replace(/s/gi, "⏑")
-				.replace(/x/gi, "[–⏑]")
-				.replace(/_/g, ".*");
-			scansion = `^${scansion}$`;
-			console.log("scansion: ", scansion);
-			if (elisionAllowed) {
-				findObject.ScansionWithElision = {"$regex": scansion};
-			}
-			else {
-				findObject.Scansion = {"$regex": scansion};
+				.replace(/[^lsx_–⏑]/gi, "") // Discard any invalid characters.
+				.replace(/l/gi, "–")        // Long syllable.
+				.replace(/s/gi, "⏑")        // Short syllable.
+				.replace(/[_]+/gi, "_")     // Collapse consecutive underscores into one underscore.
+				.replace(/^_$/, "")         // Queries that would return all words should not proceed.
+				.replace(/^x_$/i, "")       // Queries that would return all words should not proceed.
+				.replace(/^_x$/i, "")       // Queries that would return all words should not proceed.
+				.replace(/x/gi, "[–⏑]")     // Anceps syllable can be a long or a short.
+				.replace(/_/g, ".*");       // Zero or more of anything.
+
+			// If the `scansion` is now the empty string, we do not use it in the search. Otherwise, we do.
+			if (scansion) {
+				criteriaAreValid = true;
+				scansion = `^${scansion}$`;
+				if (elisionAllowed) {
+					findObject.ScansionWithElision = {"$regex": scansion};
+				}
+				else {
+					findObject.Scansion = {"$regex": scansion};
+				}
 			}
 		}
 
-		let spellingInput = req.query.spelling;
+		const spellingInput = req.query.spelling;
 		console.log("spellingInput: ", spellingInput);
-		if (spellingInput) {
+		// If there is anything in the spelling input, other than underscores...
+		if (spellingInput && spellingInput.replace(/\_/g, "") !== "") {
 			let spelling = spellingInput
-				.replace(/[^abcdefghiklmnopqrstuvxyzCV_]/g, "")
-				.replace(/C/g, "[bcdfghklmnpqrstvxz]")
-				.replace(/V/g, "[aeiouy]")
-				.replace(/_/g, ".*");
+				.replace(/[^abcdefghiklmnopqrstuvxyzCV_]/g, "")  // Discard invalid characters.
+				.replace(/C/g, "[bcdfghklmnpqrstvxz]")           // Any consonant.
+				.replace(/V/g, "[aeiouy]")                       // Any vowel.
+				.replace(/_/g, ".*");                            // Zero or more of anything.
 			let elisionSubregex = "";
 			if (elisionAllowed
 			  && "abcdefghiklmnopqrstuvxyz".includes(spelling.substr(-1))) {
@@ -137,11 +148,16 @@ module.exports = {
 			spelling = `^${spelling}${elisionSubregex}$`;
 			console.log("spelling: ", spelling);
 			findObject.NoMacra = {"$regex": spelling};
+
+			criteriaAreValid = true;
 		}
 		
-		if (scansionInput || spellingInput) {
+		if (criteriaAreValid) {
+			console.log("findObject: ", findObject);
+
 			Word.find(findObject)
 			.sort(sortStrings[sortInput])
+			.limit(1000)
 			.select({"Word": 1, "_id": 0})
 			.then(words => {
 				res.json(words)
