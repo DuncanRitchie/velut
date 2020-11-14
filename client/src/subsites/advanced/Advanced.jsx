@@ -5,7 +5,7 @@ import AdvancedSearch from './AdvancedSearch'
 import axios from "../../axios/axios"
 import '../Subsites.css'
 
-// <Advanced/> is a JSX element rendered at /advanced/:input
+// <Advanced/> is a JSX element rendered at /advanced/?<query>
 
 class Advanced extends Component {
     constructor(props) {
@@ -22,11 +22,11 @@ class Advanced extends Component {
         this.setState({advancedHome: this.props.location.search === ""});
     }
 
-    fetchWords() {
+    fetchWords(queryString) {
         this.setAdvancedHome()
         if (!this.state.advancedHome) {
             this.setState({loading: true})
-            axios.getAdvanced(this.state.search).then((data)=>{
+            axios.getAdvanced(queryString).then((data)=>{
                 // data.data is an array of objects with a Word field.
                 this.setState({results: data.data})
                 this.setState({loading: false})
@@ -42,7 +42,7 @@ class Advanced extends Component {
         if (this.state.search !== this.props.location.search) {
             let search = this.props.location.search
             this.setState({search: search})
-            this.fetchWords(search)
+            this.fetchWords(search);
         }
     }
 

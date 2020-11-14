@@ -1,29 +1,47 @@
 import React, {Component} from "react"
 import {withRouter} from 'react-router-dom'
-import routes from '../../routes.json'
 import "../../components/search/Search.css"
 
 class AdvancedSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: this.props.match.params.word || this.props.match.params.word || "",
-            sanitisedInput: "",
+            spelling: {
+                unsanitised: "",
+                sanitised: ""
+            },
+            scansion: {
+                unsanitised: "",
+                sanitised: ""
+            },
+            elision: {
+                unsanitised: false,
+                sanitised: false
+            },
+            sort: {
+                unsanitised: "",
+                sanitised: ""
+            },
             fromUrl: true,
         }
     }// This handles the <input> value.
     handleInput = (e) => {
-        let input = e.target.value
-        this.setState({input: input, fromUrl: false})
+        const input = e.target.value;
+        const name = e.target.name;
         // If special characters are input, we can get percent-encoding problems.
         // Let’s correct for that.
+        let sanitisedInput;
         try {
-            input = decodeURIComponent(input) || ""
-            this.setState({sanitisedInput: input})
-        } catch(err) {
-            input = e.target.value
-            this.setState({sanitisedInput: input})
+            sanitisedInput = decodeURIComponent(input) || "";
+        } catch {
+            sanitisedInput = input;
         }
+        let newState = {fromUrl: false};
+        newState[name] = {
+            unsanitised: input,
+            sanitised: sanitisedInput
+        };
+        this.setState(newState);
     }
     
     // This is to search when the enter key is pressed within the <input>.
@@ -33,56 +51,36 @@ class AdvancedSearch extends Component {
         }
     }
 
-    // This sets the selected route to the menu item clicked, 
-    // hides the dropdown menu again, and returns focus to the input.
-    handleType = (route) => {
-        this.setState({type: route, dropdownAnimationClass: "dropdown-content-close"})
-        document.getElementById("search-input").focus()
-    }
-
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
-        let newUrl = "../../"
-        let type = this.state.type
-        if(type===undefined) {
-            type = ""
+        let newUrl = "../../advanced/?"
+        if (this.state.spelling.unsanitised) {
+            newUrl = `${newUrl}spelling=${this.state.spelling.sanitised}`;
         }
-        let input = this.state.input
-        if(input===undefined) {
-            input = ""
+        if (this.state.scansion.unsanitised) {
+            newUrl = `${newUrl}&scansion=${this.state.scansion.sanitised}`;
         }
-        newUrl += type+"/"+input
-        newUrl = newUrl.replace("//","/")
-        this.setState({dropdownAnimationClass: "dropdown-content-none"})
+        if (this.state.elision.unsanitised) {
+            newUrl = `${newUrl}&elision=${this.state.elision.sanitised}`;
+        }
+        if (this.state.sort.unsanitised) {
+            newUrl = `${newUrl}&sort=${this.state.sort.sanitised}`;
+        }
+        newUrl = newUrl.replace("?&","?");
         this.props.history.push(newUrl)
     }
 
     // Initial value of sanitisedInput is "". Let’s put something useful there.
     componentDidMount() {
-        try {
-            this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
-        } catch(err) {
-            this.setState({sanitisedInput: this.state.input})
-        }
-        // The input is always initially focussed, unless the page is About.
-        if (this.props.match.path === "/about") {
-            document.getElementById("spelling-input").blur()
-        }
-        else {
-            document.getElementById("spelling-input").focus()
-        }
+        // The first input is always initially focussed.
+        document.getElementById("spelling-input").focus()
     }
 
     // If the location changes we need new data.
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
-            const input = this.props.match.params.word
-            this.setState({fromUrl: true, input: input, sanitisedInput: input})
-            try {
-                this.setState({sanitisedInput: decodeURIComponent(input)})
-            } catch(err) {
-            }
+            this.setState({fromUrl: true})
         }
     }
 
@@ -109,7 +107,8 @@ class AdvancedSearch extends Component {
                 {/* The box the word will be typed into. */}
                 <input 
                     id="spelling-input"
-                    value={inputValue}
+                    name="spelling"
+                    value={this.state.spelling.unsanitised}
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
                     title="Letters that will be in the words returned"
