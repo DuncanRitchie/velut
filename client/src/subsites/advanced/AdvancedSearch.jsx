@@ -18,7 +18,27 @@ class AdvancedSearch extends Component {
             sort: "alphabetical",
             fromUrl: true,
         }
-    }// This handles the <input> value.
+    }
+
+    setStateFromUrl() {
+        const query = new URLSearchParams(this.props.location.search);
+        console.log(this.props.location.search)
+        console.log("query: ",query);
+        this.setState({
+            spelling: {
+                unsanitised: query.get("spelling") || "",
+                sanitised: query.get("spelling") || ""
+            },
+            scansion: {
+                unsanitised: query.get("scansion") || "",
+                sanitised: query.get("scansion") || ""
+            },
+            elision: query.get("elision") === "true",
+            sort: query.get("sort") || "alphabetical",
+        })
+    }
+    
+    // This handles the <input> value.
     handleInput = (e) => {
         const input = e.target.value;
         const name = e.target.name;
@@ -78,8 +98,9 @@ class AdvancedSearch extends Component {
         this.props.history.push(newUrl)
     }
 
-    // Initial value of sanitisedInput is "". Let’s put something useful there.
+    // Let’s set our state so inputs can get their values from the URL.
     componentDidMount() {
+        this.setStateFromUrl();
         // The first input is always initially focussed.
         document.getElementById("spelling-input").focus()
     }
@@ -89,6 +110,7 @@ class AdvancedSearch extends Component {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
             this.setState({fromUrl: true})
+            this.setStateFromUrl();
         }
     }
 
@@ -148,6 +170,7 @@ class AdvancedSearch extends Component {
                         type="checkbox"
                         name="elision"
                         onChange={this.handleCheckboxChange}
+                        checked={this.state.elision}
                         id="elision-input"
                     />
                     <label htmlFor="elision-input">Allow elision?</label>
@@ -158,6 +181,7 @@ class AdvancedSearch extends Component {
                             onChange={this.handleRadioChange}
                             id="sort-alphabetical"
                             value="alphabetical"
+                            checked={this.state.sort==="alphabetical"}
                         />
                         <label htmlFor="sort-alphabetical">Sort alphabetically</label>
                         <input
@@ -166,6 +190,7 @@ class AdvancedSearch extends Component {
                             onChange={this.handleRadioChange}
                             id="sort-classical"
                             value="classical"
+                            checked={this.state.sort==="classical"}
                         />
                         <label htmlFor="sort-classical">Sort by classical rhyme</label>
                         <input
@@ -174,6 +199,7 @@ class AdvancedSearch extends Component {
                             onChange={this.handleRadioChange}
                             id="sort-ecclesiastical"
                             value="ecclesiastical"
+                            checked={this.state.sort==="ecclesiastical"}
                         />
                         <label htmlFor="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
                     </div>
