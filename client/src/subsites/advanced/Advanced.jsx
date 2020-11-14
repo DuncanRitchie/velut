@@ -12,7 +12,7 @@ class Advanced extends Component {
         super(props);
         this.state = {
             search: this.props.location.search,
-            advanced: [],
+            results: [],
             loading: false
         }
     }
@@ -21,7 +21,7 @@ class Advanced extends Component {
         this.setState({loading: true})
         axios.getAdvanced(this.state.search).then((data)=>{
             // data.data is an array of objects with a Word field.
-            this.setState({advanced: data.data})
+            this.setState({results: data.data})
             this.setState({loading: false})
         })     
     }
@@ -43,8 +43,8 @@ class Advanced extends Component {
         document.title = "Advanced of “"+input+"” on velut"
 
         let mappedWords = []
-        if (this.state.advanced) {
-            mappedWords = this.state.advanced.map((word,index)=>{
+        if (this.state.results) {
+            mappedWords = this.state.results.map((word,index)=>{
                 return <span key={index} lang="la"><strong>{word.Word}</strong> </span>
             })
         }
