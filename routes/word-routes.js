@@ -18,7 +18,7 @@ router
 	.get(wordsController.findAnagrams)
 
 router
-	.route('/pattern/')
+	.route('/advanced/')
 	.get(wordsController.findAdvanced)
 
 router

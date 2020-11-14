@@ -31,7 +31,7 @@ export default {
 	},
 	// Gets words from the Advanced component.
 	getAdvanced: (queryString) => {
-		return axios.get("/api/words/pattern/"+queryString)
+		return axios.get("/api/words/advanced/"+queryString)
 	},
 	// Gets the word with the given id.
 	getWordById: (id) => {
