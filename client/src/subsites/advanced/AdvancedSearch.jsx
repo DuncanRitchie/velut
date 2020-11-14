@@ -14,10 +14,7 @@ class AdvancedSearch extends Component {
                 unsanitised: "",
                 sanitised: ""
             },
-            elision: {
-                unsanitised: false,
-                sanitised: false
-            },
+            elision: false,
             sort: "alphabetical",
             fromUrl: true,
         }
@@ -48,6 +45,13 @@ class AdvancedSearch extends Component {
         }
     }
 
+    // When a checkbox is toggled, this updates state.
+    handleCheckboxChange = (e) => {
+        let newState = {};
+        newState[e.target.name] = e.target.checked; // eg, state.elision = true
+        this.setState(newState);
+    }
+
     // When a radio button is checked, this updates state.
     handleRadioChange = (e) => {
         let newState = {};
@@ -64,8 +68,8 @@ class AdvancedSearch extends Component {
         if (this.state.scansion.unsanitised) {
             newUrl = `${newUrl}&scansion=${this.state.scansion.sanitised}`;
         }
-        if (this.state.elision.unsanitised) {
-            newUrl = `${newUrl}&elision=${this.state.elision.sanitised}`;
+        if (this.state.elision) {
+            newUrl = `${newUrl}&elision=true`;
         }
         if (this.state.sort) {
             newUrl = `${newUrl}&sort=${this.state.sort}`;
@@ -140,31 +144,38 @@ class AdvancedSearch extends Component {
                         spellCheck="false"
                     />
                     <br/>
+                    <input
+                        type="checkbox"
+                        name="elision"
+                        onChange={this.handleCheckboxChange}
+                        id="elision-input"
+                    />
+                    <label htmlFor="elision-input">Allow elision?</label>
                     <div>
-                    <input
-                        type="radio"
-                        name="sort"
-                        onChange={this.handleRadioChange}
-                        id="sort-alphabetical"
-                        value="alphabetical"
-                    />
-                    <label for="sort-alphabetical">Sort alphabetically</label>
-                    <input
-                        type="radio"
-                        name="sort"
-                        onChange={this.handleRadioChange}
-                        id="sort-classical"
-                        value="classical"
-                    />
-                    <label for="sort-classical">Sort by classical rhyme</label>
-                    <input
-                        type="radio"
-                        name="sort"
-                        onChange={this.handleRadioChange}
-                        id="sort-ecclesiastical"
-                        value="ecclesiastical"
-                    />
-                    <label for="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
+                        <input
+                            type="radio"
+                            name="sort"
+                            onChange={this.handleRadioChange}
+                            id="sort-alphabetical"
+                            value="alphabetical"
+                        />
+                        <label for="sort-alphabetical">Sort alphabetically</label>
+                        <input
+                            type="radio"
+                            name="sort"
+                            onChange={this.handleRadioChange}
+                            id="sort-classical"
+                            value="classical"
+                        />
+                        <label for="sort-classical">Sort by classical rhyme</label>
+                        <input
+                            type="radio"
+                            name="sort"
+                            onChange={this.handleRadioChange}
+                            id="sort-ecclesiastical"
+                            value="ecclesiastical"
+                        />
+                        <label for="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
                     </div>
 
                     {/* The button to load the new page. */}
