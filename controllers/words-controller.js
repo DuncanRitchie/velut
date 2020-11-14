@@ -147,7 +147,7 @@ module.exports = {
 			}
 			spelling = `^${spelling}${elisionSubregex}$`;
 			console.log("spelling: ", spelling);
-			findObject.NoMacra = {"$regex": spelling};
+			findObject.NoMacraLowerCase = {"$regex": spelling};
 
 			criteriaAreValid = true;
 		}
