@@ -104,29 +104,46 @@ class AdvancedSearch extends Component {
         // Now we’re ready to return JSX.
         return (
             <div id="search">
-                {/* The box the word will be typed into. */}
-                <input 
-                    id="spelling-input"
-                    name="spelling"
-                    value={this.state.spelling.unsanitised}
-                    onChange={this.handleInput}
-                    onKeyUp={this.handleKeyUp}
-                    title="Letters that will be in the words returned"
-                    lang="la"
-                    autoCapitalize="off"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    spellCheck="false"
-                />
-             
-                <br/>
-                {/* The button to load the new page. */}
-                <button
-                    id="search-button" 
-                    onClick={this.search} 
-                    title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
-                >Search!
-                </button>
+                {/* Form fields */}
+                <form>
+                    <label htmlFor="spelling-input">Spelling:</label>
+                    <input 
+                        id="spelling-input"
+                        name="spelling"
+                        value={this.state.spelling.unsanitised}
+                        onChange={this.handleInput}
+                        onKeyUp={this.handleKeyUp}
+                        title="Letters that will match the words returned"
+                        lang="la"
+                        autoCapitalize="off"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        spellCheck="false"
+                    />
+                    <br/>
+                    <label htmlFor="scansion-input">Scansion:</label>
+                    <input 
+                        id="scansion-input"
+                        name="scansion"
+                        value={this.state.scansion.unsanitised}
+                        onChange={this.handleInput}
+                        onKeyUp={this.handleKeyUp}
+                        title="Sequence of long and short syllables that will match the words returned"
+                        lang="la"
+                        autoCapitalize="off"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        spellCheck="false"
+                    />
+                    <br/>
+                    {/* The button to load the new page. */}
+                    <button
+                        id="search-button" 
+                        onClick={this.search} 
+                        title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
+                    >Search!
+                    </button>
+                </form>
             </div>
         )
     }
