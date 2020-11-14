@@ -159,7 +159,7 @@ class AdvancedSearch extends Component {
                             id="sort-alphabetical"
                             value="alphabetical"
                         />
-                        <label for="sort-alphabetical">Sort alphabetically</label>
+                        <label htmlFor="sort-alphabetical">Sort alphabetically</label>
                         <input
                             type="radio"
                             name="sort"
@@ -167,7 +167,7 @@ class AdvancedSearch extends Component {
                             id="sort-classical"
                             value="classical"
                         />
-                        <label for="sort-classical">Sort by classical rhyme</label>
+                        <label htmlFor="sort-classical">Sort by classical rhyme</label>
                         <input
                             type="radio"
                             name="sort"
@@ -175,7 +175,7 @@ class AdvancedSearch extends Component {
                             id="sort-ecclesiastical"
                             value="ecclesiastical"
                         />
-                        <label for="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
+                        <label htmlFor="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
                     </div>
 
                     {/* The button to load the new page. */}
