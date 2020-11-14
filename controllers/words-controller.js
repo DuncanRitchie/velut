@@ -92,11 +92,14 @@ module.exports = {
 		//// req.query = { scansion: String, spelling: String, elision: Boolean, sort: String }
 		let findObject = {};
 		let elisionAllowed = req.query.elision == "true";
-		let sortInput = req.query.sort || "classical"
 		const sortStrings = {
 			"alphabetical": "NoMacraLowerCase NoMacra Word",
 			"classical": "Sort",
 			"ecclesiastical": "EcclesSort"
+		}
+		let sortInput = req.query.sort
+		if (!sortStrings.hasOwnProperty(sortInput)) {
+			sortInput = "alphabetical";
 		}
 
 		let scansionInput = req.query.scansion;
