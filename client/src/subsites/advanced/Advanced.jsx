@@ -12,14 +12,14 @@ class Advanced extends Component {
         super(props);
         this.state = {
             search: this.props.location.search,
-            advancedHome: (this.props.location.search == ""),
+            advancedHome: (this.props.location.search === ""),
             results: [],
             loading: false
         }
     }
 
     setAdvancedHome() {
-        this.setState({advancedHome: this.props.location.search == ""});
+        this.setState({advancedHome: this.props.location.search === ""});
     }
 
     fetchWords() {
