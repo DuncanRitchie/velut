@@ -19,7 +19,7 @@ router
 
 router
 	.route('/pattern/')
-	.get(wordsController.findByPattern)
+	.get(wordsController.findAdvanced)
 
 router
 	.route('/alph/')

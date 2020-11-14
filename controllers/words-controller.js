@@ -88,7 +88,7 @@ module.exports = {
 				}})
 				.then(anagrams=>{res.json(anagrams)})
 	},
-	findByPattern: function(req, res) {
+	findAdvanced: function(req, res) {
 		//// req.query = { scansion: String, spelling: String, elision: Boolean, sort: String }
 		let findObject = {};
 		let elisionAllowed = req.query.elision == "true";
