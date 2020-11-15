@@ -30,7 +30,7 @@ const AdvancedRubric = () => {
                 <li>“X” is the anceps value, meaning any one syllable, long or short.</li>
                 <li>An underscore means any sequence of zero or more syllables.</li>
             </ul>
-            <p>In words where a vowel is followed by plosive consonant and then l or r, both consonants belong to the following syllable, so <Link to="../tetradrachmum" title="tetradrachmum">tetradrachmum</Link> begins with two short syllables.</p>
+            <p>In words where a vowel is followed by plosive consonant and then “l” or “r”, both consonants belong to the following syllable, so <Link to="../tetradrachmum" title="tetradrachmum">tetradrachmum</Link> begins with two short syllables.</p>
             <h4>Examples</h4>
             <p>These examples assume “Allow elision?” is off.</p>
             <ul>
