@@ -1,23 +1,23 @@
-#search {
+.advanced-search {
     margin-bottom: 2rem;
 }
 
-#search div input[type=text] {
+.advanced-search div input[type=text] {
     width: calc(100% - 1rem);
 }
 
-#search div {
+.advanced-search div {
     display: flex;
     flex-direction: column;
     text-align: left;
     border-top: 0.1875rem solid #c2b170;
 }
 
-#search div:not(:last-of-type) {
+.advanced-search div:not(:last-of-type) {
     padding-bottom: 1rem;
 }
 
-#search div p {
+.advanced-search div p {
     background-color: rgba(255,253,244,0.95);
     margin: 0;
 }

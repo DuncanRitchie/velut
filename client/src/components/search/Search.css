@@ -1,4 +1,4 @@
-#search{
+.search{
     width: calc(66vw + 1rem);
     max-width: 46.875rem;
     min-height: 4.25rem;
@@ -19,7 +19,7 @@ input[type=text] {
     padding: 0.375rem 0.375rem;
 }
 
-#search:focus {
+.search:focus {
     outline-color: #58522c; /* lighter colour of Title gradient */
 }
 

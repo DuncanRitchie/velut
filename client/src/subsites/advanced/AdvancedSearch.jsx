@@ -116,7 +116,7 @@ class AdvancedSearch extends Component {
     render() {
         // Now we’re ready to return JSX.
         return (
-            <div id="search">
+            <div className="search advanced-search">
                 {/* Form fields */}
                 {/* <form> */}
                     <div id="advanced-search-spelling">

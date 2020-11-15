@@ -161,7 +161,7 @@ class Search extends Component {
             })
         // Now we’re ready to return JSX.
         return (
-            <div id="search">
+            <div className="search">
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
