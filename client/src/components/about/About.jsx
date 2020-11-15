@@ -212,7 +212,7 @@ class About extends Component {
                     
                     <AboutSection i={7}>
                         <p>
-                            One of the newest features of velut is its <Link to="/english" title="English to Latin on velut">English 
+                            velut has an <Link to="/english" title="English to Latin on velut">English 
                             to Latin</Link> section, which returns Latin lemmata whose English meanings match what you enter.
                         </p>
                         <p>
@@ -239,8 +239,28 @@ class About extends Component {
                             Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell&rsquo;s from 1970!
                         </p>
                     </AboutSection>
-                    
+
                     <AboutSection i={8}>
+                        <p>
+                            One of the newest features of velut is its <Link to="/advanced" title="Advanced Search on velut">Advanced
+                            Search</Link>, which lets you find Latin words that match a given scansion and/or spelling,
+                            with support for wildcards.
+                        </p>
+                        <p>
+                            <Link to="/advanced/?spelling=f_s&amp;scansion=LLX" title="Example query for Advanced Search on velut">For example</Link>
+                            , words spelt “f_s” (where the underscore means any sequence
+                            of letters) and scanned as “LLX” (ie, three syllables with the first two long)
+                            include <Link to="/fa-cundus" title="&ldquo;fācundus&rdquo; on velut" lang="la">fācundus</Link>
+                            , <Link to="/fe-sti-vus" title="&ldquo;fēstīvus&rdquo; on velut" lang="la">fēstīvus</Link>
+                            , <Link to="/fo-rmo-sus" title="&ldquo;fōrmōsus&rdquo; on velut" lang="la">fōrmōsus</Link>
+                            , and <Link to="/fu-lma-rus" title="&ldquo;fūlmārus&rdquo; on velut" lang="la">fūlmārus</Link>.
+                        </p>
+                        <p>
+                            For details, see the how-to guide on the <Link to="/advanced" title="Advanced Search on velut">Advanced Search</Link> page itself.
+                        </p>
+                    </AboutSection>
+                    
+                    <AboutSection i={9}>
                         <p>
                             All the data have been compiled by me, so please be aware that there are several lemmata that 
                             I don&rsquo;t have. I may simply have never come across them, I may have judged them too arcane 
@@ -265,7 +285,7 @@ class About extends Component {
                         </p>
                     </AboutSection>
                     
-                    <AboutSection i={9}>
+                    <AboutSection i={10}>
                         <p>
                             Roughly 3% of lemmata are missing information regarding cognates.
                             I&rsquo;m working to redress this.

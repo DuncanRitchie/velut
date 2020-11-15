@@ -7,6 +7,7 @@ const sectionHeads = [
     "Consonyms, anagrams, and subwords",
     "Lemmata",
     "English to Latin",
+    "Advanced Search",
     "Word compilation",
     "Future plans"
 ]
