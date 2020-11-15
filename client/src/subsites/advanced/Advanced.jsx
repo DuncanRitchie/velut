@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Title from '../../components/title/Title'
 import AdvancedSearch from './AdvancedSearch'
-import AdvancedRubric from './AdvancedRubric'
+import AdvancedRubricToggler from './AdvancedRubricToggler'
 import axios from "../../axios/axios"
 import macraToHyphens from "../../components/word/macraToHyphens"
 import '../Subsites.css'
@@ -18,7 +18,6 @@ class Advanced extends Component {
             results: [],
             loading: false,
             error: false,
-            showRubric: false,
         }
     }
 
@@ -63,7 +62,7 @@ class Advanced extends Component {
                 <div className="subsite-home advanced fulmar-background">
                     <Title textBeforeTitle="Advanced search"/>
                     <AdvancedSearch/>
-                    {this.state.showRubric ? <AdvancedRubric/> : null}
+                    <AdvancedRubricToggler/>
                 </div>
             )
         }
@@ -110,7 +109,7 @@ class Advanced extends Component {
                     <Title textBeforeTitle="Advanced search" />
                     <div>
                         <AdvancedSearch/>
-                        {this.state.showRubric ? <AdvancedRubric/> : null}
+                        <AdvancedRubricToggler/>
                         <div className="subsite-result">
                             {result}
                         </div>
