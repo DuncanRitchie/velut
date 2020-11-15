@@ -140,12 +140,7 @@ module.exports = {
 				.replace(/C/g, "[bcdfghklmnpqrstvxz]")           // Any consonant.
 				.replace(/V/g, "[aeiouy]")                       // Any vowel.
 				.replace(/_/g, ".*");                            // Zero or more of anything.
-			let elisionSubregex = "";
-			if (elisionAllowed
-			  && "abcdefghiklmnopqrstuvxyz".includes(spelling.substr(-1))) {
-				elisionSubregex = "(a|e|i|o|u|y|ae|au|oe|am|em|im|om|um|ym)?";
-			}
-			spelling = `^${spelling}${elisionSubregex}$`;
+			spelling = `^${spelling}$`;
 			console.log("spelling: ", spelling);
 			findObject.NoMacraLowerCase = {"$regex": spelling};
 
