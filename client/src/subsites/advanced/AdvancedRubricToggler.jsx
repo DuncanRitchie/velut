@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AdvancedRubric from './AdvancedRubric';
+import './AdvancedRubricToggler.css';
 
 class AdvancedRubricToggler extends Component {
     constructor(props) {
@@ -20,7 +21,9 @@ class AdvancedRubricToggler extends Component {
                 <button
                     id="advanced-rubric-toggler-button"
                     onClick={this.handleToggler}
-                >Show how to use the Advanced Search</button>
+                >
+                    {this.state.showRubric ? "Hide" : "Show"} how to use the Advanced Search
+                </button>
                 {this.state.showRubric ? <AdvancedRubric/> : null}
             </>
         )

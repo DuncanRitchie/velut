@@ -61,8 +61,8 @@ class Advanced extends Component {
             return (
                 <div className="subsite-home advanced fulmar-background">
                     <Title textBeforeTitle="Advanced search"/>
-                    <AdvancedSearch/>
                     <AdvancedRubricToggler/>
+                    <AdvancedSearch/>
                 </div>
             )
         }
@@ -108,8 +108,8 @@ class Advanced extends Component {
                 <div className="advanced fulmar-background">
                     <Title textBeforeTitle="Advanced search" />
                     <div>
-                        <AdvancedSearch/>
                         <AdvancedRubricToggler/>
+                        <AdvancedSearch/>
                         <div className="subsite-result">
                             {result}
                         </div>
