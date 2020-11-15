@@ -15,13 +15,13 @@ const AdvancedRubric = () => {
                 <li>If an underscore is input, it means any sequence of zero or more letters.</li>
             </ul>
             <h4>Examples</h4>
-            <li>
-                <ul>“vota” returns the words <Link to="../vo-ta" title="vōta">vōta</Link> and <Link to="../vo-ta-" title="vōtā">vōtā</Link>.</ul>
-                <ul>“Vota” returns the word <Link to="../io-ta" title="iōta">iōta</Link>.</ul>
-                <ul>“augustus” returns the words <Link to="../Augustus" title="Augustus">Augustus</Link> and <Link to="../augustus" title="augustus">augustus</Link>. “VVgustus” returns the same. “Augustus” does not return anything: the “a” needs to be lowercase here.</ul>
-                <ul>“august_” returns all the forms of <Link to="../Augusta" title="Augusta">Augusta</Link>, <Link to="../Augustus" title="Augustus">Augustus</Link>, <Link to="../augustus" title="augustus">augustus</Link>, <Link to="../Augusti-nus" title="Augustīnus">Augustīnus</Link>, etc that are in velut.</ul>
-                <ul>“_” doesn’t return anything unless scansion is also set (see below).</ul>
-            </li>
+            <ul>
+                <li>“vota” returns the words <Link to="../vo-ta" title="vōta">vōta</Link> and <Link to="../vo-ta-" title="vōtā">vōtā</Link>.</li>
+                <li>“Vota” returns the word <Link to="../io-ta" title="iōta">iōta</Link>.</li>
+                <li>“augustus” returns the words <Link to="../Augustus" title="Augustus">Augustus</Link> and <Link to="../augustus" title="augustus">augustus</Link>. “VVgustus” returns the same. “Augustus” does not return anything: the “a” needs to be lowercase here.</li>
+                <li>“august_” returns all the forms of <Link to="../Augusta" title="Augusta">Augusta</Link>, <Link to="../Augustus" title="Augustus">Augustus</Link>, <Link to="../augustus" title="augustus">augustus</Link>, <Link to="../Augusti-nus" title="Augustīnus">Augustīnus</Link>, etc that are in velut.</li>
+                <li>“_” doesn’t return anything unless scansion is also set (see below).</li>
+            </ul>
             <h3>Scansion</h3>
             <p>Here you can specify the pattern of long and short syllables in the word. This is not case-sensitive, but anything other than the following will be ignored:</p>
             <ul>

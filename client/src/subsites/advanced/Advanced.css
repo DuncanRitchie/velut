@@ -2,3 +2,77 @@
     display: block;
     max-width: 100%;
 }
+
+.advanced-rubric {
+    width: calc(100% - 1.125rem);
+    max-width: 46.875rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-section {
+    margin-bottom: 0.75rem;
+    padding-top: 0.75rem;
+}
+
+.advanced-rubric h2, .advanced-rubric h3, .advanced-rubric h4 {
+    margin-bottom: 0;
+    padding: 0.375rem 1rem;
+}
+
+.advanced-rubric h2 {
+    background-color: #efe1ab;
+    text-align: center;
+}
+
+.advanced-rubric h3 {
+    background-color: #faeebd;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.advanced-rubric h4 {
+    text-align: left;
+    background-color: #faf2d3;
+    font-size: 1.125rem;
+    margin-top: 0;
+}
+
+.advanced-rubric p, .advanced-rubric li {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+    background-color: rgba(255,253,244,0.95);
+}
+
+h2 + p {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.advanced-rubric li {
+    line-height: 1.6em;
+    padding: 0.625rem 1.125rem 0.625rem 1.25rem;
+    margin: 0;
+    display: list-item;
+    list-style: disc inside;
+}
+
+.advanced-rubric h3 + p, .advanced-rubric h4 + p {
+    padding-top: 1.25rem;
+}
+
+.advanced-rubric li:last-child {
+    padding-bottom: 1.25rem;
+}
+
+.advanced-rubric ul + p {
+    padding-top: 0;
+    padding-bottom: 1.25rem;
+}
+
+@media print {
+    .advanced-rubric {
+        max-width: initial;
+    }
+}
