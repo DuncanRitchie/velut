@@ -95,7 +95,7 @@ class Advanced extends Component {
             }
             let result = null
             if (this.state.error) {
-                result = (<p>There was an error. Please try a different search.</p>)
+                result = (<p>There was an error! Please try a different search.</p>)
             }
             else if (this.state.loading) {
                 result = (<p>Loading words&hellip;</p>)
@@ -103,14 +103,14 @@ class Advanced extends Component {
             else if (mappedWords.length) {
                 result = (
                     <div>
-                        <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`} that fit the search.</p>
+                        <p>Here {mappedWords.length === 1 ? "is the 1 Latin word that fits" : `are the ${mappedWords.length} Latin words that fit`} the search.</p>
                         <p>{mappedWords}</p>
                     </div> 
                 )
             }
             else {
                 result = (
-                    <p>No results found!</p>
+                    <p>No results found! Please try a different search.</p>
                 )
             }
             return (
