@@ -40,6 +40,10 @@ const AdvancedRubric = () => {
                 <li>“_SSSS_” returns words that contain a run of four short syllables, such as <Link to="../agricola" title="agricola">agricola</Link> (again) and <Link to="../physiologia-" title="physiologiā">physiologiā</Link>.</li>
                 <li>“_” doesn’t return anything unless spelling is also set (see above).</li>
             </ul>
+            <h3>Allow elision?</h3>
+            <p>This controls how scansion works; if scansion is not set, the tickbox has no effect.</p>
+            <p>If “Allow elision?” is ticked, words that end with a vowel sound (including diphthongs and nasalised vowels) have this final syllable discarded before scansion. So a scansion of “LSSL” returns <Link to="../amphithea-trum" title="amphitheātrum">amphitheātrum</Link> and <Link to="../quo-modocumque" title="quōmodocumque">quōmodocumque</Link>, and “LSSLX” will not.</p>
+            <p>If both spelling and scansion are set and elision is allowed, you can get some results you might not expect. For example, if spelling is “_a” and scansion is “_l”, and elision is allowed, then the very first result alphabetically is <Link to="../aba-ctae" title="abāctae">abāctae</Link>, which doesn’t end with “a” even if you discard the “ae” ending. (If you only discard the final “e”, then it does, which is why it’s in the results.) This is a bug that I am fixing.</p>
         </div>
     )
 }
