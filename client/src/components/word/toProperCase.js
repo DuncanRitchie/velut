@@ -10,7 +10,3 @@ const toProperCase = (word) => {
 }
 
 export default toProperCase
-
-// console.log(toProperCase("i am a very happy human."))
-// console.log(toProperCase("BABADOOK!!!"))
-// console.log(toProperCase("āēīōūȳ"))

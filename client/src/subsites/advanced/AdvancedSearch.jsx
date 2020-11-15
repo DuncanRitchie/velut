@@ -22,8 +22,6 @@ class AdvancedSearch extends Component {
 
     setStateFromUrl() {
         const query = new URLSearchParams(this.props.location.search);
-        console.log(this.props.location.search)
-        console.log("query: ",query);
         this.setState({
             spelling: {
                 unsanitised: query.get("spelling") || "",
