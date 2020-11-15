@@ -6,7 +6,6 @@ import AdvancedRubric from './AdvancedRubric'
 import axios from "../../axios/axios"
 import macraToHyphens from "../../components/word/macraToHyphens"
 import '../Subsites.css'
-import './Advanced.css'
 
 // <Advanced/> is a JSX element rendered at /advanced/?<query>
 
