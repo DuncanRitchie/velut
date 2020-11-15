@@ -8,6 +8,7 @@ let Footer = (props) => {
     const showHome = props.history.location.pathname !== "/"
     const showEnglish = props.history.location.pathname.substr(0,8) !== "/english"
     const showSubwords = props.history.location.pathname.substr(0,9) !== "/subwords"
+    const showAdvanced = props.history.location.pathname.substr(0,9) !== "/advanced"
     const showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
     const countListItems = 2 + showBack + showHome + showEnglish + showSubwords + showAbout
 
@@ -27,6 +28,8 @@ let Footer = (props) => {
                 {showEnglish && <li><Link to="/english" title="English to Latin on velut"><span>English to Latin</span></Link></li>}
 
                 {showSubwords && <li><Link to="/subwords" title="Subwords on velut"><span>Subwords</span></Link></li>}
+
+                {showAdvanced && <li><Link to="/advanced" title="Advanced Search on velut"><span>Advanced</span></Link></li>}
 
                 {showAbout && <li><Link to="/about" title="About velut"><span>About velut</span></Link></li>}
 
