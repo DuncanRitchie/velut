@@ -10,7 +10,7 @@ let Footer = (props) => {
     const showSubwords = props.history.location.pathname.substr(0,9) !== "/subwords"
     const showAdvanced = props.history.location.pathname.substr(0,9) !== "/advanced"
     const showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
-    const countListItems = 2 + showBack + showHome + showEnglish + showSubwords + showAbout
+    const countListItems = 2 + showBack + showHome + showEnglish + showSubwords + showAdvanced + showAbout
 
     return (
         <footer className={"footer footerContaining" + countListItems}>
@@ -33,7 +33,7 @@ let Footer = (props) => {
 
                 {showAbout && <li><Link to="/about" title="About velut"><span>About velut</span></Link></li>}
 
-                <li><a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s website"><span>My website</span></a></li>
+                <li><a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s personal website"><span>My website</span></a></li>
             </ul>
         </footer>
     )
