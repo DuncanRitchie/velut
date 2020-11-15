@@ -18,6 +18,7 @@ class Advanced extends Component {
             results: [],
             loading: false,
             error: false,
+            showRubric: false,
         }
     }
 
@@ -38,7 +39,7 @@ class Advanced extends Component {
                 this.setState({results: data.data})
                 this.setState({loading: false, error: false})
             }).catch(()=>{
-                this.setState({error: true});
+                this.setState({loading: false, error: true});
             })
         }
     }
@@ -62,7 +63,7 @@ class Advanced extends Component {
                 <div className="subsite-home advanced fulmar-background">
                     <Title textBeforeTitle="Advanced search"/>
                     <AdvancedSearch/>
-                    <AdvancedRubric/>
+                    {this.state.showRubric ? <AdvancedRubric/> : null}
                 </div>
             )
         }
@@ -109,7 +110,7 @@ class Advanced extends Component {
                     <Title textBeforeTitle="Advanced search" />
                     <div>
                         <AdvancedSearch/>
-                        <AdvancedRubric/>
+                        {this.state.showRubric ? <AdvancedRubric/> : null}
                         <div className="subsite-result">
                             {result}
                         </div>
