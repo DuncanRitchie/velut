@@ -76,14 +76,13 @@ class Advanced extends Component {
                 // Render a Link and a space for every word.
                 mappedWords = this.state.results.map((word,index)=>{
                     return (
-                        <><Link
-                            key={index}
+                        <span key={index}><Link
                             lang="la"
                             to={`../${macraToHyphens(word.Word)}`}
                             title={word.Word}
                         >
                             <strong>{word.Word}</strong>
-                        </Link> </>
+                        </Link> </span>
                     )
                 })
             }
