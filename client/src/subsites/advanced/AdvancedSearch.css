@@ -1,3 +1,7 @@
+#search {
+    margin-bottom: 3rem;
+}
+
 #search div input[type=text] {
     width: calc(100% - 1rem);
 }
