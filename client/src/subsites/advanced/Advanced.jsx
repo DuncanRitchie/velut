@@ -14,30 +14,39 @@ class Advanced extends Component {
         super(props);
         this.state = {
             search: this.props.location.search,
-            advancedHome: (this.props.location.search === ""),
+            advancedHome: true,
             results: [],
             loading: false,
             error: false,
         }
     }
 
+    // Determines whether we should be on the “advanced home” page
+    // because a query has not been submitted (advancedHome = true),
+    // or showing results for a query that has been submitted
+    // (advancedHome = false).
+    // This boolean is set in state, and also returned from this method.
     setAdvancedHome() {
         const typedQueryInputs = this.props.location.search
             .replace(/sort=\w*/g, "")
             .replace(/elision=\w*/g, "")
             .replace(/[?&]/g, "");
-        this.setState({advancedHome: typedQueryInputs === ""});
+        const isAdvancedHome = typedQueryInputs === "";
+        this.setState({advancedHome: isAdvancedHome});
+        return isAdvancedHome;
     }
 
     fetchWords(queryString) {
-        this.setAdvancedHome()
-        if (!this.state.advancedHome) {
-            this.setState({loading: true, error: false})
-            axios.getAdvanced(queryString).then((data)=>{
+        const isAdvancedHome = this.setAdvancedHome()
+        if (!isAdvancedHome) {
+            this.setState({loading: true, error: false});
+            axios.getAdvanced(queryString)
+            .then((data)=>{
                 // data.data is an array of objects with a Word field.
                 this.setState({results: data.data})
                 this.setState({loading: false, error: false})
-            }).catch(()=>{
+            })
+            .catch(()=>{
                 this.setState({loading: false, error: true});
             })
         }
