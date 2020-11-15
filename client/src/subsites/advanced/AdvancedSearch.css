@@ -1,5 +1,5 @@
 #search {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 #search div input[type=text] {
@@ -24,4 +24,8 @@
 
 input + label {
     margin-left: 0.25rem;
+}
+
+.advanced .subsite-result {
+    margin-top: 3.5rem;
 }
