@@ -7,7 +7,7 @@
     margin-top: 1.5rem;
 }
 
-input {
+input[type=text] {
     text-align: center;
     margin: 0;
     width: 66vw;

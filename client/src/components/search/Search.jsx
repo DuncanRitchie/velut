@@ -169,6 +169,7 @@ class Search extends Component {
                     onChange={this.handleInput}
                     onKeyUp={this.handleKeyUp}
                     title={this.props.searchbarTitle || "Type something here"}
+                    type="text"
                     lang="la"
                     autoCapitalize="off"
                     autoComplete="off"

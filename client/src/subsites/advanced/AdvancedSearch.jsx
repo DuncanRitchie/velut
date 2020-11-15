@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import {withRouter} from 'react-router-dom'
 import "../../components/search/Search.css"
+import "./AdvancedSearch.css"
 
 class AdvancedSearch extends Component {
     constructor(props) {
@@ -118,72 +119,89 @@ class AdvancedSearch extends Component {
             <div id="search">
                 {/* Form fields */}
                 {/* <form> */}
-                    <label htmlFor="spelling-input">Spelling:</label>
-                    <input 
-                        id="spelling-input"
-                        name="spelling"
-                        value={this.state.spelling.unsanitised}
-                        onChange={this.handleInput}
-                        onKeyUp={this.handleKeyUp}
-                        title="Letters that will match the words returned"
-                        lang="la"
-                        autoCapitalize="off"
-                        autoComplete="off"
-                        autoCorrect="off"
-                        spellCheck="false"
-                    />
-                    <br/>
-                    <label htmlFor="scansion-input">Scansion:</label>
-                    <input 
-                        id="scansion-input"
-                        name="scansion"
-                        value={this.state.scansion.unsanitised}
-                        onChange={this.handleInput}
-                        onKeyUp={this.handleKeyUp}
-                        title="Sequence of long and short syllables that will match the words returned"
-                        lang="la"
-                        autoCapitalize="off"
-                        autoComplete="off"
-                        autoCorrect="off"
-                        spellCheck="false"
-                    />
-                    <br/>
-                    <input
-                        type="checkbox"
-                        name="elision"
-                        onChange={this.handleCheckboxChange}
-                        checked={this.state.elision}
-                        id="elision-input"
-                    />
-                    <label htmlFor="elision-input">Allow elision?</label>
-                    <div>
-                        <input
-                            type="radio"
-                            name="sort"
-                            onChange={this.handleRadioChange}
-                            id="sort-alphabetical"
-                            value="alphabetical"
-                            checked={this.state.sort==="alphabetical"}
-                        />
-                        <label htmlFor="sort-alphabetical">Sort alphabetically</label>
-                        <input
-                            type="radio"
-                            name="sort"
-                            onChange={this.handleRadioChange}
-                            id="sort-classical"
-                            value="classical"
-                            checked={this.state.sort==="classical"}
-                        />
-                        <label htmlFor="sort-classical">Sort by classical rhyme</label>
-                        <input
-                            type="radio"
-                            name="sort"
-                            onChange={this.handleRadioChange}
-                            id="sort-ecclesiastical"
-                            value="ecclesiastical"
-                            checked={this.state.sort==="ecclesiastical"}
-                        />
-                        <label htmlFor="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
+                    <div id="advanced-search-spelling">
+                        <p>
+                            <label htmlFor="spelling-input">Spelling:</label>
+                            <input 
+                                id="spelling-input"
+                                name="spelling"
+                                value={this.state.spelling.unsanitised}
+                                onChange={this.handleInput}
+                                onKeyUp={this.handleKeyUp}
+                                title="Letters that will match the words returned"
+                                type="text"
+                                lang="la"
+                                autoCapitalize="off"
+                                autoComplete="off"
+                                autoCorrect="off"
+                                spellCheck="false"
+                            />
+                        </p>
+                    </div>
+
+                    <div id="advanced-search-scansion">
+                        <p>
+                            <label htmlFor="scansion-input">Scansion:</label>
+                            <input 
+                                id="scansion-input"
+                                name="scansion"
+                                value={this.state.scansion.unsanitised}
+                                onChange={this.handleInput}
+                                onKeyUp={this.handleKeyUp}
+                                title="Sequence of long and short syllables that will match the words returned"
+                                type="text"
+                                lang="la"
+                                autoCapitalize="off"
+                                autoComplete="off"
+                                autoCorrect="off"
+                                spellCheck="false"
+                            />
+                        </p>
+                        <p>
+                            <input
+                                type="checkbox"
+                                name="elision"
+                                onChange={this.handleCheckboxChange}
+                                checked={this.state.elision}
+                                id="elision-input"
+                            />
+                            <label htmlFor="elision-input">Allow elision?</label>
+                        </p>
+                    </div>
+                    <div id="advanced-search-sort">
+                        <p>
+                            <input
+                                type="radio"
+                                name="sort"
+                                onChange={this.handleRadioChange}
+                                id="sort-alphabetical"
+                                value="alphabetical"
+                                checked={this.state.sort==="alphabetical"}
+                            />
+                            <label htmlFor="sort-alphabetical">Sort alphabetically</label>
+                        </p>
+                        <p>
+                            <input
+                                type="radio"
+                                name="sort"
+                                onChange={this.handleRadioChange}
+                                id="sort-classical"
+                                value="classical"
+                                checked={this.state.sort==="classical"}
+                            />
+                            <label htmlFor="sort-classical">Sort by classical rhyme</label>
+                        </p>
+                        <p>
+                            <input
+                                type="radio"
+                                name="sort"
+                                onChange={this.handleRadioChange}
+                                id="sort-ecclesiastical"
+                                value="ecclesiastical"
+                                checked={this.state.sort==="ecclesiastical"}
+                            />
+                            <label htmlFor="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
+                        </p>
                     </div>
 
                     {/* The button to load the new page. */}

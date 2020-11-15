@@ -1,0 +1,20 @@
+#search div input[type=text] {
+    width: calc(100% - 1rem);
+}
+
+#search div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-bottom: 1rem;
+    border-top: 0.1875rem solid #c2b170;
+}
+
+#search div p {
+    background-color: rgba(255,253,244,0.95);
+    margin: 0;
+}
+
+input + label {
+    margin-left: 0.25rem;
+}
