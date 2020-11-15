@@ -6,8 +6,7 @@
 .advanced-rubric {
     width: calc(100% - 1.125rem);
     max-width: 46.875rem;
-    margin: 1rem auto 0;
-    padding-top: 0.75rem;
+    margin: 0 auto;
 }
 
 .advanced-rubric h2, .advanced-rubric h3, .advanced-rubric h4 {
