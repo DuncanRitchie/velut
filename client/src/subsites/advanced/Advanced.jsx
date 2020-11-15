@@ -61,7 +61,6 @@ class Advanced extends Component {
             return (
                 <div className="subsite-home advanced fulmar-background">
                     <Title textBeforeTitle="Advanced search"/>
-                    <p>Search for Latin words that fit some criteria!</p>
                     <AdvancedSearch/>
                     <AdvancedRubric/>
                 </div>
