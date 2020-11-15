@@ -30,7 +30,7 @@ const AdvancedRubric = () => {
                 <li>“X” is the anceps value, meaning any one syllable, long or short.</li>
                 <li>An underscore means any sequence of zero or more syllables.</li>
             </ul>
-            <p>In words where a vowel is followed by plosive consonant and then r, both consonants belong to the following syllable, so <Link to="../tetradrachmum" title="tetradrachmum">tetradrachmum</Link> begins with two short syllables.</p>
+            <p>In words where a vowel is followed by plosive consonant and then l or r, both consonants belong to the following syllable, so <Link to="../tetradrachmum" title="tetradrachmum">tetradrachmum</Link> begins with two short syllables.</p>
             <h4>Examples</h4>
             <p>These examples assume “Allow elision?” is off.</p>
             <ul>
@@ -44,6 +44,8 @@ const AdvancedRubric = () => {
             <p>This controls how scansion works; if scansion is not set, the tickbox has no effect.</p>
             <p>If “Allow elision?” is ticked, words that end with a vowel sound (including diphthongs and nasalised vowels) have this final syllable discarded before scansion. So a scansion of “LSSL” returns <Link to="../amphithea-trum" title="amphitheātrum">amphitheātrum</Link> and <Link to="../quo-modocumque" title="quōmodocumque">quōmodocumque</Link>, and “LSSLX” will not.</p>
             <p>If both spelling and scansion are set and elision is allowed, you can get some results you might not expect. For example, if spelling is “_a” and scansion is “_l”, and elision is allowed, then the very first result alphabetically is <Link to="../aba-ctae" title="abāctae">abāctae</Link>, which doesn’t end with “a” even if you discard the “ae” ending. (If you only discard the final “e”, then it does, which is why it’s in the results.) This is a bug that I am fixing.</p>
+            <h3>Sorting</h3>
+            <p>You can sort the results alphabetically, or you can sort by rhyme. If you sort by rhyme, words that rhyme the closest (under classical or ecclesiastical pronunciation systems) will appear closest together in the list of results.</p>
         </div>
     )
 }
