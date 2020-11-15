@@ -113,22 +113,6 @@ class AdvancedSearch extends Component {
     }
 
     render() {
-        // Let’s work out what the value of the input should be.
-        let inputValue
-        if (this.state.fromUrl) {
-            if (this.props.match.params.word) {
-                inputValue = decodeURIComponent(this.props.match.params.word)
-            }
-            else {
-                inputValue = ""
-            }
-        }
-        else {
-            inputValue = ""
-            if (this.state.sanitisedInput) {
-                inputValue = this.state.sanitisedInput
-            }
-        }
         // Now we’re ready to return JSX.
         return (
             <div id="search">
