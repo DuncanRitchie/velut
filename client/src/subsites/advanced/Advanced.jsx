@@ -65,19 +65,18 @@ class Advanced extends Component {
     }
 
     render() {
+        document.title = "Advanced Search on velut"
+
         if (this.state.advancedHome) {
-            document.title = "Advanced search on velut"
             return (
                 <div className="subsite-home advanced fulmar-background">
-                    <Title textBeforeTitle="Advanced search"/>
+                    <Title textBeforeTitle="Advanced Search"/>
                     <AdvancedRubricToggler/>
                     <AdvancedSearch/>
                 </div>
             )
         }
         else {
-            document.title = "Advanced search on velut"
-    
             let mappedWords = []
             if (this.state.results) {
                 // Render a Link and a space for every word.
@@ -115,7 +114,7 @@ class Advanced extends Component {
             }
             return (
                 <div className="advanced fulmar-background">
-                    <Title textBeforeTitle="Advanced search" />
+                    <Title textBeforeTitle="Advanced Search" />
                     <div>
                         <AdvancedRubricToggler/>
                         <AdvancedSearch/>

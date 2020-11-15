@@ -48,7 +48,7 @@
         "route": "/advanced",
         "searchField": null,
         "axiosFuncName": "getAdvanced",
-        "searchFieldFull": "Advanced search"
+        "searchFieldFull": "Advanced Search"
     },{
         "route": "/subwords",
         "searchField": null,
