@@ -1,3 +1,27 @@
 # velut
-I have an Excel file of Latin vocabulary and query functionality, out of which I&rsquo;ve made a website using the MERN stack. This GitHub repo is publicly visible. The app is hosted by Render from the main branch, at https://www.velut.co.uk .<br/>
-For more information, see https://www.velut.co.uk/about ; for more information about me, see my website at https://www.duncanritchie.co.uk .
+velut is an online Latin rhyming dictionary using the MERN stack.
+
+This GitHub repo is publicly visible. The site is hosted by Render from the main branch, at https://www.velut.co.uk.
+
+## Architecture
+I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using Excel formulae that I have written — and use mongoimport to replace my two MongoDB Atlas collections. The velut website (in this repository) is a single-page application that reads from the two collections in accordance with what the user searches for.
+
+## Functionality
+On visiting the [homepage](https://www.velut.co.uk), you are invited to type in a Latin word, and select the type of rhymes you want to search for. “Types of rhyme” here also include anagrams, words that scan the same metrically, or words with the same consonants in order (consonyms).
+
+This will return words that rhyme with the input, as well as information about the “lemmata” of the input — that is, the headwords that the word can be an inflected form of. The lemmata information includes the part of speech, definitions, any notes or transliterations, the inflected forms, and lemmata that I think have the same etymology (cognates). At the bottom of the page are links to external online resources (such as Logeion and Wiktionary) that may have more details about the input word.
+
+All my Latin words are macronized, meaning every long vowel is marked with a macron, but you can input a word without the macra, or with hyphens instead of the macra, and velut will find the word you mean, if I have it. For example, you can search for “vocabulorum”, “voca-bulo-rum”, or “vocābulōrum”, and get results for “vocābulōrum”. Similarly, proper nouns and related adjectives are capitalised, but the input is not case-sensitive except in instances of ambiguity (eg, between “Cōs” the Greek island and “cōs” meaning “whetstone”).
+
+Other sections of the site let you find:
+* Latin words whose letters are contained in an input string (I call them [subwords](https://www.velut.co.uk/subwords)),
+* Latin [phrases that are anagrams](https://www.velut.co.uk/anagramphrases) of an input (this is not actually linked from elsewhere on the site, because it’s very slow!),
+* Latin lemmata [from an English meaning](https://www.velut.co.uk/english), and
+* Latin words [that fit either](https://www.velut.co.uk/advanced) an input pattern of letters or an input metrical scansion, or both (this is new in November 2020!).
+
+## Miscellanea
+The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
+
+All the data have been collated manually by me in my spare time. Yes, really. Therefore, many lemmata are not represented, and most of the lemmata that are represented do not have all possible inflected forms. If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
+
+For more information, see https://www.velut.co.uk/about; for more information about me, see my website at https://www.duncanritchie.co.uk.
