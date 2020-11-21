@@ -7,7 +7,7 @@ const AdvancedRubric = () => {
         <div className="advanced-rubric">
             <h2>How to use</h2>
             <p>This page allows you to search for Latin words by spelling, scansion, or both.</p>
-            <p>Searches are limited to 1000 results.</p>
+            <p>Searches are limited to 1000 results. Searches that would return all words in velut (if I removed the 1000-word limit) are not allowed.</p>
             <h3>Spelling</h3>
             <p>Here you can specify letters that must be in the word. Letters must be typed in lowercase (and without diacritics) for them to be treated as letters. Uppercase letters are reserved for “wildcards”, of which there are the following:</p>
             <ul>
