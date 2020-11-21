@@ -100,8 +100,10 @@ class AdvancedSearch extends Component {
     // Let’s set our state so inputs can get their values from the URL.
     componentDidMount() {
         this.setStateFromUrl();
-        // The first input is always initially focussed.
-        document.getElementById("spelling-input").focus()
+        // The first input is initially focussed if a query has not started.
+        if (this.props.autofocus) {
+            document.getElementById("spelling-input").focus();
+        }
     }
 
     // If the location changes we need new data.

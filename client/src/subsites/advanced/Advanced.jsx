@@ -72,7 +72,7 @@ class Advanced extends Component {
                 <div className="subsite-home advanced fulmar-background">
                     <Title textBeforeTitle="Advanced Search"/>
                     <AdvancedRubricToggler/>
-                    <AdvancedSearch/>
+                    <AdvancedSearch autofocus={true}/>
                 </div>
             )
         }
@@ -117,7 +117,7 @@ class Advanced extends Component {
                     <Title textBeforeTitle="Advanced Search" />
                     <div>
                         <AdvancedRubricToggler/>
-                        <AdvancedSearch/>
+                        <AdvancedSearch autofocus={false}/>
                         <div className="subsite-result">
                             {result}
                         </div>
