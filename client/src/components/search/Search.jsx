@@ -92,8 +92,9 @@ class Search extends Component {
         } catch(err) {
             this.setState({sanitisedInput: this.state.input})
         }
-        // The input is always initially focussed, unless the page is About.
-        if (this.props.match.path === "/about") {
+        // The input is initially focussed, unless the page is About or a query has started.
+        if (this.state.input
+            || this.props.match.path === "/about") {
             document.getElementById("search-input").blur()
         }
         else {
