@@ -136,9 +136,10 @@ module.exports = {
 		// If there is anything in the spelling input, other than underscores...
 		if (spellingInput && spellingInput.replace(/\_/g, "") !== "") {
 			let spelling = spellingInput
-				.replace(/[^abcdefghiklmnopqrstuvxyzCV_]/g, "")  // Discard invalid characters.
+				.replace(/[^abcdefghiklmnopqrstuvxyzCVX_]/g, "")  // Discard invalid characters.
 				.replace(/C/g, "[bcdfghklmnpqrstvxz]")           // Any consonant.
 				.replace(/V/g, "[aeiouy]")                       // Any vowel.
+				.replace(/X/g, "[abcdefghiklmnopqrstuvxyz]")     // Any letter.
 				.replace(/_/g, ".*");                            // Zero or more of anything.
 			spelling = `^${spelling}$`;
 			console.log("spelling: ", spelling);
