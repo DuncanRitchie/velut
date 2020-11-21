@@ -108,10 +108,11 @@ module.exports = {
 		// If there is anything in the scansion input...
 		if (scansionInput) {
 			let scansion = scansionInput
-				.replace(/[^lsx\.!_–⏑]/gi, "")  // Discard any invalid characters.
+				.replace(/[^lsx\.~_–⏑]/gi, "")  // Discard any invalid characters.
 				.replace(/\./g, "x")            // x and . both mean an anceps syllable (can be long or short).
-				.replace(/(?<![ls\.])!/gi, "")  // ! has no effect if not preceded by a letter.
-				.replace(/_(?:.!)+/g, "_")      // Tokens made optional have no effect after _.
+				.replace(/(?<![ls\.])~/gi, "")  // ~ has no effect if not preceded by a letter.
+				.replace(/(?:.~)+_/g, "_")      // Tokens made optional have no effect before _.
+				.replace(/_(?:.~)+/g, "_")      // Tokens made optional have no effect after _.
 				.replace(/[_]+/gi, "_")         // Collapse consecutive underscores into one underscore.
 				.replace(/l/gi, "–")            // Long syllable.
 				.replace(/s/gi, "⏑")            // Short syllable.
@@ -119,7 +120,7 @@ module.exports = {
 				.replace(/^x_$/i, "")           // Queries that would return all words should not proceed.
 				.replace(/^_x$/i, "")           // Queries that would return all words should not proceed.
 				.replace(/x/gi, "[–⏑]")         // Anceps syllable can be a long or a short.
-				.replace(/!/g, "?")             // ! makes the preceding token optional.
+				.replace(/~/g, "?")             // ~ makes the preceding token optional.
 				.replace(/_/g, ".*");           // Zero or more of anything.
 
 			// If the `scansion` is now the empty string, we do not use it in the search. Otherwise, we do.
@@ -140,13 +141,14 @@ module.exports = {
 		// If there is anything in the spelling input...
 		if (spellingInput) {
 			let spelling = spellingInput
-				.replace(/[^abcdefghiklmnopqrstuvxyzCV!._]/g, "")  // Discard invalid characters.
+				.replace(/[^abcdefghiklmnopqrstuvxyzCV~._]/g, "")  // Discard invalid characters.
 				.replace(/C/g, "[bcdfghklmnpqrstvxz]")             // Any consonant.
 				.replace(/V/g, "[aeiouy]")                         // Any vowel.
-				.replace(/(?<![A-Za-z.])!/g, "")                   // ! has no effect if not preceded by a letter.
-				.replace(/_(?:.!)+/g, "_")                         // Optional tokens have no effect after _.
+				.replace(/(?<![A-Za-z.])~/g, "")                   // ~ has no effect if not preceded by a letter.
+				.replace(/(?:.~)+_/g, "_")                         // Tokens made optional have no effect before _.
+				.replace(/_(?:.~)+/g, "_")                         // Tokens made optional have no effect after _.
 				.replace(/^_$/, "")                                // Searches that would return everything are not allowed.
-				.replace(/!/g, "?")                                // ! makes the preceding token optional.
+				.replace(/~/g, "?")                                // ~ makes the preceding token optional.
 				.replace(/_/g, ".*");                              // Zero or more of anything.
 
 			// If the `spelling` is now the empty string, we do not use it in the search. Otherwise, we do.
