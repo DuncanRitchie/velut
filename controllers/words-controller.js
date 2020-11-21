@@ -108,15 +108,18 @@ module.exports = {
 		// If there is anything in the scansion input...
 		if (scansionInput) {
 			let scansion = scansionInput
-				.replace(/[^lsx_–⏑]/gi, "") // Discard any invalid characters.
-				.replace(/l/gi, "–")        // Long syllable.
-				.replace(/s/gi, "⏑")        // Short syllable.
-				.replace(/[_]+/gi, "_")     // Collapse consecutive underscores into one underscore.
-				.replace(/^_$/, "")         // Queries that would return all words should not proceed.
-				.replace(/^x_$/i, "")       // Queries that would return all words should not proceed.
-				.replace(/^_x$/i, "")       // Queries that would return all words should not proceed.
-				.replace(/x/gi, "[–⏑]")     // Anceps syllable can be a long or a short.
-				.replace(/_/g, ".*");       // Zero or more of anything.
+				.replace(/[^lsx!_–⏑]/gi, ""   ) // Discard any invalid characters.
+				.replace(/(?<![lsx])!/gi, "")   // ! has no effect if not preceded by a letter.
+				.replace(/_(?:.!)+/g, "_")      // Tokens made optional have no effect after _.
+				.replace(/[_]+/gi, "_")         // Collapse consecutive underscores into one underscore.
+				.replace(/l/gi, "–")            // Long syllable.
+				.replace(/s/gi, "⏑")            // Short syllable.
+				.replace(/^_$/, "")             // Queries that would return all words should not proceed.
+				.replace(/^x_$/i, "")           // Queries that would return all words should not proceed.
+				.replace(/^_x$/i, "")           // Queries that would return all words should not proceed.
+				.replace(/x/gi, "[–⏑]")         // Anceps syllable can be a long or a short.
+				.replace(/!/g, "?")             // ! makes the preceding token optional.
+				.replace(/_/g, ".*");           // Zero or more of anything.
 
 			// If the `scansion` is now the empty string, we do not use it in the search. Otherwise, we do.
 			if (scansion) {
@@ -133,19 +136,26 @@ module.exports = {
 
 		const spellingInput = req.query.spelling;
 		console.log("spellingInput: ", spellingInput);
-		// If there is anything in the spelling input, other than underscores...
-		if (spellingInput && spellingInput.replace(/\_/g, "") !== "") {
+		// If there is anything in the spelling input...
+		if (spellingInput) {
 			let spelling = spellingInput
-				.replace(/[^abcdefghiklmnopqrstuvxyzCVX_]/g, "")  // Discard invalid characters.
-				.replace(/C/g, "[bcdfghklmnpqrstvxz]")           // Any consonant.
-				.replace(/V/g, "[aeiouy]")                       // Any vowel.
-				.replace(/X/g, "[abcdefghiklmnopqrstuvxyz]")     // Any letter.
-				.replace(/_/g, ".*");                            // Zero or more of anything.
-			spelling = `^${spelling}$`;
-			console.log("spelling: ", spelling);
-			findObject.NoMacraLowerCase = {"$regex": spelling};
+				.replace(/[^abcdefghiklmnopqrstuvxyzCV!._]/g, "")  // Discard invalid characters.
+				.replace(/C/g, "[bcdfghklmnpqrstvxz]")             // Any consonant.
+				.replace(/V/g, "[aeiouy]")                         // Any vowel.
+				.replace(/(?<![A-Za-z.])!/g, "")                   // ! has no effect if not preceded by a letter.
+				.replace(/_(?:.!)+/g, "_")                         // Optional tokens have no effect after _.
+				.replace(/^_$/, "")                                // Searches that would return everything are not allowed.
+				.replace(/!/g, "?")                                // ! makes the preceding token optional.
+				.replace(/_/g, ".*");                              // Zero or more of anything.
 
-			criteriaAreValid = true;
+			// If the `spelling` is now the empty string, we do not use it in the search. Otherwise, we do.
+			if (spelling) {
+				spelling = `^${spelling}$`;
+				console.log("spelling: ", spelling);
+				findObject.NoMacraLowerCase = {"$regex": spelling};
+
+				criteriaAreValid = true;
+			}
 		}
 		
 		if (criteriaAreValid) {
