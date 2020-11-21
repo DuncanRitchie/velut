@@ -11,11 +11,11 @@ const AdvancedRubric = () => {
             <h3>Spelling</h3>
             <p>Here you can specify letters that must be in the word. Letters must be typed in lowercase (and without diacritics) for them to be treated as letters. Uppercase letters are reserved for “wildcards”, of which there are the following:</p>
             <ul>
-                <li>If a capital “C” is input, it means any consonant letter (bcdfghklmnpqrstvxyz).</li>
-                <li>If a capital “V” is input, it means any vowel letter (aeiouy). Even if “i” is pronounced as a consonant, it is treated as a vowel here.</li>
-                <li>If a full stop is input, it means any letter (abcdefghiklmnopqrstuvxyz).</li>
-                <li>If an underscore is input, it means any sequence of zero or more letters.</li>
-                <li>If an exclamation-mark is added after a letter, it makes the letter optional.</li>
+                <li>A capital “C” means any consonant letter (bcdfghklmnpqrstvxyz).</li>
+                <li>A capital “V” means any vowel letter (aeiouy). Even if “i” is pronounced as a consonant, it is treated as a vowel here; likewise for “u” when not spelt as “v” (as in <Link to="../sua-deo-" title="suādeō">suādeō</Link>).</li>
+                <li>A full stop means any letter (abcdefghiklmnopqrstuvxyz).</li>
+                <li>An exclamation-mark after any one of the above makes the letter optional.</li>
+                <li>An underscore means any sequence of zero or more letters.</li>
             </ul>
             <h4>Examples</h4>
             <ul>
@@ -33,7 +33,7 @@ const AdvancedRubric = () => {
             <ul>
                 <li>“L” means a long syllable — one containing a long vowel or ending with a consonant sound.</li>
                 <li>“S” means a short syllable — any syllable that is not long.</li>
-                <li>“X” is the anceps value, meaning any one syllable, long or short.</li>
+                <li>“.” is the anceps value, meaning any one syllable, long or short.</li>
                 <li>An exclamation-mark after any of the above makes the syllable optional.</li>
                 <li>An underscore means any sequence of zero or more syllables.</li>
             </ul>
@@ -42,15 +42,15 @@ const AdvancedRubric = () => {
             <p>These examples assume “Allow elision?” is off.</p>
             <ul>
                 <li>“LSS” returns dactyls, such as <Link to="../Graecia" title="Graecia">Graecia</Link> and <Link to="../obdere" title="obdere">obdere</Link>.</li>
-                <li>“XXXX” returns words of four syllables, such as <Link to="../agricola" title="agricola">agricola</Link> and <Link to="../thaumatu-rgus" title="thaumatūrgus">thaumatūrgus</Link>.</li>
-                <li>“LSSLX” returns words that can occupy the fifth and sixth feet of a dactylic hexameter, such as <Link to="../amphithea-trum" title="amphitheātrum">amphitheātrum</Link> and <Link to="../quo-modocumque" title="quōmodocumque">quōmodocumque</Link>.</li>
+                <li>“....” returns words of four syllables, such as <Link to="../agricola" title="agricola">agricola</Link> and <Link to="../thaumatu-rgus" title="thaumatūrgus">thaumatūrgus</Link>.</li>
+                <li>“LSSL.” returns words that can occupy the fifth and sixth feet of a dactylic hexameter, such as <Link to="../amphithea-trum" title="amphitheātrum">amphitheātrum</Link> and <Link to="../quo-modocumque" title="quōmodocumque">quōmodocumque</Link>.</li>
                 <li>“SSSSSS!” returns words of five or six short syllables, such as <Link to="../liquefacite" title="liquefacite">liquefacite</Link> and <Link to="../Mesopotamia" title="Mesopotamia">Mesopotamia</Link>.</li>
                 <li>“_SSSS_” returns words that contain a run of four short syllables, such as <Link to="../agricola" title="agricola">agricola</Link> (again) and <Link to="../physiologia-" title="physiologiā">physiologiā</Link>.</li>
                 <li>“_” doesn’t return anything unless spelling is also set (see above).</li>
             </ul>
             <h3>Allow elision?</h3>
             <p>This controls how scansion works; if scansion is not set, the tickbox has no effect.</p>
-            <p>If “Allow elision?” is ticked, words that end with a vowel sound (including diphthongs and nasalised vowels) have this final syllable discarded before scansion. So a scansion of “LSSL” returns <Link to="../amphithea-trum" title="amphitheātrum">amphitheātrum</Link> and <Link to="../quo-modocumque" title="quōmodocumque">quōmodocumque</Link> (as well as words like <Link to="../praevaleant" title="praevaleant">praevaleant</Link>, which has nothing to elide), and “LSSLX” does not.</p>
+            <p>If “Allow elision?” is ticked, words that end with a vowel sound (including diphthongs and nasalised vowels) have this final syllable discarded before scansion. So a scansion of “LSSL” returns <Link to="../amphithea-trum" title="amphitheātrum">amphitheātrum</Link> and <Link to="../quo-modocumque" title="quōmodocumque">quōmodocumque</Link> (as well as words like <Link to="../praevaleant" title="praevaleant">praevaleant</Link>, which has nothing to elide), and “LSSL.” does not.</p>
             <h3>Sorting</h3>
             <p>You can sort the results alphabetically, or you can sort by rhyme. If you sort by rhyme, words that rhyme the closest (under classical or ecclesiastical pronunciation systems) will appear closest together in the list of results.</p>
         </div>
