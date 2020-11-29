@@ -249,7 +249,7 @@ class About extends Component {
                         <p>
                             <Link to="/advanced/?spelling=f_s&amp;scansion=LLX" title="Example query for Advanced Search on velut">For example</Link>
                             , words spelt “f_s” (where the underscore means any sequence
-                            of letters) and scanned as “LLX” (ie, three syllables with the first two long)
+                            of letters) and scanned as “LL.” (ie, three syllables with the first two long)
                             include <Link to="/fa-cundus" title="&ldquo;fācundus&rdquo; on velut" lang="la">fācundus</Link>
                             , <Link to="/fe-sti-vus" title="&ldquo;fēstīvus&rdquo; on velut" lang="la">fēstīvus</Link>
                             , <Link to="/fo-rmo-sus" title="&ldquo;fōrmōsus&rdquo; on velut" lang="la">fōrmōsus</Link>
