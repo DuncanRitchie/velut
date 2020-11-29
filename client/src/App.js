@@ -12,7 +12,7 @@ const AnagramPhrasesHome = lazy(() => import("./subsites/anagramphrases/AnagramP
 const AnagramPhrases     = lazy(() => import("./subsites/anagramphrases/AnagramPhrases"));
 const English            = lazy(() => import("./subsites/english/English"));
 const EnglishHome        = lazy(() => import("./subsites/english/EnglishHome"));
-const About              = lazy(() => import("./components/about/About"));
+const About              = lazy(() => import("./pages/about/About"));
 // JSX to display before an above component loads.
 const loading = () => <p>Loading...</p>;
 
