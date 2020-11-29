@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Title from '../../components/title/Title'
 import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
-import noMacra from '../../components/word/noMacra'
+import noMacra from '../../helpers/noMacra'
 import '../Subsites.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word

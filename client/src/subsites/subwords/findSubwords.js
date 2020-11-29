@@ -1,4 +1,4 @@
-import noMacra from '../word/noMacra'
+import noMacra from '../../helpers/noMacra'
 import delChars from './delChars'
 
 // subwords() returns an array of objects. The array of objects from Mongo should be passed in as the second parameter.

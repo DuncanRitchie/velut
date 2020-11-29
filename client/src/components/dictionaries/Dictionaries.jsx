@@ -1,7 +1,7 @@
 import React from 'react'
 import dictionariesLatin from '../../data/dictionariesLatin.json'
 import dictionariesEnglish from '../../data/dictionariesEnglish.json'
-import noMacra from '../word/noMacra'
+import noMacra from '../../helpers/noMacra'
 import './Dictionaries.css'
 
 let Dictionaries = (props) => {

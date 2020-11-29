@@ -7,9 +7,9 @@ import Dictionaries from "../dictionaries/Dictionaries"
 import feet from "../../data/feet.json"
 import Lemma from "../lemma/Lemma"
 import LatinLink from "../latinlink/LatinLink"
-import macraToHyphens from "./macraToHyphens"
-import hyphensToMacra from "./hyphensToMacra"
-import noMacra from "./noMacra"
+import macraToHyphens from "../../helpers/macraToHyphens"
+import hyphensToMacra from "../../helpers/hyphensToMacra"
+import noMacra from "../../helpers/noMacra"
 import routes from "../../routes.json"
 import './Word.css'
 

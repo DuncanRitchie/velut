@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Title from '../../components/title/Title'
 import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
-import noMacra from '../../components/word/noMacra'
+import noMacra from '../../helpers/noMacra'
 import delChars from './delChars'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
 import '../Subsites.css'

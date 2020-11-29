@@ -4,7 +4,7 @@ import Title from '../../components/title/Title'
 import AdvancedSearch from './AdvancedSearch'
 import AdvancedRubricToggler from './AdvancedRubricToggler'
 import axios from "../../axios/axios"
-import macraToHyphens from "../../components/word/macraToHyphens"
+import macraToHyphens from "../../helpers/macraToHyphens"
 import '../Subsites.css'
 
 // <Advanced/> is a JSX element rendered at /advanced/?<query>
