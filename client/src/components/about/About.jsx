@@ -2,8 +2,6 @@ import React, {Component} from "react"
 import {Link} from "react-router-dom"
 import Title from "../title/Title"
 import Search from "../search/Search"
-// import {sectionHeads, sectionIds} from "./AboutSectionHeads"
-import AboutSection from "./AboutSection"
 import superscriptLemmaTag from '../word/superscriptLemmaTag'
 import axios from '../../axios/axios'
 import './About.css'
@@ -26,23 +24,13 @@ class About extends Component {
     render() {
         document.title = "About velut"
 
-        // const tableOfContents = sectionHeads.map((head,i)=>{
-        //     return (
-        //         <li key={i}><a href={"#"+sectionIds[i]} title={head}>{head}</a></li>
-        //     )
-        // })
-
         return (
             <div className="about fulmar-background">
                 <Title textBeforeTitle="About" />
 
-                {/* <h2>Table of contents</h2>
-                <ul className="table-of-contents">
-                    {tableOfContents}
-                </ul> */}
-
                 <div className="about-text">
-                    <AboutSection i={0}>
+                    <div className="about-section">
+                        <h2>Backstory</h2>
                         <p>
                             When I was studying Latin at uni (I have a master’s), I found it useful to keep an Excel spreadsheet of any vocabulary I came across. 
                             On occasions in my spare time, I have enjoyed writing poetry, most notably lyrics (in English) for a children’s 
@@ -59,9 +47,10 @@ class About extends Component {
                             for “Useful Tables of Excellent Latin Vocabulary”, or 
                             “<span lang="la"><Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link></span>”.)
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={1}>
+                    <div className="about-section">
+                        <h2>Web development</h2>
                         <p>
                             In January 2019 I started my formal training in web development. I then had the skills and 
                             confidence to begin to try to make my velut into a website.
@@ -78,9 +67,10 @@ class About extends Component {
                         <p>
                             Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={2}>
+                    <div className="about-section">
+                        <h2>Spelling</h2>
                         <p>
                             Words in velut are spelt 
                             with the letters abcdefghiklmnopqrstuvxyz — j is always written as i, w does not appear. 
@@ -99,9 +89,10 @@ class About extends Component {
                             thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted as{" "}
                             <Link to="./Tibérī" title="Tibérī on velut" lang="la">Tibérī</Link>.
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={3}>
+                    <div className="about-section">
+                        <h2>Scansion</h2>
                         <p>
                             “Scansion” refers to whether the syllables of a word are classed as “long” or “short” in classical Latin poetry.
                             Long syllables (which I denote by a dash –) theoretically take twice as long to pronounce as short syllables 
@@ -122,9 +113,10 @@ class About extends Component {
                             <span className="scansion">⏑⏑–</span> or <span className="scansion">⏑⏑</span> or <span className="scansion">⏑–⏑</span> or <span className="scansion">⏑––</span> or <span className="scansion">⏑–</span> depending on the rest of the line of poetry and the poet’s intentions.
                             Therefore, velut remains a somewhat crude tool with respect to scansion.
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={4}>
+                    <div className="about-section">
+                        <h2>Rhymes</h2>
                         <p>
                             velut allows you to find rhymes under classical or ecclesiastical pronunciation. “Classical” pronunciation
                             is (theoretically) how an educated citizen of the Roman Republic or early Roman Empire would have pronounced Latin;
@@ -156,9 +148,10 @@ class About extends Component {
                             primarily by the vowel(s) in and after the stressed syllable, then by the consonants between the stressed vowel and the end,
                             then by any vowels preceding the stressed syllable, then by any consonants between the stressed vowel and the beginning. 
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={5}>
+                    <div className="about-section">
+                        <h2>Consonyms, anagrams, and subwords</h2>
                         <p>
                             “<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>” are words 
                             whose consonant letters (i.e. bcdfghklmnpqrstvxz) are the same and in the same order.
@@ -179,9 +172,10 @@ class About extends Component {
                         <p>
                             Subwords are in descending length order, then alphabetical.
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={6}>
+                    <div className="about-section">
+                        <h2>Lemmata</h2>
                         <p>
                             The “lemma” (plural “lemmata”) of a word is the form you would find in a dictionary as the headword. A
                             given word may belong to multiple lemmata.</p>
@@ -208,9 +202,10 @@ class About extends Component {
                             I try to be as accurate as I can justify in my compilation of cognates; however, etymology 
                             can be a field full of controversy and obscurity, and is not one I’m any expert in.
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={7}>
+                    <div className="about-section">
+                        <h2>English to Latin</h2>
                         <p>
                             velut has an <Link to="/english" title="English to Latin on velut">English 
                             to Latin</Link> section, which returns Latin lemmata whose English meanings match what you enter.
@@ -238,9 +233,10 @@ class About extends Component {
                         <p>
                             Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell’s from 1970!
                         </p>
-                    </AboutSection>
+                    </div>
 
-                    <AboutSection i={8}>
+                    <div className="about-section">
+                        <h2>Advanced Search</h2>
                         <p>
                             One of the newest features of velut is its <Link to="/advanced" title="Advanced Search on velut">Advanced
                             Search</Link>, which lets you find Latin words that match a given scansion and/or spelling,
@@ -258,9 +254,10 @@ class About extends Component {
                         <p>
                             For details, see the how-to guide on the <Link to="/advanced" title="Advanced Search on velut">Advanced Search</Link> page itself.
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={9}>
+                    <div className="about-section">
+                        <h2>Word compilation</h2>
                         <p>
                             All the data have been compiled by me, so please be aware that there are several lemmata that 
                             I don’t have. I may simply have never come across them, I may have judged them too arcane 
@@ -283,9 +280,10 @@ class About extends Component {
                             (Thesaurus Linguae Latinae requires a subscription,
                             which your university or library might be able to furnish you with.)
                         </p>
-                    </AboutSection>
+                    </div>
                     
-                    <AboutSection i={10}>
+                    <div className="about-section">
+                        <h2>Future plans</h2>
                         <p>
                             Roughly 3% of lemmata are missing information regarding cognates.
                             I’m working to redress this.
@@ -295,7 +293,7 @@ class About extends Component {
                             belonging to {this.state.lemmaCount || "12000+"} lemmata. 
                             There are plenty more I will add!
                         </p>
-                    </AboutSection>
+                    </div>
                 </div>
                 <Search prefix="" searchbarTitle="Type a Latin word"/>
             </div>
