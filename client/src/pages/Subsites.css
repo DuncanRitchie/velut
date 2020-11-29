@@ -1,5 +1,5 @@
-/* Subsites are pages on velut that return Latin words but are not the Word page itself. */
-/* For example, Advanced, Anagram Phrases, and Subwords. */
+/* Subsites are pages on velut that return Latin words. */
+/* For example: Advanced, Anagram Phrases, Subwords, and Word. */
 
 .subsite-home:not(.advanced) p:not(.title-full) {
     width: calc(100% - 2.25rem);

@@ -12,6 +12,7 @@ import hyphensToMacra from "../../helpers/hyphensToMacra"
 import noMacra from "../../helpers/noMacra"
 import routes from "../../routes.json"
 import './Word.css'
+import '../Subsites.css'
 
 class Word extends Component {
     constructor(props) {
