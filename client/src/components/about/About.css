@@ -27,7 +27,7 @@
   padding: 0.375rem 0.75rem
 }
 
-.about-text p {
+.about-text p, .about-text ul {
   margin-top: 0;
   margin-bottom: 0;
   text-align: left;
@@ -44,7 +44,18 @@
   padding-bottom: 0.75rem
 }
 
+.about ul {
+  width: calc(100% - 2.375rem);
+}
 
+/* Copied from Advanced Rubric */
+.about li {
+  line-height: 1.6em;
+  padding: 0.625rem 1.125rem 0.625rem 1.25rem;
+  margin: 0;
+  display: list-item;
+  list-style: disc inside;
+}
 
 @media print {
   .about-text {

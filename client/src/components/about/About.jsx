@@ -177,22 +177,36 @@ class About extends Component {
                     <div className="about-section">
                         <h2>Lemmata</h2>
                         <p>
-                            The “lemma” (plural “lemmata”) of a word is the form you would find in a dictionary as the headword. A
-                            given word may belong to multiple lemmata.</p>
-                        <p>
-                            Sometimes a word might even be multiple lemmata — for example in English “take” 
-                            can be a verb lemma or a noun lemma — so I’ve chosen to put a piece of distinguishing 
-                            information in brackets after the lemma. Thus:{" "}
-                            <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</Link>{" "}and{" "}
-                            <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</Link>{" "}are different parts of speech;{" "}
-                            <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</Link>{" "}and{" "}
-                            <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</Link>{" "}have different genitives (letter names are indeclinable!);{" "}
-                            <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</Link>,{" "}
-                            <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</Link>,{" "}and{" "}
-                            <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</Link>{" "}have different participles;{" "}
-                            <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</Link>{" "}and{" "}
-                            <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</Link>{" "}have different etymological derivatives.
+                            The “lemma” (plural “lemmata”) of a word is the form you would find in a dictionary as the headword.
                         </p>
+                        <p>
+                            A given word may belong to multiple lemmata, similar to how in English the word “found” is a lemma
+                            in its own right, meaning “to establish”, but it is also the past tense of the lemma “find”.</p>
+                        <p>
+                            Sometimes a word might even <em>be</em> multiple lemmata — an English example is that “table” 
+                            can be a noun lemma or a verb lemma (as in “to table an amendment”).
+                            In such cases, I’ve chosen to put a piece of distinguishing 
+                            information in brackets after the lemma. Thus:
+                        </p>
+                        <ul>
+                            <li>
+                                <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</Link>{" "}and{" "}
+                                <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</Link> are different parts of speech (proper noun and adjective respectively);
+                            </li>
+                            <li>
+                                <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</Link>{" "}and{" "}
+                                <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</Link>{" "}have different genitives (letter names are indeclinable!);
+                            </li>
+                            <li>
+                                <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</Link>,{" "}
+                                <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</Link>,{" "}and{" "}
+                                <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</Link>{" "}have different participles;
+                            </li>
+                            <li>
+                                <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</Link>{" "}and{" "}
+                                <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</Link>{" "}have different etymological derivatives.
+                            </li>
+                        </ul>
                         <p>
                             Lemmata that derive from (or are morphologically similar to) Ancient Greek and/or Hebrew may be accompanied
                             by transliterations in those languages, along with the flags of modern Greece and Israel as appropriate.
