@@ -3,7 +3,7 @@ import Title from '../../components/title/Title'
 import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
 import noMacra from '../../helpers/noMacra'
-import '../Subsites.css'
+import '../../pages/Subsites.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word
 
