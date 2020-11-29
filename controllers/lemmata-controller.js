@@ -9,7 +9,7 @@ module.exports = {
 				res.send(err);
 				return;
 			}
-		
+
 			res.json({ "count": count });
 		})
 	},

@@ -13,7 +13,7 @@ module.exports = {
 				res.send(err);
 				return;
 			}
-		
+
 			res.json({ "count": count });
 		})
 	},
@@ -160,7 +160,7 @@ module.exports = {
 				criteriaAreValid = true;
 			}
 		}
-		
+
 		if (criteriaAreValid) {
 			console.log("findObject: ", findObject);
 

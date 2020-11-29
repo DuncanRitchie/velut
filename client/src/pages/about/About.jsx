@@ -11,7 +11,7 @@ class About extends Component {
         wordCount: 0,
         lemmaCount: 0
     }
-    
+
     componentDidMount() {
         axios.countWords().then((data)=>{
           this.setState({wordCount: data.data.count})
@@ -20,7 +20,7 @@ class About extends Component {
           this.setState({lemmaCount: data.data.count})
         })
     }
-    
+
     render() {
         document.title = "About velut"
 
@@ -48,7 +48,7 @@ class About extends Component {
                             “<span lang="la"><Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link></span>”.)
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Web development</h2>
                         <p>
@@ -68,7 +68,7 @@ class About extends Component {
                             Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Spelling</h2>
                         <p>
@@ -90,7 +90,7 @@ class About extends Component {
                             <Link to="./Tibérī" title="Tibérī on velut" lang="la">Tibérī</Link>.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Scansion</h2>
                         <p>
@@ -114,7 +114,7 @@ class About extends Component {
                             Therefore, velut remains a somewhat crude tool with respect to scansion.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Rhymes</h2>
                         <p>
@@ -149,7 +149,7 @@ class About extends Component {
                             then by any vowels preceding the stressed syllable, then by any consonants between the stressed vowel and the beginning. 
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Consonyms, anagrams, and subwords</h2>
                         <p>
@@ -173,7 +173,7 @@ class About extends Component {
                             Subwords are in descending length order, then alphabetical.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Lemmata</h2>
                         <p>
@@ -217,7 +217,7 @@ class About extends Component {
                             can be a field full of controversy and obscurity, and is not one I’m any expert in.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>English to Latin</h2>
                         <p>
@@ -269,7 +269,7 @@ class About extends Component {
                             For details, see the how-to guide on the <Link to="/advanced" title="Advanced Search on velut">Advanced Search</Link> page itself.
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Word compilation</h2>
                         <p>
@@ -295,7 +295,7 @@ class About extends Component {
                             which your university or library might be able to furnish you with.)
                         </p>
                     </section>
-                    
+
                     <section>
                         <h2>Future plans</h2>
                         <p>

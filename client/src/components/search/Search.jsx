@@ -34,7 +34,7 @@ class Search extends Component {
     handleMenu = (e) => {
         this.setState({menu: e.target.value})
     }
-    
+
     // This is to search when the enter key is pressed within the <input>.
     handleKeyUp = (e) => {
         if (e.keyCode === 13 ) {
@@ -177,7 +177,7 @@ class Search extends Component {
                     autoCorrect="off"
                     spellCheck="false"
                 />
-             
+
                 <br/>
                 {/* The button to load the new page. */}
                 <button
@@ -212,7 +212,7 @@ class Search extends Component {
                         </ul>
                     </div>
                 )}
-                
+
             </div>
         )
     }

@@ -58,7 +58,7 @@ export default {
 		return axios.get('/api/lemmata/id/' + id)
 	}
 
-	
+
 	// Gets all words with Length less than or equal to the given number.
 	// ,getWordsShorterThan: (number) => {
 	// 	return axios.get('/api/words/lte/',{params: {lte: number}})

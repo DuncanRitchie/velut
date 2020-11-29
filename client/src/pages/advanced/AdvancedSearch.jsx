@@ -36,7 +36,7 @@ class AdvancedSearch extends Component {
             sort: query.get("sort") || "alphabetical",
         })
     }
-    
+
     // This handles the <input> value.
     handleInput = (e) => {
         const input = e.target.value;
@@ -56,7 +56,7 @@ class AdvancedSearch extends Component {
         };
         this.setState(newState);
     }
-    
+
     // This is to search when the enter key is pressed within the <input>.
     handleKeyUp = (e) => {
         if (e.keyCode === 13 ) {

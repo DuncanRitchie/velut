@@ -34,7 +34,7 @@ const findSubwords = (input,wordObjects) => {
                 }
             })
          }
-            
+
         return sortedWordObjects
     }
     else {return null}

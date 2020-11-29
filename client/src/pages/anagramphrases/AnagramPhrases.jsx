@@ -68,7 +68,7 @@ class Anagrams extends Component {
                 <p>No anagrams found!&nbsp; Try a different input.</p>
             )
         }
-        
+
         return (
             <div className="anagram-phrases fulmar-background">
                 <Title textBeforeTitle="Anagram phrases" />

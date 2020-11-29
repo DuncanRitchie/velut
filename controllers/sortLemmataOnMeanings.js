@@ -33,7 +33,7 @@ const sortLemmataOnMeanings = (lemmata, queryWord) => {
         else if (!aContainsWholeWord && bContainsWholeWord) {
             return 1
         }
-    
+
         // A lemma with shorter Meanings gets prioritised.
         // E.g. Thalīa “muse of comedy” (14 chars) precedes Ūrania “muse of astronomy” (17 chars) if query is “muse”.
         else if (a.Meanings.length === b.Meanings.length) {

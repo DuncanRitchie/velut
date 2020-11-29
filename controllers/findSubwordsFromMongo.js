@@ -45,7 +45,7 @@ const findSubwordsFromMongo = (input,wordObjects) => {
             return 0
         }
     })
-        
+
     return sortedWordObjects
 }
 

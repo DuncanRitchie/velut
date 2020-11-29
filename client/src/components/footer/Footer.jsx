@@ -19,7 +19,7 @@ let Footer = (props) => {
                         © Duncan Ritchie
                     </span>
                 </li>
-                
+
                 {showBack && <li><button className="go-back" tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button></li>}
 
                 {showHome && <li><Link to="/" title="velut homepage">Home</Link></li>}

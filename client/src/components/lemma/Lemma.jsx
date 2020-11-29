@@ -105,7 +105,7 @@ class Lemma extends Component {
                 return <span key={i} lang={lang}><img className="inline-flag" src={flag} alt={alt}/>&nbsp;{word} </span>
             })
         }
-        
+
         let {linkBase, lemma, currentWordHyphenated} = this.props
         let {partOfSpeech, meanings, notes, root, forms, cognates} = this.state
 

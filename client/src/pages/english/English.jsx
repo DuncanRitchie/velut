@@ -62,7 +62,7 @@ class English extends Component {
                 />
             )
         })
-        
+
         return (
             <div className="english fulmar-background">
                 <Title textBeforeTitle="English to Latin" />

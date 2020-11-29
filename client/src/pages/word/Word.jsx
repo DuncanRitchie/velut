@@ -31,7 +31,7 @@ class Word extends Component {
             cognatesArrays: []
         }
     }
-    
+
     // fetchFoundWord() queries Mongo for variations on the input
     // until it finds a match, which it adds to state.
     fetchFoundWord(input) {
@@ -201,7 +201,7 @@ class Word extends Component {
                 this.setState({randomWord: array.data[0].Word})
             })
         }
-        
+
     }
 
     getInput() {
@@ -211,7 +211,7 @@ class Word extends Component {
         document.title = input+" on velut"
         this.fetchFoundWord(input)
     }
-  
+
     componentDidMount() {
         if (!this.state.input) {
             this.getInput()
@@ -300,7 +300,7 @@ class Word extends Component {
                     }
                 }) 
             }
-            
+
         }
         return (
             <div className="word fulmar-background">
