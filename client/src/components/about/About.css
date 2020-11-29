@@ -34,12 +34,12 @@
   background: rgba(255,253,244,0.95)
 }
 
-h2 + p {
+.about h2 + p {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
 
-p + p {
+.about p + p {
   padding-top: 0;
   padding-bottom: 0.75rem
 }
