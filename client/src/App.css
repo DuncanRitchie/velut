@@ -82,6 +82,12 @@ a:hover,.go-back:hover {
   text-decoration: underline;
 }
 
+.lemma-tag {
+    vertical-align: super;
+    font-size: 75%;
+    line-height: 75%;
+}
+
 
 @media screen {
   .fulmar-background {

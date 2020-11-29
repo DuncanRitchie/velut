@@ -60,12 +60,6 @@ h3 {
     background-color: #fcf0be
 }
 
-.lemma-tag {
-    vertical-align: super;
-    font-size: 75%;
-    line-height: 75%;
-}
-
 .link-to-current-word {
     /* font-weight: bold; */
     color: #5f5f5f;
