@@ -3,7 +3,7 @@ import superscriptLemmaTag from './superscriptLemmaTag'
 import greece from '../../images/greece.png'
 import israel from '../../images/israel.png'
 import axios from '../../axios/axios'
-import LatinLink from '../word/LatinLink'
+import LatinLink from '../latinlink/LatinLink'
 
 class Lemma extends Component {
     constructor(props) {
