@@ -97,7 +97,7 @@ class Advanced extends Component {
                 result = (<p>There was an error! Please try a different search.</p>)
             }
             else if (this.state.loading) {
-                result = (<p>Loading words&hellip;</p>)
+                result = (<p>Loading words…</p>)
             }
             else if (mappedWords.length) {
                 result = (

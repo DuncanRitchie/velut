@@ -50,7 +50,7 @@ class Anagrams extends Component {
         }
         let result = null
         if (loading) {
-            result = (<p>Loading anagrams&hellip;&nbsp; This can take a few minutes.</p>)
+            result = (<p>Loading anagrams…&nbsp; This can take a few minutes.</p>)
         }
         else if (anagrams[0]==="Internal server error") {
             result = <p>There was an error in fetching your anagrams! Please try again later, or try another search.</p>
@@ -72,7 +72,7 @@ class Anagrams extends Component {
         return (
             <div className="anagram-phrases fulmar-background">
                 <Title textBeforeTitle="Anagram phrases" />
-                <p>Caution &mdash; searches may take some minutes or fail completely.</p>
+                <p>Caution — searches may take some minutes or fail completely.</p>
                 <Search prefix="anagramphrases/" searchbarTitle="Type something to find anagrams of" />
                 <div className="subsite-result">
                     {result}

@@ -62,12 +62,12 @@ class Subwords extends Component {
         let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
         let result = null
         if (this.state.loading) {
-            result = (<p>Loading subwords&hellip;&nbsp; This can take a minute.</p>)
+            result = (<p>Loading subwords…&nbsp; This can take a minute.</p>)
         }
         else if (mappedWords.length) {
             result = (
                 <div>
-                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in “{input}”.&nbsp; You can click on a word (if it&rsquo;s not a perfect anagram) to delete its letters from “{input}”.</p>
+                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in “{input}”.&nbsp; You can click on a word (if it’s not a perfect anagram) to delete its letters from “{input}”.</p>
                     <p>{mappedWords}</p>
                 </div> 
             )

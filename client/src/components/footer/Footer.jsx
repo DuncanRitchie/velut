@@ -16,7 +16,7 @@ let Footer = (props) => {
             <ul>
                 <li>
                     <span className="footer-copyright">
-                        &copy; Duncan Ritchie
+                        © Duncan Ritchie
                     </span>
                 </li>
                 
@@ -32,7 +32,7 @@ let Footer = (props) => {
 
                 {showAbout && <li><Link to="/about" title="About velut">About velut</Link></li>}
 
-                <li><a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie&rsquo;s personal website">My website</a></li>
+                <li><a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie’s personal website">My website</a></li>
             </ul>
         </footer>
     )
