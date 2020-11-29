@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import './App.css';
 // Code-splitting.
-const Home               = lazy(() => import("./components/word/Home"));
-const Word               = lazy(() => import("./components/word/Word"));
+const Home               = lazy(() => import("./pages/word/Home"));
+const Word               = lazy(() => import("./pages/word/Word"));
 const Advanced           = lazy(() => import("./subsites/advanced/Advanced"));
 const SubwordsHome       = lazy(() => import("./subsites/subwords/SubwordsHome"));
 const Subwords           = lazy(() => import("./subsites/subwords/Subwords"));

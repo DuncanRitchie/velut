@@ -1,6 +1,6 @@
 import React from 'react'
-import Title from "../title/Title"
-import Search from '../search/Search'
+import Title from "../../components/title/Title"
+import Search from '../../components/search/Search'
 
 let Home = () => {
     document.title = "Duncan Ritchie’s velut"
