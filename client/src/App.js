@@ -5,7 +5,7 @@ import './App.css';
 // Code-splitting.
 const Home               = lazy(() => import("./pages/word/Home"));
 const Word               = lazy(() => import("./pages/word/Word"));
-const Advanced           = lazy(() => import("./subsites/advanced/Advanced"));
+const Advanced           = lazy(() => import("./pages/advanced/Advanced"));
 const SubwordsHome       = lazy(() => import("./subsites/subwords/SubwordsHome"));
 const Subwords           = lazy(() => import("./subsites/subwords/Subwords"));
 const AnagramPhrasesHome = lazy(() => import("./subsites/anagramphrases/AnagramPhrasesHome"));
