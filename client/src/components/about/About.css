@@ -1,33 +1,23 @@
-.table-of-contents {
-  /* display: none; */
-  font-size: initial;
-}
-
-.table-of-contents li {
-  padding: 0.375rem 0.1875rem;
-  width: 100%;
-}
-
-.table-of-contents,.about-text {
+.about main {
   width: calc(100% - 1.125rem);
   max-width: 46.875rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-.about-section {
+.about section {
   margin-bottom: 0.75rem;
   padding-top: 0.75rem;
 }
 
-.about-text h2 {
+.about main h2 {
   background-color: #efe1ab;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0.375rem 0.75rem
 }
 
-.about-text p, .about-text ul {
+.about main p, .about main ul {
   margin-top: 0;
   margin-bottom: 0;
   text-align: left;
@@ -58,7 +48,7 @@
 }
 
 @media print {
-  .about-text {
+  .about main {
     max-width: initial;
   }
 }

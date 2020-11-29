@@ -28,8 +28,8 @@ class About extends Component {
             <div className="about fulmar-background">
                 <Title textBeforeTitle="About" />
 
-                <div className="about-text">
-                    <div className="about-section">
+                <main>
+                    <section>
                         <h2>Backstory</h2>
                         <p>
                             When I was studying Latin at uni (I have a master’s), I found it useful to keep an Excel spreadsheet of any vocabulary I came across. 
@@ -47,9 +47,9 @@ class About extends Component {
                             for “Useful Tables of Excellent Latin Vocabulary”, or 
                             “<span lang="la"><Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link></span>”.)
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Web development</h2>
                         <p>
                             In January 2019 I started my formal training in web development. I then had the skills and 
@@ -67,9 +67,9 @@ class About extends Component {
                         <p>
                             Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Spelling</h2>
                         <p>
                             Words in velut are spelt 
@@ -89,9 +89,9 @@ class About extends Component {
                             thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted as{" "}
                             <Link to="./Tibérī" title="Tibérī on velut" lang="la">Tibérī</Link>.
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Scansion</h2>
                         <p>
                             “Scansion” refers to whether the syllables of a word are classed as “long” or “short” in classical Latin poetry.
@@ -113,9 +113,9 @@ class About extends Component {
                             <span className="scansion">⏑⏑–</span> or <span className="scansion">⏑⏑</span> or <span className="scansion">⏑–⏑</span> or <span className="scansion">⏑––</span> or <span className="scansion">⏑–</span> depending on the rest of the line of poetry and the poet’s intentions.
                             Therefore, velut remains a somewhat crude tool with respect to scansion.
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Rhymes</h2>
                         <p>
                             velut allows you to find rhymes under classical or ecclesiastical pronunciation. “Classical” pronunciation
@@ -148,9 +148,9 @@ class About extends Component {
                             primarily by the vowel(s) in and after the stressed syllable, then by the consonants between the stressed vowel and the end,
                             then by any vowels preceding the stressed syllable, then by any consonants between the stressed vowel and the beginning. 
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Consonyms, anagrams, and subwords</h2>
                         <p>
                             “<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>” are words 
@@ -172,9 +172,9 @@ class About extends Component {
                         <p>
                             Subwords are in descending length order, then alphabetical.
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Lemmata</h2>
                         <p>
                             The “lemma” (plural “lemmata”) of a word is the form you would find in a dictionary as the headword.
@@ -216,9 +216,9 @@ class About extends Component {
                             I try to be as accurate as I can justify in my compilation of cognates; however, etymology 
                             can be a field full of controversy and obscurity, and is not one I’m any expert in.
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>English to Latin</h2>
                         <p>
                             velut has an <Link to="/english" title="English to Latin on velut">English 
@@ -247,9 +247,9 @@ class About extends Component {
                         <p>
                             Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell’s from 1970!
                         </p>
-                    </div>
+                    </section>
 
-                    <div className="about-section">
+                    <section>
                         <h2>Advanced Search</h2>
                         <p>
                             One of the newest features of velut is its <Link to="/advanced" title="Advanced Search on velut">Advanced
@@ -268,9 +268,9 @@ class About extends Component {
                         <p>
                             For details, see the how-to guide on the <Link to="/advanced" title="Advanced Search on velut">Advanced Search</Link> page itself.
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Word compilation</h2>
                         <p>
                             All the data have been compiled by me, so please be aware that there are several lemmata that 
@@ -294,9 +294,9 @@ class About extends Component {
                             (Thesaurus Linguae Latinae requires a subscription,
                             which your university or library might be able to furnish you with.)
                         </p>
-                    </div>
+                    </section>
                     
-                    <div className="about-section">
+                    <section>
                         <h2>Future plans</h2>
                         <p>
                             Roughly 3% of lemmata are missing information regarding cognates.
@@ -307,8 +307,8 @@ class About extends Component {
                             belonging to {this.state.lemmaCount || "12000+"} lemmata. 
                             There are plenty more I will add!
                         </p>
-                    </div>
-                </div>
+                    </section>
+                </main>
                 <Search prefix="" searchbarTitle="Type a Latin word"/>
             </div>
         )
