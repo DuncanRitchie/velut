@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom"
 import macraToHyphens from "./macraToHyphens"
-import superscriptLemmaTag from "./superscriptLemmaTag"
+import superscriptLemmaTag from "../lemma/superscriptLemmaTag"
 
 const LatinLink = (props) => {
     const { linkBase, targetWord, currentWordHyphenated, isLemma } = props;
