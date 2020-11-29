@@ -110,7 +110,7 @@ module.exports = {
 			let scansion = scansionInput
 				.replace(/[^lsx\.~_–⏑]/gi, "")  // Discard any invalid characters.
 				.replace(/\./g, "x")            // x and . both mean an anceps syllable (can be long or short).
-				.replace(/(?<![ls\.])~/gi, "")  // ~ has no effect if not preceded by a letter.
+				.replace(/(?<![lsx])~/gi, "")  // ~ has no effect if not preceded by a letter.
 				.replace(/(?:.~)+_/g, "_")      // Tokens made optional have no effect before _.
 				.replace(/_(?:.~)+/g, "_")      // Tokens made optional have no effect after _.
 				.replace(/[_]+/gi, "_")         // Collapse consecutive underscores into one underscore.
