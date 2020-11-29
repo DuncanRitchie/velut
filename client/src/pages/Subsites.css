@@ -1,3 +1,6 @@
+/* Subsites are pages on velut that return Latin words but are not the Word page itself. */
+/* For example, Advanced, Anagram Phrases, and Subwords. */
+
 .subsite-home:not(.advanced) p:not(.title-full) {
     width: calc(100% - 2.25rem);
     max-width: 46.125rem;
@@ -31,7 +34,7 @@
         max-width: initial;
     }
 
-    /* Display a grey bullet between anagrams instead of a line-break. */
+    /* Display a grey bullet between results instead of a line-break. */
     .subsite-result br {
         display: none;
     }
