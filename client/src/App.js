@@ -10,8 +10,8 @@ const SubwordsHome       = lazy(() => import("./subsites/subwords/SubwordsHome")
 const Subwords           = lazy(() => import("./subsites/subwords/Subwords"));
 const AnagramPhrasesHome = lazy(() => import("./pages/anagramphrases/AnagramPhrasesHome"));
 const AnagramPhrases     = lazy(() => import("./pages/anagramphrases/AnagramPhrases"));
-const English            = lazy(() => import("./subsites/english/English"));
-const EnglishHome        = lazy(() => import("./subsites/english/EnglishHome"));
+const English            = lazy(() => import("./pages/english/English"));
+const EnglishHome        = lazy(() => import("./pages/english/EnglishHome"));
 const About              = lazy(() => import("./pages/about/About"));
 // JSX to display before an above component loads.
 const loading = () => <p>Loading...</p>;
