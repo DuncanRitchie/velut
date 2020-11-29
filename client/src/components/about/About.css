@@ -35,7 +35,7 @@
 }
 
 .about ul {
-  width: calc(100% - 2.375rem);
+  width: 100%;
 }
 
 /* Copied from Advanced Rubric */
