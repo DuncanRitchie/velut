@@ -63,6 +63,26 @@ p + p {
   padding-top: 0.125rem;
 }
 
+a:link, .go-back {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:link,.go-back {
+  color: #2d6a9f;
+}
+
+a:visited {
+  color: #664763;
+}
+
+a:hover,.go-back:hover {
+  color: #4d88bb;
+  text-decoration: underline;
+}
+
+
 @media screen {
   .fulmar-background {
     grid-area: body;
