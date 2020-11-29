@@ -26,6 +26,14 @@
     background-color: rgba(255,253,244,0.95)
 }
 
+.showing-results-for,.word-info {
+    background-color: rgba(255,253,244,0.95);
+    margin-bottom: 0;
+}
+
+.showing-results-for {
+    padding: 0.375rem
+}
 
 
 @media print {

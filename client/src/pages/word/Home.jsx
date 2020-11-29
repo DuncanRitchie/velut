@@ -1,6 +1,7 @@
 import React from 'react'
 import Title from "../../components/title/Title"
 import Search from '../../components/search/Search'
+import './Home.css'
 
 let Home = () => {
     document.title = "Duncan Ritchie’s velut"
