@@ -4,7 +4,7 @@ import Search from "../../components/search/Search"
 import Lemma from "../../components/lemma/Lemma"
 import axios from '../../axios/axios'
 import Dictionaries from "../../components/dictionaries/Dictionaries"
-import "../../pages/word/Word.css"
+import "../word/Word.css"
 
 class English extends Component {
     constructor(props) {

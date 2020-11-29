@@ -5,7 +5,7 @@ import AdvancedSearch from './AdvancedSearch'
 import AdvancedRubricToggler from './AdvancedRubricToggler'
 import axios from "../../axios/axios"
 import macraToHyphens from "../../helpers/macraToHyphens"
-import '../../pages/Subsites.css'
+import '../Subsites.css'
 
 // <Advanced/> is a JSX element rendered at /advanced/?<query>
 

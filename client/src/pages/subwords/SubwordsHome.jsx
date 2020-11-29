@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Title from '../../components/title/Title'
 import Search from '../../components/search/Search'
 import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
-import '../../pages/Subsites.css'
+import '../Subsites.css'
 
 const SubwordsHome = () => {
     document.title = "Subwords on velut"

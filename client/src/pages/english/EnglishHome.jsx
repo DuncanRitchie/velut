@@ -1,7 +1,7 @@
 import React from 'react';
 import Title from '../../components/title/Title'
 import Search from '../../components/search/Search'
-import '../../pages/Subsites.css'
+import '../Subsites.css'
 
 const EnglishHome = () => {
     document.title = "English to Latin on velut"
