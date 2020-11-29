@@ -23,6 +23,7 @@
     background-color: #faeebd;
     text-align: center;
     font-size: 1.25rem;
+    margin-top: 1.25rem;
 }
 
 .advanced-rubric h4 {
@@ -39,7 +40,7 @@
     background-color: rgba(255,253,244,0.95);
 }
 
-h2 + p {
+.advanced-rubric h2 + p {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
 }
