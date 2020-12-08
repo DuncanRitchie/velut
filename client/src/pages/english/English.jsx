@@ -16,14 +16,17 @@ class English extends Component {
     }
 
     fetchLemmata(english) {
+        this.setState({"lemmata": []});
         try {
-            axios.getLemmataEnglish(english).then((data)=>{
-                // data.data is an array of objects.
-                this.setState({"lemmata": data.data})
-            })    
+            const decoded = decodeURIComponent(english).trim();
+            if (decoded) {
+                axios.getLemmataEnglish(decoded).then((data)=>{
+                    // data.data should be an array of objects.
+                    this.setState({"lemmata": data.data || []});
+                })   
+            }
         }
         catch {
-            this.setState({"lemmata": []})
         }
     }
 

@@ -22,11 +22,10 @@ class Search extends Component {
         // If special characters are input, we can get percent-encoding problems.
         // Let’s correct for that.
         try {
-            input = decodeURIComponent(input) || ""
-            this.setState({sanitisedInput: input})
-        } catch(err) {
-            input = e.target.value
-            this.setState({sanitisedInput: input})
+            const sanitisedInput = decodeURIComponent(input.trim()) || ""
+            this.setState({sanitisedInput: sanitisedInput})
+        } catch {
+            console.log("Please do not input % signs!");
         }
     }
 
@@ -75,7 +74,7 @@ class Search extends Component {
         if(type===undefined) {
             type = ""
         }
-        let input = this.state.input
+        let input = this.state.sanitisedInput
         if(input===undefined) {
             input = ""
         }
@@ -89,8 +88,7 @@ class Search extends Component {
     componentDidMount() {
         try {
             this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
-        } catch(err) {
-            this.setState({sanitisedInput: this.state.input})
+        } catch {
         }
         // The input is initially focussed, unless the page is About or a query has started.
         if (this.state.input
@@ -107,30 +105,24 @@ class Search extends Component {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
             const input = this.props.match.params.word
-            this.setState({fromUrl: true, input: input, sanitisedInput: input})
+            this.setState({fromUrl: true, input: input})
             try {
                 this.setState({sanitisedInput: decodeURIComponent(input)})
-            } catch(err) {
+            } catch {
             }
         }
     }
 
     render() {
         // Let’s work out what the value of the input should be.
-        let inputValue
+        let inputValue = "";
         if (this.state.fromUrl) {
             if (this.props.match.params.word) {
                 inputValue = decodeURIComponent(this.props.match.params.word)
             }
-            else {
-                inputValue = ""
-            }
         }
-        else {
-            inputValue = ""
-            if (this.state.sanitisedInput) {
-                inputValue = this.state.sanitisedInput
-            }
+        else if (this.state.input) {
+            inputValue = this.state.input
         }
         // Let’s work out what the dropdown-select should be.
         let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type || route.route===this.state.type)})
