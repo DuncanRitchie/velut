@@ -336,6 +336,7 @@ class Word extends Component {
                             <p>
                                 <strong>{foundWord.Word}</strong> belongs to the following {wordLemmata.length} {wordLemmata.length===1 ? "lemma" : "lemmata"}:
                             </p>
+                            {mappedLemmata ? mappedLemmata : null}
                         </div>
                     )
                     : (
@@ -348,7 +349,6 @@ class Word extends Component {
                             </p>
                         </>
                     )}
-                {mappedLemmata ? mappedLemmata : null}
                 </div>
                 <Dictionaries category="Latin" sanitisedInput={sanitisedInput} />
             </div>
