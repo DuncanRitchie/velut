@@ -63,7 +63,11 @@ module.exports = {
 	},
 	findSubwords: function(req,res) {
 		let input = req.query.input
-		Word.find({"Length": {"$regex": generateSubwordPattern(input)}})
+		const pattern = generateSubwordPattern(input);
+		Word.find({
+				"Length": {"$lte": input.length},
+				"NoMacraLowerCase": {"$regex": pattern}
+			})
 			.select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
 			.then(words=>{
 				let sortedSubwords = sortSubwords(input,words)
@@ -79,7 +83,10 @@ module.exports = {
 		Word.find({"Length": {"$lte": input.length}})
 			.select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
 			.then(words=>{
-				return sortedSubwords = findSubwordsFromMongo(input,words)
+				return findSubwordsFromMongo(input,words);
+			})
+			.then(subwords => {
+				return sortSubwords(input, subwords);
 			})
 			.then(subwords => {
 				try {
@@ -87,8 +94,9 @@ module.exports = {
 					return anagrams
 				} catch {
 					return ["Internal server error"]
-				}})
-				.then(anagrams=>{res.json(anagrams)})
+				}
+			})
+			.then(anagrams=>{res.json(anagrams)})
 	},
 	findAdvanced: function(req, res) {
 		//// req.query = { scansion: String, spelling: String, elision: Boolean, sort: String }
