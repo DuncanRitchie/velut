@@ -63,12 +63,12 @@ p:not(p + p) {
     padding-bottom: 0.75rem;
 }
 
-p + p {
+p + p:not(.title-full) {
     padding-top: 0.25rem;
     padding-bottom: 0.625rem;
 }
 
-p:last-child:not(.dictionaries) {
+p:last-child:not(.dictionaries):not(.title-full) {
     padding-bottom: 1.5rem;
 }
 

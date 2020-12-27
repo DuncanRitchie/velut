@@ -40,6 +40,7 @@ h1 {
     /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
     text-shadow: 1px 1px 1px #cee3f2;
+    padding-top: 0.625rem;
 }
 
 
