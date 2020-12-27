@@ -54,19 +54,13 @@ h3 {
 
 p {
     line-height: 1.6em;
-    padding-left: 1.125rem;
-    padding-right: 1.125rem;
+    padding: 0.75rem 1.125rem;
     margin-top: 0.125rem;
     margin-bottom: 0;
 }
 
-p:not(p + p) {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-}
-
 p + p:not(.title-full) {
-    padding-top: 0.25rem;
+    padding-top: 0;
     padding-bottom: 0.625rem;
 }
 
