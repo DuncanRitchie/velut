@@ -2,7 +2,7 @@ h1 {
     width: inherit;
     padding: 0.5625rem 0.375rem 0.375rem;
     color: #213a21 /* a darker, brighter green */;
-    margin: calc(1vw + 3vh - 0.875rem) 0 -0.375rem;
+    margin: calc(1vw + 3vh - 0.625rem) 0 -0.375rem;
 }
 
 .title-author {
