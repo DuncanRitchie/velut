@@ -22,7 +22,7 @@ class About extends Component {
     }
 
     render() {
-        document.title = "About velut"
+        document.title = "About velut — a Latin rhyming dictionary"
 
         return (
             <div className="about fulmar-background">

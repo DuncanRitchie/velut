@@ -4,7 +4,7 @@ import Search from '../../components/search/Search'
 import './Home.css'
 
 let Home = () => {
-    document.title = "Duncan Ritchie’s velut"
+    document.title = "Duncan Ritchie’s velut — a Latin rhyming dictionary"
     return (
         <div className="home fulmar-background">
             <Title />

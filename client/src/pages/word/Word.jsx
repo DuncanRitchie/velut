@@ -208,7 +208,7 @@ class Word extends Component {
         // The word searched for comes from the routing.
         let input = this.props.match.params.word
         this.setState({input: input})
-        document.title = input+" on velut"
+        document.title = input+" on velut — a Latin rhyming dictionary"
         this.fetchFoundWord(input)
     }
 
@@ -247,12 +247,12 @@ class Word extends Component {
         const linkBase = this.props.match.path.replace(":word","").replace(":type",this.props.match.params.type) || ""
         if (!foundWord) {
             // If no word was found, the document title needs to come from the input.
-            document.title = "“" + sanitisedInput + "” (word not found) on velut"
+            document.title = "“" + sanitisedInput + "” (word not found) on velut — a Latin rhyming dictionary"
         }
         if (foundWord) {
             const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
             // Let’s set the document title to the word we found.
-            document.title = "“" + foundWord.Word + "” on velut"
+            document.title = "“" + foundWord.Word + "” on velut — a Latin rhyming dictionary"
             // Let’s find what metrical foot it is.
             if (foundWord.Scansion) {
                 let foot = feet.find((foot)=>{return foot.Foot===foundWord.Scansion})

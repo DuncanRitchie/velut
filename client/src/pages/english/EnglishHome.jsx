@@ -4,7 +4,7 @@ import Search from '../../components/search/Search'
 import '../Subsites.css'
 
 const EnglishHome = () => {
-    document.title = "English to Latin on velut"
+    document.title = "English to Latin on velut — a Latin rhyming dictionary"
     return (
         <div className="english subsite-home fulmar-background">
             <Title textBeforeTitle="English to Latin"/>

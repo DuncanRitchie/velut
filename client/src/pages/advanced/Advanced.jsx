@@ -65,7 +65,7 @@ class Advanced extends Component {
     }
 
     render() {
-        document.title = "Advanced Search on velut"
+        document.title = "Advanced Search on velut — a Latin rhyming dictionary"
 
         if (this.state.advancedHome) {
             return (

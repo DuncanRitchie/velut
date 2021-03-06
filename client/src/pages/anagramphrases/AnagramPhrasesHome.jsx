@@ -4,7 +4,7 @@ import Search from '../../components/search/Search'
 import '../Subsites.css'
 
 const AnagramsHome = () => {
-    document.title='Anagram phrases on velut'
+    document.title='Anagram phrases on velut — a Latin rhyming dictionary'
     return (
         <div className="subsite-home anagram-phrases fulmar-background">
             <Title textBeforeTitle="Anagram phrases" />

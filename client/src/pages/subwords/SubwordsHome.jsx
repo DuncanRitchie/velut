@@ -6,7 +6,7 @@ import randomCountdownQuestionWeighted from './randomCountdownQuestionWeighted'
 import '../Subsites.css'
 
 const SubwordsHome = () => {
-    document.title = "Subwords on velut"
+    document.title = "Subwords on velut — a Latin rhyming dictionary"
     let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
     return (
         <div className="subsite-home subwords fulmar-background">

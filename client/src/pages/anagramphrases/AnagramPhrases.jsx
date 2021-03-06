@@ -40,7 +40,7 @@ class Anagrams extends Component {
 
     render() {
         let {input, anagrams, loading} = this.state
-        document.title = "Anagrams of “"+input+"” on velut"
+        document.title = "Anagrams of “"+input+"” on velut — a Latin rhyming dictionary"
 
         let mappedAnagrams = []
         if (anagrams) {
