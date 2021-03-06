@@ -299,7 +299,7 @@ class About extends Component {
                     <section>
                         <h2>Future plans</h2>
                         <p>
-                            Roughly 3% of lemmata are missing information regarding cognates.
+                            Roughly 2% of lemmata are missing information regarding cognates.
                             I’m working to redress this.
                         </p>
                         <p>
