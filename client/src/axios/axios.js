@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default {
+const axiosCommands = {
     // Counts the words in the MongoDB collection. Should be more than 90000.
     countWords: () => {
         return axios.get('/api/words/count')
@@ -64,3 +64,5 @@ export default {
 	// 	return axios.get('/api/words/lte/',{params: {lte: number}})
 	// }
 }
+
+export default axiosCommands;
