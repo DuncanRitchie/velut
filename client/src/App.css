@@ -131,14 +131,14 @@ a:hover,.go-back:hover {
         grid-area: body;
         overflow-y: auto;
         scroll-behavior: smooth;
-        background-image:    url('./images/FulmarFlying.png'); /* Overruled in browsers with WebP support */
+        background-image: url('./images/FulmarFlying.png'); /* Overruled in browsers with WebP support */
         background-attachment: fixed;
         background-repeat: no-repeat;
     }
 
     /* Modernizr injects class-name of webp into <html> if WebP is supported. */
     .webp .fulmar-background {
-        background-image:    url('./images/FulmarFlying.webp');
+        background-image: url('./images/FulmarFlying.webp');
     }
 
     .home {
