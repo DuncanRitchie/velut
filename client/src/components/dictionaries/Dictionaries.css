@@ -5,11 +5,6 @@
     background-color: #7dd3d3;
 }
 
-.dictionaries-category {
-    display: block;
-    font-size: 0.875rem;
-}
-
 .dictionaries {
     background-color: #caedea;
     padding: 0.75rem 0.375rem;
@@ -20,6 +15,6 @@
 @media print {
     /* Allow elements to be full-width. */
     .dictionaries-heading,.dictionaries {
-    max-width: initial;
-  }
+        max-width: initial;
+    }
 }

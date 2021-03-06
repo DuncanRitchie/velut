@@ -82,7 +82,7 @@ class English extends Component {
                     {lemmata}
                 </div>
 
-                <Dictionaries category="English" sanitisedInput={this.state.input} />
+                <Dictionaries category="English-to-Latin" sanitisedInput={this.state.input} />
             </div>
         )
     }

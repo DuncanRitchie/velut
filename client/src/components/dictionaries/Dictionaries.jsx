@@ -13,8 +13,7 @@ let Dictionaries = (props) => {
     return (
         <>
             <h2 className="dictionaries-heading">
-                Links to external sites<br/>
-                <small className="dictionaries-category">({props.category} lookup)</small>
+                Links to other {props.category} sites
             </h2>
             <p className="dictionaries">
                 {mappedDics}
