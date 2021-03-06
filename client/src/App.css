@@ -64,7 +64,7 @@ p + p:not(.title-full) {
     padding-bottom: 0.625rem;
 }
 
-p:last-child:not(.dictionaries):not(.title-full) {
+p:last-child:not(.dictionaries-p):not(.title-full) {
     padding-bottom: 1.5rem;
 }
 
@@ -101,7 +101,7 @@ a:hover,.go-back:hover {
     background-color: #efe1ab;
 }
 
-.word-info p:not(.dictionaries) {
+.word-info p:not(.dictionaries-p) {
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -112,7 +112,7 @@ a:hover,.go-back:hover {
     line-height: 75%;
 }
 
-.showing-results-for,.found-word,.dictionaries-heading,.dictionaries {
+.showing-results-for,.found-word,.dictionaries-heading,.dictionaries-p {
     width: calc(100% - 1.875rem);
     max-width: 46.125rem;
     margin-left: auto;

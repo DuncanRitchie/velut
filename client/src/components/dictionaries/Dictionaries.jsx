@@ -15,7 +15,7 @@ let Dictionaries = (props) => {
             <h2 className="dictionaries-heading">
                 Links to other {props.category} sites
             </h2>
-            <p className="dictionaries">
+            <p className="dictionaries-p">
                 {mappedDics}
             </p>
         </>
