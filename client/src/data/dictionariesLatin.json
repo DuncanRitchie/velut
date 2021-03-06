@@ -21,7 +21,7 @@
     "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1"
 },{
     "Dictionary": "Packard Humanities",
-    "Formula": "http://latin.packhum.org/search?q=%23INPUT%23"
+    "Formula": "https://latin.packhum.org/concordance?q=%23INPUT%23"
 },{
     "Dictionary": "Perseus",
     "Formula": "http://www.perseus.tufts.edu/hopper/searchresults?target=la&all_words=INPUT&all_words_expand=on&phrase=&any_words=&exclude_words=&documents="
