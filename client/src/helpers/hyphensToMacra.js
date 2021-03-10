@@ -1,6 +1,6 @@
 const hyphensToMacra = (hyphenatedWord) => {
     // Hyphens are converted to macra.
-    let toMacra = hyphenatedWord.replace(/A-/g,"\u0100").replace(/a-/g,"\u0101").replace(/E-/g,"\u0112").replace(/e-/g,"\u0113").replace(/I-/g,"\u012A").replace(/i-/g,"\u012B").replace(/O-/g,"\u014C").replace(/o-/g,"\u014D").replace(/U-/g,"\u016A").replace(/u-:/g,"\u1E7B").replace(/u-/g,"\u016B").replace(/Y-/g,"\u0232").replace(/y-/g,"\u0233")
+    let toMacra = hyphenatedWord.replace(/A-/g,"\u0100").replace(/a-/g,"\u0101").replace(/E-/g,"\u0112").replace(/e-\./g,"\u1E17").replace(/e-/g,"\u0113").replace(/I-/g,"\u012A").replace(/i-/g,"\u012B").replace(/O-/g,"\u014C").replace(/o-/g,"\u014D").replace(/U-/g,"\u016A").replace(/u-:/g,"\u1E7B").replace(/u-/g,"\u016B").replace(/Y-/g,"\u0232").replace(/y-/g,"\u0233")
     // Cola are converted to diaereses.
     let toDiaereses = toMacra.replace(/a:/g,"\u00E4").replace(/e:/g,"\u00EB").replace(/i:/g,"\u00EF").replace(/o:/g,"\u00F6").replace(/u:/g,"\u00FC").replace(/y:/g,"\u00FF")
     // Dots are converted to acutes.
