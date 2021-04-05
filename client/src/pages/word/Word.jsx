@@ -9,7 +9,6 @@ import Lemma from "../../components/lemma/Lemma"
 import LatinLink from "../../components/latinlink/LatinLink"
 import macraToHyphens from "../../helpers/macraToHyphens"
 import hyphensToMacra from "../../helpers/hyphensToMacra"
-import noMacra from "../../helpers/noMacra"
 import routes from "../../routes.json"
 import './Word.css'
 import '../Subsites.css'
@@ -42,36 +41,14 @@ class Word extends Component {
             input = decodeURIComponent(input)
         }
         this.setState({sanitisedInput: input})
-        // Let’s fetch some data from MongoDB. First we search for the input, parsing any hyphens/cola/dots.
-        axios.getOneWordFromQuery({"Word": hyphensToMacra(input)})
+        // Let’s fetch some data from MongoDB.
+        axios.getOneWord(input)
             .then((data)=>{
-                foundWord = data.data
+                foundWord = data.data;
                 this.setState({foundWord: foundWord})
-                // If the parsed input isn’t in Mongo, look for it without macra.
-                if (!foundWord) {
-                    axios.getOneWordFromQuery({"NoMacra": noMacra(input)})
-                    .then((data)=>{
-                        foundWord = data.data
-                        this.setState({foundWord: foundWord})
-                        // If the demacronized input isn’t in Mongo, look for it lowercased.
-                        if (!foundWord) {
-                            axios.getOneWordFromQuery({"NoMacraLowerCase": noMacra(input).toLowerCase()})
-                            .then((data)=>{
-                                foundWord = data.data
-                                this.setState({foundWord: foundWord})
-                                if (foundWord) {
-                                    this.fetchRelatedWords(foundWord)
-                                }
-                            })
-                        }
-                        else {
-                            this.fetchRelatedWords(foundWord)
-                        }
-                    })
+                if (foundWord) {
+                    this.fetchRelatedWords(foundWord)
                 }
-            else {
-                this.fetchRelatedWords(foundWord)
-            }
         })
     }
 

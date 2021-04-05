@@ -1,6 +1,8 @@
 const Word = require('../models/word-model')
 const findSubwordsFromMongo = require('./findSubwordsFromMongo')
 const findAnagrams = require('./findAnagrams')
+const hyphensToMacra = require('./hyphensToMacra')
+const noMacra = require('./noMacra')
 const flatten = require('flat')
 const e = require('express')
 
@@ -39,42 +41,34 @@ module.exports = {
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
-	// findOneWord: function(req, res) {
-	// 	Word.findOne(req.query)
-	// 		.select(selectionForOneWord)
-
-
-	// 	axios.getOneWord({"Word": hyphensToMacra(input)})
-    //         .then((data)=>{
-    //             foundWord = data.data
-    //             this.setState({foundWord: foundWord})
-    //             // If the parsed input isn’t in Mongo, look for it without macra.
-    //             if (!foundWord) {
-    //                 axios.getOneWord({"NoMacra": noMacra(input)})
-    //                 .then((data)=>{
-    //                     foundWord = data.data
-    //                     this.setState({foundWord: foundWord})
-    //                     // If the demacronized input isn’t in Mongo, look for it lowercased.
-    //                     if (!foundWord) {
-    //                         axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
-    //                         .then((data)=>{
-    //                             foundWord = data.data
-    //                             this.setState({foundWord: foundWord})
-    //                             if (foundWord) {
-    //                                 this.fetchRelatedWords(foundWord)
-    //                             }
-    //                         })
-    //                     }
-    //                     else {
-    //                         this.fetchRelatedWords(foundWord)
-    //                     }
-    //                 })
-    //             }
-    //         else {
-    //             this.fetchRelatedWords(foundWord)
-    //         }
-    //     })
-	// },
+	findOneWord: function(req, res) {
+		const input = req.query.input;
+		Word.findOne({"Word": hyphensToMacra(input)})
+			.select(selectionForOneWord)
+            .then((data)=>{
+                if ({data}) {
+					res.json(data);
+				}
+				else {
+					Word.findOne({"NoMacra": noMacra(input)})
+						.select(selectionForOneWord)
+						.then((data)=>{
+							if (data?.data) {
+								res.json(data.data);
+							}
+							else {
+								Word.findOne({"NoMacraLowerCase": noMacra(input).toLowerCase()})
+								.select(selectionForOneWord)
+								.then((data)=>{
+									if (data?.data) {
+										res.json(data.data);
+									}
+									else {
+										res.json(undefined);
+									}})
+							}})
+				}});
+	},
 	findWordsClassical: function(req, res) {
 		console.log(req);
 		Word.find(req.query)
