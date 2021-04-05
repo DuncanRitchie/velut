@@ -1,3 +1,6 @@
+//// This function should be exactly the same as client/src/helpers/macraToHyphens.
+//// Duplicated because we can’t call client code on the server.
+
 const macraToHyphens = (macronizedWord) => {
     // Macra are converted to hyphens.
     let toHyphens = macronizedWord.replace(/\u0100/g,"A-").replace(/\u0101/g,"a-").replace(/\u0112/g,"E-").replace(/\u0113/g,"e-").replace(/\u012A/g,"I-").replace(/\u012B/g,"i-").replace(/\u014C/g,"O-").replace(/\u014D/g,"o-").replace(/\u016A/g,"U-").replace(/\u016B/g,"u-").replace(/\u1E7B/g,"u-:").replace(/\u0232/g,"Y-").replace(/\u0233/g,"y-").replace(/\u1e17/g,"e-.")
