@@ -104,7 +104,7 @@ class Search extends Component {
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
-            const input = this.props.match.params.word
+            const input = this.props.match.params.word || ""
             this.setState({fromUrl: true, input: input})
             try {
                 this.setState({sanitisedInput: decodeURIComponent(input)})
