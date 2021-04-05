@@ -13,8 +13,12 @@ const axiosCommands = {
 	getAnagrams: (string) => {
 		return axios.get('/api/words/anagrams/',{params: {input: string}})
 	},
-	// Gets one word only.
-	getOneWord: (query) => {
+	// Gets one word only, from a simple string.
+	getOneWord: (word) => {
+		return axios.get('/api/words/word/',{params: {input: word}})
+	},
+	// Gets one word only, from the query.
+	getOneWordFromQuery: (query) => {
 		return axios.get('/api/words/one/',{params: query})
 	},
 	// Gets words in alphabetical order.

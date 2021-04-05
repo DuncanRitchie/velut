@@ -43,19 +43,19 @@ class Word extends Component {
         }
         this.setState({sanitisedInput: input})
         // Let’s fetch some data from MongoDB. First we search for the input, parsing any hyphens/cola/dots.
-        axios.getOneWord({"Word": hyphensToMacra(input)})
+        axios.getOneWordFromQuery({"Word": hyphensToMacra(input)})
             .then((data)=>{
                 foundWord = data.data
                 this.setState({foundWord: foundWord})
                 // If the parsed input isn’t in Mongo, look for it without macra.
                 if (!foundWord) {
-                    axios.getOneWord({"NoMacra": noMacra(input)})
+                    axios.getOneWordFromQuery({"NoMacra": noMacra(input)})
                     .then((data)=>{
                         foundWord = data.data
                         this.setState({foundWord: foundWord})
                         // If the demacronized input isn’t in Mongo, look for it lowercased.
                         if (!foundWord) {
-                            axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
+                            axios.getOneWordFromQuery({"NoMacraLowerCase": noMacra(input).toLowerCase()})
                             .then((data)=>{
                                 foundWord = data.data
                                 this.setState({foundWord: foundWord})

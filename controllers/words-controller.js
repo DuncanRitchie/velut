@@ -4,6 +4,22 @@ const findAnagrams = require('./findAnagrams')
 const flatten = require('flat')
 const e = require('express')
 
+const selectionForOneWord = {
+	"Word": 1,
+	"NoMacra": 1,
+	"PerfectRhyme": 1,
+	"AlphOrderNoMacra": 1,
+	"LemmaArray": 1,
+	"Scansion": 1,
+	"EcclesPerfectRhyme": 1,
+	"RhymeVowels": 1,
+	"RhymeVowelsAndUltimaCoda": 1,
+	"EcclesRhymeVowels": 1,
+	"EcclesRhymeVowelsAndUltimaCoda": 1,
+	"AllConsonants": 1,
+	"_id": 0
+};
+
 // Defining all methods and logic for routes
 
 module.exports = {
@@ -17,26 +33,48 @@ module.exports = {
 			res.json({ "count": count });
 		})
 	},
-	findOneWord: function(req, res) {
+	findOneWordFromQuery: function(req, res) {
 		Word.findOne(req.query)
-			.select({
-				"Word": 1,
-				"NoMacra": 1,
-				"PerfectRhyme": 1,
-				"AlphOrderNoMacra": 1,
-				"LemmaArray": 1,
-				"Scansion": 1,
-				"EcclesPerfectRhyme": 1,
-				"RhymeVowels": 1,
-				"RhymeVowelsAndUltimaCoda": 1,
-				"EcclesRhymeVowels": 1,
-				"EcclesRhymeVowelsAndUltimaCoda": 1,
-				"AllConsonants": 1,
-				"_id": 0
-			})
+			.select(selectionForOneWord)
 			.then(words => {res.json(words)})
 			.catch(err => res.status(422).json(err))
 	},
+	// findOneWord: function(req, res) {
+	// 	Word.findOne(req.query)
+	// 		.select(selectionForOneWord)
+
+
+	// 	axios.getOneWord({"Word": hyphensToMacra(input)})
+    //         .then((data)=>{
+    //             foundWord = data.data
+    //             this.setState({foundWord: foundWord})
+    //             // If the parsed input isn’t in Mongo, look for it without macra.
+    //             if (!foundWord) {
+    //                 axios.getOneWord({"NoMacra": noMacra(input)})
+    //                 .then((data)=>{
+    //                     foundWord = data.data
+    //                     this.setState({foundWord: foundWord})
+    //                     // If the demacronized input isn’t in Mongo, look for it lowercased.
+    //                     if (!foundWord) {
+    //                         axios.getOneWord({"NoMacraLowerCase": noMacra(input).toLowerCase()})
+    //                         .then((data)=>{
+    //                             foundWord = data.data
+    //                             this.setState({foundWord: foundWord})
+    //                             if (foundWord) {
+    //                                 this.fetchRelatedWords(foundWord)
+    //                             }
+    //                         })
+    //                     }
+    //                     else {
+    //                         this.fetchRelatedWords(foundWord)
+    //                     }
+    //                 })
+    //             }
+    //         else {
+    //             this.fetchRelatedWords(foundWord)
+    //         }
+    //     })
+	// },
 	findWordsClassical: function(req, res) {
 		console.log(req);
 		Word.find(req.query)

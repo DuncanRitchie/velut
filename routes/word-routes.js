@@ -37,9 +37,13 @@ router
 	.route('/')
 	.get(wordsController.findWordsClassical)
 
+// router
+// 	.route('/word/')
+// 	.get(wordsController.findOneWord)
+
 router
 	.route('/one/')
-	.get(wordsController.findOneWord)
+	.get(wordsController.findOneWordFromQuery)
 
 router
 	.route('/id/')
