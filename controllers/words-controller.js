@@ -43,14 +43,15 @@ module.exports = {
 	},
 	findOneWord: function(req, res) {
 		const input = req.query.input;
-		const possibleQueries = [
-			{"Word": hyphensToMacra(input)},
-			{"NoMacra": noMacra(input)},
-			{"NoMacraLowerCase": noMacra(input).toLowerCase()},
+		//// Possible queries, wrapped in functions so that `noMacra(input)` etc will not be evaluated unless needed for a query.
+		const funcsReturningQueries = [
+			(input) => { return {"Word": hyphensToMacra(input)}},
+			(input) => { return {"NoMacra": noMacra(input)}},
+			(input) => { return {"NoMacraLowerCase": noMacra(input).toLowerCase()}},
 		]
-		//// Recursive local function to execute each query until a word is found.
+		//// Recursive local function to generate and execute each query until a word is found.
 		const executeQuery = (indexOfQuery) => {
-			Word.findOne(possibleQueries[indexOfQuery])
+			Word.findOne(funcsReturningQueries[indexOfQuery](input))
 				.select(selectionForOneWord)
 				.then((data)=>{
 					//// If the current query found a word, send the data to the front-end.
@@ -58,7 +59,7 @@ module.exports = {
 						res.json(data);
 					}
 					//// If there are no more possible queries, send `undefined`.
-					else if (indexOfQuery == possibleQueries.length - 1) {
+					else if (indexOfQuery == funcsReturningQueries.length - 1) {
 						res.json(undefined);
 					}
 					//// Otherwise, recurse to try the next query.
