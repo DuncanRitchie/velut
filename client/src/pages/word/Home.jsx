@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from "../../components/title/Title"
+import Header from "../../components/header/Header"
 import Search from '../../components/search/Search'
 import './Home.css'
 
@@ -7,7 +7,7 @@ let Home = () => {
     document.title = "Duncan Ritchie’s velut — a Latin rhyming dictionary"
     return (
         <div className="home fulmar-background">
-            <Title />
+            <Header />
             <h2 className="home-rubric">
                 <span>Latin rhymes &amp;&nbsp;more!</span>
             </h2>

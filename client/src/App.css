@@ -36,7 +36,7 @@ html {
 }
 
 body :focus {
-    outline: dashed 2px #34311a /* Average of the Title gradient colours */;
+    outline: dashed 2px #34311a /* Average of the .title gradient colours */;
 }
 
 h2 {

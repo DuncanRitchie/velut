@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Title from '../../components/title/Title'
+import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
 import noMacra from '../../helpers/noMacra'
@@ -71,7 +71,7 @@ class Anagrams extends Component {
 
         return (
             <div className="anagram-phrases fulmar-background">
-                <Title textBeforeTitle="Anagram phrases" />
+                <Header textBeforeTitle="Anagram phrases" />
                 <p>Caution — searches may take some minutes or fail completely.</p>
                 <Search prefix="anagramphrases/" searchbarTitle="Type something to find anagrams of" />
                 <div className="subsite-result">

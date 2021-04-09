@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom"
 import axios from "../../axios/axios"
-import Title from "../../components/title/Title"
+import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
 import Dictionaries from "../../components/dictionaries/Dictionaries"
 import feet from "../../data/feet.json"
@@ -281,7 +281,7 @@ class Word extends Component {
         }
         return (
             <div className="word fulmar-background">
-                <Title />
+                <Header />
                 <Search prefix="" searchbarTitle="Type a Latin word" />
                 <p className="showing-results-for">
                     Showing results for

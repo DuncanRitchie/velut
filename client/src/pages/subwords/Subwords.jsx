@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Title from '../../components/title/Title'
+import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
 import noMacra from '../../helpers/noMacra'
@@ -79,7 +79,7 @@ class Subwords extends Component {
         }
         return (
             <div className="subwords fulmar-background">
-                <Title textBeforeTitle="Subwords" />
+                <Header textBeforeTitle="Subwords" />
                 <div>
                     <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" />
                     <div className="subsite-result">

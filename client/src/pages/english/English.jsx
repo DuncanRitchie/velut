@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import Title from "../../components/title/Title"
+import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
 import Lemma from "../../components/lemma/Lemma"
 import axios from '../../axios/axios'
@@ -68,7 +68,7 @@ class English extends Component {
 
         return (
             <div className="english fulmar-background">
-                <Title textBeforeTitle="English to Latin" />
+                <Header textBeforeTitle="English to Latin" />
                 <Search prefix="english/" searchbarTitle="Type an English word"/>
 
                 <p className="showing-results-for">

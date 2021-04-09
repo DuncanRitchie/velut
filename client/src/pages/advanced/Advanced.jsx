@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Title from '../../components/title/Title'
+import Header from '../../components/header/Header'
 import AdvancedSearch from './AdvancedSearch'
 import AdvancedRubricToggler from './AdvancedRubricToggler'
 import axios from "../../axios/axios"
@@ -70,7 +70,7 @@ class Advanced extends Component {
         if (this.state.advancedHome) {
             return (
                 <div className="subsite-home advanced fulmar-background">
-                    <Title textBeforeTitle="Advanced Search"/>
+                    <Header textBeforeTitle="Advanced Search"/>
                     <AdvancedRubricToggler/>
                     <AdvancedSearch autofocus={true}/>
                 </div>
@@ -114,7 +114,7 @@ class Advanced extends Component {
             }
             return (
                 <div className="advanced fulmar-background">
-                    <Title textBeforeTitle="Advanced Search" />
+                    <Header textBeforeTitle="Advanced Search" />
                     <div>
                         <AdvancedRubricToggler/>
                         <AdvancedSearch autofocus={false}/>

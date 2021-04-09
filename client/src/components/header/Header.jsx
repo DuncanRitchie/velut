@@ -1,7 +1,7 @@
 import React from 'react'
-import './Title.css'
+import './Header.css'
 
-let Title = (props) => {
+let Header = (props) => {
     return (
         <header>
             <h1>
@@ -17,4 +17,4 @@ let Title = (props) => {
     )
 }
 
-export default Title
+export default Header

@@ -20,7 +20,7 @@ input[type=text] {
 }
 
 .search:focus {
-    outline-color: #58522c; /* lighter colour of Title gradient */
+    outline-color: #58522c; /* lighter colour of .title gradient */
 }
 
 #search-button {
