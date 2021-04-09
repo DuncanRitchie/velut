@@ -3,7 +3,7 @@ import './Title.css'
 
 let Title = (props) => {
     return (
-        <div className="title-div">
+        <header>
             <h1>
                 {props.textBeforeTitle ? <span>{props.textBeforeTitle}<br /></span> : null }
                 <span className="title-author">Duncan Ritchie’s</span><br />
@@ -13,7 +13,7 @@ let Title = (props) => {
                 Vocābulōrum Excellentium<br/>
                 Latīnōrum Ūtilēs Tabulae
             </p>
-        </div>
+        </header>
     )
 }
 
