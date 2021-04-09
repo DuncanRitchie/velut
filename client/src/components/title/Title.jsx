@@ -7,7 +7,7 @@ let Title = (props) => {
             <h1>
                 {props.textBeforeTitle ? <span>{props.textBeforeTitle}<br /></span> : null }
                 <span className="title-author">Duncan Ritchie’s</span><br />
-                <span className="title" lang="la">velut</span>
+                <abbr className="title" lang="la" title="Useful Tables of Excellent Latin Vocabulary">velut</abbr>
             </h1>
             <p className="title-full" lang="la">
                 Vocābulōrum Excellentium<br/>

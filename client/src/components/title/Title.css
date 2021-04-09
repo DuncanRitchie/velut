@@ -26,6 +26,8 @@ h1 {
     font-weight: normal;
     font-weight: 300;
     line-height: 3.25rem;
+    font-variant: none;
+    text-decoration: none;
 }
 
 .title::after {
