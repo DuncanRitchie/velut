@@ -41,11 +41,11 @@ class About extends Component {
                         <p>
                             So I wrote the Excel formulae that found rhyming words, kept adding more words, wrote more formulae to manage my 
                             words and find out more things about them, and three years later was close to 90,000 words. I named the 
-                            file <Link to="./velut" title="velut on velut" lang="la">velut</Link>, which is Latin for “just like”,
+                            file <Link to="./velut" title="“velut” on velut" lang="la">velut</Link>, which is Latin for “just like”,
                             because rhyming is all about finding words that are 
                             “just like” a given word with respect to their endings. (And also it can be an acronym 
                             for “Useful Tables of Excellent Latin Vocabulary”, or 
-                            “<span lang="la"><Link to="./voca-bulo-rum" title="vocābulōrum on velut">Vocābulōrum</Link> <Link to="./excellentium" title="excellentium on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="Latīnōrum on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="ūtilēs on velut">Ūtilēs</Link> <Link to="./tabulae" title="tabulae on velut">Tabulae</Link></span>”.)
+                            “<span lang="la"><Link to="./voca-bulo-rum" title="“vocābulōrum” on velut">Vocābulōrum</Link> <Link to="./excellentium" title="“excellentium” on velut">Excellentium</Link> <Link to="./Lati-no-rum" title="“Latīnōrum” on velut">Latīnōrum</Link> <Link to="./u-tile-s" title="“ūtilēs” on velut">Ūtilēs</Link> <Link to="./tabulae" title="“tabulae” on velut">Tabulae</Link></span>”.)
                         </p>
                     </section>
 
@@ -65,7 +65,7 @@ class About extends Component {
                             with it. Plus it all looks cool on my portfolio!
                         </p>
                         <p>
-                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="fūlmārus on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="glaciālis on velut">glacialis</Link></em>, a common sight where I was at uni.
+                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link to="./fu-lma-rus" title="“fūlmārus” on velut">Fulmarus</Link>&nbsp;<Link to="./glacia-lis" title="“glaciālis” on velut">glacialis</Link></em>, a common sight where I was at uni.
                         </p>
                     </section>
 
@@ -76,8 +76,8 @@ class About extends Component {
                             with the letters abcdefghiklmnopqrstuvxyz — j is always written as i, w does not appear. 
                             Any long vowel is marked with a macron (ĀāĒēĪīŌōŪūȲȳ). 
                             In words where the stress is otherwise ambiguous, the presence or absence of an acute accent will distinguish 
-                            — e.g. <Link to="./Tiberī" title="Tiberī on velut" lang="la">Tiberī</Link> (dative of the river Tiber) 
-                            is stressed on the first syllable, <Link to="./Tibérī" title="Tibérī on velut" lang="la">Tibérī</Link> (vocative 
+                            — e.g. <Link to="./Tiberī" title="“Tiberī” on velut" lang="la">Tiberī</Link> (dative of the river Tiber) 
+                            is stressed on the first syllable, <Link to="./Tibérī" title="“Tibérī” on velut" lang="la">Tibérī</Link> (vocative 
                             of the name Tiberius) is stressed on the second. I’ve also used diaereses 
                             (äëïöüÿ) on occasion.
                         </p>
@@ -86,8 +86,8 @@ class About extends Component {
                             a word that matches. If there are several words spelt the same, they will be offered as “other homographs”. 
                             You can also specify diacritics 
                             by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis; 
-                            thus <Link to="./Tibe.ri-" title="Tibe.ri- on velut" lang="la">Tibe.ri-</Link> will be interpreted as{" "}
-                            <Link to="./Tibérī" title="Tibérī on velut" lang="la">Tibérī</Link>.
+                            thus <Link to="./Tibe.ri-" title="“Tibe.ri-” on velut" lang="la">Tibe.ri-</Link> will be interpreted as{" "}
+                            <Link to="./Tibérī" title="“Tibérī” on velut" lang="la">Tibérī</Link>.
                         </p>
                     </section>
 
@@ -107,7 +107,7 @@ class About extends Component {
                         </p>
                         <p>
                             velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
-                            legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="tenebra on velut" lang="la">tenebra</Link>{" "}
+                            legitimate ways to fit a word into a line. The word <Link to="/tenebra" title="“tenebra” on velut" lang="la">tenebra</Link>{" "}
                             (noun meaning “darkness”, usually pluralised), for instance, is scanned by velut
                             as <span className="scansion">⏑⏑⏑</span> but may otherwise fit quite plausibly
                             <span className="scansion">⏑⏑–</span> or <span className="scansion">⏑⏑</span> or <span className="scansion">⏑–⏑</span> or <span className="scansion">⏑––</span> or <span className="scansion">⏑–</span> depending on the rest of the line of poetry and the poet’s intentions.
@@ -190,21 +190,21 @@ class About extends Component {
                         </p>
                         <ul>
                             <li>
-                                <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</Link>{" "}and{" "}
-                                <Link to="/Caecilius" title="Caecilius on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</Link> are different parts of speech (proper noun and adjective respectively);
+                                <Link to="/Caecilius" title="“Caecilius” on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</Link>{" "}and{" "}
+                                <Link to="/Caecilius" title="“Caecilius” on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</Link> are different parts of speech (proper noun and adjective respectively);
                             </li>
                             <li>
-                                <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</Link>{" "}and{" "}
-                                <Link to="/be-ta" title="bēta on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</Link>{" "}have different genitives (letter names are indeclinable!);
+                                <Link to="/be-ta" title="“bēta” on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</Link>{" "}and{" "}
+                                <Link to="/be-ta" title="“bēta” on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</Link>{" "}have different genitives (letter names are indeclinable!);
                             </li>
                             <li>
-                                <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</Link>,{" "}
-                                <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</Link>,{" "}and{" "}
-                                <Link to="/sero-" title="serō on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</Link>{" "}have different participles;
+                                <Link to="/sero-" title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</Link>,{" "}
+                                <Link to="/sero-" title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</Link>,{" "}and{" "}
+                                <Link to="/sero-" title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</Link>{" "}have different participles;
                             </li>
                             <li>
-                                <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</Link>{" "}and{" "}
-                                <Link to="/iu-s" title="iūs on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</Link>{" "}have different etymological derivatives.
+                                <Link to="/iu-s" title="“iūs” on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</Link>{" "}and{" "}
+                                <Link to="/iu-s" title="“iūs” on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</Link>{" "}have different etymological derivatives.
                             </li>
                         </ul>
                         <p>
