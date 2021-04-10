@@ -1,6 +1,14 @@
 const findSubwords = require('./findSubwords')
 const delChars = require('./delChars')
 
+let subwordsCache = new Map();
+
+// Memoisation function adapted from https://1loc.dev/#memoize-a-function
+// Can be used on any function taking two arguments.
+const memoise = fn => ((cache = subwordsCache) => (arg1,arg2) => cache.has([arg1,arg2]) ? cache.get([arg1,arg2]) : (result = fn(arg1,arg2), cache.set([arg1,arg2], result), result))();
+
+const findSubwordsMemoised = memoise(findSubwords);
+
 // This is a recursive function used in the controller for the api/words/anagrams/ route.
 // There, the first param is the input string, and the second param is the array
 // returned by findSubwordsFromMongo().
@@ -9,9 +17,6 @@ const delChars = require('./delChars')
 // or an object containing more words as keys recursively.
 const findAnagrams = (input, words) => {
     let anagrams = {}
-    // Memoisation function adapted from https://1loc.dev/#memoize-a-function
-    // Can be used on any function taking two arguments.
-    const memoise = fn => ((cache = new Map()) => (arg1,arg2) => cache.has([arg1,arg2]) ? cache.get([arg1,arg2]) : (result = fn(arg1,arg2), cache.set([arg1,arg2], result), result))();
     // For every subword, an iteration of the for-loop runs.
     for (let i = 0; i < words.length; i++) {
         // If there are no letters remaining after the subword is deleted from the input,
@@ -22,7 +27,7 @@ const findAnagrams = (input, words) => {
         }
         // But if there are letters remaining, we recurse.
         else {
-            subwords = memoise(findSubwords)(remaining,words)
+            subwords = findSubwordsMemoised(remaining,words)
             // subwords is an array.
             if (subwords && subwords.length) {
                 subanagrams = findAnagrams(remaining, subwords)
