@@ -5,7 +5,7 @@ let subwordsCache = new Map();
 
 // Memoisation function adapted from https://1loc.dev/#memoize-a-function
 // Can be used on any function taking two arguments.
-const memoise = (fn, cache = new Map()) => (arg1,arg2) => cache.get([arg1,arg2]) || (result = fn(arg1,arg2), cache.set([arg1,arg2], result), result);
+const memoise = (fn, cache = new Map()) => (arg1, arg2) => cache.get([arg1, arg2]) || (result = fn(arg1, arg2), cache.set([arg1, arg2], result), result);
 
 const findSubwordsMemoised = memoise(findSubwords, subwordsCache);
 
@@ -27,7 +27,7 @@ const findAnagrams = (input, words) => {
         }
         // But if there are letters remaining, we recurse.
         else {
-            subwords = findSubwordsMemoised(remaining,words)
+            subwords = findSubwordsMemoised(remaining, words)
             // subwords is an array.
             if (subwords && subwords.length) {
                 subanagrams = findAnagrams(remaining, subwords)
