@@ -5,9 +5,9 @@ let subwordsCache = new Map();
 
 // Memoisation function adapted from https://1loc.dev/#memoize-a-function
 // Can be used on any function taking two arguments.
-const memoise = fn => ((cache = subwordsCache) => (arg1,arg2) => cache.has([arg1,arg2]) ? cache.get([arg1,arg2]) : (result = fn(arg1,arg2), cache.set([arg1,arg2], result), result))();
+const memoise = fn => ((cache = new Map()) => (arg1,arg2) => cache.has([arg1,arg2]) ? cache.get([arg1,arg2]) : (result = fn(arg1,arg2), cache.set([arg1,arg2], result), result));
 
-const findSubwordsMemoised = memoise(findSubwords);
+const findSubwordsMemoised = memoise(findSubwords)(subwordsCache);
 
 // This is a recursive function used in the controller for the api/words/anagrams/ route.
 // There, the first param is the input string, and the second param is the array
