@@ -12,6 +12,7 @@ const AnagramPhrasesHome = lazy(() => import("./pages/anagramphrases/AnagramPhra
 const AnagramPhrases     = lazy(() => import("./pages/anagramphrases/AnagramPhrases"));
 const English            = lazy(() => import("./pages/english/English"));
 const EnglishHome        = lazy(() => import("./pages/english/EnglishHome"));
+const Many               = lazy(() => import("./pages/many/Many"));
 const About              = lazy(() => import("./pages/about/About"));
 // JSX to display before an above component loads.
 const loading = () => <p>Loading...</p>;
@@ -25,6 +26,7 @@ render() {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/advanced" component={Advanced} />
+              <Route path="/many" component={Many} />
               {/* <Route path="/advanced" component={AdvancedHome} /> */}
               <Route path="/subwords/:word" component={Subwords} />
               <Route path="/subwords" component={SubwordsHome} />

@@ -39,7 +39,11 @@ router
 
 router
 	.route('/word/')
-	.get(wordsController.findOneWord)
+	.get(wordsController.findOneWordSelectSeveralFields)
+
+router
+	.route('/onlyword/')
+	.get(wordsController.findOneWordSelectOnlyWord)
 
 router
 	.route('/one/')

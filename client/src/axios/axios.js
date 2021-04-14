@@ -13,9 +13,13 @@ const axiosCommands = {
 	getAnagrams: (string) => {
 		return axios.get('/api/words/anagrams/',{params: {input: string}})
 	},
-	// Gets one word only, from a simple string.
-	getOneWord: (word) => {
+	// Gets several fields for one word, from a simple string.
+	getOneWordSelectSeveralFields: (word) => {
 		return axios.get('/api/words/word/',{params: {input: word}})
+	},
+	// Gets the Word field for one word, from a simple string.
+	getOneWordSelectOnlyWord: (word) => {
+		return axios.get('/api/words/onlyword/',{params: {input: word}})
 	},
 	// Gets one word only, from the query.
 	getOneWordFromQuery: (query) => {

@@ -42,7 +42,7 @@ class Word extends Component {
         }
         this.setState({sanitisedInput: input})
         // Let’s fetch some data from MongoDB.
-        axios.getOneWord(input)
+        axios.getOneWordSelectSeveralFields(input)
             .then((data)=>{
                 foundWord = data.data;
                 this.setState({foundWord: foundWord})
