@@ -299,7 +299,13 @@ class About extends Component {
                     <section id="future-plans">
                         <h2>Future plans</h2>
                         <p>
-                            Roughly 2% of lemmata are missing information regarding cognates.
+                            This website is entirely client-side–rendered, meaning your web-browser has to execute various amounts of my JavaScript code in order for you to see anything. This probably isn’t a problem for you — you’re reading this now. However, if you were to be on a slower device, a weaker internet connection, or a more restrictive data-plan, you might prefer a website that was a bit quicker to load. Search-engines, likewise, would rank velut higher if they didn’t have to run my JavaScript just to see what’s on the site. And people who don’t have JavaScript enabled cannot access velut at all! The solution to this is server-side rendering (SSR), which is a challenge to implement for a website of this complexity, especially as I’m not even three years into web development and I’ve never done SSR before. But I’m looking into it.
+                        </p>
+                        <p>
+                            If SSR is for improving the user-experience, then the de-Excellation of velut (as I call it) is for improving the developer-experience, ie, making my life easier as the person behind this project. As I’ve explained above (under <a href="#backstory">“Backstory”</a> and <a href="#web-development">“Web development”</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
+                        </p>
+                        <p>
+                            On a more lexicographical note, roughly 2% of lemmata are missing information regarding cognates.
                             I’m working to redress this.
                         </p>
                         <p>
