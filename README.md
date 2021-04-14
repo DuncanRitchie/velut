@@ -6,9 +6,7 @@ It is aimed at people with at least a general understanding of the Latin languag
 This GitHub repo is publicly visible. The site is hosted by Render from the main branch, at https://www.velut.co.uk.
 
 ## Architecture
-I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and use mongoimport to replace my two MongoDB Atlas collections. The velut website (in this repository) is a single-page application that reads from the two collections in accordance with what the user searches for, using an Express.js server on the backend and React.js on the frontend.
-
-I lack experience with server-side rendering, so velut is all client-side–rendered. But I’d like to change this. A visitor shouldn’t need JavaScript to see a website!
+I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and use mongoimport to replace my two MongoDB Atlas collections. The velut website (in this repository) is a single-page application that reads from the two collections in accordance with what the user searches for, using an Express.js server on the backend and client-side–rendered React.js on the frontend.
 
 ## Functionality
 On visiting the [homepage](https://www.velut.co.uk), you are invited to type in a Latin word, and select the type of rhymes you want to search for. “Types of rhyme” here also include anagrams, words that scan the same metrically, or words with the same consonants in order (consonyms).
@@ -33,6 +31,18 @@ The velut Excel file has nine sheets, of which four are shown below. The “word
 Displayed below is the page for the word “opportūna”, showing that it is different to “opportūnā”, scans as long-long-long-short metrically, rhymes with words like “ūna” and “lūna”, and is a form of the lemma “opportūnus” (an adjective meaning “timely; suitable”). https://www.velut.co.uk/opportu-na.
 
 ![“opportūna” on velut](https://github.com/DuncanRitchie/velut-screenshots/blob/main/compressed/velut-web-opportuna.png)
+
+## Ongoing work
+Though there are several smaller tasks I’d like to get done, most of my efforts on velut nowadays are in three areas:
+
+### Data collection
+There are many common Latin words that are not yet in the velut database, and I’d like them to be.
+
+### De-Excellation
+I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off Excel by creating webpages and websites that replicate the functionality that I have/had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making more.
+
+### Researching SSR
+Server-side rendering is something velut really should have: it takes barely any effort to look a word up in a paper dictionary, so why should a web-browser need to run a load of JavaScript to see velut? So I’m investigating how to make velut not be all client-side–rendered.
 
 ## Miscellanea
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
