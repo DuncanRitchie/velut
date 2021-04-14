@@ -29,7 +29,7 @@ class About extends Component {
                 <Header textBeforeTitle="About" />
 
                 <main>
-                    <section>
+                    <section id="backstory">
                         <h2>Backstory</h2>
                         <p>
                             When I was studying Latin at uni (I have a master’s), I found it useful to keep an Excel spreadsheet of any vocabulary I came across. 
@@ -49,7 +49,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="web-development">
                         <h2>Web development</h2>
                         <p>
                             In January 2019 I started my formal training in web development. I then had the skills and 
@@ -69,7 +69,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="spelling">
                         <h2>Spelling</h2>
                         <p>
                             Words in velut are spelt 
@@ -91,7 +91,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="scansion">
                         <h2>Scansion</h2>
                         <p>
                             “Scansion” refers to whether the syllables of a word are classed as “long” or “short” in classical Latin poetry.
@@ -115,7 +115,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="rhymes">
                         <h2>Rhymes</h2>
                         <p>
                             velut allows you to find rhymes under classical or ecclesiastical pronunciation. “Classical” pronunciation
@@ -150,7 +150,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="consonyms-anagrams-and-subwords">
                         <h2>Consonyms, anagrams, and subwords</h2>
                         <p>
                             “<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>” are words 
@@ -174,7 +174,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="lemmata">
                         <h2>Lemmata</h2>
                         <p>
                             The “lemma” (plural “lemmata”) of a word is the form you would find in a dictionary as the headword.
@@ -218,7 +218,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="english-to-latin">
                         <h2>English to Latin</h2>
                         <p>
                             velut has an <Link to="/english" title="English to Latin on velut">English 
@@ -249,7 +249,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="advanced-search">
                         <h2>Advanced Search</h2>
                         <p>
                             One of the newest features of velut is its <Link to="/advanced" title="Advanced Search on velut">Advanced
@@ -270,7 +270,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="word-compilation">
                         <h2>Word compilation</h2>
                         <p>
                             All the data have been compiled by me, so please be aware that there are several lemmata that 
@@ -296,7 +296,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="future-plans">
                         <h2>Future plans</h2>
                         <p>
                             Roughly 2% of lemmata are missing information regarding cognates.
