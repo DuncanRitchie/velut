@@ -6,7 +6,9 @@ It is aimed at people with at least a general understanding of the Latin languag
 This GitHub repo is publicly visible. The site is hosted by Render from the main branch, at https://www.velut.co.uk.
 
 ## Architecture
-I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using Excel formulae that I have written — and use mongoimport to replace my two MongoDB Atlas collections. The velut website (in this repository) is a single-page application that reads from the two collections in accordance with what the user searches for, using an Express.js server on the backend and React.js on the frontend.
+I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and use mongoimport to replace my two MongoDB Atlas collections. The velut website (in this repository) is a single-page application that reads from the two collections in accordance with what the user searches for, using an Express.js server on the backend and React.js on the frontend.
+
+I lack experience with server-side rendering, so velut is all client-side–rendered. But I’d like to change this. A visitor shouldn’t need JavaScript to see a website!
 
 ## Functionality
 On visiting the [homepage](https://www.velut.co.uk), you are invited to type in a Latin word, and select the type of rhymes you want to search for. “Types of rhyme” here also include anagrams, words that scan the same metrically, or words with the same consonants in order (consonyms).
