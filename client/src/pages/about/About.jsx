@@ -29,7 +29,7 @@ class About extends Component {
                 <Header textBeforeTitle="About" />
 
                 <main>
-                    <section>
+                    <section id="backstory">
                         <h2>Backstory</h2>
                         <p>
                             When I was studying Latin at uni (I have a master’s), I found it useful to keep an Excel spreadsheet of any vocabulary I came across. 
@@ -49,7 +49,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="web-development">
                         <h2>Web development</h2>
                         <p>
                             In January 2019 I started my formal training in web development. I then had the skills and 
@@ -69,7 +69,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="spelling">
                         <h2>Spelling</h2>
                         <p>
                             Words in velut are spelt 
@@ -91,7 +91,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="scansion">
                         <h2>Scansion</h2>
                         <p>
                             “Scansion” refers to whether the syllables of a word are classed as “long” or “short” in classical Latin poetry.
@@ -115,7 +115,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="rhymes">
                         <h2>Rhymes</h2>
                         <p>
                             velut allows you to find rhymes under classical or ecclesiastical pronunciation. “Classical” pronunciation
@@ -150,7 +150,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="consonyms-anagrams-and-subwords">
                         <h2>Consonyms, anagrams, and subwords</h2>
                         <p>
                             “<Link to="/consonyms" title="Search for consonyms on velut">Consonyms</Link>” are words 
@@ -174,7 +174,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="lemmata">
                         <h2>Lemmata</h2>
                         <p>
                             The “lemma” (plural “lemmata”) of a word is the form you would find in a dictionary as the headword.
@@ -218,7 +218,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="english-to-latin">
                         <h2>English to Latin</h2>
                         <p>
                             velut has an <Link to="/english" title="English to Latin on velut">English 
@@ -249,7 +249,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="advanced-search">
                         <h2>Advanced Search</h2>
                         <p>
                             One of the newest features of velut is its <Link to="/advanced" title="Advanced Search on velut">Advanced
@@ -270,7 +270,7 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="word-compilation">
                         <h2>Word compilation</h2>
                         <p>
                             All the data have been compiled by me, so please be aware that there are several lemmata that 
@@ -296,10 +296,16 @@ class About extends Component {
                         </p>
                     </section>
 
-                    <section>
+                    <section id="future-plans">
                         <h2>Future plans</h2>
                         <p>
-                            Roughly 2% of lemmata are missing information regarding cognates.
+                            This website is entirely client-side–rendered, meaning your web-browser has to execute various amounts of my JavaScript code in order for you to see anything. This probably isn’t a problem for you — you’re reading this now. However, if you were to be on a slower device, a weaker internet connection, or a more restrictive data-plan, you might prefer a website that was a bit quicker to load. Search-engines, likewise, would rank velut higher if they didn’t have to run my JavaScript just to see what’s on the site. And people who don’t have JavaScript enabled cannot access velut at all! The solution to this is server-side rendering (SSR), which is a challenge to implement for a website of this complexity, especially as I’m not even three years into web development and I’ve never done SSR before. But I’m looking into it.
+                        </p>
+                        <p>
+                            If SSR is for improving the user-experience, then the de-Excellation of velut (as I call it) is for improving the developer-experience, ie, making my life easier as the person behind this project. As I’ve explained above (under <a href="#backstory">“Backstory”</a> and <a href="#web-development">“Web development”</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
+                        </p>
+                        <p>
+                            On a more lexicographical note, roughly 2% of lemmata are missing information regarding cognates.
                             I’m working to redress this.
                         </p>
                         <p>
