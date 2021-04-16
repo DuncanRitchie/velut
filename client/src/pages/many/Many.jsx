@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Header from '../../components/header/Header'
+import LatinLink from '../../components/latinlink/LatinLink'
 import axios from "../../axios/axios"
 import '../Subsites.css'
 import './Many.css'
@@ -95,28 +96,29 @@ class Many extends Component {
     render() {
         document.title = "Look-up of many words on velut — a Latin rhyming dictionary"
 
-        let mappedWords = []
-        if (this.state.searchedWords) {
-            mappedWords = this.state.searchedWords.map((word,index)=>{
-                // If we can delete from the input all the letters of the word and still have letters left over, we render a Link.
-                if (word) {
-                    return <span key={index}><Link to={"./"+word} title={word} lang="la">{word}</Link> </span>
+        const allWordsMapped
+            = this.state.searchedWords
+            ? this.state.searchedWords.map((word,index)=>{
+                // If a result for it has been found, we render a LatinLink.
+                const foundWord = this.state.foundWords.get(word);
+                if (foundWord) {
+                    return <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
                 }
-                // Otherwise the word is an anagram of input and we don’t render a Link.
+                // Otherwise we don’t render a Link.
                 else {
                     return <span key={index} lang="la"><strong>{word}</strong> </span>
                 }
             })
-        }
+            : []
         let result = null
         if (this.state.loading) {
-            result = (<p>Loading subwords…&nbsp; This can take a minute.</p>)
+            result = (<p>Loading words…</p>)
         }
-        else if (mappedWords.length) {
+        else if (allWordsMapped.length) {
             result = (
                 <div>
-                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`} that matched what you entered.</p>
-                    <p>{mappedWords}</p>
+                    <p>Here {allWordsMapped.length === 1 ? "is the 1 word" : `are the ${allWordsMapped.length} words`} you entered.</p>
+                    <p>{allWordsMapped}</p>
                 </div> 
             )
         }
