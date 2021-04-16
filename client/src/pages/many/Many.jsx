@@ -14,8 +14,9 @@ class Many extends Component {
             input: "",
             searchedWords: [],
             foundWords: new Map(),
-            pendingWords: new Map(),
+            pendingWords: new Set(),
             countWordsLoading: 0,
+            missingWords: [],
         }
     }
 
@@ -38,19 +39,24 @@ class Many extends Component {
     fetchWords = () => {
         console.log("Fetching words...")
         const searchedWords = this.splitInputIntoWords();
-        const distinctWords = new Set(searchedWords);
+        const distinctWords = new Set(searchedWords)
+        // const distinctWordsAsArray = [...distinctWords];
         this.setState({
             countWordsLoading: distinctWords.length,
             pendingWords: distinctWords,
+            missingWords: [],
         }, ()=>{
             distinctWords.forEach(word => {
             axios.getOneWordSelectOnlyWord(word)
                 .then(response => {
-                    console.log(response.data)
-                    let {foundWords, pendingWords} = this.state;
-                    foundWords.set(word, response.data.Word)
-                    pendingWords.delete(word)
-                    this.setState({foundWords, pendingWords})
+                    const foundWord = response.data.Word
+                    let {foundWords, pendingWords, missingWords} = this.state
+                    foundWords.set(word, foundWord)
+                    pendingWords?.delete(word)
+                    if (!foundWord) {
+                        missingWords.push(word)
+                    }
+                    this.setState({foundWords, pendingWords, missingWords})
                 });
             })
         })
@@ -99,6 +105,11 @@ class Many extends Component {
     render() {
         document.title = "Look-up of many words on velut — a Latin rhyming dictionary"
 
+        const missingWordsMapped
+            = this.state.missingWords.map((word, index)=>{
+                return <span key={index} lang="la"><strong>{word}</strong> </span>
+            })
+
         const allWordsMapped
             = this.state.searchedWords
             ? this.state.searchedWords.map((word,index)=>{
@@ -120,8 +131,9 @@ class Many extends Component {
         else if (allWordsMapped.length) {
             result = (
                 <div>
-                    <h2>All words entered</h2>
-                    <p>Here {allWordsMapped.length === 1 ? "is the 1 word" : `are the ${allWordsMapped.length} words`} you entered.</p>
+                    <h2>Words not in velut</h2>
+                    <p>{missingWordsMapped.length ? missingWordsMapped : "All of the words are in velut!"}</p>
+                    <h2>{allWordsMapped.length === 1 ? "One word entered" : `All ${allWordsMapped.length} words entered`}</h2>
                     <p>{allWordsMapped}</p>
                 </div> 
             )
