@@ -19,7 +19,8 @@ class Many extends Component {
         }
     }
 
-    textareaOnChange = (event) =>{
+
+    textareaOnChange = (event) => {
         this.setState({input: event.target.value});
     }
 
@@ -34,19 +35,23 @@ class Many extends Component {
         console.log("Fetching words...")
         const searchedWords = this.splitInputIntoWords();
         const distinctWords = new Set(searchedWords);
-        this.setState({countWordsLoading: distinctWords.length})
-        this.setState({pendingWords: distinctWords}).then(()=>{
+        this.setState({
+            countWordsLoading: distinctWords.length,
+            pendingWords: distinctWords,
+        }, ()=>{
             distinctWords.forEach(word => {
-                axios.getOneWordSelectOnlyWord(word)
-                    .then(response => {
-                        console.log(response.data)
-                        let {foundWords, pendingWords} = this.state;
-                        foundWords.set(word, response.data.Word)
-                        pendingWords.remove(word)
-                        this.setState({foundWords, pendingWords})
-                    });
+            axios.getOneWordSelectOnlyWord(word)
+                .then(response => {
+                    console.log(response.data)
+                    let {foundWords, pendingWords} = this.state;
+                    foundWords.set(word, response.data.Word)
+                    pendingWords.delete(word)
+                    this.setState({foundWords, pendingWords})
+                });
             })
         })
+        
+        
         
 
         // axios.getOneWord.then((data)=>{
