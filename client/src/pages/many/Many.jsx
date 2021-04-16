@@ -27,7 +27,11 @@ class Many extends Component {
 
     splitInputIntoWords = () => {
         const input = this.state.input;
-        const searchedWords = input.replace(/[^A-Za-zĀāĒēĪīŌōŪūȲȳËëÏïÉáéíóúýÁüṻḗ.:-]+/g, " ").split(" ");
+        const searchedWords = input
+            .replace(/[^A-Za-zĀāĒēĪīŌōŪūȲȳËëÏïÉáéíóúýÁüṻḗ.:-]+/g, " ")
+            .split(" ")
+            .filter(word=>word!=="");
+        console.log(searchedWords);
         this.setState({searchedWords});
         return searchedWords;
     }
@@ -117,6 +121,7 @@ class Many extends Component {
         else if (allWordsMapped.length) {
             result = (
                 <div>
+                    <h2>All words entered</h2>
                     <p>Here {allWordsMapped.length === 1 ? "is the 1 word" : `are the ${allWordsMapped.length} words`} you entered.</p>
                     <p>{allWordsMapped}</p>
                 </div> 
@@ -124,7 +129,7 @@ class Many extends Component {
         }
         else {
             result = (
-                <p>No words found!</p>
+                <p>Please enter some words into the box above!</p>
             )
         }
         return (
