@@ -13,9 +13,10 @@ class Many extends Component {
         this.state = {
             input: "",
             searchedWords: [],
-            foundWords: new Map(),
+            allWords: new Map(),
             pendingWords: new Set(),
             countWordsLoading: 0,
+            foundWords: [],
             missingWords: [],
         }
     }
@@ -50,13 +51,15 @@ class Many extends Component {
             axios.getOneWordSelectOnlyWord(word)
                 .then(response => {
                     const foundWord = response.data.Word
-                    let {foundWords, pendingWords, missingWords} = this.state
-                    foundWords.set(word, foundWord)
+                    let {allWords, pendingWords, foundWords, missingWords} = this.state
+                    allWords.set(word, foundWord)
                     pendingWords?.delete(word)
-                    if (!foundWord) {
+                    if (foundWord) {
+                        foundWords.push(word)
+                    } else {
                         missingWords.push(word)
                     }
-                    this.setState({foundWords, pendingWords, missingWords})
+                    this.setState({allWords, pendingWords, foundWords, missingWords})
                 });
             })
         })
@@ -105,6 +108,12 @@ class Many extends Component {
     render() {
         document.title = "Look-up of many words on velut — a Latin rhyming dictionary"
 
+        const foundWordsMapped
+            = this.state.foundWords.map((word, index)=>{
+                const foundWord = this.state.allWords.get(word);
+                return <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
+            })
+
         const missingWordsMapped
             = this.state.missingWords.map((word, index)=>{
                 return <span key={index} lang="la"><strong>{word}</strong> </span>
@@ -114,7 +123,7 @@ class Many extends Component {
             = this.state.searchedWords
             ? this.state.searchedWords.map((word,index)=>{
                 // If a result for it has been found, we render a LatinLink.
-                const foundWord = this.state.foundWords.get(word);
+                const foundWord = this.state.allWords.get(word);
                 if (foundWord) {
                     return <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
                 }
@@ -131,9 +140,11 @@ class Many extends Component {
         else if (allWordsMapped.length) {
             result = (
                 <div>
-                    <h2>Words not in velut</h2>
+                    <h2>Words in velut ({foundWordsMapped.length})</h2>
+                    <p>{foundWordsMapped.length ? foundWordsMapped : "None of the words are in velut!"}</p>
+                    <h2>Words not in velut ({missingWordsMapped.length})</h2>
                     <p>{missingWordsMapped.length ? missingWordsMapped : "All of the words are in velut!"}</p>
-                    <h2>{allWordsMapped.length === 1 ? "One word entered" : `All ${allWordsMapped.length} words entered`}</h2>
+                    <h2>All words entered</h2>
                     <p>{allWordsMapped}</p>
                 </div> 
             )
