@@ -144,16 +144,16 @@ class Many extends Component {
                     <p>
                         <label htmlFor="many-progress">
                             {pendingWordsCount
-                            ? `Waiting for results for ${pendingWordsCount} words…` 
-                            : `Showing results for all ${allWordsCount} words you entered.`}
+                            ? `Waiting for results for ${pendingWordsCount} ${pendingWordsCount === 1 ? "word" : "words"}…` 
+                            : `Showing results for all of the ${allWordsCount} ${allWordsCount === 1 ? "word" : "words"} you entered.`}
                             <progress id="many-progress" max={1} value={proportionComplete}></progress>
                         </label>
                     </p>
                     
                     <h2>Words in velut ({foundWordsCount})</h2>
-                    <p>{foundWordsCount ? foundWordsMapped : "None of the words are in velut!"}</p>
+                    <p>{foundWordsCount ? foundWordsMapped : "Nothing you searched for is in velut!"}</p>
                     <h2>Words not in velut ({missingWordsCount})</h2>
-                    <p>{missingWordsCount ? missingWordsMapped : "All of the words are in velut!"}</p>
+                    <p>{missingWordsCount ? missingWordsMapped : "Everything you searched for is in velut!"}</p>
                     <h2>All words entered</h2>
                     <p>{allWordsMapped}</p>
                 </div> 
