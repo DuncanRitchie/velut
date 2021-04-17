@@ -144,8 +144,8 @@ class Many extends Component {
                     <p>
                         <label htmlFor="many-progress">
                             {pendingWordsCount
-                            ? `Waiting for results for ${pendingWordsCount} words...` 
-                            : `Showing results for all ${allWordsCount} words you entered`}
+                            ? `Waiting for results for ${pendingWordsCount} words…` 
+                            : `Showing results for all ${allWordsCount} words you entered.`}
                             <progress id="many-progress" max={1} value={proportionComplete}></progress>
                         </label>
                     </p>
