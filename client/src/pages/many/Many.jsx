@@ -124,8 +124,25 @@ class Many extends Component {
         if (allWordsMapped.length) {
             const foundWordsCount = this.state.foundWords.length
             const missingWordsCount = this.state.missingWords.length
+            const allWordsCount = this.state.distinctWords.length
+            const pendingWordsCount = this.state.pendingWords.size
+            const proportionComplete = 1 - pendingWordsCount / allWordsCount
+
+            console.log({
+                foundWordsCount, missingWordsCount, allWordsCount, pendingWordsCount, proportionComplete
+            })
+
             result = (
                 <div>
+                    <p>
+                        <label htmlFor="many-progress">
+                            {pendingWordsCount
+                            ? `Waiting for results for ${pendingWordsCount} words...` 
+                            : `Showing results for all ${allWordsCount} words you entered`}
+                            <progress id="many-progress" max={1} value={proportionComplete}></progress>
+                        </label>
+                    </p>
+                    
                     <h2>Words in velut ({foundWordsCount})</h2>
                     <p>{foundWordsCount ? foundWordsMapped : "None of the words are in velut!"}</p>
                     <h2>Words not in velut ({missingWordsCount})</h2>
