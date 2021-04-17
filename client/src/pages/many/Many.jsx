@@ -119,8 +119,11 @@ class Many extends Component {
             })
 
         const missingWordsMapped
-            = this.state.missingWords.map((word, index)=>{
-                return <span key={index} lang="la"><strong>{word}</strong> </span>
+            = [...this.state.distinctWords].map((enteredWord, index) => {
+                const foundWord = this.state.allWords.get(enteredWord)
+                return foundWord || this.state.pendingWords.has(enteredWord)
+                    ? null
+                    : <span key={index} lang="la"><strong>{enteredWord}</strong> </span>
             })
 
         const allWordsMapped
@@ -142,12 +145,14 @@ class Many extends Component {
             result = (<p>Loading words…</p>)
         }
         else if (allWordsMapped.length) {
+            const foundWordsCount = this.state.foundWords.length
+            const missingWordsCount = this.state.missingWords.length
             result = (
                 <div>
-                    <h2>Words in velut ({this.state.foundWords.length})</h2>
-                    <p>{foundWordsMapped.length ? foundWordsMapped : "None of the words are in velut!"}</p>
-                    <h2>Words not in velut ({missingWordsMapped.length})</h2>
-                    <p>{missingWordsMapped.length ? missingWordsMapped : "All of the words are in velut!"}</p>
+                    <h2>Words in velut ({foundWordsCount})</h2>
+                    <p>{foundWordsCount ? foundWordsMapped : "None of the words are in velut!"}</p>
+                    <h2>Words not in velut ({missingWordsCount})</h2>
+                    <p>{missingWordsCount ? missingWordsMapped : "All of the words are in velut!"}</p>
                     <h2>All words entered</h2>
                     <p>{allWordsMapped}</p>
                 </div> 
