@@ -41,12 +41,16 @@ class Many extends Component {
     fetchWords = () => {
         console.log("Fetching words...")
         const searchedWords = this.splitInputIntoWords();
-        const distinctWords = new Set(searchedWords)
-        // const distinctWordsAsArray = [...distinctWords];
+        //// searchedWords may contain duplicates.
+        //// pendingWords and distinctWords should initially be the same set of distinct words that were entered.
+        //// pendingWords’ being a set means we can delete words from it when they are no longer pending.
+        //// distinctWords needs to be an array so it can be mapped over in the render method.
+        const pendingWords = new Set(searchedWords)
+        const distinctWords = [...pendingWords]
         this.setState({
             countWordsLoading: distinctWords.length,
-            distinctWords: distinctWords,
-            pendingWords: new Set(distinctWords),
+            distinctWords,
+            pendingWords,
             missingWords: [],
         }, ()=>{
             distinctWords.forEach(word => {
