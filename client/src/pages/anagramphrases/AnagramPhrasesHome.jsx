@@ -8,8 +8,8 @@ const AnagramsHome = () => {
     return (
         <div className="subsite-home anagram-phrases fulmar-background">
             <Header textBeforeTitle="Anagram phrases" />
-            <p>This will help you find Latin phrases that are anagrams!</p>
-            <p>Caution — searches may take some minutes. Searches longer than ten characters may fail completely.</p>
+            <p className="subsite-home-rubric">This will help you find Latin phrases that are anagrams!</p>
+            <p className="subsite-home-rubric">Caution — searches may take some minutes. Searches longer than ten characters may fail completely.</p>
             <Search prefix="anagramphrases/" searchbarTitle="Type something to find anagrams of" />
         </div>
     )

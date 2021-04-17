@@ -1,7 +1,7 @@
 /* Subsites are pages on velut that return Latin words. */
 /* For example: Advanced, Anagram Phrases, Subwords, and Word. */
 
-.subsite-home:not(.advanced) p:not(.title-full) {
+.subsite-home-rubric {
     width: calc(100% - 2.25rem);
     max-width: 46.125rem;
     margin-top: 1.125rem;

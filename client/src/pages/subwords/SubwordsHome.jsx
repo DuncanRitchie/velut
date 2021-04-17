@@ -11,9 +11,9 @@ const SubwordsHome = () => {
     return (
         <div className="subsite-home subwords fulmar-background">
             <Header textBeforeTitle="Subwords"/>
-            <p>This will help you find Latin words that can be made with the letters you specify. Type some letters below!</p>
+            <p className="subsite-home-rubric">This will help you find Latin words that can be made with the letters you specify. Type some letters below!</p>
             <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" />
-            <p>Alternatively, search for a random string: <Link to={"/subwords/"+randomCountdownQuestionExample} title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.</p>
+            <p className="subsite-home-rubric">Alternatively, search for a random string: <Link to={"/subwords/"+randomCountdownQuestionExample} title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.</p>
         </div>
     )
 }

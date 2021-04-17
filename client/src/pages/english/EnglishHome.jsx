@@ -8,7 +8,7 @@ const EnglishHome = () => {
     return (
         <div className="english subsite-home fulmar-background">
             <Header textBeforeTitle="English to Latin"/>
-            <p>Enter something English and this will suggest Latin translations!</p>
+            <p className="subsite-home-rubric">Enter something English and this will suggest Latin translations!</p>
             <Search prefix="english/" searchbarTitle="Type an English word" />
         </div>
     )

@@ -163,7 +163,7 @@ class Many extends Component {
             <div className="subwords fulmar-background subsite-home">
                 <Header textBeforeTitle="Look-up of many words" />
                 <div className="many">
-                    <p>
+                    <p className="subsite-home-rubric">
                         Search for several Latin words by entering them into the box below!
                     </p>
                     <div className="search">
