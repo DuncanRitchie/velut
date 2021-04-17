@@ -55,20 +55,21 @@ class Many extends Component {
             missingWords: [],
         }, ()=>{
             distinctWords.forEach(word => {
-            axios.getOneWordSelectOnlyWord(word)
-                .then(response => {
-                    const foundWord = response.data.Word
-                    let {allWords, pendingWords, foundWords, missingWords} = this.state
-                    allWords.set(word, foundWord)
-                    pendingWords?.delete(word)
-                    if (foundWord) {
-                        foundWords.push(word)
-                    } else {
-                        missingWords.push(word)
-                    }
-                    this.setState({allWords, pendingWords, foundWords, missingWords})
-                });
-            })
+                axios.getOneWordSelectOnlyWord(word)
+                    .then(response => {
+                        const foundWord = response.data.Word
+                        let {allWords, pendingWords, foundWords, missingWords} = this.state
+                        allWords.set(word, foundWord)
+                        pendingWords?.delete(word)
+                        if (foundWord) {
+                            foundWords.push(word)
+                        } else {
+                            missingWords.push(word)
+                        }
+                        this.setState({allWords, pendingWords, foundWords, missingWords})
+                    });
+                }
+            )
         })
     }
 
