@@ -121,10 +121,7 @@ class Many extends Component {
             })
             : []
         let result = null
-        if (this.state.loading) {
-            result = (<p>Loading words…</p>)
-        }
-        else if (allWordsMapped.length) {
+        if (allWordsMapped.length) {
             const foundWordsCount = this.state.foundWords.length
             const missingWordsCount = this.state.missingWords.length
             result = (
