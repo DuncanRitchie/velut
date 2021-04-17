@@ -125,8 +125,10 @@ class Many extends Component {
                 }
             })
             : []
-        let result = null
-        if (allWordsMapped.length) {
+        
+        const resultsAreRendered = allWordsMapped.length > 0;
+        let result = null;
+        if (resultsAreRendered) {
             const foundWordsCount = this.state.foundWords.length
             const missingWordsCount = this.state.missingWords.length
             const allWordsCount = this.state.distinctWords.length
@@ -157,22 +159,21 @@ class Many extends Component {
                 </div> 
             )
         }
-        else {
-            result = (
-                <p>Please enter some words into the box above!</p>
-            )
-        }
         return (
-            <div className="subwords fulmar-background">
+            <div className="subwords fulmar-background subsite-home">
                 <Header textBeforeTitle="Look-up of many words" />
                 <div className="many">
+                    <p>
+                        Search for several Latin words by entering them into the box below!
+                    </p>
                     <div className="search">
-                        <textarea title="Type something to find subwords of" value={this.state.input} onChange={this.textareaOnChange}/>
+                        <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange}/>
                         <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
                     </div>
-                    <div className="subsite-result">
-                        {result}
-                    </div>
+                    {resultsAreRendered && 
+                        (<div className="subsite-result">
+                            {result}
+                        </div>)}
                 </div>
             </div>
         )
