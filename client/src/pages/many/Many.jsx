@@ -51,6 +51,7 @@ class Many extends Component {
             countWordsLoading: distinctWords.length,
             distinctWords,
             pendingWords,
+            foundWords: [],
             missingWords: [],
         }, ()=>{
             distinctWords.forEach(word => {
