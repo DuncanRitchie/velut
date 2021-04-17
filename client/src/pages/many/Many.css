@@ -33,3 +33,11 @@ progress::-webkit-progress-value {
     background-color: #c2b170;
     box-shadow: 0.0625rem 0 0.125rem rgba(0,0,0,0.5) inset;
 }
+
+.many h2 {
+    /* Same styles as h3 on Word */
+    margin: 0;
+    padding: 0.625rem 0.75rem;
+    font-size: 1.375rem;
+    background-color: #fcf0be;
+}

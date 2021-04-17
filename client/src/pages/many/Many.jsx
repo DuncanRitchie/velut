@@ -140,7 +140,7 @@ class Many extends Component {
             })
 
             result = (
-                <div className="many">
+                <div>
                     <p>
                         <label htmlFor="many-progress">
                             {pendingWordsCount
