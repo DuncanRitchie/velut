@@ -91,18 +91,6 @@ class Many extends Component {
         })
     }
 
-    // componentDidMount() {
-    //     this.fetchWords(this.props.match.params.word)
-    // }
-
-    // componentDidUpdate() {
-    //     if (this.state.input !== this.props.match.params.word) {
-    //         let input = this.props.match.params.word
-    //         this.setState({input: input})
-    //         this.fetchWords(input)
-    //     }
-    // }
-
     render() {
         document.title = "Look-up of many words on velut — a Latin rhyming dictionary"
 
