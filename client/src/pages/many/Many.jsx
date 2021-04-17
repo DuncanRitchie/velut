@@ -14,6 +14,7 @@ class Many extends Component {
             input: "",
             searchedWords: [],
             allWords: new Map(),
+            distinctWords: new Set(),
             pendingWords: new Set(),
             countWordsLoading: 0,
             foundWords: [],
@@ -44,7 +45,8 @@ class Many extends Component {
         // const distinctWordsAsArray = [...distinctWords];
         this.setState({
             countWordsLoading: distinctWords.length,
-            pendingWords: distinctWords,
+            distinctWords: distinctWords,
+            pendingWords: new Set(distinctWords),
             missingWords: [],
         }, ()=>{
             distinctWords.forEach(word => {
@@ -109,9 +111,11 @@ class Many extends Component {
         document.title = "Look-up of many words on velut — a Latin rhyming dictionary"
 
         const foundWordsMapped
-            = this.state.foundWords.map((word, index)=>{
-                const foundWord = this.state.allWords.get(word);
-                return <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
+            = [...this.state.distinctWords].map((enteredWord, index) => {
+                const foundWord = this.state.allWords.get(enteredWord)
+                return foundWord
+                    ? <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
+                    : null
             })
 
         const missingWordsMapped
@@ -140,7 +144,7 @@ class Many extends Component {
         else if (allWordsMapped.length) {
             result = (
                 <div>
-                    <h2>Words in velut ({foundWordsMapped.length})</h2>
+                    <h2>Words in velut ({this.state.foundWords.length})</h2>
                     <p>{foundWordsMapped.length ? foundWordsMapped : "None of the words are in velut!"}</p>
                     <h2>Words not in velut ({missingWordsMapped.length})</h2>
                     <p>{missingWordsMapped.length ? missingWordsMapped : "All of the words are in velut!"}</p>
