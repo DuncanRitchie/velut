@@ -1,3 +1,12 @@
+.many .search {
+    padding-bottom: 2rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 5rem;
+}
+
 progress {
     width: 100%;
     height: 1.25rem;

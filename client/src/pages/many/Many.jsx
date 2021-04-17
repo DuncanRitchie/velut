@@ -4,6 +4,7 @@ import LatinLink from '../../components/latinlink/LatinLink'
 import axios from "../../axios/axios"
 import '../Subsites.css'
 import './Many.css'
+import '../../components/search/Search.css'
 
 // <Many/> is a JSX element rendered at /many/:input
 
@@ -137,7 +138,7 @@ class Many extends Component {
             })
 
             result = (
-                <div>
+                <div className="many">
                     <p>
                         <label htmlFor="many-progress">
                             {pendingWordsCount
@@ -164,9 +165,11 @@ class Many extends Component {
         return (
             <div className="subwords fulmar-background">
                 <Header textBeforeTitle="Look-up of many words" />
-                <div>
-                    <textarea title="Type something to find subwords of" value={this.state.input} onChange={this.textareaOnChange}/>
-                    <button type="submit" onClick={this.fetchWords}>Search!</button>
+                <div className="many">
+                    <div className="search">
+                        <textarea title="Type something to find subwords of" value={this.state.input} onChange={this.textareaOnChange}/>
+                        <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
+                    </div>
                     <div className="subsite-result">
                         {result}
                     </div>
