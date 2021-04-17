@@ -70,34 +70,6 @@ class Many extends Component {
                 });
             })
         })
-        
-        
-        
-
-        // axios.getOneWord.then((data)=>{
-        //     // data.data is a simple array of strings.
-        //     this.setState({subwords: data.data})
-        //     this.setState({loading: false})
-        // })
-        // let emptyArrays = wordObject.LemmaArray.map((lemma,index)=>{
-        //     return []
-        // })
-        // this.setState({formsArrays: emptyArrays})
-        // // Next we map across LemmaArray, querying the database for each lemma and adding the results 
-        // // to the correct element in the array in state as the results come in.
-        // wordObject.LemmaArray.map((lemma,i)=>{
-        //     axios.getWordsAlph({"LemmaArray": lemma}).then((data)=>{
-        //         let forms = data.data
-        //         forms = forms.map((form,index)=>{
-        //             return form.Word
-        //         })
-        //         // console.log(forms)
-        //         let formsArrays = this.state.formsArrays
-        //         formsArrays[i] = forms
-        //         this.setState({formsArrays: formsArrays})
-        //     })
-        //     return null
-        // })
     }
 
     // componentDidMount() {
