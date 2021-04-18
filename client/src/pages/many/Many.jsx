@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import Header from '../../components/header/Header'
 import LatinLink from '../../components/latinlink/LatinLink'
 import axios from "../../axios/axios"
@@ -39,6 +40,13 @@ class Many extends Component {
         return searchedWords;
     }
 
+    setUrlFromInput = (searchedWordsArray) => {
+        const searchedWordsAsString = searchedWordsArray.join(" ");
+        const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
+        const newUrl = `../../many/?${urlParams}`;
+        this.props.history.push(newUrl);
+    }
+
     fetchWords = () => {
         console.log("Fetching words...")
         const searchedWords = this.splitInputIntoWords();
@@ -48,6 +56,7 @@ class Many extends Component {
         //// `distinctWords` needs to be an array so it can be mapped over in the render method.
         const pendingWords = new Set(searchedWords)
         const distinctWords = [...pendingWords]
+        this.setUrlFromInput(searchedWords);
         this.setState({
             distinctWords,
             pendingWords,
@@ -194,4 +203,4 @@ class Many extends Component {
     }
 }
 
-export default Many
+export default withRouter(Many)
