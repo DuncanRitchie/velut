@@ -13,6 +13,7 @@ class Many extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            fromUrl: true,
             input: "",
             searchedWords: [],
             allWords: new Map(),
@@ -47,7 +48,16 @@ class Many extends Component {
         this.props.history.push(newUrl);
     }
 
-    fetchWords = () => {
+    setTextAreaFromUrl = () => {
+        console.log(this.props)
+        const urlParams = new URLSearchParams(this.props.location.search);
+        console.log(urlParams.get("search"));
+        this.setState({"input": urlParams.get("search") || ""}, () => {
+            this.fetchWords(false);
+        });
+    }
+
+    fetchWords = (urlShouldBeChanged = true) => {
         console.log("Fetching words...")
         const searchedWords = this.splitInputIntoWords();
         //// `searchedWords` may contain duplicates.
@@ -56,7 +66,9 @@ class Many extends Component {
         //// `distinctWords` needs to be an array so it can be mapped over in the render method.
         const pendingWords = new Set(searchedWords)
         const distinctWords = [...pendingWords]
-        this.setUrlFromInput(searchedWords);
+        if (urlShouldBeChanged) {
+            this.setUrlFromInput(searchedWords);
+        }
         this.setState({
             distinctWords,
             pendingWords,
@@ -99,6 +111,22 @@ class Many extends Component {
                 }
             )
         })
+    }
+
+    componentDidMount() {
+        this.setTextAreaFromUrl();
+        console.log(this.state);
+        this.fetchWords(false);
+    }
+
+    componentDidUpdate(prevProps) {
+        const searchChanged = this.props.location.search !== prevProps.location.search
+        console.log(this.props);
+        if (searchChanged) {
+            this.setTextAreaFromUrl();
+            console.log(this.state);
+            // this.fetchWords(false);
+        }
     }
 
     render() {
