@@ -139,6 +139,10 @@ class Many extends Component {
                 foundWordsCount, missingWordsCount, allWordsCount, pendingWordsCount, proportionComplete
             })
 
+            //// My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string.
+            const dictionaryLinksQuery = new URLSearchParams([["words", this.state.missingWords.join(" ")]]);
+            const dictionaryLinksHref = `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
+
             result = (
                 <div>
                     <p>
@@ -153,7 +157,17 @@ class Many extends Component {
                     <h2>Words in velut ({foundWordsCount})</h2>
                     <p>{foundWordsCount ? foundWordsMapped : "Nothing you searched for is in velut!"}</p>
                     <h2>Words not in velut ({missingWordsCount})</h2>
-                    <p>{missingWordsCount ? missingWordsMapped : "Everything you searched for is in velut!"}</p>
+                    {missingWordsCount
+                       ? (<>
+                            <p>{missingWordsMapped}</p>
+                            <p>
+                                <a target="_blank" rel="noopener noreferrer" href={dictionaryLinksHref} title="External webpage linking to other dictionaries (opens in new tab)">
+                                    Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
+                                </a>
+                            </p></>)
+                        : (<p>
+                                Everything you searched for is in velut!
+                            </p>)}
                     <h2>All words entered</h2>
                     <p>{allWordsMapped}</p>
                 </div> 
