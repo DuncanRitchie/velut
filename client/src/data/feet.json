@@ -157,126 +157,18 @@
 "Name": "pentamacer",
 "Count": 21
 },{
-"Foot": "⏑––––",
-"Name": "bacchius spondee",
-"Count": 45
-},{
-"Foot": "–⏑–––",
-"Name": "cretic spondee",
-"Count": 124
-},{
-"Foot": "––⏑––",
-"Name": "antibacchius spondee",
-"Count": 215
-},{
-"Foot": "–––⏑–",
-"Name": "spondee amphimacer",
-"Count": 531
-},{
-"Foot": "––––⏑",
-"Name": "spondee antibacchius",
-"Count": 25
-},{
-"Foot": "⏑⏑–––",
-"Name": "anapaest spondee",
-"Count": 115
-},{
-"Foot": "⏑–⏑––",
-"Name": "iamb bacchius",
-"Count": 152
-},{
 "Foot": "⏑––⏑–",
 "Name": "dochmius",
 "Latin": "dochmius",
 "Count": 251
 },{
-"Foot": "⏑–––⏑",
-"Name": "bacchius trochee",
-"Count": 21
-},{
-"Foot": "–⏑⏑––",
-"Name": "dactyl spondee",
-"Count": 284
-},{
 "Foot": "–⏑–⏑–",
 "Name": "acephalous iambic trimeter",
 "Count": 517
 },{
-"Foot": "–⏑––⏑",
-"Name": "amphimacer trochee",
-"Count": 103
-},{
-"Foot": "––⏑⏑–",
-"Name": "antibacchius iamb",
-"Count": 351
-},{
-"Foot": "––⏑–⏑",
-"Name": "spondee amphibrach",
-"Count": 134
-},{
-"Foot": "–––⏑⏑",
-"Name": "spondee anapaest",
-"Count": 347
-},{
-"Foot": "⏑⏑⏑––",
-"Name": "tribrach spondee",
-"Count": 143
-},{
-"Foot": "⏑⏑–⏑–",
-"Name": "pyrrhic cretic",
-"Count": 515
-},{
-"Foot": "⏑⏑––⏑",
-"Name": "anapaest trochee",
-"Count": 94
-},{
-"Foot": "⏑–⏑⏑–",
-"Name": "iamb anapaest",
-"Count": 426
-},{
 "Foot": "⏑–⏑–⏑",
 "Name": "acephalous trochaic trimeter",
 "Count": 85
-},{
-"Foot": "⏑––⏑⏑",
-"Name": "bacchius pyrrhic",
-"Count": 157
-},{
-"Foot": "–⏑⏑⏑–",
-"Name": "dactyl iamb",
-"Count": 382
-},{
-"Foot": "–⏑⏑–⏑",
-"Name": "dactyl trochee",
-"Count": 175
-},{
-"Foot": "–⏑–⏑⏑",
-"Name": "trochee dactyl",
-"Count": 390
-},{
-"Foot": "––⏑⏑⏑",
-"Name": "spondee tribrach",
-"Count": 254
-},{
-"Foot": "⏑⏑⏑⏑–",
-"Name": "tribrach iamb",
-"Count": 268
-},{
-"Foot": "⏑⏑⏑–⏑",
-"Name": "tribrach trochee",
-"Count": 90
-},{
-"Foot": "⏑⏑–⏑⏑",
-"Name": "pyrrhic dactyl",
-"Count": 335
-},{
-"Foot": "⏑–⏑⏑⏑",
-"Name": "iamb tribrach",
-"Count": 213
-},{
-"Foot": "–⏑⏑⏑⏑",
-"Name": "dactyl pyrrhic",
-"Count": 302
 },{
 "Foot": "⏑⏑⏑⏑⏑",
 "Name": "pentabrach",
@@ -286,129 +178,21 @@
 "Name": "hexamacer",
 "Count": 0
 },{
-"Foot": "––––⏑–",
-"Name": "molossus amphimacer",
-"Count": 56
-},{
-"Foot": "–––––⏑",
-"Name": "molossus antibacchius",
-"Count": 3
-},{
-"Foot": "⏑⏑––––",
-"Name": "minor ionic spondee",
-"Count": 14
-},{
 "Foot": "–⏑––⏑–",
 "Name": "dicretic",
 "Count": 75
-},{
-"Foot": "––⏑–⏑–",
-"Name": "antibacchius cretic",
-"Count": 12
-},{
-"Foot": "––––⏑⏑",
-"Name": "molossus dactyl",
-"Count": 20
-},{
-"Foot": "⏑⏑–⏑––",
-"Name": "anapaest bacchius",
-"Count": 19
-},{
-"Foot": "⏑⏑––⏑–",
-"Name": "anapaest cretic",
-"Count": 66
-},{
-"Foot": "⏑–⏑–⏑–",
-"Name": "iambic trimeter",
-"Count": 46
-},{
-"Foot": "–⏑⏑⏑––",
-"Name": "dactyl bacchius",
-"Count": 44
-},{
-"Foot": "–⏑–⏑⏑–",
-"Name": "amphimacer anapaest",
-"Count": 38
 },{
 "Foot": "–⏑–⏑–⏑",
 "Name": "trochaic trimeter",
 "Count": 24
 },{
-"Foot": "–⏑––⏑⏑",
-"Name": "cretic dactyl",
-"Count": 30
-},{
-"Foot": "––⏑⏑⏑–",
-"Name": "antibacchius anapaest",
-"Count": 3
-},{
-"Foot": "––⏑–⏑⏑",
-"Name": "antibacchius dactyl",
-"Count": 33
-},{
-"Foot": "⏑⏑⏑–⏑–",
-"Name": "tribrach amphimacer",
-"Count": 26
-},{
 "Foot": "⏑⏑–⏑⏑–",
 "Name": "dianapaest",
 "Count": 59
 },{
-"Foot": "⏑⏑–⏑–⏑",
-"Name": "anapaest amphibrach",
-"Count": 23
-},{
-"Foot": "⏑⏑––⏑⏑",
-"Name": "anapaest dactyl",
-"Count": 28
-},{
-"Foot": "⏑–⏑–⏑⏑",
-"Name": "amphibrach dactyl",
-"Count": 40
-},{
-"Foot": "⏑––⏑⏑⏑",
-"Name": "bacchius tribrach",
-"Count": 12
-},{
-"Foot": "–⏑⏑⏑⏑–",
-"Name": "dactyl anapaest",
-"Count": 5
-},{
-"Foot": "–⏑⏑⏑–⏑",
-"Name": "dactyl amphibrach",
-"Count": 19
-},{
 "Foot": "–⏑⏑–⏑⏑",
 "Name": "didactyl",
 "Count": 78
-},{
-"Foot": "–⏑–⏑⏑⏑",
-"Name": "amphimacer tribrach",
-"Count": 33
-},{
-"Foot": "––⏑⏑⏑⏑",
-"Name": "antibacchius tribrach",
-"Count": 10
-},{
-"Foot": "⏑⏑⏑⏑⏑–",
-"Name": "tribrach anapaest",
-"Count": 11
-},{
-"Foot": "⏑⏑⏑–⏑⏑",
-"Name": "tribrach dactyl",
-"Count": 25
-},{
-"Foot": "⏑⏑–⏑⏑⏑",
-"Name": "anapaest tribrach",
-"Count": 56
-},{
-"Foot": "⏑–⏑⏑⏑⏑",
-"Name": "amphibrach tribrach",
-"Count": 11
-},{
-"Foot": "–⏑⏑⏑⏑⏑",
-"Name": "dactyl tribrach",
-"Count": 3
 },{
 "Foot": "⏑⏑⏑⏑⏑⏑",
 "Name": "hexabrach",
@@ -418,37 +202,9 @@
 "Name": "heptamacer",
 "Count": 0
 },{
-"Foot": "⏑⏑–––⏑–",
-"Name": "minor ionic amphimacer",
-"Count": 9
-},{
-"Foot": "⏑⏑⏑––⏑–",
-"Name": "tribrach third epitrite",
-"Count": 1
-},{
-"Foot": "⏑⏑–⏑–⏑–",
-"Name": "anapaest diiamb",
-"Count": 14
-},{
-"Foot": "⏑⏑–––⏑⏑",
-"Name": "minor ionic dactyl",
-"Count": 3
-},{
 "Foot": "–⏑⏑–⏑⏑–",
 "Name": "hemiepes",
 "Count": 13
-},{
-"Foot": "–⏑––⏑⏑⏑",
-"Name": "cretic trochee pyrrhic",
-"Count": 5
-},{
-"Foot": "⏑⏑⏑––⏑⏑",
-"Name": "tribrach spondee pyrrhic",
-"Count": 2
-},{
-"Foot": "⏑⏑–⏑–⏑⏑",
-"Name": "anapaest secundus paeon",
-"Count": 6
 },{
 "Foot": "⏑⏑⏑⏑⏑⏑⏑",
 "Name": "heptabrach",
@@ -458,31 +214,7 @@
 "Name": "octomacer",
 "Count": 0
 },{
-"Foot": "⏑–––––⏑–",
-"Name": "bacchius molossus iamb",
-"Count": 2
-},{
-"Foot": "–⏑––⏑–––",
-"Name": "cretic cretic spondee",
-"Count": 3
-},{
-"Foot": "⏑–––––⏑⏑",
-"Name": "bacchius spondee dactyl",
-"Count": 3
-},{
-"Foot": "–⏑⏑–⏑–⏑–",
-"Name": "dactyl cretic iamb",
-"Count": 6
-},{
-"Foot": "–⏑⏑–⏑–⏑⏑",
-"Name": "dactyl trochee dactyl",
-"Count": 4
-},{
 "Foot": "⏑⏑⏑⏑⏑⏑⏑⏑",
 "Name": "octobrach",
 "Count": 0
-},{
-"Foot": "–⏑⏑–⏑–⏑––",
-"Name": "dactyl cretic bacchius",
-"Count": 1
 }]
