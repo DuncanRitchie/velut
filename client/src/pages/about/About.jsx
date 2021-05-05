@@ -283,9 +283,7 @@ class About extends Component {
                             There are, however, some words stressed on a suffix or grammatical ending that I have included, at my own discretion.
                         </p>
                         <p>
-                            There are even some encliticized forms (i.e. ending in <span lang="la">-ne</span> implying a question,{" "}
-                            <span lang="la">-que</span> meaning “and”, or <span lang="la">-ve</span> meaning “or”). 
-                            I stress all encliticized forms on the penultimate syllable, as the syllable immediately prior to the enclitic.
+                            There are even some encliticized forms (i.e. ending in <Link to="/-ne" title="“-ne” on velut" lang="la">-ne</Link> implying a question, <Link to="/-que" title="“-que” on velut" lang="la">-que</Link> meaning “and”, or <Link to="/-ve" title="“-ve” on velut" lang="la">-ve</Link> meaning “or”). I stress all encliticized forms on the penultimate syllable, as the syllable immediately prior to the enclitic.
                         </p>
                         <p>
                             If you discover that a word is not in velut, or you suspect I’ve made a mistake somewhere 
