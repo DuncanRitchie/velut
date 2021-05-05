@@ -166,8 +166,8 @@ class About extends Component {
                         <p>
                             “<Link to="/subwords" title="Search for subwords on velut">Subwords</Link>” are words whose letters
                             all appear in the input you specify. The input doesn’t have to be a real Latin word.
-                            If the British TV show “Countdown” or the French 
-                            “Des chiffres et des lettres” were played in Latin, my subwords would be valid answers.
+                            If the British TV show “Countdown” or the French{" "}
+                            <span lang="fr">“Des chiffres et des lettres”</span> were played in Latin, my subwords would be valid answers.
                         </p>
                         <p>
                             Subwords are in descending length order, then alphabetical.

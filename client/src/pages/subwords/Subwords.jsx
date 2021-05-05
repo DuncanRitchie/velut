@@ -67,7 +67,7 @@ class Subwords extends Component {
         else if (mappedWords.length) {
             result = (
                 <div>
-                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in “{input}”.&nbsp; You can click on a word (if it’s not a perfect anagram) to delete its letters from “{input}”.</p>
+                    <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in <strong lang="zxx">{input}</strong>.&nbsp; You can click on a word (if it’s not a perfect anagram) to delete its letters from <strong lang="zxx">{input}</strong>.</p>
                     <p lang="la">{mappedWords}</p>
                 </div> 
             )
@@ -81,7 +81,7 @@ class Subwords extends Component {
             <div className="subwords fulmar-background">
                 <Header textBeforeTitle="Subwords" />
                 <div>
-                    <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" />
+                    <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" lang="zxx" />
                     <div className="subsite-result">
                         {result}
                     </div>

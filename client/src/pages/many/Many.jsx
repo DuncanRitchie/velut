@@ -215,7 +215,7 @@ class Many extends Component {
                         Search for several Latin words by entering them into the box below!
                     </p>
                     <div className="search">
-                        <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange}/>
+                        <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
                         <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
                     </div>
                     {resultsAreRendered && 

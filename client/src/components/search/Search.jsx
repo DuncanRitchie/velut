@@ -163,7 +163,7 @@ class Search extends Component {
                     onKeyUp={this.handleKeyUp}
                     title={this.props.searchbarTitle || "Type something here"}
                     type="text"
-                    lang="la"
+                    lang={this.props.lang || "la"}
                     autoCapitalize="off"
                     autoComplete="off"
                     autoCorrect="off"

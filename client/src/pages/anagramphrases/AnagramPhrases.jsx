@@ -58,7 +58,7 @@ class Anagrams extends Component {
         else if (mappedAnagrams.length) {
             result = (
                 <div>
-                    <p>Here {mappedAnagrams.length === 1 ? "is the 1 Latin anagram" : `are the ${mappedAnagrams.length} Latin anagrams`} of <strong>{input}</strong>.</p>
+                    <p>Here {mappedAnagrams.length === 1 ? "is the 1 Latin anagram" : `are the ${mappedAnagrams.length} Latin anagrams`} of <strong lang="zxx">{input}</strong>.</p>
                     <p lang="la">{mappedAnagrams}</p>
                 </div> 
             )
@@ -73,7 +73,7 @@ class Anagrams extends Component {
             <div className="anagram-phrases fulmar-background">
                 <Header textBeforeTitle="Anagram phrases" />
                 <p className="subsite-home-rubric">Caution — searches may take some minutes or fail completely.</p>
-                <Search prefix="anagramphrases/" searchbarTitle="Type something to find anagrams of" />
+                <Search prefix="anagramphrases/" searchbarTitle="Type something to find anagrams of" lang="zxx" />
                 <div className="subsite-result">
                     {result}
                 </div>

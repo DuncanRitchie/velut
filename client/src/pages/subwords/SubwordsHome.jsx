@@ -12,7 +12,7 @@ const SubwordsHome = () => {
         <div className="subsite-home subwords fulmar-background">
             <Header textBeforeTitle="Subwords"/>
             <p className="subsite-home-rubric">This will help you find Latin words that can be made with the letters you specify. Type some letters below!</p>
-            <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" />
+            <Search prefix="subwords/" searchbarTitle="Type something to find subwords of" lang="zxx" />
             <p className="subsite-home-rubric">Alternatively, search for a random string: <Link to={"/subwords/"+randomCountdownQuestionExample} title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.</p>
         </div>
     )
