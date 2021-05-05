@@ -140,11 +140,11 @@ class Lemma extends Component {
                     ? <p>Transliterations: {mappedTransliterations}</p>
                     : null}
                 {mappedForms
-                    ? <p>{mappedForms[0] ? <>Forms: {mappedForms}</> : "Loading forms..."}</p>
+                    ? <p>{mappedForms[0] ? <>Forms: {mappedForms}</> : "Loading forms…"}</p>
                     : null}
                 <p>
                     {root
-                        ? (mappedCognates[0] ? <>Cognates: {mappedCognates}</> : "Loading cognates...")
+                        ? (mappedCognates[0] ? <>Cognates: {mappedCognates}</> : "Loading cognates…")
                         : "I have not assigned cognates for this lemma, sorry!"}
                 </p>
             </div>

@@ -15,7 +15,7 @@ const EnglishHome        = lazy(() => import("./pages/english/EnglishHome"));
 const Many               = lazy(() => import("./pages/many/Many"));
 const About              = lazy(() => import("./pages/about/About"));
 // JSX to display before an above component loads.
-const loading = () => <p>Loading...</p>;
+const loading = () => <p>Loading…</p>;
 
 class App extends Component {
 render() {

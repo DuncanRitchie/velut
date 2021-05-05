@@ -5,7 +5,7 @@ import subwordObjects from './Subwords'
 // These two functions are not actually used anywhere in velut!
 
 // subwordStrings() returns an array of strings, e.g. subwordStrings("duncanusrichardus",words) = 
-// ["charādrius","Dīnarchus","Hadriacus","Hadriānus","Rīchardus","cachinnās","cachinnus","candidāns", ...]
+// ["charādrius","Dīnarchus","Hadriacus","Hadriānus","Rīchardus","cachinnās","cachinnus","candidāns", …]
 
 const subwordStrings = (input,wordObjects) => {
     return subwordObjects(input,wordObjects).map((object,index)=>{
@@ -14,7 +14,7 @@ const subwordStrings = (input,wordObjects) => {
 }
 
 // subwordStringsNoMacra() returns an array of demacronized strings, e.g. subwordStrings("duncanusrichardus") = 
-// ["charadrius","Dinarchus","Hadriacus","Hadrianus","Richardus","cachinnas","cachinnus","candidans", ...]
+// ["charadrius","Dinarchus","Hadriacus","Hadrianus","Richardus","cachinnas","cachinnus","candidans", …]
 
 const subwordStringsNoMacra = (input,wordObjects) => {
     return subwordObjects(input,wordObjects).map((object,index)=>{

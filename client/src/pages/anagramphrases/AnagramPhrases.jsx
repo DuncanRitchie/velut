@@ -20,7 +20,7 @@ class Anagrams extends Component {
     fetchWords(input) {
         this.setState({loading: true})
         axios.getAnagrams(noMacra(input).toLowerCase().replace(/ /g,"")).then((data)=>{
-            // data.data is a simple array of strings, eg ['fēlēs','flēs ē','fel ēs','fel es','fel sē', ...]
+            // data.data is a simple array of strings, eg ['fēlēs','flēs ē','fel ēs','fel es','fel sē', …]
             this.setState({anagrams: data.data})
             this.setState({loading: false})
         })     

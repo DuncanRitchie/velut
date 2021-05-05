@@ -155,7 +155,7 @@ const findAdvanced = function(req, res) {
 
 	const scansionInput = req.query.scansion;
 	console.log("scansionInput: ", scansionInput);
-	// If there is anything in the scansion input...
+	// If there is anything in the scansion input…
 	if (scansionInput) {
 		let scansion = scansionInput
 			.replace(/[^lsx\.~_–⏑]/gi, "")  // Discard any invalid characters.
@@ -188,7 +188,7 @@ const findAdvanced = function(req, res) {
 
 	const spellingInput = req.query.spelling;
 	console.log("spellingInput: ", spellingInput);
-	// If there is anything in the spelling input...
+	// If there is anything in the spelling input…
 	if (spellingInput) {
 		let spelling = spellingInput
 			.replace(/[^abcdefghiklmnopqrstuvxyzCV~._]/g, "")  // Discard invalid characters.

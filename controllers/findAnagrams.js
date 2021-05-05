@@ -79,4 +79,4 @@ module.exports = findAnagrams
 
 // The controller flattens the result (with a space as delimiter), 
 // then passes it into Object.getOwnPropertyNames()
-// so what’s passed to the client is ['fēlēs','flēs ē','fel ēs','fel es','fel sē', ...]
+// so what’s passed to the client is ['fēlēs','flēs ē','fel ēs','fel es','fel sē', …]
