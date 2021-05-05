@@ -285,10 +285,11 @@ class Word extends Component {
                 <Search prefix="" searchbarTitle="Type a Latin word" />
                 <p className="showing-results-for">
                     Showing results for
+                    <br/>
+                    <strong className="found-word" lang="la">
+                        {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
+                    </strong>
                 </p>
-                <h2 className="found-word" lang="la">
-                    {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
-                </h2>
                 <div className="word-info">
                     {foundWord ? (
                         <div>
