@@ -20,8 +20,8 @@ class Many extends Component {
             distinctWords: new Set(),
             pendingWords: new Set(),
             countWordsLoading: 0,
-            foundWords: [],
-            missingWords: [],
+            foundWords: new Set(),
+            missingWords: new Set(),
         }
     }
 
@@ -72,8 +72,8 @@ class Many extends Component {
         this.setState({
             distinctWords,
             pendingWords,
-            foundWords: [],
-            missingWords: [],
+            foundWords: new Set(),
+            missingWords: new Set(),
         }, ()=>{
             distinctWords.forEach(word => {
                 //// If words from previous searches are in `allWords`, we don’t need to re-fetch them,
@@ -83,10 +83,10 @@ class Many extends Component {
                     pendingWords.delete(word)
                     //// `word` will be in `allWords` as `undefined` if it’s not in velut
                     if (this.state.allWords.get(word)) {
-                        foundWords.push(word)
+                        foundWords.add(word)
                     }
                     else {
-                        missingWords.push(word)
+                        missingWords.add(word)
                     }
                     this.setState({pendingWords, foundWords, missingWords})
                 }
@@ -101,9 +101,9 @@ class Many extends Component {
                             allWords.set(word, foundWord)
                             pendingWords?.delete(word)
                             if (foundWord) {
-                                foundWords.push(word)
+                                foundWords.add(word)
                             } else {
-                                missingWords.push(word)
+                                missingWords.add(word)
                             }
                             this.setState({allWords, pendingWords, foundWords, missingWords})
                         });
@@ -111,6 +111,13 @@ class Many extends Component {
                 }
             )
         })
+    }
+
+    /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
+    getHrefForDictionaryLinks() {
+        const missingWordsAsArray = [...this.state.missingWords.values()]
+        const dictionaryLinksQuery = new URLSearchParams([["words", missingWordsAsArray.join(" ")]]);
+        return `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
     }
 
     componentDidMount() {
@@ -166,8 +173,9 @@ class Many extends Component {
         const resultsAreRendered = allWordsMapped.length > 0;
         let result = null;
         if (resultsAreRendered) {
-            const foundWordsCount = this.state.foundWords.length
-            const missingWordsCount = this.state.missingWords.length
+            let {foundWords, missingWords, allWords, pendingWords} = this.state;
+            const foundWordsCount = this.state.foundWords.size
+            const missingWordsCount = this.state.missingWords.size
             const allWordsCount = this.state.distinctWords.length
             const pendingWordsCount = this.state.pendingWords.size
             const proportionComplete = 1 - pendingWordsCount / allWordsCount
@@ -175,10 +183,9 @@ class Many extends Component {
             console.log({
                 foundWordsCount, missingWordsCount, allWordsCount, pendingWordsCount, proportionComplete
             })
-
-            //// My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string.
-            const dictionaryLinksQuery = new URLSearchParams([["words", this.state.missingWords.join(" ")]]);
-            const dictionaryLinksHref = `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
+            console.log({
+                foundWords, missingWords, allWords, pendingWords
+            })
 
             result = (
                 <div>
@@ -197,8 +204,9 @@ class Many extends Component {
                     {missingWordsCount
                        ? (<>
                             <p>{missingWordsMapped}</p>
+                            {/* My velut-dictionary-links site generates links to several Latin websites. */}
                             <p>
-                                <a target="_blank" rel="noopener noreferrer" href={dictionaryLinksHref} title="External webpage linking to other dictionaries (opens in new tab)">
+                                <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
                                     Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
                                 </a>
                             </p></>)
