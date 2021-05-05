@@ -4,11 +4,11 @@ import axios from "../../axios/axios"
 import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
 import Dictionaries from "../../components/dictionaries/Dictionaries"
-import feet from "../../data/feet.json"
 import Lemma from "../../components/lemma/Lemma"
 import LatinLink from "../../components/latinlink/LatinLink"
 import macraToHyphens from "../../helpers/macraToHyphens"
 import hyphensToMacra from "../../helpers/hyphensToMacra"
+import getScansionDescription from "./getScansionDescription"
 import routes from "../../routes.json"
 import './Word.css'
 import '../Subsites.css'
@@ -232,9 +232,8 @@ class Word extends Component {
             document.title = "“" + foundWord.Word + "” on velut — a Latin rhyming dictionary"
             // Let’s find what metrical foot it is.
             if (foundWord.Scansion) {
-                let foot = feet.find((foot)=>{return foot.Foot===foundWord.Scansion})
-                if (foot) {
-                    footName = foot.Name.replace(/,/g, " or")
+                footName = getScansionDescription(foundWord.Scansion)
+                if (footName) {
                     if (footName.substr(0,1)==="a" || 
                         footName.substr(0,1)==="e" || 
                         footName.substr(0,1)==="i" || 
