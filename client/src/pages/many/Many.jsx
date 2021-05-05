@@ -36,7 +36,6 @@ class Many extends Component {
             .replace(/[^A-Za-zĀāĒēĪīŌōŪūȲȳËëÏïÉáéíóúýÁüṻḗ.:-]+/g, " ")
             .split(" ")
             .filter(word=>word!=="");
-        console.log(searchedWords);
         this.setState({searchedWords});
         return searchedWords;
     }
@@ -49,16 +48,13 @@ class Many extends Component {
     }
 
     setTextAreaFromUrl = () => {
-        console.log(this.props)
         const urlParams = new URLSearchParams(this.props.location.search);
-        console.log(urlParams.get("search"));
         this.setState({"input": urlParams.get("search") || ""}, () => {
             this.fetchWords(false);
         });
     }
 
     fetchWords = (urlShouldBeChanged = true) => {
-        console.log("Fetching words...")
         const searchedWords = this.splitInputIntoWords();
         //// `searchedWords` may contain duplicates.
         //// `pendingWords` and distinctWords should initially be the same set of distinct words that were entered.
@@ -122,17 +118,13 @@ class Many extends Component {
 
     componentDidMount() {
         this.setTextAreaFromUrl();
-        console.log(this.state);
         this.fetchWords(false);
     }
 
     componentDidUpdate(prevProps) {
         const searchChanged = this.props.location.search !== prevProps.location.search
-        console.log(this.props);
         if (searchChanged) {
             this.setTextAreaFromUrl();
-            console.log(this.state);
-            // this.fetchWords(false);
         }
     }
 
@@ -173,19 +165,11 @@ class Many extends Component {
         const resultsAreRendered = allWordsMapped.length > 0;
         let result = null;
         if (resultsAreRendered) {
-            let {foundWords, missingWords, allWords, pendingWords} = this.state;
-            const foundWordsCount = this.state.foundWords.size
-            const missingWordsCount = this.state.missingWords.size
-            const allWordsCount = this.state.distinctWords.length
-            const pendingWordsCount = this.state.pendingWords.size
+            const foundWordsCount    = this.state.foundWords.size
+            const missingWordsCount  = this.state.missingWords.size
+            const allWordsCount      = this.state.distinctWords.length
+            const pendingWordsCount  = this.state.pendingWords.size
             const proportionComplete = 1 - pendingWordsCount / allWordsCount
-
-            console.log({
-                foundWordsCount, missingWordsCount, allWordsCount, pendingWordsCount, proportionComplete
-            })
-            console.log({
-                foundWords, missingWords, allWords, pendingWords
-            })
 
             result = (
                 <div>
