@@ -186,8 +186,8 @@ class Many extends Component {
                     {foundWordsCount
                         ? <p lang="la">{foundWordsMapped}</p>
                         : (pendingWordsCount
-                           ? <p>"Please wait…"</p>
-                           : <p>"Nothing you searched for is in velut!"</p>)}
+                           ? <p>Please wait…</p>
+                           : <p>Nothing you searched for is in velut!</p>)}
 
                     <h2>Words not in velut ({missingWordsCount})</h2>
                     {missingWordsCount
