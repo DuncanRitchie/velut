@@ -144,7 +144,7 @@ class Many extends Component {
                 const foundWord = this.state.allWords.get(enteredWord)
                 return foundWord || this.state.pendingWords.has(enteredWord)
                     ? null
-                    : <span key={index} lang="la"><strong>{enteredWord}</strong> </span>
+                    : <Fragment key={index}><strong>{enteredWord}</strong> </Fragment>
             })
 
         const allWordsMapped
@@ -157,7 +157,7 @@ class Many extends Component {
                 }
                 // Otherwise we don’t render a Link.
                 else {
-                    return <span key={index} lang="la"><strong>{word}</strong> </span>
+                    return <Fragment key={index}><strong>{word}</strong> </Fragment>
                 }
             })
             : []
@@ -183,15 +183,16 @@ class Many extends Component {
                     </p>
                     
                     <h2>Words in velut ({foundWordsCount})</h2>
-                    <p>{foundWordsCount
-                        ? foundWordsMapped
-                        : pendingWordsCount
-                          ? "Please wait..."
-                          : "Nothing you searched for is in velut!"}</p>
+                    {foundWordsCount
+                        ? <p lang="la">{foundWordsMapped}</p>
+                        : (pendingWordsCount
+                           ? <p>"Please wait..."</p>
+                           : <p>"Nothing you searched for is in velut!"</p>)}
+
                     <h2>Words not in velut ({missingWordsCount})</h2>
                     {missingWordsCount
                        ? (<>
-                            <p>{missingWordsMapped}</p>
+                            <p lang="la">{missingWordsMapped}</p>
                             {/* My velut-dictionary-links site generates links to several Latin websites. */}
                             <p>
                                 <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
@@ -202,7 +203,7 @@ class Many extends Component {
                                 {pendingWordsCount ? "Please wait..." : "Everything you searched for is in velut!"}
                             </p>)}
                     <h2>All words entered</h2>
-                    <p>{allWordsMapped}</p>
+                    <p lang="la">{allWordsMapped}</p>
                 </div> 
             )
         }

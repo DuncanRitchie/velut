@@ -55,7 +55,7 @@ class Subwords extends Component {
                 }
                 // Otherwise the word is an anagram of input and we don’t render a Link.
                 else {
-                    return <span key={index} lang="la"><strong>{word}</strong> </span>
+                    return <Fragment key={index}><strong>{word}</strong> </Fragment>
                 }
             })
         }
@@ -68,7 +68,7 @@ class Subwords extends Component {
             result = (
                 <div>
                     <p>Here {mappedWords.length === 1 ? "is the 1 Latin word" : `are the ${mappedWords.length} Latin words`}  that can be made out of letters in “{input}”.&nbsp; You can click on a word (if it’s not a perfect anagram) to delete its letters from “{input}”.</p>
-                    <p>{mappedWords}</p>
+                    <p lang="la">{mappedWords}</p>
                 </div> 
             )
         }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import axios from "../../axios/axios"
@@ -45,7 +45,7 @@ class Anagrams extends Component {
         let mappedAnagrams = []
         if (anagrams) {
             mappedAnagrams = anagrams.map((anagram,index)=>{
-                return <span key={index} lang="la">{anagram.replace(/\./g," ")}<br/></span>
+                return <Fragment key={index}>{anagram.replace(/\./g," ")}<br/></Fragment>
             })
         }
         let result = null
@@ -59,7 +59,7 @@ class Anagrams extends Component {
             result = (
                 <div>
                     <p>Here {mappedAnagrams.length === 1 ? "is the 1 Latin anagram" : `are the ${mappedAnagrams.length} Latin anagrams`} of <strong>{input}</strong>.</p>
-                    <p>{mappedAnagrams}</p>
+                    <p lang="la">{mappedAnagrams}</p>
                 </div> 
             )
         }
