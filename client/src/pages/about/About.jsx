@@ -103,7 +103,7 @@ class About extends Component {
                         <p>
                             Many words have been coined for different combinations of long and short syllables — such
                             as iamb, trochee, dactyl, anapaest… — and velut will suggest the appropriate term 
-                            (or several) for most Latin words it contains.
+                            (or several) for every Latin word it contains.
                         </p>
                         <p>
                             velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
