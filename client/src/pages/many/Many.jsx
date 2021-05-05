@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {withRouter} from 'react-router-dom'
 import Header from '../../components/header/Header'
 import LatinLink from '../../components/latinlink/LatinLink'
@@ -135,7 +135,7 @@ class Many extends Component {
             = [...this.state.distinctWords].map((enteredWord, index) => {
                 const foundWord = this.state.allWords.get(enteredWord)
                 return foundWord
-                    ? <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
+                    ? <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
                     : null
             })
 
@@ -153,7 +153,7 @@ class Many extends Component {
                 // If a result for it has been found, we render a LatinLink.
                 const foundWord = this.state.allWords.get(word);
                 if (foundWord) {
-                    return <span key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </span>
+                    return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
                 }
                 // Otherwise we don’t render a Link.
                 else {

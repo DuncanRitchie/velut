@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import superscriptLemmaTag from './superscriptLemmaTag'
 import greece from '../../images/greece.png'
 import israel from '../../images/israel.png'
@@ -111,15 +111,15 @@ class Lemma extends Component {
 
         // Create JSX for the forms.
         let mappedForms = forms.map((form,index)=>{
-            return <span key={index}><LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}/> </span>
+            return <Fragment key={index}><LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}/> </Fragment>
         })
 
         // Create JSX for the cognates.
         let mappedCognates = cognates.map((cognate,index)=>{
             return (
-                <span key={index}>
+                <Fragment key={index}>
                     <LatinLink linkBase={linkBase} targetWord={cognate} currentWordHyphenated={currentWordHyphenated} isLemma={true}/>{" "}
-                </span>
+                </Fragment>
             )
         })
 
@@ -140,11 +140,11 @@ class Lemma extends Component {
                     ? <p>Transliterations: {mappedTransliterations}</p>
                     : null}
                 {mappedForms
-                    ? <p>{mappedForms[0] ? <span>Forms: {mappedForms}</span> : "Loading forms..."}</p>
+                    ? <p>{mappedForms[0] ? <>Forms: {mappedForms}</> : "Loading forms..."}</p>
                     : null}
                 <p>
                     {root
-                        ? (mappedCognates[0] ? <span>Cognates: {mappedCognates}</span> : "Loading cognates...")
+                        ? (mappedCognates[0] ? <>Cognates: {mappedCognates}</> : "Loading cognates...")
                         : "I have not assigned cognates for this lemma, sorry!"}
                 </p>
             </div>

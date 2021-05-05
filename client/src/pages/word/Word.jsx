@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {Link} from "react-router-dom"
 import axios from "../../axios/axios"
 import Header from "../../components/header/Header"
@@ -248,14 +248,14 @@ class Word extends Component {
             if (this.state.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
                 mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
-                    <span key={index}><LatinLink linkBase={linkBase} targetWord={rhyme} currentWordHyphenated={currentWordHyphenated}/> </span>
+                    <Fragment key={index}><LatinLink linkBase={linkBase} targetWord={rhyme} currentWordHyphenated={currentWordHyphenated}/> </Fragment>
                 )})
             }
             // Let’s find the homographs.
             if (this.state.homographs) {
                 // A react-router-dom Link is rendered for every homograph.
                 mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
-                    <span key={index}> <LatinLink linkBase={linkBase} targetWord={homograph} currentWordHyphenated={currentWordHyphenated}/></span>
+                    <Fragment key={index}> <LatinLink linkBase={linkBase} targetWord={homograph} currentWordHyphenated={currentWordHyphenated}/></Fragment>
                 )})
             }
             // Let’s do the lemmata. We will render an element for every lemma listed against the input.

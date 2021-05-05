@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import Header from '../../components/header/Header'
 import AdvancedSearch from './AdvancedSearch'
@@ -82,13 +82,13 @@ class Advanced extends Component {
                 // Render a Link and a space for every word.
                 mappedWords = this.state.results.map((word,index)=>{
                     return (
-                        <span key={index}><Link
+                        <Fragment key={index}><Link
                             lang="la"
                             to={`../${macraToHyphens(word.Word)}`}
                             title={word.Word}
                         >
                             <strong>{word.Word}</strong>
-                        </Link> </span>
+                        </Link> </Fragment>
                     )
                 })
             }

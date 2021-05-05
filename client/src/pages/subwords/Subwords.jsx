@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {Link} from 'react-router-dom'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
@@ -51,7 +51,7 @@ class Subwords extends Component {
                 // If we can delete from the input all the letters of the word and still have letters left over, we render a Link.
                 let remainingLetters = delChars(noMacra(input),noMacra(word))
                 if (remainingLetters) {
-                    return <span key={index}><Link to={"./"+remainingLetters} title={"delete “"+word+"” from “"+input+"” to leave “"+remainingLetters+"”"} lang="la">{word}</Link> </span>
+                    return <Fragment key={index}><Link to={"./"+remainingLetters} title={"delete “"+word+"” from “"+input+"” to leave “"+remainingLetters+"”"} lang="la">{word}</Link> </Fragment>
                 }
                 // Otherwise the word is an anagram of input and we don’t render a Link.
                 else {
