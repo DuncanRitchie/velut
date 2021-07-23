@@ -26,7 +26,7 @@ class English extends Component {
                 })   
             }
         }
-        catch {
+        catch (ex) {
         }
     }
 

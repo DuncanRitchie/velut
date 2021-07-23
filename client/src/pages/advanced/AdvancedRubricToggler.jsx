@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import AdvancedRubric from './AdvancedRubric';
 import './AdvancedRubricToggler.css';
 
@@ -17,7 +17,7 @@ class AdvancedRubricToggler extends Component {
 
     render() {
         return (
-            <>
+            <Fragment>
                 <button
                     id="advanced-rubric-toggler-button"
                     onClick={this.handleToggler}
@@ -25,7 +25,7 @@ class AdvancedRubricToggler extends Component {
                     {this.state.showRubric ? "Hide" : "Show"} how to use the Advanced Search
                 </button>
                 {this.state.showRubric ? <AdvancedRubric/> : null}
-            </>
+            </Fragment>
         )
     }
 }

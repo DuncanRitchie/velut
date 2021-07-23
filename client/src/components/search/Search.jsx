@@ -24,7 +24,7 @@ class Search extends Component {
         try {
             const sanitisedInput = decodeURIComponent(input.trim()) || ""
             this.setState({sanitisedInput: sanitisedInput})
-        } catch {
+        } catch (ex) {
             console.log("Please do not input % signs!");
         }
     }
@@ -88,7 +88,7 @@ class Search extends Component {
     componentDidMount() {
         try {
             this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
-        } catch {
+        } catch (ex) {
         }
         // The input is initially focussed, unless the page is About or a query has started.
         if (this.state.input
@@ -108,7 +108,7 @@ class Search extends Component {
             this.setState({fromUrl: true, input: input})
             try {
                 this.setState({sanitisedInput: decodeURIComponent(input)})
-            } catch {
+            } catch (ex) {
             }
         }
     }

@@ -11,14 +11,14 @@ let Dictionaries = (props) => {
         return <Fragment key={index}><a href={dic.Formula.replace("INPUT",plainInput)} title={"Search "+dic.Dictionary+" for “"+plainInput+"”"}>{dic.Dictionary}</a>{index===dictionaries.length-1 ? "" : ","} </Fragment>
     })
     return (
-        <>
+        <Fragment>
             <h2 className="dictionaries-heading">
                 Links to other {props.category} sites
             </h2>
             <p className="dictionaries-p">
                 {mappedDics}
             </p>
-        </>
+        </Fragment>
     )
 }
 

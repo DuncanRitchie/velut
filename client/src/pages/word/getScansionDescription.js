@@ -25,7 +25,8 @@ const getFootNameInData = (scansion) => {
 const getScansionDescriptionRecursive = (scansion) => {
     if (scansion.length <= 3) {
         //// If the Name is "cretic, amphimacer", we return only "cretic".
-        return getFootNameInData(scansion)?.split(",")[0]
+        const footnameInData = getFootNameInData(scansion)
+        return footnameInData && footnameInData.split(",")[0]
     }
     
     const headLength = scansion.length === 4 ? 2 : 3
@@ -37,7 +38,8 @@ const getScansionDescriptionRecursive = (scansion) => {
 
 //// If the scansion is in `data`, the corresponding description is returned (though eg "cretic, amphimacer" becomes "cretic or amphimacer"). Otherwise, we use the recursive function above.
 const getScansionDescription = (scansion) => {
-    return getFootNameInData(scansion)?.replace(",", " or") ?? getScansionDescriptionRecursive(scansion)
+    const footnameInData = getFootNameInData(scansion)
+    return (footnameInData && footnameInData.replace(",", " or")) || getScansionDescriptionRecursive(scansion)
 }
 
 export default getScansionDescription

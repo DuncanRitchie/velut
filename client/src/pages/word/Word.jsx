@@ -27,7 +27,8 @@ class Word extends Component {
             homographs: [],
             formsArrays: [],
             lemmata: [],
-            cognatesArrays: []
+            cognatesArrays: [],
+            error: null,
         }
     }
 
@@ -299,7 +300,7 @@ class Word extends Component {
                                 : null}
                             <p>
                                 The word <strong lang="la">{foundWord.Word}</strong> could scan as <span className="scansion">{foundWord.Scansion}</span>
-                                {footName ? <> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</> : null }
+                                {footName ? <Fragment> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</Fragment> : null }
                             </p>
                             <h2>
                                 {this.state.searchFieldFull}
@@ -317,14 +318,14 @@ class Word extends Component {
                         </div>
                     )
                     : (
-                        <>
+                        <Fragment>
                             <p>
                                 Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord} lang="la">{randomWord}</Link>.
                             </p>
                             <p>
                                 Or do you want to search from <Link to={"/english/"+sanitisedInput} title={"Search for Latin words with the English meaning “"+sanitisedInput+"”"}>English to Latin</Link>?
                             </p>
-                        </>
+                        </Fragment>
                     )}
                 </div>
                 <Dictionaries category="Latin" sanitisedInput={sanitisedInput} />

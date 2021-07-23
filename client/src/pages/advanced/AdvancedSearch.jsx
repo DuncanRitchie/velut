@@ -46,7 +46,7 @@ class AdvancedSearch extends Component {
         let sanitisedInput;
         try {
             sanitisedInput = decodeURIComponent(input) || "";
-        } catch {
+        } catch (ex) {
             sanitisedInput = input;
         }
         let newState = {fromUrl: false};

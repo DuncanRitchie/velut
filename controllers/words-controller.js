@@ -132,7 +132,7 @@ const findAnagrams = function(req,res) {
 			try {
 				anagrams = Object.getOwnPropertyNames(flatten(findAnagramsAsObject(input,subwords),{delimiter: " "}))
 				return anagrams
-			} catch {
+			} catch (ex) {
 				return ["Internal server error"]
 			}})
 			.then(anagrams=>{res.json(anagrams)})

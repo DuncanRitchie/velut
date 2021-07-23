@@ -95,7 +95,7 @@ class Many extends Component {
                             //// If the word is in velut, the value of `foundWord` is that of the Word field, ie simply the macronized word.
                             //// If the word is not in velut, it will still be added to `allWords`, but its value will be `undefined`.
                             allWords.set(word, foundWord)
-                            pendingWords?.delete(word)
+                            pendingWords || pendingWords.delete(word)
                             if (foundWord) {
                                 foundWords.add(word)
                             } else {
@@ -191,14 +191,14 @@ class Many extends Component {
 
                     <h2>Words not in velut ({missingWordsCount})</h2>
                     {missingWordsCount
-                       ? (<>
+                       ? (<Fragment>
                             <p lang="la">{missingWordsMapped}</p>
                             {/* My velut-dictionary-links site generates links to several Latin websites. */}
                             <p>
                                 <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
                                     Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
                                 </a>
-                            </p></>)
+                            </p></Fragment>)
                         : (<p>
                                 {pendingWordsCount ? "Please wait…" : "Everything you searched for is in velut!"}
                             </p>)}
