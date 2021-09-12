@@ -54,10 +54,31 @@ class Search extends Component {
         }
     }
 
-    // This is to search when the Escape key is pressed within the dropdown menu.
+    // Handles keys pressed within the dropdown menu.
     handleDropdownKeyUp = (e) => {
+        // Close the menu on Escape.
         if (e.keyCode === 27 ) {
             this.handleDropdown("dropdown-content-close");
+        }
+        // Arrow Up or Left
+        else if (e.keyCode === 38 || e.keyCode === 37) {
+            e.preventDefault(); // Not convinced preventDefault does anything; it’s supposed to stop window scrolling.
+            console.log("Going up!")
+            // Find the previous menu-item, or the last if we’re at the top of the menu.
+            // If the menu isn’t open, there is no effect.
+            const elemToFocus = document.querySelector(".dropdown-content-open li:focus-within")?.previousSibling?.firstChild ?? document.querySelector(".dropdown-content-open li:last-child button");
+            console.log(elemToFocus ?? "null")
+            elemToFocus?.focus();
+        }
+        // Arrow Down or Right
+        else if (e.keyCode === 40 || e.keyCode === 39) {
+            e.preventDefault(); // Not convinced preventDefault does anything; it’s supposed to stop window scrolling.
+            console.log("Going down!")
+            // Find the next menu-item, or the first if we’re at the bottom of the menu.
+            // If the menu isn’t open, the menu is opened. (Ideally I’d want the first menu-item to be focussed, but this isn’t happening yet.)
+            const elemToFocus = document.querySelector(".dropdown-content-open li:focus-within ~ li button") ?? (this.handleDropdown("dropdown-content-open"), document.querySelector(".dropdown-content-open li button"));
+            console.log(elemToFocus ?? "null")
+            elemToFocus?.focus();
         }
     }
 
