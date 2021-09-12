@@ -42,6 +42,7 @@ input[type=text], textarea {
     text-align: left;
     width: 50%;
     margin: 0.5625rem 0 1.875rem;
+    position: relative /* Gives the ul the same width as #dropdown. */;
 }
 
 #dropdown-select {
@@ -95,6 +96,7 @@ input[type=text], textarea {
     margin: 0;
     padding: 0;
     cursor: pointer;
+    position: absolute;
 }
 
 /*
@@ -104,27 +106,15 @@ input[type=text], textarea {
 */
 
 /*
-   height: 0 avoids leaving a gap when dropdown is closed.
-*/
-
-/*
    transform moves the dropdown offscreen.
    If it remained where it was, Edge would still let users
    click on it even when it was closed!
-*/
-
-/*
-   If CSS transition/animation would allow changing the height to
-   or from "initial" or "auto", we could use a simple transition.
-   But we need an animation on the height to animate smoothly from 
-   height: 0 to height: 14.625rem, then change to initial at the end.
 */
 
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
-    height: 0; /* Changed with an animation to 14.5rem then initial  */
     opacity: 0; /* Changed with a transition */
     transform: translateX(-50vw); /* Changed with a delayed transition */
 }
@@ -135,10 +125,6 @@ input[type=text], textarea {
     opacity: 0;
     transform: translateX(-50vw);
     transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease, transform 0s 1.5s;
-    animation-name: dropdown-animation-close;
-    animation-duration: 1.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards
 }
 
 .dropdown-content-open {
@@ -147,31 +133,6 @@ input[type=text], textarea {
     opacity: 1;
     transform: translateX(0);
     transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
-    animation-name: dropdown-animation-open;
-    animation-duration: 1.5s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards
-}
-
-@keyframes dropdown-animation-close {
-    0% {
-        height: calc(12.375rem + 72px) /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
-    }
-    100% {
-        height: 0
-    }
-}
-
-@keyframes dropdown-animation-open {
-    0% {
-        height: 0
-    }
-    99.5% {
-        height: calc(12.375rem + 72px) /* This is roughly the correct offset height of dropdown-content if screenwidth >~ 63.4rem */
-    }
-    100% {
-        height: initial
-    }
 }
 
 .dropdown-item {
