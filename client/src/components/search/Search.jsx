@@ -35,7 +35,7 @@ class Search extends Component {
     }
 
     // This is to search when the enter key is pressed within the <input>.
-    handleKeyUp = (e) => {
+    handleInputKeyUp = (e) => {
         if (e.keyCode === 13 ) {
             this.search()
         }
@@ -51,6 +51,13 @@ class Search extends Component {
             this.handleDropdown("dropdown-content-close");
         } else {
             this.handleDropdown("dropdown-content-open");
+        }
+    }
+
+    // This is to search when the Escape key is pressed within the dropdown menu.
+    handleDropdownKeyUp = (e) => {
+        if (e.keyCode === 27 ) {
+            this.handleDropdown("dropdown-content-close");
         }
     }
 
@@ -160,7 +167,7 @@ class Search extends Component {
                     id="search-input"
                     value={inputValue}
                     onChange={this.handleInput}
-                    onKeyUp={this.handleKeyUp}
+                    onKeyUp={this.handleInputKeyUp}
                     title={this.props.searchbarTitle || "Type something here"}
                     type="text"
                     lang={this.props.lang || "la"}
@@ -188,7 +195,10 @@ class Search extends Component {
                  || this.props.match.path==="/about"
                  ? null
                   : ( 
-                    <div id="dropdown" onMouseLeave={this.handleDropdownMouseLeave}>
+                    <div id="dropdown"
+                        onMouseLeave={this.handleDropdownMouseLeave}
+                        onKeyUp={this.handleDropdownKeyUp}    
+                    >
                         <button 
                             id="dropdown-select"
                             onClick={this.handleDropdownClick}
