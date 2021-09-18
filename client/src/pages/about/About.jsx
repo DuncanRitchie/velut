@@ -303,7 +303,7 @@ class About extends Component {
                             If SSR is for improving the user-experience, then the de-Excellation of velut (as I call it) is for improving the developer-experience, ie, making my life easier as the person behind this project. As I’ve explained above (under <a href="#backstory">“Backstory”</a> and <a href="#web-development">“Web development”</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
                         </p>
                         <p>
-                            On a more lexicographical note, roughly 2% of lemmata are missing information regarding cognates.
+                            On a more lexicographical note, roughly 1% of lemmata are missing information regarding cognates.
                             I’m working to redress this.
                         </p>
                         <p>
