@@ -243,9 +243,7 @@ class About extends Component {
                             Various other websites can be more fertile than velut in the field of translation into Latin.
                             I include links to some of them.
                             Each of these resources will correctly suggest <span lang="la">laetus</span> for “glad”, though velut does not.
-                        </p>
-                        <p>
-                            Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell’s from 1970!
+                            See the <a href="#external-links" title="External links, on this page">External links</a> section below for more info.
                         </p>
                     </section>
 
@@ -285,12 +283,27 @@ class About extends Component {
                         <p>
                             There are even some encliticized forms (i.e. ending in <Link to="/-ne" title="“-ne” on velut" lang="la">-ne</Link> implying a question, <Link to="/-que" title="“-que” on velut" lang="la">-que</Link> meaning “and”, or <Link to="/-ve" title="“-ve” on velut" lang="la">-ve</Link> meaning “or”). I stress all encliticized forms on the penultimate syllable, as the syllable immediately prior to the enclitic.
                         </p>
+                    </section>
+
+                    <section id="external-links">
+                        <h2>External links</h2>
                         <p>
                             If you discover that a word is not in velut, or you suspect I’ve made a mistake somewhere 
-                            (it does happen!), or you want more detail than I provide, please look in other resources. 
-                            I hope the “links to external sites” at the base of the word’s page are of use. 
-                            (Thesaurus Linguae Latinae requires a subscription,
-                            which your university or library might be able to furnish you with.)
+                            (it does happen!), or you want more detail than I provide, please look in other resources.
+                        </p>
+                        <p>
+                            For any Latin word, even for words that are not in velut, I include a “Links to external sites”
+                            list when you search for it. This allows you to look Latin words up in lexicons other than velut.
+                            As mentioned above, I also have such a list for <a href="#english-to-latin" title="English to Latin, on this page">English to Latin</a>.
+                        </p>
+                        <p>
+                            Other dictionaries are searchable via the website <a href="https://latinitium.com/latin-dictionaries/" title="Searchable dictionaries on Latinitium">Latinitium</a>. Even more dictionaries are listed on <a href="https://latin.stackexchange.com/questions/867/which-online-latin-dictionaries-should-i-use-and-why" title="Which online Latin dictionaries should I use and why? — Stack Exchange">this Latin Stack Exchange thread</a>.
+                        </p>
+                        <p>
+                            I’m not affiliated with any external sites or responsible for their content, but I’ve found them helpful, so I hope they’re of use to you too.
+                        </p>
+                        <p>
+                            Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a copy of Cassell’s from 1970!
                         </p>
                     </section>
 
@@ -300,7 +313,7 @@ class About extends Component {
                             This website is entirely client-side–rendered, meaning your web-browser has to execute various amounts of my JavaScript code in order for you to see anything. This probably isn’t a problem for you — you’re reading this now. However, if you were to be on a slower device, a weaker internet connection, or a more restrictive data-plan, you might prefer a website that was a bit quicker to load. Search-engines, likewise, would rank velut higher if they didn’t have to run my JavaScript just to see what’s on the site. And people who don’t have JavaScript enabled cannot access velut at all! The solution to this is server-side rendering (SSR), which is a challenge to implement for a website of this complexity, especially as I’m not even three years into web development and I’ve never done SSR before. But I’m looking into it.
                         </p>
                         <p>
-                            If SSR is for improving the user-experience, then the de-Excellation of velut (as I call it) is for improving the developer-experience, ie, making my life easier as the person behind this project. As I’ve explained above (under <a href="#backstory">“Backstory”</a> and <a href="#web-development">“Web development”</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
+                            If SSR is for improving the user-experience, then the de-Excellation of velut (as I call it) is for improving the developer-experience, ie, making my life easier as the person behind this project. As I’ve explained above (under <a href="#backstory" title="Backstory, on this page">Backstory</a> and <a href="#web-development" title="Web development, on this page">Web development</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
                         </p>
                         <p>
                             On a more lexicographical note, roughly 1% of lemmata are missing information regarding cognates.
