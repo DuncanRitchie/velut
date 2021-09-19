@@ -8,8 +8,19 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
-        <Head />
+      <Html lang="en">
+        <Head>
+            <meta charset="utf-8" />
+            <link rel="shortcut icon" href="https://www.duncanritchie.co.uk/favicon.ico" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+            <meta name="theme-color" content="#000000" />
+            {/* Description and title should be overridden on each page. */}
+            <meta name="Description" content="velut — a Latin dictionary with lists of rhymes, anagrams, homographs, consonyms, subwords, inflected forms, cognates, and links to other online resources."/>
+            <title>Duncan Ritchie’s velut — a Latin rhyming dictionary</title>
+        </Head>
         <body>
           <Main />
           <NextScript />
