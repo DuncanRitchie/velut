@@ -8,30 +8,45 @@ import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
 import hello from "./api/hello"
 import styles from '../styles/About.module.css'
 
-export async function getServerSideProps({params, res,}) {
-    try {
-        const result = await hello()
-        const json = await result.json()
+// export async function getServerSideProps() {
+//     // try {
+//         const result = await hello()
+//         console.log(result)
+//         // const json = await result?.json() ?? "result does not have json"
+//         const json = "hello"
+//         //const result = "hellp"
 
-        return {
-          props: {
-            wordCount: json.data.name,
-            lemmaCount: result.data.name,    
-          },
-        };
+//         return {
+//           props: {
+//             wordCount: json?.data?.name ?? "json?.data?.name",
+//             lemmaCount: result ?? "result",
+//           },
+//         };
     
-    } catch {
-        res.statusCode = 404;
-    
-        return {
-    
-          props: {},
-    
-        };
-      }
-    // const hello = await ;
-    // return {props: {hello}};
-}
+//     // } catch {
+//     //     // res.statusCode = 404;
+//     //     return {
+//     //       props: {
+//     //           wordCount: "unknown",
+//     //           lemmaCount: "similarly unknown",
+//     //       },
+//     //     };
+//     //   }
+//     // const hello = await ;
+//     // return {props: {hello}};
+// }
+
+export async function getServerSideProps({params,req,res,query,preview,previewData,resolvedUrl,locale,locales,defaultLocale}) {
+    if (query.text) {
+      return { redirect: { destination: '/post', permanent: false, },}
+    }
+    const data = await fetch('http://localhost:3000/api/hello');
+    const users = await data.json();
+    if (!data) {
+    return {notFound: true,}
+    }  
+    return { props: { wordCount: users.name, lemmaCount: "similarly unknown" } }
+  }
 
 const About = (props) => {
     // state = {
