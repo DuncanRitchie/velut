@@ -31,6 +31,22 @@ html {
     padding: 0;
 }
 
+button {
+    box-shadow: 0;
+    border: 0;
+    background: 0;
+    font: inherit;
+    padding: 0;
+}
+
+ul {
+    min-width: fit-content;
+    width: calc(100vw - 0.75rem);
+    max-width: 47.875rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
 @media screen {
     #__next {
         background-image: linear-gradient(180deg, #cee3f2 0%, #e3eff8 100%);
@@ -78,7 +94,7 @@ p + p:not(.title-full) {
     padding-bottom: 0.625rem;
 }
 
-p:last-child:not(.dictionaries-p):not(.title-full) {
+p:last-child:not(.dictionaries-p) {
     padding-bottom: 1.5rem;
 }
 

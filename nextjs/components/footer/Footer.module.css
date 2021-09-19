@@ -4,14 +4,6 @@
     background: linear-gradient(to bottom, #79c0b5, #9ff3c8);
 }
 
-.footer ul {
-    min-width: fit-content;
-    width: calc(100vw - 0.75rem);
-    max-width: 47.875rem;
-    margin: 0 auto;
-    padding: 0;
-}
-
 .footer ul { 
     list-style: none;
     display: flex;
@@ -52,14 +44,6 @@
 .footer a:hover,.go-back:hover {
     color: #0c457a;
     background: linear-gradient(to top, #d1f8e4, #d1f8e4);
-}
-
-.button {
-    box-shadow: 0;
-    border: 0;
-    background: 0;
-    font: inherit;
-    padding: 0;
 }
 
 
