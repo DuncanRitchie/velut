@@ -17,12 +17,12 @@ let Footer = (props) => {
         <footer className={styles.footer}>
             <ul>
                 <li>
-                    <span className="footer-copyright">
+                    <span className={styles.footerCopyright}>
                         © Duncan Ritchie
                     </span>
                 </li>
 
-                {/* {showBack && <li><button className="go-back button" tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button></li>} */}
+                {/* {showBack && <li><button className={styles.goBack + " button"} tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button></li>} */}
 
                 {showHome && <li><Link href="/" title="velut homepage">Home</Link></li>}
 
