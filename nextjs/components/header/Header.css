@@ -1,0 +1,64 @@
+h1 {
+    width: inherit;
+    padding: 0.5625rem 0.375rem 0.375rem;
+    color: #213a21 /* a darker, brighter green */;
+    margin: calc(1vw + 3vh - 0.625rem) 0 -0.375rem;
+}
+
+.title-author {
+    font-size: 0.9rem;
+    font-weight: normal;
+    padding-right: 10.5rem;
+    padding-right: calc(7.5rem + 3vw);
+    color: #376937;
+    /* A shadow the same colour as the background.
+    in case the text is overlaying the fulmar picture */
+    text-shadow: 1px 1px 1px #cee3f2;
+    display: inline-block;
+}
+
+.title {
+    color: #34311a /* Average of the gradient colours */;
+    background: linear-gradient(to bottom, #111007, #58522c);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5.625rem;
+    font-weight: normal;
+    font-weight: 300;
+    line-height: 3.25rem;
+    font-variant: none;
+    text-decoration: none;
+}
+
+.title::after {
+    content: text;
+    text-shadow: 2px 2px white;
+}
+
+.title-full {
+    margin-top: 0;
+    margin-bottom: 1.125rem;
+    color: #274141;
+    font-size: 0.75rem;
+    /* A shadow the same colour as the background.
+    in case the text is overlaying the fulmar picture */
+    text-shadow: 1px 1px 1px #cee3f2;
+    padding-top: 0.625rem;
+}
+
+
+
+@media print {
+    /* Title should be solid grey on print. */
+    .title {
+        color: #3f3f3f;
+        background: none;
+        background-clip: initial;
+        -webkit-text-fill-color: initial;
+    }
+
+    /* No reason to have a shadow. */
+    .title-author,.title-full {
+        text-shadow: none;
+    }
+}
