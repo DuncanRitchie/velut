@@ -1,7 +1,7 @@
 import React, {Component} from "react"
-import {withRouter} from 'react-router-dom'
+//import {withRouter} from 'react-router-dom'
 import routes from '../../routes.json'
-import "./Search.css"
+import styles from "./Search.module.css"
 
 class Search extends Component {
     constructor(props) {
@@ -182,7 +182,7 @@ class Search extends Component {
             })
         // Now we’re ready to return JSX.
         return (
-            <div className="search">
+            <div className={styles.search}>
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
@@ -241,4 +241,4 @@ class Search extends Component {
     }
 }
 
-export default withRouter(Search)
+export default Search

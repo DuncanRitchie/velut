@@ -1,11 +1,11 @@
-h1 {
+.header h1 {
     width: inherit;
     padding: 0.5625rem 0.375rem 0.375rem;
     color: #213a21 /* a darker, brighter green */;
     margin: calc(1vw + 3vh - 0.625rem) 0 -0.375rem;
 }
 
-.title-author {
+.header .title-author {
     font-size: 0.9rem;
     font-weight: normal;
     padding-right: 10.5rem;
@@ -17,7 +17,7 @@ h1 {
     display: inline-block;
 }
 
-.title {
+.header .title {
     color: #34311a /* Average of the gradient colours */;
     background: linear-gradient(to bottom, #111007, #58522c);
     background-clip: text;
@@ -30,12 +30,12 @@ h1 {
     text-decoration: none;
 }
 
-.title::after {
+.header .title::after {
     content: text;
     text-shadow: 2px 2px white;
 }
 
-.title-full {
+.header .title-full {
     margin-top: 0;
     margin-bottom: 1.125rem;
     color: #274141;
@@ -50,7 +50,7 @@ h1 {
 
 @media print {
     /* Title should be solid grey on print. */
-    .title {
+    .header .title {
         color: #3f3f3f;
         background: none;
         background-clip: initial;
@@ -58,7 +58,7 @@ h1 {
     }
 
     /* No reason to have a shadow. */
-    .title-author,.title-full {
+    .header .title-author,.title-full {
         text-shadow: none;
     }
 }

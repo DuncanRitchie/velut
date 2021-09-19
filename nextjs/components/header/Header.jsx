@@ -1,9 +1,9 @@
 import React from 'react'
-import './Header.css'
+import styles from './Header.module.css'
 
 let Header = (props) => {
     return (
-        <header>
+        <header className={styles.header}>
             <h1>
                 {props.textBeforeTitle ? <>{props.textBeforeTitle}<br /></> : null }
                 <span className="title-author">Duncan Ritchie’s</span><br />

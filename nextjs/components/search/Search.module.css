@@ -7,7 +7,7 @@
     margin-top: 1.5rem;
 }
 
-input[type=text], textarea {
+.search input[type=text], .search textarea {
     text-align: center;
     margin: 0;
     width: 66vw;
@@ -155,11 +155,11 @@ input[type=text], textarea {
     padding: 0.1875rem 0.375rem;
 }
 
-button {
+.search button {
     cursor: pointer;
     transition: color 0.4s;
 }
 
-button:disabled {
+.search button:disabled {
     color: #5f5f5f /* Same color as .link-to-current-word */;
 }
