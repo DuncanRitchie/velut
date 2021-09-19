@@ -11,6 +11,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
 @import url(../public/fonts/fonts.css);
 
 html {
@@ -20,7 +21,7 @@ html {
     font-size: calc(16px + 4 * ((100vw - 360px) / 2040));
 }
 
-.App {
+#__next {
     text-align: center;
     font-family: "Alegreya", serif;
     color: #111111;
@@ -31,7 +32,7 @@ html {
 }
 
 @media screen {
-    .App {
+    #__next {
         background-image: linear-gradient(180deg, #cee3f2 0%, #e3eff8 100%);
         background-attachment: fixed;
         display: grid;
@@ -44,7 +45,7 @@ html {
 /* Alegreya doesn’t have Hebrew characters, so any Hebrew gets displayed in Tinos. */
 @import url(https://fonts.googleapis.com/css2?family=Tinos&display=swap);
 
-.App *[lang=he] {
+#__next *[lang=he] {
     font-family: "Alegreya", "Tinos", serif;
 }
 
