@@ -1,27 +1,58 @@
 import React, {Component} from "react"
+import { GetServerSideProps } from "next"
 import Link from "next/link"
 //import {Head} from "next/head"
 import Header from "../components/header/Header"
 import Search from "../components/search/Search"
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
+import hello from "./api/hello"
 import styles from '../styles/About.module.css'
 
-export default class About extends Component {
-    state = {
-        wordCount: 0,
-        lemmaCount: 0
-    }
+export async function getServerSideProps({params, res,}) {
+    try {
+        const result = await hello()
+        const json = await result.json()
 
-    componentDidMount() {
-        // axios.countWords().then((data)=>{
-        //   this.setState({wordCount: data.data.count})
-        // })
-        // axios.countLemmata().then((data)=>{
-        //   this.setState({lemmaCount: data.data.count})
-        // })
-    }
+        return {
+          props: {
+            wordCount: json.data.name,
+            lemmaCount: result.data.name,    
+          },
+        };
+    
+    } catch {
+        res.statusCode = 404;
+    
+        return {
+    
+          props: {},
+    
+        };
+      }
+    // const hello = await ;
+    // return {props: {hello}};
+}
 
-    render() {
+const About = (props) => {
+    // state = {
+    //     wordCount: 0,
+    //     lemmaCount: 0
+    // }
+
+    // componentDidMount() {
+    //     // getServerSideProps()
+        
+    //     // .then(data=>{
+    //     //     this.setState({wordCount: data})
+    //     // })
+    //     // axios.countWords().then((data)=>{
+    //     //   this.setState({wordCount: data.data.count})
+    //     // })
+    //     // axios.countLemmata().then((data)=>{
+    //     //   this.setState({lemmaCount: data.data.count})
+    //     // })
+    // }
+
         return (<>
             {/* <Head>
                 <title>About velut — a Latin rhyming dictionary</title>
@@ -326,8 +357,8 @@ export default class About extends Component {
                             I’m working to redress this.
                         </p>
                         <p>
-                            velut contains {this.state.wordCount || "120000+"} words
-                            belonging to {this.state.lemmaCount || "13000+"} lemmata.
+                            velut contains {props.wordCount || "120000+"} words
+                            belonging to {props.lemmaCount || "13000+"} lemmata.
                             There are plenty more I will add!
                         </p>
                     </section>
@@ -335,5 +366,6 @@ export default class About extends Component {
                 {/* <Search prefix="" searchbarTitle="Type a Latin word"/>  */}
             </div>
         </>)
-    }
 }
+
+export default About;

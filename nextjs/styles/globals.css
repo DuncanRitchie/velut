@@ -47,6 +47,10 @@ ul {
     padding: 0;
 }
 
+/* * {
+	outline: 1px solid red;
+} */
+
 @media screen {
     #__next {
         background-image: linear-gradient(180deg, #cee3f2 0%, #e3eff8 100%);
