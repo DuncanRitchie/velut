@@ -66,7 +66,7 @@ export default class About extends Component {
                             with it. Plus it all looks cool on my portfolio!
                         </p>
                         <p>
-                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link href="./fu-lma-rus" title="“fūlmārus” on velut"><a>Fulmarus</a></Link>&nbsp;<Link href="./glacia-lis" title="“glaciālis” on velut"><a>glacialis</a></Link></em>, a common sight where I was at uni.
+                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link href="/fu-lma-rus" title="“fūlmārus” on velut"><a>Fulmarus</a></Link>&nbsp;<Link href="/glacia-lis" title="“glaciālis” on velut"><a>glacialis</a></Link></em>, a common sight where I was at uni.
                         </p>
                     </section>
 
@@ -77,8 +77,8 @@ export default class About extends Component {
                             with the letters abcdefghiklmnopqrstuvxyz — j is always written as i, w does not appear.
                             Any long vowel is marked with a macron (ĀāĒēĪīŌōŪūȲȳ).
                             In words where the stress is otherwise ambiguous, the presence or absence of an acute accent will distinguish
-                            — e.g.<Link href="./Tiberī" title="“Tiberī” on velut" lang="la"><a>Tiberī</a></Link> (dative of the river Tiber)
-                            is stressed on the first syllable, <Link href="./Tibérī" title="“Tibérī” on velut" lang="la"><a>Tibérī</a></Link> (vocative
+                            — e.g.<Link href="/Tiberī" title="“Tiberī” on velut" lang="la"><a>Tiberī</a></Link> (dative of the river Tiber)
+                            is stressed on the first syllable, <Link href="/Tibérī" title="“Tibérī” on velut" lang="la"><a>Tibérī</a></Link> (vocative
                             of the name Tiberius) is stressed on the second. I’ve also used diaereses
                             (äëïöüÿ) on occasion.
                         </p>
@@ -87,8 +87,8 @@ export default class About extends Component {
                             a word that matches. If there are several words spelt the same, they will be offered as “other homographs”.
                             You can also specify diacritics
                             by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis;
-                            thus <Link href="./Tibe.ri-" title="“Tibe.ri-” on velut" lang="la"><a>Tibe.ri-</a></Link> will be interpreted as{" "}
-                            <Link href="./Tibérī" title="“Tibérī” on velut" lang="la"><a>Tibérī</a></Link>.
+                            thus <Link href="/Tibe.ri-" title="“Tibe.ri-” on velut" lang="la"><a>Tibe.ri-</a></Link> will be interpreted as{" "}
+                            <Link href="/Tibérī" title="“Tibérī” on velut" lang="la"><a>Tibérī</a></Link>.
                         </p>
                     </section>
 
