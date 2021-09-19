@@ -5,7 +5,7 @@
     margin: calc(1vw + 3vh - 0.625rem) 0 -0.375rem;
 }
 
-.header .title-author {
+.header .titleAuthor {
     font-size: 0.9rem;
     font-weight: normal;
     padding-right: 10.5rem;
@@ -35,7 +35,7 @@
     text-shadow: 2px 2px white;
 }
 
-.header .title-full {
+.header .titleFull {
     margin-top: 0;
     margin-bottom: 1.125rem;
     color: #274141;
@@ -58,7 +58,7 @@
     }
 
     /* No reason to have a shadow. */
-    .header .title-author,.title-full {
+    .header .titleAuthor,.titleFull {
         text-shadow: none;
     }
 }

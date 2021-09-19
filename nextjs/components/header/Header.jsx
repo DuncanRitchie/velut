@@ -6,10 +6,10 @@ let Header = (props) => {
         <header className={styles.header}>
             <h1>
                 {props.textBeforeTitle ? <>{props.textBeforeTitle}<br /></> : null }
-                <span className="title-author">Duncan Ritchie’s</span><br />
-                <abbr className="title" lang="la" title="Useful Tables of Excellent Latin Vocabulary">velut</abbr>
+                <span className={styles.titleAuthor}>Duncan Ritchie’s</span><br />
+                <abbr className={styles.title} lang="la" title="Useful Tables of Excellent Latin Vocabulary">velut</abbr>
             </h1>
-            <p className="title-full" lang="la">
+            <p className={styles.titleFull} lang="la">
                 Vocābulōrum Excellentium<br/>
                 Latīnōrum Ūtilēs Tabulae
             </p>
