@@ -4,16 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3"
+    "next": "^11.1.2",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
