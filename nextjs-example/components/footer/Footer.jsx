@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 // import "../../App.css"
 import styles from "./Footer.module.css"
 
@@ -11,7 +12,15 @@ let Footer = (props) => {
     // const showAdvanced = props.history.location.pathname.substr(0,9) !== "/advanced"
     // const showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
 
-    const showBack = true, showHome = true, showEnglish = true, showSubwords = true, showAdvanced = true, showAbout = true;
+    const router = useRouter()
+    const currentUrl = router.asPath
+
+    const showBack = true
+    const showHome = currentUrl !== "/"
+    const showEnglish = currentUrl.substr(0,8) !== "/english"
+    const showSubwords = currentUrl.substr(0,9) !== "/subwords"
+    const showAdvanced = currentUrl.substr(0,9) !== "/advanced"
+    const showAbout = currentUrl !== "/about" && currentUrl !== "/about/";
 
     return (
         <footer className={styles.footer}>
@@ -22,7 +31,7 @@ let Footer = (props) => {
                     </span>
                 </li>
 
-                {/* {showBack && <li><button className={styles.goBack + " button"} tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button></li>} */}
+                {showBack && <li><button className={styles.goBack + " button"} tabIndex="0" onClick={()=>{router.back()}} title="Go back to the previous page">Back</button></li>}
 
                 {showHome && <li><Link href="/"><a title="velut homepage">Home</a></Link></li>}
 
