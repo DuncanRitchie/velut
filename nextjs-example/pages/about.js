@@ -92,7 +92,7 @@ const About = (props) => {
                             because rhyming is all about finding words that are
                             “just like” a given word with respect to their endings. (And also it can be an acronym
                             for “Useful Tables of Excellent Latin Vocabulary”, or
-                            “<span lang="la"><Link href="/voca-bulo-rum"><a title="“vocābulōrum” on velut">Vocābulōrum</a></Link> <Link href="/excellentium" title="“excellentium” on velut"><a>Excellentium</a></Link> <Link href="/Lati-no-rum" title="“Latīnōrum” on velut"><a>Latīnōrum</a></Link> <Link href="/u-tile-s" title="“ūtilēs” on velut">Ūtilēs</Link> <Link href="/tabulae" title="“tabulae” on velut"><a>Tabulae</a></Link></span>”.)
+                            “<span lang="la"><Link href="/voca-bulo-rum"><a title="“vocābulōrum” on velut">Vocābulōrum</a></Link> <Link href="/excellentium"><a title="“excellentium” on velut">Excellentium</a></Link> <Link href="/Lati-no-rum"><a title="“Latīnōrum” on velut">Latīnōrum</a></Link> <Link href="/u-tile-s"><a title="“ūtilēs” on velut">Ūtilēs</a></Link> <Link href="/tabulae"><a title="“tabulae” on velut">Tabulae</a></Link></span>”.)
                         </p>
                     </section>
 
@@ -112,7 +112,7 @@ const About = (props) => {
                             with it. Plus it all looks cool on my portfolio!
                         </p>
                         <p>
-                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link href="/fu-lma-rus" title="“fūlmārus” on velut"><a>Fulmarus</a></Link>&nbsp;<Link href="/glacia-lis" title="“glaciālis” on velut"><a>glacialis</a></Link></em>, a common sight where I was at uni.
+                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link href="/fu-lma-rus"><a title="“fūlmārus” on velut">Fulmarus</a></Link>&nbsp;<Link href="/glacia-lis"><a title="“glaciālis” on velut">glacialis</a></Link></em>, a common sight where I was at uni.
                         </p>
                     </section>
 
@@ -123,8 +123,8 @@ const About = (props) => {
                             with the letters abcdefghiklmnopqrstuvxyz — j is always written as i, w does not appear.
                             Any long vowel is marked with a macron (ĀāĒēĪīŌōŪūȲȳ).
                             In words where the stress is otherwise ambiguous, the presence or absence of an acute accent will distinguish
-                            — e.g.<Link href="/Tiberī" title="“Tiberī” on velut" lang="la"><a>Tiberī</a></Link> (dative of the river Tiber)
-                            is stressed on the first syllable, <Link href="/Tibérī" title="“Tibérī” on velut" lang="la"><a>Tibérī</a></Link> (vocative
+                            — e.g.<Link href="/Tiberī"><a title="“Tiberī” on velut" lang="la">Tiberī</a></Link> (dative of the river Tiber)
+                            is stressed on the first syllable, <Link href="/Tibérī"><a title="“Tibérī” on velut" lang="la">Tibérī</a></Link> (vocative
                             of the name Tiberius) is stressed on the second. I’ve also used diaereses
                             (äëïöüÿ) on occasion.
                         </p>
@@ -133,8 +133,8 @@ const About = (props) => {
                             a word that matches. If there are several words spelt the same, they will be offered as “other homographs”.
                             You can also specify diacritics
                             by typing a hyphen, full stop, or colon after a vowel needing a macron, acute, or diaeresis;
-                            thus <Link href="/Tibe.ri-" title="“Tibe.ri-” on velut" lang="la"><a>Tibe.ri-</a></Link> will be interpreted as{" "}
-                            <Link href="/Tibérī" title="“Tibérī” on velut" lang="la"><a>Tibérī</a></Link>.
+                            thus <Link href="/Tibe.ri-"><a title="“Tibe.ri-” on velut" lang="la">Tibe.ri-</a></Link> will be interpreted as{" "}
+                            <Link href="/Tibérī"><a title="“Tibérī” on velut" lang="la">Tibérī</a></Link>.
                         </p>
                     </section>
 
@@ -154,7 +154,7 @@ const About = (props) => {
                         </p>
                         <p>
                             velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
-                            legitimate ways to fit a word into a line.The word <Link href="/tenebra" title="“tenebra” on velut" lang="la"><a>tenebra</a></Link>{" "}
+                            legitimate ways to fit a word into a line.The word <Link href="/tenebra"><a title="“tenebra” on velut" lang="la">tenebra</a></Link>{" "}
                             (noun meaning “darkness”, usually pluralised), for instance, is scanned by velut
                             as <span className="scansion">⏑⏑⏑</span> but may otherwise fit quite plausibly{" "}
                             <span className="scansion">⏑⏑–</span> or <span className="scansion">⏑⏑</span> or <span className="scansion">⏑–⏑</span> or <span className="scansion">⏑––</span> or <span className="scansion">⏑–</span> depending on the rest of the line of poetry and the poet’s intentions.
@@ -177,15 +177,15 @@ const About = (props) => {
                             I have also assumed that the letter h is irrelevant to ecclesiastical pronunciation.
                         </p>
                         <p>
-                            “<Link href="/" title="Search for perfect rhymes on velut"><a>Perfect</a></Link>” rhymes are words pronounced
+                            “<Link href="/"><a title="Search for perfect rhymes on velut">Perfect</a></Link>” rhymes are words pronounced
                             identically from the stressed vowel to the end.
                         </p>
                         <p>
-                            “<Link href="/vowels" title="Search for vowel rhymes on velut"><a>Vowel</a></Link>” rhymes are words with
+                            “<Link href="/vowels"><a title="Search for vowel rhymes on velut">Vowel</a></Link>” rhymes are words with
                             the same vowel sounds from the stressed vowel to the end.
                         </p>
                         <p>
-                            “<Link href="/vowelsend" title="Search for vowel-and-end-consonant rhymes on velut"><a>Vowel-and-end-consonant</a></Link>”
+                            “<Link href="/vowelsend"><a title="Search for vowel-and-end-consonant rhymes on velut">Vowel-and-end-consonant</a></Link>”
                             rhymes are words with the same vowel sounds from the stressed vowel to the end,
                             and with the same consonants (if any) after the final vowel.
                         </p>
@@ -200,18 +200,18 @@ const About = (props) => {
                     <section id="consonyms-anagrams-and-subwords">
                         <h2>Consonyms, anagrams, and subwords</h2>
                         <p>
-                            “<Link href="/consonyms" title="Search for consonyms on velut"><a>Consonyms</a></Link>” are words
+                            “<Link href="/consonyms"><a title="Search for consonyms on velut">Consonyms</a></Link>” are words
                             whose consonant letters (i.e. bcdfghklmnpqrstvxz) are the same and in the same order.
                         </p>
                         <p>
-                            “<Link href="/anagrams" title="Search for anagrams on velut"><a>Anagrams</a></Link>” are words
+                            “<Link href="/anagrams"><a title="Search for anagrams on velut">Anagrams</a></Link>” are words
                             whose letters are the same, but not necessarily in the same order.
                         </p>
                         <p>
                             Anagrams and consonyms (as with forms, cognates, and words that scan the same) are listed in alphabetical order.
                         </p>
                         <p>
-                            “<Link href="/subwords" title="Search for subwords on velut"><a>Subwords</a></Link>” are words whose letters
+                            “<Link href="/subwords"><a title="Search for subwords on velut">Subwords</a></Link>” are words whose letters
                             all appear in the input you specify. The input doesn’t have to be a real Latin word.
                             If the British TV show “Countdown” or the French{" "}
                             <span lang="fr">“Des chiffres et des lettres”</span> were played in Latin, my subwords would be valid answers.
@@ -237,21 +237,21 @@ const About = (props) => {
                         </p>
                         <ul>
                             <li>
-                                <Link href="/Caecilius" title="“Caecilius” on velut" lang="la"><a>{superscriptLemmaTag("Caecilius[prn]")}</a></Link>{" "}and{" "}
-                                <Link href="/Caecilius" title="“Caecilius” on velut" lang="la"><a>{superscriptLemmaTag("Caecilius[adj]")}</a></Link> are different parts of speech (proper noun and adjective respectively);
+                                <Link href="/Caecilius"><a title="“Caecilius” on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</a></Link>{" "}and{" "}
+                                <Link href="/Caecilius"><a title="“Caecilius” on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</a></Link> are different parts of speech (proper noun and adjective respectively);
                             </li>
                             <li>
-                                <Link href="/be-ta" title="“bēta” on velut" lang="la"><a>{superscriptLemmaTag("bēta[bētae]")}</a></Link>{" "}and{" "}
-                                <Link href="/be-ta" title="“bēta” on velut" lang="la"><a>{superscriptLemmaTag("bēta[bēta]")}</a></Link>{" "}have different genitives (letter names are indeclinable!);
+                                <Link href="/be-ta"><a title="“bēta” on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</a></Link>{" "}and{" "}
+                                <Link href="/be-ta"><a title="“bēta” on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</a></Link>{" "}have different genitives (letter names are indeclinable!);
                             </li>
                             <li>
-                                <Link href="/sero-" title="“serō” on velut" lang="la"><a>{superscriptLemmaTag("serō[satum]")}</a></Link>,{" "}
-                                <Link href="/sero-" title="“serō” on velut" lang="la"><a>{superscriptLemmaTag("serō[sertum]")}</a></Link>,{" "}and{" "}
-                                <Link href="/sero-" title="“serō” on velut" lang="la"><a>{superscriptLemmaTag("serō[serātum]")}</a></Link>{" "}have different participles;
+                                <Link href="/sero-"><a title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</a></Link>,{" "}
+                                <Link href="/sero-"><a title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</a></Link>,{" "}and{" "}
+                                <Link href="/sero-"><a title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</a></Link>{" "}have different participles;
                             </li>
                             <li>
-                                <Link href="/iu-s" title="“iūs” on velut" lang="la"><a>{superscriptLemmaTag("iūs[>iūrō]")}</a></Link>{" "}and{" "}
-                                <Link href="/iu-s" title="“iūs” on velut" lang="la"><a>{superscriptLemmaTag("iūs[>iūsculum]")}</a></Link>{" "}have different etymological derivatives.
+                                <Link href="/iu-s"><a title="“iūs” on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</a></Link>{" "}and{" "}
+                                <Link href="/iu-s"><a title="“iūs” on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</a></Link>{" "}have different etymological derivatives.
                             </li>
                         </ul>
                         <p>
@@ -268,20 +268,20 @@ const About = (props) => {
                     <section id="english-to-latin">
                         <h2>English to Latin</h2>
                         <p>
-                            velut has an <Link href="/english" title="English to Latin on velut"><a>English
+                            velut has an <Link href="/english"><a title="English to Latin on velut">English
                                 to Latin</a></Link> section, which returns Latin lemmata whose English meanings match what you enter.
                         </p>
                         <p>
                             This is not restricted to whole words, so searching for
-                            “<Link href="/english/book" title="English “book” to Latin on velut"><a>book</a></Link>”
+                            “<Link href="/english/book"><a title="English “book” to Latin on velut">book</a></Link>”
                             includes <span lang="la">commentārius</span> (“notebook”) and <span lang="la">bibliopōla</span> (“bookseller”).
                             Perhaps less usefully, a search for
-                            “<Link href="/english/pie" title="English “pie” to Latin on velut"><a>pie</a></Link>”
+                            “<Link href="/english/pie"><a title="English “pie” to Latin on velut">pie</a></Link>”
                             gives words meaning “piety”, “magpie”, “pierce”, etc, rather than anything pastry-related.
                         </p>
                         <p>
                             When compiling meanings, I tend to be quite terse. The
-                            adjective <Link href="/laetus" title="“laetus” on velut" lang="la"><a>laetus</a></Link> is given simply as “happy”,
+                            adjective <Link href="/laetus"><a title="“laetus” on velut" lang="la">laetus</a></Link> is given simply as “happy”,
                             so it will not show up when you search for “glad”,
                             “willing”, “pleasant”, “fertile”, et cetera.
                             It can therefore be worthwhile trying different synonyms.
@@ -297,21 +297,21 @@ const About = (props) => {
                     <section id="advanced-search">
                         <h2>Advanced Search</h2>
                         <p>
-                            One of the newest features of velut is its <Link href="/advanced" title="Advanced Search on velut"><a>Advanced
+                            One of the newest features of velut is its <Link href="/advanced"><a title="Advanced Search on velut">Advanced
                             Search</a></Link>, which lets you find Latin words that match a given scansion and/or spelling,
                             with support for wildcards.
                         </p>
                         <p>
-                            <Link href="/advanced/?spelling=f_s&amp;scansion=LLX" title="Example query for Advanced Search on velut"><a>For example</a></Link>
+                            <Link href="/advanced/?spelling=f_s&amp;scansion=LLX"><a title="Example query for Advanced Search on velut">For example</a></Link>
                             , words spelt “f_s” (where the underscore means any sequence
                             of letters) and scanned as “LL.” (ie, three syllables with the first two long)
-                            include <Link href="/fa-cundus" title="“fācundus” on velut" lang="la"><a>fācundus</a></Link>
-                            , <Link href="/fe-sti-vus" title="“fēstīvus” on velut" lang="la"><a>fēstīvus</a></Link>
-                            , <Link href="/fo-rmo-sus" title="“fōrmōsus” on velut" lang="la"><a>fōrmōsus</a></Link>
-                            , and <Link href="/fu-lma-rus" title="“fūlmārus” on velut" lang="la"><a>fūlmārus</a></Link>.
+                            include <Link href="/fa-cundus"><a title="“fācundus” on velut" lang="la">fācundus</a></Link>
+                            , <Link href="/fe-sti-vus"><a title="“fēstīvus” on velut" lang="la">fēstīvus</a></Link>
+                            , <Link href="/fo-rmo-sus"><a title="“fōrmōsus” on velut" lang="la">fōrmōsus</a></Link>
+                            , and <Link href="/fu-lma-rus"><a title="“fūlmārus” on velut" lang="la">fūlmārus</a></Link>.
                         </p>
                         <p>
-                            For details, see the how-to guide on the <Link href="/advanced" title="Advanced Search on velut"><a>Advanced Search</a></Link> page itself.
+                            For details, see the how-to guide on the <Link href="/advanced"><a title="Advanced Search on velut">Advanced Search</a></Link> page itself.
                         </p>
                     </section>
 
@@ -329,9 +329,9 @@ const About = (props) => {
                         </p>
                         <p>
                             There are even some encliticized forms (i.e. ending
-                            in <Link href="/-ne" title="“-ne” on velut" lang="la"><a>-ne</a></Link> implying a
-                            question, <Link href="/-que" title="“-que” on velut" lang="la"><a>-que</a></Link> meaning “and”,
-                            or <Link href="/-ve" title="“-ve” on velut" lang="la"><a>-ve</a></Link> meaning “or”).
+                            in <Link href="/-ne"><a title="“-ne” on velut" lang="la">-ne</a></Link> implying a
+                            question, <Link href="/-que"><a title="“-que” on velut" lang="la">-que</a></Link> meaning “and”,
+                            or <Link href="/-ve"><a title="“-ve” on velut" lang="la">-ve</a></Link> meaning “or”).
                             I stress all encliticized forms on the penultimate syllable,
                             as the syllable immediately prior to the enclitic.
                         </p>
