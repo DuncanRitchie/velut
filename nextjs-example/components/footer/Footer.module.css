@@ -1,0 +1,63 @@
+.footer {
+    grid-area: footer;
+    /* This is a bright turquoise */
+    background: linear-gradient(to bottom, #79c0b5, #9ff3c8);
+}
+
+.footer ul { 
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer li {
+    flex-grow: 1;
+}
+
+.footer a:link, .goBack {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.footer a,.footerCopyright,.goBack {
+    transform: translateX(calc(-0.5vw + 0.0875rem));
+    padding: 0.375rem calc(0.9125rem + 0.1vw);
+    display: flex;
+    align-content: center;
+    text-align:center;
+}
+
+.footer-copyright {
+    display: inline-block;
+}
+
+.footer a:visited,.goBack {
+    color: #4d314a;
+}
+
+.footer a:not(:visited) {
+    color: #0c457a;
+}
+
+.footer a:hover,.goBack:hover {
+    color: #0c457a;
+    background: linear-gradient(to top, #d1f8e4, #d1f8e4);
+}
+
+
+@media print {
+    .footer {
+        /* This is the same border as the sections in Subwords and AnagramPhrases have */
+        border-top: 0.1875rem solid #90cbd1;
+        margin-top: 2.25rem;
+    }
+}
+
+@media screen and (min-width: 47.875rem) {
+    .footer ul {
+        min-width: 47.875rem;
+        justify-content: space-between;
+    }
+}
