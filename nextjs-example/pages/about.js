@@ -49,25 +49,6 @@ export async function getServerSideProps({params,req,res,query,preview,previewDa
   }
 
 const About = (props) => {
-    // state = {
-    //     wordCount: 0,
-    //     lemmaCount: 0
-    // }
-
-    // componentDidMount() {
-    //     // getServerSideProps()
-        
-    //     // .then(data=>{
-    //     //     this.setState({wordCount: data})
-    //     // })
-    //     // axios.countWords().then((data)=>{
-    //     //   this.setState({wordCount: data.data.count})
-    //     // })
-    //     // axios.countLemmata().then((data)=>{
-    //     //   this.setState({lemmaCount: data.data.count})
-    //     // })
-    // }
-
         return (<>
             {/* <Head>
                 <title>About velut — a Latin rhyming dictionary</title>
