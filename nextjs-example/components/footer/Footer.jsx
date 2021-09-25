@@ -24,15 +24,15 @@ let Footer = (props) => {
 
                 {/* {showBack && <li><button className={styles.goBack + " button"} tabIndex="0" onClick={()=>{props.history.goBack()}} title="Go back to the previous page">Back</button></li>} */}
 
-                {showHome && <li><Link href="/" title="velut homepage">Home</Link></li>}
+                {showHome && <li><Link href="/"><a title="velut homepage">Home</a></Link></li>}
 
-                {showEnglish && <li><Link href="/english" title="English to Latin on velut">English to Latin</Link></li>}
+                {showEnglish && <li><Link href="/english"><a title="English to Latin on velut">English to Latin</a></Link></li>}
 
-                {showSubwords && <li><Link href="/subwords" title="Subwords on velut">Subwords</Link></li>}
+                {showSubwords && <li><Link href="/subwords"><a title="Subwords on velut">Subwords</a></Link></li>}
 
-                {showAdvanced && <li><Link href="/advanced" title="Advanced Search on velut">Advanced</Link></li>}
+                {showAdvanced && <li><Link href="/advanced"><a title="Advanced Search on velut">Advanced</a></Link></li>}
 
-                {showAbout && <li><Link href="/about" title="About velut">About velut</Link></li>}
+                {showAbout && <li><Link href="/about"><a title="About velut">About velut</a></Link></li>}
 
                 <li><a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie’s personal website">My website</a></li>
             </ul>
