@@ -7,10 +7,10 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: this.props.match.params.word || this.props.match.params.word || "",
+            input: this.props.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.match.params.type || this.props.match.path.replace("/:word","").replace("/about","").replace("/","") || "",
+            type: this.props.type || "",
             dropdownAnimationClass: "dropdown-content-none"
         }
     }
@@ -120,7 +120,7 @@ class Search extends Component {
         }
         // The input is initially focussed, unless the page is About or a query has started.
         if (this.state.input
-            || this.props.match.path === "/about") {
+            || this.props.path === "/about") {
             document.getElementById("search-input").blur()
         }
         else {
@@ -145,7 +145,7 @@ class Search extends Component {
         // Let’s work out what the value of the input should be.
         let inputValue = "";
         if (this.state.fromUrl) {
-            if (this.props.match.params.word) {
+            if (this.props.word) {
                 inputValue = decodeURIComponent(this.props.match.params.word)
             }
         }
@@ -210,10 +210,7 @@ class Search extends Component {
                 <br/>
                 {/* The menu to change the rhyme type displayed.
                 Only appears if neither /subwords nor /anagramphrases nor /about nor /english is in the path. */}
-                {this.props.match.path.substr(0,9)==="/subwords"
-                 || this.props.match.path.substr(0,15)==="/anagramphrases"
-                 || this.props.match.path.substr(0,8)==="/english"
-                 || this.props.match.path==="/about"
+                {this.props.hideDropdown
                  ? null
                   : ( 
                     <div id="dropdown"
