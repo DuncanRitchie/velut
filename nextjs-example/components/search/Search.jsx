@@ -120,7 +120,7 @@ class Search extends Component {
         }
         // The input is initially focussed, unless the page is About or a query has started.
         if (this.state.input
-            || this.props.path === "/about") {
+            || !this.props.autofocus) {
             document.getElementById("search-input").blur()
         }
         else {

@@ -363,7 +363,7 @@ const About = (props) => {
                         </p>
                     </section>
                 </main>
-                {/* <Search prefix="" searchbarTitle="Type a Latin word"/>  */}
+                <Search prefix="" searchbarTitle="Type a Latin word" hideDropdown={true} autofocus={false}/> 
             </div>
         </>)
 }
