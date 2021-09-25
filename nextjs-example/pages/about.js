@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import { GetServerSideProps } from "next"
 import Link from "next/link"
-//import {Head} from "next/head"
+import Head from "next/head"
 import Header from "../components/header/Header"
 import Search from "../components/search/Search"
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
@@ -50,9 +50,9 @@ export async function getServerSideProps({params,req,res,query,preview,previewDa
 
 const About = (props) => {
         return (<>
-            {/* <Head>
+            <Head>
                 <title>About velut — a Latin rhyming dictionary</title>
-            </Head> */}
+            </Head>
             <div className={styles.about + " fulmar-background"}>
                 <Header textBeforeTitle="About" />
 
