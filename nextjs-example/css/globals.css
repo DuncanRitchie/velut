@@ -37,6 +37,7 @@ button {
     background: 0;
     font: inherit;
     padding: 0;
+    cursor: pointer;
 }
 
 ul {

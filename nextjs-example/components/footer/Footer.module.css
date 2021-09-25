@@ -19,6 +19,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    font-weight: bold;
 }
 
 .footer a,.footerCopyright,.goBack {
@@ -44,6 +45,7 @@
 .footer a:hover,.goBack:hover {
     color: #0c457a;
     background: linear-gradient(to top, #d1f8e4, #d1f8e4);
+    text-decoration: underline;
 }
 
 
