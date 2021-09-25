@@ -5,7 +5,10 @@ import Head from "next/head"
 import Header from "../components/header/Header"
 import Search from "../components/search/Search"
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
-import hello from "./api/hello"
+import {count as wordsCount} from "./api/words/count"
+import {count as lemmataCount} from "./api/lemmata/count"
+import Word from '../models/Word'
+import Lemma from '../models/Lemma'
 import styles from '../css/About.module.css'
 
 // export async function getServerSideProps() {
@@ -37,15 +40,16 @@ import styles from '../css/About.module.css'
 // }
 
 export async function getServerSideProps({params,req,res,query,preview,previewData,resolvedUrl,locale,locales,defaultLocale}) {
-    if (query.text) {
-      return { redirect: { destination: '/post', permanent: false, },}
-    }
-    const wordCountData = await fetch('http://localhost:3000/api/words/count');
-    const wordCountJson = await wordCountData.json();
-    const lemmaCountData = await fetch('http://localhost:3000/api/lemmata/count');
-    const lemmaCountJson = await lemmaCountData.json();
+    // if (query.text) {
+    //   return { redirect: { destination: '/post', permanent: false, },}
+    // }
+    //console.log({req, res})
+    const wordsCountData = await wordsCount();
+    console.log({wordsCountData})
+    const lemmataCountData = await lemmataCount();
+    console.log({lemmataCountData})
 
-    return { props: { wordCount: wordCountJson.count, lemmaCount: lemmaCountJson.count } }
+    return { props: { wordCount: wordsCountData.count, lemmaCount: lemmataCountData.count } }
   }
 
 const About = (props) => {

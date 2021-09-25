@@ -34,4 +34,4 @@ const wordSchema = new mongoose.Schema({
 });
 
 //// If Word is already on the Mongoose model, we use it, otherwise add it.
-export default mongoose.models.Word || mongoose.model('Word', wordSchema);
+export default mongoose.models?.Word || mongoose.model('Word', wordSchema);

@@ -17,4 +17,4 @@ const lemmaSchema = new mongoose.Schema({
 }, {collection: 'lemmata'})
 
 //// If Lemma is already on the Mongoose model, we use it, otherwise add it.
-export default mongoose.models.Lemma || mongoose.model('Lemma', lemmaSchema)
+export default mongoose.models?.Lemma || mongoose.model('Lemma', lemmaSchema)
