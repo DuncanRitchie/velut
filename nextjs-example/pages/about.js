@@ -40,12 +40,12 @@ export async function getServerSideProps({params,req,res,query,preview,previewDa
     if (query.text) {
       return { redirect: { destination: '/post', permanent: false, },}
     }
-    const data = await fetch('http://localhost:3000/api/words/count');
-    const json = await data.json();
-    if (!json) {
-    return {notFound: true,}
-    }  
-    return { props: { wordCount: json.count, lemmaCount: "similarly unknown" } }
+    const wordCountData = await fetch('http://localhost:3000/api/words/count');
+    const wordCountJson = await wordCountData.json();
+    const lemmaCountData = await fetch('http://localhost:3000/api/lemmata/count');
+    const lemmaCountJson = await lemmaCountData.json();
+
+    return { props: { wordCount: wordCountJson.count, lemmaCount: lemmaCountJson.count } }
   }
 
 const About = (props) => {
