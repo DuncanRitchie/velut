@@ -40,12 +40,12 @@ export async function getServerSideProps({params,req,res,query,preview,previewDa
     if (query.text) {
       return { redirect: { destination: '/post', permanent: false, },}
     }
-    const data = await fetch('http://localhost:3000/api/hello');
-    const users = await data.json();
-    if (!data) {
+    const data = await fetch('http://localhost:3000/api/words/count');
+    const json = await data.json();
+    if (!json) {
     return {notFound: true,}
     }  
-    return { props: { wordCount: users.name, lemmaCount: "similarly unknown" } }
+    return { props: { wordCount: json.count, lemmaCount: "similarly unknown" } }
   }
 
 const About = (props) => {
