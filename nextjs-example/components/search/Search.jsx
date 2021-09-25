@@ -168,7 +168,7 @@ class Search extends Component {
                 return (
                     <li 
                         key={i} 
-                        className="dropdown-item"
+                        className={styles.dropdownItem}
                     >
                         <button
                             title={"Select to return "+route.searchFieldFull.toLowerCase()}
@@ -201,7 +201,7 @@ class Search extends Component {
                 <br/>
                 {/* The button to load the new page. */}
                 <button
-                    id="search-button" 
+                    className={styles.searchButton} 
                     tabIndex="0"
                     onClick={this.search} 
                     title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
@@ -213,21 +213,21 @@ class Search extends Component {
                 {this.props.hideDropdown
                  ? null
                   : ( 
-                    <div id="dropdown"
+                    <div className={styles.dropdown}
                         onMouseLeave={this.handleDropdownMouseLeave}
                         onKeyUp={this.handleDropdownKeyUp}    
                     >
                         <button 
-                            id="dropdown-select"
+                            className={styles.dropdownSelect}
                             onClick={this.handleDropdownClick}
                             title={dropdownSelectTitle}
                             aria-haspopup="true"
                             aria-expanded={!menuDisabled}
                         >
                             <p>{dropdownSelect}</p>
-                            <p id="dropdown-arrow"></p>
+                            <div className={styles.dropdownArrow}></div>
                         </button>
-                        <ul className={this.state.dropdownAnimationClass}>
+                        <ul className={styles[this.state.dropdownAnimationClass]}>
                             {dropdownContent}
                         </ul>
                     </div>

@@ -23,7 +23,7 @@
     outline-color: #58522c; /* lighter colour of .title gradient */
 }
 
-#search-button {
+.searchButton {
     float: right;
     font: inherit;
     box-shadow: 0;
@@ -33,11 +33,11 @@
     cursor: pointer;
 }
 
-#search-button:hover {
+.searchButton:hover {
     background-color: #b8f8d7;
 }
 
-#dropdown {
+.dropdown {
     font-size: 0.9rem;
     text-align: left;
     width: 50%;
@@ -45,7 +45,7 @@
     position: relative /* Gives the ul the same width as #dropdown. */;
 }
 
-#dropdown-select {
+.dropdownSelect {
     background-color: #9cdad3;
     margin-top: 0.3333rem;
     margin-bottom: 0;
@@ -55,30 +55,30 @@
     text-align: left;
 }
 
-#dropdown-select:hover {
+.dropdownSelect:hover {
     background-color: #b5e3de;
 }
 
 /* The text giving the currently selected option. */
-#dropdown-select :first-child {
+.dropdownSelect :first-child {
     padding: 0.35rem 0.625rem;
     margin: 0;
 }
 
 /* Give some space for the arrow. */
-#dropdown-select :first-child::after {
+.dropdownSelect :first-child::after {
     content: '    ';
 }
 
 /* The paragraph whose ::after is the arrow signifying the dropdown. */
-#dropdown-arrow {
+.dropdownArrow {
     height: 0;
     margin: 0;
     padding: 0;
     transform: translateY(-1em);
 }
 
-#dropdown-arrow::after {
+.dropdownArrow::after {
     content: ' ';
     background-image: url(https://www.duncanritchie.co.uk/images/arrow-down.svg);
     background-repeat: no-repeat;
@@ -135,7 +135,7 @@
     transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
 }
 
-.dropdown-item {
+.dropdownItem {
     color: #1c4e50;
     text-decoration: none;
     background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
@@ -144,12 +144,12 @@
     padding: 2px;
 }
 
-.dropdown-item:hover {
+.dropdownItem:hover {
     color: black;
     background: #d3ecee;
 }
 
-.dropdown-item button {
+.dropdownItem button {
     width: 100%;
     text-align: inherit;
     padding: 0.1875rem 0.375rem;
