@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Pet Care App</title>
+        <title>Word Care App</title>
       </Head>
 
       <div className="top-bar">
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
             <a>Home</a>
           </Link>
           <Link href="/new">
-            <a>Add Pet</a>
+            <a>Add Word</a>
           </Link>
         </div>
 

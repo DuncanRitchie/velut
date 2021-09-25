@@ -2,22 +2,22 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { mutate } from 'swr'
 
-const Form = ({ formId, petForm, forNewPet = true }) => {
+const Form = ({ formId, wordForm, forNewWord = true }) => {
   const router = useRouter()
   const contentType = 'application/json'
   const [errors, setErrors] = useState({})
   const [message, setMessage] = useState('')
 
   const [form, setForm] = useState({
-    name: petForm.name,
-    owner_name: petForm.owner_name,
-    species: petForm.species,
-    age: petForm.age,
-    poddy_trained: petForm.poddy_trained,
-    diet: petForm.diet,
-    image_url: petForm.image_url,
-    likes: petForm.likes,
-    dislikes: petForm.dislikes,
+    name: wordForm.name,
+    owner_name: wordForm.owner_name,
+    species: wordForm.species,
+    age: wordForm.age,
+    poddy_trained: wordForm.poddy_trained,
+    diet: wordForm.diet,
+    image_url: wordForm.image_url,
+    likes: wordForm.likes,
+    dislikes: wordForm.dislikes,
   })
 
   /* The PUT method edits an existing entry in the mongodb database. */
@@ -25,7 +25,7 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
     const { id } = router.query
 
     try {
-      const res = await fetch(`/api/pets/${id}`, {
+      const res = await fetch(`/api/words/${id}`, {
         method: 'PUT',
         headers: {
           Accept: contentType,
@@ -41,17 +41,17 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
 
       const { data } = await res.json()
 
-      mutate(`/api/pets/${id}`, data, false) // Update the local data without a revalidation
+      mutate(`/api/words/${id}`, data, false) // Update the local data without a revalidation
       router.push('/')
     } catch (error) {
-      setMessage('Failed to update pet')
+      setMessage('Failed to update word')
     }
   }
 
   /* The POST method adds a new entry in the mongodb database. */
   const postData = async (form) => {
     try {
-      const res = await fetch('/api/pets', {
+      const res = await fetch('/api/words', {
         method: 'POST',
         headers: {
           Accept: contentType,
@@ -67,7 +67,7 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
 
       router.push('/')
     } catch (error) {
-      setMessage('Failed to add pet')
+      setMessage('Failed to add word')
     }
   }
 
@@ -87,13 +87,13 @@ const Form = ({ formId, petForm, forNewPet = true }) => {
     e.preventDefault()
     const errs = formValidate()
     if (Object.keys(errs).length === 0) {
-      forNewPet ? postData(form) : putData(form)
+      forNewWord ? postData(form) : putData(form)
     } else {
       setErrors({ errs })
     }
   }
 
-  /* Makes sure pet info is filled for pet name, owner name, species, and image url*/
+  /* Makes sure word info is filled for word name, owner name, species, and image url*/
   const formValidate = () => {
     let err = {}
     if (!form.name) err.name = 'Name is required'

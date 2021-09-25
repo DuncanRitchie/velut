@@ -94,12 +94,12 @@
   font-size: 110%;
 }
 
-.pet-name {
+.word-name {
   font-weight: bold;
   font-size: 130%;
 }
 
-h5.pet-name {
+h5.word-name {
   color: white;
   position: absolute;
   left: 0;
@@ -174,8 +174,8 @@ li {
   margin-left: 10px;
 }
 
-/* Delete Pet */
-.pet-container {
+/* Delete Word */
+.word-container {
   width: 100%;
 }
 
