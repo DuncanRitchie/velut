@@ -16,4 +16,5 @@ const lemmaSchema = new mongoose.Schema({
     "NoMacraLowerCase": String
 }, {collection: 'lemmata'})
 
-export default mongoose.model('Lemma', lemmaSchema)
+//// If Lemma is already on the Mongoose model, we use it, otherwise add it.
+export default mongoose.models.Lemma || mongoose.model('Lemma', lemmaSchema)
