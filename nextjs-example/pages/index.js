@@ -1,24 +1,24 @@
 import Link from 'next/link'
 import dbConnect from '../lib/dbConnect'
-import Pet from '../models/Pet'
+import Word from '../models/Word'
 
-const Index = ({ pets }) => (
+const Index = ({ words }) => (
   <>
-    {/* Create a card for each pet */}
-    {pets.map((pet) => (
-      <div key={pet._id}>
+    {/* Create a card for each word */}
+    {words.map((word) => (
+      <div key={word._id}>
         <div className="card">
-          <img src={pet.image_url} />
-          <h5 className="pet-name">{pet.name}</h5>
+          <p>{word.Word}</p>
+          {/* <img src={word.image_url} />
+          <h5 className="word-name">{word.name}</h5>
           <div className="main-content">
-            <p className="pet-name">{pet.name}</p>
-            <p className="owner">Owner: {pet.owner_name}</p>
+            <p className="word-name">{word.name}</p>
+            <p className="owner">Owner: {word.owner_name}</p>
 
-            {/* Extra Pet Info: Likes and Dislikes */}
             <div className="likes info">
               <p className="label">Likes</p>
               <ul>
-                {pet.likes.map((data, index) => (
+                {word.likes.map((data, index) => (
                   <li key={index}>{data} </li>
                 ))}
               </ul>
@@ -26,40 +26,40 @@ const Index = ({ pets }) => (
             <div className="dislikes info">
               <p className="label">Dislikes</p>
               <ul>
-                {pet.dislikes.map((data, index) => (
+                {word.dislikes.map((data, index) => (
                   <li key={index}>{data} </li>
                 ))}
               </ul>
             </div>
 
             <div className="btn-container">
-              <Link href="/[id]/edit" as={`/${pet._id}/edit`}>
+              <Link href="/[id]/edit" as={`/${word._id}/edit`}>
                 <button className="btn edit">Edit</button>
               </Link>
-              <Link href="/[id]" as={`/${pet._id}`}>
+              <Link href="/[id]" as={`/${word._id}`}>
                 <button className="btn view">View</button>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     ))}
   </>
 )
 
-/* Retrieves pet(s) data from mongodb database */
+/* Retrieves word(s) data from mongodb database */
 export async function getServerSideProps() {
   await dbConnect()
 
   /* find all the data in our database */
-  const result = await Pet.find({})
-  const pets = result.map((doc) => {
-    const pet = doc.toObject()
-    pet._id = pet._id.toString()
-    return pet
+  const result = await Word.find({"Word": "fūlmārus"})
+  const words = result.map((doc) => {
+    const word = doc.toObject()
+    word._id = word._id.toString()
+    return word
   })
 
-  return { props: { pets: pets } }
+  return { props: { words: words } }
 }
 
 export default Index

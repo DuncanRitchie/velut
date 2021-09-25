@@ -1,7 +1,7 @@
 import Form from '../components/Form'
 
-const NewPet = () => {
-  const petForm = {
+const NewWord = () => {
+  const wordForm = {
     name: '',
     owner_name: '',
     species: '',
@@ -13,7 +13,7 @@ const NewPet = () => {
     dislikes: [],
   }
 
-  return <Form formId="add-pet-form" petForm={petForm} />
+  return <Form formId="add-word-form" wordForm={wordForm} />
 }
 
-export default NewPet
+export default NewWord
