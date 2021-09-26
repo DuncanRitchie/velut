@@ -209,7 +209,7 @@ class WordPage extends Component {
     // }
 
     render() {
-        let {sanitisedInput, randomWord, foundWord} = this.state
+        let {sanitisedInput, randomWord, foundWord} = this.props
         let footName = ""
         let footNameArticle = "a"
         let mappedRhymes = []
