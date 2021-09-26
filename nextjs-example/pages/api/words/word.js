@@ -43,7 +43,7 @@ const findOneWord = async function(searchWord, selection) {
 			}
 			//// Otherwise, recurse to try the next query.
 			else {
-				executeQuery(indexOfQuery + 1);
+				return executeQuery(indexOfQuery + 1);
 			}
 		}
 		catch (err) {
