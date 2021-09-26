@@ -6,6 +6,7 @@ import Link from 'next/link'
 import findOneWord from '../api/words/word'
 import dbConnect from '../../lib/dbConnect'
 import getRandomWord from '../api/words/random'
+import getHomographs from '../api/words/homographs'
 import Word from '../../models/Word'
 const axios = "jajadingdong"
 
@@ -25,11 +26,11 @@ class WordPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            input: "",
-            sanitisedInput: "",
-            totalWordsCount: null,
-            randomWord: "",
-            foundWord: {},
+            //input: "",
+            //sanitisedInput: "",
+            //totalWordsCount: null,
+            //randomWord: "",
+            //foundWord: {},
             type: this.props.type || "",
             rhymes: [],
             homographs: [],
@@ -209,7 +210,7 @@ class WordPage extends Component {
     // }
 
     render() {
-        let {sanitisedInput, randomWord, foundWord} = this.props
+        let {sanitisedInput, randomWord, foundWord, homographs} = this.props
         let footName = ""
         let footNameArticle = "a"
         let mappedRhymes = []
@@ -246,14 +247,14 @@ class WordPage extends Component {
                 )})
             }
             // Let’s find the homographs.
-            if (this.state.homographs) {
-                // A react-router-dom Link is rendered for every homograph.
-                mappedHomographs = this.state.homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
+            if (homographs) {
+                // A Next.js Link is rendered for every homograph.
+                mappedHomographs = homographs.map((homograph,index)=>{return homograph!==foundWord.Word && (
                     <Fragment key={index}> <LatinLink linkBase={linkBase} targetWord={homograph} currentWordHyphenated={currentWordHyphenated}/></Fragment>
                 )})
             }
             // Let’s do the lemmata. We will render an element for every lemma listed against the input.
-            wordLemmata = this.state.foundWord.LemmaArray || []
+            wordLemmata = this.props.foundWord.LemmaArray || []
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     if (lemma) {
@@ -388,19 +389,34 @@ export async function getServerSideProps({ params }) {
     //// Fetch the word object from the database.
     const word = await findOneWord(sanitisedInput)
     console.log({word})
-    const wordAsObject = word.word?.toObject() ?? null
-    console.log({wordAsObject})
 
-    const randomWord = await getRandomWord()
-    console.log({randomWord})
+    if (word.word) {
+        const wordAsObject = word.word.toObject()
+        console.log({wordAsObject})
 
-    return { props: {
-        foundWord: wordAsObject,
-        randomWord: randomWord.word,
-        search: params.word,
-        sanitisedInput: sanitisedInput,
-        type: "",
-    } }
+        const homographsObject = await getHomographs(wordAsObject)
+        const {homographs} = homographsObject
+        console.log({homographs})
+    
+        const type = params.type || ""
+    
+        return { props: {
+            foundWord: wordAsObject,
+            homographs,
+            search: params.word,
+            sanitisedInput: sanitisedInput,
+            type,
+        } }
+
+    }
+    //// If the word was not found, we find a random word and suggest it.
+    else {
+        const randomWord = word ? null : await getRandomWord().word
+        console.log({randomWord})
+        return { props: {
+            randomWord
+        } }
+    }
 }
 
 // export default WordPageExample

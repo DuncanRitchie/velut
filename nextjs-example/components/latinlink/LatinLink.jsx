@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "next/link"
+import Link from "next/link"
 //import macraToHyphens from "../../helpers/macraToHyphens"
 import { macraToHyphens } from "../../pages/api/diacritics"
 import superscriptLemmaTag from "../lemma/superscriptLemmaTag"

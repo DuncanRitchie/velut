@@ -5,6 +5,7 @@ import { hyphensToMacra, noMacra } from '../diacritics';
 const selectionForOneWord = {
 	"Word": 1,
 	"NoMacra": 1,
+	"NoMacraLowerCase": 1,
 	"PerfectRhyme": 1,
 	"AlphOrderNoMacra": 1,
 	"LemmaArray": 1,
