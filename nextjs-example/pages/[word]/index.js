@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 //import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import Link from 'next/link'
 import dbConnect from '../../lib/dbConnect'
 import Word from '../../models/Word'
@@ -26,7 +27,7 @@ class WordPage extends Component {
             totalWordsCount: null,
             randomWord: "",
             foundWord: {},
-            type: this.props.match.params.type || "",
+            type: this.props.type || "",
             rhymes: [],
             homographs: [],
             formsArrays: [],
@@ -70,7 +71,7 @@ class WordPage extends Component {
         // The route determines which type of rhyme will be wanted.
         // routes is routes.json, which matches routes to searchField, axiosFuncName, and searchFieldFull.
         // Let’s retrieve the values we want.
-        const routeObject = routes.find(route=>{return ("/"+this.props.match.params.type === route.route)})
+        const routeObject = routes.find(route=>{return ("/"+this.props.type === route.route)})
         if (routeObject) {
             searchField = routeObject.searchField
             axiosFuncName = routeObject.axiosFuncName
@@ -187,7 +188,7 @@ class WordPage extends Component {
 
     getInput() {
         // The word searched for comes from the routing.
-        let input = this.props.match.params.word
+        let input = this.props.search
         this.setState({input: input})
         document.title = input+" on velut — a Latin rhyming dictionary"
         this.fetchFoundWord(input)
@@ -201,8 +202,8 @@ class WordPage extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const type = this.props.match.params.type
-        if (this.state.input !== this.props.match.params.word) {
+        const type = this.props.type
+        if (this.state.input !== this.props.search) {
             this.getInput()
             if (!this.state.foundWord) {
                 this.fetchRandomWord()
@@ -225,15 +226,14 @@ class WordPage extends Component {
         let wordLemmata = []
         let mappedLemmata = []
         // All Links to other velut words will begin with linkBase.
-        const linkBase = this.props.match.path.replace(":word","").replace(":type",this.props.match.params.type) || ""
+        const linkBase = this.props.type || ""
         if (!foundWord) {
             // If no word was found, the document title needs to come from the input.
             document.title = "“" + sanitisedInput + "” (word not found) on velut — a Latin rhyming dictionary"
         }
         if (foundWord) {
             const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
-            // Let’s set the document title to the word we found.
-            document.title = "“" + foundWord.Word + "” on velut — a Latin rhyming dictionary"
+
             // Let’s find what metrical foot it is.
             if (foundWord.Scansion) {
                 footName = getScansionDescription(foundWord.Scansion)
@@ -282,7 +282,12 @@ class WordPage extends Component {
             }
 
         }
-        return (
+        return (<>
+            <Head>
+                <title>
+                    “{foundWord.Word}” on velut — a Latin rhyming dictionary"
+                </title>
+            </Head>
             <div className="word fulmar-background">
                 <Header />
                 <Search prefix="" searchbarTitle="Type a Latin word" />
@@ -333,7 +338,7 @@ class WordPage extends Component {
                 </div>
                 <Dictionaries category="Latin" sanitisedInput={sanitisedInput} />
             </div>
-        )
+        </>)
     }
 }
 
@@ -378,12 +383,12 @@ const WordPageExample = ({ word, search }) => {
 
 export async function getServerSideProps({ params }) {
   await dbConnect()
-
+  console.log({params})
   const word = await Word.findOne({ "Word": params.word }).select({ "_id": 0 })
   const wordAsObject = word?.toObject() ?? null
   console.log({wordAsObject})
 
-  return { props: { word: wordAsObject, search: params.word } }
+  return { props: { word: wordAsObject, search: params.word, type: "", } }
 }
 
 //export default WordPage
