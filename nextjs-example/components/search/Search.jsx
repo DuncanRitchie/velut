@@ -107,7 +107,9 @@ class Search extends Component {
 
     // search() calculates the new URL and pushes it to the react-router history.
     search = () => {
-        let newUrl = "../../"
+        console.log("SEARCHING!")
+        // let newUrl = "../../"
+        let newUrl = ""
         let type = this.state.type
         if(type===undefined) {
             type = ""
@@ -118,6 +120,8 @@ class Search extends Component {
         }
         newUrl += type+"/"+input
         newUrl = newUrl.replace("//","/")
+
+        console.log({type, input, newUrl})
         this.setState({
             dropdownAnimationClass: "dropdown-content-none",
             newUrl: newUrl,
