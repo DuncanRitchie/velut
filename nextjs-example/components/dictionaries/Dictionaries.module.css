@@ -1,11 +1,11 @@
-.dictionaries-heading {
+.dictionariesHeading {
     margin-top: 2.625rem;
     padding: 0.625rem 0.375rem;
     margin-bottom: 0;
     background-color: #7dd3d3;
 }
 
-.dictionaries-p {
+.dictionariesP {
     background-color: #caedea;
     padding: 0.75rem 0.375rem;
     margin-top: 0;
@@ -14,7 +14,7 @@
 
 @media print {
     /* Allow elements to be full-width. */
-    .dictionaries-heading,.dictionaries-p {
+    .dictionariesHeading,.dictionariesP {
         max-width: initial;
     }
 }

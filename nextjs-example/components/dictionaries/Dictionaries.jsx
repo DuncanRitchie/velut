@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react'
 import dictionariesLatin from '../../data/dictionariesLatin.json'
 import dictionariesEnglish from '../../data/dictionariesEnglish.json'
-import noMacra from '../../helpers/noMacra'
-import './Dictionaries.css'
+import { noMacra } from "../../pages/api/diacritics"
+// import noMacra from '../../helpers/noMacra'
+import styles from './Dictionaries.module.css'
 
 let Dictionaries = (props) => {
     let plainInput = noMacra(props.sanitisedInput)
@@ -12,10 +13,10 @@ let Dictionaries = (props) => {
     })
     return (
         <>
-            <h2 className="dictionaries-heading">
+            <h2 className={styles.dictionariesHeading}>
                 Links to other {props.category} sites
             </h2>
-            <p className="dictionaries-p">
+            <p className={styles.dictionariesP}>
                 {mappedDics}
             </p>
         </>

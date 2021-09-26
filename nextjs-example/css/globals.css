@@ -190,7 +190,7 @@ a:hover,.go-back:hover {
 
 @media print {
     /* Allow elements to be full-width. */
-    .showing-results-for,.found-word,.word-info {
+    .showing-results-for,.found-word,.word-info,p {
         max-width: initial;
     }
 }

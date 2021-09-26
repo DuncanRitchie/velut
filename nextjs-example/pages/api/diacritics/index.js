@@ -18,3 +18,6 @@ export const macraToHyphens = (macronizedWord) => {
     return toCola
 }
 
+export const noMacra = (word) => {
+    return macraToHyphens(word).replace(/-/g,"").replace(/\./g,"").replace(/:/g,"")
+}

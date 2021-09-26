@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from "react-router-dom"
-import macraToHyphens from "../../helpers/macraToHyphens"
+import {Link} from "next/link"
+//import macraToHyphens from "../../helpers/macraToHyphens"
+import { macraToHyphens } from "../../pages/api/diacritics"
 import superscriptLemmaTag from "../lemma/superscriptLemmaTag"
 
 const LatinLink = (props) => {
@@ -13,7 +14,7 @@ const LatinLink = (props) => {
     const shouldDisplayLink = !(to === currentWordHyphenated);
     return (
         shouldDisplayLink
-        ? <Link title={title} to={linkBase+to} lang="la">{text}</Link>
+        ? <Link href={linkBase+to}><a title={title} lang="la">{text}</a></Link>
         : <span lang="la" className="link-to-current-word">{text}</span>
     );
 }

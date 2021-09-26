@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import superscriptLemmaTag from './superscriptLemmaTag'
-import greece from '../../images/greece.png'
-import israel from '../../images/israel.png'
-import axios from '../../axios/axios'
+const greece = '../../public/images/greece.png'
+const israel = '../../public/images/israel.png'
+//import axios from '../../axios/axios'
 import LatinLink from '../latinlink/LatinLink'
 
 class Lemma extends Component {
@@ -20,22 +20,22 @@ class Lemma extends Component {
     }
 
     getLemmaData() {
-        try {
-            axios.getOneLemma({"Lemma": this.props.lemma}).then(data=>{
-                this.setState({
-                    partOfSpeech: data.data.PartOfSpeech,
-                    meanings: data.data.Meanings,
-                    notes: data.data.Notes,
-                    transliterations: data.data.Transliterations,
-                    root: data.data.Root
-                })
-            }).then(()=>{
-                this.getCognates(this.state.root)
-                this.getForms(this.props.lemma)
-            })
-        }
-        catch {
-        }
+        // try {
+        //     axios.getOneLemma({"Lemma": this.props.lemma}).then(data=>{
+        //         this.setState({
+        //             partOfSpeech: data.data.PartOfSpeech,
+        //             meanings: data.data.Meanings,
+        //             notes: data.data.Notes,
+        //             transliterations: data.data.Transliterations,
+        //             root: data.data.Root
+        //         })
+        //     }).then(()=>{
+        //         this.getCognates(this.state.root)
+        //         this.getForms(this.props.lemma)
+        //     })
+        // }
+        // catch {
+        // }
     }
 
     getForms(lemma) {

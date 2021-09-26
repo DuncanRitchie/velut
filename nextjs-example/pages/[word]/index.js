@@ -1,19 +1,23 @@
 import React, {Component, Fragment} from 'react'
-import {Link} from "react-router-dom"
-import axios from "../../axios/axios"
+//import { useState } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import dbConnect from '../../lib/dbConnect'
+import Word from '../../models/Word'
+
 import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
 import Dictionaries from "../../components/dictionaries/Dictionaries"
 import Lemma from "../../components/lemma/Lemma"
 import LatinLink from "../../components/latinlink/LatinLink"
-import macraToHyphens from "../../helpers/macraToHyphens"
-import hyphensToMacra from "../../helpers/hyphensToMacra"
-import getScansionDescription from "./getScansionDescription"
+import { hyphensToMacra, macraToHyphens } from "../api/diacritics/"
+//import hyphensToMacra from "../../helpers/hyphensToMacra"
+import getScansionDescription from "../api/scansion/"
 import routes from "../../routes.json"
-import './Word.css'
-import '../Subsites.css'
+import styles from '../../css/Word.module.css'
+import subsiteStyles from "../../css/Subsites.module.css"
 
-class Word extends Component {
+class WordPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -333,18 +337,12 @@ class Word extends Component {
     }
 }
 
-export default Word
+export default WordPage
 
 
 
 
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import dbConnect from '../../lib/dbConnect'
-import Word from '../../models/Word'
-
-const WordPage = ({ word, search }) => {
+const WordPageExample = ({ word, search }) => {
   const router = useRouter()
   const [message, setMessage] = useState('')
   // const handleDelete = async () => {
@@ -388,4 +386,4 @@ export async function getServerSideProps({ params }) {
   return { props: { word: wordAsObject, search: params.word } }
 }
 
-export default WordPage
+//export default WordPage

@@ -1,0 +1,22 @@
+[{
+    "Dictionary": "Glosbe",
+    "Formula": "https://glosbe.com/en/la/INPUT"
+},{
+    "Dictionary": "LatDict",
+    "Formula": "http://www.latin-dictionary.net/search/english/INPUT#search-results-list"
+},{
+    "Dictionary": "Liddell–Scott–Jones",
+    "Formula": "https://lsj.gr/wiki/INPUT"
+},{
+    "Dictionary": "Numen",
+    "Formula": "https://latinlexicon.org/search_english.php"
+},{
+    "Dictionary": "Perseus",
+    "Formula": "http://www.perseus.tufts.edu/hopper/definitionlookup?type=substring&q=INPUT&target=la"
+},{
+    "Dictionary": "Whitaker’s Words",
+    "Formula": "http://archives.nd.edu/cgi-bin/wordz.pl?english=INPUT"
+},{
+    "Dictionary": "Wiktionary",
+    "Formula": "https://en.wiktionary.org/wiki/INPUT#Translations"
+}]
