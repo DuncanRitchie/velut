@@ -42,11 +42,11 @@ const WordPage = ({ word, search }) => {
 export async function getServerSideProps({ params }) {
   await dbConnect()
 
-  const word = await Word.findOne({ "Word": params.id }).select({ "_id": 0 })
+  const word = await Word.findOne({ "Word": params.word }).select({ "_id": 0 })
   const wordAsObject = word?.toObject() ?? null
   console.log({wordAsObject})
 
-  return { props: { word: wordAsObject, search: params.id } }
+  return { props: { word: wordAsObject, search: params.word } }
 }
 
 export default WordPage
