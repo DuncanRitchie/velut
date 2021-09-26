@@ -1,7 +1,15 @@
 import React, {Component} from "react"
-//import {withRouter} from 'react-router-dom'
+import { useRouter } from 'next/router'
 import routes from '../../routes.json'
 import styles from "./Search.module.css"
+
+//// Next.js’s router can only be used within a component function.
+//// If this component is rendered, the page changes to `newUrl`.
+const NavigateTo = ({newUrl}) => {
+    const router = useRouter()
+    router.push(newUrl)
+    return <></>
+}
 
 class Search extends Component {
     constructor(props) {
@@ -11,7 +19,9 @@ class Search extends Component {
             sanitisedInput: "",
             fromUrl: true,
             type: this.props.type || "",
-            dropdownAnimationClass: "dropdown-content-none"
+            dropdownAnimationClass: "dropdown-content-none",
+            navigating: false,
+            newUrl: "",
         }
     }
 
@@ -108,8 +118,11 @@ class Search extends Component {
         }
         newUrl += type+"/"+input
         newUrl = newUrl.replace("//","/")
-        this.setState({dropdownAnimationClass: "dropdown-content-none"})
-        this.props.history.push(newUrl)
+        this.setState({
+            dropdownAnimationClass: "dropdown-content-none",
+            newUrl: newUrl,
+            navigating: true,
+        })
     }
 
     // Initial value of sanitisedInput is "". Let’s put something useful there.
@@ -232,7 +245,8 @@ class Search extends Component {
                         </ul>
                     </div>
                 )}
-
+                {this.state.navigating
+                    && <NavigateTo newUrl={this.state.newUrl} />}
             </div>
         )
     }
