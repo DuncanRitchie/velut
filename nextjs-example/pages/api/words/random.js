@@ -9,8 +9,9 @@ export default async function getRandomWord() {
         console.log({totalWordsCount})
         const randomOrd = Math.ceil(Math.random() * totalWordsCount.count)
         console.log({randomOrd})
-        const foundWord = await Word.findOne({ "Ord": randomOrd }).select({ "_id": 0, "Word": 1 })
-        return { success: true, word: foundWord.Word }
+        const foundWordObject = await Word.findOne({ "Ord": randomOrd }).select({ "_id": 0, "Word": 1 })
+        const foundWord = foundWordObject.Word
+        return { success: true, word: foundWord }
     }
     catch (error) {
         console.log(error)

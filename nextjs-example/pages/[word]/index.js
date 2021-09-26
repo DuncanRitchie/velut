@@ -219,10 +219,7 @@ class WordPage extends Component {
         let mappedLemmata = []
         // All Links to other velut words will begin with linkBase.
         const linkBase = this.props.type || ""
-        if (!foundWord) {
-            // If no word was found, the document title needs to come from the input.
-            document.title = "“" + sanitisedInput + "” (word not found) on velut — a Latin rhyming dictionary"
-        }
+
         if (foundWord) {
             const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
 
@@ -277,12 +274,15 @@ class WordPage extends Component {
         return (<>
             <Head>
                 <title>
-                    “{foundWord.Word}” on velut — a Latin rhyming dictionary
+                    {/* If no word was found, the document title needs to come from the input. */}
+                    {foundWord
+                        ? `“${foundWord.Word}” on velut — a Latin rhyming dictionary`
+                        : `“${sanitisedInput}” (word not found) on velut — a Latin rhyming dictionary`}
                 </title>
             </Head>
             <div className={styles.word + " fulmar-background"}>
                 <Header />
-                <Search prefix="" searchbarTitle="Type a Latin word" searchWord={this.props.search}/>
+                <Search prefix="" searchbarTitle="Type a Latin word" searchWord={this.props.sanitisedInput}/>
                 <p className={subsiteStyles.showingResultsFor + " page-width"}>
                     Showing results for
                     <br/>
@@ -320,10 +320,10 @@ class WordPage extends Component {
                     : (
                         <>
                             <p>
-                                Nothing was found. Try <Link to={linkBase+macraToHyphens(randomWord)} title={randomWord} lang="la">{randomWord}</Link>.
+                                Nothing was found. Try <Link href={linkBase+macraToHyphens(randomWord)}><a title={randomWord} lang="la">{randomWord}</a></Link>.
                             </p>
                             <p>
-                                Or do you want to search from <Link to={"/english/"+sanitisedInput} title={"Search for Latin words with the English meaning “"+sanitisedInput+"”"}>English to Latin</Link>?
+                                Or do you want to search from <Link href={"/english/"+sanitisedInput}><a title={"Search for Latin words with the English meaning “"+sanitisedInput+"”"}>English to Latin</a></Link>?
                             </p>
                         </>
                     )}
@@ -379,7 +379,8 @@ export async function getServerSideProps({ params }) {
     await dbConnect()
     console.log({params})
 
-    let sanitisedInput = params.word
+    let sanitisedInput = params.word ?? ""
+    console.log({sanitisedInput})
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.
     if (sanitisedInput.search("%")>-1) {
@@ -404,17 +405,20 @@ export async function getServerSideProps({ params }) {
             foundWord: wordAsObject,
             homographs,
             search: params.word,
-            sanitisedInput: sanitisedInput,
+            sanitisedInput,
             type,
         } }
 
     }
     //// If the word was not found, we find a random word and suggest it.
     else {
-        const randomWord = word ? null : await getRandomWord().word
+        const randomWordObject = await getRandomWord()
+        console.log({randomWordObject})
+        const randomWord = randomWordObject.word
         console.log({randomWord})
         return { props: {
-            randomWord
+            randomWord,
+            sanitisedInput,
         } }
     }
 }
