@@ -141,25 +141,25 @@ class Search extends Component {
         }
     }
 
-    // If the location changes we need new data.
-    componentDidUpdate(prevProps) {
-        const locationChanged = this.props.location !== prevProps.location
-        if (locationChanged) {
-            const input = this.props.match.params.word || ""
-            this.setState({fromUrl: true, input: input})
-            try {
-                this.setState({sanitisedInput: decodeURIComponent(input)})
-            } catch {
-            }
-        }
-    }
+    // // If the location changes we need new data.
+    // componentDidUpdate(prevProps) {
+    //     const locationChanged = this.props.location !== prevProps.location
+    //     if (locationChanged) {
+    //         const input = this.props.match.params.word || ""
+    //         this.setState({fromUrl: true, input: input})
+    //         try {
+    //             this.setState({sanitisedInput: decodeURIComponent(input)})
+    //         } catch {
+    //         }
+    //     }
+    // }
 
     render() {
         // Let’s work out what the value of the input should be.
         let inputValue = "";
         if (this.state.fromUrl) {
-            if (this.props.word) {
-                inputValue = decodeURIComponent(this.props.match.params.word)
+            if (this.props.searchWord) {
+                inputValue = decodeURIComponent(this.props.searchWord)
             }
         }
         else if (this.state.input) {
