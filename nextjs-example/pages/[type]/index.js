@@ -15,9 +15,9 @@ import Search from "../../components/search/Search"
 import Dictionaries from "../../components/dictionaries/Dictionaries"
 import Lemma from "../../components/lemma/Lemma"
 import LatinLink from "../../components/latinlink/LatinLink"
-import { hyphensToMacra, macraToHyphens } from "../api/diacritics/"
+import { hyphensToMacra, macraToHyphens } from "../api/diacritics"
 //import hyphensToMacra from "../../helpers/hyphensToMacra"
-import getScansionDescription from "../api/scansion/"
+import getScansionDescription from "../api/scansion"
 import routes from "../../routes.json"
 import styles from '../../css/Word.module.css'
 import subsiteStyles from "../../css/Subsites.module.css"
@@ -379,8 +379,17 @@ export async function getServerSideProps({ params }) {
     await dbConnect()
     console.log({params})
 
-    let sanitisedInput = params.word ?? ""
-    console.log({sanitisedInput})
+    //// The URL is /:type/:word
+    //// So for /anagrams/avis the type is "anagrams" & word is "avis"
+    //// For a URL like /fu-lma-rus
+    //// the type according to Next.js is "fu-lma-rus" and there is no :word.
+    //// But "fu-lma-rus" should be treated as the word, not the type.
+    //// So we get the type and the word from the URL, but if there’s no :word
+    //// we use the :type as the word and the empty string as the type.
+    const wordParam = params.hasOwnProperty("word") ? params.word : params.type ?? ""
+    const type = params.hasOwnProperty("word") ? params.type : ""
+    let sanitisedInput = wordParam
+    console.log({sanitisedInput, type})
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.
     if (sanitisedInput.search("%")>-1) {
@@ -399,12 +408,10 @@ export async function getServerSideProps({ params }) {
         const {homographs} = homographsObject
         console.log({homographs})
     
-        const type = params.type || ""
-    
         return { props: {
             foundWord: wordAsObject,
             homographs,
-            search: params.word,
+            search: wordParam,
             sanitisedInput,
             type,
         } }
@@ -419,6 +426,7 @@ export async function getServerSideProps({ params }) {
         return { props: {
             randomWord,
             sanitisedInput,
+            type,
         } }
     }
 }
