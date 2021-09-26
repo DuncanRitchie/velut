@@ -3,8 +3,11 @@ import React, {Component, Fragment} from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
+import findOneWord from '../api/words/word'
 import dbConnect from '../../lib/dbConnect'
+import getRandomWord from '../api/words/random'
 import Word from '../../models/Word'
+const axios = "jajadingdong"
 
 import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
@@ -39,22 +42,10 @@ class WordPage extends Component {
     // fetchFoundWord() queries Mongo for variations on the input
     // until it finds a match, which it adds to state.
     fetchFoundWord(input) {
-        let foundWord = {}
-        // If special characters are input, we can get percent-encoding problems.
-        // Let’s correct for that.
-        if (input.search("%")>-1) {
-            input = decodeURIComponent(input)
+        this.setState({foundWord: this.props.foundWord})
+        if (this.propsfoundWord) {
+            this.fetchRelatedWords(foundWord)
         }
-        this.setState({sanitisedInput: input})
-        // Let’s fetch some data from MongoDB.
-        axios.getOneWordSelectSeveralFields(input)
-            .then((data)=>{
-                foundWord = data.data;
-                this.setState({foundWord: foundWord})
-                if (foundWord) {
-                    this.fetchRelatedWords(foundWord)
-                }
-        })
     }
 
     fetchRelatedWords(wordObject) {
@@ -160,31 +151,31 @@ class WordPage extends Component {
         })
     }
 
-    fetchRandomWord() {
-        // Let’s pick a random word to show if no words match the search.
-        // We query MongoDB for the total words count if we don’t have it.
-        // Then we query for a word whose Ord is less than or equal to it.
-        if (!this.state.totalWordsCount) {
-            axios.countWords().then((data)=>{
-                this.setState({totalWordsCount: data.data.count})
-                let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
-                axios.getWordsAlph({"Ord": randomOrd}).then((data)=>{
-                    if (data.data[0].Word) {
-                        this.setState({randomWord: data.data[0].Word})
-                    }
-                })
-            })
-        }
-        // If we’ve already found the total words count, we don’t need to query for it.
-        // We just query for the random word.
-        else {
-            let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
-            axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{
-                this.setState({randomWord: array.data[0].Word})
-            })
-        }
+    // fetchRandomWord() {
+    //     // Let’s pick a random word to show if no words match the search.
+    //     // We query MongoDB for the total words count if we don’t have it.
+    //     // Then we query for a word whose Ord is less than or equal to it.
+    //     if (!this.props.totalWordsCount) {
+    //         axios.countWords().then((data)=>{
+    //             this.setState({totalWordsCount: data.data.count})
+    //             let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
+    //             axios.getWordsAlph({"Ord": randomOrd}).then((data)=>{
+    //                 if (data.data[0].Word) {
+    //                     this.setState({randomWord: data.data[0].Word})
+    //                 }
+    //             })
+    //         })
+    //     }
+    //     // If we’ve already found the total words count, we don’t need to query for it.
+    //     // We just query for the random word.
+    //     else {
+    //         let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
+    //         axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{
+    //             this.setState({randomWord: array.data[0].Word})
+    //         })
+    //     }
 
-    }
+    // }
 
     getInput() {
         // The word searched for comes from the routing.
@@ -198,24 +189,24 @@ class WordPage extends Component {
         if (!this.state.input) {
             this.getInput()
         }
-        this.fetchRandomWord()
+        //this.fetchRandomWord()
     }
 
-    componentDidUpdate(prevProps) {
-        const type = this.props.type
-        if (this.state.input !== this.props.search) {
-            this.getInput()
-            if (!this.state.foundWord) {
-                this.fetchRandomWord()
-            }
-        }
-        else if (prevProps.match.params.type !== type) {
-            this.setState({type: type})
-            if (this.state.foundWord) {
-                this.fetchRhymes(this.state.foundWord)
-            }
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     const type = this.props.type
+    //     if (this.state.input !== this.props.search) {
+    //         this.getInput()
+    //         if (!this.state.foundWord) {
+    //             this.fetchRandomWord()
+    //         }
+    //     }
+    //     else if (prevProps.match.params.type !== type) {
+    //         this.setState({type: type})
+    //         if (this.state.foundWord) {
+    //             this.fetchRhymes(this.state.foundWord)
+    //         }
+    //     }
+    // }
 
     render() {
         let {sanitisedInput, randomWord, foundWord} = this.state
@@ -347,48 +338,69 @@ export default WordPage
 
 
 
-const WordPageExample = ({ word, search }) => {
-  const router = useRouter()
-  const [message, setMessage] = useState('')
-  // const handleDelete = async () => {
-  //   const wordID = router.query.id
+// const WordPageExample = ({ word, search }) => {
+//   // const router = useRouter()
+//   // const [message, setMessage] = useState('')
+//   // const handleDelete = async () => {
+//   //   const wordID = router.query.id
 
-  //   try {
-  //     await fetch(`/api/words/${wordID}`, {
-  //       method: 'Delete',
-  //     })
-  //     router.push('/')
-  //   } catch (error) {
-  //     setMessage('Failed to delete the word.')
-  //   }
-  // }
+//   //   try {
+//   //     await fetch(`/api/words/${wordID}`, {
+//   //       method: 'Delete',
+//   //     })
+//   //     router.push('/')
+//   //   } catch (error) {
+//   //     setMessage('Failed to delete the word.')
+//   //   }
+//   // }
 
-    if (word) {
-        return (
-            <div key={word._id}>
-                <div className="card">
-                    <img src={word.image_url} />
-                    <h2 className="word-name">{word.Word}</h2>
-                    <p>It’s in the dictionary!</p>
-                </div>
-            </div>
-        )
-    }
-    else {
-        return (
-            <>Word “{search}” not found!</>
-        )
-    }
-}
+//     if (word) {
+//         return (
+//             <div>
+//                 <div className="card">
+//                     <h2 className="word-name">{word.Word}</h2>
+//                     <p>It’s in the dictionary!</p>
+//                 </div>
+//             </div>
+//         )
+//     }
+//     else {
+//         return (
+//             <div className="card">
+//                 <h2>Not found</h2>
+//                 <p>Word “{search}” is not in the dictionary!</p>
+//             </div>
+//         )
+//     }
+// }
 
 export async function getServerSideProps({ params }) {
-  await dbConnect()
-  console.log({params})
-  const word = await Word.findOne({ "Word": params.word }).select({ "_id": 0 })
-  const wordAsObject = word?.toObject() ?? null
-  console.log({wordAsObject})
+    await dbConnect()
+    console.log({params})
 
-  return { props: { word: wordAsObject, search: params.word, type: "", } }
+    let sanitisedInput = params.word
+    //// If special characters are input, we can get percent-encoding problems.
+    //// Let’s correct for that.
+    if (sanitisedInput.search("%")>-1) {
+        sanitisedInput = decodeURIComponent(sanitisedInput)
+    }
+
+    //// Fetch the word object from the database.
+    const word = await findOneWord(sanitisedInput)
+    console.log({word})
+    const wordAsObject = word.word?.toObject() ?? null
+    console.log({wordAsObject})
+
+    const randomWord = await getRandomWord()
+    console.log({randomWord})
+
+    return { props: {
+        foundWord: wordAsObject,
+        randomWord: randomWord.word,
+        search: params.word,
+        sanitisedInput: sanitisedInput,
+        type: "",
+    } }
 }
 
-//export default WordPage
+// export default WordPageExample
