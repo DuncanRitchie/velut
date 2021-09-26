@@ -276,20 +276,20 @@ class WordPage extends Component {
         return (<>
             <Head>
                 <title>
-                    “{foundWord.Word}” on velut — a Latin rhyming dictionary"
+                    “{foundWord.Word}” on velut — a Latin rhyming dictionary
                 </title>
             </Head>
-            <div className="word fulmar-background">
+            <div className={styles.word + " fulmar-background"}>
                 <Header />
                 <Search prefix="" searchbarTitle="Type a Latin word" />
-                <p className="showing-results-for">
+                <p className={subsiteStyles.showingResultsFor + " page-width"}>
                     Showing results for
                     <br/>
-                    <strong className="found-word" lang="la">
+                    <strong className={styles.foundWord + " page-width"} lang="la">
                         {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
                     </strong>
                 </p>
-                <div className="word-info">
+                <div className={subsiteStyles.wordInfo}>
                     {foundWord ? (
                         <div>
                             {mappedHomographs.length>1
@@ -298,7 +298,7 @@ class WordPage extends Component {
                                     </p> ) 
                                 : null}
                             <p>
-                                The word <strong lang="la">{foundWord.Word}</strong> could scan as <span className="scansion">{foundWord.Scansion}</span>
+                                The word <strong lang="la">{foundWord.Word}</strong> could scan as <span className={styles.scansion}>{foundWord.Scansion}</span>
                                 {footName ? <> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</> : null }
                             </p>
                             <h2>

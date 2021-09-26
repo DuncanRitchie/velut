@@ -13,10 +13,10 @@ let Dictionaries = (props) => {
     })
     return (
         <>
-            <h2 className={styles.dictionariesHeading}>
+            <h2 className={styles.dictionariesHeading + " page-width"}>
                 Links to other {props.category} sites
             </h2>
-            <p className={styles.dictionariesP}>
+            <p className={styles.dictionariesP + " page-width"}>
                 {mappedDics}
             </p>
         </>
