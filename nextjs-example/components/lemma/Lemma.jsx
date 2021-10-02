@@ -81,8 +81,8 @@ class Lemma extends Component {
     }
 
     render() {
-        let {linkBase, lemma, currentWordHyphenated, forms} = this.props
-        let {PartOfSpeech, Meanings, Notes, Transliterations, Root, cognates} = lemma
+        let {linkBase, lemma, currentWordHyphenated} = this.props
+        let {PartOfSpeech, Meanings, Notes, Transliterations, Root, cognates, forms} = lemma
 
         // If there are transliterations in Ancient Greek, they will appear next to a Greek flag
         // and be labelled as lang="grc". Ditto for Hebrew with the Israeli flag and lang="he".
