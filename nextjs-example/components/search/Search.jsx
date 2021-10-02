@@ -221,7 +221,7 @@ class Search extends Component {
                     title={this.props.searchbarTitle || "Type something here"}
                     type="text"
                     lang={this.props.lang || "la"}
-                    autoCapitalize="off"
+                    autoCapitalize="none"
                     autoComplete="off"
                     autoCorrect="off"
                     spellCheck="false"
