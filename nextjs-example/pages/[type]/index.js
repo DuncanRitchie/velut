@@ -8,6 +8,7 @@ import dbConnect from '../../lib/dbConnect'
 import getRandomWord from '../api/words/random'
 import getHomographs from '../api/words/homographs'
 import getRhymes from '../api/words/rhymes'
+import getLemmata from '../api/lemmata'
 import Word from '../../models/Word'
 const axios = "jajadingdong"
 
@@ -232,14 +233,14 @@ class WordPage extends Component {
                 )})
             }
             // Let’s do the lemmata. We will render an element for every lemma listed against the input.
-            wordLemmata = this.props.foundWord.LemmaArray || []
+            wordLemmata = this.props.lemmata || []
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     if (lemma) {
                         return (
                             <Lemma
                             key={index}
-                            lemma={lemma.Lemma || lemma}
+                            lemma={lemma}
                             linkBase={linkBase}
                             currentWordHyphenated={currentWordHyphenated}
                             />
@@ -394,10 +395,16 @@ export async function getServerSideProps({ params }) {
         const rhymesObject = await getRhymes(wordAsObject, type)
         const {rhymes, headingToDisplay} = rhymesObject
         console.log({rhymes})
+
+        const lemmataObject = await getLemmata(wordAsObject)
+        console.log(lemmataObject)
+        const lemmata = JSON.parse(lemmataObject.lemmata)
+        console.log({lemmata})
     
         return { props: {
             foundWord: wordAsObject,
             homographs,
+            lemmata: lemmata || [],
             rhymes,
             search: wordParam,
             headingToDisplay,
