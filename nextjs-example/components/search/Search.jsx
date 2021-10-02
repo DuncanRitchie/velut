@@ -7,7 +7,13 @@ import styles from "./Search.module.css"
 //// If this component is rendered, the page changes to `newUrl`.
 const NavigateTo = ({newUrl}) => {
     const router = useRouter()
-    router.push(newUrl)
+    if (router.pathname === newUrl
+     || router.pathname === "/"+newUrl) {
+        console.log("Cannot navigate to current URL")
+    }
+    else {
+        router.push(encodeURI(newUrl))
+    }
     return <></>
 }
 
@@ -15,7 +21,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: this.props.word || "",
+            input: this.props.searchWord || "",
             sanitisedInput: "",
             fromUrl: true,
             type: this.props.type || "/",
@@ -110,18 +116,23 @@ class Search extends Component {
         console.log("SEARCHING!")
         // let newUrl = "../../"
         let newUrl = ""
-        let type = this.state.type
-        if(type===undefined) {
-            type = ""
-        }
-        let input = this.state.sanitisedInput
-        if(input===undefined) {
-            input = ""
-        }
-        newUrl += type+"/"+input
-        newUrl = newUrl.replace("//","/")
 
-        console.log({type, input, newUrl})
+        const getType = () => { return this.state.type ?? ""}
+        console.table({sanitisedInput: this.state.sanitisedInput, searchWord: this.props.searchWord})
+        const getInput = () => {
+            if (this.state.sanitisedInput !== undefined) {
+                return "/" + this.state.sanitisedInput
+            }
+            if (this.props.searchWord
+             && this.props.searchWord !== "") {
+                return "/" + this.props.searchWord
+            }
+            return ""
+        }
+        newUrl += getType() + getInput()
+        newUrl = newUrl.replaceAll(/\/[\/\.]+/g, "/")
+
+        console.table({type: getType(), input: getInput(), newUrl})
         this.setState({
             dropdownAnimationClass: "dropdown-content-none",
             newUrl: newUrl,
