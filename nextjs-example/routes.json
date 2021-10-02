@@ -2,67 +2,67 @@
     {
         "route": "/",
         "searchField": "PerfectRhyme",
-        "axiosFuncName": "getWordsClass",
+        "sortFields": "Sort",
         "searchFieldFull": "Perfect rhymes (classical)"
     },{
         "route": "/vowels",
         "searchField": "RhymeVowels",
-        "axiosFuncName": "getWordsClass",
+        "sortFields": "Sort",
         "searchFieldFull": "Vowel rhymes (classical)"
     },{
         "route": "/vowelsend",
         "searchField": "RhymeVowelsAndUltimaCoda",
-        "axiosFuncName": "getWordsClass",
+        "sortFields": "Sort",
         "searchFieldFull": "Vowel-and-end-consonant rhymes (classical)"
     },{
         "route": "/ecclesperfect",
         "searchField": "EcclesPerfectRhyme",
-        "axiosFuncName": "getWordsEccles",
+        "sortFields": "EcclesSort",
         "searchFieldFull": "Perfect rhymes (ecclesiastical)"
     },{
         "route": "/ecclesvowels",
         "searchField": "EcclesRhymeVowels",
-        "axiosFuncName": "getWordsEccles",
+        "sortFields": "EcclesSort",
         "searchFieldFull": "Vowel rhymes (ecclesiastical)"
     },{
         "route": "/ecclesvowelsend",
         "searchField": "EcclesRhymeVowelsAndUltimaCoda",
-        "axiosFuncName": "getWordsEccles",
+        "sortFields": "EcclesSort",
         "searchFieldFull": "Vowel-and-end-consonant rhymes (ecclesiastical)"
     },{
         "route": "/consonyms",
         "searchField": "AllConsonants",
-        "axiosFuncName": "getWordsAlph",
+        "sortFields": "NoMacraLowerCase NoMacra Word",
         "searchFieldFull": "Consonyms"
     },{
         "route": "/anagrams",
         "searchField": "AlphOrderNoMacra",
-        "axiosFuncName": "getWordsAlph",
+        "sortFields": "NoMacraLowerCase NoMacra Word",
         "searchFieldFull": "Anagrams"
     },{
         "route": "/scansion",
         "searchField": "Scansion",
-        "axiosFuncName": "getWordsAlph",
+        "sortFields": "NoMacraLowerCase NoMacra Word",
         "searchFieldFull": "Words that scan the same"
     },{
         "route": "/advanced",
         "searchField": null,
-        "axiosFuncName": "getAdvanced",
+        "functionName": "getAdvanced",
         "searchFieldFull": "Advanced Search"
     },{
         "route": "/subwords",
         "searchField": null,
-        "axiosFuncName": "getSubwords",
+        "functionName": "getSubwords",
         "searchFieldFull": "Subwords"
     },{
         "route": "/anagramphrases",
         "searchField": null,
-        "axiosFuncName": "getAnagrams",
+        "functionName": "getAnagrams",
         "searchFieldFull": "Anagram phrases"
     },{
         "route": "/english",
         "searchField": null,
-        "axiosFuncName": "getLemmataEnglish",
+        "functionName": "getLemmataEnglish",
         "searchFieldFull": "English to Latin"
     }
 ]
