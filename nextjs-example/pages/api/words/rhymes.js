@@ -34,7 +34,7 @@ export default async function getRhymes(wordObject, type) {
             console.log("Mapping through foundWords")
             const rhymes = foundWords.map(word=>word.Word)
             console.log({rhymes})
-            return { success: true, rhymes }
+            return { success: true, rhymes, rhymeTypeFull: searchFieldFull }
         }
         else {
             return { success: false }
