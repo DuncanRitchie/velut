@@ -7,6 +7,7 @@ import findOneWord from '../api/words/word'
 import dbConnect from '../../lib/dbConnect'
 import getRandomWord from '../api/words/random'
 import getHomographs from '../api/words/homographs'
+import getRhymes from '../api/words/rhymes'
 import Word from '../../models/Word'
 const axios = "jajadingdong"
 
@@ -50,32 +51,8 @@ class WordPage extends Component {
     }
 
     fetchRelatedWords(wordObject) {
-        this.fetchRhymes(wordObject)
+        //this.fetchRhymes(wordObject)
         this.fetchHomographs(wordObject)
-    }
-
-    fetchRhymes(wordObject) {
-        // Let’s find the rhymes.
-        // We will be using the following three values if route-specific values are not found in routes.json.
-        let searchField = "PerfectRhyme" // This is the MongoDB fieldname.
-        let axiosFuncName = "getWordsClass" // This is one of "getWordsAlph", "getWordsClass", "getWordsEccles" depending on the sort wanted.
-        let searchFieldFull = "Perfect rhymes (classical)" // This will be rendered onscreen as a heading.
-        // The route determines which type of rhyme will be wanted.
-        // routes is routes.json, which matches routes to searchField, axiosFuncName, and searchFieldFull.
-        // Let’s retrieve the values we want.
-        const routeObject = routes.find(route=>{return ("/"+this.props.type === route.route)})
-        if (routeObject) {
-            searchField = routeObject.searchField
-            axiosFuncName = routeObject.axiosFuncName
-            searchFieldFull = routeObject.searchFieldFull
-        }
-        let query = {[searchField]: wordObject[searchField]}
-        axios[axiosFuncName](query).then((data)=>{
-            let rhymes = data.data.map((wordObject,index)=>{
-                return wordObject.Word
-            })
-            this.setState({rhymes: rhymes, searchFieldFull: searchFieldFull})
-        })
     }
 
     fetchHomographs(wordObject) {
@@ -237,9 +214,9 @@ class WordPage extends Component {
                 }
             }
             // Let’s find the rhymes.
-            if (this.state.rhymes) {
+            if (this.props.rhymes) {
                 // A react-router-dom Link is rendered for every rhyme.
-                mappedRhymes = this.state.rhymes.map((rhyme,index)=>{return (
+                mappedRhymes = this.props.rhymes.map((rhyme,index)=>{return (
                     <Fragment key={index}><LatinLink linkBase={linkBase} targetWord={rhyme} currentWordHyphenated={currentWordHyphenated}/> </Fragment>
                 )})
             }
@@ -375,6 +352,8 @@ export default WordPage
 //     }
 // }
 
+
+
 export async function getServerSideProps({ params }) {
     await dbConnect()
     console.log({params})
@@ -407,10 +386,15 @@ export async function getServerSideProps({ params }) {
         const homographsObject = await getHomographs(wordAsObject)
         const {homographs} = homographsObject
         console.log({homographs})
+
+        const rhymesObject = await getRhymes(wordAsObject, type)
+        const {rhymes} = rhymesObject
+        console.log({rhymes})
     
         return { props: {
             foundWord: wordAsObject,
             homographs,
+            rhymes,
             search: wordParam,
             sanitisedInput,
             type,
