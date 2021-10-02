@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import superscriptLemmaTag from './superscriptLemmaTag'
-const greece = '../../public/images/greece.png'
-const israel = '../../public/images/israel.png'
+const greece = 'images/greece.png'
+const israel = 'images/israel.png'
 //import axios from '../../axios/axios'
 import LatinLink from '../latinlink/LatinLink'
 
