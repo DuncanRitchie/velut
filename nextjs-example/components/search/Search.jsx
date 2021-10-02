@@ -188,7 +188,7 @@ class Search extends Component {
         let selectedRouteObject = routes.find(route=>{return (route.route===this.state.type || route.route==="/"+this.state.type)})
         let dropdownSelect
         if (selectedRouteObject) {
-            dropdownSelect = selectedRouteObject.searchFieldFull
+            dropdownSelect = selectedRouteObject.headingToDisplay
         }
         // Let’s do the title of dropdown-select.
         let dropdownSelectTitle = `“${dropdownSelect}” is selected; click to ${this.state.dropdownAnimationClass==="dropdown-content-open" ? "close" : "open"} the menu`;
@@ -203,12 +203,12 @@ class Search extends Component {
                         className={styles.dropdownItem+" search-dropdown-item"}
                     >
                         <button
-                            title={"Select to return "+route.searchFieldFull.toLowerCase()}
+                            title={"Select to return "+route.headingToDisplay.toLowerCase()}
                             onClick={()=>{this.handleType(route.route)}}
                             disabled={menuDisabled}
                             className="search-dropdown-item-button"
                         >
-                            {route.searchFieldFull}
+                            {route.headingToDisplay}
                         </button>
                     </li>
                 )

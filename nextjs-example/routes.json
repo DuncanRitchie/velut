@@ -3,66 +3,66 @@
         "route": "/",
         "searchField": "PerfectRhyme",
         "sortFields": "Sort",
-        "searchFieldFull": "Perfect rhymes (classical)"
+        "headingToDisplay": "Perfect rhymes (classical)"
     },{
         "route": "/vowels",
         "searchField": "RhymeVowels",
         "sortFields": "Sort",
-        "searchFieldFull": "Vowel rhymes (classical)"
+        "headingToDisplay": "Vowel rhymes (classical)"
     },{
         "route": "/vowelsend",
         "searchField": "RhymeVowelsAndUltimaCoda",
         "sortFields": "Sort",
-        "searchFieldFull": "Vowel-and-end-consonant rhymes (classical)"
+        "headingToDisplay": "Vowel-and-end-consonant rhymes (classical)"
     },{
         "route": "/ecclesperfect",
         "searchField": "EcclesPerfectRhyme",
         "sortFields": "EcclesSort",
-        "searchFieldFull": "Perfect rhymes (ecclesiastical)"
+        "headingToDisplay": "Perfect rhymes (ecclesiastical)"
     },{
         "route": "/ecclesvowels",
         "searchField": "EcclesRhymeVowels",
         "sortFields": "EcclesSort",
-        "searchFieldFull": "Vowel rhymes (ecclesiastical)"
+        "headingToDisplay": "Vowel rhymes (ecclesiastical)"
     },{
         "route": "/ecclesvowelsend",
         "searchField": "EcclesRhymeVowelsAndUltimaCoda",
         "sortFields": "EcclesSort",
-        "searchFieldFull": "Vowel-and-end-consonant rhymes (ecclesiastical)"
+        "headingToDisplay": "Vowel-and-end-consonant rhymes (ecclesiastical)"
     },{
         "route": "/consonyms",
         "searchField": "AllConsonants",
         "sortFields": "NoMacraLowerCase NoMacra Word",
-        "searchFieldFull": "Consonyms"
+        "headingToDisplay": "Consonyms"
     },{
         "route": "/anagrams",
         "searchField": "AlphOrderNoMacra",
         "sortFields": "NoMacraLowerCase NoMacra Word",
-        "searchFieldFull": "Anagrams"
+        "headingToDisplay": "Anagrams"
     },{
         "route": "/scansion",
         "searchField": "Scansion",
         "sortFields": "NoMacraLowerCase NoMacra Word",
-        "searchFieldFull": "Words that scan the same"
+        "headingToDisplay": "Words that scan the same"
     },{
         "route": "/advanced",
         "searchField": null,
         "functionName": "getAdvanced",
-        "searchFieldFull": "Advanced Search"
+        "headingToDisplay": "Advanced Search"
     },{
         "route": "/subwords",
         "searchField": null,
         "functionName": "getSubwords",
-        "searchFieldFull": "Subwords"
+        "headingToDisplay": "Subwords"
     },{
         "route": "/anagramphrases",
         "searchField": null,
         "functionName": "getAnagrams",
-        "searchFieldFull": "Anagram phrases"
+        "headingToDisplay": "Anagram phrases"
     },{
         "route": "/english",
         "searchField": null,
         "functionName": "getLemmataEnglish",
-        "searchFieldFull": "English to Latin"
+        "headingToDisplay": "English to Latin"
     }
 ]

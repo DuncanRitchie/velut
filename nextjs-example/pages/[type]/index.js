@@ -280,7 +280,7 @@ class WordPage extends Component {
                                 {footName ? <> which&nbsp;is&nbsp;called {footNameArticle} {footName}.</> : null }
                             </p>
                             <h2>
-                                {this.props.rhymeTypeFull}
+                                {this.props.headingToDisplay}
                             </h2>
                             <p>
                                 {mappedRhymes}
@@ -388,7 +388,7 @@ export async function getServerSideProps({ params }) {
         console.log({homographs})
 
         const rhymesObject = await getRhymes(wordAsObject, type)
-        const {rhymes, rhymeTypeFull} = rhymesObject
+        const {rhymes, headingToDisplay} = rhymesObject
         console.log({rhymes})
     
         return { props: {
@@ -396,7 +396,7 @@ export async function getServerSideProps({ params }) {
             homographs,
             rhymes,
             search: wordParam,
-            rhymeTypeFull,
+            headingToDisplay,
             sanitisedInput,
             type,
         } }
