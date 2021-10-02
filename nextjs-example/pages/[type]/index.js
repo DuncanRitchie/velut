@@ -397,7 +397,7 @@ export async function getServerSideProps({ params }) {
         console.log({rhymes})
 
         const lemmataObject = await getLemmata(wordAsObject)
-        console.log(lemmataObject)
+        console.log({lemmataObject})
         const lemmata = JSON.parse(lemmataObject.lemmata)
         console.log({lemmata})
     
