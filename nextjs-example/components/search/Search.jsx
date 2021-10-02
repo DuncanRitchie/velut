@@ -83,7 +83,7 @@ class Search extends Component {
             console.log("Going up!")
             // Find the previous menu-item, or the last if we’re at the top of the menu.
             // If the menu isn’t open, there is no effect.
-            const elemToFocus = document.querySelector(".dropdown-content-open li:focus-within")?.previousSibling?.firstChild ?? document.querySelector(".dropdown-content-open li:last-child button");
+            const elemToFocus = document.querySelector("."+styles.dropdownContentOpen+" li:focus-within")?.previousSibling?.firstChild ?? document.querySelector("."+styles.dropdownContentOpen+" li:last-child button");
             console.log(elemToFocus ?? "null")
             elemToFocus?.focus();
         }
@@ -93,7 +93,7 @@ class Search extends Component {
             console.log("Going down!")
             // Find the next menu-item, or the first if we’re at the bottom of the menu.
             // If the menu isn’t open, the menu is opened. (Ideally I’d want the first menu-item to be focussed, but this isn’t happening yet.)
-            const elemToFocus = document.querySelector(".dropdown-content-open li:focus-within ~ li button") ?? (this.handleDropdown("dropdown-content-open"), document.querySelector(".dropdown-content-open li button"));
+            const elemToFocus = document.querySelector("."+styles.dropdownContentOpen+" li:focus-within ~ li button") ?? (this.handleDropdown("dropdown-content-open"), document.querySelector("."+styles.dropdownContentOpen+" li button"));
             console.log(elemToFocus ?? "null")
             elemToFocus?.focus();
         }
@@ -200,12 +200,13 @@ class Search extends Component {
                 return (
                     <li 
                         key={i} 
-                        className={styles.dropdownItem}
+                        className={styles.dropdownItem+" search-dropdown-item"}
                     >
                         <button
                             title={"Select to return "+route.searchFieldFull.toLowerCase()}
                             onClick={()=>{this.handleType(route.route)}}
                             disabled={menuDisabled}
+                            className="search-dropdown-item-button"
                         >
                             {route.searchFieldFull}
                         </button>
