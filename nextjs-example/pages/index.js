@@ -4,7 +4,7 @@ import Header from "../components/header/Header"
 import Search from '../components/search/Search'
 import styles from '../css/Home.module.css'
 
-const Home = () => {
+const Home = ({type = "/"}) => {
     return (<>
         <Head>
             <title>Duncan Ritchie’s velut — a Latin rhyming dictionary</title>
@@ -14,7 +14,7 @@ const Home = () => {
             <h2 className={styles.homeRubric}>
                 <span>Latin rhymes &amp;&nbsp;more!</span>
             </h2>
-            <Search prefix="" searchbarTitle="Type a Latin word" autofocus={true} />
+            <Search prefix="" searchbarTitle="Type a Latin word" autofocus={true} type={type} />
             <p className={styles.homeRubric}>
                 <span>Enter a Latin word in the searchbar above,</span><br/>
                 <span>or see the navigation bar below for other options.</span>

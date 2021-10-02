@@ -1,6 +1,6 @@
 [
     {
-        "route": "",
+        "route": "/",
         "searchField": "PerfectRhyme",
         "axiosFuncName": "getWordsClass",
         "searchFieldFull": "Perfect rhymes (classical)"

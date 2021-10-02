@@ -18,7 +18,7 @@ class Search extends Component {
             input: this.props.word || "",
             sanitisedInput: "",
             fromUrl: true,
-            type: this.props.type || "",
+            type: this.props.type || "/",
             dropdownAnimationClass: "dropdown-content-none",
             navigating: false,
             newUrl: "",
@@ -171,7 +171,7 @@ class Search extends Component {
             inputValue = this.state.input
         }
         // Let’s work out what the dropdown-select should be.
-        let selectedRouteObject = routes.find(route=>{return (route.route==="/"+this.state.type || route.route===this.state.type)})
+        let selectedRouteObject = routes.find(route=>{return (route.route===this.state.type || route.route==="/"+this.state.type)})
         let dropdownSelect
         if (selectedRouteObject) {
             dropdownSelect = selectedRouteObject.searchFieldFull
