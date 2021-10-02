@@ -25,12 +25,15 @@ async function getCognates(propsContainingRoot) {
 async function getForms(lemmaObject) {
     try {
         await dbConnect()
+        console.log("In getForms, props is:")
+        console.table(lemmaObject.toObject())
         const Lemma = lemmaObject.toObject().Lemma
         const foundForms = await Word
             .find({"LemmaArray": Lemma})
             .select({"Word": 1, "_id": 0})
             .sort("NoMacraLowerCase NoMacra Word")
             .exec()
+        console.log({foundForms})
         const mappedWords = foundForms
             .map(word=>word.Word??word)
         return { success: true, forms: mappedWords }
@@ -68,12 +71,14 @@ export default async function getLemmata({LemmaArray}) {
                     const cognatesObject = await getCognates(lemma)
                     const cognates = cognatesObject.cognates
 
+                    console.log("Getting forms for "+lemma)
                     const formsObject = await getForms(lemma)
                     const forms = formsObject.forms
 
                     return {...(lemma._doc ?? lemma), cognates, forms }
                 })
             )
+            console.log({lemmataWithCognatesAndForms})
 
             //// An array of objects cannot be serialised in getServerSideProps, so we stringify the array here and parse it back into the array of objects in getServerSideProps.
             return {

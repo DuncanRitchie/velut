@@ -237,6 +237,7 @@ class WordPage extends Component {
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     if (lemma) {
+                        console.log(lemma)
                         return (
                             <Lemma
                             key={index}
