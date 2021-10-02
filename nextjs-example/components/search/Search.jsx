@@ -7,6 +7,7 @@ import styles from "./Search.module.css"
 //// If this component is rendered, the page changes to `newUrl`.
 const NavigateTo = ({newUrl}) => {
     const router = useRouter()
+    console.log({newUrl, pathname: router.pathname})
     if (router.pathname === newUrl
      || router.pathname === "/"+newUrl) {
         console.log("Cannot navigate to current URL")
@@ -119,6 +120,7 @@ class Search extends Component {
 
         const getType = () => { return this.state.type ?? ""}
         console.table({sanitisedInput: this.state.sanitisedInput, searchWord: this.props.searchWord})
+        console.table({props: this.props})
         const getInput = () => {
             if (this.state.sanitisedInput !== undefined) {
                 return "/" + this.state.sanitisedInput
@@ -182,6 +184,7 @@ class Search extends Component {
             inputValue = this.state.input
         }
         // Let’s work out what the dropdown-select should be.
+        console.log({routes, propsType: this.props.type, stateType: this.state.type })
         let selectedRouteObject = routes.find(route=>{return (route.route===this.state.type || route.route==="/"+this.state.type)})
         let dropdownSelect
         if (selectedRouteObject) {
