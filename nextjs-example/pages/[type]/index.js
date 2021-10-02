@@ -195,7 +195,11 @@ class WordPage extends Component {
         let wordLemmata = []
         let mappedLemmata = []
         // All Links to other velut words will begin with linkBase.
-        const linkBase = this.props.type || ""
+        const linkBase
+            = this.props.type === ""
+            ? "/"
+            : "/" + this.props.type + "/"
+        console.log(linkBase)
 
         if (foundWord) {
             const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
