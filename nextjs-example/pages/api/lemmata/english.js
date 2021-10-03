@@ -64,11 +64,23 @@ const getSortFunction = (queryWord) => {
 
         // A lemma with shorter Meanings gets prioritised.
         // E.g. Thalīa “muse of comedy” (14 chars) precedes Ūrania “muse of astronomy” (17 chars) if query is “muse”.
-        else if (a.Meanings.length === b.Meanings.length) {
-            return a.Meanings > b.Meanings
+        else if (a.Meanings.length !== b.Meanings.length) {
+            return a.Meanings.length - b.Meanings.length
+        }
+
+        // No comparison is made between lemmata with identical Meanings.
+        // E.g. cattus “cat” may precede or succeed fēlēs “cat” regardless of the query.
+        else if (a.Meanings === b.Meanings) {
+            return 0
+        }
+
+        // A lemma with Meanings alphabetically earlier gets prioritised.
+        // E.g. pausa “cessation” precedes fōrmātiō “formation” (unless the query is “formation”).
+        else if (a.Meanings < b.Meanings) {
+            return -1
         }
         else {
-            return a.Meanings.length - b.Meanings.length
+            return 1
         }
     }
 }
