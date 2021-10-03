@@ -1,6 +1,4 @@
-import dbConnect from '../../../lib/dbConnect'
-import Lemma from '../../../models/Lemma'
-import {getLemmata} from '.'
+import { getLemmata } from '.'
 
 export default async function english(input) {
 
