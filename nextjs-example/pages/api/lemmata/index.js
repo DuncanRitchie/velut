@@ -52,7 +52,7 @@ export default async function getLemmataFromArray({LemmaArray}) {
     return getLemmata(query, sort)
 }
 
-export async function getLemmata(query, sort) {
+export async function getLemmata(query, sort, limit = Infinity) {
     try {
         await dbConnect()
         const selection = {
@@ -84,13 +84,19 @@ export async function getLemmata(query, sort) {
                     return {...(lemma._doc ?? lemma), cognates, forms }
                 })
             )
-            console.log({lemmataWithCognatesAndForms})
+
+            //// The limit is set in /english but not elsewhere.
+            const limitedLemmata
+                = limit !== Infinity
+                ? lemmataWithCognatesAndForms.slice(0, limit)
+                : lemmataWithCognatesAndForms
+            console.log({limitedLemmata})
 
             //// An array of objects cannot be serialised in getServerSideProps, so we stringify the array here and parse it back into the array of objects in getServerSideProps.
             return {
                 success: true,
                 //lemmataWithoutCognates: JSON.stringify(sortedLemmata),
-                lemmata: JSON.stringify(lemmataWithCognatesAndForms),
+                lemmata: JSON.stringify(limitedLemmata),
             }
         }
         else {

@@ -17,8 +17,9 @@ export default async function english(input) {
         }
     }
     const sort = getSortFunction(escapedInput)
+    const limit = 100
 
-    return getLemmata(query, sort)
+    return getLemmata(query, sort, limit)
 }
 
 //// Returns a sort function that will sort an array of lemmata to
