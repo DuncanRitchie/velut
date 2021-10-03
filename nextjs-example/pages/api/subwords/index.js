@@ -1,5 +1,94 @@
 import objectToArray from "../../../data/data-functions/objectToArray"
 import letterCountsJson from "../../../data/letterCounts.json"
+import Word from "../../../models/Word"
+import dbConnect from "../../../lib/dbConnect"
+
+//// Old controller from CRA app:
+// const findSubwords = function(req,res) {
+// 	let input = req.query.input
+// 	Word.find({"Length": {"$lte": input.length}})
+// 		.select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
+// 		.then(words=>{
+// 			let sortedSubwords = findSubwordsFromMongo(input,words)
+// 			let subwordsOnlyWord = sortedSubwords.map((object)=>{
+// 				return object.Word
+// 			})
+// 			return subwordsOnlyWord
+// 		})
+// 		.then(subwords=>{res.json(subwords)})
+// }
+
+export default async function findSubwords(input) {
+    try {
+        await dbConnect()
+        const wordsFromMongo = await Word
+            .find({"Length": {"$lte": input.length}})
+		    .select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
+
+        const sortedSubwords = findSubwordsFromMongo(input, wordsFromMongo)
+        const mappedSubwords = sortedSubwords.map((object)=>{
+            return object.Word
+        })
+
+        return { success: true, subwords: mappedSubwords}
+    }
+    catch (error) {
+        console.error(error)
+        return { success: false, error }
+    }
+}
+
+
+// findSubwordsFromMongo() returns an array of objects.
+// The array of objects from Mongo should be passed in as the second parameter.
+// This second parameter must include Word, NoMacra, NoMacraLowerCase, and Length fields.
+
+const findSubwordsFromMongo = (input, wordObjects) => {
+    // We assume input is already demacronized from the front-end.
+    let filteredWordObjects = wordObjects.filter(word=>{
+        if (delChars(input,word.NoMacraLowerCase).length === input.length-word.Word.length) {
+            return true
+        }
+        else {
+            return false
+        }
+    })
+    // Now we sort the array.
+    let sortedWordObjects = filteredWordObjects
+    sortedWordObjects = sortedWordObjects.sort((a,b)=>{
+        if (a.Word.length > b.Word.length) {
+            return -1
+        }
+        else if (a.Word.length < b.Word.length) {
+            return 1
+        }
+        else if (a.NoMacraLowerCase < b.NoMacraLowerCase) {
+            return -1
+        }
+        else if (a.NoMacraLowerCase > b.NoMacraLowerCase) {
+            return 1
+        }
+        else if (a.NoMacra > b.NoMacra) {
+            return 1
+        }
+        else if (a.NoMacra < b.NoMacra) {
+            return -1
+        }
+        else if (a.Word > b.Word) {
+            return 1
+        }
+        else if (a.Word < b.Word) {
+            return -1
+        }
+        else {
+            return 0
+        }
+    })
+
+    return sortedWordObjects
+}
+
+
 
 // delChars takes two strings as parameters.
 // It removes every character (case-insensitive) in the second parameter from the first parameter,

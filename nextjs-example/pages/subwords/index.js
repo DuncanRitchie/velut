@@ -6,8 +6,7 @@ import Search from '../../components/search/Search'
 import { randomCountdownQuestionWeighted } from '../api/subwords';
 import styles from '../../css/Subsites.module.css'
 
-const SubwordsHome = () => {
-    let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
+const SubwordsHome = ({randomCountdownQuestionExample}) => {
     return (<>
         <Head>
             <title>
@@ -39,3 +38,10 @@ const SubwordsHome = () => {
 }
 
 export default SubwordsHome
+
+export async function getServerSideProps() {
+    const randomCountdownQuestionExample = randomCountdownQuestionWeighted()
+    return { props: {
+        randomCountdownQuestionExample
+    }}
+}

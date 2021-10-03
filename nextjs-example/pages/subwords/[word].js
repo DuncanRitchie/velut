@@ -4,12 +4,13 @@ import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 // import axios from "../../axios/axios"
+import getSubwords from '../api/subwords'
 import {noMacra} from '../api/diacritics'
 import {delChars} from '../api/subwords'
 import {randomCountdownQuestionWeighted} from '../api/subwords'
 import styles from '../../css/Subsites.module.css'
 
-// <Subwords/> is a JSX element rendered at /subwords/:input
+// <Subwords/> is a JSX element rendered at /subwords/:word
 
 class Subwords extends Component {
     constructor(props) {
@@ -97,3 +98,18 @@ class Subwords extends Component {
 }
 
 export default Subwords
+
+export async function getServerSideProps({ params }) {
+    let input = params.word || ""
+    //// If special characters are input, we can get percent-encoding problems.
+    //// Let’s correct for that.
+    if (input.search("%")>-1) {
+        input = decodeURIComponent(input)
+    }
+
+    const subwordsObject = await getSubwords(input)
+    const subwords = subwordsObject.subwords
+    return { props: {
+        input, subwords
+    }}
+}
