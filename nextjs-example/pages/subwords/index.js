@@ -16,9 +16,24 @@ const SubwordsHome = () => {
         </Head>
         <div className={styles.subsiteHome+" subwords fulmar-background"}>
             <Header textBeforeTitle="Subwords"/>
-            <p className={styles.subsiteHomeRubric}>This will help you find Latin words that can be made with the letters you specify. Type some letters below!</p>
-            <Search prefix="/subwords/" searchbarTitle="Type something to find subwords of" lang="zxx" type="subwords" hideDropdown={true}/>
-            <p className={styles.subsiteHomeRubric}>Alternatively, search for a random string: <Link href={"/subwords/"+randomCountdownQuestionExample}><a title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</a></Link>.</p>
+            <p className={styles.subsiteHomeRubric}>
+                This will help you find Latin words that can be made with the letters you specify. Type some letters below!
+            </p>
+            <Search
+                prefix="/subwords/"
+                searchbarTitle="Type something to find subwords of"
+                lang="zxx"
+                type="subwords"
+                hideDropdown={true}
+            />
+            <p className={styles.subsiteHomeRubric}>
+                Alternatively, search for a random string:{" "}
+                <Link href={"/subwords/"+randomCountdownQuestionExample}>
+                    <a title={"Subwords of "+randomCountdownQuestionExample}>
+                        {randomCountdownQuestionExample}
+                    </a>
+                </Link>.
+            </p>
         </div>
     </>)
 }
