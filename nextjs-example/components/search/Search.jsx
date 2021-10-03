@@ -119,8 +119,6 @@ class Search extends Component {
         let newUrl = ""
 
         const getType = () => { return this.state.type ?? ""}
-        console.table({sanitisedInput: this.state.sanitisedInput, searchWord: this.props.searchWord})
-        console.table({props: this.props})
         const getInput = () => {
             if (this.state.sanitisedInput !== undefined) {
                 return "/" + this.state.sanitisedInput
@@ -134,7 +132,6 @@ class Search extends Component {
         newUrl += getType() + getInput()
         newUrl = newUrl.replaceAll(/\/[\/\.]+/g, "/")
 
-        console.table({type: getType(), input: getInput(), newUrl})
         this.setState({
             dropdownAnimationClass: "dropdown-content-none",
             newUrl: newUrl,
@@ -148,7 +145,6 @@ class Search extends Component {
             this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
         } catch {
         }
-        console.log(this.props)
         // The input is initially focussed, unless the page is About or a query has started.
         if (this.state.input
             || !this.props.autofocus) {
