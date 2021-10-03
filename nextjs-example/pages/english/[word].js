@@ -5,6 +5,7 @@ import Search from "../../components/search/Search"
 import Lemma from "../../components/lemma/Lemma"
 //import axios from '../../axios/axios'
 import Dictionaries from "../../components/dictionaries/Dictionaries"
+import getEnglish from '../api/lemmata/english'
 import styles from "../../css/Subsites.module.css"
 
 class English extends Component {
@@ -40,23 +41,23 @@ class English extends Component {
     // }
 
     render() {
-
         let lemmata = this.props.lemmata.map((lemma, index) => {
-            let mappedCognates = []
-            let mappedForms = []
-            let cognatesMessage = ""
+            // let mappedCognates = []
+            // let mappedForms = []
+            // let cognatesMessage = ""
             return (
                 <Lemma
                 key={index}
-                lemma={lemma.Lemma}
-                partOfSpeech={lemma.PartOfSpeech}
-                meaning={lemma.Meanings}
-                notes={lemma.Notes}
-                transliteration={lemma.Transliterations}
-                forms={mappedForms}
-                cognates={mappedCognates}
-                cognatesMessage={cognatesMessage}
-                root={lemma.Root}
+                // lemma={lemma.Lemma}
+                // partOfSpeech={lemma.PartOfSpeech}
+                // meaning={lemma.Meanings}
+                // notes={lemma.Notes}
+                // transliteration={lemma.Transliterations}
+                // forms={mappedForms}
+                // cognates={mappedCognates}
+                // cognatesMessage={cognatesMessage}
+                // root={lemma.Root}
+                lemma={lemma}
                 linkBase="../"
                 />
             )
@@ -99,8 +100,12 @@ export async function getServerSideProps({ params }) {
     if (sanitisedInput.search("%")>-1) {
         sanitisedInput = decodeURIComponent(sanitisedInput)
     }
+
+    const englishObject = await getEnglish(sanitisedInput)
+    const lemmata = JSON.parse(englishObject.lemmata)
+
     return { props: {
         sanitisedInput,
-        lemmata: [],
+        lemmata,
     }}
 }
