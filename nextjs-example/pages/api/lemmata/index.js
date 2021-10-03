@@ -44,7 +44,15 @@ async function getForms(lemmaObject) {
     }
 }
 
-export default async function getLemmata({LemmaArray}) {
+export default async function getLemmataFromArray({LemmaArray}) {
+    const query = {Lemma: {$in: LemmaArray}}
+    const sort = (a,b)=>{
+        return (LemmaArray.find(lemma=>lemma.Lemma === b)) - (LemmaArray.find(lemma=>lemma.Lemma === a))
+    }
+    return getLemmata(query, sort)
+}
+
+export async function getLemmata(query, sort) {
     try {
         await dbConnect()
         const selection = {
@@ -58,12 +66,10 @@ export default async function getLemmata({LemmaArray}) {
             "NoMacra": 1,
             "_id": 0
         }
-        const foundLemmata = await Lemma.find({Lemma: {$in: LemmaArray}}).select(selection).exec()
+        const foundLemmata = await Lemma.find(query).select(selection).exec()
         console.log({foundLemmata})
         if (foundLemmata && foundLemmata.length) {
-            const sortedLemmata = foundLemmata?.sort((a,b)=>{
-                return (LemmaArray.find(lemma=>lemma.Lemma === b)) - (LemmaArray.find(lemma=>lemma.Lemma === a))
-            })
+            const sortedLemmata = foundLemmata?.sort(sort)
             console.log({sortedLemmata})
 
             const lemmataWithCognatesAndForms = await Promise.all(
@@ -83,8 +89,8 @@ export default async function getLemmata({LemmaArray}) {
             //// An array of objects cannot be serialised in getServerSideProps, so we stringify the array here and parse it back into the array of objects in getServerSideProps.
             return {
                 success: true,
-                lemmataWithoutCognates: JSON.stringify(sortedLemmata),
-                lemmata: JSON.stringify(lemmataWithCognatesAndForms)
+                //lemmataWithoutCognates: JSON.stringify(sortedLemmata),
+                lemmata: JSON.stringify(lemmataWithCognatesAndForms),
             }
         }
         else {
