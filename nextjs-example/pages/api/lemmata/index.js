@@ -43,7 +43,11 @@ async function getForms(lemmaObject) {
 export default async function getLemmataFromArray({LemmaArray}) {
     const query = {Lemma: {$in: LemmaArray}}
     const sort = (a,b)=>{
-        return (LemmaArray.find(lemma=>lemma.Lemma === b)) - (LemmaArray.find(lemma=>lemma.Lemma === a))
+        return (
+            LemmaArray.findIndex(lemma => lemma === a.toObject().Lemma)
+            -
+            LemmaArray.findIndex(lemma => lemma === b.toObject().Lemma)
+        )
     }
     return getLemmata(query, sort)
 }
