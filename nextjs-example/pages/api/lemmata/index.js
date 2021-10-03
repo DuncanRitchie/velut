@@ -12,7 +12,6 @@ async function getCognates(propsContainingRoot) {
             .select({"Lemma": 1, "_id": 0})
             .sort("NoMacraLowerCase NoMacra Lemma")
             .exec()
-        console.log(foundLemmata)
         const mappedLemmata = foundLemmata
             .map(lemma=>lemma.Lemma??lemma)
         return { success: true, cognates: mappedLemmata }
@@ -25,15 +24,12 @@ async function getCognates(propsContainingRoot) {
 async function getForms(lemmaObject) {
     try {
         await dbConnect()
-        console.log("In getForms, props is:")
-        console.table(lemmaObject.toObject())
         const Lemma = lemmaObject.toObject().Lemma
         const foundForms = await Word
             .find({"LemmaArray": Lemma})
             .select({"Word": 1, "_id": 0})
             .sort("NoMacraLowerCase NoMacra Word")
             .exec()
-        console.log({foundForms})
         const mappedWords = foundForms
             .map(word=>word.Word??word)
         return { success: true, forms: mappedWords }
@@ -67,17 +63,14 @@ export async function getLemmata(query, sort, limit = Infinity) {
             "_id": 0
         }
         const foundLemmata = await Lemma.find(query).select(selection).exec()
-        console.log({foundLemmata})
         if (foundLemmata && foundLemmata.length) {
             const sortedLemmata = foundLemmata?.sort(sort)
-            console.log({sortedLemmata})
 
             const lemmataWithCognatesAndForms = await Promise.all(
                 sortedLemmata.map(async lemma=>{
                     const cognatesObject = await getCognates(lemma)
                     const cognates = cognatesObject.cognates
 
-                    console.log("Getting forms for "+lemma)
                     const formsObject = await getForms(lemma)
                     const forms = formsObject.forms
 
@@ -90,7 +83,6 @@ export async function getLemmata(query, sort, limit = Infinity) {
                 = limit !== Infinity
                 ? lemmataWithCognatesAndForms.slice(0, limit)
                 : lemmataWithCognatesAndForms
-            console.log({limitedLemmata})
 
             //// An array of objects cannot be serialised in getServerSideProps, so we stringify the array here and parse it back into the array of objects in getServerSideProps.
             return {

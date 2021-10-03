@@ -93,7 +93,6 @@ class English extends Component {
 export default English
 
 export async function getServerSideProps({ params }) {
-    console.table(params)
     let sanitisedInput = params.word || ""
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.

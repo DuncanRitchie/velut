@@ -200,7 +200,6 @@ class WordPage extends Component {
             = this.props.type === ""
             ? "/"
             : "/" + this.props.type + "/"
-        console.log(linkBase)
 
         if (foundWord) {
             const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word);
@@ -237,7 +236,6 @@ class WordPage extends Component {
             if (wordLemmata) {
                 mappedLemmata = wordLemmata.map((lemma,index)=>{
                     if (lemma) {
-                        console.log(lemma)
                         return (
                             <Lemma
                             key={index}
@@ -362,7 +360,6 @@ export default WordPage
 
 export async function getServerSideProps({ params }) {
     await dbConnect()
-    console.log({params})
 
     //// The URL is /:type/:word
     //// So for /anagrams/avis the type is "anagrams" & word is "avis"
@@ -374,7 +371,6 @@ export async function getServerSideProps({ params }) {
     const wordParam = params.hasOwnProperty("word") ? params.word : params.type ?? ""
     const type = params.hasOwnProperty("word") ? params.type : ""
     let sanitisedInput = wordParam
-    console.log({sanitisedInput, type})
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.
     if (sanitisedInput.search("%")>-1) {
@@ -383,24 +379,18 @@ export async function getServerSideProps({ params }) {
 
     //// Fetch the word object from the database.
     const word = await findOneWord(sanitisedInput)
-    console.log({word})
 
     if (word.word) {
         const wordAsObject = word.word.toObject()
-        console.log({wordAsObject})
 
         const homographsObject = await getHomographs(wordAsObject)
         const {homographs} = homographsObject
-        console.log({homographs})
 
         const rhymesObject = await getRhymes(wordAsObject, type)
         const {rhymes, headingToDisplay} = rhymesObject
-        console.log({rhymes})
 
         const lemmataObject = await getLemmata(wordAsObject)
-        console.log({lemmataObject})
         const lemmata = JSON.parse(lemmataObject.lemmata)
-        console.log({lemmata})
     
         return { props: {
             foundWord: wordAsObject,
@@ -417,9 +407,7 @@ export async function getServerSideProps({ params }) {
     //// If the word was not found, we find a random word and suggest it.
     else {
         const randomWordObject = await getRandomWord()
-        console.log({randomWordObject})
         const randomWord = randomWordObject.word
-        console.log({randomWord})
         return { props: {
             randomWord,
             sanitisedInput,
