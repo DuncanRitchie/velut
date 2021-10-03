@@ -14,7 +14,7 @@ const EnglishHome = () => {
         <div className={styles.subsiteHome+" english fulmar-background"}>
             <Header textBeforeTitle="English to Latin"/>
             <p className={styles.subsiteHomeRubric}>Enter something English and this will suggest Latin translations!</p>
-            <Search prefix="english/" searchbarTitle="Type an English word" lang="en" hideDropdown={true}/>
+            <Search prefix="/english/" searchbarTitle="Type an English word" lang="en" hideDropdown={true} type="/english" />
         </div>
     </>)
 }
