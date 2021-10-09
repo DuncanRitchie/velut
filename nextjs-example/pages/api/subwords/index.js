@@ -25,7 +25,7 @@ export default async function findSubwords(input) {
             .find({"Length": {"$lte": input.length}})
 		    .select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
 
-        const sortedSubwords = findSubwordsFromMongo(input, wordsFromMongo)
+        const sortedSubwords = findSubwordsInWordsFromMongo(input, wordsFromMongo)
         const mappedSubwords = sortedSubwords.map((object)=>{
             return object.Word
         })
@@ -43,10 +43,10 @@ export default async function findSubwords(input) {
 // The array of objects from Mongo should be passed in as the second parameter.
 // This second parameter must include Word, NoMacra, NoMacraLowerCase, and Length fields.
 
-const findSubwordsFromMongo = (input, wordObjects) => {
+const findSubwordsInWordsFromMongo = (input, wordObjects) => {
     // We assume input is already demacronized from the front-end.
     let filteredWordObjects = wordObjects.filter(word=>{
-        if (delChars(input,word.NoMacraLowerCase).length === input.length-word.Word.length) {
+        if (deleteCharacters(input,word.NoMacraLowerCase).length === input.length-word.Word.length) {
             return true
         }
         else {
@@ -90,13 +90,13 @@ const findSubwordsFromMongo = (input, wordObjects) => {
 
 
 
-// delChars takes two strings as parameters.
+// deleteCharacters takes two strings as parameters.
 // It removes every character (case-insensitive) in the second parameter from the first parameter,
-// e.g. delChars("Duncanus","nunc") = "Daus"
-// e.g. delChars("Rīchardus","hinc") = "Rīardus"
-// e.g. delChars("Richardus","hinc") = "Rardus"
+// e.g. deleteCharacters("Duncanus","nunc") = "Daus"
+// e.g. deleteCharacters("Rīchardus","hinc") = "Rīardus"
+// e.g. deleteCharacters("Richardus","hinc") = "Rardus"
 
-export function delChars(superword, subword) {
+export function deleteCharacters(superword, subword) {
     let string = superword.toLowerCase()
     subword = subword.toLowerCase()
     let chars = subword.split("")

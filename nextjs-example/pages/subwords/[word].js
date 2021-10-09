@@ -6,7 +6,7 @@ import Search from '../../components/search/Search'
 // import axios from "../../axios/axios"
 import getSubwords from '../api/subwords'
 import {noMacra} from '../api/diacritics'
-import {delChars} from '../api/subwords'
+import {deleteCharacters} from '../api/subwords'
 import {randomCountdownQuestionWeighted} from '../api/subwords'
 import styles from '../../css/Subsites.module.css'
 
@@ -51,7 +51,7 @@ const Subwords = ({input, subwords, loading}) => {
         if (subwords) {
             mappedWords = subwords.map((word,index)=>{
                 // If we can delete from the input all the letters of the word and still have letters left over, we render a Link.
-                let remainingLetters = delChars(noMacra(input),noMacra(word))
+                let remainingLetters = deleteCharacters(noMacra(input),noMacra(word))
                 if (remainingLetters) {
                     return <Fragment key={index}><Link href={"./"+remainingLetters}><a title={"delete “"+word+"” from “"+input+"” to leave “"+remainingLetters+"”"} lang="la">{word}</a></Link> </Fragment>
                 }
