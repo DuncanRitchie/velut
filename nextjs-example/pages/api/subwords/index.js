@@ -18,23 +18,33 @@ import dbConnect from "../../../lib/dbConnect"
 // 		.then(subwords=>{res.json(subwords)})
 // }
 
-export default async function findSubwords(input) {
+export async function findSubwordsAsObjects(input) {
     try {
         await dbConnect()
         const wordsFromMongo = await Word
             .find({"Length": {"$lte": input.length}})
 		    .select({"Word": 1, "NoMacraLowerCase": 1, "NoMacra": 1, "Length": 1, "_id": 0})
 
-        const sortedSubwords = findSubwordsInWordsFromMongo(input, wordsFromMongo)
-        const mappedSubwords = sortedSubwords.map((object)=>{
-            return object.Word
-        })
+        const subwordsAsObjects = findSubwordsInWordsFromMongo(input, wordsFromMongo)
 
-        return { success: true, subwords: mappedSubwords}
+        return { success: true, subwords: subwordsAsObjects }
     }
     catch (error) {
         console.error(error)
         return { success: false, error }
+    }
+}
+
+export default async function findSubwords(input) {
+    const subwordsAsObjects = await findSubwordsAsObjects(input)
+    if (subwordsAsObjects.success) {
+        const subwordsAsWords = subwordsAsObjects.subwords.map((object)=>{
+            return object.Word
+        })
+        return { success: true, subwords: subwordsAsWords }
+    }
+    else {
+        return subwordsAsObjects
     }
 }
 
@@ -43,7 +53,7 @@ export default async function findSubwords(input) {
 // The array of objects from Mongo should be passed in as the second parameter.
 // This second parameter must include Word, NoMacra, NoMacraLowerCase, and Length fields.
 
-const findSubwordsInWordsFromMongo = (input, wordObjects) => {
+export const findSubwordsInWordsFromMongo = (input, wordObjects) => {
     // We assume input is already demacronized from the front-end.
     let filteredWordObjects = wordObjects.filter(word=>{
         if (deleteCharacters(input,word.NoMacraLowerCase).length === input.length-word.Word.length) {
