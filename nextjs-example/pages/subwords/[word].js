@@ -12,24 +12,25 @@ import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word
 
-class Subwords extends Component {
-    constructor(props) {
-        super(props);
+const Subwords = ({input, subwords, loading}) => {
+// class Subwords extends Component {
+//     constructor(props) {
+//         super(props);
         // this.state = {
         //     input: this.props.word,
         //     subwords: [],
         //     loading: false
         // }
-    }
+//    }
 
-    fetchWords(input) {
+    // fetchWords(input) {
         // this.setState({loading: true})
         // axios.getSubwords(noMacra(input).toLowerCase()).then((data)=>{
         //     // data.data is a simple array of strings.
         //     this.setState({subwords: data.data})
         //     this.setState({loading: false})
         // })
-    }
+    // }
 
     // componentDidMount() {
     //     this.fetchWords(this.props.match.params.word)
@@ -43,12 +44,12 @@ class Subwords extends Component {
     //     }
     // }
 
-    render() {
-        let input = this.props.input
+    //render() {
+        //let input = this.props.input
 
         let mappedWords = []
-        if (this.props.subwords) {
-            mappedWords = this.props.subwords.map((word,index)=>{
+        if (subwords) {
+            mappedWords = subwords.map((word,index)=>{
                 // If we can delete from the input all the letters of the word and still have letters left over, we render a Link.
                 let remainingLetters = delChars(noMacra(input),noMacra(word))
                 if (remainingLetters) {
@@ -62,7 +63,9 @@ class Subwords extends Component {
         }
         let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
         let result = null
-        if (this.props.loading) {
+        //// `loading` is not expected to be true because of server-side rendering.
+        //// But I’m leaving it in, in case it’s needed in future.
+        if (loading) {
             result = (<p>Loading subwords…&nbsp; This can take a minute.</p>)
         }
         else if (mappedWords.length) {
@@ -87,14 +90,14 @@ class Subwords extends Component {
             <div className="subwords fulmar-background">
                 <Header textBeforeTitle="Subwords" />
                 <div>
-                    <Search prefix="/subwords/" searchbarTitle="Type something to find subwords of" lang="zxx" hideDropdown={true} />
+                    <Search prefix="/subwords/" searchbarTitle="Type something to find subwords of" lang="zxx" hideDropdown={true} searchWord={input} type="subwords" />
                     <div className={styles.subsiteResult}>
                         {result}
                     </div>
                 </div>
             </div>
         </>)
-    }
+    //}
 }
 
 export default Subwords
