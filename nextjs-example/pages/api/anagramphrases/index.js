@@ -26,7 +26,7 @@ import { deleteCharacters } from "../subwords"
 export default async function findAnagrams(input) {
     try {
         await dbConnect()
-        const cleanInput = noMacra(input).toLowerCase().replace(/ /g,"")
+        const cleanInput = noMacra(input).toLowerCase().replace(/[^a-z]/g,"")
 
         const wordsFromMongo = await Word
             .find({"Length": {"$lte": cleanInput.length}})
