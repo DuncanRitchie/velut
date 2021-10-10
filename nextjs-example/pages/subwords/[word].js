@@ -90,7 +90,7 @@ const Subwords = ({input, subwords, loading}) => {
             <div className="subwords fulmar-background">
                 <Header textBeforeTitle="Subwords" />
                 <div>
-                    <Search prefix="/subwords/" searchbarTitle="Type something to find subwords of" lang="zxx" hideDropdown={true} searchWord={input} type="subwords" />
+                    <Search type="/subwords" searchbarTitle="Type something to find subwords of" lang="zxx" hideDropdown={true} searchWord={input} />
                     <div className={styles.subsiteResult}>
                         {result}
                     </div>
