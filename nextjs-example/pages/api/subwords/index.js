@@ -18,6 +18,19 @@ import dbConnect from "../../../lib/dbConnect"
 // 		.then(subwords=>{res.json(subwords)})
 // }
 
+export default async function findSubwords(input) {
+    const subwordsAsObjects = await findSubwordsAsObjects(input)
+    if (subwordsAsObjects.success) {
+        const subwordsAsWords = subwordsAsObjects.subwords.map((object)=>{
+            return object.Word
+        })
+        return { success: true, subwords: subwordsAsWords }
+    }
+    else {
+        return subwordsAsObjects
+    }
+}
+
 export async function findSubwordsAsObjects(input) {
     try {
         await dbConnect()
@@ -32,19 +45,6 @@ export async function findSubwordsAsObjects(input) {
     catch (error) {
         console.error(error)
         return { success: false, error }
-    }
-}
-
-export default async function findSubwords(input) {
-    const subwordsAsObjects = await findSubwordsAsObjects(input)
-    if (subwordsAsObjects.success) {
-        const subwordsAsWords = subwordsAsObjects.subwords.map((object)=>{
-            return object.Word
-        })
-        return { success: true, subwords: subwordsAsWords }
-    }
-    else {
-        return subwordsAsObjects
     }
 }
 
