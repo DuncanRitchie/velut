@@ -11,7 +11,7 @@ const Anagrams = ({input, anagrams, loading, error}) => {
     let mappedAnagrams = []
     if (anagrams) {
         mappedAnagrams = anagrams.map((anagram,index)=>{
-            return <Fragment key={index}>{anagram.replace(/\./g," ")}<br/></Fragment>
+            return <Fragment key={index}>{anagram}<br/></Fragment>
         })
     }
     let result = null
