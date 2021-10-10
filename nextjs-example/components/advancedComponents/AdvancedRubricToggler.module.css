@@ -1,0 +1,12 @@
+.advancedRubricTogglerButton {
+    background-color: #9cdad3;
+    margin-top: 0.3333rem;
+    margin-bottom: 0;
+    width: calc(66vw + 1rem);
+    max-width: 46.875rem;
+    padding: 0.5rem 1rem;
+}
+
+.advancedRubricTogglerButton:hover {
+    background-color: #b5e3de;
+}

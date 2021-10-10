@@ -1,0 +1,73 @@
+.advancedRubric ul, .advancedRubric li {
+    display: block;
+    max-width: 100%;
+}
+
+.advancedRubric {
+    width: calc(100% - 1.125rem);
+    max-width: 46.875rem;
+    margin: 0 auto;
+}
+
+.advancedRubric h2, .advancedRubric h3, .advancedRubric h4 {
+    margin-bottom: 0;
+    padding: 0.375rem 1rem;
+}
+
+.advancedRubric h2 {
+    background-color: #efe1ab;
+    text-align: center;
+}
+
+.advancedRubric h3 {
+    background-color: #faeebd;
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.advancedRubric h4 {
+    text-align: left;
+    background-color: #faf2d3;
+    font-size: 1.125rem;
+    margin-top: 0;
+}
+
+.advancedRubric p, .advancedRubric li {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+    background-color: rgba(255,253,244,0.95);
+}
+
+.advancedRubric h2 + p {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.advancedRubric li {
+    line-height: 1.6em;
+    padding: 0.625rem 1.125rem 0.625rem 1.25rem;
+    margin: 0;
+    display: list-item;
+    list-style: disc inside;
+}
+
+.advancedRubric h3 + p, .advancedRubric h4 + p {
+    padding-top: 1.25rem;
+}
+
+.advancedRubric li:last-child {
+    padding-bottom: 1.25rem;
+}
+
+.advancedRubric ul + p {
+    padding-top: 0;
+    padding-bottom: 1.25rem;
+}
+
+@media print {
+    .advancedRubric {
+        max-width: initial;
+    }
+}
