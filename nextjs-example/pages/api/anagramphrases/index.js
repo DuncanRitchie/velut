@@ -4,6 +4,7 @@ import dbConnect from "../../../lib/dbConnect"
 import { noMacra } from "../diacritics"
 import { findSubwordsInWordsFromMongo } from "../subwords"
 import { deleteCharacters } from "../subwords"
+const ANAGRAM_CHAR_LIMIT = 15;
 
 //// Old controller from MERN app:
 // const findAnagrams = function(req,res) {
@@ -27,6 +28,14 @@ export default async function findAnagrams(input) {
     try {
         await dbConnect()
         const cleanInput = noMacra(input).toLowerCase().replace(/[^a-z]/g,"")
+
+        if (cleanInput.length > ANAGRAM_CHAR_LIMIT) {
+            return {
+                success: false,
+                error: "Input is too long. Please enter fifteen or fewer letters.",
+                anagrams: null,
+            }
+        }
 
         const wordsFromMongo = await Word
             .find({"Length": {"$lte": cleanInput.length}})
