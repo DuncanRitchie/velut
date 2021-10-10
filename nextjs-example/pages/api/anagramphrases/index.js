@@ -40,11 +40,19 @@ export default async function findAnagrams(input) {
             )
         )
 
-        return { success: true, anagrams }
+        return {
+            success: true,
+            error: null,
+            anagrams,
+         }
     }
     catch (error) {
         console.error(error)
-        return { success: false, error: error || null }
+        return {
+            success: false,
+            error,
+            anagrams: null,
+        }
     }
 }
 
