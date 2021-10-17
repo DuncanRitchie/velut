@@ -60,12 +60,12 @@ const Advanced = ({ query, isHomepage, words, error }) => {
                     Advanced Search on velut — a Latin rhyming dictionary
                 </title>
             </Head>
-            <div className="advanced fulmar-background">
+            <div className={styles.advanced+" fulmar-background"}>
                 <Header textBeforeTitle="Advanced Search" />
                 <div>
                     <AdvancedRubricToggler/>
                     <AdvancedSearch autofocus={false} query={query}/>
-                    <div className="subsite-result">
+                    <div className={styles.subsiteResult}>
                         {result}
                     </div>
                 </div>

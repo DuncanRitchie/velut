@@ -54,6 +54,10 @@
     margin-top: 0;
 }
 
+.advanced .subsiteResult {
+    margin-top: 3.5rem;
+}
+
 
 @media print {
     /* Allow elements to be full-width. */
