@@ -20,3 +20,10 @@ const AdvancedHome = () => {
 }
 
 export default AdvancedHome
+
+export async function getServerSideProps(props) {
+    console.log(props)
+    return { props: {
+
+    }}
+}
