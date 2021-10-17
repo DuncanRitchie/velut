@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Header from '../../components/header/Header'
 import AdvancedRubricToggler from '../../components/advancedComponents/AdvancedRubricToggler'
 import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
+import findAdvanced from '../api/words/advanced'
 import styles from '../../css/Subsites.module.css'
 
 const AdvancedHome = ({ query }) => {
@@ -24,7 +25,23 @@ export default AdvancedHome
 export async function getServerSideProps(props) {
     console.log(props)
     const { query } = props
-    return { props: {
-        query,
-    }}
+
+    if (
+        query.scansion
+        || query.spelling
+    ) {
+        const results = await findAdvanced(query)
+        console.log(results)
+        return { props: {
+            showResults: true,
+            query,
+            ...results,
+        }}
+    }
+    else {
+        return { props: {
+            showResults: false,
+            query,
+        }}
+    }
 }
