@@ -91,6 +91,7 @@ export default async function findAdvanced({ spelling, scansion, elision, sort }
 	else {
         return {
             success: false,
+            //// `error` is displayed on the front-end so needs to be user-friendly.
             error: "Please specify scansion or spelling.",
             words: null,
         }
