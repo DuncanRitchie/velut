@@ -117,7 +117,7 @@ class AdvancedSearch extends Component {
     render() {
         // Now we’re ready to return JSX.
         return (
-            <div className="search advanced-search">
+            <div className={advancedStyles.advancedSearch+" "+searchStyles.search}>
                 {/* Form fields */}
                 {/* <form> */}
                     <div id="advanced-search-spelling">
@@ -207,7 +207,8 @@ class AdvancedSearch extends Component {
 
                     {/* The button to load the new page. */}
                     <button
-                        id="search-button" 
+                        id="search-button"
+                        className={searchStyles.searchButton}
                         onClick={this.search} 
                         title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                     >Search!
