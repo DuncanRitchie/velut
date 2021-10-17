@@ -1,0 +1,31 @@
+.advancedSearch {
+    margin-bottom: 2rem;
+}
+
+.advancedSearch div input[type=text] {
+    width: calc(100% - 1rem);
+}
+
+.advancedSearch div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-top: 0.1875rem solid #c2b170;
+}
+
+.advancedSearch div:not(:last-of-type) {
+    padding-bottom: 1rem;
+}
+
+.advancedSearch div p {
+    background-color: rgba(255,253,244,0.95);
+    margin: 0;
+}
+
+.advancedSearch input + label {
+    margin-left: 0.25rem;
+}
+
+.advanced .subsite-result {
+    margin-top: 3.5rem;
+}
