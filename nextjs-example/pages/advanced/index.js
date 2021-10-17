@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import AdvancedRubricToggler from '../../components/advancedComponents/AdvancedRubricToggler'
-// import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
+import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
 import styles from '../../css/Subsites.module.css'
 
 const AdvancedHome = () => {
@@ -14,7 +14,7 @@ const AdvancedHome = () => {
         <div className={styles.subsiteHome + " advanced fulmar-background"}>
             <Header textBeforeTitle="Advanced Search"/>
             <AdvancedRubricToggler/>
-            {/* <AdvancedSearch autofocus={true}/> */}
+            <AdvancedSearch autofocus={true}/>
         </div>
     </>)
 }
