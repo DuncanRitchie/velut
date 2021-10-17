@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import { useRouter } from 'next/router'
+import Redirect from "../redirect/Redirect";
 import searchStyles from '../search/Search.module.css'
 import advancedStyles from './AdvancedSearch.module.css'
 
@@ -17,6 +17,8 @@ class AdvancedSearch extends Component {
             },
             elision: false,
             sort: "alphabetical",
+            navigating: false,
+            newUrl: "",
         }
     }
 
@@ -78,8 +80,10 @@ class AdvancedSearch extends Component {
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
-    search = () => {
-        let newUrl = "../../advanced/?"
+    search = (event) => {
+        //// For some reason `preventDefault` works on Search but not Advanced Search.
+        // event?.preventDefault()
+        let newUrl = "advanced/?"
         if (this.state.spelling.unsanitised) {
             newUrl = `${newUrl}spelling=${this.state.spelling.sanitised}`;
         }
@@ -94,7 +98,11 @@ class AdvancedSearch extends Component {
         }
         newUrl = newUrl.replace("?&","?");
         console.log({newUrl})
-        // this.props.history.push(newUrl)
+
+        this.setState({
+            newUrl: newUrl,
+            navigating: true,
+        })
     }
 
     // Let’s set our state so inputs can get their values from the URL.
@@ -116,10 +124,9 @@ class AdvancedSearch extends Component {
 
     render() {
         // Now we’re ready to return JSX.
-        return (
-            <div className={advancedStyles.advancedSearch+" "+searchStyles.search}>
+        return (<>
                 {/* Form fields */}
-                {/* <form> */}
+                <form onSubmit={this.search} className={advancedStyles.advancedSearch+" "+searchStyles.search}>
                     <div id="advanced-search-spelling">
                         <p>
                             <label htmlFor="spelling-input">Spelling:</label>
@@ -209,12 +216,14 @@ class AdvancedSearch extends Component {
                     <button
                         id="search-button"
                         className={searchStyles.searchButton}
-                        onClick={this.search} 
+                        type="submit"
                         title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                     >Search!
                     </button>
-                {/* </form> */}
-            </div>
+                    {this.state.navigating
+                        && <Redirect newUrl={this.state.newUrl} />}
+                </form>
+            </>
         )
     }
 }
