@@ -1,22 +1,7 @@
 import React, {Component} from "react"
-import { useRouter } from 'next/router'
+import Redirect from "../redirect/Redirect";
 import routes from '../../routes.json'
 import styles from "./Search.module.css"
-
-//// Next.js’s router can only be used within a component function.
-//// If this component is rendered, the page changes to `newUrl`.
-const NavigateTo = ({newUrl}) => {
-    const router = useRouter()
-    console.log({newUrl, asPath: router.asPath})
-    if (router.asPath === newUrl
-     || router.asPath === "/"+newUrl) {
-        console.log("Cannot navigate to current URL")
-    }
-    else {
-        router.push(encodeURI(newUrl))
-    }
-    return <></>
-}
 
 class Search extends Component {
     constructor(props) {
@@ -267,7 +252,7 @@ class Search extends Component {
                     </div>
                 )}
                 {this.state.navigating
-                    && <NavigateTo newUrl={this.state.newUrl} />}
+                    && <Redirect newUrl={this.state.newUrl} />}
             </form>
         )
     }
