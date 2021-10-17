@@ -7,9 +7,9 @@ import styles from "./Search.module.css"
 //// If this component is rendered, the page changes to `newUrl`.
 const NavigateTo = ({newUrl}) => {
     const router = useRouter()
-    console.log({newUrl, pathname: router.pathname})
-    if (router.pathname === newUrl
-     || router.pathname === "/"+newUrl) {
+    console.log({newUrl, asPath: router.asPath})
+    if (router.asPath === newUrl
+     || router.asPath === "/"+newUrl) {
         console.log("Cannot navigate to current URL")
     }
     else {
@@ -113,7 +113,8 @@ class Search extends Component {
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
-    search = () => {
+    search = (event) => {
+        event.preventDefault()
         console.log("SEARCHING!")
         // let newUrl = "../../"
         let newUrl = ""
