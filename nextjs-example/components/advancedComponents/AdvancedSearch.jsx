@@ -48,12 +48,11 @@ class AdvancedSearch extends Component {
         } catch {
             sanitisedInput = input;
         }
-        const newState = {
-            name: {
-                unsanitised: input,
-                sanitised: sanitisedInput,
-            }
-        };
+        let newState = {}
+        newState[name] = {
+            unsanitised: input,
+            sanitised: sanitisedInput,
+        }
         this.setState(newState);
     }
 
