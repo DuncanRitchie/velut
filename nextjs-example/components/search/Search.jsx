@@ -205,6 +205,7 @@ class Search extends Component {
                             onClick={()=>{this.handleType(route.route)}}
                             disabled={menuDisabled}
                             className="search-dropdown-item-button"
+                            type="button"
                         >
                             {route.headingToDisplay}
                         </button>
@@ -213,7 +214,7 @@ class Search extends Component {
             })
         // Now we’re ready to return JSX.
         return (
-            <div className={styles.search}>
+            <form className={styles.search} onSubmit={this.search}>
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
@@ -234,7 +235,7 @@ class Search extends Component {
                 <button
                     className={styles.searchButton} 
                     tabIndex="0"
-                    onClick={this.search} 
+                    type="submit"
                     title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                 >Search!
                 </button>
@@ -254,6 +255,7 @@ class Search extends Component {
                             title={dropdownSelectTitle}
                             aria-haspopup="true"
                             aria-expanded={!menuDisabled}
+                            type="button"
                         >
                             <p>{dropdownSelect}</p>
                             <div className={styles.dropdownArrow}></div>
@@ -265,7 +267,7 @@ class Search extends Component {
                 )}
                 {this.state.navigating
                     && <NavigateTo newUrl={this.state.newUrl} />}
-            </div>
+            </form>
         )
     }
 }
