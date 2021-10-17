@@ -4,7 +4,7 @@ import AdvancedRubricToggler from '../../components/advancedComponents/AdvancedR
 import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
 import styles from '../../css/Subsites.module.css'
 
-const AdvancedHome = () => {
+const AdvancedHome = ({ query }) => {
     return (<>
         <Head>
             <title>
@@ -14,7 +14,7 @@ const AdvancedHome = () => {
         <div className={styles.subsiteHome + " advanced fulmar-background"}>
             <Header textBeforeTitle="Advanced Search"/>
             <AdvancedRubricToggler/>
-            <AdvancedSearch autofocus={true}/>
+            <AdvancedSearch autofocus={true} query={query}/>
         </div>
     </>)
 }
@@ -23,7 +23,8 @@ export default AdvancedHome
 
 export async function getServerSideProps(props) {
     console.log(props)
+    const { query } = props
     return { props: {
-
+        query,
     }}
 }

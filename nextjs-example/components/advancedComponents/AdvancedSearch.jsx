@@ -22,21 +22,21 @@ class AdvancedSearch extends Component {
         }
     }
 
-    // setStateFromUrl() {
-    //     const query = new URLSearchParams(this.props.location.search);
-    //     this.setState({
-    //         spelling: {
-    //             unsanitised: query.get("spelling") || "",
-    //             sanitised: query.get("spelling") || ""
-    //         },
-    //         scansion: {
-    //             unsanitised: query.get("scansion") || "",
-    //             sanitised: query.get("scansion") || ""
-    //         },
-    //         elision: query.get("elision") === "true",
-    //         sort: query.get("sort") || "alphabetical",
-    //     })
-    // }
+    setStateFromProps() {
+        const query = this.props.query
+        this.setState({
+            spelling: {
+                unsanitised: query.spelling || "",
+                sanitised: query.spelling || ""
+            },
+            scansion: {
+                unsanitised: query.scansion || "",
+                sanitised: query.scansion || ""
+            },
+            elision: query.elision === "true",
+            sort: query.sort || "alphabetical",
+        })
+    }
 
     // This handles the <input> value.
     handleInput = (e) => {
@@ -107,7 +107,7 @@ class AdvancedSearch extends Component {
 
     // Let’s set our state so inputs can get their values from the URL.
     componentDidMount() {
-        // this.setStateFromUrl();
+        this.setStateFromProps();
         // The first input is initially focussed if a query has not started.
         if (this.props.autofocus) {
             document.getElementById("spelling-input").focus();
