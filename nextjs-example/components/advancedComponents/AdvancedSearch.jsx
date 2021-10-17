@@ -20,21 +20,21 @@ class AdvancedSearch extends Component {
         }
     }
 
-    setStateFromUrl() {
-        const query = new URLSearchParams(this.props.location.search);
-        this.setState({
-            spelling: {
-                unsanitised: query.get("spelling") || "",
-                sanitised: query.get("spelling") || ""
-            },
-            scansion: {
-                unsanitised: query.get("scansion") || "",
-                sanitised: query.get("scansion") || ""
-            },
-            elision: query.get("elision") === "true",
-            sort: query.get("sort") || "alphabetical",
-        })
-    }
+    // setStateFromUrl() {
+    //     const query = new URLSearchParams(this.props.location.search);
+    //     this.setState({
+    //         spelling: {
+    //             unsanitised: query.get("spelling") || "",
+    //             sanitised: query.get("spelling") || ""
+    //         },
+    //         scansion: {
+    //             unsanitised: query.get("scansion") || "",
+    //             sanitised: query.get("scansion") || ""
+    //         },
+    //         elision: query.get("elision") === "true",
+    //         sort: query.get("sort") || "alphabetical",
+    //     })
+    // }
 
     // This handles the <input> value.
     handleInput = (e) => {
@@ -94,25 +94,26 @@ class AdvancedSearch extends Component {
             newUrl = `${newUrl}&sort=${this.state.sort}`;
         }
         newUrl = newUrl.replace("?&","?");
-        this.props.history.push(newUrl)
+        console.log({newUrl})
+        // this.props.history.push(newUrl)
     }
 
     // Let’s set our state so inputs can get their values from the URL.
     componentDidMount() {
-        this.setStateFromUrl();
+        // this.setStateFromUrl();
         // The first input is initially focussed if a query has not started.
         if (this.props.autofocus) {
             document.getElementById("spelling-input").focus();
         }
     }
 
-    // If the location changes we need new data.
-    componentDidUpdate(prevProps) {
-        const locationChanged = this.props.location !== prevProps.location
-        if (locationChanged) {
-            this.setStateFromUrl();
-        }
-    }
+    // // If the location changes we need new data.
+    // componentDidUpdate(prevProps) {
+    //     const locationChanged = this.props.location !== prevProps.location
+    //     if (locationChanged) {
+    //         // this.setStateFromUrl();
+    //     }
+    // }
 
     render() {
         // Now we’re ready to return JSX.
