@@ -17,7 +17,6 @@ class AdvancedSearch extends Component {
             },
             elision: false,
             sort: "alphabetical",
-            fromUrl: true,
         }
     }
 
@@ -49,10 +48,11 @@ class AdvancedSearch extends Component {
         } catch {
             sanitisedInput = input;
         }
-        let newState = {fromUrl: false};
-        newState[name] = {
-            unsanitised: input,
-            sanitised: sanitisedInput
+        const newState = {
+            name: {
+                unsanitised: input,
+                sanitised: sanitisedInput,
+            }
         };
         this.setState(newState);
     }
@@ -110,7 +110,6 @@ class AdvancedSearch extends Component {
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location !== prevProps.location
         if (locationChanged) {
-            this.setState({fromUrl: true})
             this.setStateFromUrl();
         }
     }
