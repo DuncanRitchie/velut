@@ -19,7 +19,7 @@ class AdvancedRubricToggler extends Component {
         return (
             <>
                 <button
-                    class={styles.advancedRubricTogglerButton}
+                    className={styles.advancedRubricTogglerButton}
                     onClick={this.handleToggler}
                 >
                     {this.state.showRubric ? "Hide" : "Show"} how to use the Advanced Search
