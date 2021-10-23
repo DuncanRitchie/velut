@@ -143,6 +143,38 @@ a:hover,.go-back:hover {
     margin-right: 2px;
 }
 
+textarea {
+    resize: vertical;
+    min-height: 5rem;
+}
+
+progress {
+    width: 100%;
+    height: 1.25rem;
+    margin-top: 0.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #efe1ab;
+    box-shadow: 0.0625rem 0 0.125rem rgba(0,0,0,0.5) inset;
+    border: none;
+    color: #c2b170;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #efe1ab;
+    box-shadow: 0.0625rem 0 0.125rem rgba(0,0,0,0.5) inset;
+}
+
+progress::-moz-progress-bar {
+    background-color: #c2b170;
+    box-shadow: 0.0625rem 0 0.125rem rgba(0,0,0,0.5) inset;
+}
+
+progress::-webkit-progress-value {
+    background-color: #c2b170;
+    box-shadow: 0.0625rem 0 0.125rem rgba(0,0,0,0.5) inset;
+}
+
 @media screen {
     .fulmar-background {
         grid-area: body;
