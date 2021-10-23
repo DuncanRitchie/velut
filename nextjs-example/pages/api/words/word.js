@@ -62,3 +62,8 @@ const findOneWordSelectSeveralFields = async function(searchWord) {
 }
 
 export default findOneWordSelectSeveralFields
+
+export async function findOneWordSelectOnlyWord(searchWord) {
+	console.log(`Calling findOneWordSelectOnlyWord on ${searchWord}`)
+	return await findOneWord(searchWord, {"Word": 1, "_id": 0})
+}

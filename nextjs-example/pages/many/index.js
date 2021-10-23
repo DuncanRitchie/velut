@@ -21,6 +21,7 @@ import Head from 'next/head'
 import Redirect from '../../components/redirect/Redirect'
 import Header from '../../components/header/Header'
 import LatinLink from '../../components/latinlink/LatinLink'
+import findMany from '../api/words/many'
 import subsitesStyles from '../../css/Subsites.module.css'
 import manyStyles from '../../css/Many.module.css'
 import searchStyles from '../../components/search/Search.module.css'
@@ -89,60 +90,60 @@ class Many extends Component {
         })
     }
 
-    fetchWords = (urlShouldBeChanged = true) => {
-        const searchedWords = this.splitInputIntoWords();
-        //// `searchedWords` may contain duplicates.
-        //// `pendingWords` and distinctWords should initially be the same set of distinct words that were entered.
-        //// Because `pendingWords`’ is a set, we can delete words from it when they are no longer pending.
-        //// `distinctWords` needs to be an array so it can be mapped over in the render method.
-        const pendingWords = new Set(searchedWords)
-        const distinctWords = [...pendingWords]
-        if (urlShouldBeChanged) {
-            //this.setUrlFromInput(searchedWords);
-        }
-        this.setState({
-            distinctWords,
-            pendingWords,
-            foundWords: new Set(),
-            missingWords: new Set(),
-        }, ()=>{
-            distinctWords.forEach(word => {
-                //// If words from previous searches are in `allWords`, we don’t need to re-fetch them,
-                //// but they need to be re-added to `foundWords` and `missingWords`.
-                if (this.state.allWords.has(word)) {
-                    let {pendingWords, foundWords, missingWords} = this.state
-                    pendingWords.delete(word)
-                    //// `word` will be in `allWords` as `undefined` if it’s not in velut
-                    if (this.state.allWords.get(word)) {
-                        foundWords.add(word)
-                    }
-                    else {
-                        missingWords.add(word)
-                    }
-                    this.setState({pendingWords, foundWords, missingWords})
-                }
-                //// New words need to be fetched from the back-end.
-                else {
-                    // axios.getOneWordSelectOnlyWord(word)
-                    //     .then(response => {
-                    //         const foundWord = response.data.Word
-                    //         let {allWords, pendingWords, foundWords, missingWords} = this.state
-                    //         //// If the word is in velut, the value of `foundWord` is that of the Word field, ie simply the macronized word.
-                    //         //// If the word is not in velut, it will still be added to `allWords`, but its value will be `undefined`.
-                    //         allWords.set(word, foundWord)
-                    //         pendingWords?.delete(word)
-                    //         if (foundWord) {
-                    //             foundWords.add(word)
-                    //         } else {
-                    //             missingWords.add(word)
-                    //         }
-                    //         this.setState({allWords, pendingWords, foundWords, missingWords})
-                    //     });
-                    }
-                }
-            )
-        })
-    }
+    // fetchWords = (urlShouldBeChanged = true) => {
+    //     const searchedWords = this.splitInputIntoWords();
+    //     //// `searchedWords` may contain duplicates.
+    //     //// `pendingWords` and distinctWords should initially be the same set of distinct words that were entered.
+    //     //// Because `pendingWords`’ is a set, we can delete words from it when they are no longer pending.
+    //     //// `distinctWords` needs to be an array so it can be mapped over in the render method.
+    //     const pendingWords = new Set(searchedWords)
+    //     const distinctWords = [...pendingWords]
+    //     if (urlShouldBeChanged) {
+    //         //this.setUrlFromInput(searchedWords);
+    //     }
+    //     this.setState({
+    //         distinctWords,
+    //         pendingWords,
+    //         foundWords: new Set(),
+    //         missingWords: new Set(),
+    //     }, ()=>{
+    //         distinctWords.forEach(word => {
+    //             //// If words from previous searches are in `allWords`, we don’t need to re-fetch them,
+    //             //// but they need to be re-added to `foundWords` and `missingWords`.
+    //             if (this.state.allWords.has(word)) {
+    //                 let {pendingWords, foundWords, missingWords} = this.state
+    //                 pendingWords.delete(word)
+    //                 //// `word` will be in `allWords` as `undefined` if it’s not in velut
+    //                 if (this.state.allWords.get(word)) {
+    //                     foundWords.add(word)
+    //                 }
+    //                 else {
+    //                     missingWords.add(word)
+    //                 }
+    //                 this.setState({pendingWords, foundWords, missingWords})
+    //             }
+    //             //// New words need to be fetched from the back-end.
+    //             else {
+    //                 // axios.getOneWordSelectOnlyWord(word)
+    //                 //     .then(response => {
+    //                 //         const foundWord = response.data.Word
+    //                 //         let {allWords, pendingWords, foundWords, missingWords} = this.state
+    //                 //         //// If the word is in velut, the value of `foundWord` is that of the Word field, ie simply the macronized word.
+    //                 //         //// If the word is not in velut, it will still be added to `allWords`, but its value will be `undefined`.
+    //                 //         allWords.set(word, foundWord)
+    //                 //         pendingWords?.delete(word)
+    //                 //         if (foundWord) {
+    //                 //             foundWords.add(word)
+    //                 //         } else {
+    //                 //             missingWords.add(word)
+    //                 //         }
+    //                 //         this.setState({allWords, pendingWords, foundWords, missingWords})
+    //                 //     });
+    //                 }
+    //             }
+    //         )
+    //     })
+    // }
 
     /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
     getHrefForDictionaryLinks() {
@@ -164,27 +165,22 @@ class Many extends Component {
     // }
 
     render() {
+        console.log(this.props)
         const foundWordsMapped
-            = [...this.state.distinctWords].map((enteredWord, index) => {
-                const foundWord = this.state.allWords.get(enteredWord)
-                return foundWord
-                    ? <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
-                    : null
+            = [...this.props.foundWords].map((foundWord, index) => {
+                return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
             })
 
         const missingWordsMapped
-            = [...this.state.distinctWords].map((enteredWord, index) => {
-                const foundWord = this.state.allWords.get(enteredWord)
-                return foundWord || this.state.pendingWords.has(enteredWord)
-                    ? null
-                    : <Fragment key={index}><strong>{enteredWord}</strong> </Fragment>
+            = [...this.props.missingWords].map((missingWord, index) => {
+                return <Fragment key={index}><strong>{missingWord}</strong> </Fragment>
             })
 
         const allWordsMapped
-            = this.state.searchedWords
-            ? this.state.searchedWords.map((word,index)=>{
+            = this.props.searchWords
+            ? this.props.searchWords.map((word,index)=>{
                 // If a result for it has been found, we render a LatinLink.
-                const foundWord = this.state.allWords.get(word);
+                const foundWord = this.props.foundWords.find(foundWord => foundWord == word);
                 if (foundWord) {
                     return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
                 }
@@ -195,32 +191,27 @@ class Many extends Component {
             })
             : []
         
-        const resultsAreRendered = allWordsMapped.length > 0;
+        const resultsAreRendered = this.props.searchWords.length > 0;
         let result = null;
         if (resultsAreRendered) {
-            const foundWordsCount    = this.state.foundWords.size
-            const missingWordsCount  = this.state.missingWords.size
-            const allWordsCount      = this.state.distinctWords.length
-            const pendingWordsCount  = this.state.pendingWords.size
-            const proportionComplete = 1 - pendingWordsCount / allWordsCount
+            const foundWordsCount    = this.props.foundWords.length
+            const missingWordsCount  = this.props.missingWords.length
+            const allWordsCount      = this.props.distinctWords.length
+            // const pendingWordsCount  = this.props.pendingWords.size
+            // const proportionComplete = 1 - pendingWordsCount / allWordsCount
 
             result = (
                 <div>
                     <p>
                         <label htmlFor="many-progress">
-                            {pendingWordsCount
-                            ? `Waiting for results for ${pendingWordsCount} ${pendingWordsCount === 1 ? "word" : "words"}…` 
-                            : `Showing results for all of the ${allWordsCount} ${allWordsCount === 1 ? "word" : "words"} you entered.`}
-                            <progress id="many-progress" max={1} value={proportionComplete}></progress>
+                            Showing results for all of the {allWordsCount} {allWordsCount === 1 ? "word" : "words"} you entered.
                         </label>
                     </p>
                     
                     <h2>Words in velut ({foundWordsCount})</h2>
                     {foundWordsCount
                         ? <p lang="la">{foundWordsMapped}</p>
-                        : (pendingWordsCount
-                           ? <p>Please wait…</p>
-                           : <p>Nothing you searched for is in velut!</p>)}
+                        : <p>Nothing you searched for is in velut!</p>}
 
                     <h2>Words not in velut ({missingWordsCount})</h2>
                     {missingWordsCount
@@ -233,8 +224,8 @@ class Many extends Component {
                                 </a>
                             </p></>)
                         : (<p>
-                                {pendingWordsCount ? "Please wait…" : "Everything you searched for is in velut!"}
-                            </p>)}
+                            Everything you searched for is in velut!
+                        </p>)}
                     <h2>All words entered</h2>
                     <p lang="la">{allWordsMapped}</p>
                 </div> 
@@ -271,13 +262,14 @@ class Many extends Component {
 export default Many
 
 export async function getServerSideProps(props) {
-    console.log(props)
+    //console.log(props)
     const { query } = props
 
     if (
-        query.words
+        query.search
     ) {
-        const results = await findMany(query)
+        console.log(query)
+        const results = await findMany(query.search)
         console.log(results)
         return { props: {
             isHomepage: false,
