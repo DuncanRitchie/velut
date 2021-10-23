@@ -18,6 +18,7 @@
 import React, {Component, Fragment} from 'react'
 import Head from 'next/head'
 //import {withRouter} from 'react-router-dom'
+import Redirect from '../../components/redirect/Redirect'
 import Header from '../../components/header/Header'
 import LatinLink from '../../components/latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
@@ -39,6 +40,8 @@ class Many extends Component {
             countWordsLoading: 0,
             foundWords: new Set(),
             missingWords: new Set(),
+            navigating: false,
+            newUrl: "",
         }
     }
 
@@ -57,18 +60,33 @@ class Many extends Component {
         return searchedWords;
     }
 
-    setUrlFromInput = (searchedWordsArray) => {
-        const searchedWordsAsString = searchedWordsArray.join(" ");
-        const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
-        const newUrl = `../../many/?${urlParams}`;
-        this.props.history.push(newUrl);
-    }
+    // setUrlFromInput = (searchedWordsArray) => {
+    //     const searchedWordsAsString = searchedWordsArray.join(" ");
+    //     const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
+    //     const newUrl = `../../many/?${urlParams}`;
+    //     this.s.history.push(newUrl);
+    // }
 
     setTextAreaFromUrl = () => {
         const urlParams = new URLSearchParams(this.props.location.search);
         this.setState({"input": urlParams.get("search") || ""}, () => {
             this.fetchWords(false);
         });
+    }
+
+    // search() calculates the new URL and pushes it to the react-router history.
+    search = (event) => {
+        //// For some reason `preventDefault` works on Search but not here or on Advanced Search.
+        // event?.preventDefault()
+        const searchedWordsAsString = this.splitInputIntoWords().join(" ");
+        const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
+        const newUrl = `many/?${urlParams}`;
+        console.log({newUrl})
+
+        this.setState({
+            newUrl: newUrl,
+            navigating: true,
+        })
     }
 
     fetchWords = (urlShouldBeChanged = true) => {
@@ -80,7 +98,7 @@ class Many extends Component {
         const pendingWords = new Set(searchedWords)
         const distinctWords = [...pendingWords]
         if (urlShouldBeChanged) {
-            this.setUrlFromInput(searchedWords);
+            //this.setUrlFromInput(searchedWords);
         }
         this.setState({
             distinctWords,
@@ -105,21 +123,21 @@ class Many extends Component {
                 }
                 //// New words need to be fetched from the back-end.
                 else {
-                    axios.getOneWordSelectOnlyWord(word)
-                        .then(response => {
-                            const foundWord = response.data.Word
-                            let {allWords, pendingWords, foundWords, missingWords} = this.state
-                            //// If the word is in velut, the value of `foundWord` is that of the Word field, ie simply the macronized word.
-                            //// If the word is not in velut, it will still be added to `allWords`, but its value will be `undefined`.
-                            allWords.set(word, foundWord)
-                            pendingWords?.delete(word)
-                            if (foundWord) {
-                                foundWords.add(word)
-                            } else {
-                                missingWords.add(word)
-                            }
-                            this.setState({allWords, pendingWords, foundWords, missingWords})
-                        });
+                    // axios.getOneWordSelectOnlyWord(word)
+                    //     .then(response => {
+                    //         const foundWord = response.data.Word
+                    //         let {allWords, pendingWords, foundWords, missingWords} = this.state
+                    //         //// If the word is in velut, the value of `foundWord` is that of the Word field, ie simply the macronized word.
+                    //         //// If the word is not in velut, it will still be added to `allWords`, but its value will be `undefined`.
+                    //         allWords.set(word, foundWord)
+                    //         pendingWords?.delete(word)
+                    //         if (foundWord) {
+                    //             foundWords.add(word)
+                    //         } else {
+                    //             missingWords.add(word)
+                    //         }
+                    //         this.setState({allWords, pendingWords, foundWords, missingWords})
+                    //     });
                     }
                 }
             )
@@ -234,15 +252,17 @@ class Many extends Component {
                     <p className={subsitesStyles.subsiteHomeRubric}>
                         Search for several Latin words by entering them into the box below!
                     </p>
-                    <form className={searchStyles.search} onSubmit={this.fetchWords}>
+                    <form className={searchStyles.search} onSubmit={this.search}>
                         <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
-                        <button class={searchStyles.searchButton} type="submit">Search!</button>
+                        <button className={searchStyles.searchButton} type="submit">Search!</button>
                     </form>
                     {resultsAreRendered && 
                         (<div className="subsite-result">
                             {result}
                         </div>)}
                 </div>
+                {this.state.navigating
+                    && <Redirect newUrl={this.state.newUrl} />}
             </div>
         )
     }
