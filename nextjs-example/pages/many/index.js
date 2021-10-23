@@ -230,14 +230,14 @@ class Many extends Component {
                     </title>
                 </Head>
                 <Header textBeforeTitle="Look-up of many words" />
-                <div className="many">
-                    <p className="subsite-home-rubric">
+                <div className={manyStyles.many}>
+                    <p className={subsitesStyles.subsiteHomeRubric}>
                         Search for several Latin words by entering them into the box below!
                     </p>
-                    <div className="search">
+                    <form className={searchStyles.search} onSubmit={this.fetchWords}>
                         <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
-                        <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
-                    </div>
+                        <button class={searchStyles.searchButton} type="submit">Search!</button>
+                    </form>
                     {resultsAreRendered && 
                         (<div className="subsite-result">
                             {result}
