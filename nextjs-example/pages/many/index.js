@@ -66,13 +66,13 @@ class Many extends Component {
 
     render() {
         console.log(this.props)
-        const foundWords = [...this.props.allWords].filter(result => result.success).map(result => result.word)
+        const foundWords = [...this.props.allDistinctWords].filter(result => result.success).map(result => result.word)
         const foundWordsJSX
             = foundWords.map((foundWord, index) => {
                 return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
             })
 
-        const missingWords = [...this.props.allWords].filter(result => !result.success).map(result => result.search)
+        const missingWords = [...this.props.allDistinctWords].filter(result => !result.success).map(result => result.search)
         const missingWordsJSX
             = missingWords.map((missingWord, index) => {
                 return <Fragment key={index}><strong>{missingWord}</strong> </Fragment>
@@ -97,7 +97,7 @@ class Many extends Component {
         if (resultsAreRendered) {
             const foundWordsCount    = foundWords.length
             const missingWordsCount  = missingWords.length
-            const allWordsCount      = this.props.distinctWords.length
+            const allWordsCount      = this.props.allDistinctWords.length
 
             result = (
                 <div>

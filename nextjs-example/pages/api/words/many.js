@@ -42,7 +42,7 @@ export default async function findManyWords(searchWordsAsString) {
                 success: true,
                 error: null,
                 allWords,
-                distinctWords,
+                allDistinctWords,
             }
         });
 
