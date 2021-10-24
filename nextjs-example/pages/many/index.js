@@ -14,7 +14,7 @@ class Many extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: "",
+            input: this.props.search,
             searchedWords: [],
             navigating: false,
             newUrl: "",
@@ -171,9 +171,9 @@ export async function getServerSideProps(props) {
         const results = await findMany(query.search)
         console.log(results)
         return { props: {
-            isHomepage: false,
-            query,
+            ...query,
             ...results,
+            isHomepage: false,
         }}
     }
     else {
