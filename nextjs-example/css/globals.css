@@ -181,6 +181,15 @@ progress::-webkit-progress-value {
         overflow-y: auto;
         scroll-behavior: smooth;
         background-image: url('../public/images/FulmarFlying.webp');
+        /* Ideally we’d use CSS image-set to allow the browser to choose the first
+           file-format it supports for the background-image.
+           While WebP nowadays has good support across browsers, image-set doesn’t,
+           so this is commented-out for the time being.
+           In the future I might uncomment it and add Avif or other formats. */
+        /* background-image: image-set(
+            "../public/images/FulmarFlying.webp" type("image/webp"),
+            "../public/images/FulmarFlying.png" type("image/png")
+        ); */
         background-attachment: fixed;
         background-repeat: no-repeat;
     }
