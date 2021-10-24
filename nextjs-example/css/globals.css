@@ -180,14 +180,9 @@ progress::-webkit-progress-value {
         grid-area: body;
         overflow-y: auto;
         scroll-behavior: smooth;
-        background-image: url('../public/images/FulmarFlying.png'); /* Overruled in browsers with WebP support */
+        background-image: url('../public/images/FulmarFlying.webp');
         background-attachment: fixed;
         background-repeat: no-repeat;
-    }
-
-    /* Modernizr injects class-name of webp into <html> if WebP is supported. */
-    .webp .fulmar-background {
-        background-image: url('../public/images/FulmarFlying.webp');
     }
 
     .home {
