@@ -4,6 +4,7 @@ export default async function findManyWords(searchWordsAsString) {
     const searchWords = searchWordsAsString.split(" ")
 
     const distinctWords = [...new Set(searchWords)]
+
     const promises = distinctWords.map(word => {
         return findOneWordSelectOnlyWord(word)
     })
