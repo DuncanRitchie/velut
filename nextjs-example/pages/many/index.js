@@ -146,8 +146,8 @@ class Many extends Component {
     // }
 
     /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
-    getHrefForDictionaryLinks() {
-        const dictionaryLinksQuery = new URLSearchParams([["words", this.props.missingWords.join(" ")]]);
+    getHrefForDictionaryLinks(wordsToGetLinksFor) {
+        const dictionaryLinksQuery = new URLSearchParams([["words", wordsToGetLinksFor.join(" ")]]);
         return `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
     }
 
@@ -171,8 +171,9 @@ class Many extends Component {
                 return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
             })
 
-        const missingWordsMapped
-            = [...this.props.missingWords].map((missingWord, index) => {
+        const missingWords = [...this.props.allWords].filter(result => !result.success).map(result => result.search)
+        const missingWordsJSX
+            = missingWords.map((missingWord, index) => {
                 return <Fragment key={index}><strong>{missingWord}</strong> </Fragment>
             })
 
@@ -194,7 +195,7 @@ class Many extends Component {
         let result = null;
         if (resultsAreRendered) {
             const foundWordsCount    = foundWords.length
-            const missingWordsCount  = this.props.missingWords.length
+            const missingWordsCount  = missingWords.length
             const allWordsCount      = this.props.distinctWords.length
             // const pendingWordsCount  = this.props.pendingWords.size
             // const proportionComplete = 1 - pendingWordsCount / allWordsCount
@@ -215,10 +216,10 @@ class Many extends Component {
                     <h2>Words not in velut ({missingWordsCount})</h2>
                     {missingWordsCount
                        ? (<>
-                            <p lang="la">{missingWordsMapped}</p>
+                            <p lang="la">{missingWordsJSX}</p>
                             {/* My velut-dictionary-links site generates links to several Latin websites. */}
                             <p>
-                                <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
+                                <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks(missingWords)} title="External webpage linking to other dictionaries (opens in new tab)">
                                     Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
                                 </a>
                             </p></>)
