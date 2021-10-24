@@ -36,11 +36,11 @@ const findOneWord = async function(searchWord, selection) {
 			console.log({foundWord})
 			//// If the current query found a word, send the data to the front-end.
 			if (foundWord) {
-				return { word: foundWord, success: true }
+				return { word: foundWord, success: true, search: searchWord }
 			}
 			//// If there are no more possible queries, send `null`.
 			else if (indexOfQuery == funcsReturningQueries.length - 1) {
-				return { word: null, success: false }
+				return { word: null, success: false, search: searchWord }
 			}
 			//// Otherwise, recurse to try the next query.
 			else {
@@ -49,7 +49,7 @@ const findOneWord = async function(searchWord, selection) {
 		}
 		catch (err) {
 			console.log(err)
-			return { success: false, error: err, word: null }
+			return { success: false, error: err, word: null, search: searchWord }
 		}			
 	}
 	//// Launch the recursive function, starting with the first query.
