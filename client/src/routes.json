@@ -1,0 +1,68 @@
+[
+    {
+        "route": "",
+        "searchField": "PerfectRhyme",
+        "axiosFuncName": "getWordsClass",
+        "searchFieldFull": "Perfect rhymes (classical)"
+    },{
+        "route": "/vowels",
+        "searchField": "RhymeVowels",
+        "axiosFuncName": "getWordsClass",
+        "searchFieldFull": "Vowel rhymes (classical)"
+    },{
+        "route": "/vowelsend",
+        "searchField": "RhymeVowelsAndUltimaCoda",
+        "axiosFuncName": "getWordsClass",
+        "searchFieldFull": "Vowel-and-end-consonant rhymes (classical)"
+    },{
+        "route": "/ecclesperfect",
+        "searchField": "EcclesPerfectRhyme",
+        "axiosFuncName": "getWordsEccles",
+        "searchFieldFull": "Perfect rhymes (ecclesiastical)"
+    },{
+        "route": "/ecclesvowels",
+        "searchField": "EcclesRhymeVowels",
+        "axiosFuncName": "getWordsEccles",
+        "searchFieldFull": "Vowel rhymes (ecclesiastical)"
+    },{
+        "route": "/ecclesvowelsend",
+        "searchField": "EcclesRhymeVowelsAndUltimaCoda",
+        "axiosFuncName": "getWordsEccles",
+        "searchFieldFull": "Vowel-and-end-consonant rhymes (ecclesiastical)"
+    },{
+        "route": "/consonyms",
+        "searchField": "AllConsonants",
+        "axiosFuncName": "getWordsAlph",
+        "searchFieldFull": "Consonyms"
+    },{
+        "route": "/anagrams",
+        "searchField": "AlphOrderNoMacra",
+        "axiosFuncName": "getWordsAlph",
+        "searchFieldFull": "Anagrams"
+    },{
+        "route": "/scansion",
+        "searchField": "Scansion",
+        "axiosFuncName": "getWordsAlph",
+        "searchFieldFull": "Words that scan the same"
+    },{
+        "route": "/advanced",
+        "searchField": null,
+        "axiosFuncName": "getAdvanced",
+        "searchFieldFull": "Advanced Search"
+    },{
+        "route": "/subwords",
+        "searchField": null,
+        "axiosFuncName": "getSubwords",
+        "searchFieldFull": "Subwords"
+    },{
+        "route": "/anagramphrases",
+        "searchField": null,
+        "axiosFuncName": "getAnagrams",
+        "searchFieldFull": "Anagram phrases"
+    },{
+        "route": "/english",
+        "searchField": null,
+        "axiosFuncName": "getLemmataEnglish",
+        "searchFieldFull": "English to Latin"
+    }
+]
