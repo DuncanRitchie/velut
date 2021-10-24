@@ -64,7 +64,6 @@ export default async function findAdvanced({ spelling, scansion, elision, sort }
 		// If the `spelling` is now the empty string, we do not use it in the search. Otherwise, we do.
 		if (spellingAsRegex) {
 			spellingAsRegex = `^${spellingAsRegex}$`;
-			console.log({ spellingAsRegex });
 			findObject.NoMacraLowerCase = {"$regex": spellingAsRegex};
 
 			criteriaAreValid = true;

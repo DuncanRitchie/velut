@@ -83,7 +83,6 @@ class WordPage extends Component {
                 forms = forms.map((form,index)=>{
                     return form.Word
                 })
-                // console.log(forms)
                 let formsArrays = this.state.formsArrays
                 formsArrays[i] = forms
                 this.setState({formsArrays: formsArrays})
@@ -118,7 +117,6 @@ class WordPage extends Component {
                         cognates = cognates.map((cognate,index)=>{
                             return cognate.Lemma
                         })
-                        // console.log(cognates)
                         let cognatesArrays = this.state.cognatesArrays
                         cognatesArrays[i] = cognates
                         this.setState({cognatesArrays: cognatesArrays})

@@ -5,7 +5,6 @@ import Word from '../../../models/Word'
 import routes from '../../../routes.json'
 
 export default async function getRhymes(wordObject, type) {
-    console.log({wordObject, type})
     try {
         await dbConnect()
 
@@ -29,11 +28,9 @@ export default async function getRhymes(wordObject, type) {
             .sort(sortFields)
             .select({"Word": 1, "_id": 0})
             .exec()
-        console.log({foundWords})
+
         if (foundWords.length) {
-            console.log("Mapping through foundWords")
             const rhymes = foundWords.map(word=>word.Word)
-            console.log({rhymes})
             return { success: true, rhymes, headingToDisplay }
         }
         else {

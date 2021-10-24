@@ -77,7 +77,6 @@ const Advanced = ({ query, isHomepage, words, error }) => {
 export default Advanced
 
 export async function getServerSideProps(props) {
-    console.log(props)
     const { query } = props
 
     if (
@@ -85,7 +84,6 @@ export async function getServerSideProps(props) {
         || query.spelling
     ) {
         const results = await findAdvanced(query)
-        console.log(results)
         return { props: {
             isHomepage: false,
             query,

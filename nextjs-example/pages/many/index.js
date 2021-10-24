@@ -41,7 +41,6 @@ class Many extends Component {
         const searchedWordsAsString = this.splitInputIntoWords().join(" ");
         const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
         const newUrl = `many/?${urlParams}`;
-        console.log({newUrl})
 
         this.setState({
             newUrl: newUrl,
@@ -153,9 +152,7 @@ export async function getServerSideProps(props) {
     if (
         query.search
     ) {
-        console.log(query)
         const results = await findMany(query.search)
-        console.log(results)
         return { props: {
             ...query,
             ...results,

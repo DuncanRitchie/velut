@@ -97,7 +97,6 @@ class AdvancedSearch extends Component {
             newUrl = `${newUrl}&sort=${this.state.sort}`;
         }
         newUrl = newUrl.replace("?&","?");
-        console.log({newUrl})
 
         this.setState({
             newUrl: newUrl,

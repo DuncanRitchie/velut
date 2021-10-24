@@ -45,9 +45,7 @@ export async function getServerSideProps({params,req,res,query,preview,previewDa
     // }
     //console.log({req, res})
     const wordsCountData = await wordsCount();
-    console.log({wordsCountData})
     const lemmataCountData = await lemmataCount();
-    console.log({lemmataCountData})
 
     return { props: { wordCount: wordsCountData.count, lemmaCount: lemmataCountData.count } }
   }
