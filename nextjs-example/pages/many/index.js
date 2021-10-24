@@ -147,8 +147,7 @@ class Many extends Component {
 
     /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
     getHrefForDictionaryLinks() {
-        const missingWordsAsArray = [...this.state.missingWords.values()]
-        const dictionaryLinksQuery = new URLSearchParams([["words", missingWordsAsArray.join(" ")]]);
+        const dictionaryLinksQuery = new URLSearchParams([["words", this.props.missingWords.join(" ")]]);
         return `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
     }
 
