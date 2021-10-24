@@ -1,5 +1,3 @@
-import dbConnect from '../../../lib/dbConnect'
-import Word from '../../../models/Word'
 import { findOneWordSelectOnlyWord } from './word'
 
 export default async function findManyWords(searchWordsAsString) {
