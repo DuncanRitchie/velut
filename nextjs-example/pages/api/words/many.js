@@ -14,9 +14,6 @@ export default async function findManyWords(searchWordsAsString) {
 
     const allSettled = await Promise.allSettled(promises).
         then((results) => {
-            const foundWords = results
-                .filter(result => result.status === "fulfilled" && result.value.success)
-                .map(result => result.value.word.toObject().Word)
             const missingWords = results
                 .filter(result => result.status !== "fulfilled" || !result.value.success)
                 .map(result => result.value.search)
@@ -44,7 +41,6 @@ export default async function findManyWords(searchWordsAsString) {
                 error: null,
                 allWords,
                 distinctWords,
-                foundWords,
                 missingWords,
             }
         });

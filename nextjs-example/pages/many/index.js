@@ -165,8 +165,9 @@ class Many extends Component {
 
     render() {
         console.log(this.props)
-        const foundWordsMapped
-            = [...this.props.foundWords].map((foundWord, index) => {
+        const foundWords = [...this.props.allWords].filter(result => result.success).map(result => result.word)
+        const foundWordsJSX
+            = foundWords.map((foundWord, index) => {
                 return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
             })
 
@@ -192,7 +193,7 @@ class Many extends Component {
         const resultsAreRendered = this.props.allWords.length > 0;
         let result = null;
         if (resultsAreRendered) {
-            const foundWordsCount    = this.props.foundWords.length
+            const foundWordsCount    = foundWords.length
             const missingWordsCount  = this.props.missingWords.length
             const allWordsCount      = this.props.distinctWords.length
             // const pendingWordsCount  = this.props.pendingWords.size
@@ -208,7 +209,7 @@ class Many extends Component {
                     
                     <h2>Words in velut ({foundWordsCount})</h2>
                     {foundWordsCount
-                        ? <p lang="la">{foundWordsMapped}</p>
+                        ? <p lang="la">{foundWordsJSX}</p>
                         : <p>Nothing you searched for is in velut!</p>}
 
                     <h2>Words not in velut ({missingWordsCount})</h2>
