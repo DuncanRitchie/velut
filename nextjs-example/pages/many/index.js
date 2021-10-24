@@ -15,7 +15,6 @@ class Many extends Component {
         super(props);
         this.state = {
             input: this.props.search,
-            searchedWords: [],
             navigating: false,
             newUrl: "",
         }
@@ -32,15 +31,7 @@ class Many extends Component {
             .replace(/[^A-Za-zĀāĒēĪīŌōŪūȲȳËëÏïÉáéíóúýÁüṻḗ.:-]+/g, " ")
             .split(" ")
             .filter(word=>word!=="");
-        this.setState({searchedWords});
         return searchedWords;
-    }
-
-    setTextAreaFromUrl = () => {
-        const urlParams = new URLSearchParams(this.props.location.search);
-        this.setState({"input": urlParams.get("search") || ""}, () => {
-            this.fetchWords(false);
-        });
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
