@@ -20,7 +20,6 @@ class Many extends Component {
         }
     }
 
-
     textareaOnChange = (event) => {
         this.setState({input: event.target.value});
     }
@@ -35,9 +34,10 @@ class Many extends Component {
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
+    // The Search and AdvancedSearch components have a similar method.
     search = (event) => {
         //// For some reason `preventDefault` works on Search but not here or on Advanced Search.
-        // event?.preventDefault()
+        // event.preventDefault()
         const searchedWordsAsString = this.splitInputIntoWords().join(" ");
         const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
         const newUrl = `many/?${urlParams}`;
@@ -56,46 +56,42 @@ class Many extends Component {
     }
 
     render() {
-        console.log(this.props)
-        const foundWords = [...this.props.allDistinctWordObjects].filter(result => result.success).map(result => result.word)
-        const foundWordsJSX
-            = foundWords.map((foundWord, index) => {
-                return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
-            })
+        let resultJSX = null;
+        if (!this.props.isHomepage) {
+            const foundWords = [...this.props.allDistinctWordObjects].filter(result => result.success).map(result => result.word)
+            const foundWordsJSX
+                = foundWords.map((foundWord, index) => {
+                    return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
+                })
 
-        const missingWords = [...this.props.allDistinctWordObjects].filter(result => !result.success).map(result => result.search)
-        const missingWordsJSX
-            = missingWords.map((missingWord, index) => {
-                return <Fragment key={index}><strong>{missingWord}</strong> </Fragment>
-            })
+            const missingWords = [...this.props.allDistinctWordObjects].filter(result => !result.success).map(result => result.search)
+            const missingWordsJSX
+                = missingWords.map((missingWord, index) => {
+                    return <Fragment key={index}><strong>{missingWord}</strong> </Fragment>
+                })
 
-        const allWordsJSX
-            = this.props.allWordObjects
-            ? this.props.allWordObjects.map((result,index)=>{
-                // If a result for it has been found, we render a LatinLink.
-                if (result.success) {
-                    return <Fragment key={index}><LatinLink linkBase="../" targetWord={result.word}/> </Fragment>
-                }
-                // Otherwise we don’t render a Link.
-                else {
-                    return <Fragment key={index}><strong>{result.search}</strong> </Fragment>
-                }
-            })
-            : []
-        
-        const resultsAreRendered = this.props.allWordObjects.length > 0;
-        let result = null;
-        if (resultsAreRendered) {
+            const allWordsJSX
+                = this.props.allWordObjects
+                ? this.props.allWordObjects.map((result,index)=>{
+                    // If a result for it has been found, we render a LatinLink.
+                    if (result.success) {
+                        return <Fragment key={index}><LatinLink linkBase="../" targetWord={result.word}/> </Fragment>
+                    }
+                    // Otherwise we don’t render a Link.
+                    else {
+                        return <Fragment key={index}><strong>{result.search}</strong> </Fragment>
+                    }
+                })
+                : []
+
             const foundWordsCount    = foundWords.length
             const missingWordsCount  = missingWords.length
             const distinctWordsCount = this.props.allDistinctWordObjects.length
 
-            result = (
+            resultJSX = (
                 <div>
                     <p>
-                        <label htmlFor="many-progress">
-                            Showing results for all of the {distinctWordsCount} {distinctWordsCount === 1 ? "word" : "words"} you entered.
-                        </label>
+                        Showing results for all of the {distinctWordsCount} {distinctWordsCount === 1 ? "word" : "words"} you entered.
                     </p>
                     
                     <h2>Words in velut ({foundWordsCount})</h2>
@@ -137,9 +133,9 @@ class Many extends Component {
                         <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
                         <button className={searchStyles.searchButton} type="submit">Search!</button>
                     </form>
-                    {resultsAreRendered && 
+                    {!this.props.isHomepage &&
                         (<div className="subsite-result">
-                            {result}
+                            {resultJSX}
                         </div>)}
                 </div>
                 {this.state.navigating
