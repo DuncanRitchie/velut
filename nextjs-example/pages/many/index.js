@@ -176,21 +176,20 @@ class Many extends Component {
             })
 
         const allWordsMapped
-            = this.props.searchWords
-            ? this.props.searchWords.map((word,index)=>{
+            = this.props.allWords
+            ? this.props.allWords.map((result,index)=>{
                 // If a result for it has been found, we render a LatinLink.
-                const foundWord = this.props.foundWords.find(foundWord => foundWord == word);
-                if (foundWord) {
-                    return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
+                if (result.success) {
+                    return <Fragment key={index}><LatinLink linkBase="../" targetWord={result.word}/> </Fragment>
                 }
                 // Otherwise we don’t render a Link.
                 else {
-                    return <Fragment key={index}><strong>{word}</strong> </Fragment>
+                    return <Fragment key={index}><strong>{result.search}</strong> </Fragment>
                 }
             })
             : []
         
-        const resultsAreRendered = this.props.searchWords.length > 0;
+        const resultsAreRendered = this.props.allWords.length > 0;
         let result = null;
         if (resultsAreRendered) {
             const foundWordsCount    = this.props.foundWords.length

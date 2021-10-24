@@ -21,10 +21,28 @@ export default async function findManyWords(searchWordsAsString) {
                 .filter(result => result.status !== "fulfilled" || !result.value.success)
                 .map(result => result.value.search)
 
+            const allWords = results
+                .map(result => {
+                    if (result.status === "fulfilled" && result.value.success) {
+                        return {
+                            success: true,
+                            word: result.value.word.toObject().Word,
+                            search: result.value.search,
+                        }
+                    }
+                    else {
+                        return {
+                            success: false,
+                            word: null,
+                            search: result.value.search,
+                        }
+                    }
+                })
+
             return {
                 success: true,
                 error: null,
-                searchWords,
+                allWords,
                 distinctWords,
                 foundWords,
                 missingWords,
