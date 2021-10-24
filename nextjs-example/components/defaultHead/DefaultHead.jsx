@@ -3,7 +3,7 @@ import Head from 'next/head'
 function DefaultHead() {
     return (
         <Head>
-            <meta charset="utf-8" />
+            <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <link rel="shortcut icon" href="https://www.duncanritchie.co.uk/favicon.ico" />
             <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
