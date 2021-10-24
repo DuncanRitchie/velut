@@ -148,7 +148,6 @@ class Many extends Component {
 export default Many
 
 export async function getServerSideProps(props) {
-    //console.log(props)
     const { query } = props
 
     if (

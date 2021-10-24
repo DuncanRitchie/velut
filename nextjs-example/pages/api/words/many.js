@@ -1,8 +1,6 @@
 import { findOneWordSelectOnlyWord } from './word'
 
 export default async function findManyWords(searchWordsAsString) {
-	console.log(`Calling findManyWords on ${searchWordsAsString}...`)
-
     const searchWords = searchWordsAsString.split(" ")
 
     const distinctWords = [...new Set(searchWords)]
