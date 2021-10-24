@@ -21,7 +21,6 @@ export default async function findManyWords(searchWordsAsString) {
                 .filter(result => result.status !== "fulfilled" || !result.value.success)
                 .map(result => result.value.search)
 
-
             return {
                 success: true,
                 error: null,
@@ -31,7 +30,6 @@ export default async function findManyWords(searchWordsAsString) {
                 missingWords,
             }
         });
-
 
     return allSettled
 }
