@@ -20,7 +20,6 @@ const selectionForOneWord = {
 };
 
 const findOneWord = async function(searchWord, selection) {
-	console.log(`Calling findOneWord on “${searchWord}”`)
 	await dbConnect()
 	//// Possible queries, wrapped in functions so that `noMacra(searchWord)` etc will not be evaluated unless needed for a query.
 	const funcsReturningQueries = [
@@ -30,10 +29,8 @@ const findOneWord = async function(searchWord, selection) {
 	]
 	//// Recursive local function to generate and execute each query until a word is found.
 	const executeQuery = async (indexOfQuery) => {
-		console.log(`Calling executeQuery on “${searchWord}”`)
 		try {
 			const foundWord = await Word.findOne(funcsReturningQueries[indexOfQuery](searchWord)).select(selection).exec()
-			console.log({foundWord})
 			//// If the current query found a word, send the data to the front-end.
 			if (foundWord) {
 				return { word: foundWord, success: true, search: searchWord }
@@ -57,13 +54,11 @@ const findOneWord = async function(searchWord, selection) {
 }
 
 const findOneWordSelectSeveralFields = async function(searchWord) {
-	console.log(`Calling findOneWordSelectSeveralFields on “${searchWord}”`)
 	return await findOneWord(searchWord, selectionForOneWord)
 }
 
 export default findOneWordSelectSeveralFields
 
 export async function findOneWordSelectOnlyWord(searchWord) {
-	console.log(`Calling findOneWordSelectOnlyWord on ${searchWord}`)
 	return await findOneWord(searchWord, {"Word": 1, "_id": 0})
 }
