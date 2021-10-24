@@ -66,21 +66,21 @@ class Many extends Component {
 
     render() {
         console.log(this.props)
-        const foundWords = [...this.props.allDistinctWords].filter(result => result.success).map(result => result.word)
+        const foundWords = [...this.props.allDistinctWordObjects].filter(result => result.success).map(result => result.word)
         const foundWordsJSX
             = foundWords.map((foundWord, index) => {
                 return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
             })
 
-        const missingWords = [...this.props.allDistinctWords].filter(result => !result.success).map(result => result.search)
+        const missingWords = [...this.props.allDistinctWordObjects].filter(result => !result.success).map(result => result.search)
         const missingWordsJSX
             = missingWords.map((missingWord, index) => {
                 return <Fragment key={index}><strong>{missingWord}</strong> </Fragment>
             })
 
-        const allWordsMapped
-            = this.props.allWords
-            ? this.props.allWords.map((result,index)=>{
+        const allWordsJSX
+            = this.props.allWordObjects
+            ? this.props.allWordObjects.map((result,index)=>{
                 // If a result for it has been found, we render a LatinLink.
                 if (result.success) {
                     return <Fragment key={index}><LatinLink linkBase="../" targetWord={result.word}/> </Fragment>
@@ -92,18 +92,18 @@ class Many extends Component {
             })
             : []
         
-        const resultsAreRendered = this.props.allWords.length > 0;
+        const resultsAreRendered = this.props.allWordObjects.length > 0;
         let result = null;
         if (resultsAreRendered) {
             const foundWordsCount    = foundWords.length
             const missingWordsCount  = missingWords.length
-            const allWordsCount      = this.props.allDistinctWords.length
+            const distinctWordsCount = this.props.allDistinctWordObjects.length
 
             result = (
                 <div>
                     <p>
                         <label htmlFor="many-progress">
-                            Showing results for all of the {allWordsCount} {allWordsCount === 1 ? "word" : "words"} you entered.
+                            Showing results for all of the {distinctWordsCount} {distinctWordsCount === 1 ? "word" : "words"} you entered.
                         </label>
                     </p>
                     
@@ -126,7 +126,7 @@ class Many extends Component {
                             Everything you searched for is in velut!
                         </p>)}
                     <h2>All words entered</h2>
-                    <p lang="la">{allWordsMapped}</p>
+                    <p lang="la">{allWordsJSX}</p>
                 </div> 
             )
         }

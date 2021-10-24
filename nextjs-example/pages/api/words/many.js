@@ -10,10 +10,10 @@ export default async function findManyWords(searchWordsAsString) {
         return findOneWordSelectOnlyWord(word)
     })
 
-    const allSettled = await Promise.allSettled(promises).
+    return await Promise.allSettled(promises).
         then((results) => {
 
-            const allDistinctWords = results
+            const allDistinctWordObjects = results
                 .map(result => {
                     if (result.status === "fulfilled" && result.value.success) {
                         return {
@@ -30,21 +30,19 @@ export default async function findManyWords(searchWordsAsString) {
                         }
                     }
                 })
-            const allWords = searchWords
+            const allWordObjects = searchWords
                 .map(searchWord => {
                     //// Creating a new object means we can have duplicates
                     //// without referencing the same object twice.
                     //// This makes it easier to serialise to Json.
-                    return {...allDistinctWords.find(word => word.search === searchWord)}
+                    return {...allDistinctWordObjects.find(wordObject => wordObject.search === searchWord)}
                 })
 
             return {
                 success: true,
                 error: null,
-                allWords,
-                allDistinctWords,
+                allWordObjects,
+                allDistinctWordObjects,
             }
         });
-
-    return allSettled
 }
