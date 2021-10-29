@@ -18,8 +18,9 @@ All my Latin words are macronized, meaning every long vowel is marked with a mac
 Other sections of the site let you find:
 * Latin words whose letters are contained in an input string (I call them [subwords](https://www.velut.co.uk/subwords)),
 * Latin [phrases that are anagrams](https://www.velut.co.uk/anagramphrases) of an input (this is not actually linked from elsewhere on the site, because it’s very slow!),
-* Latin lemmata [from an English meaning](https://www.velut.co.uk/english), and
-* Latin words [that fit either](https://www.velut.co.uk/advanced) an input pattern of letters or an input metrical scansion, or both (this is new in November 2020!).
+* Latin lemmata [from an English meaning](https://www.velut.co.uk/english),
+* Latin words [that fit either](https://www.velut.co.uk/advanced) an input pattern of letters or an input metrical scansion, or both (added in November 2020), and
+* [many Latin words at once](https://www.velut.co.uk/many) (added in May 2021).
 
 ## Screenshots
 ### Excel
@@ -41,8 +42,10 @@ There are many common Latin words that are not yet in the velut database, and I�
 ### De-Excellation
 I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off Excel by creating webpages and websites that replicate the functionality that I have/had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making more.
 
-### Researching SSR
-Server-side rendering is something velut really should have: it takes barely any effort to look a word up in a paper dictionary, so why should a web-browser need to run a load of JavaScript to see velut? So I’m investigating how to make velut not be all client-side–rendered.
+### Implementing SSR
+Server-side rendering is something velut really should have. Apart from links and the “Search” button, there’s not a lot of interactivity to the site, so why should a web-browser need to run a load of JavaScript to see velut? So I’ve begun the process of porting velut to the Next.js framework, which brings SSR to my React code. It’s not yet ready for deployment, but my work so far is on the [nextjs](https://github.com/DuncanRitchie/velut/tree/nextjs) branch. The client-side–rendered website remains live, so you can still [look up Latin words](https://www.velut.co.uk).
+
+There’s so much going on in velut that the SSR work is a fascinating challenge for me. The basic page for a word does not require any client-side JavaScript (except for search); the [About](https://www.velut.co.uk/about) page could almost be a static file. But the sections [Subwords](https://www.velut.co.uk/subwords) and [Anagram Phrases](https://www.velut.co.uk/anagramphrases) take more time to generate their data, and for [Many](https://www.velut.co.uk/many) it’s cool to see the view update as each word comes back from the database, so there is still very much a place for client-side rendering.
 
 ## Miscellanea
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
