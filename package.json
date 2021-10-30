@@ -8,7 +8,7 @@
   "dependencies": {
     "flat": "^5.0.2",
     "mongoose": "^5.9.13",
-    "next": "9.5.0",
+    "next": "11.1.1",
     "react": "^16.9.0",
     "react-dom": "16.9.0",
     "swr": "0.2.2"
