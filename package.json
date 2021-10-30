@@ -4,7 +4,11 @@
 	"description": "Useful Tables of Excellent Latin Vocabulary",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js",
+		"start": "vercel dev",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"node-start": "node server.js",
 		"server": "nodemon server.js"
 	},
 	"keywords": [
