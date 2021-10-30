@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "flat": "^5.0.2",
     "mongoose": "^5.9.13",
     "next": "9.5.0",
     "react": "^16.9.0",
