@@ -12,6 +12,7 @@ const SubwordsHome = ({randomCountdownQuestionExample}) => {
             <title>
                 Subwords on velut — a Latin rhyming dictionary
             </title>
+            <meta name="Description" content="Latin words made from the letters of what you enter"/>
         </Head>
         <div className={styles.subsiteHome+" subwords fulmar-background"}>
             <Header textBeforeTitle="Subwords"/>

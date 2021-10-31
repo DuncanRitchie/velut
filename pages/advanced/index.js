@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { Fragment } from 'react'
 import Header from '../../components/header/Header'
+import AdvancedHead from '../../components/advancedComponents/AdvancedHead'
 import AdvancedRubricToggler from '../../components/advancedComponents/AdvancedRubricToggler'
 import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
 import findAdvanced from '../api/words/advanced'
@@ -11,11 +11,7 @@ import styles from '../../css/Subsites.module.css'
 const Advanced = ({ query, isHomepage, words, error }) => {
     if (isHomepage) {
         return (<>
-            <Head>
-                <title>
-                    Advanced Search on velut — a Latin rhyming dictionary
-                </title>
-            </Head>
+            <AdvancedHead/>
             <div className={styles.subsiteHome + " advanced fulmar-background"}>
                 <Header textBeforeTitle="Advanced Search"/>
                 <AdvancedRubricToggler/>
@@ -55,11 +51,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
             )
         }
         return (<>
-            <Head>
-                <title>
-                    Advanced Search on velut — a Latin rhyming dictionary
-                </title>
-            </Head>
+            <AdvancedHead/>
             <div className={styles.advanced+" fulmar-background"}>
                 <Header textBeforeTitle="Advanced Search" />
                 <div>

@@ -10,6 +10,7 @@ const EnglishHome = () => {
             <title>
                 English to Latin on velut — a Latin rhyming dictionary
             </title>
+            <meta name="Description" content="Latin words for the English word you enter"/>
         </Head>
         <div className={styles.subsiteHome+" english fulmar-background"}>
             <Header textBeforeTitle="English to Latin"/>

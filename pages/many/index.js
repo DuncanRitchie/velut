@@ -122,6 +122,7 @@ class Many extends Component {
                     <title>
                         Look-up of many words on velut — a Latin rhyming dictionary
                     </title>
+                    <meta name="Description" content="Lists of words that are and are not in the velut dictionary"/>
                 </Head>
                 <Header textBeforeTitle="Look-up of many words" />
                 <div className={manyStyles.many}>

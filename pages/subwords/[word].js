@@ -86,6 +86,7 @@ const Subwords = ({input, subwords, loading}) => {
                 <title>
                     Subwords of “{input}” on velut — a Latin rhyming dictionary
                 </title>
+                <meta name="Description" content={`Latin words made from the letters of “${input}”`}/>
             </Head>
             <div className="subwords fulmar-background">
                 <Header textBeforeTitle="Subwords" />

@@ -68,6 +68,7 @@ class English extends Component {
                 <title>
                     English “{this.props.sanitisedInput}” to Latin on velut — a Latin rhyming dictionary
                 </title>
+                <meta name="Description" content={`Latin words for the English “${this.props.sanitisedInput}”`}/>
             </Head>
             <div className="english fulmar-background">
                 <Header textBeforeTitle="English to Latin" />

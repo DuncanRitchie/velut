@@ -41,6 +41,7 @@ const Anagrams = ({input, anagrams, loading, error}) => {
             <title>
                 Anagrams of “{input}” on velut — a Latin rhyming dictionary
             </title>
+            <meta name="Description" content={`Latin multi-word anagrams of “${input}”`}/>
         </Head>
         <div className="anagram-phrases fulmar-background">
             <Header textBeforeTitle="Anagram phrases" />

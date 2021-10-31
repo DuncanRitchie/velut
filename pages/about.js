@@ -54,6 +54,7 @@ const About = (props) => {
         return (<>
             <Head>
                 <title>About velut — a Latin rhyming dictionary</title>
+                <meta name="Description" content="Explanation of the purpose and functionality of velut, the Latin vocabulary website"/>
             </Head>
             <div className={styles.about + " fulmar-background"}>
                 <Header textBeforeTitle="About" />

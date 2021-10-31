@@ -10,6 +10,7 @@ const AnagramsHome = () => {
             <title>
                 Anagram phrases on velut — a Latin rhyming dictionary
             </title>
+            <meta name="Description" content={`Latin multi-word anagrams for the text you enter`}/>
         </Head>
         <div className={styles.subsiteHome+" anagram-phrases fulmar-background"}>
             <Header textBeforeTitle="Anagram phrases"/>
