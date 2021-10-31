@@ -80,9 +80,7 @@ class AdvancedSearch extends Component {
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
-    search = (event) => {
-        //// For some reason `preventDefault` works on Search but not Advanced Search.
-        // event?.preventDefault()
+    search = () => {
         let newUrl = "advanced/?"
         if (this.state.spelling.unsanitised) {
             newUrl = `${newUrl}spelling=${this.state.spelling.sanitised}`;

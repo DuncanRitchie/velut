@@ -35,9 +35,7 @@ class Many extends Component {
 
     // search() calculates the new URL and pushes it to the react-router history.
     // The Search and AdvancedSearch components have a similar method.
-    search = (event) => {
-        //// For some reason `preventDefault` works on Search but not here or on Advanced Search.
-        // event.preventDefault()
+    search = () => {
         const searchedWordsAsString = this.splitInputIntoWords().join(" ");
         const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
         const newUrl = `many/?${urlParams}`;
