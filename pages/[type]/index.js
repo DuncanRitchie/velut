@@ -250,18 +250,19 @@ class WordPage extends Component {
             }
 
         }
+        {/* If no word was found, the document title & description need to come from the input. */}
+        const pageTitle
+            = foundWord
+            ? `“${foundWord.Word}” on velut — a Latin rhyming dictionary`
+            : `“${sanitisedInput}” (word not found) on velut — a Latin rhyming dictionary`
         const pageDescription
             = foundWord
             ? `${this.props.headingToDisplay} for “${foundWord.foundWord}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
             : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
+
         return (<>
             <Head>
-                <title>
-                    {/* If no word was found, the document title needs to come from the input. */}
-                    {foundWord
-                        ? `“${foundWord.Word}” on velut — a Latin rhyming dictionary`
-                        : `“${sanitisedInput}” (word not found) on velut — a Latin rhyming dictionary`}
-                </title>
+                <title>{pageTitle}</title>
                 <meta name="Description" content={pageDescription}/>
             </Head>
             <div className={styles.word + " fulmar-background"}>
