@@ -257,7 +257,7 @@ class WordPage extends Component {
             : `“${sanitisedInput}” (word not found) on velut — a Latin rhyming dictionary`
         const pageDescription
             = foundWord
-            ? `${this.props.headingToDisplay} for “${foundWord.foundWord}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
+            ? `${this.props.headingToDisplay} for “${foundWord.Word}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
             : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
 
         return (<>
