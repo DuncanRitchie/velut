@@ -99,7 +99,7 @@ class Search extends Component {
 
     // search() calculates the new URL and pushes it to the react-router history.
     search = (event) => {
-        event.preventDefault()
+        event?.preventDefault()
         console.log("SEARCHING!")
         // let newUrl = "../../"
         let newUrl = ""
