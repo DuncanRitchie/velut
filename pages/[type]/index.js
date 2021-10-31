@@ -250,6 +250,10 @@ class WordPage extends Component {
             }
 
         }
+        const pageDescription
+            = foundWord
+            ? `${this.props.headingToDisplay} for “${foundWord.foundWord}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
+            : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
         return (<>
             <Head>
                 <title>
@@ -258,6 +262,7 @@ class WordPage extends Component {
                         ? `“${foundWord.Word}” on velut — a Latin rhyming dictionary`
                         : `“${sanitisedInput}” (word not found) on velut — a Latin rhyming dictionary`}
                 </title>
+                <meta name="Description" content={pageDescription}/>
             </Head>
             <div className={styles.word + " fulmar-background"}>
                 <Header />
