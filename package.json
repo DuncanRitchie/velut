@@ -1,4 +1,27 @@
 {
+	"name": "velut",
+	"description": "Website for finding Latin vocabulary",
+	"keywords": [
+		"velut",
+		"Vocabulorum Excellentium Latinorum Utiles Tabulae",
+		"Useful Tables of Excellent Latin Vocabulary",
+		"Latin",
+		"language",
+		"Latin language",
+		"dictionary",
+		"lexicon",
+		"rhyme",
+		"rhymes",
+		"rhyming",
+		"cognates",
+		"scansion",
+		"words",
+		"vocab",
+		"vocabulary",
+		"lookup",
+		"Duncan Ritchie"
+	],
+	"author": "Duncan Ritchie",
   "private": true,
   "scripts": {
     "dev": "next dev",
