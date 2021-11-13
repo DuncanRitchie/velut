@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import {Component} from "react"
 import Redirect from "../redirect/Redirect";
 import searchStyles from '../search/Search.module.css'
 import advancedStyles from './AdvancedSearch.module.css'

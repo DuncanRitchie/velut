@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import {Component} from "react"
 import Head from 'next/head'
 import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"

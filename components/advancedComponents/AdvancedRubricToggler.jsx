@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import AdvancedRubric from './AdvancedRubric';
 import styles from './AdvancedRubricToggler.module.css';
 

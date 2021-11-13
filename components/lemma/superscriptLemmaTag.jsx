@@ -1,5 +1,3 @@
-import React from 'react';
-
 //// If there are multiple lemmata in the database with the same headword,
 //// I add extra info in square brackets to disambiguate.
 //// Eg "amīcus[n]" & "amīcus[adj]" because “amīcus” can be noun or adjective.

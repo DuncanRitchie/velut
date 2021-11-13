@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import {Component, Fragment} from 'react'
 import Head from 'next/head'
 import Redirect from '../../components/redirect/Redirect'
 import Header from '../../components/header/Header'

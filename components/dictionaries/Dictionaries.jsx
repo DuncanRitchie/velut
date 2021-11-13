@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import {Fragment} from 'react'
 import dictionariesLatin from '../../data/dictionariesLatin.json'
 import dictionariesEnglish from '../../data/dictionariesEnglish.json'
 import { noMacra } from "../../pages/api/diacritics"
