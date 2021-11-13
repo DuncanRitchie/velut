@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from 'next/link'
 import styles from './AdvancedRubric.module.css'
 
 const AdvancedRubric = () => {
@@ -56,4 +56,4 @@ const AdvancedRubric = () => {
     )
 }
 
-export default AdvancedRubric;
+export default AdvancedRubric

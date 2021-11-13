@@ -1,5 +1,5 @@
 import {Component} from "react"
-import Redirect from "../redirect/Redirect";
+import Redirect from "../redirect/Redirect"
 import routes from "../../data/routes.json"
 import styles from "./Search.module.css"
 
