@@ -97,13 +97,15 @@ class Search extends Component {
         document.getElementById("search-input").focus()
     }
 
-    // search() calculates the new URL and pushes it to the react-router history.
+    // search() calculates the new URL and triggers a redirect.
     search = () => {
         console.log("SEARCHING!")
         // let newUrl = "../../"
         let newUrl = ""
 
-        const getType = () => { return this.state.type ?? ""}
+        const getType = () => {
+            return "/" + (this.state.type ?? "")
+        }
         const getInput = () => {
             if (this.state.sanitisedInput !== undefined) {
                 return "/" + this.state.sanitisedInput
