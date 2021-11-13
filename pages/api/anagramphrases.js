@@ -1,9 +1,9 @@
 const flatten = require('flat')
-import Word from "../../../models/Word"
-import dbConnect from "../../../lib/dbConnect"
-import { noMacra } from "../diacritics"
-import { findSubwordsInWordsFromMongo } from "../subwords"
-import { deleteCharacters } from "../subwords"
+import Word from "../../models/Word"
+import dbConnect from "../../lib/dbConnect"
+import { noMacra } from "./diacritics"
+import { findSubwordsInWordsFromMongo } from "./subwords"
+import { deleteCharacters } from "./subwords"
 const ANAGRAM_CHAR_LIMIT = 15;
 
 //// Old controller from MERN app:

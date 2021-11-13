@@ -1,4 +1,4 @@
-import data from "../../../data/feet.json"
+import data from "../../data/feet.json"
 //// `data` is an array of objects with Foot and Name string properties.
 //// Eg {Foot: "–⏑–", "Name": "cretic, amphimacer"}
 
@@ -27,7 +27,7 @@ const getScansionDescriptionRecursive = (scansion) => {
         //// If the Name is "cretic, amphimacer", we return only "cretic".
         return getFootNameInData(scansion)?.split(",")[0]
     }
-    
+
     const headLength = scansion.length === 4 ? 2 : 3
     const head = getScansionDescriptionRecursive(scansion.substring(0, headLength))
     const tail = getScansionDescriptionRecursive(scansion.substring(headLength))

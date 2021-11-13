@@ -1,7 +1,7 @@
-import objectToArray from "../../../data/data-functions/objectToArray"
-import letterCountsJson from "../../../data/letterCounts.json"
-import Word from "../../../models/Word"
-import dbConnect from "../../../lib/dbConnect"
+import objectToArray from "../../data/data-functions/objectToArray"
+import letterCountsJson from "../../data/letterCounts.json"
+import Word from "../../models/Word"
+import dbConnect from "../../lib/dbConnect"
 
 //// Old controller from CRA app:
 // const findSubwords = function(req,res) {
