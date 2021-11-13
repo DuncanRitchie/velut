@@ -4,8 +4,8 @@ import Header from '../../components/header/Header'
 import AdvancedHead from '../../components/advancedComponents/AdvancedHead'
 import AdvancedRubricToggler from '../../components/advancedComponents/AdvancedRubricToggler'
 import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
-import findAdvanced from '../api/words/advanced'
-import { macraToHyphens } from '../api/diacritics'
+import findAdvanced from '../../lib/words/advanced'
+import { macraToHyphens } from '../../lib/words/diacritics'
 import styles from '../../css/Subsites.module.css'
 
 const Advanced = ({ query, isHomepage, words, error }) => {

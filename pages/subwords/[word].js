@@ -4,10 +4,11 @@ import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 // import axios from "../../axios/axios"
-import getSubwords from '../api/subwords'
-import {noMacra} from '../api/diacritics'
-import {deleteCharacters} from '../api/subwords'
-import {randomCountdownQuestionWeighted} from '../api/subwords'
+import {noMacra} from '../../lib/words/diacritics'
+import getSubwords, {
+    deleteCharacters,
+    randomCountdownQuestionWeighted,
+} from '../../lib/words/subwords'
 import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word

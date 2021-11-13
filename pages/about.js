@@ -4,8 +4,8 @@ import Head from "next/head"
 import Header from "../components/header/Header"
 import Search from "../components/search/Search"
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
-import {count as wordsCount} from "./api/words/count"
-import {count as lemmataCount} from "./api/lemmata/count"
+import {count as wordsCount} from "../lib/words/count"
+import {count as lemmataCount} from "../lib/lemmata/count"
 import Word from '../models/Word'
 import Lemma from '../models/Lemma'
 import styles from '../css/About.module.css'

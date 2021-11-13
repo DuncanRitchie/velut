@@ -2,7 +2,7 @@ import {Fragment} from 'react'
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
-import getAnagrams from '../api/anagramphrases'
+import getAnagrams from '../../lib/words/anagramphrases'
 import styles from '../../css/Subsites.module.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word

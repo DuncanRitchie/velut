@@ -3,12 +3,12 @@ import {Component, Fragment} from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-import findOneWord from '../api/words/word'
+import findOneWord from '../../lib/words/word'
 import dbConnect from '../../lib/dbConnect'
-import getRandomWord from '../api/words/random'
-import getHomographs from '../api/words/homographs'
-import getRhymes from '../api/words/rhymes'
-import getLemmata from '../api/lemmata'
+import getRandomWord from '../../lib/words/random'
+import getHomographs from '../../lib/words/homographs'
+import getRhymes from '../../lib/words/rhymes'
+import getLemmata from '../../lib/lemmata'
 import Word from '../../models/Word'
 const axios = "jajadingdong"
 
@@ -17,9 +17,9 @@ import Search from "../../components/search/Search"
 import Dictionaries from "../../components/dictionaries/Dictionaries"
 import Lemma from "../../components/lemma/Lemma"
 import LatinLink from "../../components/latinlink/LatinLink"
-import { hyphensToMacra, macraToHyphens } from "../api/diacritics"
+import { hyphensToMacra, macraToHyphens } from "../../lib/words/diacritics"
 //import hyphensToMacra from "../../helpers/hyphensToMacra"
-import getScansionDescription from "../api/scansion"
+import getScansionDescription from "../../lib/words/scansion"
 import routes from "../../routes.json"
 import styles from '../../css/Word.module.css'
 import subsiteStyles from "../../css/Subsites.module.css"

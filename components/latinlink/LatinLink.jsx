@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { macraToHyphens } from "../../pages/api/diacritics"
+import { macraToHyphens } from "../../lib/words/diacritics"
 import superscriptLemmaTag from "../lemma/superscriptLemmaTag"
 
 const LatinLink = (props) => {
