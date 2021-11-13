@@ -20,7 +20,6 @@ import LatinLink from "../../components/latinlink/LatinLink"
 import { hyphensToMacra, macraToHyphens } from "../../lib/words/diacritics"
 //import hyphensToMacra from "../../helpers/hyphensToMacra"
 import getScansionDescription from "../../lib/words/scansion"
-import routes from "../../routes.json"
 import styles from '../../css/Word.module.css'
 import subsiteStyles from "../../css/Subsites.module.css"
 
