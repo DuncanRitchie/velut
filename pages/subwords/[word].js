@@ -62,7 +62,6 @@ const Subwords = ({input, subwords, loading}) => {
                 }
             })
         }
-        let randomCountdownQuestionExample = randomCountdownQuestionWeighted()
         let result = null
         //// `loading` is not expected to be true because of server-side rendering.
         //// But I’m leaving it in, in case it’s needed in future.
@@ -78,6 +77,7 @@ const Subwords = ({input, subwords, loading}) => {
             )
         }
         else {
+            const randomCountdownQuestionExample = randomCountdownQuestionWeighted()
             result = (
                 <p>No subwords found!&nbsp; Try a different input, such as <Link href={"./"+randomCountdownQuestionExample}><a title={"Subwords of "+randomCountdownQuestionExample}>{randomCountdownQuestionExample}</a></Link>.</p>
             )
