@@ -102,7 +102,9 @@ export async function getServerSideProps({ params }) {
     }
 
     const englishObject = await getEnglish(sanitisedInput)
-    const lemmata = JSON.parse(englishObject.lemmata)
+    const lemmata = englishObject.success
+        ? JSON.parse(englishObject.lemmata)
+        : []
 
     return { props: {
         sanitisedInput,
