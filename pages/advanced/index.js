@@ -68,14 +68,18 @@ const Advanced = ({ query, isHomepage, words, error }) => {
 
 export default Advanced
 
-export async function getServerSideProps(props) {
-    const { query } = props
+export async function getServerSideProps({ query, res }) {
 
     if (
         query.scansion
         || query.spelling
     ) {
         const results = await findAdvanced(query)
+
+        if (!results.words.length) {
+            res.statusCode = 404
+        }
+
         return { props: {
             isHomepage: false,
             query,
