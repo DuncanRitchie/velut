@@ -104,7 +104,7 @@ const Subwords = ({input, subwords, loading}) => {
 
 export default Subwords
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
     let input = params.word || ""
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.
@@ -114,6 +114,11 @@ export async function getServerSideProps({ params }) {
 
     const subwordsObject = await getSubwords(input)
     const subwords = subwordsObject.subwords
+
+    if (subwords.length == 0) {
+        res.statusCode = 404
+    }
+
     return { props: {
         input, subwords
     }}
