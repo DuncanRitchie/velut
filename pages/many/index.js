@@ -145,13 +145,17 @@ class Many extends Component {
 
 export default Many
 
-export async function getServerSideProps(props) {
-    const { query } = props
+export async function getServerSideProps({ query, res }) {
 
     if (
         query.search
     ) {
         const results = await findMany(query.search)
+
+        if (!results.allWordObjects.some(obj=>obj.success)) {
+            res.statusCode = 404
+        }
+
         return { props: {
             ...query,
             ...results,
