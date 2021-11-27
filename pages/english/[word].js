@@ -93,7 +93,7 @@ class English extends Component {
 
 export default English
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
     let sanitisedInput = params.word || ""
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.
@@ -105,6 +105,10 @@ export async function getServerSideProps({ params }) {
     const lemmata = englishObject.success
         ? JSON.parse(englishObject.lemmata)
         : []
+
+    if (!englishObject.success) {
+        res.statusCode = 404
+    }
 
     return { props: {
         sanitisedInput,
