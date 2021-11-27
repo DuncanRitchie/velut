@@ -62,7 +62,7 @@ const Anagrams = ({input, anagrams, loading, error}) => {
 
 export default Anagrams
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
     let input = params.word || ""
     //// If special characters are input, we can get percent-encoding problems.
     //// Let’s correct for that.
@@ -72,6 +72,11 @@ export async function getServerSideProps({ params }) {
 
     const anagramsObject = await getAnagrams(input)
     const { anagrams, error } = anagramsObject
+
+    if (anagrams.length == 0) {
+        res.statusCode = 404
+    }
+
     return { props: {
         input,
         anagrams,
