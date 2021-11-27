@@ -361,7 +361,7 @@ export default WordPage
 
 
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
     await dbConnect()
 
     //// The URL is /:type/:word
@@ -407,8 +407,10 @@ export async function getServerSideProps({ params }) {
         } }
 
     }
-    //// If the word was not found, we find a random word and suggest it.
+    //// If the word was not found, we find a random word and suggest it, with a 404 error.
     else {
+        res.statusCode = 404
+
         const randomWordObject = await getRandomWord()
         const randomWord = randomWordObject.word
         return { props: {
