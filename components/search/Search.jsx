@@ -223,16 +223,6 @@ class Search extends Component {
                     spellCheck="false"
                 />
 
-                <br/>
-                {/* The button to load the new page. */}
-                <button
-                    className={styles.searchButton} 
-                    tabIndex="0"
-                    type="submit"
-                    title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
-                >Search!
-                </button>
-                <br/>
                 {/* The menu to change the rhyme type displayed.
                 Only appears if neither /subwords nor /anagramphrases nor /about nor /english is in the path. */}
                 {this.props.hideDropdown
@@ -268,6 +258,16 @@ class Search extends Component {
                 )}
                 {/* {this.state.navigating
                     && <Redirect newUrl={this.state.newUrl} />} */}
+
+                {/* The button to load the new page. */}
+                <button
+                    className={styles.searchButton}
+                    tabIndex="0"
+                    type="submit"
+                    title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
+                >Search!
+                </button>
+                <br/>
             </form>
         )
     }
