@@ -65,7 +65,7 @@ class Search extends Component {
         // Let’s create the dropdown menu items.
         const dropdownOptions = routes
             .filter(route => route.searchField != null)
-            .map((route, i) => {
+            .map((route) => {
                 return <option value={route.route} key={route.route}>{route.headingToDisplay}</option>
             })
         // Now we’re ready to return JSX.
