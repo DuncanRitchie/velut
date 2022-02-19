@@ -332,7 +332,7 @@ const About = (props) => {
                             As mentioned above, I also have such a list for <a href="#english-to-latin" title="English to Latin, on this page">English to Latin</a>.
                         </p>
                         <p>
-                            Other dictionaries are searchable via the website <a href="https://latinitium.com/latin-dictionaries/" title="Searchable dictionaries on Latinitium">Latinitium</a>.Even more dictionaries are listed on <a href="https://latin.stackexchange.com/questions/867/which-online-latin-dictionaries-should-i-use-and-why" title="Which online Latin dictionaries should I use and why? — Stack Exchange">this Latin Stack Exchange thread</a>.
+                            Other dictionaries are searchable via the website <a href="https://latinitium.com/latin-dictionaries/" title="Searchable dictionaries on Latinitium">Latinitium</a>. Even more dictionaries are listed on <a href="https://latin.stackexchange.com/questions/867/which-online-latin-dictionaries-should-i-use-and-why" title="Which online Latin dictionaries should I use and why? — Stack Exchange">this Latin Stack Exchange thread</a>.
                         </p>
                         <p>
                             I’m not affiliated with any external sites or responsible for their content, but I’ve found them helpful, so I hope they’re of use to you too.
