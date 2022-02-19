@@ -41,33 +41,55 @@
     font-size: 0.9rem;
     text-align: left;
     width: 50%;
-    margin: 0.5625rem 0 1.875rem;
-    position: relative /* Gives the ul the same width as #dropdown. */;
+    margin: 0.875rem 0 1.875rem;
+    position: relative;
 }
 
-.dropdownSelect {
+/* Some of this is adapted from https://moderncss.dev/custom-select-styles-with-pure-css/ */
+.dropdown select {
     background-color: #9cdad3;
-    margin-top: 0.3333rem;
-    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    padding: 0.625em 0.5em;
     cursor: pointer;
     width: 100%;
-    padding: 0;
     text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.1;
 }
 
-.dropdownSelect:hover {
+/* Remove default arrow in IE */
+.dropdown select::-ms-expand {
+    display: none;
+  }
+
+.dropdown select:hover {
     background-color: #b5e3de;
 }
 
-/* The text giving the currently selected option. */
-.dropdownSelect :first-child {
-    padding: 0.35rem 0.625rem;
-    margin: 0;
+.dropdown::after {
+    position: absolute;
+    content: '    ';
+    background-image: url(https://www.duncanritchie.co.uk/images/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.7rem;
+    position: absolute;
+    display: inline-block;
+    right: 0.5rem;
+    top: 0.65rem;
+    width: 0.8rem;
 }
 
-/* Give some space for the arrow. */
-.dropdownSelect :first-child::after {
-    content: '    ';
+/* The <option> styles don’t seem to apply but here they are anyway. */
+.dropdown option {
+    cursor: pointer;
+    font-family: inherit;
+    background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
 }
 
 /* The paragraph whose ::after is the arrow signifying the dropdown. */

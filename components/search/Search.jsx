@@ -238,10 +238,10 @@ class Search extends Component {
                 {this.props.hideDropdown
                  ? null
                   : (
-                      <div>
-                        <label htmlFor="rhyme-type-select">Choose a type of rhyme:</label>
+                      <div className={styles.dropdown}>
+                        {/* <label htmlFor="rhyme-type-select">Choose a type of rhyme:</label> */}
 
-                        <select name="type" id="rhyme-type-select" defaultValue={"/"+this.state.type}>
+                        <select name="type" defaultValue={"/"+this.state.type}>
                             {dropdownOptions}
                         </select>
                       </div>
