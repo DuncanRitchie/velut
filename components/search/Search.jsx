@@ -200,10 +200,12 @@ class Search extends Component {
             })
         // Now we’re ready to return JSX.
         return (
-            <form className={styles.search} onSubmit={this.search}>
+            // <form className={styles.search} onSubmit={this.search}>
+            <form className={styles.search} action="/search" method="get">
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
+                    name="word"
                     value={inputValue}
                     onChange={this.handleInput}
                     onKeyUp={this.handleInputKeyUp}
@@ -251,8 +253,8 @@ class Search extends Component {
                         </ul>
                     </div>
                 )}
-                {this.state.navigating
-                    && <Redirect newUrl={this.state.newUrl} />}
+                {/* {this.state.navigating
+                    && <Redirect newUrl={this.state.newUrl} />} */}
             </form>
         )
     }
