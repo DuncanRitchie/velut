@@ -87,10 +87,14 @@ class Search extends Component {
                     spellCheck="false"
                 />
 
-                {/* The menu to change the rhyme type displayed.
-                Only appears if neither /subwords nor /anagramphrases nor /about nor /english is in the path. */}
+                {/* The `type` parameter determines the type of results displayed on the page.
+                If the dropdown menu should appear on the page, it will set `type`.
+                Otherwise, `type` will come from a hidden <input> element.
+                The latter happens if the path begins with /about, /english, /subwords, or /anagramphrases. */}
                 {this.props.hideDropdown
-                 ? null
+                  ? (
+                    <input name="type" type="hidden" value={this.props.type}></input>
+                  )
                   : (
                       <div className={styles.dropdown}>
                         <select name="type" defaultValue={"/"+this.state.type}>
