@@ -1,6 +1,6 @@
 [
     {
-        "route": "/",
+        "route": "",
         "searchField": "PerfectRhyme",
         "sortFields": "Sort",
         "headingToDisplay": "Perfect rhymes (classical)"

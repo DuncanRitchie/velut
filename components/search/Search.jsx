@@ -198,6 +198,11 @@ class Search extends Component {
                     </li>
                 )
             })
+        const dropdownOptions = routes
+            .filter(route => route.searchField != null)
+            .map((route, i) => {
+                return <option value={route.route} key={route.route}>{route.headingToDisplay}</option>
+            })
         // Now we’re ready to return JSX.
         return (
             // <form className={styles.search} onSubmit={this.search}>
@@ -232,26 +237,34 @@ class Search extends Component {
                 Only appears if neither /subwords nor /anagramphrases nor /about nor /english is in the path. */}
                 {this.props.hideDropdown
                  ? null
-                  : ( 
-                    <div className={styles.dropdown}
-                        onMouseLeave={this.handleDropdownMouseLeave}
-                        onKeyUp={this.handleDropdownKeyUp}    
-                    >
-                        <button 
-                            className={styles.dropdownSelect}
-                            onClick={this.handleDropdownClick}
-                            title={dropdownSelectTitle}
-                            aria-haspopup="true"
-                            aria-expanded={!menuDisabled}
-                            type="button"
-                        >
-                            <p>{dropdownSelect}</p>
-                            <div className={styles.dropdownArrow}></div>
-                        </button>
-                        <ul className={styles[this.state.dropdownAnimationClass]}>
-                            {dropdownContent}
-                        </ul>
-                    </div>
+                  : (
+                      <div>
+                        <label htmlFor="rhyme-type-select">Choose a type of rhyme:</label>
+
+                        <select name="type" id="rhyme-type-select" defaultValue={"/"+this.state.type}>
+                            {dropdownOptions}
+                        </select>
+                      </div>
+
+                    // <div className={styles.dropdown}
+                    //     onMouseLeave={this.handleDropdownMouseLeave}
+                    //     onKeyUp={this.handleDropdownKeyUp}
+                    // >
+                    //     <button
+                    //         className={styles.dropdownSelect}
+                    //         onClick={this.handleDropdownClick}
+                    //         title={dropdownSelectTitle}
+                    //         aria-haspopup="true"
+                    //         aria-expanded={!menuDisabled}
+                    //         type="button"
+                    //     >
+                    //         <p>{dropdownSelect}</p>
+                    //         <div className={styles.dropdownArrow}></div>
+                    //     </button>
+                    //     <ul className={styles[this.state.dropdownAnimationClass]}>
+                    //         {dropdownContent}
+                    //     </ul>
+                    // </div>
                 )}
                 {/* {this.state.navigating
                     && <Redirect newUrl={this.state.newUrl} />} */}
