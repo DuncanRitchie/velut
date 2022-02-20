@@ -1,4 +1,4 @@
-function SearchPage() {
+function RedirectOnSearchPage() {
 }
 
 export const getServerSideProps = async ({ query, res }) => {
@@ -8,4 +8,4 @@ export const getServerSideProps = async ({ query, res }) => {
     return { props: {}};
   }
 
-export default SearchPage
+export default RedirectOnSearchPage

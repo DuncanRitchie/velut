@@ -70,7 +70,7 @@ class Search extends Component {
             })
         // Now we’re ready to return JSX.
         return (
-            <form className={styles.search} action="/search" method="get">
+            <form className={styles.search} action="/redirectonsearch" method="get">
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
