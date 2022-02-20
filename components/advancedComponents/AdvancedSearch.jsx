@@ -81,9 +81,9 @@ class AdvancedSearch extends Component {
 
     render() {
         // Now we’re ready to return JSX.
-        return (<>
-                {/* Form fields */}
-                <form className={advancedStyles.advancedSearch+" "+searchStyles.search}>
+        return (
+            <form className={advancedStyles.advancedSearch+" "+searchStyles.search}>
+                <div>
                     <div id="advanced-search-spelling">
                         <p>
                             <label htmlFor="spelling-input">Spelling:</label>
@@ -166,17 +166,17 @@ class AdvancedSearch extends Component {
                             <label htmlFor="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
                         </p>
                     </div>
+                </div>
 
-                    {/* The button to load the new page. */}
-                    <button
-                        id="search-button"
-                        className={searchStyles.searchButton}
-                        type="submit"
-                        title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
-                    >Search!
-                    </button>
-                </form>
-            </>
+                {/* The button to load the new page. */}
+                <button
+                    id="search-button"
+                    className={searchStyles.searchButton}
+                    type="submit"
+                    title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
+                >Search!
+                </button>
+            </form>
         )
     }
 }

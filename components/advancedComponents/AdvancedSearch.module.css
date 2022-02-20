@@ -2,6 +2,10 @@
     margin-bottom: 2rem;
 }
 
+.advancedSearch :first-child {
+    grid-area: searchbar;
+}
+
 .advancedSearch div input[type=text] {
     width: calc(100% - 1rem);
 }
