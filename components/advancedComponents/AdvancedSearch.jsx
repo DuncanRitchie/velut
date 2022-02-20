@@ -17,8 +17,8 @@ class AdvancedSearch extends Component {
             },
             elision: false,
             sort: "alphabetical",
-            navigating: false,
-            newUrl: "",
+            // navigating: false,
+            // newUrl: "",
         }
     }
 
@@ -33,7 +33,7 @@ class AdvancedSearch extends Component {
                 unsanitised: query.scansion || "",
                 sanitised: query.scansion || ""
             },
-            elision: query.elision === "true",
+            elision: query.elision === "on",
             sort: query.sort || "alphabetical",
         })
     }
@@ -59,11 +59,11 @@ class AdvancedSearch extends Component {
     }
 
     // This is to search when the enter key is pressed within the <input>.
-    handleKeyUp = (e) => {
-        if (e.keyCode === 13 ) {
-            this.search()
-        }
-    }
+    // handleKeyUp = (e) => {
+    //     if (e.keyCode === 13 ) {
+    //         this.search()
+    //     }
+    // }
 
     // When a checkbox is toggled, this updates state.
     handleCheckboxChange = (e) => {
@@ -80,27 +80,27 @@ class AdvancedSearch extends Component {
     }
 
     // search() calculates the new URL and pushes it to the react-router history.
-    search = () => {
-        let newUrl = "advanced/?"
-        if (this.state.spelling.unsanitised) {
-            newUrl = `${newUrl}spelling=${this.state.spelling.sanitised}`;
-        }
-        if (this.state.scansion.unsanitised) {
-            newUrl = `${newUrl}&scansion=${this.state.scansion.sanitised}`;
-        }
-        if (this.state.elision) {
-            newUrl = `${newUrl}&elision=true`;
-        }
-        if (this.state.sort) {
-            newUrl = `${newUrl}&sort=${this.state.sort}`;
-        }
-        newUrl = newUrl.replace("?&","?");
+    // search = () => {
+    //     let newUrl = "advanced/?"
+    //     if (this.state.spelling.unsanitised) {
+    //         newUrl = `${newUrl}spelling=${this.state.spelling.sanitised}`;
+    //     }
+    //     if (this.state.scansion.unsanitised) {
+    //         newUrl = `${newUrl}&scansion=${this.state.scansion.sanitised}`;
+    //     }
+    //     if (this.state.elision) {
+    //         newUrl = `${newUrl}&elision=true`;
+    //     }
+    //     if (this.state.sort) {
+    //         newUrl = `${newUrl}&sort=${this.state.sort}`;
+    //     }
+    //     newUrl = newUrl.replace("?&","?");
 
-        this.setState({
-            newUrl: newUrl,
-            navigating: true,
-        })
-    }
+    //     this.setState({
+    //         newUrl: newUrl,
+    //         navigating: true,
+    //     })
+    // }
 
     // Let’s set our state so inputs can get their values from the URL.
     componentDidMount() {
@@ -123,7 +123,7 @@ class AdvancedSearch extends Component {
         // Now we’re ready to return JSX.
         return (<>
                 {/* Form fields */}
-                <form onSubmit={this.search} className={advancedStyles.advancedSearch+" "+searchStyles.search}>
+                <form className={advancedStyles.advancedSearch+" "+searchStyles.search}>
                     <div id="advanced-search-spelling">
                         <p>
                             <label htmlFor="spelling-input">Spelling:</label>
@@ -132,7 +132,7 @@ class AdvancedSearch extends Component {
                                 name="spelling"
                                 value={this.state.spelling.unsanitised}
                                 onChange={this.handleInput}
-                                onKeyUp={this.handleKeyUp}
+                                // onKeyUp={this.handleKeyUp}
                                 title="Letters that will match the words returned"
                                 type="text"
                                 lang="la"
@@ -152,7 +152,7 @@ class AdvancedSearch extends Component {
                                 name="scansion"
                                 value={this.state.scansion.unsanitised}
                                 onChange={this.handleInput}
-                                onKeyUp={this.handleKeyUp}
+                                // onKeyUp={this.handleKeyUp}
                                 title="Sequence of long and short syllables that will match the words returned"
                                 type="text"
                                 lang="la"
@@ -217,8 +217,8 @@ class AdvancedSearch extends Component {
                         title={this.state.sanitisedInput ? `Search for “${this.state.sanitisedInput}”` : "Please type something in the searchbar"}
                     >Search!
                     </button>
-                    {this.state.navigating
-                        && <Redirect newUrl={this.state.newUrl} />}
+                    {/* {this.state.navigating
+                        && <Redirect newUrl={this.state.newUrl} />} */}
                 </form>
             </>
         )
