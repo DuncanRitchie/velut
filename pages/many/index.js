@@ -15,8 +15,6 @@ class Many extends Component {
         super(props);
         this.state = {
             input: this.props.search,
-            navigating: false,
-            newUrl: "",
         }
     }
 
@@ -31,19 +29,6 @@ class Many extends Component {
             .split(" ")
             .filter(word=>word!=="");
         return searchedWords;
-    }
-
-    // search() calculates the new URL and pushes it to the react-router history.
-    // The Search and AdvancedSearch components have a similar method.
-    search = () => {
-        const searchedWordsAsString = this.splitInputIntoWords().join(" ");
-        const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
-        const newUrl = `many/?${urlParams}`;
-
-        this.setState({
-            newUrl: newUrl,
-            navigating: true,
-        })
     }
 
     /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
@@ -136,8 +121,6 @@ class Many extends Component {
                             {resultJSX}
                         </div>)}
                 </div>
-                {/* {this.state.navigating
-                    && <Redirect newUrl={this.state.newUrl} />} */}
             </div>
         )
     }
