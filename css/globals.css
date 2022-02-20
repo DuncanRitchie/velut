@@ -176,7 +176,7 @@ progress::-webkit-progress-value {
 }
 
 @media screen {
-    .fulmar-background {
+    .fulmar-background, .fulmar-background-big {
         grid-area: body;
         overflow-y: auto;
         scroll-behavior: smooth;
@@ -194,12 +194,12 @@ progress::-webkit-progress-value {
         background-repeat: no-repeat;
     }
 
-    .home {
+    .fulmar-background-big {
         background-size: calc(40vh + 40vw);
         background-position: -20vw calc(-16vw - 2vh + 11.375rem);
     }
 
-    .fulmar-background:not(.home) {
+    .fulmar-background:not(.fulmar-background-big) {
         background-size: 75vh;
         background-position: calc(3rem + 5vw - 54vh) calc(10vw - 21vh - 1.25rem);
     }

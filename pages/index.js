@@ -8,7 +8,7 @@ const Home = ({type = "/"}) => {
         <Head>
             <title>Duncan Ritchie’s velut — a Latin rhyming dictionary</title>
         </Head>
-        <div className={styles.home + " fulmar-background"}>
+        <div className={styles.home + " fulmar-background-big"}>
             <Header />
             <h2 className={styles.homeRubric}>
                 <span>Latin rhymes &amp;&nbsp;more!</span>
