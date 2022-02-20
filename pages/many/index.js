@@ -127,8 +127,8 @@ class Many extends Component {
                     <p className={subsitesStyles.subsiteHomeRubric}>
                         Search for several Latin words by entering them into the box below!
                     </p>
-                    <form className={searchStyles.search+" "+manyStyles.search} onSubmit={this.search}>
-                        <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
+                    <form className={searchStyles.search+" "+manyStyles.search}>
+                        <textarea name="search" title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
                         <button className={searchStyles.searchButton} type="submit">Search!</button>
                     </form>
                     {!this.props.isHomepage &&
@@ -136,8 +136,8 @@ class Many extends Component {
                             {resultJSX}
                         </div>)}
                 </div>
-                {this.state.navigating
-                    && <Redirect newUrl={this.state.newUrl} />}
+                {/* {this.state.navigating
+                    && <Redirect newUrl={this.state.newUrl} />} */}
             </div>
         )
     }
