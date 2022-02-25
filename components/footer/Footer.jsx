@@ -41,8 +41,6 @@ let Footer = (props) => {
                 {showAdvanced && <li><Link href="/advanced"><a title="Advanced Search on velut">Advanced</a></Link></li>}
 
                 {showAbout && <li><Link href="/about"><a title="About velut">About velut</a></Link></li>}
-
-                <li><a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie’s personal website">My website</a></li>
             </ul>
         </footer>
     )
