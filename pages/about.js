@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next"
 import Link from "next/link"
 import Head from "next/head"
 import Header from "../components/header/Header"
@@ -6,43 +5,9 @@ import Search from "../components/search/Search"
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
 import {count as wordsCount} from "../lib/words/count"
 import {count as lemmataCount} from "../lib/lemmata/count"
-import Word from '../models/Word'
-import Lemma from '../models/Lemma'
 import styles from '../css/About.module.css'
 
-// export async function getServerSideProps() {
-//     // try {
-//         const result = await hello()
-//         console.log(result)
-//         // const json = await result?.json() ?? "result does not have json"
-//         const json = "hello"
-//         //const result = "hellp"
-
-//         return {
-//           props: {
-//             wordCount: json?.data?.name ?? "json?.data?.name",
-//             lemmaCount: result ?? "result",
-//           },
-//         };
-    
-//     // } catch {
-//     //     // res.statusCode = 404;
-//     //     return {
-//     //       props: {
-//     //           wordCount: "unknown",
-//     //           lemmaCount: "similarly unknown",
-//     //       },
-//     //     };
-//     //   }
-//     // const hello = await ;
-//     // return {props: {hello}};
-// }
-
-export async function getServerSideProps({params,req,res,query,preview,previewData,resolvedUrl,locale,locales,defaultLocale}) {
-    // if (query.text) {
-    //   return { redirect: { destination: '/post', permanent: false, },}
-    // }
-    //console.log({req, res})
+export async function getServerSideProps() {
     const wordsCountData = await wordsCount();
     const lemmataCountData = await lemmataCount();
 
