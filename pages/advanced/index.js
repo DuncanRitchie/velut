@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 import Header from '../../components/header/Header'
 import AdvancedHead from '../../components/advancedComponents/AdvancedHead'
-import AdvancedRubricToggler from '../../components/advancedComponents/AdvancedRubricToggler'
+import AdvancedRubric from '../../components/advancedComponents/AdvancedRubric'
 import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
 import findAdvanced from '../../lib/words/advanced'
 import { macraToHyphens } from '../../lib/words/diacritics'
@@ -14,7 +14,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
             <AdvancedHead/>
             <div className={styles.subsiteHome + " advanced fulmar-background"}>
                 <Header textBeforeTitle="Advanced Search"/>
-                <AdvancedRubricToggler/>
+                <AdvancedRubric/>
                 <AdvancedSearch autofocus={true} query={query}/>
             </div>
         </>)
@@ -55,7 +55,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
             <div className={styles.advanced+" fulmar-background"}>
                 <Header textBeforeTitle="Advanced Search" />
                 <div>
-                    <AdvancedRubricToggler/>
+                    <AdvancedRubric/>
                     <AdvancedSearch autofocus={false} query={query}/>
                     <div className={styles.subsiteResult}>
                         {result}

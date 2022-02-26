@@ -3,7 +3,10 @@ import styles from './AdvancedRubric.module.css'
 
 const AdvancedRubric = () => {
     return (
-        <div className={styles.advancedRubric}>
+        <details className={styles.advancedRubric}>
+            <summary>
+                Show/hide how to use the Advanced Search
+            </summary>
             <h2>How to use</h2>
             <p>This page allows you to search for Latin words by spelling, scansion, or both.</p>
             <p>Searches are limited to 1000 results. Searches that would return all words in velut (if I removed the 1000-word limit) are not allowed.</p>
@@ -52,7 +55,7 @@ const AdvancedRubric = () => {
             <p>If “Allow elision?” is ticked, words that end with a vowel sound (including diphthongs and nasalised vowels) have this final syllable discarded before scansion. So a scansion of “LSSL” returns <Link href="../amphithea-trum"><a title="amphitheātrum">amphitheātrum</a></Link> and <Link href="../quo-modocumque"><a title="quōmodocumque">quōmodocumque</a></Link> (as well as words like <Link href="../praevaleant"><a title="praevaleant">praevaleant</a></Link>, which has nothing to elide), and “LSSL.” does not.</p>
             <h3>Sorting</h3>
             <p>You can sort the results alphabetically, or you can sort by rhyme. If you sort by rhyme, words that rhyme the closest (under classical or ecclesiastical pronunciation systems) will appear closest together in the list of results.</p>
-        </div>
+        </details>
     )
 }
 
