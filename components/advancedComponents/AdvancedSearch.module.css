@@ -10,7 +10,7 @@
     width: calc(100% - 1rem);
 }
 
-.advancedSearch div {
+.advancedSearch div div {
     display: flex;
     flex-direction: column;
     text-align: left;
