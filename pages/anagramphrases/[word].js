@@ -21,7 +21,10 @@ const Anagrams = ({input, anagrams, loading, error}) => {
         result = (<p>Loading anagrams…&nbsp; This can take a few minutes.</p>)
     }
     else if (error) {
-        result = <p>There was an error in fetching your anagrams! Please try again later, or try another search.</p>
+        result = <>
+            <p>There was an error in fetching your anagrams! Please try again later, or try another search.</p>
+            <p>{error}</p>
+        </>
     }
     else if (mappedAnagrams.length) {
         result = (
