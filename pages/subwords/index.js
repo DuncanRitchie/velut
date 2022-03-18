@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
-import { randomCountdownQuestionWeighted, testDeletCharactersOptimised } from '../../lib/words/subwords';
+import { randomCountdownQuestionWeighted } from '../../lib/words/subwords';
 import styles from '../../css/Subsites.module.css'
 
 const SubwordsHome = ({randomCountdownQuestionExample}) => {
@@ -40,7 +40,6 @@ const SubwordsHome = ({randomCountdownQuestionExample}) => {
 export default SubwordsHome
 
 export async function getServerSideProps() {
-    testDeletCharactersOptimised();
     const randomCountdownQuestionExample = randomCountdownQuestionWeighted()
     return { props: {
         randomCountdownQuestionExample
