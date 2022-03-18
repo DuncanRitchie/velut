@@ -1,7 +1,7 @@
 # velut
 velut is an online Latin rhyming dictionary using the MERN stack.
 
-It is aimed at people with at least a general understanding of the Latin language and how poetry is composed in the ancient quantitative (length-based) metres and in more modern qualitative (stress-based) metres. Really, though, it is aimed at me, as a personal pet project that is now pretty elaborate!
+Anyone with an interest in Latin can get something out of velut, but it is aimed at people with at least a general understanding of the language and how poetry is composed in the ancient quantitative (length-based) metres and in more modern qualitative (stress-based) metres. Really, though, it is aimed at me, as a personal pet project that is now pretty elaborate!
 
 This GitHub repo is publicly visible. The site is hosted by Render from the main branch, at https://www.velut.co.uk.
 
@@ -45,7 +45,7 @@ I rely heavily on Excel for generating, checking, and storing the data. I am gra
 ### Implementing SSR
 Server-side rendering is something velut really should have. Apart from links and the “Search” button, there’s not a lot of interactivity to the site, so why should a web-browser need to run a load of JavaScript to see velut? So I’ve begun the process of porting velut to the Next.js framework, which brings SSR to my React code. It’s not yet ready for deployment, but my work so far is on the [nextjs](https://github.com/DuncanRitchie/velut/tree/nextjs) branch. The client-side–rendered website remains live, so you can still [look up Latin words](https://www.velut.co.uk).
 
-There’s so much going on in velut that the SSR work is a fascinating challenge for me. The basic page for a word does not require any client-side JavaScript (except for search); the [About](https://www.velut.co.uk/about) page could almost be a static file. But the sections [Subwords](https://www.velut.co.uk/subwords) and [Anagram Phrases](https://www.velut.co.uk/anagramphrases) take more time to generate their data, and for [Many](https://www.velut.co.uk/many) it’s cool to see the view update as each word comes back from the database, so there is still very much a place for client-side rendering.
+There’s so much going on in velut that the SSR work is a fascinating challenge for me. The basic page for a word does not require any client-side JavaScript; the [About](https://www.velut.co.uk/about) page could almost be a static file. But the sections [Subwords](https://www.velut.co.uk/subwords) and [Anagram Phrases](https://www.velut.co.uk/anagramphrases) take more time to generate their data, and for [Many](https://www.velut.co.uk/many) it’s cool to see the view update as each word comes back from the database, so there is still very much a place for client-side rendering.
 
 ## Miscellanea
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
