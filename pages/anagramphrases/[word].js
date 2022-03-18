@@ -73,7 +73,7 @@ export async function getServerSideProps({ params, res }) {
     const anagramsObject = await getAnagrams(input)
     const { anagrams, error } = anagramsObject
 
-    if (anagrams.length == 0) {
+    if (!anagrams?.length) {
         res.statusCode = 404
     }
 
