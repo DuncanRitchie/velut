@@ -139,6 +139,35 @@ function LinkInDictionary({word}) {
     return <LatinLink targetWord={data.word.Word} linkBase="/" />
 }
 
+function Results({words}) {
+    const wordsSet = new Set(words);
+    const results = [...wordsSet].map(word => useSWR(`/api/word/isInDictionary/?word=${word}`, fetcher));
+    const errors = results.filter(({ data, error }) => Boolean(error));
+    const nonErrors = results.filter(({ data, error }) => !error);
+    const pending = nonErrors.filter(({data, error}) => !data);
+    const inVelut = nonErrors.filter(({data, error}) => data && data.success);;
+    const notInVelut = nonErrors.filter(({data, error}) => data && !data.success);;
+
+    return (<>
+        <h2>Errors</h2>
+        <ul>
+            {errors.map(obj => <li>{obj.error}</li>)}
+        </ul>
+        <h2>Pending</h2>
+        <ul>
+            {pending.map(obj => <li>{obj.data.search}</li>)}
+        </ul>
+        <h2>Found in velut</h2>
+        <ul>
+            {inVelut.map(obj => <li>{obj.data.search}</li>)}
+        </ul>
+        <h2>Not in velut</h2>
+        <ul>
+            {notInVelut.map(obj => <li>{obj.data.search}</li>)}
+        </ul>
+    </>)
+}
+
 
 // import React, {Component, Fragment} from 'react'
 import { withRouter } from 'next/router'
