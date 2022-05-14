@@ -108,7 +108,7 @@ class ManySSR extends Component {
                     <form className={searchStyles.search+" "+manyStyles.search}>
                         <textarea name="search" title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
                         <noscript>
-                            <input hidden name="ssr" value="true" />
+                            <input hidden name="ssr" value="true" onChange="void()" />
                         </noscript>
                         <button className={searchStyles.searchButton} type="submit">Search!</button>
                     </form>
