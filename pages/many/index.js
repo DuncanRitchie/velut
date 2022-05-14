@@ -139,34 +139,44 @@ function LinkInDictionary({word}) {
     return <LatinLink targetWord={data.word.Word} linkBase="/" />
 }
 
-function Results({words}) {
-    const wordsSet = new Set(words);
-    const results = [...wordsSet].map(word => useSWR(`/api/word/isInDictionary/?word=${word}`, fetcher));
-    const errors = results.filter(({ data, error }) => Boolean(error));
-    const nonErrors = results.filter(({ data, error }) => !error);
-    const pending = nonErrors.filter(({data, error}) => !data);
-    const inVelut = nonErrors.filter(({data, error}) => data && data.success);;
-    const notInVelut = nonErrors.filter(({data, error}) => data && !data.success);;
-
-    return (<>
-        <h2>Errors</h2>
-        <ul>
-            {errors.map(obj => <li>{obj.error}</li>)}
-        </ul>
-        <h2>Pending</h2>
-        <ul>
-            {pending.map(obj => <li>{obj.data.search}</li>)}
-        </ul>
-        <h2>Found in velut</h2>
-        <ul>
-            {inVelut.map(obj => <li>{obj.data.search}</li>)}
-        </ul>
-        <h2>Not in velut</h2>
-        <ul>
-            {notInVelut.map(obj => <li>{obj.data.search}</li>)}
-        </ul>
-    </>)
+//// Adapted from https://serveanswer.com/questions/use-swr-to-fetch-multiple-times-to-populate-an-array
+function arrayFetcher(urlArr) {
+    const f = (u) => fetch(u).then((r) => r.json());
+    return Promise.all(urlArr.map(f));
 }
+
+// function Results({words}) {
+//     const wordsSet = new Set(words);
+//     const results = [...wordsSet].map(word => useSWR(`/api/word/isInDictionary/?word=${word}`, fetcher));
+//     const errors = results.filter(({ data, error }) => Boolean(error));
+//     const nonErrors = results.filter(({ data, error }) => !error);
+//     const pending = nonErrors.filter(({data, error}) => !data);
+//     const inVelut = nonErrors.filter(({data, error}) => data && data.success);;
+//     const notInVelut = nonErrors.filter(({data, error}) => data && !data.success);;
+
+//     console.log({
+//         words, results, errors, nonErrors, pending, inVelut, notInVelut
+//     })
+
+//     return (<>
+//         <h2>Errors</h2>
+//         <ul>
+//             {errors.map(obj => <li>{obj.error}</li>)}
+//         </ul>
+//         <h2>Pending</h2>
+//         <ul>
+//             {pending.map(obj => <li>{obj.data.search}</li>)}
+//         </ul>
+//         <h2>Found in velut</h2>
+//         <ul>
+//             {inVelut.map(obj => <li>{obj.data.search}</li>)}
+//         </ul>
+//         <h2>Not in velut</h2>
+//         <ul>
+//             {notInVelut.map(obj => <li>{obj.data.search}</li>)}
+//         </ul>
+//     </>)
+// }
 
 
 // import React, {Component, Fragment} from 'react'
@@ -180,7 +190,7 @@ import { withRouter } from 'next/router'
 
 // <Many/> is a JSX element rendered at /many/?query
 
-class ManyCSR extends Component {
+class ManyCSRTextArea extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -301,104 +311,125 @@ class ManyCSR extends Component {
     }
 
     render() {
-        console.log(this.state)
-        console.log(this.props)
-        const foundWordsMapped
-            = [...this.state.distinctWords].map((enteredWord) => {
-                // const foundWord = this.state.allWords.get(enteredWord)
-                return <Fragment key={enteredWord}><LinkInDictionary word={enteredWord} /> </Fragment>
-                // return foundWord
-                //     ? <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
-                //     : null
-            })
-
-        const missingWordsMapped
-            = [...this.state.distinctWords].map((enteredWord, index) => {
-                const foundWord = this.state.allWords.get(enteredWord)
-                return foundWord || this.state.pendingWords.has(enteredWord)
-                    ? null
-                    : <Fragment key={index}><strong>{enteredWord}</strong> </Fragment>
-            })
-
-        const allWordsMapped
-            = this.state.searchedWords
-            ? this.state.searchedWords.map((word,index)=>{
-                // If a result for it has been found, we render a LatinLink.
-                const foundWord = this.state.allWords.get(word);
-                if (foundWord) {
-                    return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
-                }
-                // Otherwise we don’t render a Link.
-                else {
-                    return <Fragment key={index}><strong>{word}</strong> </Fragment>
-                }
-            })
-            : []
-
-        const resultsAreRendered = allWordsMapped.length > 0;
-        let result = null;
-        if (resultsAreRendered) {
-            const foundWordsCount    = this.state.foundWords.size
-            const missingWordsCount  = this.state.missingWords.size
-            const allWordsCount      = this.state.distinctWords.length
-            const pendingWordsCount  = this.state.pendingWords.size
-            const proportionComplete = 1 - pendingWordsCount / allWordsCount
-
-            result = (
-                <div>
-                    <p>
-                        <label htmlFor="many-progress">
-                            {pendingWordsCount
-                            ? `Waiting for results for ${pendingWordsCount} ${pendingWordsCount === 1 ? "word" : "words"}…`
-                            : `Showing results for all of the ${allWordsCount} ${allWordsCount === 1 ? "word" : "words"} you entered.`}
-                            <progress id="many-progress" max={1} value={proportionComplete}></progress>
-                        </label>
-                    </p>
-
-                    <h2>Words in velut ({foundWordsCount})</h2>
-                    {foundWordsCount
-                        ? <p lang="la">{foundWordsMapped}</p>
-                        : (pendingWordsCount
-                           ? <p>Please wait…</p>
-                           : <p>Nothing you searched for is in velut!</p>)}
-
-                    <h2>Words not in velut ({missingWordsCount})</h2>
-                    {missingWordsCount
-                       ? (<>
-                            <p lang="la">{missingWordsMapped}</p>
-                            {/* My velut-dictionary-links site generates links to several Latin websites. */}
-                            <p>
-                                <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
-                                    Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
-                                </a>
-                            </p></>)
-                        : (<p>
-                                {pendingWordsCount ? "Please wait…" : "Everything you searched for is in velut!"}
-                            </p>)}
-                    <h2>All words entered</h2>
-                    <p lang="la">{allWordsMapped}</p>
-                </div>
-            )
-        }
-        return (
-            <div className="fulmar-background subsite-home">
-                <Header textBeforeTitle="Look-up of many words" />
-                <div className={manyStyles.many}>
-                    <p className={searchStyles.subsiteHomeRubric}>
-                        Search for several Latin words by entering them into the box below!
-                    </p>
-                    <div className={searchStyles.search}>
-                        <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
-                        <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
-                    </div>
-                    {resultsAreRendered &&
-                        (<div className={searchStyles.subsiteResult}>
-                            {result}
-                        </div>)}
-                </div>
-            </div>
-        )
+        <div className={searchStyles.search}>
+            <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
+            <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
+        </div>
     }
+}
+
+function ManyCSR() {
+    // console.log(this.state)
+    // console.log(this.props)
+    // const foundWordsMapped
+    //     = [...this.state.distinctWords].map((enteredWord) => {
+    //         // const foundWord = this.state.allWords.get(enteredWord)
+    //         return <Fragment key={enteredWord}><LinkInDictionary word={enteredWord} /> </Fragment>
+    //         // return foundWord
+    //         //     ? <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
+    //         //     : null
+    //     })
+
+    // const missingWordsMapped
+    //     = [...this.state.distinctWords].map((enteredWord, index) => {
+    //         const foundWord = this.state.allWords.get(enteredWord)
+    //         return foundWord || this.state.pendingWords.has(enteredWord)
+    //             ? null
+    //             : <Fragment key={index}><strong>{enteredWord}</strong> </Fragment>
+    //     })
+
+    // const allWordsMapped
+    //     = this.state.searchedWords
+    //     ? this.state.searchedWords.map((word,index)=>{
+    //         // If a result for it has been found, we render a LatinLink.
+    //         const foundWord = this.state.allWords.get(word);
+    //         if (foundWord) {
+    //             return <Fragment key={index}><LatinLink linkBase="../" targetWord={foundWord}/> </Fragment>
+    //         }
+    //         // Otherwise we don’t render a Link.
+    //         else {
+    //             return <Fragment key={index}><strong>{word}</strong> </Fragment>
+    //         }
+    //     })
+    //     : []
+
+    // const resultsAreRendered = allWordsMapped.length > 0;
+    // let result = null;
+    // if (resultsAreRendered) {
+    //     const foundWordsCount    = this.state.foundWords.size
+    //     const missingWordsCount  = this.state.missingWords.size
+    //     const allWordsCount      = this.state.distinctWords.length
+    //     const pendingWordsCount  = this.state.pendingWords.size
+    //     const proportionComplete = 1 - pendingWordsCount / allWordsCount
+
+    //     result = (
+    //         <div>
+    //             <p>
+    //                 <label htmlFor="many-progress">
+    //                     {pendingWordsCount
+    //                     ? `Waiting for results for ${pendingWordsCount} ${pendingWordsCount === 1 ? "word" : "words"}…`
+    //                     : `Showing results for all of the ${allWordsCount} ${allWordsCount === 1 ? "word" : "words"} you entered.`}
+    //                     <progress id="many-progress" max={1} value={proportionComplete}></progress>
+    //                 </label>
+    //             </p>
+
+    //             <h2>Words in velut ({foundWordsCount})</h2>
+    //             {foundWordsCount
+    //                 ? <p lang="la">{foundWordsMapped}</p>
+    //                 : (pendingWordsCount
+    //                    ? <p>Please wait…</p>
+    //                    : <p>Nothing you searched for is in velut!</p>)}
+
+    //             <h2>Words not in velut ({missingWordsCount})</h2>
+    //             {missingWordsCount
+    //                ? (<>
+    //                     <p lang="la">{missingWordsMapped}</p>
+    //                     {/* My velut-dictionary-links site generates links to several Latin websites. */}
+    //                     <p>
+    //                         <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
+    //                             Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
+    //                         </a>
+    //                     </p></>)
+    //                 : (<p>
+    //                         {pendingWordsCount ? "Please wait…" : "Everything you searched for is in velut!"}
+    //                     </p>)}
+    //             <h2>All words entered</h2>
+    //             <p lang="la">{allWordsMapped}</p>
+    //         </div>
+    //     )
+    // }
+
+    const resultsAreRendered = true;
+    const words = ["hello","world","lingua","latina","bona","est"]
+
+
+    const wordsSet = new Set(words);
+    const urls = [...wordsSet].map(word =>(`/api/word/isInDictionary/?word=${word}`));
+    const { data } = useSWR(urls, arrayFetcher);
+    console.log(urls)
+    console.log(useSWR(urls, arrayFetcher))
+
+    const results = (
+        <ul>{data && data.map(x => <li key={x.word.Word}>x.word.Word</li>)}</ul>
+    )
+
+    console.log(<ManyCSRTextArea search={words}/>)
+    return (
+        <div className="fulmar-background subsite-home">
+            <Header textBeforeTitle="Look-up of many words" />
+            <div className={manyStyles.many}>
+                <p className={searchStyles.subsiteHomeRubric}>
+                    Search for several Latin words by entering them into the box below!
+                </p>
+                <ManyCSRTextArea/>
+                {resultsAreRendered &&
+                    (<div className={searchStyles.subsiteResult}>
+                        {results}
+                        {/* {result} */}
+                    </div>)}
+            </div>
+        </div>
+    )
 }
 
 // export default withRouter(Many)
