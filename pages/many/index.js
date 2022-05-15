@@ -124,6 +124,21 @@ class ManySSR extends Component {
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+function Redirect({newUrl, callback}) {
+  const router = useRouter();
+
+  useEffect(() => {
+    //// Navigate only after the first render
+    router.push(newUrl, undefined, { shallow: true });
+    callback();
+  }, [])
+
+  return <span>Redirecting…</span>
+}
+
 class ManyCSR extends Component {
     constructor(props) {
         super(props);
@@ -137,6 +152,8 @@ class ManyCSR extends Component {
             countWordsLoading: 0,
             foundWords: new Set(),
             missingWords: new Set(),
+            newUrl: '',
+            redirectNeeded: false,
         }
     }
 
@@ -159,7 +176,7 @@ class ManyCSR extends Component {
         const searchedWordsAsString = searchedWordsArray.join(" ");
         const urlParams = new URLSearchParams([["search", searchedWordsAsString]]);
         const newUrl = `../../many/?${urlParams}`;
-        this.props.history.push(newUrl);
+        this.setState({newUrl, redirectNeeded: true})
     }
 
     setTextAreaFromUrl = () => {
@@ -169,6 +186,7 @@ class ManyCSR extends Component {
     }
 
     fetchWords = (urlShouldBeChanged = true) => {
+        this.setState({redirectNeeded: false})
         const searchedWords = this.splitInputIntoWords();
         //// `searchedWords` may contain duplicates.
         //// `pendingWords` and distinctWords should initially be the same set of distinct words that were entered.
@@ -335,6 +353,12 @@ class ManyCSR extends Component {
                         (<div className="subsite-result">
                             {result}
                         </div>)}
+                    {this.state.redirectNeeded && (
+                        <Redirect
+                          newUrl={this.state.newUrl}
+                          callback={()=>{this.setState({redirectNeeded: false})}}
+                        />
+                    )}
                 </div>
             </div>
         )
