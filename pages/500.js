@@ -12,7 +12,7 @@ const FiveHundred = ({type = "/"}) => {
             <Header textBeforeTitle="Internal server error" />
             <Search prefix="" searchbarTitle="Type a Latin word" autofocus={true} type={type} />
             <p className={styles.homeRubric}>
-                <span>Please try another page or come back later.</span>
+                <span>Please try another page or come back later!</span>
             </p>
         </div>
     </>)
