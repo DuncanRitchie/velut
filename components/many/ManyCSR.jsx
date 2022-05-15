@@ -5,6 +5,7 @@ import LatinLink from '../../components/latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import manyStyles from '../../css/Many.module.css'
 import searchStyles from '../../components/search/Search.module.css'
+import { getHrefForDictionaryLinks, splitIntoWords } from '../../lib/words/many'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -44,11 +45,7 @@ class ManyCSR extends Component {
     }
 
     splitInputIntoWords = () => {
-        const input = this.state.input;
-        const searchedWords = input
-            .replace(/[^A-Za-zĀāĒēĪīŌōŪūȲȳËëÏïÉáéíóúýÁüṻḗ.:-]+/g, " ")
-            .split(" ")
-            .filter(word=>word!=="");
+        const searchedWords = splitIntoWords(this.state.input);
         this.setState({searchedWords});
         return searchedWords;
     }
@@ -121,13 +118,6 @@ class ManyCSR extends Component {
                 }
             )
         })
-    }
-
-    /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
-    getHrefForDictionaryLinks() {
-        const missingWordsAsArray = [...this.state.missingWords.values()]
-        const dictionaryLinksQuery = new URLSearchParams([["words", missingWordsAsArray.join(" ")]]);
-        return `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
     }
 
     componentDidMount() {
@@ -207,7 +197,7 @@ class ManyCSR extends Component {
                             <p lang="la">{missingWordsMapped}</p>
                             {/* My velut-dictionary-links site generates links to several Latin websites. */}
                             <p>
-                                <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks()} title="External webpage linking to other dictionaries (opens in new tab)">
+                                <a target="_blank" rel="noopener noreferrer" href={getHrefForDictionaryLinks(this.state.missingWords)} title="External webpage linking to other dictionaries (opens in new tab)">
                                     Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
                                 </a>
                             </p></>)

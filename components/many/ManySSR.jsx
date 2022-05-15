@@ -4,6 +4,7 @@ import LatinLink from '../../components/latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import manyStyles from '../../css/Many.module.css'
 import searchStyles from '../../components/search/Search.module.css'
+import { getHrefForDictionaryLinks } from '../../lib/words/many'
 
 class ManySSR extends Component {
     constructor(props) {
@@ -15,21 +16,6 @@ class ManySSR extends Component {
 
     textareaOnChange = (event) => {
         this.setState({input: event.target.value});
-    }
-
-    splitInputIntoWords = () => {
-        const input = this.state.input;
-        const searchedWords = input
-            .replace(/[^A-Za-zĀāĒēĪīŌōŪūȲȳËëÏïÉáéíóúýÁüṻḗ.:-]+/g, " ")
-            .split(" ")
-            .filter(word=>word!=="");
-        return searchedWords;
-    }
-
-    /* My velut-dictionary-links site generates links to several Latin websites, based on the "words" parameter in the query-string. */
-    getHrefForDictionaryLinks(wordsToGetLinksFor) {
-        const dictionaryLinksQuery = new URLSearchParams([["words", wordsToGetLinksFor.join(" ")]]);
-        return `https://www.duncanritchie.co.uk/velut-dictionary-links/?${dictionaryLinksQuery}`;
     }
 
     render() {
@@ -82,7 +68,7 @@ class ManySSR extends Component {
                             <p lang="la">{missingWordsJSX}</p>
                             {/* My velut-dictionary-links site generates links to several Latin websites. */}
                             <p>
-                                <a target="_blank" rel="noopener noreferrer" href={this.getHrefForDictionaryLinks(missingWords)} title="External webpage linking to other dictionaries (opens in new tab)">
+                                <a target="_blank" rel="noopener noreferrer" href={getHrefForDictionaryLinks(missingWords)} title="External webpage linking to other dictionaries (opens in new tab)">
                                     Look up the missing {missingWordsCount === 1 ? "word": "words"} in other dictionaries.
                                 </a>
                             </p></>)
