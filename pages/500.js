@@ -3,7 +3,7 @@ import Header from "../components/header/Header"
 import Search from '../components/search/Search'
 import styles from '../css/Home.module.css'
 
-const FiveOFive = ({type = "/"}) => {
+const FiveHundred = ({type = "/"}) => {
     return (<>
         <Head>
             <title>Internal server error on velut — a Latin rhyming dictionary</title>
@@ -18,4 +18,4 @@ const FiveOFive = ({type = "/"}) => {
     </>)
 }
 
-export default FiveOFive
+export default FiveHundred
