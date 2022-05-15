@@ -76,13 +76,16 @@ export async function getServerSideProps({ params, res }) {
     const anagramsObject = await getAnagrams(input)
     const { anagrams, error } = anagramsObject
 
-    if (!anagrams?.length) {
+    if (!anagrams?.length && !anagramsObject?.length) {
         res.statusCode = 404
     }
 
+    //// Something weird is going on with the `getAnagrams` function.
+    //// It should return an object containing the `anagrams` array, but for some reason
+    //// it’s returning the array, so `anagramsObject` is the array of anagrams.
     return { props: {
         input,
-        anagrams,
-        error,
+        anagrams: anagrams || anagramsObject || [],
+        error: error || "",
     }}
 }
