@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react'
-import Header from '../../components/header/Header'
-import LatinLink from '../../components/latinlink/LatinLink'
+import Header from '../header/Header'
+import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import manyStyles from '../../css/Many.module.css'
 import searchStyles from '../../components/search/Search.module.css'
