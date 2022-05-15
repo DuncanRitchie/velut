@@ -341,16 +341,19 @@ class ManyCSR extends Component {
         return (
             <div className="subwords fulmar-background subsite-home">
                 <Header textBeforeTitle="Look-up of many words" />
-                <div className="many">
-                    <p className="subsite-home-rubric">
+                <div className={manyStyles.many}>
+                    <p className={subsitesStyles.subsiteHomeRubric}>
                         Search for several Latin words by entering them into the box below!
                     </p>
-                    <div className="search">
-                        <textarea title="Type some Latin words into this box." value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
-                        <button id="search-button" type="submit" onClick={this.fetchWords}>Search!</button>
-                    </div>
+                    <form className={searchStyles.search+" "+manyStyles.search}>
+                        <textarea title="Type some Latin words into this box." name="search" value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
+                        <noscript>
+                            <input hidden name="ssr" value="true" onChange="void()" />
+                        </noscript>
+                        <button className={searchStyles.searchButton} type="submit" onClick={this.fetchWords}>Search!</button>
+                    </form>
                     {resultsAreRendered &&
-                        (<div className="subsite-result">
+                        (<div className={subsitesStyles.subsiteResult}>
                             {result}
                         </div>)}
                     {this.state.redirectNeeded && (
