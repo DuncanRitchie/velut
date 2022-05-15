@@ -345,7 +345,8 @@ class ManyCSR extends Component {
                     <p className={subsitesStyles.subsiteHomeRubric}>
                         Search for several Latin words by entering them into the box below!
                     </p>
-                    <form className={searchStyles.search+" "+manyStyles.search}>
+                    {/* Form submission does not cause a full page reload if JavaScript is enabled. */}
+                    <form className={searchStyles.search+" "+manyStyles.search} onSubmit={(e)=>e.preventDefault()}>
                         <textarea title="Type some Latin words into this box." name="search" value={this.state.input} onChange={this.textareaOnChange} lang="la"/>
                         <noscript>
                             <input hidden name="ssr" value="true" onChange="void()" />
