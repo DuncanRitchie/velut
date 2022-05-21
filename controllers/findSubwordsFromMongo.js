@@ -14,12 +14,8 @@ const findSubwordsFromMongo = (input,wordObjects) => {
             return false
         }
     })
-    return filteredWordObjects;
-}
-
-const sortSubwords = (wordObjects) => {
-    let sortedWordObjects = wordObjects;
-
+    // Now we sort the array.
+    let sortedWordObjects = filteredWordObjects
     sortedWordObjects = sortedWordObjects.sort((a,b)=>{
         if (a.Word.length > b.Word.length) {
             return -1
@@ -53,4 +49,4 @@ const sortSubwords = (wordObjects) => {
     return sortedWordObjects
 }
 
-module.exports = {findSubwordsFromMongo, sortSubwords};
+module.exports = findSubwordsFromMongo
