@@ -27,7 +27,7 @@ const About = (props) => {
                     <section id="backstory">
                         <h2>Backstory</h2>
                         <p>
-                            I’m a <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie’s personal website">software developer</a> with an ardour for the Latin language.
+                            I’m a <a href="https://www.duncanritchie.co.uk" title="Duncan Ritchie’s personal website">software developer</a> who loves the Latin language.
                         </p>
                         <p>
                             When I was studying Latin at uni (I have a master’s), I found it useful to keep an Excel spreadsheet of any vocabulary I came across.
