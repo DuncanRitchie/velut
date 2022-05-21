@@ -56,14 +56,15 @@ const About = (props) => {
                         <p>
                             An 80-megabyte Excel file may
                             take several minutes to load or save, and no-one but me can access it. But if I exported
-                            the data to a Mongo database, and integrated it with a React frontend via an Express server,
+                            the data to a database in the cloud, and made a website that accessed it,
                             anyone with internet would be able to see the lists of rhymes, so anyone interested in
-                            writing Latin-language verse (I know I’m not the only one) can do so. Perhaps more importantly,
-                            I’ve been really enjoying the mental challenge of figuring out new tech and going full-stack
-                            with it. Plus it all looks cool on my portfolio!
+                            writing Latin-language verse (I know I’m not the only one) can do so.
                         </p>
                         <p>
-                            Speaking of “cool”, the bird pictured is a fulmar, <em lang="la"><Link href="/fu-lma-rus"><a title="“fūlmārus” on velut">Fulmarus</a></Link>&nbsp;<Link href="/glacia-lis"><a title="“glaciālis” on velut">glacialis</a></Link></em>, a common sight where I was at uni.
+                            If you’re interested in seeing the code, you can do that too — the <a href="https://github.com/DuncanRitchie/velut" title="velut on GitHub">code for this website</a> is on GitHub. I&nbsp;originally built it with client-side–rendered <a href="https://reactjs.org/" title="React.js’s website">React</a> and an <a href="https://expressjs.com/" title="Express.js’s website">Express</a> backend, but I recently ported it all to the <a href="https://nextjs.org/" title="Next.js’s website">Next.js</a> framework, which makes it work even if you don’t have JavaScript enabled in your browser. And the site is faster to load now. Pretty cool!
+                        </p>
+                        <p>
+                            Speaking of “pretty” and “cool”, the bird pictured is a fulmar, <em lang="la"><Link href="/fu-lma-rus"><a title="“fūlmārus” on velut">Fulmarus</a></Link>&nbsp;<Link href="/glacia-lis"><a title="“glaciālis” on velut">glacialis</a></Link></em>, a common sight where I was at uni.
                         </p>
                     </section>
 
@@ -313,13 +314,13 @@ const About = (props) => {
                     <section id="future-plans">
                         <h2>Future plans</h2>
                         <p>
-                            This website is entirely client-side–rendered, meaning your web-browser has to execute various amounts of my JavaScript code in order for you to see anything. This probably isn’t a problem for you — you’re reading this now. However, if you were to be on a slower device, a weaker internet connection, or a more restrictive data-plan, you might prefer a website that was a bit quicker to load. Search-engines, likewise, would rank velut higher if they didn’t have to run my JavaScript just to see what’s on the site. And people who don’t have JavaScript enabled cannot access velut at all! The solution to this is server-side rendering (SSR), which is a challenge to implement for a website of this complexity, especially as I’m not even three years into web development and I’ve never done SSR before. But I’m looking into it.
+                            As I’ve explained above (under <a href="#backstory" title="Backstory, on this page">Backstory</a> and <a href="#web-development" title="Web development, on this page">Web development</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
                         </p>
                         <p>
-                            If SSR is for improving the user-experience, then the de-Excellation of velut (as I call it) is for improving the developer-experience, ie, making my life easier as the person behind this project. As I’ve explained above (under <a href="#backstory" title="Backstory, on this page">Backstory</a> and <a href="#web-development" title="Web development, on this page">Web development</a>), I use a massive Excel file to generate, check, and store all the data for all the vocabulary. This has numerous downsides, so I’ve been making little websites and webpages to do whatever I had written Excel formulae to do, enabling me to trim parts of my Excel file while still adding words and lemmata. I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
+                            On a more lexicographical note, as mentioned under <a href="#word-compilation" title="Word compilation, on this page">Word compilation</a>, most of the lemmata are missing some forms. I should really fill them in.
                         </p>
                         <p>
-                            On a more lexicographical note, roughly 1% of lemmata are missing information regarding cognates.
+                            Also, roughly 1% of lemmata are missing information regarding cognates.
                             I’m working to redress this.
                         </p>
                         <p>
