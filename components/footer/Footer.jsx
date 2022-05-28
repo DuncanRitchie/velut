@@ -14,6 +14,7 @@ let Footer = (props) => {
     const router = useRouter()
     const currentUrl = router.asPath
     const firstPartOfUrl = currentUrl.split('/').filter(Boolean)[0]
+    const thereIsSecondPartOfUrl = currentUrl.split('/').filter(Boolean).length > 1;
 
     const doesUrlBeginWith = (token) => {
         return firstPartOfUrl
@@ -23,18 +24,12 @@ let Footer = (props) => {
             || firstPartOfUrl?.startsWith(token + '?');
     }
 
-    const thereIsSecondPartOfUrl = currentUrl.split('/').filter(Boolean).length > 1;
-
     const showBack = true;
     const showHome = currentUrl !== "/" && !firstPartOfUrl?.startsWith('?')
     const showEnglish = !doesUrlBeginWith("english")
     const showSubwords = !doesUrlBeginWith("subwords")
-    const showAdvanced = thereIsSecondPartOfUrl
-        || (firstPartOfUrl !== "advanced"
-        && !firstPartOfUrl?.startsWith("advanced?"))
-    const showAbout = thereIsSecondPartOfUrl
-        || (firstPartOfUrl !== "about"
-        && !firstPartOfUrl?.startsWith("about?"))
+    const showAdvanced = !doesUrlBeginWith("advanced") || thereIsSecondPartOfUrl
+    const showAbout = !doesUrlBeginWith("about") || thereIsSecondPartOfUrl
 
     return (
         <footer className={styles.footer}>
