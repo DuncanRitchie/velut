@@ -192,6 +192,9 @@ details[open] summary::before {
     transform: rotate(0turn);
 }
 
+/* Note: there is no easy way to target an open <select> in CSS like we can for <details>;
+however, `.with-dropdown-arrow:focus-within` would get us some of the way there. */
+
 /* Blue gradient behind arrow on dropdown, because it would look ugly
 if the arrow were directly on top of the text in the <select> */
 .with-dropdown-arrow::before {
