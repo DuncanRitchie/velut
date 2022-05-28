@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
+import { useEffect, useState } from 'react';
 import styles from "./Footer.module.css"
 
 let Footer = () => {
@@ -19,7 +20,19 @@ let Footer = () => {
             || firstPartOfUrl?.startsWith(token + '?');
     }
 
-    const showBack = true;
+    //// “Back” button is rendered if there is a page in the browser history to go back to.
+    //// The `useEffect` hook updates the visibility of the button when the path changes.
+    //// Unfortunately the count resets to 0 (which makes the button disappear) if the page
+    //// is refreshed; I think it’s this issue https://github.com/vercel/next.js/issues/36662
+    const [prevPageCount, setPrevPageCount] = useState(0);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && typeof history !== 'undefined') {
+            setPrevPageCount(history.state.idx)
+        }
+    }, [router.asPath])
+
+    const showBack = prevPageCount > 0;
     const showHome = currentUrl !== "/" && !firstPartOfUrl?.startsWith('?')
     const showEnglish = !doesUrlBeginWith("english")
     const showSubwords = !doesUrlBeginWith("subwords")
