@@ -11,6 +11,9 @@ let Footer = (props) => {
     // const showAdvanced = props.history.location.pathname.substr(0,9) !== "/advanced"
     // const showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
 
+    //// Footer has a list of links to different sections of velut, but the current section does not get linked to.
+    //// So we need to work out what the current section is.
+
     const router = useRouter()
     const currentUrl = router.asPath
     const firstPartOfUrl = currentUrl.split('/').filter(Boolean)[0]
@@ -28,6 +31,9 @@ let Footer = (props) => {
     const showHome = currentUrl !== "/" && !firstPartOfUrl?.startsWith('?')
     const showEnglish = !doesUrlBeginWith("english")
     const showSubwords = !doesUrlBeginWith("subwords")
+    //// A URL such as /about/re shows the Word page for “rē”, not About,
+    //// so link to About should be shown if there is a second part to the URL.
+    //// Ditto for Advanced.
     const showAdvanced = !doesUrlBeginWith("advanced") || thereIsSecondPartOfUrl
     const showAbout = !doesUrlBeginWith("about") || thereIsSecondPartOfUrl
 
