@@ -1,10 +1,7 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import { useEffect, useState } from 'react';
 // import "../../App.css"
 import styles from "./Footer.module.css"
-
-let prevPrevPageCount = 0;
 
 let Footer = (props) => {
     // const showBack = props.history.length > 2
@@ -30,36 +27,7 @@ let Footer = (props) => {
             || firstPartOfUrl?.startsWith(token + '?');
     }
 
-
-    const [prevPageCount, setPrevPageCount] = useState(prevPrevPageCount);
-    useEffect(() => {
-        const handleRouteChange = (url, { shallow }) => {
-            console.log(
-                `App is changing to ${url} ${
-                    shallow ? 'with' : 'without'
-                } shallow routing; there were ${prevPageCount} previous pages.`
-            )
-            setPrevPageCount(prevPageCount + 1);
-            prevPrevPageCount = prevPageCount;
-        }
-
-        router.events.on('routeChangeComplete', handleRouteChange)
-
-        // Unsubscribe from the event if the component is unmounted.
-        return () => {
-            router.events.off('routeChangeComplete', handleRouteChange)
-        }
-    }, [])
-
-
-    console.log({prevPageCount, prevPrevPageCount})
-
-    let showBack = prevPageCount > 0;
-    if (typeof window !== 'undefined') {
-        console.log({referrer: document.referrer, history: history})
-        // showBack = history.length > 1
-    }
-
+    const showBack = true;
     const showHome = currentUrl !== "/" && !firstPartOfUrl?.startsWith('?')
     const showEnglish = !doesUrlBeginWith("english")
     const showSubwords = !doesUrlBeginWith("subwords")
