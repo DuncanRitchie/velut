@@ -76,46 +76,11 @@
     background-color: #b5e3de;
 }
 
-.dropdown::after {
-    position: absolute;
-    content: '    ';
-    background-image: url(https://www.duncanritchie.co.uk/images/arrow-down.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 0.7rem;
-    position: absolute;
-    display: inline-block;
-    right: 0.5rem;
-    top: 0.65rem;
-    width: 0.8rem;
-}
-
 /* The <option> styles don’t seem to apply but here they are anyway. */
 .dropdown option {
     cursor: pointer;
     font-family: inherit;
     background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
-}
-
-/* The paragraph whose ::after is the arrow signifying the dropdown. */
-.dropdownArrow {
-    height: 0;
-    margin: 0;
-    padding: 0;
-    transform: translateY(-1em);
-}
-
-.dropdownArrow::after {
-    content: ' ';
-    background-image: url(https://www.duncanritchie.co.uk/images/arrow-down.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 0.7rem;
-    position: absolute;
-    display: inline-block;
-    right: 0.5rem;
-    top: -0.75rem;
-    width: 0.8rem;
 }
 
 .dropdown-content-none,.dropdown-content-open,.dropdown-content-close {

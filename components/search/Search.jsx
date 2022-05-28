@@ -96,7 +96,7 @@ class Search extends Component {
                     <input name="type" type="hidden" value={this.props.type}></input>
                   )
                   : (
-                      <div className={styles.dropdown}>
+                      <div className={styles.dropdown+" with-dropdown-arrow"}>
                         <select name="type" defaultValue={"/"+this.state.type}>
                             {dropdownOptions}
                         </select>
