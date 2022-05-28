@@ -266,7 +266,7 @@ class WordPage extends Component {
             </Head>
             <div className="fulmar-background">
                 <Header />
-                <Search prefix="" searchbarTitle="Type a Latin word" searchWord={this.props.sanitisedInput} type={this.props.type}/>
+                <Search type={this.props.type} searchbarTitle="Type a Latin word" searchWord={this.props.sanitisedInput}/>
                 <p className={subsiteStyles.showingResultsFor + " page-width"}>
                     Showing results for
                     <br/>

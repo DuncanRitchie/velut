@@ -72,7 +72,7 @@ class English extends Component {
             </Head>
             <div className="fulmar-background">
                 <Header textBeforeTitle="English to Latin" />
-                <Search prefix="/english/" searchWord={this.props.sanitisedInput} searchbarTitle="Type an English word" lang="en" hideDropdown={true} type="/english" />
+                <Search type="/english" searchWord={this.props.sanitisedInput} searchbarTitle="Type an English word" lang="en" hideDropdown={true} />
 
                 <p className={styles.showingResultsFor}>
                     {this.props.lemmata.length 

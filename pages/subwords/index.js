@@ -19,10 +19,9 @@ const SubwordsHome = ({randomCountdownQuestionExample}) => {
                 This will help you find Latin words that can be made with the letters you specify. Type some letters below!
             </p>
             <Search
-                prefix="/subwords/"
+                type="subwords"
                 searchbarTitle="Type something to find subwords of"
                 lang="zxx"
-                type="subwords"
                 hideDropdown={true}
             />
             <p className={styles.subsiteHomeRubric}>

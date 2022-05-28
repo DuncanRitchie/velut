@@ -10,7 +10,7 @@ const FiveHundred = ({type = "/"}) => {
         </Head>
         <div className={styles.home + " fulmar-background"}>
             <Header textBeforeTitle="Internal server error" />
-            <Search prefix="" searchbarTitle="Type a Latin word" autofocus={true} type={type} />
+            <Search type={type} searchbarTitle="Type a Latin word" autofocus={true} />
             <p className={styles.homeRubric}>
                 <span>Please try another page or come back later!</span>
             </p>

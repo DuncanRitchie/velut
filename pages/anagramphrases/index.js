@@ -20,11 +20,10 @@ const AnagramsHome = () => {
                 Caution — searches may take some minutes. Searches longer than ten characters may fail completely.
             </p>
             <Search
-              prefix="anagramphrases/"
+              type="/anagramphrases"
               searchbarTitle="Type something to find anagrams of"
               lang="zxx"
               hideDropdown={true}
-              type="/anagramphrases"
             />
         </div>
     </>)

@@ -10,7 +10,7 @@ const FourOFour = ({type = "/"}) => {
         </Head>
         <div className={styles.home + " fulmar-background"}>
             <Header textBeforeTitle="Page not found" />
-            <Search prefix="" searchbarTitle="Type a Latin word" autofocus={true} type={type} />
+            <Search type={type} searchbarTitle="Type a Latin word" autofocus={true} />
             <p className={styles.homeRubric}>
                 <span>Please try searching for something else!</span>
             </p>

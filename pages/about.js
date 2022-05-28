@@ -330,7 +330,7 @@ const About = (props) => {
                         </p>
                     </section>
                 </main>
-                <Search prefix="" searchbarTitle="Type a Latin word" hideDropdown={true} autofocus={false}/> 
+                <Search searchbarTitle="Type a Latin word" hideDropdown={true} autofocus={false}/>
             </div>
         </>)
 }
