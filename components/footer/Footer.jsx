@@ -1,16 +1,8 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-// import "../../App.css"
 import styles from "./Footer.module.css"
 
-let Footer = (props) => {
-    // const showBack = props.history.length > 2
-    // const showHome = props.history.location.pathname !== "/"
-    // const showEnglish = props.history.location.pathname.substr(0,8) !== "/english"
-    // const showSubwords = props.history.location.pathname.substr(0,9) !== "/subwords"
-    // const showAdvanced = props.history.location.pathname.substr(0,9) !== "/advanced"
-    // const showAbout = props.history.location.pathname !== "/about" && props.history.location.pathname !== "/about/"
-
+let Footer = () => {
     //// Footer has a list of links to different sections of velut, but the current section does not get linked to.
     //// So we need to work out what the current section is.
 
