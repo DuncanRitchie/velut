@@ -13,13 +13,28 @@ let Footer = (props) => {
 
     const router = useRouter()
     const currentUrl = router.asPath
+    const firstPartOfUrl = currentUrl.split('/').filter(Boolean)[0]
 
-    const showBack = true
-    const showHome = currentUrl !== "/"
-    const showEnglish = currentUrl.substr(0,8) !== "/english"
-    const showSubwords = currentUrl.substr(0,9) !== "/subwords"
-    const showAdvanced = currentUrl.substr(0,9) !== "/advanced"
-    const showAbout = currentUrl !== "/about" && currentUrl !== "/about/";
+    const doesUrlBeginWith = (token) => {
+        return firstPartOfUrl
+            && currentUrl !== '/'
+            && !firstPartOfUrl.startsWith('?')
+            && firstPartOfUrl === token
+            || firstPartOfUrl?.startsWith(token + '?');
+    }
+
+    const thereIsSecondPartOfUrl = currentUrl.split('/').filter(Boolean).length > 1;
+
+    const showBack = true;
+    const showHome = currentUrl !== "/" && !firstPartOfUrl?.startsWith('?')
+    const showEnglish = !doesUrlBeginWith("english")
+    const showSubwords = !doesUrlBeginWith("subwords")
+    const showAdvanced = thereIsSecondPartOfUrl
+        || (firstPartOfUrl !== "advanced"
+        && !firstPartOfUrl?.startsWith("advanced?"))
+    const showAbout = thereIsSecondPartOfUrl
+        || (firstPartOfUrl !== "about"
+        && !firstPartOfUrl?.startsWith("about?"))
 
     return (
         <footer className={styles.footer}>
