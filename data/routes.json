@@ -45,11 +45,6 @@
         "sortFields": "NoMacraLowerCase NoMacra Word",
         "headingToDisplay": "Words that scan the same"
     },{
-        "route": "/advanced",
-        "searchField": null,
-        "functionName": "getAdvanced",
-        "headingToDisplay": "Advanced Search"
-    },{
         "route": "/subwords",
         "searchField": null,
         "functionName": "getSubwords",
