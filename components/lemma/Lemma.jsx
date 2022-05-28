@@ -2,83 +2,12 @@ import {Component, Fragment} from 'react'
 import superscriptLemmaTag from './superscriptLemmaTag'
 const greece = '../../images/greece.png'
 const israel = '../../images/israel.png'
-//import axios from '../../axios/axios'
 import LatinLink from '../latinlink/LatinLink'
 
 class Lemma extends Component {
     constructor(props) {
         super(props)
-        // this.state = {
-        //     partOfSpeech: "",
-        //     meanings: "",
-        //     notes: "",
-        //     transliterations: "",
-        //     root: "",
-        //     forms: [],
-        //     cognates: []
-        // }
     }
-
-    getLemmaData() {
-        // try {
-        //     axios.getOneLemma({"Lemma": this.props.lemma}).then(data=>{
-        //         this.setState({
-        //             partOfSpeech: data.data.PartOfSpeech,
-        //             meanings: data.data.Meanings,
-        //             notes: data.data.Notes,
-        //             transliterations: data.data.Transliterations,
-        //             root: data.data.Root
-        //         })
-        //     }).then(()=>{
-        //         this.getCognates(this.state.root)
-        //         this.getForms(this.props.lemma)
-        //     })
-        // }
-        // catch {
-        // }
-    }
-
-    // getForms(lemma) {
-    //     try {
-    //         axios.getWordsAlph({"LemmaArray": lemma})
-    //         .then((data)=>{
-    //             let forms = data.data
-    //             forms = forms.map((form)=>{
-    //                 return form.Word
-    //             })
-    //             this.setState({"forms": forms})
-    //         })
-    //     }
-    //     catch {
-    //     }
-    // }
-
-    // getCognates(root) {
-    //     if (root) {
-    //         try {
-    //             axios.getLemmataAlph({"Root": root}).then((data)=>{
-    //                 let cognates = data.data
-    //                 cognates = cognates.map((cognate)=>{
-    //                     return cognate.Lemma
-    //                 })
-    //                 this.setState({"cognates": cognates})
-    //             })
-    //         }
-    //         catch {
-    //             this.setState({"cognates": []})
-    //         }
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     this.getLemmaData()
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.lemma !== prevProps.lemma) {
-    //         this.getLemmaData()
-    //     }
-    // }
 
     render() {
         let {linkBase, lemma, currentWordHyphenated} = this.props

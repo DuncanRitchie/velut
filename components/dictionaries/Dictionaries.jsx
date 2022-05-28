@@ -2,7 +2,6 @@ import {Fragment} from 'react'
 import dictionariesLatin from '../../data/dictionariesLatin.json'
 import dictionariesEnglish from '../../data/dictionariesEnglish.json'
 import { noMacra } from "../../lib/words/diacritics"
-// import noMacra from '../../helpers/noMacra'
 import styles from './Dictionaries.module.css'
 
 let Dictionaries = ({sanitisedInput, category}) => {
