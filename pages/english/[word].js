@@ -70,7 +70,7 @@ class English extends Component {
                 </title>
                 <meta name="Description" content={`Latin words for the English “${this.props.sanitisedInput}”`}/>
             </Head>
-            <div className="english fulmar-background">
+            <div className="fulmar-background">
                 <Header textBeforeTitle="English to Latin" />
                 <Search prefix="/english/" searchWord={this.props.sanitisedInput} searchbarTitle="Type an English word" lang="en" hideDropdown={true} type="/english" />
 

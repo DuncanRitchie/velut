@@ -13,7 +13,7 @@ const SubwordsHome = ({randomCountdownQuestionExample}) => {
             </title>
             <meta name="Description" content="Latin words made from the letters of what you enter"/>
         </Head>
-        <div className={styles.subsiteHome+" subwords fulmar-background"}>
+        <div className="fulmar-background">
             <Header textBeforeTitle="Subwords"/>
             <p className={styles.subsiteHomeRubric}>
                 This will help you find Latin words that can be made with the letters you specify. Type some letters below!

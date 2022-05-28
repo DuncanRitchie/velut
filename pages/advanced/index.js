@@ -12,7 +12,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
     if (isHomepage) {
         return (<>
             <AdvancedHead/>
-            <div className={styles.subsiteHome + " advanced fulmar-background"}>
+            <div className={styles.advanced+" fulmar-background"}>
                 <Header textBeforeTitle="Advanced Search"/>
                 <AdvancedRubric/>
                 <AdvancedSearch autofocus={true} query={query}/>

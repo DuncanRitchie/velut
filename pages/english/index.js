@@ -11,7 +11,7 @@ const EnglishHome = () => {
             </title>
             <meta name="Description" content="Latin words for the English word you enter"/>
         </Head>
-        <div className={styles.subsiteHome+" english fulmar-background"}>
+        <div className="fulmar-background">
             <Header textBeforeTitle="English to Latin"/>
             <p className={styles.subsiteHomeRubric}>Enter something English and this will suggest Latin translations!</p>
             <Search prefix="/english/" searchbarTitle="Type an English word" lang="en" hideDropdown={true} type="/english" />

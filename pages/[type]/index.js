@@ -264,7 +264,7 @@ class WordPage extends Component {
                 <title>{pageTitle}</title>
                 <meta name="Description" content={pageDescription}/>
             </Head>
-            <div className={styles.word + " fulmar-background"}>
+            <div className="fulmar-background">
                 <Header />
                 <Search prefix="" searchbarTitle="Type a Latin word" searchWord={this.props.sanitisedInput} type={this.props.type}/>
                 <p className={subsiteStyles.showingResultsFor + " page-width"}>

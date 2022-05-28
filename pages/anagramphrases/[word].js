@@ -46,7 +46,7 @@ const Anagrams = ({input, anagrams, loading, error}) => {
             </title>
             <meta name="Description" content={`Latin multi-word anagrams of “${input}”`}/>
         </Head>
-        <div className="anagram-phrases fulmar-background">
+        <div className="fulmar-background">
             <Header textBeforeTitle="Anagram phrases" />
             <p className={styles.subsiteHomeRubric}>Caution — searches may take some minutes or fail completely.</p>
             <Search

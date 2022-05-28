@@ -210,7 +210,7 @@ class ManyCSR extends Component {
             )
         }
         return (
-            <div className="subwords fulmar-background subsite-home">
+            <div className="fulmar-background">
                 <Header textBeforeTitle="Look-up of many words" />
                 <div className={manyStyles.many}>
                     <p className={subsitesStyles.subsiteHomeRubric}>

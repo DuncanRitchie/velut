@@ -89,7 +89,7 @@ const Subwords = ({input, subwords, loading}) => {
                 </title>
                 <meta name="Description" content={`Latin words made from the letters of “${input}”`}/>
             </Head>
-            <div className="subwords fulmar-background">
+            <div className="fulmar-background">
                 <Header textBeforeTitle="Subwords" />
                 <div>
                     <Search type="/subwords" searchbarTitle="Type something to find subwords of" lang="zxx" hideDropdown={true} searchWord={input} />

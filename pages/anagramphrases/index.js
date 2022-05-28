@@ -11,7 +11,7 @@ const AnagramsHome = () => {
             </title>
             <meta name="Description" content={`Latin multi-word anagrams for the text you enter`}/>
         </Head>
-        <div className={styles.subsiteHome+" anagram-phrases fulmar-background"}>
+        <div className="fulmar-background">
             <Header textBeforeTitle="Anagram phrases"/>
             <p className={styles.subsiteHomeRubric}>
                 This will help you find Latin phrases that are anagrams!
