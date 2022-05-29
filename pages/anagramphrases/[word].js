@@ -7,7 +7,7 @@ import styles from '../../css/Subsites.module.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word
 
-const Anagrams = ({input, anagrams, loading, error}) => {
+const Anagrams = ({input, anagrams, error}) => {
     let mappedAnagrams = []
     if (anagrams) {
         mappedAnagrams = anagrams.map((anagram,index)=>{
@@ -15,12 +15,7 @@ const Anagrams = ({input, anagrams, loading, error}) => {
         })
     }
     let result = null
-    //// `loading` is not going to be true because of SSR,
-    //// but I’m keeping it in, in case of future need.
-    if (loading) {
-        result = (<p>Loading anagrams…&nbsp; This can take a few minutes.</p>)
-    }
-    else if (error) {
+    if (error) {
         result = <>
             <p>There was an error in fetching your anagrams! Please try again later, or try another search.</p>
             <p>{error}</p>
