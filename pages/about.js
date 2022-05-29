@@ -189,21 +189,32 @@ const About = (props) => {
                     </p>
                     <ul>
                         <li>
-                            <Link href="/Caecilius"><a title="“Caecilius” on velut" lang="la">{superscriptLemmaTag("Caecilius[prn]")}</a></Link>{" "}and{" "}
-                            <Link href="/Caecilius"><a title="“Caecilius” on velut" lang="la">{superscriptLemmaTag("Caecilius[adj]")}</a></Link> are different parts of speech (proper noun and adjective respectively);
+                            <Link href="/Caecilius">
+                                <a title="“Caecilius” on velut">
+                                    {superscriptLemmaTag("Caecilius[prn]")} and {superscriptLemmaTag("Caecilius[adj]")}
+                                </a>
+                            </Link> are different parts of speech (proper noun and adjective respectively);
                         </li>
                         <li>
-                            <Link href="/be-ta"><a title="“bēta” on velut" lang="la">{superscriptLemmaTag("bēta[bētae]")}</a></Link>{" "}and{" "}
-                            <Link href="/be-ta"><a title="“bēta” on velut" lang="la">{superscriptLemmaTag("bēta[bēta]")}</a></Link>{" "}have different genitives (letter names are indeclinable!);
+                            <Link href="/be-ta">
+                                <a title="“bēta” on velut" lang="la">
+                                    {superscriptLemmaTag("bēta[bētae]")} and {superscriptLemmaTag("bēta[bēta]")}
+                                </a>
+                            </Link> have different genitives (letter names are indeclinable!);
                         </li>
                         <li>
-                            <Link href="/sero-"><a title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[satum]")}</a></Link>,{" "}
-                            <Link href="/sero-"><a title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[sertum]")}</a></Link>,{" "}and{" "}
-                            <Link href="/sero-"><a title="“serō” on velut" lang="la">{superscriptLemmaTag("serō[serātum]")}</a></Link>{" "}have different participles;
+                            <Link href="/sero-">
+                                <a title="“serō” on velut" lang="la">
+                                    {superscriptLemmaTag("serō[satum]")}, {superscriptLemmaTag("serō[sertum]")}, and {superscriptLemmaTag("serō[serātum]")}
+                                </a>
+                            </Link> have different participles;
                         </li>
                         <li>
-                            <Link href="/iu-s"><a title="“iūs” on velut" lang="la">{superscriptLemmaTag("iūs[>iūrō]")}</a></Link>{" "}and{" "}
-                            <Link href="/iu-s"><a title="“iūs” on velut" lang="la">{superscriptLemmaTag("iūs[>iūsculum]")}</a></Link>{" "}have different etymological derivatives.
+                            <Link href="/iu-s">
+                                <a title="“iūs” on velut" lang="la">
+                                    {superscriptLemmaTag("iūs[>iūrō]")} and {superscriptLemmaTag("iūs[>iūsculum]")}
+                                </a>
+                            </Link> have different etymological derivatives.
                         </li>
                     </ul>
                     <p>

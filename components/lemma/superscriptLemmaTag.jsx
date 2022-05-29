@@ -17,6 +17,6 @@ const superscriptLemmaTag = (lemma) => {
         return <>{lemma}</>
     }
 
-    return <>{array[0]}&nbsp;<span className="lemma-tag">({array[1]})</span></>
+    return <span lang="la">{array[0]}&nbsp;<span className="lemma-tag">({array[1]})</span></span>
 }
 export default superscriptLemmaTag
