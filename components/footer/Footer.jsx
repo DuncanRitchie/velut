@@ -53,15 +53,15 @@ let Footer = () => {
 
                 {showBack && <li><button className={styles.goBack + " button"} tabIndex="0" onClick={()=>{router.back()}} title="Go back to the previous page">Back</button></li>}
 
-                {showHome && <li><Link href="/"><a title="velut homepage">Home</a></Link></li>}
+                {showHome && <li><Link href="/"><a>Home</a></Link></li>}
 
-                {showEnglish && <li><Link href="/english"><a title="English to Latin on velut">English to Latin</a></Link></li>}
+                {showEnglish && <li><Link href="/english"><a>English to Latin</a></Link></li>}
 
-                {showSubwords && <li><Link href="/subwords"><a title="Subwords on velut">Subwords</a></Link></li>}
+                {showSubwords && <li><Link href="/subwords"><a>Subwords</a></Link></li>}
 
-                {showAdvanced && <li><Link href="/advanced"><a title="Advanced Search on velut">Advanced</a></Link></li>}
+                {showAdvanced && <li><Link href="/advanced"><a>Advanced</a></Link></li>}
 
-                {showAbout && <li><Link href="/about"><a title="About velut">About velut</a></Link></li>}
+                {showAbout && <li><Link href="/about"><a>About velut</a></Link></li>}
             </ul>
         </footer>
     )
