@@ -106,7 +106,7 @@ const About = (props) => {
                     </p>
                     <p>
                         velut only calculates one scansion per word. But any poet of quantitative verse will know that there may be several
-                        legitimate ways to fit a word into a line.The word <Link href="/tenebra"><a title="“tenebra” on velut" lang="la">tenebra</a></Link>{" "}
+                        legitimate ways to fit a word into a line. The word <Link href="/tenebra"><a title="“tenebra” on velut" lang="la">tenebra</a></Link>{" "}
                         (noun meaning “darkness”, usually pluralised), for instance, is scanned by velut
                         as <span className="scansion">⏑⏑⏑</span> but may otherwise fit quite plausibly{" "}
                         <span className="scansion">⏑⏑–</span> or <span className="scansion">⏑⏑</span> or <span className="scansion">⏑–⏑</span> or <span className="scansion">⏑––</span> or <span className="scansion">⏑–</span> depending on the rest of the line of poetry and the poet’s intentions.
