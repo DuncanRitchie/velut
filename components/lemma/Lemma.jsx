@@ -13,7 +13,7 @@ const Lemma = ({linkBase, lemma, currentWordHyphenated}) => {
     let mappedTransliterations
     if (Transliterations) {
         // lemma.Transliteration could look like "Ἰησοῦς/יֵשׁוּעַ"
-        let transliterationsArray = Transliterations.split("/")
+        const transliterationsArray = Transliterations.split("/")
         mappedTransliterations = transliterationsArray.map((word,i)=>{
             let alt = "Hebrew"
             let lang = "he"
@@ -33,12 +33,12 @@ const Lemma = ({linkBase, lemma, currentWordHyphenated}) => {
     }
 
     // Create JSX for the forms.
-    let mappedForms = forms ? forms.map((form,index)=>{
+    const mappedForms = forms ? forms.map((form,index)=>{
         return <Fragment key={index}><LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}/> </Fragment>
     }) : <></>
 
     // Create JSX for the cognates.
-    let mappedCognates = cognates ? cognates.map((cognate,index)=>{
+    const mappedCognates = cognates ? cognates.map((cognate,index)=>{
         return (
             <Fragment key={index}>
                 <LatinLink linkBase={linkBase} targetWord={cognate.Lemma} currentWordHyphenated={currentWordHyphenated} isLemma={true}/>{" "}
