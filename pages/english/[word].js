@@ -3,64 +3,14 @@ import Head from 'next/head'
 import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
 import Lemma from "../../components/lemma/Lemma"
-//import axios from '../../axios/axios'
 import Dictionaries from "../../components/dictionaries/Dictionaries"
 import getEnglish from '../../lib/lemmata/english'
 import styles from "../../css/Subsites.module.css"
 
 class English extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    // fetchLemmata(english) {
-    //     this.setState({"lemmata": []});
-    //     try {
-    //         const decoded = decodeURIComponent(english).trim();
-    //         if (decoded) {
-    //             axios.getLemmataEnglish(decoded).then((data)=>{
-    //                 // data.data should be an array of objects.
-    //                 this.setState({"lemmata": data.data || []});
-    //             })   
-    //         }
-    //     }
-    //     catch {
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     this.fetchLemmata(this.state.input)
-    // }
-
-    // componentDidUpdate() {
-    //     if (this.state.input !== this.props.match.params.word) {
-    //         let input = this.props.match.params.word
-    //         this.setState({input: input})
-    //         this.fetchLemmata(input)
-    //     }
-    // }
-
     render() {
         let lemmata = this.props.lemmata.map((lemma, index) => {
-            // let mappedCognates = []
-            // let mappedForms = []
-            // let cognatesMessage = ""
-            return (
-                <Lemma
-                key={index}
-                // lemma={lemma.Lemma}
-                // partOfSpeech={lemma.PartOfSpeech}
-                // meaning={lemma.Meanings}
-                // notes={lemma.Notes}
-                // transliteration={lemma.Transliterations}
-                // forms={mappedForms}
-                // cognates={mappedCognates}
-                // cognatesMessage={cognatesMessage}
-                // root={lemma.Root}
-                lemma={lemma}
-                linkBase="../"
-                />
-            )
+            return <Lemma key={index} lemma={lemma} linkBase="../" />
         })
 
         return (<>
