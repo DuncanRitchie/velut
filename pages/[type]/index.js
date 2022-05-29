@@ -1,6 +1,4 @@
 import {Component, Fragment} from 'react'
-//import { useState } from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import findOneWord from '../../lib/words/word'
@@ -9,8 +7,6 @@ import getRandomWord from '../../lib/words/random'
 import getHomographs from '../../lib/words/homographs'
 import getRhymes from '../../lib/words/rhymes'
 import getLemmata from '../../lib/lemmata'
-import Word from '../../models/Word'
-const axios = "jajadingdong"
 
 import Header from "../../components/header/Header"
 import Search from "../../components/search/Search"
@@ -18,172 +14,11 @@ import Dictionaries from "../../components/dictionaries/Dictionaries"
 import Lemma from "../../components/lemma/Lemma"
 import LatinLink from "../../components/latinlink/LatinLink"
 import { hyphensToMacra, macraToHyphens } from "../../lib/words/diacritics"
-//import hyphensToMacra from "../../helpers/hyphensToMacra"
 import getScansionDescription from "../../lib/words/scansion"
 import styles from '../../css/Word.module.css'
 import subsiteStyles from "../../css/Subsites.module.css"
 
 class WordPage extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            //input: "",
-            //sanitisedInput: "",
-            //totalWordsCount: null,
-            //randomWord: "",
-            //foundWord: {},
-            type: this.props.type || "",
-            rhymes: [],
-            homographs: [],
-            formsArrays: [],
-            lemmata: [],
-            cognatesArrays: []
-        }
-    }
-
-    // fetchFoundWord() queries Mongo for variations on the input
-    // until it finds a match, which it adds to state.
-    fetchFoundWord(input) {
-        this.setState({foundWord: this.props.foundWord})
-        if (this.propsfoundWord) {
-            this.fetchRelatedWords(foundWord)
-        }
-    }
-
-    fetchRelatedWords(wordObject) {
-        //this.fetchRhymes(wordObject)
-        this.fetchHomographs(wordObject)
-    }
-
-    fetchHomographs(wordObject) {
-        // Let’s find the homographs.
-        let noMacraLowerCase = wordObject.NoMacra.toLowerCase()
-        axios.getWordsAlph({"NoMacraLowerCase": noMacraLowerCase}).then((data)=>{
-            let homographs = data.data
-            homographs = homographs.map((homograph,index)=>{
-                return homograph.Word
-            })
-            this.setState({homographs: homographs})
-        })
-    }
-
-    fetchForms (wordObject) {
-        // Let’s find the forms. An array is generated for each lemma.
-        // We initialise state with an array of empty arrays.
-        let emptyArrays = wordObject.LemmaArray.map((lemma,index)=>{
-            return []
-        })
-        this.setState({formsArrays: emptyArrays})
-        // Next we map across LemmaArray, querying the database for each lemma and adding the results 
-        // to the correct element in the array in state as the results come in.
-        wordObject.LemmaArray.map((lemma,i)=>{
-            axios.getWordsAlph({"LemmaArray": lemma}).then((data)=>{
-                let forms = data.data
-                forms = forms.map((form,index)=>{
-                    return form.Word
-                })
-                let formsArrays = this.state.formsArrays
-                formsArrays[i] = forms
-                this.setState({formsArrays: formsArrays})
-            })
-            return null
-        })
-    }
-
-    fetchCognates(wordObject) {
-        // Let’s now prepare for finding cognates. To do this we need to fetch all the lemmata.
-        // We initialise state with an array of empty objects.
-        let emptyLemmaArray = wordObject.LemmaArray.map((lemmma,index)=>{
-            return {}
-        })
-        this.setState({lemmata: emptyLemmaArray})
-        // And the same for cognatesArrays.
-        let emptyCognateArrays = wordObject.LemmaArray.map((lemma,index)=>{
-            return []
-        })
-        this.setState({cognatesArrays: emptyCognateArrays})
-        // Next we map across LemmaArray, querying the database for each lemma and adding the results 
-        // to the correct element in the array in state as the results come in.
-        wordObject.LemmaArray.map((lemma,i)=>{
-            axios.getOneLemma({"Lemma": lemma}).then((data)=>{
-                let lemmata = this.state.lemmata
-                lemmata[i] = data.data
-                this.setState({lemmata: lemmata})
-            }).then(()=>{
-                if (this.state.lemmata[i].Root) {
-                    axios.getLemmataAlph({"Root": this.state.lemmata[i].Root}).then((data)=>{
-                        let cognates = data.data
-                        cognates = cognates.map((cognate,index)=>{
-                            return cognate.Lemma
-                        })
-                        let cognatesArrays = this.state.cognatesArrays
-                        cognatesArrays[i] = cognates
-                        this.setState({cognatesArrays: cognatesArrays})
-                    })
-                }
-                return null
-            })
-            return null
-        })
-    }
-
-    // fetchRandomWord() {
-    //     // Let’s pick a random word to show if no words match the search.
-    //     // We query MongoDB for the total words count if we don’t have it.
-    //     // Then we query for a word whose Ord is less than or equal to it.
-    //     if (!this.props.totalWordsCount) {
-    //         axios.countWords().then((data)=>{
-    //             this.setState({totalWordsCount: data.data.count})
-    //             let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
-    //             axios.getWordsAlph({"Ord": randomOrd}).then((data)=>{
-    //                 if (data.data[0].Word) {
-    //                     this.setState({randomWord: data.data[0].Word})
-    //                 }
-    //             })
-    //         })
-    //     }
-    //     // If we’ve already found the total words count, we don’t need to query for it.
-    //     // We just query for the random word.
-    //     else {
-    //         let randomOrd = Math.ceil(Math.random()*this.state.totalWordsCount)
-    //         axios.getWordsAlph({"Ord": randomOrd}).then((array)=>{
-    //             this.setState({randomWord: array.data[0].Word})
-    //         })
-    //     }
-
-    // }
-
-    getInput() {
-        // The word searched for comes from the routing.
-        let input = this.props.search
-        this.setState({input: input})
-        document.title = input+" on velut — a Latin rhyming dictionary"
-        this.fetchFoundWord(input)
-    }
-
-    componentDidMount() {
-        if (!this.state.input) {
-            this.getInput()
-        }
-        //this.fetchRandomWord()
-    }
-
-    // componentDidUpdate(prevProps) {
-    //     const type = this.props.type
-    //     if (this.state.input !== this.props.search) {
-    //         this.getInput()
-    //         if (!this.state.foundWord) {
-    //             this.fetchRandomWord()
-    //         }
-    //     }
-    //     else if (prevProps.match.params.type !== type) {
-    //         this.setState({type: type})
-    //         if (this.state.foundWord) {
-    //             this.fetchRhymes(this.state.foundWord)
-    //         }
-    //     }
-    // }
-
     render() {
         let {sanitisedInput, randomWord, foundWord, homographs} = this.props
         let footName = ""
@@ -320,47 +155,6 @@ class WordPage extends Component {
 
 export default WordPage
 
-
-
-
-// const WordPageExample = ({ word, search }) => {
-//   // const router = useRouter()
-//   // const [message, setMessage] = useState('')
-//   // const handleDelete = async () => {
-//   //   const wordID = router.query.id
-
-//   //   try {
-//   //     await fetch(`/api/words/${wordID}`, {
-//   //       method: 'Delete',
-//   //     })
-//   //     router.push('/')
-//   //   } catch (error) {
-//   //     setMessage('Failed to delete the word.')
-//   //   }
-//   // }
-
-//     if (word) {
-//         return (
-//             <div>
-//                 <div className="card">
-//                     <h2 className="word-name">{word.Word}</h2>
-//                     <p>It’s in the dictionary!</p>
-//                 </div>
-//             </div>
-//         )
-//     }
-//     else {
-//         return (
-//             <div className="card">
-//                 <h2>Not found</h2>
-//                 <p>Word “{search}” is not in the dictionary!</p>
-//             </div>
-//         )
-//     }
-// }
-
-
-
 export async function getServerSideProps({ params, res }) {
     await dbConnect()
 
@@ -420,5 +214,3 @@ export async function getServerSideProps({ params, res }) {
         } }
     }
 }
-
-// export default WordPageExample
