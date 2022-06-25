@@ -23,7 +23,7 @@ html {
 
 #__next {
     text-align: center;
-    font-family: "Alegreya", serif;
+    font-family: "Alegreya Subset", serif;
     color: #111111;
     margin: 0 0 0 0;
     width: 100%;
@@ -67,7 +67,7 @@ ul {
 @import url(https://fonts.googleapis.com/css2?family=Tinos&display=swap);
 
 #__next *[lang=he] {
-    font-family: "Alegreya", "Tinos", serif;
+    font-family: "Alegreya Subset", "Tinos", serif;
 }
 
 body :focus {
