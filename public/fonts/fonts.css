@@ -18,16 +18,6 @@
     font-display: swap;
 }
 
-/* Italic-400 isn’t actually used on velut anywhere. */
-/* @font-face {
-    font-family: 'Alegreya Subset';
-    src: url('alegreya-mediumitalic-subset.woff2') format('woff2'),
-         url('alegreya-mediumitalic-subset.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-} */
-
 @font-face {
     font-family: 'Alegreya Subset';
     src: url('alegreya-medium-subset.woff2') format('woff2'),
@@ -36,16 +26,6 @@
     font-style: normal;
     font-display: swap;
 }
-
-/* Italic-300 isn’t actually used on velut anywhere. */
-/* @font-face {
-    font-family: 'Alegreya Subset';
-    src: url('alegreya-italic-subset.woff2') format('woff2'),
-         url('alegreya-italic-subset.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-} */
 
 @font-face {
     font-family: 'Alegreya Subset';
