@@ -63,11 +63,9 @@ ul {
     }
 }
 
-/* Alegreya doesn’t have Hebrew characters, so any Hebrew gets displayed in Tinos. */
-@import url(https://fonts.googleapis.com/css2?family=Tinos&display=swap);
-
+/* Alegreya doesn’t have Hebrew characters, so any Hebrew gets displayed in a system font. */
 #__next *[lang=he] {
-    font-family: "Alegreya Subset", "Tinos", serif;
+    font-family: "Alegreya Subset", serif;
 }
 
 body :focus {
