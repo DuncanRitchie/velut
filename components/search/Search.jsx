@@ -7,8 +7,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchWord: this.props.searchWord || "",
-            sanitisedInput: "",
+            searchWord: this.props.searchWord?.trim() || "",
             fromUrl: true,
             type: this.props.type || "/",
         }
@@ -19,14 +18,6 @@ class Search extends Component {
     handleInput = (e) => {
         let searchWord = e.target.value
         this.setState({searchWord: searchWord, fromUrl: false})
-        // If special characters are input, we can get percent-encoding problems.
-        // Let’s correct for that.
-        try {
-            const sanitisedInput = decodeURIComponent(searchWord.trim()) || ""
-            this.setState({sanitisedInput: sanitisedInput})
-        } catch {
-            console.log("Please do not input % signs!");
-        }
     }
 
     handleType = (e) => {
@@ -57,16 +48,6 @@ class Search extends Component {
     }
 
     render() {
-        // Let’s work out what the value of the input should be.
-        let inputValue = "";
-        if (this.state.fromUrl) {
-            if (this.props.searchWord) {
-                inputValue = decodeURIComponent(this.props.searchWord)
-            }
-        }
-        else if (this.state.searchWord) {
-            inputValue = this.state.searchWord
-        }
         // Let’s create the dropdown menu items.
         const dropdownOptions = routes
             .filter(route => route.searchField != null)
@@ -82,7 +63,7 @@ class Search extends Component {
                 <input 
                     id="search-input"
                     name="word"
-                    value={inputValue}
+                    value={this.state.searchWord || ""}
                     onChange={this.handleInput}
                     onKeyUp={this.handleInputKeyUp}
                     title={this.props.searchbarTitle || "Type something here"}

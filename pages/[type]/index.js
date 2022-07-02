@@ -166,12 +166,7 @@ export async function getServerSideProps({ params, res }) {
     //// we use the :type as the word and the empty string as the type.
     const wordParam = params.hasOwnProperty("word") ? params.word : params.type ?? ""
     const type = params.hasOwnProperty("word") ? params.type : ""
-    let sanitisedInput = wordParam
-    //// If special characters are input, we can get percent-encoding problems.
-    //// Let’s correct for that.
-    if (sanitisedInput.search("%")>-1) {
-        sanitisedInput = decodeURIComponent(sanitisedInput)
-    }
+    const sanitisedInput = wordParam
 
     //// Fetch the word object from the database.
     const word = await findOneWord(sanitisedInput)
