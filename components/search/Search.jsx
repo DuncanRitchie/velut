@@ -67,14 +67,6 @@ class Search extends Component {
         else if (this.state.input) {
             inputValue = this.state.input
         }
-        // Let’s work out what the dropdown-select should be.
-        let selectedRouteObject = routes.find(route=>{
-            return (route.route===this.state.type || route.route==="/"+this.state.type)
-        })
-        let dropdownSelect
-        if (selectedRouteObject) {
-            dropdownSelect = selectedRouteObject.headingToDisplay
-        }
         // Let’s create the dropdown menu items.
         const dropdownOptions = routes
             .filter(route => route.searchField != null)
