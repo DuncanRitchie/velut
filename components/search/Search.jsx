@@ -52,7 +52,7 @@ class Search extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const router = this.props.router;
-        const newLocation = `/${this.state.type}/${encodeURIComponent(this.state.input || '')}`.replace('%2F', '/').replace(/\/+/, "/");
+        const newLocation = `/${this.state.type}/${encodeURIComponent(this.state.input || '')}`.replace(/%2F/g, '/').replace(/\/+/, "/");
         router.push(newLocation);
     }
 
