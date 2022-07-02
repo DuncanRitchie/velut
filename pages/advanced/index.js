@@ -76,7 +76,10 @@ export async function getServerSideProps({ query, res }) {
     ) {
         const results = await findAdvanced(query)
 
-        if (!results.words.length) {
+        if (results.error) {
+            res.statusCode = 400
+        }
+        else if (!results.words.length) {
             res.statusCode = 404
         }
 
