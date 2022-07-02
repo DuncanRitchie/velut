@@ -7,7 +7,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: this.props.searchWord || "",
+            searchWord: this.props.searchWord || "",
             sanitisedInput: "",
             fromUrl: true,
             type: this.props.type || "/",
@@ -17,12 +17,12 @@ class Search extends Component {
 
     // This handles the <input> value.
     handleInput = (e) => {
-        let input = e.target.value
-        this.setState({input: input, fromUrl: false})
+        let searchWord = e.target.value
+        this.setState({searchWord: searchWord, fromUrl: false})
         // If special characters are input, we can get percent-encoding problems.
         // Let’s correct for that.
         try {
-            const sanitisedInput = decodeURIComponent(input.trim()) || ""
+            const sanitisedInput = decodeURIComponent(searchWord.trim()) || ""
             this.setState({sanitisedInput: sanitisedInput})
         } catch {
             console.log("Please do not input % signs!");
@@ -36,11 +36,11 @@ class Search extends Component {
     // Initial value of sanitisedInput is "". Let’s put something useful there.
     componentDidMount() {
         try {
-            this.setState({sanitisedInput: decodeURIComponent(this.state.input)})
+            this.setState({sanitisedInput: decodeURIComponent(this.state.searchWord)})
         } catch {
         }
         // The input is initially focussed, unless the page is About or a query has started.
-        if (this.state.input
+        if (this.state.searchWord
             || !this.props.autofocus) {
             document.getElementById("search-input").blur()
         }
@@ -52,7 +52,7 @@ class Search extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const router = this.props.router;
-        const newLocation = `/${this.state.type}/${encodeURIComponent(this.state.input || '')}`.replace(/%2F/g, '/').replace(/\/+/, "/");
+        const newLocation = `/${this.state.type}/${encodeURIComponent(this.state.searchWord || '')}`.replace(/%2F/g, '/').replace(/\/+/, "/");
         router.push(newLocation);
     }
 
@@ -64,8 +64,8 @@ class Search extends Component {
                 inputValue = decodeURIComponent(this.props.searchWord)
             }
         }
-        else if (this.state.input) {
-            inputValue = this.state.input
+        else if (this.state.searchWord) {
+            inputValue = this.state.searchWord
         }
         // Let’s create the dropdown menu items.
         const dropdownOptions = routes
