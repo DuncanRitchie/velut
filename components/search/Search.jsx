@@ -1,3 +1,4 @@
+import { withRouter } from "next/router";
 import {Component} from "react"
 import routes from "../../data/routes.json"
 import styles from "./Search.module.css"
@@ -12,6 +13,7 @@ class Search extends Component {
             type: this.props.type || "/",
         }
     }
+    handleSubmit = this.handleSubmit.bind(this)
 
     // This handles the <input> value.
     handleInput = (e) => {
@@ -25,6 +27,10 @@ class Search extends Component {
         } catch {
             console.log("Please do not input % signs!");
         }
+    }
+
+    handleType = (e) => {
+        this.setState({type: e.target.value})
     }
 
     // Initial value of sanitisedInput is "". Let’s put something useful there.
@@ -41,6 +47,13 @@ class Search extends Component {
         else {
             document.getElementById("search-input").focus()
         }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const router = this.props.router;
+        const newLocation = `/${this.state.type}/${encodeURIComponent(this.state.input || '')}`.replace('%2F', '/').replace(/\/+/, "/");
+        router.push(newLocation);
     }
 
     render() {
@@ -70,7 +83,9 @@ class Search extends Component {
             })
         // Now we’re ready to return JSX.
         return (
-            <form className={styles.search} action="/redirectonsearch" method="get">
+            // If client doesn’t have JavaScript, `action` & `method` are used.
+            // If client has JavaScript, the `onSubmit` is used.
+            <form className={styles.search} action="/redirectonsearch" method="get" onSubmit={this.handleSubmit}>
                 {/* The box the word will be typed into. */}
                 <input 
                     id="search-input"
@@ -97,7 +112,7 @@ class Search extends Component {
                   )
                   : (
                       <div className={styles.dropdown+" with-dropdown-arrow"}>
-                        <select name="type" defaultValue={"/"+this.state.type}>
+                        <select name="type" defaultValue={"/"+this.state.type} onChange={this.handleType}>
                             {dropdownOptions}
                         </select>
                       </div>
@@ -117,4 +132,4 @@ class Search extends Component {
     }
 }
 
-export default Search
+export default withRouter(Search)
