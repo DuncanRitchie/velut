@@ -3,6 +3,5 @@
 node_modules
 package*.json
 *.env*
-*.md
 *.toml
 *.yml
