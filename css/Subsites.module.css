@@ -2,77 +2,79 @@
 /* For example: Advanced, Anagram Phrases, English, Subwords, and Word. */
 
 .subsiteHomeRubric {
-    width: calc(100% - 2.25rem);
-    max-width: 46.125rem;
-    margin-top: 1.125rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0.375rem;
-    border-top: 0.1875rem solid #90cbd1;
-    background-color: rgba(255,253,244,0.95)
+  width: calc(100% - 2.25rem);
+  max-width: 46.125rem;
+  margin-top: 1.125rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.375rem;
+  border-top: 0.1875rem solid #90cbd1;
+  background-color: rgba(255, 253, 244, 0.95);
 }
 
 .subsiteResult {
-    width: calc(100% - 3rem);
-    max-width: 46.875rem;
+  width: calc(100% - 3rem);
+  max-width: 46.875rem;
 }
 
-.subsiteResult,.showingResultsFor {
-    margin-top: 1.125rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
-    border-top: 0.1875rem solid #90cbd1;
-    background-color: rgba(255,253,244,0.95)
+.subsiteResult,
+.showingResultsFor {
+  margin-top: 1.125rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  border-top: 0.1875rem solid #90cbd1;
+  background-color: rgba(255, 253, 244, 0.95);
 }
 
-.showingResultsFor,.wordInfo {
-    background-color: rgba(255,253,244,0.95);
-    margin-bottom: 0;
+.showingResultsFor,
+.wordInfo {
+  background-color: rgba(255, 253, 244, 0.95);
+  margin-bottom: 0;
 }
 
 .showingResultsFor {
-    padding: 0.375rem;
-    box-sizing: border-box;
+  padding: 0.375rem;
+  box-sizing: border-box;
 }
 
-.showingResultsFor,.wordInfo {
-    width: calc(100% - 1.125rem);
-    max-width: 46.875rem;
-    margin-left: auto;
-    margin-right: auto
+.showingResultsFor,
+.wordInfo {
+  width: calc(100% - 1.125rem);
+  max-width: 46.875rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wordInfo h2:not(.dictionariesHeading) {
-    margin-top: 0.1875rem;
-    margin-bottom: 0.1875rem;
-    padding: 0.625rem 0.75rem;
-    background-color: #efe1ab;
+  margin-top: 0.1875rem;
+  margin-bottom: 0.1875rem;
+  padding: 0.625rem 0.75rem;
+  background-color: #efe1ab;
 }
 
 .wordInfo p:not(.dictionariesP) {
-    margin-bottom: 0;
-    margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .advanced .subsiteResult {
-    margin-top: 3.5rem;
+  margin-top: 3.5rem;
 }
 
-
 @media print {
-    /* Allow elements to be full-width. */
-    .subsiteResult {
-        max-width: initial;
-    }
+  /* Allow elements to be full-width. */
+  .subsiteResult {
+    max-width: initial;
+  }
 
-    /* Display a grey bullet between results instead of a line-break. */
-    .subsiteResult br {
-        display: none;
-    }
+  /* Display a grey bullet between results instead of a line-break. */
+  .subsiteResult br {
+    display: none;
+  }
 
-    .subsiteResult span:not(:first-of-type)::before {
-        color: #adadad;
-        content: " • "
-    }
+  .subsiteResult span:not(:first-of-type)::before {
+    color: #adadad;
+    content: ' • ';
+  }
 }

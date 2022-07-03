@@ -1,31 +1,31 @@
 .advancedSearch {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .advancedSearch :first-child {
-    grid-area: searchbar;
+  grid-area: searchbar;
 }
 
-.advancedSearch div input[type=text] {
-    width: calc(100% - 1rem);
+.advancedSearch div input[type='text'] {
+  width: calc(100% - 1rem);
 }
 
 .advancedSearch div div {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    border-top: 0.1875rem solid #c2b170;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-top: 0.1875rem solid #c2b170;
 }
 
 .advancedSearch div:not(:last-of-type) {
-    padding-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
 .advancedSearch div p {
-    background-color: rgba(255,253,244,0.95);
-    margin: 0;
+  background-color: rgba(255, 253, 244, 0.95);
+  margin: 0;
 }
 
 .advancedSearch input + label {
-    margin-left: 0.25rem;
+  margin-left: 0.25rem;
 }

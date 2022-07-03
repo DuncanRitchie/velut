@@ -1,110 +1,109 @@
-.search{
-    width: calc(66vw + 1rem);
-    max-width: 46.875rem;
-    min-height: 4.25rem;
-    margin: 1.5rem auto 0;
-    display: grid;
-    grid-template-areas: "searchbar searchbar searchbar" ". . submit" "dropdown . .";
-    grid-template-columns: 50% 1fr auto;
+.search {
+  width: calc(66vw + 1rem);
+  max-width: 46.875rem;
+  min-height: 4.25rem;
+  margin: 1.5rem auto 0;
+  display: grid;
+  grid-template-areas: 'searchbar searchbar searchbar' '. . submit' 'dropdown . .';
+  grid-template-columns: 50% 1fr auto;
 }
 
-.search input[type=text], .search textarea {
-    text-align: center;
-    margin: 0;
-    width: 66vw;
-    max-width: 45.875rem;
-    border: 2px solid #85a785; /* a pale grey-green */
-    height: 1.25rem;
-    font-size: 1rem;
-    font-family: "Monaco", "Consolas", monospace;
-    padding: 0.375rem 0.375rem;
-    grid-area: searchbar;
+.search input[type='text'],
+.search textarea {
+  text-align: center;
+  margin: 0;
+  width: 66vw;
+  max-width: 45.875rem;
+  border: 2px solid #85a785; /* a pale grey-green */
+  height: 1.25rem;
+  font-size: 1rem;
+  font-family: 'Monaco', 'Consolas', monospace;
+  padding: 0.375rem 0.375rem;
+  grid-area: searchbar;
 }
 
 .search:focus {
-    outline-color: #58522c; /* lighter colour of .title gradient */
+  outline-color: #58522c; /* lighter colour of .title gradient */
 }
 
 .searchButton {
-    float: right;
-    font: inherit;
-    box-shadow: 0;
-    border: 0;
-    padding: 0.5rem 0.75rem;
-    background-color: #7aefb3;
-    cursor: pointer;
-    grid-area: submit;
+  float: right;
+  font: inherit;
+  box-shadow: 0;
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  background-color: #7aefb3;
+  cursor: pointer;
+  grid-area: submit;
 }
 
 .searchButton:hover {
-    background-color: #b8f8d7;
+  background-color: #b8f8d7;
 }
 
 .search button {
-    cursor: pointer;
-    transition: color 0.4s;
+  cursor: pointer;
+  transition: color 0.4s;
 }
 
 .search button:disabled {
-    color: #5f5f5f /* Same color as .link-to-current-word */;
+  color: #5f5f5f /* Same color as .link-to-current-word */;
 }
 
 .dropdown {
-    font-size: 0.9rem;
-    text-align: left;
-    width: 100%;
-    position: relative;
-    grid-area: dropdown;
-    /* margin-bottom is on .dropdown instead of .search so that it only appears on pages with the dropdown. */
-    margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  grid-area: dropdown;
+  /* margin-bottom is on .dropdown instead of .search so that it only appears on pages with the dropdown. */
+  margin-bottom: 0.75rem;
 }
 
 /* Some of this is adapted from https://moderncss.dev/custom-select-styles-with-pure-css/ */
 .dropdown select {
-    background-color: #9cdad3;
-    border: none;
-    border-radius: 0;
-    padding: 0.625em 0.5em;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    appearance: none;
-    -webkit-appearance: none;
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: 1.1;
+  background-color: #9cdad3;
+  border: none;
+  border-radius: 0;
+  padding: 0.625em 0.5em;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.1;
 }
 
 /* Remove default arrow in IE */
 .dropdown select::-ms-expand {
-    display: none;
-  }
+  display: none;
+}
 
 .dropdown select:hover {
-    background-color: #b5e3de;
+  background-color: #b5e3de;
 }
 
 /* The <option> styles don’t seem to apply but here they are anyway. */
 .dropdown option {
-    cursor: pointer;
-    font-family: inherit;
-    background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
+  cursor: pointer;
+  font-family: inherit;
+  background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
 }
-
-
-
-
 
 /* Below are the old styles from the MERN site, when I was using <div>s instead of <select> with <option>s.
 They no longer apply, but I might use them when <select-menu> becomes more usable as a stylable substitute for <select>. */
 
-.dropdown-content-none,.dropdown-content-open,.dropdown-content-close {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    position: absolute;
+.dropdown-content-none,
+.dropdown-content-open,
+.dropdown-content-close {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
 }
 
 /*
@@ -121,44 +120,51 @@ They no longer apply, but I might use them when <select-menu> becomes more usabl
 
 /* This is how dropdown-content starts out */
 .dropdown-content-none {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
-    opacity: 0; /* Changed with a transition */
-    transform: translateX(-50vw); /* Changed with a delayed transition */
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Changed with a transition */
+  -webkit-clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 0,
+    0 0
+  ); /* Changed with a transition */
+  opacity: 0; /* Changed with a transition */
+  transform: translateX(-50vw); /* Changed with a delayed transition */
 }
 
 .dropdown-content-close {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    opacity: 0;
-    transform: translateX(-50vw);
-    transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease, transform 0s 1.5s;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  opacity: 0;
+  transform: translateX(-50vw);
+  transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease,
+    opacity 1.5s ease, transform 0s 1.5s;
 }
 
 .dropdown-content-open {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 1;
-    transform: translateX(0);
-    transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease, opacity 1.5s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  opacity: 1;
+  transform: translateX(0);
+  transition: clip-path 1.5s ease, -webkit-clip-path 1.5s ease,
+    opacity 1.5s ease;
 }
 
 .dropdownItem {
-    color: #1c4e50;
-    text-decoration: none;
-    background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
-    width: inherit;
-    margin: 0;
-    padding: 2px;
+  color: #1c4e50;
+  text-decoration: none;
+  background: linear-gradient(to bottom right, #c7e4e6, #93cacc);
+  width: inherit;
+  margin: 0;
+  padding: 2px;
 }
 
 .dropdownItem:hover {
-    color: black;
-    background: #d3ecee;
+  color: black;
+  background: #d3ecee;
 }
 
 .dropdownItem button {
-    width: 100%;
-    text-align: inherit;
-    padding: 0.1875rem 0.375rem;
+  width: 100%;
+  text-align: inherit;
+  padding: 0.1875rem 0.375rem;
 }

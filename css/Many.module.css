@@ -1,12 +1,12 @@
 /* Thanks to CSS Modules this doesn’t clash with the Search component’s .search */
 .search {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .many h2 {
-    /* Same styles as h3 on Word */
-    margin: 0;
-    padding: 0.625rem 0.75rem;
-    font-size: 1.375rem;
-    background-color: #fcf0be;
+  /* Same styles as h3 on Word */
+  margin: 0;
+  padding: 0.625rem 0.75rem;
+  font-size: 1.375rem;
+  background-color: #fcf0be;
 }

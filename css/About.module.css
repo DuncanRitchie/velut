@@ -1,54 +1,55 @@
 .about main {
-    width: calc(100% - 1.125rem);
-    max-width: 46.875rem;
-    margin-left: auto;
-    margin-right: auto;
+  width: calc(100% - 1.125rem);
+  max-width: 46.875rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about section {
-    margin-bottom: 0.75rem;
-    padding-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0.75rem;
 }
 
 .about main h2 {
-    background-color: #efe1ab;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0.625rem 0.75rem
+  background-color: #efe1ab;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.625rem 0.75rem;
 }
 
-.about main p, .about main ul {
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: left;
-    background: rgba(255,253,244,0.95)
+.about main p,
+.about main ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: left;
+  background: rgba(255, 253, 244, 0.95);
 }
 
 .about h2 + p {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .about p + p {
-    padding-top: 0;
-    padding-bottom: 0.75rem
+  padding-top: 0;
+  padding-bottom: 0.75rem;
 }
 
 .about ul {
-    width: 100%;
+  width: 100%;
 }
 
 /* Copied from Advanced Rubric */
 .about li {
-    line-height: 1.6em;
-    padding: 0.625rem 1.125rem 0.625rem 1.25rem;
-    margin: 0;
-    display: list-item;
-    list-style: disc inside;
+  line-height: 1.6em;
+  padding: 0.625rem 1.125rem 0.625rem 1.25rem;
+  margin: 0;
+  display: list-item;
+  list-style: disc inside;
 }
 
 @media print {
-    .about main {
-        max-width: initial;
-    }
+  .about main {
+    max-width: initial;
+  }
 }
