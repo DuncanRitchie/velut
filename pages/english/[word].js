@@ -20,7 +20,7 @@ const English = ({ lemmata, sanitisedInput }) => {
         </Head>
         <div className="fulmar-background">
             <Header textBeforeTitle="English to Latin" />
-            <Search type="/english" searchWord={sanitisedInput} searchbarTitle="Type an English word" lang="en" hideDropdown={true} />
+            <Search type="/english" word={sanitisedInput} searchbarTitle="Type an English word" lang="en" hideDropdown={true} />
 
             <p className={styles.showingResultsFor}>
                 {lemmata.length

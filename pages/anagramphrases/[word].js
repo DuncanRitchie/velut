@@ -46,7 +46,7 @@ const Anagrams = ({input, anagrams, error}) => {
             <p className={styles.subsiteHomeRubric}>Caution — searches may take some minutes or fail completely.</p>
             <Search
               type="/anagramphrases"
-              searchWord={input}
+              word={input}
               searchbarTitle="Type something to find anagrams of"
               lang="zxx"
               hideDropdown={true}

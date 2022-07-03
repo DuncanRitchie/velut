@@ -101,7 +101,7 @@ const WordPage = ({ sanitisedInput, randomWord, foundWord, homographs, rhymes, t
         </Head>
         <div className="fulmar-background">
             <Header />
-            <Search type={type} searchbarTitle="Type a Latin word" searchWord={sanitisedInput}/>
+            <Search type={type} searchbarTitle="Type a Latin word" word={sanitisedInput}/>
             <p className={subsiteStyles.showingResultsFor + " page-width"}>
                 Showing results for
                 <br/>

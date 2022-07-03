@@ -8,7 +8,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchWord: this.props.searchWord?.trim() || "",
+            word: this.props.word?.trim() || "",
             fromUrl: true,
             type: this.props.type || "/",
         }
@@ -17,8 +17,8 @@ class Search extends Component {
 
     // This handles the <input> value.
     handleInput = (e) => {
-        let searchWord = e.target.value
-        this.setState({searchWord: searchWord, fromUrl: false})
+        let word = e.target.value
+        this.setState({word: word, fromUrl: false})
     }
 
     handleType = (e) => {
@@ -28,11 +28,11 @@ class Search extends Component {
     // Initial value of sanitisedInput is "". Let’s put something useful there.
     componentDidMount() {
         try {
-            this.setState({sanitisedInput: decodeURIComponent(this.state.searchWord)})
+            this.setState({sanitisedInput: decodeURIComponent(this.state.word)})
         } catch {
         }
         // The input is initially focussed, unless the page is About or a query has started.
-        if (this.state.searchWord
+        if (this.state.word
             || !this.props.autofocus) {
             document.getElementById("search-input").blur()
         }
@@ -44,7 +44,7 @@ class Search extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const router = this.props.router;
-        const newLocation = urlFromSearch({type: this.state.type, word: this.state.searchWord});
+        const newLocation = urlFromSearch(this.state);
         router.push(newLocation);
     }
 
@@ -64,7 +64,7 @@ class Search extends Component {
                 <input 
                     id="search-input"
                     name="word"
-                    value={this.state.searchWord || ""}
+                    value={this.state.word || ""}
                     onChange={this.handleInput}
                     onKeyUp={this.handleInputKeyUp}
                     title={this.props.searchbarTitle || "Type something here"}
