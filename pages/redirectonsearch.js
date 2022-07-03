@@ -1,14 +1,13 @@
-import urlFromSearch from "../lib/urlFromSearch";
+import urlFromSearch from '../lib/urlFromSearch'
 
 // `RedirectOnSearchPage` is triggered from `Search` if client does not have JavaScript.
-function RedirectOnSearchPage() {
-}
+function RedirectOnSearchPage() {}
 
 export const getServerSideProps = async ({ query, res }) => {
-    const newLocation = urlFromSearch(query)
-    res.writeHead(301, { Location: newLocation });
-    res.end()
-    return { props: {}};
+  const newLocation = urlFromSearch(query)
+  res.writeHead(301, { Location: newLocation })
+  res.end()
+  return { props: {} }
 }
 
 export default RedirectOnSearchPage

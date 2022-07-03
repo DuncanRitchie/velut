@@ -11,57 +11,59 @@ import ManySSR from '../../components/manyComponents/ManySSR'
 // rendering happen on the client-side.
 
 const ManyHead = () => {
-    return (
-        <Head>
-            <title>
-                Look-up of many words on velut — a Latin rhyming dictionary
-            </title>
-            <meta name="Description" content="Lists of words that are and are not in the velut dictionary"/>
-        </Head>
-    )
+  return (
+    <Head>
+      <title>Look-up of many words on velut — a Latin rhyming dictionary</title>
+      <meta
+        name="Description"
+        content="Lists of words that are and are not in the velut dictionary"
+      />
+    </Head>
+  )
 }
 
 const Many = (props) => {
-    console.log(props)
-    return (<>
-        <ManyHead/>
-        {props.ssr ? <ManySSR {...props} /> : <ManyCSR {...props} />}
-    </>)
+  console.log(props)
+  return (
+    <>
+      <ManyHead />
+      {props.ssr ? <ManySSR {...props} /> : <ManyCSR {...props} />}
+    </>
+  )
 }
 
 export default Many
 
 export async function getServerSideProps({ query, res }) {
+  if (query.search) {
+    if (query.ssr === 'true') {
+      const results = await findMany(query.search)
 
-    if (
-        query.search
-    ) {
-        if (
-            query.ssr === "true"
-        ) {
-            const results = await findMany(query.search)
+      if (!results.allWordObjects.some((obj) => obj.success)) {
+        res.statusCode = 404
+      }
 
-            if (!results.allWordObjects.some(obj=>obj.success)) {
-                res.statusCode = 404
-            }
-
-            return { props: {
-                ...query,
-                ...results,
-                isHomepage: false,
-            }}
-        }
-        else {
-            return { props: {
-                ...query,
-                isHomepage: false,
-            }}
-        }
+      return {
+        props: {
+          ...query,
+          ...results,
+          isHomepage: false,
+        },
+      }
+    } else {
+      return {
+        props: {
+          ...query,
+          isHomepage: false,
+        },
+      }
     }
-    else {
-        return { props: {
-            isHomepage: true,
-            query,
-        }}
+  } else {
+    return {
+      props: {
+        isHomepage: true,
+        query,
+      },
     }
+  }
 }

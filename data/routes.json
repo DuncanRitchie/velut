@@ -1,63 +1,74 @@
 [
-    {
-        "route": "",
-        "searchField": "PerfectRhyme",
-        "sortFields": "Sort",
-        "headingToDisplay": "Perfect rhymes (classical)"
-    },{
-        "route": "/vowels",
-        "searchField": "RhymeVowels",
-        "sortFields": "Sort",
-        "headingToDisplay": "Vowel rhymes (classical)"
-    },{
-        "route": "/vowelsend",
-        "searchField": "RhymeVowelsAndUltimaCoda",
-        "sortFields": "Sort",
-        "headingToDisplay": "Vowel-and-end-consonant rhymes (classical)"
-    },{
-        "route": "/ecclesperfect",
-        "searchField": "EcclesPerfectRhyme",
-        "sortFields": "EcclesSort",
-        "headingToDisplay": "Perfect rhymes (ecclesiastical)"
-    },{
-        "route": "/ecclesvowels",
-        "searchField": "EcclesRhymeVowels",
-        "sortFields": "EcclesSort",
-        "headingToDisplay": "Vowel rhymes (ecclesiastical)"
-    },{
-        "route": "/ecclesvowelsend",
-        "searchField": "EcclesRhymeVowelsAndUltimaCoda",
-        "sortFields": "EcclesSort",
-        "headingToDisplay": "Vowel-and-end-consonant rhymes (ecclesiastical)"
-    },{
-        "route": "/consonyms",
-        "searchField": "AllConsonants",
-        "sortFields": "NoMacraLowerCase NoMacra Word",
-        "headingToDisplay": "Consonyms"
-    },{
-        "route": "/anagrams",
-        "searchField": "AlphOrderNoMacra",
-        "sortFields": "NoMacraLowerCase NoMacra Word",
-        "headingToDisplay": "Anagrams"
-    },{
-        "route": "/scansion",
-        "searchField": "Scansion",
-        "sortFields": "NoMacraLowerCase NoMacra Word",
-        "headingToDisplay": "Words that scan the same"
-    },{
-        "route": "/subwords",
-        "searchField": null,
-        "functionName": "getSubwords",
-        "headingToDisplay": "Subwords"
-    },{
-        "route": "/anagramphrases",
-        "searchField": null,
-        "functionName": "getAnagrams",
-        "headingToDisplay": "Anagram phrases"
-    },{
-        "route": "/english",
-        "searchField": null,
-        "functionName": "getLemmataEnglish",
-        "headingToDisplay": "English to Latin"
-    }
+  {
+    "route": "",
+    "searchField": "PerfectRhyme",
+    "sortFields": "Sort",
+    "headingToDisplay": "Perfect rhymes (classical)"
+  },
+  {
+    "route": "/vowels",
+    "searchField": "RhymeVowels",
+    "sortFields": "Sort",
+    "headingToDisplay": "Vowel rhymes (classical)"
+  },
+  {
+    "route": "/vowelsend",
+    "searchField": "RhymeVowelsAndUltimaCoda",
+    "sortFields": "Sort",
+    "headingToDisplay": "Vowel-and-end-consonant rhymes (classical)"
+  },
+  {
+    "route": "/ecclesperfect",
+    "searchField": "EcclesPerfectRhyme",
+    "sortFields": "EcclesSort",
+    "headingToDisplay": "Perfect rhymes (ecclesiastical)"
+  },
+  {
+    "route": "/ecclesvowels",
+    "searchField": "EcclesRhymeVowels",
+    "sortFields": "EcclesSort",
+    "headingToDisplay": "Vowel rhymes (ecclesiastical)"
+  },
+  {
+    "route": "/ecclesvowelsend",
+    "searchField": "EcclesRhymeVowelsAndUltimaCoda",
+    "sortFields": "EcclesSort",
+    "headingToDisplay": "Vowel-and-end-consonant rhymes (ecclesiastical)"
+  },
+  {
+    "route": "/consonyms",
+    "searchField": "AllConsonants",
+    "sortFields": "NoMacraLowerCase NoMacra Word",
+    "headingToDisplay": "Consonyms"
+  },
+  {
+    "route": "/anagrams",
+    "searchField": "AlphOrderNoMacra",
+    "sortFields": "NoMacraLowerCase NoMacra Word",
+    "headingToDisplay": "Anagrams"
+  },
+  {
+    "route": "/scansion",
+    "searchField": "Scansion",
+    "sortFields": "NoMacraLowerCase NoMacra Word",
+    "headingToDisplay": "Words that scan the same"
+  },
+  {
+    "route": "/subwords",
+    "searchField": null,
+    "functionName": "getSubwords",
+    "headingToDisplay": "Subwords"
+  },
+  {
+    "route": "/anagramphrases",
+    "searchField": null,
+    "functionName": "getAnagrams",
+    "headingToDisplay": "Anagram phrases"
+  },
+  {
+    "route": "/english",
+    "searchField": null,
+    "functionName": "getLemmataEnglish",
+    "headingToDisplay": "English to Latin"
+  }
 ]

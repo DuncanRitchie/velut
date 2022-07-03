@@ -6,17 +6,21 @@
 //// Eg "amīcus[n]" -> <>amīcus <span className="lemma-tag">(n)</span>
 //// Eg "fūlmārus" -> <>fūlmārus</>
 const superscriptLemmaTag = (lemma) => {
-    if (!lemma) {
-        return null;
-    }
+  if (!lemma) {
+    return null
+  }
 
-    //// Split the string on [ and ]
-    let array = lemma.split(/[[\]]/g)
-    //// Any text in square brackets becomes `array[1]`
-    if (!array[1]) {
-        return <>{lemma}</>
-    }
+  //// Split the string on [ and ]
+  let array = lemma.split(/[[\]]/g)
+  //// Any text in square brackets becomes `array[1]`
+  if (!array[1]) {
+    return <>{lemma}</>
+  }
 
-    return <span lang="la">{array[0]}&nbsp;<span className="lemma-tag">({array[1]})</span></span>
+  return (
+    <span lang="la">
+      {array[0]}&nbsp;<span className="lemma-tag">({array[1]})</span>
+    </span>
+  )
 }
 export default superscriptLemmaTag
