@@ -1,6 +1,7 @@
 import { withRouter } from "next/router";
 import {Component} from "react"
 import routes from "../../data/routes.json"
+import urlFromSearch from "../../lib/urlFromSearch";
 import styles from "./Search.module.css"
 
 class Search extends Component {
@@ -43,7 +44,7 @@ class Search extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const router = this.props.router;
-        const newLocation = `/${this.state.type}/${encodeURIComponent(this.state.searchWord || '')}`.replace(/%2F/g, '/').replace(/\/+/, "/");
+        const newLocation = urlFromSearch({type: this.state.type, word: this.state.searchWord});
         router.push(newLocation);
     }
 
