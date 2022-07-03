@@ -1,0 +1,9 @@
+.git
+.next
+node_modules
+package*.json
+*.css
+*.env*
+*.md
+*.toml
+*.yml
