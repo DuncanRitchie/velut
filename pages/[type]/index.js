@@ -216,7 +216,7 @@ export async function getServerSideProps({ params, res }) {
   const wordParam = params.hasOwnProperty('word')
     ? params.word
     : params.type ?? ''
-  const type = params.hasOwnProperty('word') ? params.type : ''
+  const typeParam = params.hasOwnProperty('word') ? params.type : ''
   const sanitisedInput = wordParam
 
   //// Fetch the word object from the database.
@@ -228,7 +228,7 @@ export async function getServerSideProps({ params, res }) {
     const homographsObject = await getHomographs(wordAsObject)
     const { homographs } = homographsObject
 
-    const rhymesObject = await getRhymes(wordAsObject, type)
+    const rhymesObject = await getRhymes(wordAsObject, typeParam)
     const { rhymes, headingToDisplay } = rhymesObject
 
     const lemmataObject = await getLemmata(wordAsObject)
@@ -243,7 +243,7 @@ export async function getServerSideProps({ params, res }) {
         search: wordParam,
         headingToDisplay,
         sanitisedInput,
-        type,
+        type: typeParam,
       },
     }
   }

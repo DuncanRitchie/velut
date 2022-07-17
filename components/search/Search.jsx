@@ -8,7 +8,7 @@ class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      word: this.props.word?.trim() || '',
+      word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
       fromUrl: true,
       type: this.props.type || '/',
     }
@@ -22,7 +22,7 @@ class Search extends Component {
   }
 
   handleType = (e) => {
-    this.setState({ type: e.target.value })
+    this.setState({ type: e.target.value, fromUrl: false })
   }
 
   // Initial value of sanitisedInput is "". Let’s put something useful there.
@@ -38,11 +38,23 @@ class Search extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const props = this.props
+    if (prevProps.word !== props.word || prevProps.type !== props.type) {
+      this.setState({
+        word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
+        fromUrl: true,
+        type: this.props.type || '',
+      })
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     const router = this.props.router
     const newLocation = urlFromSearch(this.state)
     router.push(newLocation)
+    this.setState({fromUrl: true})
   }
 
   render() {
@@ -87,12 +99,12 @@ class Search extends Component {
                 Otherwise, `type` will come from a hidden <input> element.
                 The latter happens if the path begins with /about, /english, /subwords, or /anagramphrases. */}
         {this.props.hideDropdown ? (
-          <input name="type" type="hidden" value={this.props.type}></input>
+          <input name="type" type="hidden" value={this.state.type}></input>
         ) : (
           <div className={styles.dropdown + ' with-dropdown-arrow'}>
             <select
               name="type"
-              defaultValue={'/' + this.state.type}
+              value={'/' + this.state.type}
               onChange={this.handleType}
             >
               {dropdownOptions}
