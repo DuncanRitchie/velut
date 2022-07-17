@@ -9,7 +9,6 @@ class Search extends Component {
     super(props)
     this.state = {
       word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
-      fromUrl: true,
       type: this.props.type || '/',
     }
   }
@@ -18,11 +17,11 @@ class Search extends Component {
   // This handles the <input> value.
   handleInput = (e) => {
     let word = e.target.value
-    this.setState({ word: word, fromUrl: false })
+    this.setState({ word: word })
   }
 
   handleType = (e) => {
-    this.setState({ type: e.target.value, fromUrl: false })
+    this.setState({ type: e.target.value })
   }
 
   // Initial value of sanitisedInput is "". Let’s put something useful there.
@@ -43,7 +42,6 @@ class Search extends Component {
     if (prevProps.word !== props.word || prevProps.type !== props.type) {
       this.setState({
         word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
-        fromUrl: true,
         type: this.props.type || '',
       })
     }
@@ -54,7 +52,6 @@ class Search extends Component {
     const router = this.props.router
     const newLocation = urlFromSearch(this.state)
     router.push(newLocation)
-    this.setState({fromUrl: true})
   }
 
   render() {
