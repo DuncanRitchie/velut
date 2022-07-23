@@ -13,7 +13,7 @@ import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word
 
-const Subwords = ({ input, subwords, loading }) => {
+const Subwords = ({ input, subwords, loading, randomCountdownQuestionExample }) => {
   // class Subwords extends Component {
   //     constructor(props) {
   //         super(props);
@@ -106,7 +106,6 @@ const Subwords = ({ input, subwords, loading }) => {
       </div>
     )
   } else {
-    const randomCountdownQuestionExample = randomCountdownQuestionWeighted()
     result = (
       <p>
         No subwords found!&nbsp; Try a different input, such as{' '}
@@ -160,6 +159,7 @@ export async function getServerSideProps({ params, res }) {
 
   const subwordsObject = await getSubwords(input)
   const subwords = subwordsObject.subwords
+  const randomCountdownQuestionExample = randomCountdownQuestionWeighted()
 
   if (subwords.length == 0) {
     res.statusCode = 404
@@ -169,6 +169,7 @@ export async function getServerSideProps({ params, res }) {
     props: {
       input,
       subwords,
+      randomCountdownQuestionExample,
     },
   }
 }
