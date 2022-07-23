@@ -23,7 +23,6 @@ const ManyHead = () => {
 }
 
 const Many = (props) => {
-  console.log(props)
   return (
     <>
       <ManyHead />
