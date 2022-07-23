@@ -12,7 +12,12 @@ import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word
 
-const Subwords = ({ input, subwords, loading, randomCountdownQuestionExample }) => {
+const Subwords = ({
+  input,
+  subwords,
+  loading,
+  randomCountdownQuestionExample,
+}) => {
   let mappedWords = []
   if (subwords) {
     mappedWords = subwords.map((word, index) => {

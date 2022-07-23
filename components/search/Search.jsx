@@ -41,7 +41,8 @@ class Search extends Component {
     const props = this.props
     if (prevProps.word !== props.word || prevProps.type !== props.type) {
       this.setState({
-        word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
+        word:
+          this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
         type: this.props.type || '',
       })
     }
