@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
-// import axios from "../../axios/axios"
 import { noMacra } from '../../lib/words/diacritics'
 import getSubwords, {
   deleteCharacters,
@@ -14,40 +13,6 @@ import styles from '../../css/Subsites.module.css'
 // <Subwords/> is a JSX element rendered at /subwords/:word
 
 const Subwords = ({ input, subwords, loading, randomCountdownQuestionExample }) => {
-  // class Subwords extends Component {
-  //     constructor(props) {
-  //         super(props);
-  // this.state = {
-  //     input: this.props.word,
-  //     subwords: [],
-  //     loading: false
-  // }
-  //    }
-
-  // fetchWords(input) {
-  // this.setState({loading: true})
-  // axios.getSubwords(noMacra(input).toLowerCase()).then((data)=>{
-  //     // data.data is a simple array of strings.
-  //     this.setState({subwords: data.data})
-  //     this.setState({loading: false})
-  // })
-  // }
-
-  // componentDidMount() {
-  //     this.fetchWords(this.props.match.params.word)
-  // }
-
-  // componentDidUpdate() {
-  //     if (this.state.input !== this.props.match.params.word) {
-  //         let input = this.props.match.params.word
-  //         this.setState({input: input})
-  //         this.fetchWords(input)
-  //     }
-  // }
-
-  //render() {
-  //let input = this.props.input
-
   let mappedWords = []
   if (subwords) {
     mappedWords = subwords.map((word, index) => {
@@ -140,7 +105,6 @@ const Subwords = ({ input, subwords, loading, randomCountdownQuestionExample }) 
       </div>
     </>
   )
-  //}
 }
 
 export default Subwords
