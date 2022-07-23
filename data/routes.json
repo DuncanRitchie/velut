@@ -6,67 +6,67 @@
     "headingToDisplay": "Perfect rhymes (classical)"
   },
   {
-    "route": "/vowels",
+    "route": "vowels",
     "searchField": "RhymeVowels",
     "sortFields": "Sort",
     "headingToDisplay": "Vowel rhymes (classical)"
   },
   {
-    "route": "/vowelsend",
+    "route": "vowelsend",
     "searchField": "RhymeVowelsAndUltimaCoda",
     "sortFields": "Sort",
     "headingToDisplay": "Vowel-and-end-consonant rhymes (classical)"
   },
   {
-    "route": "/ecclesperfect",
+    "route": "ecclesperfect",
     "searchField": "EcclesPerfectRhyme",
     "sortFields": "EcclesSort",
     "headingToDisplay": "Perfect rhymes (ecclesiastical)"
   },
   {
-    "route": "/ecclesvowels",
+    "route": "ecclesvowels",
     "searchField": "EcclesRhymeVowels",
     "sortFields": "EcclesSort",
     "headingToDisplay": "Vowel rhymes (ecclesiastical)"
   },
   {
-    "route": "/ecclesvowelsend",
+    "route": "ecclesvowelsend",
     "searchField": "EcclesRhymeVowelsAndUltimaCoda",
     "sortFields": "EcclesSort",
     "headingToDisplay": "Vowel-and-end-consonant rhymes (ecclesiastical)"
   },
   {
-    "route": "/consonyms",
+    "route": "consonyms",
     "searchField": "AllConsonants",
     "sortFields": "NoMacraLowerCase NoMacra Word",
     "headingToDisplay": "Consonyms"
   },
   {
-    "route": "/anagrams",
+    "route": "anagrams",
     "searchField": "AlphOrderNoMacra",
     "sortFields": "NoMacraLowerCase NoMacra Word",
     "headingToDisplay": "Anagrams"
   },
   {
-    "route": "/scansion",
+    "route": "scansion",
     "searchField": "Scansion",
     "sortFields": "NoMacraLowerCase NoMacra Word",
     "headingToDisplay": "Words that scan the same"
   },
   {
-    "route": "/subwords",
+    "route": "subwords",
     "searchField": null,
     "functionName": "getSubwords",
     "headingToDisplay": "Subwords"
   },
   {
-    "route": "/anagramphrases",
+    "route": "anagramphrases",
     "searchField": null,
     "functionName": "getAnagrams",
     "headingToDisplay": "Anagram phrases"
   },
   {
-    "route": "/english",
+    "route": "english",
     "searchField": null,
     "functionName": "getLemmataEnglish",
     "headingToDisplay": "English to Latin"

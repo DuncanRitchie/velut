@@ -9,7 +9,7 @@ class Search extends Component {
     super(props)
     this.state = {
       word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
-      type: this.props.type || '/',
+      type: this.props.type || '',
     }
   }
   handleSubmit = this.handleSubmit.bind(this)
@@ -101,7 +101,7 @@ class Search extends Component {
           <div className={styles.dropdown + ' with-dropdown-arrow'}>
             <select
               name="type"
-              value={'/' + this.state.type}
+              value={this.state.type}
               onChange={this.handleType}
             >
               {dropdownOptions}
