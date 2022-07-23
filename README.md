@@ -10,7 +10,7 @@ This GitHub repo is publicly visible. The site is hosted by Fly from the main br
 
 I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and use mongoimport to replace my two MongoDB Atlas collections.
 
-The velut website (in this repository) is a Next.js site that reads from the two collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Many page (www.velut.co.uk/many) uses client-side rendering if possible.
+The velut website (in this repository) is a Next.js site that reads from the two collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Many page (www.velut.co.uk/many) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
 
 The MERN version is a single-page application that has the same functionality, but using an Express.js server on the backend and client-side–rendered React.js on the frontend. It is currently hosted by Render on https://render.velut.co.uk, but I will probably cancel it in the future because I don’t want to maintain it.
 
@@ -46,7 +46,7 @@ Displayed below is the page for the word “opportūna”, showing that it is di
 
 ## Ongoing work
 
-Though there are several smaller tasks I’d like to get done, most of my efforts on velut nowadays are in three areas:
+Though there are several smaller tasks I’d like to get done, most of my efforts on velut nowadays are in two areas:
 
 ### Data collection
 
@@ -56,14 +56,12 @@ There are many common Latin words that are not yet in the velut database, and I�
 
 I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off Excel by creating webpages and websites that replicate the functionality that I have/had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making [more](https://www.duncanritchie.co.uk/code#velut-projects).
 
-### Improving the SSR
-
-I have recently ported the entire site from the MERN stack (with client-side rendering) to Next.js (with server-side rendering). This means a visitor does not need to have enabled JavaScript in their web-browser to see velut. There’s still a couple of things for me to tidy up, but I’m very pleased with how the SSR turned out.
+For the details of how I’m doing this, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
 
 ## Miscellanea
 
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
 
-All the data have been collated manually by me in my spare time. Yes, really. Therefore, many lemmata are not represented, and most of the lemmata that are represented do not have all possible inflected forms. If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
+All the data have been collated manually by me in my spare time. Yes, really. Therefore, many lemmata are not represented, and most of the lemmata that are represented do not have all possible inflected forms. (My [plan for de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md) covers how I’m going to solve the latter.) If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
 
 For more information, see https://www.velut.co.uk/about; for more information about me, see my website at https://www.duncanritchie.co.uk.
