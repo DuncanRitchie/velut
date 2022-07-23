@@ -257,7 +257,7 @@ export async function getServerSideProps({ params, res }) {
       props: {
         randomWord,
         sanitisedInput,
-        type,
+        type: typeParam,
       },
     }
   }
