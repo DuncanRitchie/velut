@@ -8,7 +8,7 @@ let Footer = () => {
   //// So we need to work out what the current section is.
 
   const router = useRouter()
-  const currentUrl = router.asPath
+  const currentUrl = router.route
   const firstPartOfUrl = currentUrl.split('/').filter(Boolean)[0]
   const thereIsSecondPartOfUrl =
     currentUrl.split('/').filter(Boolean).length > 1
