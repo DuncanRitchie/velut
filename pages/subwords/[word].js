@@ -86,11 +86,7 @@ const Subwords = ({ input, subwords, loading, randomCountdownQuestionExample }) 
     })
   }
   let result = null
-  //// `loading` is not expected to be true because of server-side rendering.
-  //// But I’m leaving it in, in case it’s needed in future.
-  if (loading) {
-    result = <p>Loading subwords…&nbsp; This can take a minute.</p>
-  } else if (mappedWords.length) {
+  if (mappedWords.length) {
     result = (
       <div>
         <p>
