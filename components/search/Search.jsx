@@ -29,12 +29,6 @@ class Search extends Component {
     try {
       this.setState({ sanitisedInput: decodeURIComponent(this.state.word) })
     } catch {}
-    // The input is initially focussed, unless the page is About or a query has started.
-    if (this.state.word || !this.props.autofocus) {
-      document.getElementById('search-input').blur()
-    } else {
-      document.getElementById('search-input').focus()
-    }
   }
 
   componentDidUpdate(prevProps) {

@@ -14,11 +14,7 @@ const Home = ({ type = '/' }) => {
         <h2 className={styles.homeRubric}>
           <span>Latin rhymes &amp;&nbsp;more!</span>
         </h2>
-        <Search
-          type={type}
-          searchbarTitle="Type a Latin word"
-          autofocus={true}
-        />
+        <Search type={type} searchbarTitle="Type a Latin word" />
         <p className={styles.homeRubric}>
           <span>Enter a Latin word in the searchbar above,</span>
           <br />

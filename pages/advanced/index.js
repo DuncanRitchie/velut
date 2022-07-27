@@ -16,7 +16,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
         <div className={styles.advanced + ' fulmar-background'}>
           <Header textBeforeTitle="Advanced Search" />
           <AdvancedRubric />
-          <AdvancedSearch autofocus={true} query={query} />
+          <AdvancedSearch query={query} />
         </div>
       </>
     )
@@ -66,7 +66,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
           <Header textBeforeTitle="Advanced Search" />
           <div>
             <AdvancedRubric />
-            <AdvancedSearch autofocus={false} query={query} />
+            <AdvancedSearch query={query} />
             <div className={styles.subsiteResult}>{result}</div>
           </div>
         </div>
