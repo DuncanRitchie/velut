@@ -60,7 +60,7 @@ const WordPage = ({
     }
     // Let’s find the rhymes.
     if (rhymes) {
-      // A react-router-dom Link is rendered for every rhyme.
+      // A Next.js Link is rendered for every rhyme.
       mappedRhymes = rhymes.map((rhyme, index) => {
         return (
           <Fragment key={index}>
