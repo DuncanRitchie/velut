@@ -1,6 +1,7 @@
 # velut
+https://www.velut.co.uk
 
-velut is an online Latin rhyming dictionary using Next.js and MongoDB. A version using the MERN stack is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
+velut is an online Latin rhyming dictionary using Next.js and MongoDB.
 
 Anyone with an interest in Latin can get something out of velut, but it is aimed at people with at least a general understanding of the language and how poetry is composed in the ancient quantitative (length-based) metres and in more modern qualitative (stress-based) metres. Really, though, it is aimed at me, as a personal pet project that is now pretty elaborate!
 
@@ -12,7 +13,11 @@ I store all the data in an Excel file, which is now more than 90MB in size, but 
 
 The velut website (in this repository) is a Next.js site that reads from the two collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Many page (www.velut.co.uk/many) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
 
-The MERN version is a single-page application that has the same functionality, but using an Express.js server on the backend and client-side–rendered React.js on the frontend. It is currently hosted by Render on https://render.velut.co.uk, but I will probably cancel it in the future because I don’t want to maintain it.
+### Old version with Create React App
+
+When I first made the velut website, it was a single-page application that has the same functionality, but using an Express server on the backend and client-side–rendered React.js on the frontend (using Create React App). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
+
+(MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so I’m keeping the branchnames “main” and “mern”.)
 
 ## Functionality
 
