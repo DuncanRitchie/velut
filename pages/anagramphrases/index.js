@@ -23,7 +23,7 @@ const AnagramsHome = () => {
           characters may fail completely.
         </p>
         <Search
-          type="/anagramphrases"
+          type="anagramphrases"
           searchbarTitle="Type something to find anagrams of"
           lang="zxx"
           hideDropdown={true}

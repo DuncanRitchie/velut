@@ -63,7 +63,7 @@ const Anagrams = ({ input, anagrams, error }) => {
           Caution — searches may take some minutes or fail completely.
         </p>
         <Search
-          type="/anagramphrases"
+          type="anagramphrases"
           word={input}
           searchbarTitle="Type something to find anagrams of"
           lang="zxx"

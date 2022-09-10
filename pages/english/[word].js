@@ -26,7 +26,7 @@ const English = ({ lemmata, sanitisedInput }) => {
       <div className="fulmar-background">
         <Header textBeforeTitle="English to Latin" />
         <Search
-          type="/english"
+          type="english"
           word={sanitisedInput}
           searchbarTitle="Type an English word"
           lang="en"

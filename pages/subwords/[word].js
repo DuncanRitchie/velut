@@ -99,7 +99,7 @@ const Subwords = ({
         <Header textBeforeTitle="Subwords" />
         <div>
           <Search
-            type="/subwords"
+            type="subwords"
             searchbarTitle="Type something to find subwords of"
             lang="zxx"
             hideDropdown={true}

@@ -19,7 +19,7 @@ const EnglishHome = () => {
           Enter something English and this will suggest Latin translations!
         </p>
         <Search
-          type="/english"
+          type="english"
           searchbarTitle="Type an English word"
           lang="en"
           hideDropdown={true}
