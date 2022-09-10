@@ -7,7 +7,7 @@ const Home = ({ type = '/' }) => {
   return (
     <>
       <Head>
-        <title>Duncan Ritchie’s velut — a Latin rhyming dictionary</title>
+        <title>velut — a Latin rhyming dictionary</title>
       </Head>
       <div className={styles.home + ' fulmar-background-big'}>
         <Header />
