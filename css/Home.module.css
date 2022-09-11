@@ -4,11 +4,9 @@
 }
 
 .homeRubric span {
-  background-image: linear-gradient(
-    180deg,
-    rgb(206, 227, 242) 0%,
-    rgb(227, 239, 248) 100%
-  );
+  background-image: linear-gradient(180deg, #cee3f2 0%, #e3eff8 100%);
+  background-size: 100% 100vh;
+  background-attachment: fixed;
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
   display: inline-block;
