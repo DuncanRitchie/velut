@@ -21,6 +21,9 @@
   padding-right: 10.5rem;
   padding-right: calc(7.5rem + 3vw);
   color: #376937;
+  /* A shadow the same colour as the background.
+    in case the text is overlaying the fulmar picture */
+  text-shadow: 1px 1px 1px #cee3f2;
   display: inline-block;
 }
 
@@ -37,11 +40,19 @@
   text-decoration: none;
 }
 
+.header .title::after {
+  content: text;
+  text-shadow: 2px 2px white;
+}
+
 .header p.titleFull {
   margin-top: 0;
   margin-bottom: 1.125rem;
   color: #274141;
   font-size: 0.75rem;
+  /* A shadow the same colour as the background.
+    in case the text is overlaying the fulmar picture */
+  text-shadow: 1px 1px 1px #cee3f2;
   /* padding-top: 0.625rem; */
   padding-bottom: 0.75rem;
 }
@@ -53,5 +64,11 @@
     background: none;
     background-clip: initial;
     -webkit-text-fill-color: initial;
+  }
+
+  /* No reason to have a shadow. */
+  .header .titleAuthor,
+  .titleFull {
+    text-shadow: none;
   }
 }
