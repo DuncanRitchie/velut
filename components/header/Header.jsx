@@ -1,3 +1,4 @@
+import TextWithBackground from '../textWithBackground/TextWithBackground'
 import styles from './Header.module.css'
 
 let Header = (props) => {
@@ -6,7 +7,9 @@ let Header = (props) => {
       {/* Pages that don’t have `textBeforeTitle` have <h1> outside of Header */}
       {props.textBeforeTitle && <h1>{props.textBeforeTitle}</h1>}
       <p>
-        <span className={styles.titleAuthor}>Duncan Ritchie’s</span>
+        <span className={styles.titleAuthor}>
+          <TextWithBackground text="Duncan Ritchie’s" />
+        </span>
         <br />
         <abbr
           className={styles.title}
@@ -17,9 +20,9 @@ let Header = (props) => {
         </abbr>
       </p>
       <p className={styles.titleFull} lang="la">
-        Vocābulōrum Excellentium
+        <TextWithBackground text="Vocābulōrum Excellentium" />
         <br />
-        Latīnōrum Ūtilēs Tabulae
+        <TextWithBackground text="Latīnōrum Ūtilēs Tabulae" />
       </p>
     </header>
   )
