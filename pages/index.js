@@ -3,6 +3,15 @@ import Header from '../components/header/Header'
 import Search from '../components/search/Search'
 import styles from '../css/Home.module.css'
 
+const splitIntoSpans = (text) => {
+  return text
+    .split(/(?<= )|(?= )/)
+    .map((word) => (<>
+      <span>{word}</span>
+      <span aria-hidden='true'>{word}</span>
+    </>))
+}
+
 const Home = ({ type = '/' }) => {
   return (
     <>
@@ -12,13 +21,13 @@ const Home = ({ type = '/' }) => {
       <div className={styles.home + ' fulmar-background-big'}>
         <Header />
         <h1 className={styles.homeRubric}>
-          <span>Latin rhymes &amp;&nbsp;more!</span>
+          {splitIntoSpans('Latin rhymes & more!')}
         </h1>
         <Search type={type} searchbarTitle="Type a Latin word" />
         <p className={styles.homeRubric}>
-          <span>Enter a Latin word in the searchbar above,</span>
+          {splitIntoSpans('Enter a Latin word in the searchbar above,')}
           <br />
-          <span>or see the navigation bar below for other options.</span>
+          {splitIntoSpans('or see the navigation bar below for other options.')}
         </p>
       </div>
     </>
