@@ -32,20 +32,23 @@ const English = ({ lemmata, sanitisedInput }) => {
           hideDropdown={true}
         />
 
-        <p className={styles.showingResultsFor}>
-          {lemmata.length
-            ? 'Showing ' +
-              lemmata.length +
-              ' ' +
-              (lemmata.length === 1 ? 'lemma' : 'lemmata') +
-              ' with meanings containing “' +
-              sanitisedInput +
-              '”.'
-            : 'No results were found for “' +
-              sanitisedInput +
-              '”. Please try a different search.'}
-        </p>
-        <div className={styles.wordInfo}>{mappedLemmata}</div>
+        {lemmata.length ? (
+          <>
+            <div className={styles.wordInfo}>
+              <h2 style={{marginTop: '1.125rem'}}>
+                Search results
+              </h2>
+              <p>There are {lemmata.length} {lemmata.length === 1 ? 'lemma' : 'lemmata'}{' '}
+                with meanings containing “{sanitisedInput}”.</p>
+              {mappedLemmata}
+            </div>
+          </>
+        ) : (
+          <p className={styles.showingResultsFor}>
+            No results were found for “{sanitisedInput}”.
+            Please try a different search.
+          </p>
+        )}
 
         <Dictionaries
           category="English-to-Latin"
