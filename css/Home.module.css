@@ -1,5 +1,6 @@
-.home h2 {
+.home h1 {
   color: #3f3b1f /* One of the midtones in the .title gradient. */;
+  font-size: 1.5rem;
 }
 
 .homeRubric span {

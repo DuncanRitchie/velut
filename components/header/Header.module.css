@@ -1,8 +1,18 @@
-.header h1 {
+.header {
   width: inherit;
-  padding: 0.5625rem 0.375rem 0.375rem;
-  color: #213a21 /* a darker, brighter green */;
-  margin: calc(1vw + 3vh - 0.625rem) 0 -0.375rem;
+  /* padding: 0.5625rem 0.375rem 0; */
+  color: #213a21 /* a darker green than .titleAuthor*/;
+  margin-top: calc(1vw + 3vh - 0.125rem);
+}
+
+.header h1 {
+  margin-bottom: -1.25rem;
+}
+
+.header p:first-of-type {
+  margin-top: 1.25rem;
+  padding-bottom: 0.625rem;
+  line-height: 1.25rem;
 }
 
 .header .titleAuthor {
@@ -25,7 +35,7 @@
   font-size: 5.625rem;
   font-weight: normal;
   font-weight: 300;
-  line-height: 3.25rem;
+  line-height: 3.5rem;
   font-variant: none;
   text-decoration: none;
 }
@@ -43,7 +53,7 @@
   /* A shadow the same colour as the background.
     in case the text is overlaying the fulmar picture */
   text-shadow: 1px 1px 1px #cee3f2;
-  padding-top: 0.625rem;
+  /* padding-top: 0.625rem; */
   padding-bottom: 0.75rem;
 }
 

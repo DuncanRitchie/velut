@@ -3,13 +3,9 @@ import styles from './Header.module.css'
 let Header = (props) => {
   return (
     <header className={styles.header}>
-      <h1>
-        {props.textBeforeTitle ? (
-          <>
-            {props.textBeforeTitle}
-            <br />
-          </>
-        ) : null}
+      {/* Pages that don’t have `textBeforeTitle` have <h1> outside of Header */}
+      {props.textBeforeTitle && <h1>{props.textBeforeTitle}</h1>}
+      <p>
         <span className={styles.titleAuthor}>Duncan Ritchie’s</span>
         <br />
         <abbr
@@ -19,7 +15,7 @@ let Header = (props) => {
         >
           velut
         </abbr>
-      </h1>
+      </p>
       <p className={styles.titleFull} lang="la">
         Vocābulōrum Excellentium
         <br />

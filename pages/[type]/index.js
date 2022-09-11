@@ -135,11 +135,10 @@ const WordPage = ({
         />
         <p className={subsiteStyles.showingResultsFor + ' page-width'}>
           Showing results for
-          <br />
-          <strong className={styles.foundWord + ' page-width'} lang="la">
-            {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
-          </strong>
         </p>
+        <h1 className={styles.foundWord + ' page-width'} lang="la">
+          {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
+        </h1>
         <div className={subsiteStyles.wordInfo}>
           {foundWord ? (
             <div>

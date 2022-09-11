@@ -11,9 +11,9 @@ const Home = ({ type = '/' }) => {
       </Head>
       <div className={styles.home + ' fulmar-background-big'}>
         <Header />
-        <h2 className={styles.homeRubric}>
+        <h1 className={styles.homeRubric}>
           <span>Latin rhymes &amp;&nbsp;more!</span>
-        </h2>
+        </h1>
         <Search type={type} searchbarTitle="Type a Latin word" />
         <p className={styles.homeRubric}>
           <span>Enter a Latin word in the searchbar above,</span>
