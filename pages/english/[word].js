@@ -11,13 +11,12 @@ const English = ({ lemmata, sanitisedInput }) => {
     return <Lemma key={lemma.Lemma} lemma={lemma} linkBase="../" />
   })
 
+  const pageTitle = `English “${sanitisedInput}” to Latin on velut — a Latin rhyming dictionary`
+
   return (
     <>
       <Head>
-        <title>
-          English “{sanitisedInput}” to Latin on velut — a Latin rhyming
-          dictionary
-        </title>
+        <title>{pageTitle}</title>
         <meta
           name="Description"
           content={`Latin words for the English “${sanitisedInput}”`}
