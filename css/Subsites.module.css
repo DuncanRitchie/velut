@@ -47,10 +47,13 @@
 }
 
 .wordInfo h2:not(.dictionariesHeading) {
-  margin-top: 0.1875rem;
   margin-bottom: 0.1875rem;
   padding: 0.625rem 0.75rem;
   background-color: #efe1ab;
+}
+
+.wordInfo h2:not(:first-of-type):not(.dictionariesHeading) {
+  margin-top: 0.1875rem;
 }
 
 .wordInfo p:not(.dictionariesP) {

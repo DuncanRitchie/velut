@@ -35,7 +35,7 @@ const English = ({ lemmata, sanitisedInput }) => {
         {lemmata.length ? (
           <>
             <div className={styles.wordInfo}>
-              <h2 style={{marginTop: '1.125rem'}}>
+              <h2>
                 Search results
               </h2>
               <p>There are {lemmata.length} {lemmata.length === 1 ? 'lemma' : 'lemmata'}{' '}
