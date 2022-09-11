@@ -35,18 +35,19 @@ const English = ({ lemmata, sanitisedInput }) => {
         {lemmata.length ? (
           <>
             <div className={styles.wordInfo}>
-              <h2>
-                Search results
-              </h2>
-              <p>There are {lemmata.length} {lemmata.length === 1 ? 'lemma' : 'lemmata'}{' '}
-                with meanings containing “{sanitisedInput}”.</p>
+              <h2>Search results</h2>
+              <p>
+                There are {lemmata.length}{' '}
+                {lemmata.length === 1 ? 'lemma' : 'lemmata'} with meanings
+                containing “{sanitisedInput}”.
+              </p>
               {mappedLemmata}
             </div>
           </>
         ) : (
           <p className={styles.showingResultsFor}>
-            No results were found for “{sanitisedInput}”.
-            Please try a different search.
+            No results were found for “{sanitisedInput}”. Please try a different
+            search.
           </p>
         )}
 
