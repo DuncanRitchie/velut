@@ -1,11 +1,11 @@
 # velut
 https://www.velut.co.uk
 
-velut is an online Latin rhyming dictionary using Next.js and MongoDB.
+velut is an online Latin rhyming dictionary using [Next.js](https://nextjs.org/) and [MongoDB](https://www.mongodb.com/).
 
 Anyone with an interest in Latin can get something out of velut, but it is aimed at people with at least a general understanding of the language and how poetry is composed in the ancient quantitative (length-based) metres and in more modern qualitative (stress-based) metres. Really, though, it is aimed at me, as a personal pet project that is now pretty elaborate!
 
-This GitHub repo is publicly visible. The site is hosted by Fly from the main branch, at https://www.velut.co.uk.
+This GitHub repo is publicly visible. The site is hosted by [Fly](https://fly.io/) from the main branch, at https://www.velut.co.uk.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ The velut website (in this repository) is a Next.js site that reads from the two
 
 ### Old version with Create React App
 
-When I first made the velut website, it was a single-page application that had the same functionality, but using an Express server on the backend and client-side–rendered React.js on the frontend (using Create React App). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
+When I first made the velut website, it was a single-page application that had the same functionality, but using an [Express](https://expressjs.com/) server on the backend and client-side–rendered [React.js](https://reactjs.org/) on the frontend (using [Create React App](https://create-react-app.dev/)). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
 
 (MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so I’m keeping the branchnames “main” and “mern”.)
 
