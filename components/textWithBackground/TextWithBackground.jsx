@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import styles from './TextWithBackground.module.css'
 
 // This component gives text a background that matches
@@ -11,19 +10,8 @@ import styles from './TextWithBackground.module.css'
 // do not hide the text of adjacent words.
 
 const TextWithBackground = ({ text }) => {
-  const splitIntoSpans = (text) => {
-    return text
-      .split(/(?<= )|(?= )/)
-      .map((word, index) => (
-        <Fragment key={word + ' ' + index}>
-          <span>{word}</span>
-          <span aria-hidden="true">{word}</span>
-        </Fragment>
-      ))
-  }
-
   return (
-    <span className={styles.textWithBackground}>{splitIntoSpans(text)}</span>
+    <span className={styles.textWithBackground}>{text}</span>
   )
 }
 
