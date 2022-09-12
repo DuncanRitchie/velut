@@ -3,9 +3,6 @@
   font-size: 1.5rem;
 }
 
-/* The risk of overflow comes from the aria-hidden spans */
 p.homeRubric {
   margin-top: calc(12vw + 5vh - 4rem);
-  overflow-x: clip;
-  position: relative;
 }
