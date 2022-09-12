@@ -28,7 +28,8 @@
 }
 
 .header .title {
-  color: #34311a /* Average of the gradient colours used in the @supports block */;
+  color: #34311a
+    /* Average of the gradient colours used in the @supports block */;
   font-size: 5.625rem;
   font-weight: normal;
   font-weight: 300;
