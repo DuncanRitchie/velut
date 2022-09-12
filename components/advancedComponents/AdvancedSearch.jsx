@@ -154,7 +154,7 @@ class AdvancedSearch extends Component {
           title={
             this.state.sanitisedInput
               ? `Search for “${this.state.sanitisedInput}”`
-              : 'Please type something in the searchbar'
+              : 'Please type something in the form'
           }
         >
           Search!
