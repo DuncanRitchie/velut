@@ -28,16 +28,21 @@
 }
 
 .header .title {
-  color: #34311a /* Average of the gradient colours */;
-  background: linear-gradient(to bottom, #111007, #58522c);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #34311a /* Average of the gradient colours used in the @supports block */;
   font-size: 5.625rem;
   font-weight: normal;
   font-weight: 300;
   line-height: 3.5rem;
   font-variant: none;
   text-decoration: none;
+}
+
+@supports (background-clip: text) {
+  .header .title {
+    background: linear-gradient(to bottom, #111007, #58522c);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .header .title::after {
