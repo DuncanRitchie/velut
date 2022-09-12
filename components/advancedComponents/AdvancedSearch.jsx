@@ -58,6 +58,7 @@ class AdvancedSearch extends Component {
     return (
       <form
         className={advancedStyles.advancedSearch + ' ' + searchStyles.search}
+        role="search"
       >
         <div>
           <div id="advanced-search-spelling">

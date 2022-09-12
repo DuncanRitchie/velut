@@ -115,7 +115,10 @@ class ManySSR extends Component {
           <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
           </p>
-          <form className={searchStyles.search + ' ' + manyStyles.search}>
+          <form
+            className={searchStyles.search + ' ' + manyStyles.search}
+            role="search"
+          >
             <textarea
               name="search"
               title="Type some Latin words into this box."

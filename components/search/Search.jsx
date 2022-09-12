@@ -69,6 +69,7 @@ class Search extends Component {
         action="/redirectonsearch"
         method="get"
         onSubmit={this.handleSubmit}
+        role="search"
       >
         {/* The box the word will be typed into. */}
         <input

@@ -262,6 +262,7 @@ class ManyCSR extends Component {
           <form
             className={searchStyles.search + ' ' + manyStyles.search}
             onSubmit={(e) => e.preventDefault()}
+            role="search"
           >
             <textarea
               title="Type some Latin words into this box."
