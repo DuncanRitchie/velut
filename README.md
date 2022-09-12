@@ -15,7 +15,7 @@ The velut website (in this repository) is a Next.js site that reads from the two
 
 ### Old version with Create React App
 
-When I first made the velut website, it was a single-page application that has the same functionality, but using an Express server on the backend and client-side–rendered React.js on the frontend (using Create React App). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
+When I first made the velut website, it was a single-page application that had the same functionality, but using an Express server on the backend and client-side–rendered React.js on the frontend (using Create React App). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
 
 (MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so I’m keeping the branchnames “main” and “mern”.)
 
