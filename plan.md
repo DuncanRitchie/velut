@@ -2,11 +2,11 @@
 
 For context, see [this project’s readme](https://github.com/DuncanRitchie/velut#readme). If none of this makes sense to you, I apologize.
 
-I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that I use to manage velut, in addition to the gigantic Excel file. I’ll probably be making more webpages to fulfil the steps below. The steps are in chronological order.
+I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that I use to manage velut, in addition to the gigantic Excel file. I’ll probably be making more webpages and Node scripts to fulfil the steps below. The steps are in chronological order.
 
 - [x] Port velut to Next.js. <ins>Completed 2022-07-23.</ins>
 - [x] Decide whether to cancel my Render subscription for serving the MERN version. <ins>Subscription suspended 2022-09-10.</ins>
-- [ ] Make a webpage (or similar) that replaces the Excel sheet `wordsform`, which generates the phonetic data (etc) for each word. (Top-right in the [Excel screenshot](https://github.com/DuncanRitchie/velut#excel) in the readme.) It doesn’t need database access.
+- [x] Make a webpage (or similar) that replaces the Excel sheet `wordsform`, which generates the phonetic data (etc) for each word. (Top-right in the [Excel screenshot](https://github.com/DuncanRitchie/velut#excel) in the readme.) It doesn’t need database access. <ins>[Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator) completed 2022-09-29.</ins>
 - [ ] For each lemma in velut, generate the list of forms already in velut. This should be something that can be repeated easily whenever I add to the Excel file. A webpage that has `<textarea>`s for relevant data would suffice. Name it the Excel Forms Collator (or something better).
 - [ ] Export the manually-entered data of `lemmata` into Json. (This is the Excel sheet bottom-left in the screenshot.)
 - [ ] Write something that generates an empty list for each lemma. Name it the Inflector.
