@@ -8,7 +8,7 @@ I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that 
 - [x] Decide whether to cancel my Render subscription for serving the MERN version. <ins>Subscription suspended 2022-09-10.</ins>
 - [x] Make a webpage (or similar) that replaces the Excel sheet `wordsform`, which generates the phonetic data (etc) for each word. (Top-right in the [Excel screenshot](https://github.com/DuncanRitchie/velut#excel) in the readme.) It doesn’t need database access. <ins>[Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator) completed 2022-09-29.</ins>
 - [x] For each lemma in velut, generate the list of forms already in velut. This should be something that can be repeated easily whenever I add to the Excel file. A webpage that has `<textarea>`s for relevant data would suffice. Name it the Forms Collator (or something better). <ins>[Forms Collator](https://github.com/DuncanRitchie/velut-forms-collator) completed 2022-10-08.</ins>
-- [ ] Export the manually-entered data of `lemmata` into Json. (This is the Excel sheet bottom-left in the screenshot.)
+- [x] Export the manually-entered data of `lemmata` into Json. (This is the Excel sheet bottom-left in the screenshot.) <ins>Done 2022-10-09.</ins>
 - [ ] Write something that generates an empty list for each lemma. Name it the Inflector.
 - [ ] Write tests that compare the output of the Forms Collator (the lists of forms already in velut) to the output of the Inflector (a set of empty lists, at this point in time). The tests will fail for all lemmata.
 - [ ] Make the Inflector return the lemma for conjunctions and prepositions, which will make some tests pass.
