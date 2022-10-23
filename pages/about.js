@@ -148,11 +148,18 @@ const About = (props) => {
           <section id="spelling">
             <h2>Spelling</h2>
             <p>
-              Words in velut are spelt with the letters abcdefghiklmnopqrstuvxyz
-              — j is always written as i, w does not appear. Any long vowel is
-              marked with a macron (ĀāĒēĪīŌōŪūȲȳ). In words where the stress is
-              otherwise ambiguous, the presence or absence of an acute accent
-              will distinguish — e.g.
+              I want searching for any word in velut to be easy, but I also want
+              to distinguish between homographs — words with the same letters in
+              order but different pronunciation or capitalisation. I have
+              therefore adopted the following conventions.
+            </p>
+
+            <h3>Diacritics</h3>
+
+            <p>
+              Any long vowel is marked with a macron (ĀāĒēĪīŌōŪūȲȳ). In words
+              where the stress is otherwise ambiguous, the presence or absence
+              of an acute accent will distinguish — e.g.{' '}
               <Link href="/Tiberī">
                 <a title="“Tiberī” on velut" lang="la">
                   Tiberī
@@ -170,10 +177,13 @@ const About = (props) => {
             <p>
               Typing diacritics is not necessary: as long as the letters are
               right (and in the right order), velut will find a word that
-              matches. If there are several words spelt the same, they will be
-              offered as “other homographs”. You can also specify diacritics by
-              typing a hyphen, full stop, or colon after a vowel needing a
-              macron, acute, or diaeresis; thus{' '}
+              matches. If there are several words spelt the same (diacritics and
+              capitalisation notwithstanding), they will be listed as “other
+              homographs”.
+            </p>
+            <p>
+              You can also specify diacritics by typing a hyphen, full stop, or
+              colon after a vowel needing a macron, acute, or diaeresis; thus{' '}
               <Link href="/Tibe.ri-">
                 <a title="“Tibe.ri-” on velut" lang="la">
                   Tibe.ri-
@@ -186,6 +196,105 @@ const About = (props) => {
                 </a>
               </Link>
               .
+            </p>
+
+            <h3>Letters</h3>
+            <p>
+              Words in velut are spelt with the letters
+              abcdefghiklmnopqrstuvxyz.
+            </p>
+            <p>
+              Consonantal i is always written as i, not j. The letter w also
+              does not appear — the letters u and v are used instead. And
+              ligatures (æ/œ) aren’t used either: I separate the letters.
+            </p>
+            <p>
+              If you try to search for a word containing j/w/æ/œ, these
+              substitutions are attempted for you. Therefore, a search for{' '}
+              <Link href="/jus">
+                <a title="“jus” on velut" lang="la">
+                  jus
+                </a>
+              </Link>{' '}
+              yields{' '}
+              <Link href="/iūs">
+                <a title="“iūs” on velut" lang="la">
+                  iūs
+                </a>
+              </Link>
+              ,{' '}
+              <Link href="/Dewa">
+                <a title="“Dewa” on velut" lang="la">
+                  Dewa
+                </a>
+              </Link>{' '}
+              yields{' '}
+              <Link href="/Dēva">
+                <a title="“Dēva” on velut" lang="la">
+                  Dēva
+                </a>
+              </Link>
+              ,{' '}
+              <Link href="/Edwardus">
+                <a title="“Edwardus” on velut" lang="la">
+                  Edwardus
+                </a>
+              </Link>{' '}
+              yields{' '}
+              <Link href="/Eduardus">
+                <a title="“Eduardus” on velut" lang="la">
+                  Eduardus
+                </a>
+              </Link>{' '}
+              (with a consonantal first u),{' '}
+              <Link href="/Æneadæ">
+                <a title="“Æneadæ” on velut" lang="la">
+                  Æneadæ
+                </a>
+              </Link>{' '}
+              yields{' '}
+              <Link href="/Aeneadae">
+                <a title="“Aeneadae” on velut" lang="la">
+                  Aeneadae
+                </a>
+              </Link>
+              , and{' '}
+              <Link href="/œconomia">
+                <a title="“œconomia” on velut" lang="la">
+                  œconomia
+                </a>
+              </Link>{' '}
+              yields{' '}
+              <Link href="/oeconomia">
+                <a title="“oeconomia” on velut" lang="la">
+                  oeconomia
+                </a>
+              </Link>
+              .
+            </p>
+            <p>
+              However, if you enter u or v (or any other letter that Latin words
+              are spelt with on this website), no attempt is made to substitute
+              a different letter. This means that neither a search for{' '}
+              <Link href="/uelut">
+                <a title="“uelut” on velut" lang="la">
+                  uelut
+                </a>
+              </Link>{' '}
+              nor{' '}
+              <Link href="/velvt">
+                <a title="“velvt” on velut" lang="la">
+                  velvt
+                </a>
+              </Link>{' '}
+              will find{' '}
+              <Link href="/velut">
+                <a title="“velut” on velut" lang="la">
+                  velut
+                </a>
+              </Link>
+              . So be careful if you’re looking up words from a text that does
+              not distinguish u from v.
             </p>
           </section>
 
