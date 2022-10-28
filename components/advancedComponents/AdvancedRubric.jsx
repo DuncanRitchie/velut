@@ -27,9 +27,7 @@ const AdvancedRubric = () => {
           A capital “V” means any vowel letter (aeiouy). Even if “i” is
           pronounced as a consonant, it is treated as a vowel here; likewise for
           “u” when not spelt as “v” (as in{' '}
-          <Link href="../sua-deo-" title="suādeō">
-            suādeō
-          </Link>
+          <Link href="../sua-deo-">suādeō</Link>
           ).
         </li>
         <li>A full stop means any letter (abcdefghiklmnopqrstuvxyz).</li>
@@ -41,54 +39,25 @@ const AdvancedRubric = () => {
       <h4>Examples</h4>
       <ul>
         <li>
-          “vota” returns the words{' '}
-          <Link href="../vo-ta" title="vōta">
-            vōta
-          </Link>{' '}
-          and{' '}
-          <Link href="../vo-ta-" title="vōtā">
-            vōtā
-          </Link>
-          .
+          “vota” returns the words <Link href="../vo-ta">vōta</Link> and{' '}
+          <Link href="../vo-ta-">vōtā</Link>.
         </li>
         <li>
-          “Vota” returns the word{' '}
-          <Link href="../io-ta" title="iōta">
-            iōta
-          </Link>
-          .
+          “Vota” returns the word <Link href="../io-ta">iōta</Link>.
         </li>
         <li>“.ota” returns all four-letter words ending in “ota”.</li>
         <li>
-          “augustus” returns the words{' '}
-          <Link href="../Augustus" title="Augustus">
-            Augustus
-          </Link>{' '}
-          and{' '}
-          <Link href="../augustus" title="augustus">
-            augustus
-          </Link>
-          . “VVgustus” returns the same. “Augustus” does not return anything:
-          the “a” needs to be lowercase here.
+          “augustus” returns the words <Link href="../Augustus">Augustus</Link>{' '}
+          and <Link href="../augustus">augustus</Link>. “VVgustus” returns the
+          same. “Augustus” does not return anything: the “a” needs to be
+          lowercase here.
         </li>
         <li>
           “august_” returns all the forms of{' '}
-          <Link href="../Augusta" title="Augusta">
-            Augusta
-          </Link>
-          ,{' '}
-          <Link href="../Augustus" title="Augustus">
-            Augustus
-          </Link>
-          ,{' '}
-          <Link href="../augustus" title="augustus">
-            augustus
-          </Link>
-          ,{' '}
-          <Link href="../Augusti-nus" title="Augustīnus">
-            Augustīnus
-          </Link>
-          , etc that are in velut.
+          <Link href="../Augusta">Augusta</Link>,{' '}
+          <Link href="../Augustus">Augustus</Link>,{' '}
+          <Link href="../augustus">augustus</Link>,{' '}
+          <Link href="../Augusti-nus">Augustīnus</Link>, etc that are in velut.
         </li>
         <li>
           “h~V_” returns words that either begin with a vowel or begin with “h”
@@ -126,70 +95,36 @@ const AdvancedRubric = () => {
       <p>
         In words where a vowel is followed by plosive consonant and then “l” or
         “r”, both consonants belong to the following syllable, so{' '}
-        <Link href="../tetradrachmum" title="tetradrachmum">
-          tetradrachmum
-        </Link>{' '}
-        begins with two short syllables.
+        <Link href="../tetradrachmum">tetradrachmum</Link> begins with two short
+        syllables.
       </p>
       <h4>Examples</h4>
       <p>These examples assume “Allow elision?” is off.</p>
       <ul>
         <li>
-          “LSS” returns dactyls, such as{' '}
-          <Link href="../Graecia" title="Graecia">
-            Graecia
-          </Link>{' '}
-          and{' '}
-          <Link href="../obdere" title="obdere">
-            obdere
-          </Link>
-          .
+          “LSS” returns dactyls, such as <Link href="../Graecia">Graecia</Link>{' '}
+          and <Link href="../obdere">obdere</Link>.
         </li>
         <li>
           “....” returns words of four syllables, such as{' '}
-          <Link href="../agricola" title="agricola">
-            agricola
-          </Link>{' '}
-          and{' '}
-          <Link href="../thaumatu-rgus" title="thaumatūrgus">
-            thaumatūrgus
-          </Link>
-          .
+          <Link href="../agricola">agricola</Link> and{' '}
+          <Link href="../thaumatu-rgus">thaumatūrgus</Link>.
         </li>
         <li>
           “LSSL.” returns words that can occupy the fifth and sixth feet of a
           dactylic hexameter, such as{' '}
-          <Link href="../amphithea-trum" title="amphitheātrum">
-            amphitheātrum
-          </Link>{' '}
-          and{' '}
-          <Link href="../quo-modocumque" title="quōmodocumque">
-            quōmodocumque
-          </Link>
-          .
+          <Link href="../amphithea-trum">amphitheātrum</Link> and{' '}
+          <Link href="../quo-modocumque">quōmodocumque</Link>.
         </li>
         <li>
           “SSSSSS~” returns words of five or six short syllables, such as{' '}
-          <Link href="../liquefacite" title="liquefacite">
-            liquefacite
-          </Link>{' '}
-          and{' '}
-          <Link href="../Mesopotamia" title="Mesopotamia">
-            Mesopotamia
-          </Link>
-          .
+          <Link href="../liquefacite">liquefacite</Link> and{' '}
+          <Link href="../Mesopotamia">Mesopotamia</Link>.
         </li>
         <li>
           “_SSSS_” returns words that contain a run of four short syllables,
-          such as{' '}
-          <Link href="../agricola" title="agricola">
-            agricola
-          </Link>{' '}
-          (again) and{' '}
-          <Link href="../physiologia-" title="physiologiā">
-            physiologiā
-          </Link>
-          .
+          such as <Link href="../agricola">agricola</Link> (again) and{' '}
+          <Link href="../physiologia-">physiologiā</Link>.
         </li>
         <li>
           “_” doesn’t return anything unless spelling is also set (see above).
@@ -204,18 +139,10 @@ const AdvancedRubric = () => {
         If “Allow elision?” is ticked, words that end with a vowel sound
         (including diphthongs and nasalised vowels) have this final syllable
         discarded before scansion. So a scansion of “LSSL” returns{' '}
-        <Link href="../amphithea-trum" title="amphitheātrum">
-          amphitheātrum
-        </Link>{' '}
-        and{' '}
-        <Link href="../quo-modocumque" title="quōmodocumque">
-          quōmodocumque
-        </Link>{' '}
-        (as well as words like{' '}
-        <Link href="../praevaleant" title="praevaleant">
-          praevaleant
-        </Link>
-        , which has nothing to elide), and “LSSL.” does not.
+        <Link href="../amphithea-trum">amphitheātrum</Link> and{' '}
+        <Link href="../quo-modocumque">quōmodocumque</Link> (as well as words
+        like <Link href="../praevaleant">praevaleant</Link>, which has nothing
+        to elide), and “LSSL.” does not.
       </p>
       <h3>Sorting</h3>
       <p>

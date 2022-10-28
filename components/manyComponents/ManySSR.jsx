@@ -92,11 +92,10 @@ class ManySSR extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={getHrefForDictionaryLinks(missingWords)}
-                  title="External webpage linking to other dictionaries (opens in new tab)"
                 >
                   Look up the missing{' '}
                   {missingWordsCount === 1 ? 'word' : 'words'} in other
-                  dictionaries.
+                  dictionaries (opens in new tab).
                 </a>
               </p>
             </>
