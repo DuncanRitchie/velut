@@ -3,6 +3,7 @@ import superscriptLemmaTag from './superscriptLemmaTag'
 const greece = '../../images/greece.png'
 const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
+import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 
 const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
   let {
@@ -92,8 +93,26 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
       {PartOfSpeech ? (
         <p>Part of speech: {PartOfSpeech.toLowerCase()}</p>
       ) : null}
-      {Meanings ? <p>Meanings: {Meanings}</p> : null}
-      {Notes ? <p>Notes: {Notes}</p> : null}
+      {Meanings ? (
+        <p>
+          Meanings:{' '}
+          <TextWithQuotedLatin
+            linkBase={linkBase}
+            text={Meanings}
+            currentWordHyphenated={currentWordHyphenated}
+          />
+        </p>
+      ) : null}
+      {Notes ? (
+        <p>
+          Notes:{' '}
+          <TextWithQuotedLatin
+            linkBase={linkBase}
+            text={Notes}
+            currentWordHyphenated={currentWordHyphenated}
+          />
+        </p>
+      ) : null}
       {mappedTransliterations ? (
         <p>Transliterations: {mappedTransliterations}</p>
       ) : null}
