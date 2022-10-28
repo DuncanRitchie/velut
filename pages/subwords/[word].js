@@ -26,21 +26,20 @@ const Subwords = ({
       if (remainingLetters) {
         return (
           <Fragment key={index}>
-            <Link href={'./' + remainingLetters}>
-              <a
-                title={
-                  'delete “' +
-                  word +
-                  '” from “' +
-                  input +
-                  '” to leave “' +
-                  remainingLetters +
-                  '”'
-                }
-                lang="la"
-              >
-                {word}
-              </a>
+            <Link
+              href={'./' + remainingLetters}
+              title={
+                'delete “' +
+                word +
+                '” from “' +
+                input +
+                '” to leave “' +
+                remainingLetters +
+                '”'
+              }
+              lang="la"
+            >
+              {word}
             </Link>{' '}
           </Fragment>
         )
@@ -75,10 +74,11 @@ const Subwords = ({
     result = (
       <p>
         No subwords found!&nbsp; Try a different input, such as{' '}
-        <Link href={'./' + randomCountdownQuestionExample}>
-          <a title={'Subwords of ' + randomCountdownQuestionExample}>
-            {randomCountdownQuestionExample}
-          </a>
+        <Link
+          href={'./' + randomCountdownQuestionExample}
+          title={'Subwords of ' + randomCountdownQuestionExample}
+        >
+          {randomCountdownQuestionExample}
         </Link>
         .
       </p>

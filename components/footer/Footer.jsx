@@ -40,41 +40,31 @@ let Footer = () => {
 
         {showHome && (
           <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
+            <Link href="/">Home</Link>
           </li>
         )}
 
         {showEnglish && (
           <li>
-            <Link href="/english">
-              <a>English to Latin</a>
-            </Link>
+            <Link href="/english">English to Latin</Link>
           </li>
         )}
 
         {showSubwords && (
           <li>
-            <Link href="/subwords">
-              <a>Subwords</a>
-            </Link>
+            <Link href="/subwords">Subwords</Link>
           </li>
         )}
 
         {showAdvanced && (
           <li>
-            <Link href="/advanced">
-              <a>Advanced</a>
-            </Link>
+            <Link href="/advanced">Advanced</Link>
           </li>
         )}
 
         {showAbout && (
           <li>
-            <Link href="/about">
-              <a>About velut</a>
-            </Link>
+            <Link href="/about">About velut</Link>
           </li>
         )}
       </ul>

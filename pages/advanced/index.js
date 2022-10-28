@@ -27,10 +27,8 @@ const Advanced = ({ query, isHomepage, words, error }) => {
       mappedWords = words.map((word, index) => {
         return (
           <Fragment key={index}>
-            <Link href={`../${macraToHyphens(word)}`}>
-              <a lang="la" title={word}>
-                {word}
-              </a>
+            <Link href={`../${macraToHyphens(word)}`} lang="la" title={word}>
+              {word}
             </Link>{' '}
           </Fragment>
         )
