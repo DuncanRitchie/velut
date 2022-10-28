@@ -35,12 +35,12 @@
   padding-bottom: 0.75rem;
 }
 
-.about ul {
+.about section ul {
   width: 100%;
 }
 
 /* Copied from Advanced Rubric */
-.about li {
+.about section li {
   line-height: 1.6em;
   padding: 0.625rem 1.125rem 0.625rem 1.25rem;
   margin: 0;
