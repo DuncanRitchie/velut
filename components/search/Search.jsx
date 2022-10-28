@@ -85,6 +85,7 @@ class Search extends Component {
           autoComplete="off"
           autoCorrect="off"
           spellCheck="false"
+          enterKeyHint="search"
         />
 
         {/* The `type` parameter determines the type of results displayed on the page.

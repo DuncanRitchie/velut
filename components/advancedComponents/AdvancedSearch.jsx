@@ -76,6 +76,7 @@ class AdvancedSearch extends Component {
                 autoComplete="off"
                 autoCorrect="off"
                 spellCheck="false"
+                enterKeyHint="search"
               />
             </p>
           </div>
@@ -95,6 +96,7 @@ class AdvancedSearch extends Component {
                 autoComplete="off"
                 autoCorrect="off"
                 spellCheck="false"
+                enterKeyHint="search"
               />
             </p>
             <p>
