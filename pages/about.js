@@ -421,39 +421,40 @@ const About = (props) => {
             <ul>
               <li>
                 <Link href="/Caecilius" title="“Caecilius” on velut">
-                  <>
-                    {superscriptLemmaTag('Caecilius[prn]')}and{' '}
+                  {/* Next.js 13 seems to require <a> tags inside <Link> elements here, but not elsewhere. */}
+                  <a>
+                    {superscriptLemmaTag('Caecilius[prn]')} and{' '}
                     {superscriptLemmaTag('Caecilius[adj]')}
-                  </>
+                  </a>
                 </Link>{' '}
                 are different parts of speech (proper noun and adjective
                 respectively);
               </li>
               <li>
                 <Link href="/be-ta" title="“bēta” on velut" lang="la">
-                  <>
-                    {superscriptLemmaTag('bēta[bētae]')}and{' '}
+                  <a>
+                    {superscriptLemmaTag('bēta[bētae]')} and{' '}
                     {superscriptLemmaTag('bēta[bēta]')}
-                  </>
+                  </a>
                 </Link>{' '}
                 have different genitives (letter names are indeclinable!);
               </li>
               <li>
                 <Link href="/sero-" title="“serō” on velut" lang="la">
-                  <>
+                  <a>
                     {superscriptLemmaTag('serō[satum]')},{' '}
                     {superscriptLemmaTag('serō[sertum]')}, and{' '}
                     {superscriptLemmaTag('serō[serātum]')}
-                  </>
+                  </a>
                 </Link>{' '}
                 have different participles;
               </li>
               <li>
                 <Link href="/iu-s" title="“iūs” on velut" lang="la">
-                  <>
-                    {superscriptLemmaTag('iūs[>iūrō]')}and{' '}
+                  <a>
+                    {superscriptLemmaTag('iūs[>iūrō]')} and{' '}
                     {superscriptLemmaTag('iūs[>iūsculum]')}
-                  </>
+                  </a>
                 </Link>{' '}
                 have different etymological derivatives.
               </li>
