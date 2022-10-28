@@ -37,9 +37,11 @@ const English = ({ lemmata, sanitisedInput }) => {
             <div className={styles.wordInfo}>
               <h2>Search results</h2>
               <p>
-                There are {lemmata.length}{' '}
-                {lemmata.length === 1 ? 'lemma' : 'lemmata'} with meanings
-                containing “{sanitisedInput}”.
+                There{' '}
+                {lemmata.length === 1
+                  ? 'is 1 lemma'
+                  : 'are ' + lemmata.length + ' lemmata'}{' '}
+                with meanings containing “{sanitisedInput}”.
               </p>
               {mappedLemmata}
             </div>
