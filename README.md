@@ -64,6 +64,18 @@ I rely heavily on Excel for generating, checking, and storing the data. I am gra
 
 For the details of how I’m doing this, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
 
+## Development cycle
+
+The command I use to open a development server at http://localhost:3000/ is:
+
+```bash
+npm run dev
+```
+
+The MongoDB connection string is given by `MONGODB_URI` in a .env.local file in the root directory.
+
+To redeploy, I simply push to the main branch on GitHub.
+
 ## Miscellanea
 
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
