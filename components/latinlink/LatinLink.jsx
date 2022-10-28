@@ -13,7 +13,8 @@ const LatinLink = (props) => {
   const shouldDisplayLink = !(to === currentWordHyphenated)
   return shouldDisplayLink ? (
     <Link href={linkBase + to} lang="la">
-      {text}
+      {/* <Link> should not have a nested <a>, but for some reason it is needed here! */}
+      <a>{text}</a>
     </Link>
   ) : (
     <span lang="la" className="link-to-current-word">
