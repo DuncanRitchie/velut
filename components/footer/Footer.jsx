@@ -33,41 +33,43 @@ let Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <ul>
-        <li>
-          <span className={styles.footerCopyright}>© Duncan Ritchie</span>
-        </li>
-
-        {showHome && (
+      <nav aria-label="Main navigation">
+        <ul>
           <li>
-            <Link href="/">Home</Link>
+            <span className={styles.footerCopyright}>© Duncan Ritchie</span>
           </li>
-        )}
 
-        {showEnglish && (
-          <li>
-            <Link href="/english">English to Latin</Link>
-          </li>
-        )}
+          {showHome && (
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+          )}
 
-        {showSubwords && (
-          <li>
-            <Link href="/subwords">Subwords</Link>
-          </li>
-        )}
+          {showEnglish && (
+            <li>
+              <Link href="/english">English to Latin</Link>
+            </li>
+          )}
 
-        {showAdvanced && (
-          <li>
-            <Link href="/advanced">Advanced</Link>
-          </li>
-        )}
+          {showSubwords && (
+            <li>
+              <Link href="/subwords">Subwords</Link>
+            </li>
+          )}
 
-        {showAbout && (
-          <li>
-            <Link href="/about">About velut</Link>
-          </li>
-        )}
-      </ul>
+          {showAdvanced && (
+            <li>
+              <Link href="/advanced">Advanced</Link>
+            </li>
+          )}
+
+          {showAbout && (
+            <li>
+              <Link href="/about">About velut</Link>
+            </li>
+          )}
+        </ul>
+      </nav>
     </footer>
   )
 }
