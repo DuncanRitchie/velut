@@ -4,6 +4,9 @@ import superscriptLemmaTag from '../lemma/superscriptLemmaTag'
 
 const LatinLink = (props) => {
   const { linkBase, targetWord, currentWordHyphenated, isLemma } = props
+  if (!linkBase) {
+    console.error('Missing linkBase from LatinLink')
+  }
   const text = isLemma ? superscriptLemmaTag(targetWord) : targetWord
   const targetWordHyphenated = macraToHyphens(targetWord)
   const to = isLemma
