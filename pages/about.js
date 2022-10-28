@@ -6,6 +6,7 @@ import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
 import { count as wordsCount } from '../lib/words/count'
 import { count as lemmataCount } from '../lib/lemmata/count'
 import styles from '../css/About.module.css'
+import AboutContents from '../components/aboutContents/AboutContents'
 
 export async function getServerSideProps() {
   const wordsCountData = await wordsCount()
@@ -33,6 +34,8 @@ const About = (props) => {
         <Header textBeforeTitle="About" />
 
         <main>
+          <AboutContents />
+
           <section id="backstory">
             <h2>Backstory</h2>
             <p>
