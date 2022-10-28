@@ -628,7 +628,14 @@ const About = (props) => {
               >
                 Latinitium
               </a>
-              . Even more dictionaries are listed on{' '}
+              . You can download dictionary files for specialised software from{' '}
+              <a
+                href="https://latin-dict.github.io/"
+                title="Latin dictionaries from Nikita Murzintcev"
+              >
+                Nikita Murzintcev’s collection
+              </a>
+              , although I haven’t tried. Even more dictionaries are listed on{' '}
               <a
                 href="https://latin.stackexchange.com/questions/867/which-online-latin-dictionaries-should-i-use-and-why"
                 title="Which online Latin dictionaries should I use and why? — Stack Exchange"
