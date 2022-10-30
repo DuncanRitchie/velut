@@ -49,12 +49,12 @@ I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that 
 - [ ] Replace the `words` collection in MongoDB with the output of the previous step.
 - [ ] Check that it is relatively easy to add vocabulary to velut. This means:
 
-      - adding a lemma (or several!) to my relevant Json file,
-      - getting the inflected forms with the Inflector,
-      - passing the forms into the Word Data Generator,
-      - manually checking that the data are correct,
-      - importing to MongoDB,
-      - manually checking that the words look correct on the live website.
+      1. adding a lemma (or several!) to my relevant Json file,
+      2. getting the inflected forms with the Inflector,
+      3. passing the forms into the Word Data Generator,
+      4. manually checking that the data are correct,
+      5. importing to MongoDB, and
+      6. manually checking that the words look correct on the live website.
 
 - [ ] Add inflection-tables on the front-end, using the output of the Inflector.<br>
       An example from Wiktionary:<br>
