@@ -18,9 +18,8 @@ code {
 html {
   scroll-behavior: smooth;
   font-size: 18px;
-  /* font-size: calc(16px + (20px - 16px) * ((100vw - 360px) / (2400px - 360px))); */
-  font-size: calc(16px + 4 * ((100vw - 360px) / 2040));
-  font-size: calc(1rem + 4 * ((100vw - 22.5rem) / 2040));
+  font-size: calc(16px + (100vw - 360px) / 508);
+  font-size: calc(1rem + (100vw - 22.5rem) / 508);
 }
 
 #__next {
