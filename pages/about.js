@@ -580,7 +580,14 @@ const About = (props) => {
             <p>
               On a more lexicographical note, as mentioned under{' '}
               <a href="#word-compilation">Word compilation</a>, most of the
-              lemmata are missing some forms. I should really fill them in.
+              lemmata are missing some inflected forms. (Adjectives and verbs
+              are particularly under-represented.) I’m currently writing a
+              script that will generate all the forms I want for all the lemmata
+              I have. This should also mean I can present the inflections in
+              proper tables, showing what’s singular/plural/nominative/genitive
+              etc, instead of simply dumping all forms in a flat list as I
+              currently do. It’s taking a while because I’m trying to avoid
+              producing anything nonsensical.
             </p>
             <p>
               Also, roughly 1% of lemmata are missing information regarding
