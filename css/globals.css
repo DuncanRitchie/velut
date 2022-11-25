@@ -57,6 +57,7 @@ ul {
   #__next {
     background-image: linear-gradient(180deg, #cee3f2 0%, #e3eff8 100%);
     background-attachment: fixed;
+    height: 100dvh;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 1fr auto;
