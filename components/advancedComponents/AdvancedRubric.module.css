@@ -5,7 +5,7 @@
 }
 
 .advancedRubric {
-  width: calc(100% - 1.125rem);
+  width: calc(100% - 3rem);
   max-width: 46.875rem;
   margin-top: 1.5rem;
   margin-left: auto;
