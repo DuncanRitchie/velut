@@ -27,6 +27,11 @@
   background-color: rgba(255, 253, 244, 0.95);
 }
 
+.subsiteResult:has(> h2:first-child) {
+  margin-top: 1rem;
+  border-top: none;
+}
+
 .showingResultsFor,
 .wordInfo {
   background-color: rgba(255, 253, 244, 0.95);

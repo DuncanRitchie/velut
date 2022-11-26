@@ -61,7 +61,7 @@ class AdvancedSearch extends Component {
         role="search"
       >
         <div>
-          <div id="advanced-search-spelling">
+          <fieldset id="advanced-search-spelling">
             <p>
               <label htmlFor="spelling-input">Spelling:</label>
               <input
@@ -79,9 +79,9 @@ class AdvancedSearch extends Component {
                 enterKeyHint="search"
               />
             </p>
-          </div>
+          </fieldset>
 
-          <div id="advanced-search-scansion">
+          <fieldset id="advanced-search-scansion">
             <p>
               <label htmlFor="scansion-input">Scansion:</label>
               <input
@@ -109,8 +109,9 @@ class AdvancedSearch extends Component {
               />
               <label htmlFor="elision-input">Allow elision?</label>
             </p>
-          </div>
-          <div id="advanced-search-sort">
+          </fieldset>
+
+          <fieldset id="advanced-search-sort">
             <p>
               <input
                 type="radio"
@@ -146,7 +147,7 @@ class AdvancedSearch extends Component {
                 Sort by ecclesiastical rhyme
               </label>
             </p>
-          </div>
+          </fieldset>
         </div>
 
         {/* The button to load the new page. */}

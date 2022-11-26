@@ -15,8 +15,8 @@ const Advanced = ({ query, isHomepage, words, error }) => {
         <AdvancedHead />
         <div className={styles.advanced + ' fulmar-background'}>
           <Header textBeforeTitle="Advanced Search" />
-          <AdvancedRubric />
           <AdvancedSearch query={query} />
+          <AdvancedRubric />
         </div>
       </>
     )
@@ -63,9 +63,12 @@ const Advanced = ({ query, isHomepage, words, error }) => {
         <div className={styles.advanced + ' fulmar-background'}>
           <Header textBeforeTitle="Advanced Search" />
           <div>
-            <AdvancedRubric />
             <AdvancedSearch query={query} />
-            <div className={styles.subsiteResult}>{result}</div>
+            <AdvancedRubric />
+            <div className={styles.subsiteResult}>
+              <h2>Search results</h2>
+              {result}
+            </div>
           </div>
         </div>
       </>

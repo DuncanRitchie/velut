@@ -7,7 +7,7 @@
 .advancedRubric {
   width: calc(100% - 1.125rem);
   max-width: 46.875rem;
-  margin: 0 auto;
+  margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -24,7 +24,6 @@
   background-color: #b5e3de;
 }
 
-.advancedRubric h2,
 .advancedRubric h3,
 .advancedRubric h4 {
   margin-bottom: 0;
@@ -34,6 +33,7 @@
 .advancedRubric h2 {
   background-color: #efe1ab;
   text-align: center;
+  margin-top: 0;
 }
 
 .advancedRubric h3 {

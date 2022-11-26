@@ -1,5 +1,6 @@
 .advancedSearch {
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .advancedSearch :first-child {
@@ -10,11 +11,18 @@
   width: calc(100% - 1rem);
 }
 
-.advancedSearch div div {
+.advancedSearch fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   text-align: left;
   border-top: 0.1875rem solid #c2b170;
+}
+
+.advancedSearch fieldset:not(:first-of-type) {
+  margin-top: 1rem;
 }
 
 .advancedSearch div:not(:last-of-type) {
