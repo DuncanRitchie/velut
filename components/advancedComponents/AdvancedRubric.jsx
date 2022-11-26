@@ -94,8 +94,8 @@ const AdvancedRubric = () => {
       </ul>
       <p>
         In words where a vowel is followed by plosive consonant and then “l” or
-        “r”, both consonants belong to the following syllable, so{' '}
-        <Link href="../tetradrachmum">tetradrachmum</Link> begins with two short
+        “r”, both consonants belong to the following syllable. This makes{' '}
+        <Link href="../tetradrachmum">tetradrachmum</Link> begin with two short
         syllables.
       </p>
       <h4>Examples</h4>
