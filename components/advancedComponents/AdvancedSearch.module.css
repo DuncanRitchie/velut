@@ -34,6 +34,20 @@
   margin: 0;
 }
 
+/* Labels for text inputs */
+.advancedSearch label:not(input + label) {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0.125rem 0 0.5rem;
+}
+
+.advancedSearch label small {
+  line-height: 1.3333em;
+  margin: 0.3333em 0 0;
+}
+
+/* Labels for checkbox & radio-buttons */
 .advancedSearch input + label {
   margin-left: 0.25rem;
 }

@@ -63,7 +63,13 @@ class AdvancedSearch extends Component {
         <div>
           <fieldset id="advanced-search-spelling">
             <p>
-              <label htmlFor="spelling-input">Spelling:</label>
+              <label htmlFor="spelling-input">
+                Spelling:
+                <small>
+                  For example, <code>Vvis</code> →{' '}
+                  <b lang="la">avis, ovis, ūvīs&nbsp;…</b>
+                </small>
+              </label>
               <input
                 id="spelling-input"
                 name="spelling"
@@ -83,7 +89,13 @@ class AdvancedSearch extends Component {
 
           <fieldset id="advanced-search-scansion">
             <p>
-              <label htmlFor="scansion-input">Scansion:</label>
+              <label htmlFor="scansion-input">
+                Scansion:
+                <small>
+                  For example, <code>lsslss</code> →{' '}
+                  <b lang="la">ambitiōsior, convenientia&nbsp;…</b>
+                </small>
+              </label>
               <input
                 id="scansion-input"
                 name="scansion"
