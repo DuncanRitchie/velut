@@ -270,8 +270,7 @@ const About = (props) => {
                 tenebra
               </Link>
               . But the same word may otherwise fit{' '}
-              <span className="scansion">⏑⏑⏑</span> but may otherwise fit quite
-              plausibly <span className="scansion">⏑⏑–</span> or{' '}
+              <span className="scansion">⏑⏑⏑</span> or{' '}
               <span className="scansion">⏑⏑</span> or{' '}
               <span className="scansion">⏑–⏑</span> or{' '}
               <span className="scansion">⏑––</span> or{' '}
