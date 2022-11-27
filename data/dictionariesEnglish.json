@@ -1,11 +1,23 @@
 [
   {
+    "Dictionary": "Bantam New College",
+    "Formula": "https://archive.org/details/bantamnewcollege00john_0/page/n9/mode/2up?q=INPUT"
+  },
+  {
     "Dictionary": "Glosbe",
     "Formula": "https://glosbe.com/en/la/INPUT"
   },
   {
     "Dictionary": "LatDict",
     "Formula": "http://www.latin-dictionary.net/search/english/INPUT#search-results-list"
+  },
+  {
+    "Dictionary": "Latin-English",
+    "Formula": "http://www.latin-english.com/english/INPUT/"
+  },
+  {
+    "Dictionary": "Latin is Simple",
+    "Formula": "https://www.latin-is-simple.com/en/vocabulary/search/?q=INPUT"
   },
   {
     "Dictionary": "Liddell–Scott–Jones",
@@ -22,6 +34,10 @@
   {
     "Dictionary": "Perseus",
     "Formula": "http://www.perseus.tufts.edu/hopper/definitionlookup?type=substring&q=INPUT&target=la"
+  },
+  {
+    "Dictionary": "Webxicon",
+    "Formula": "http://webxicon.org/search.php?q=INPUT&l=3&l2=8"
   },
   {
     "Dictionary": "Whitaker’s Words",
