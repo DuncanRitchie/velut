@@ -1,5 +1,13 @@
 [
   {
+    "Dictionary": "Bantam New College",
+    "Formula": "https://archive.org/details/bantamnewcollege00john_0/page/n9/mode/2up?q=INPUT"
+  },
+  {
+    "Dictionary": "Forcellini",
+    "Formula": "http://lexica.linguax.com/forc2.php?searchedLG=INPUT"
+  },
+  {
     "Dictionary": "Gaffiot",
     "Formula": "http://micmap.org/dicfro/search/gaffiot/INPUT"
   },
@@ -12,6 +20,14 @@
     "Formula": "http://www.latin-dictionary.net/search/latin/INPUT#search-results-list"
   },
   {
+    "Dictionary": "Latin-English",
+    "Formula": "http://www.latin-english.com/latin/INPUT/"
+  },
+  {
+    "Dictionary": "Latin is Simple",
+    "Formula": "https://www.latin-is-simple.com/en/vocabulary/search/?q=INPUT"
+  },
+  {
     "Dictionary": "Liddell–Scott–Jones",
     "Formula": "https://lsj.gr/wiki/INPUT"
   },
@@ -22,6 +38,10 @@
   {
     "Dictionary": "Morganianum",
     "Formula": "http://neolatinlexicon.org/search/latin?search=INPUT"
+  },
+  {
+    "Dictionary": "Notre-Dame",
+    "Formula": "http://archives.nd.edu/cgi-bin/lookup.pl?stem=INPUT&ending="
   },
   {
     "Dictionary": "Numen",
@@ -42,6 +62,10 @@
   {
     "Dictionary": "Tower of Babel",
     "Formula": "http://starling.rinet.ru/cgi-bin/response.cgi?root=config&morpho=0&basename=%5Cdata%5Cie%5Cpiet&first=1&text_lat=INPUT&method_lat=substring&ww_lat=on&ic_lat=on&text_any=&method_any=substring&sort=proto&ic_any=on"
+  },
+  {
+    "Dictionary": "Webxicon",
+    "Formula": "http://webxicon.org/search.php?q=INPUT&l=8&l2=3"
   },
   {
     "Dictionary": "Whitaker’s Words",
