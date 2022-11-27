@@ -138,7 +138,7 @@ const About = (props) => {
               <Link href="/Tiberī" lang="la">
                 Tiberī
               </Link>{' '}
-              (dative of the river Tiber) has stress on the first syllable,{' '}
+              (dative of the river Tiber) has stress on the first syllable, and{' '}
               <Link href="/Tibérī" lang="la">
                 Tibérī
               </Link>{' '}
