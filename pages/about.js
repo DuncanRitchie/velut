@@ -344,8 +344,8 @@ const About = (props) => {
               are the same, but not necessarily in the same order.
             </p>
             <p>
-              Anagrams and consonyms are listed in alphabetical order. (As are
-              with forms, cognates, and words that scan the same.)
+              Anagrams and consonyms are listed in alphabetical order. (So are
+              forms, cognates, and words that scan the same.)
             </p>
             <p>
               “<Link href="/subwords">Subwords</Link>” are words whose letters
