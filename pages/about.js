@@ -336,8 +336,8 @@ const About = (props) => {
             <h2>Consonyms, anagrams, and subwords</h2>
             <p>
               “<Link href="/consonyms">Consonyms</Link>” are words whose
-              consonant letters (i.e. bcdfghklmnpqrstvxz) are the same and in
-              the same order.
+              consonant letters (bcdfghklmnpqrstvxz) are the same and in the
+              same order.
             </p>
             <p>
               “<Link href="/anagrams">Anagrams</Link>” are words whose letters
@@ -521,7 +521,7 @@ const About = (props) => {
               add a lot more.
             </p>
             <p>
-              There are even some encliticized forms (i.e. ending in{' '}
+              There are even some encliticized forms (ending in{' '}
               <Link href="/-ne" lang="la">
                 -ne
               </Link>{' '}
