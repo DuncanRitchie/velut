@@ -207,22 +207,6 @@ details[open] summary::before {
   transform: rotate(0turn);
 }
 
-.collapsible-outer {
-  display: grid;
-  grid-template-rows: 0fr;
-  grid-template-columns: 100%;
-  transition: 1s;
-  overflow: hidden;
-}
-
-.collapsible-outer .collapsible-inner {
-  min-height: 0;
-}
-
-details[open] .collapsible-outer {
-  grid-template-rows: 1fr;
-}
-
 /* Note: there is no easy way to target an open <select> in CSS like we can for <details>;
 however, `.with-dropdown-arrow:focus-within` would get us some of the way there. */
 
