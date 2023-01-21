@@ -1,0 +1,24 @@
+.warning {
+  position: fixed;
+  /* `position: absolute` would have the same effect because .warning is not inside an element that scrolls. */
+  top: 0.25rem;
+  right: 0.25rem;
+  z-index: 1;
+  min-width: min(15rem, calc(100% - 0.5rem));
+  width: min(calc(50% - 46.875rem / 2 - 0.5rem), 29.17%);
+  max-width: calc(100% - 0.5rem);
+  background: rgba(255, 253, 244, 0.95);
+  /* Same gradient as About contents <li>s */
+  background-image: radial-gradient(transparent 50%, #efe1ab80 100%);
+  box-shadow: 0 0.25rem 0.25rem #0a08002b;
+}
+
+.warning summary {
+  font-weight: bolder;
+  padding: 0.25rem;
+  background-image: radial-gradient(transparent 50%, #efe1ab80 100%);
+}
+
+.warning p {
+  padding: 0.25rem !important;
+}
