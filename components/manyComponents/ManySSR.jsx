@@ -118,7 +118,11 @@ class ManySSR extends Component {
             className={searchStyles.search + ' ' + manyStyles.search}
             role="search"
           >
+            <label htmlFor="many-textarea" className="visually-hidden">
+              Latin words
+            </label>
             <textarea
+              id="many-textarea"
               name="search"
               title="Latin words"
               value={this.state.input}

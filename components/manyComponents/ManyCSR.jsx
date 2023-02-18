@@ -266,7 +266,11 @@ class ManyCSR extends Component {
             onSubmit={(e) => e.preventDefault()}
             role="search"
           >
+            <label htmlFor="many-textarea" className="visually-hidden">
+              Latin words
+            </label>
             <textarea
+              id="many-textarea"
               title="Latin words"
               name="search"
               value={this.state.input}
