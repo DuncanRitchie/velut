@@ -21,7 +21,7 @@ const EnglishHome = () => {
         <Search
           type="english"
           searchbarLabel="English word"
-          searchbarTitle="Type an English word"
+          searchbarTitle="English word"
           lang="en"
           hideDropdown={true}
         />

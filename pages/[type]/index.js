@@ -131,7 +131,7 @@ const WordPage = ({
         <Search
           type={type}
           searchbarLabel="Latin word"
-          searchbarTitle="Type a Latin word"
+          searchbarTitle="Latin word"
           word={sanitisedInput}
         />
         <p className={subsiteStyles.showingResultsFor + ' page-width'}>

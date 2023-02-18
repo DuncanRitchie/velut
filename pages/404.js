@@ -14,7 +14,7 @@ const FourOFour = ({ type = '/' }) => {
         <Search
           type={type}
           searchbarLabel="Latin word"
-          searchbarTitle="Type a Latin word"
+          searchbarTitle="Latin word"
         />
         <p className={styles.homeRubric}>
           <span>Please try searching for something else!</span>

@@ -616,7 +616,7 @@ const About = (props) => {
         </main>
         <Search
           searchbarLabel="Latin word"
-          searchbarTitle="Type a Latin word"
+          searchbarTitle="Latin word"
           hideDropdown={true}
         />
       </div>
