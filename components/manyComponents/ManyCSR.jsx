@@ -5,7 +5,10 @@ import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import manyStyles from '../../css/Many.module.css'
 import searchStyles from '../../components/search/Search.module.css'
-import { getHrefForDictionaryLinks, splitIntoWords } from '../../lib/words/many'
+import {
+  getHrefForDictionaryLinks,
+  splitIntoWords,
+} from '../../lib/words/manyHelpers'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 

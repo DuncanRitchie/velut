@@ -4,7 +4,7 @@ import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import manyStyles from '../../css/Many.module.css'
 import searchStyles from '../../components/search/Search.module.css'
-import { getHrefForDictionaryLinks } from '../../lib/words/many'
+import { getHrefForDictionaryLinks } from '../../lib/words/manyHelpers'
 
 class ManySSR extends Component {
   constructor(props) {
