@@ -1,23 +1,19 @@
-import { Component, Fragment } from 'react'
+import { Fragment } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import { noMacra } from '../../lib/words/diacritics'
-import getSubwords, {
+import getSubwords from '../../lib/words/subwords'
+import {
   deleteCharacters,
   randomCountdownQuestionWeighted,
-} from '../../lib/words/subwords'
+} from '../../lib/words/subwordsHelpers'
 import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word
 
-const Subwords = ({
-  input,
-  subwords,
-  loading,
-  randomCountdownQuestionExample,
-}) => {
+const Subwords = ({ input, subwords, randomCountdownQuestionExample }) => {
   let mappedWords = []
   if (subwords) {
     mappedWords = subwords.map((word, index) => {
