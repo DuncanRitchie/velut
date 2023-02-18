@@ -255,6 +255,22 @@ progress::-webkit-progress-value {
   box-shadow: 0.0625rem 0 0.125rem rgba(0, 0, 0, 0.5) inset;
 }
 
+/*
+Styles for invisible content accessible to screen-readers, taken from
+https://gomakethings.com/revisting-aria-label-versus-a-visually-hidden-class/
+See also: https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
+*/
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 @media screen {
   .fulmar-background,
   .fulmar-background-big {
