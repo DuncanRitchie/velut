@@ -29,10 +29,7 @@ const SubwordsHome = ({ randomCountdownQuestionExample }) => {
         />
         <p className={styles.subsiteHomeRubric}>
           Alternatively, search for a random string:{' '}
-          <Link
-            href={'/subwords/' + randomCountdownQuestionExample}
-            title={'Subwords of ' + randomCountdownQuestionExample}
-          >
+          <Link href={'/subwords/' + randomCountdownQuestionExample}>
             {randomCountdownQuestionExample}
           </Link>
           .

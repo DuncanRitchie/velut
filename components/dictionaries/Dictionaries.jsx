@@ -11,12 +11,7 @@ let Dictionaries = ({ sanitisedInput, category }) => {
   let mappedDics = dictionaries.map((dic, index) => {
     return (
       <Fragment key={index}>
-        <a
-          href={dic.Formula.replace('INPUT', plainInput)}
-          title={'Search ' + dic.Dictionary + ' for “' + plainInput + '”'}
-        >
-          {dic.Dictionary}
-        </a>
+        <a href={dic.Formula.replace('INPUT', plainInput)}>{dic.Dictionary}</a>
         {index === dictionaries.length - 1 ? '' : ','}{' '}
       </Fragment>
     )

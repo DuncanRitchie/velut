@@ -167,11 +167,6 @@ class AdvancedSearch extends Component {
           id="search-button"
           className={searchStyles.searchButton}
           type="submit"
-          title={
-            this.state.sanitisedInput
-              ? `Search for “${this.state.sanitisedInput}”`
-              : 'Please type something in the form'
-          }
         >
           Search!
         </button>

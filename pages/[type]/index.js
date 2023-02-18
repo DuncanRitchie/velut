@@ -165,25 +165,14 @@ const WordPage = ({
             <>
               <p>
                 Nothing was found. Try{' '}
-                <Link
-                  href={linkBase + macraToHyphens(randomWord)}
-                  title={randomWord}
-                  lang="la"
-                >
+                <Link href={linkBase + macraToHyphens(randomWord)} lang="la">
                   {randomWord}
                 </Link>
                 .
               </p>
               <p>
                 Or do you want to search from{' '}
-                <Link
-                  href={'/english/' + sanitisedInput}
-                  title={
-                    'Search for Latin words with the English meaning “' +
-                    sanitisedInput +
-                    '”'
-                  }
-                >
+                <Link href={'/english/' + sanitisedInput}>
                   English to Latin
                 </Link>
                 ?

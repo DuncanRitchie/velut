@@ -120,7 +120,7 @@ class ManySSR extends Component {
           >
             <textarea
               name="search"
-              title="Type some Latin words into this box."
+              title="Latin words"
               value={this.state.input}
               onChange={this.textareaOnChange}
               lang="la"

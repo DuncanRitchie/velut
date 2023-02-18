@@ -116,16 +116,7 @@ class Search extends Component {
         )}
 
         {/* The button to load the new page. */}
-        <button
-          className={styles.searchButton}
-          tabIndex="0"
-          type="submit"
-          title={
-            this.state.sanitisedInput
-              ? `Search for “${this.state.sanitisedInput}”`
-              : 'Please type something in the searchbar'
-          }
-        >
+        <button className={styles.searchButton} type="submit">
           Search!
         </button>
         <br />

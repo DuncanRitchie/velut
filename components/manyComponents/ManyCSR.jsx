@@ -264,7 +264,7 @@ class ManyCSR extends Component {
             role="search"
           >
             <textarea
-              title="Type some Latin words into this box."
+              title="Latin words"
               name="search"
               value={this.state.input}
               onChange={this.textareaOnChange}
