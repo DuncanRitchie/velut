@@ -130,6 +130,7 @@ const WordPage = ({
         <Header />
         <Search
           type={type}
+          searchbarLabel="Latin word"
           searchbarTitle="Type a Latin word"
           word={sanitisedInput}
         />

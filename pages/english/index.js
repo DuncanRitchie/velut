@@ -20,6 +20,7 @@ const EnglishHome = () => {
         </p>
         <Search
           type="english"
+          searchbarLabel="English word"
           searchbarTitle="Type an English word"
           lang="en"
           hideDropdown={true}

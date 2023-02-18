@@ -8,6 +8,23 @@
   grid-template-columns: 50% 1fr auto;
 }
 
+/*
+Styles for visually hidden content, taken from
+https://gomakethings.com/revisting-aria-label-versus-a-visually-hidden-class/
+See also: https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
+*/
+.search label[for='search-input'],
+.search label[for='rhyme-type-dropdown'] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .search input[type='text'],
 .search textarea {
   text-align: center;

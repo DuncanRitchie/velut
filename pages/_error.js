@@ -11,7 +11,11 @@ const ErrorPage = ({ type = '/' }) => {
       </Head>
       <div className={styles.home + ' fulmar-background'}>
         <Header textBeforeTitle="Error" />
-        <Search type={type} searchbarTitle="Type a Latin word" />
+        <Search
+          type={type}
+          searchbarLabel="Latin word"
+          searchbarTitle="Type a Latin word"
+        />
         <p className={styles.homeRubric}>
           <span>Please try searching for something else!</span>
         </p>

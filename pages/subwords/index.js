@@ -23,6 +23,7 @@ const SubwordsHome = ({ randomCountdownQuestionExample }) => {
         </p>
         <Search
           type="subwords"
+          searchbarLabel="Text to find subwords of"
           searchbarTitle="Type something to find subwords of"
           lang="zxx"
           hideDropdown={true}

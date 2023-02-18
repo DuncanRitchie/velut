@@ -65,6 +65,7 @@ const Anagrams = ({ input, anagrams, error }) => {
         <Search
           type="anagramphrases"
           word={input}
+          searchbarLabel="Text to find anagrams of"
           searchbarTitle="Type something to find anagrams of"
           lang="zxx"
           hideDropdown={true}

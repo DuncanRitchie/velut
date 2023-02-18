@@ -71,6 +71,10 @@ class Search extends Component {
         onSubmit={this.handleSubmit}
         role="search"
       >
+        {/* This label is visually hidden. */}
+        <label htmlFor="search-input">
+          {this.props.searchbarLabel || 'Text to search for'}
+        </label>
         {/* The box the word will be typed into. */}
         <input
           id="search-input"
@@ -96,8 +100,13 @@ class Search extends Component {
           <input name="type" type="hidden" value={this.state.type}></input>
         ) : (
           <div className={styles.dropdown + ' with-dropdown-arrow'}>
+            {/* This label is visually hidden. */}
+            <label htmlFor="rhyme-type-dropdown">
+              Type of rhymes to include
+            </label>
             <select
               name="type"
+              id="rhyme-type-dropdown"
               value={this.state.type}
               onChange={this.handleType}
             >
