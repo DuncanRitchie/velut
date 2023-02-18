@@ -82,7 +82,7 @@ class Search extends Component {
           value={this.state.word || ''}
           onChange={this.handleInput}
           onKeyUp={this.handleInputKeyUp}
-          title={this.props.searchbarTitle || 'Type something here'}
+          title={this.props.searchbarLabel || 'Text to search for'}
           type="text"
           lang={this.props.lang || 'la'}
           autoCapitalize="none"

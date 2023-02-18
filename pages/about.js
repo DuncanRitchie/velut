@@ -614,11 +614,7 @@ const About = (props) => {
             </p>
           </section>
         </main>
-        <Search
-          searchbarLabel="Latin word"
-          searchbarTitle="Latin word"
-          hideDropdown={true}
-        />
+        <Search searchbarLabel="Latin word" hideDropdown={true} />
       </div>
     </>
   )

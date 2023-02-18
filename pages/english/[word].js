@@ -28,7 +28,6 @@ const English = ({ lemmata, sanitisedInput }) => {
           type="english"
           word={sanitisedInput}
           searchbarLabel="English word"
-          searchbarTitle="English word"
           lang="en"
           hideDropdown={true}
         />

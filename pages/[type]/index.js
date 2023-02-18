@@ -128,12 +128,7 @@ const WordPage = ({
       </Head>
       <div className="fulmar-background">
         <Header />
-        <Search
-          type={type}
-          searchbarLabel="Latin word"
-          searchbarTitle="Latin word"
-          word={sanitisedInput}
-        />
+        <Search type={type} searchbarLabel="Latin word" word={sanitisedInput} />
         <p className={subsiteStyles.showingResultsFor + ' page-width'}>
           Showing results for
         </p>

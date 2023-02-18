@@ -16,11 +16,7 @@ const Home = ({ type = '/' }) => {
             Latin rhymes &amp;&nbsp;more!
           </span>
         </h1>
-        <Search
-          type={type}
-          searchbarLabel="Latin word"
-          searchbarTitle="Latin word"
-        />
+        <Search type={type} searchbarLabel="Latin word" />
         <p className={styles.homeRubric}>
           <span className="textWithBackground">
             Enter a Latin word in the searchbar&nbsp;above,

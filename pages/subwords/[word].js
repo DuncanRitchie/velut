@@ -101,7 +101,6 @@ const Subwords = ({
           <Search
             type="subwords"
             searchbarLabel="Text to find subwords of"
-            searchbarTitle="Text to find subwords of"
             lang="zxx"
             hideDropdown={true}
             word={input}

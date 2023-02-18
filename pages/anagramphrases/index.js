@@ -25,7 +25,6 @@ const AnagramsHome = () => {
         <Search
           type="anagramphrases"
           searchbarLabel="Text to find anagrams of"
-          searchbarTitle="Text to find anagrams of"
           lang="zxx"
           hideDropdown={true}
         />
