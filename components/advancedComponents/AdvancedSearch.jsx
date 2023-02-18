@@ -61,7 +61,7 @@ class AdvancedSearch extends Component {
         role="search"
       >
         <div>
-          <fieldset id="advanced-search-spelling">
+          <div id="advanced-search-spelling">
             <p>
               <label htmlFor="spelling-input">
                 Spelling:
@@ -75,7 +75,7 @@ class AdvancedSearch extends Component {
                 name="spelling"
                 value={this.state.spelling.unsanitised}
                 onChange={this.handleInput}
-                title="Letters that will match the words returned"
+                aria-describedby="advanced-rubric-spelling"
                 type="text"
                 lang="la"
                 autoCapitalize="none"
@@ -85,9 +85,9 @@ class AdvancedSearch extends Component {
                 enterKeyHint="search"
               />
             </p>
-          </fieldset>
+          </div>
 
-          <fieldset id="advanced-search-scansion">
+          <div id="advanced-search-scansion">
             <p>
               <label htmlFor="scansion-input">
                 Scansion:
@@ -101,7 +101,7 @@ class AdvancedSearch extends Component {
                 name="scansion"
                 value={this.state.scansion.unsanitised}
                 onChange={this.handleInput}
-                title="Sequence of long and short syllables that will match the words returned"
+                aria-describedby="advanced-rubric-scansion"
                 type="text"
                 lang="la"
                 autoCapitalize="none"
@@ -118,12 +118,16 @@ class AdvancedSearch extends Component {
                 onChange={this.handleCheckboxChange}
                 checked={this.state.elision}
                 id="elision-input"
+                aria-describedby="advanced-rubric-elision"
               />
               <label htmlFor="elision-input">Allow elision?</label>
             </p>
-          </fieldset>
+          </div>
 
-          <fieldset id="advanced-search-sort">
+          <div
+            id="advanced-search-sort"
+            aria-describedby="advanced-rubric-sort"
+          >
             <p>
               <input
                 type="radio"
@@ -159,7 +163,7 @@ class AdvancedSearch extends Component {
                 Sort by ecclesiastical rhyme
               </label>
             </p>
-          </fieldset>
+          </div>
         </div>
 
         {/* The button to load the new page. */}
