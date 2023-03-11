@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Header from '../header/Header'
 import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
-import manyStyles from '../../css/Multi.module.css'
+import multiStyles from '../../css/Multi.module.css'
 import searchStyles from '../../components/search/Search.module.css'
 import {
   getHrefForDictionaryLinks,
@@ -256,13 +256,13 @@ class MultiCSR extends Component {
     return (
       <div className="fulmar-background">
         <Header textBeforeTitle="Multi-word Look-up" />
-        <div className={manyStyles.many}>
+        <div className={multiStyles.many}>
           <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
           </p>
           {/* Form submission does not cause a full page reload if JavaScript is enabled. */}
           <form
-            className={searchStyles.search + ' ' + manyStyles.search}
+            className={searchStyles.search + ' ' + multiStyles.search}
             onSubmit={(e) => e.preventDefault()}
             role="search"
           >

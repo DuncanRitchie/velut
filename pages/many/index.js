@@ -3,14 +3,14 @@ import findMany from '../../lib/words/many'
 import MultiCSR from '../../components/multiComponents/MultiCSR'
 import MultiSSR from '../../components/multiComponents/MultiSSR'
 
-// Many is a JSX element rendered at /many/
-// If "ssr=true" is in the query, the ManySSR component is rendered,
+// Multi is a JSX element rendered at /many/
+// If "ssr=true" is in the query, the MultiSSR component is rendered,
 // which fetches the data in `getServerSideProps` and renders the data
 // on the server-side.
-// Otherwise, the ManyCSR component is rendered and fetching &
+// Otherwise, the MultiCSR component is rendered and fetching &
 // rendering happen on the client-side.
 
-const ManyHead = () => {
+const MultiHead = () => {
   return (
     <Head>
       <title>Multi-word Look-up on velut — a Latin rhyming dictionary</title>
@@ -22,16 +22,16 @@ const ManyHead = () => {
   )
 }
 
-const Many = (props) => {
+const Multi = (props) => {
   return (
     <>
-      <ManyHead />
+      <MultiHead />
       {props.ssr ? <MultiSSR {...props} /> : <MultiCSR {...props} />}
     </>
   )
 }
 
-export default Many
+export default Multi
 
 export async function getServerSideProps({ query, res }) {
   if (query.search) {

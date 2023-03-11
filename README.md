@@ -12,7 +12,7 @@ This GitHub repo is publicly visible. The site is hosted by [Fly](https://fly.io
 
 I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and use mongoimport to replace my two MongoDB Atlas collections.
 
-The velut website (in this repository) is a Next.js site that reads from the two collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Many page (www.velut.co.uk/many) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
+The velut website (in this repository) is a Next.js site that reads from the two collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Multi-word page (www.velut.co.uk/many) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
 
 ### Old version with Create React App
 
