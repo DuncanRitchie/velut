@@ -4,7 +4,7 @@ import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import multiStyles from '../../css/Multi.module.css'
 import searchStyles from '../../components/search/Search.module.css'
-import { getHrefForDictionaryLinks } from '../../lib/words/manyHelpers'
+import { getHrefForDictionaryLinks } from '../../lib/words/multiHelpers'
 
 class MultiSSR extends Component {
   constructor(props) {
@@ -110,7 +110,7 @@ class MultiSSR extends Component {
     return (
       <div className="fulmar-background">
         <Header textBeforeTitle="Multi-word Look-up" />
-        <div className={multiStyles.many}>
+        <div className={multiStyles.multi}>
           <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
           </p>
@@ -118,11 +118,11 @@ class MultiSSR extends Component {
             className={searchStyles.search + ' ' + multiStyles.search}
             role="search"
           >
-            <label htmlFor="many-textarea" className="visually-hidden">
+            <label htmlFor="multi-textarea" className="visually-hidden">
               Latin words
             </label>
             <textarea
-              id="many-textarea"
+              id="multi-textarea"
               name="search"
               title="Latin words"
               value={this.state.input}

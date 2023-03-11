@@ -8,7 +8,7 @@ import searchStyles from '../../components/search/Search.module.css'
 import {
   getHrefForDictionaryLinks,
   splitIntoWords,
-} from '../../lib/words/manyHelpers'
+} from '../../lib/words/multiHelpers'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -199,7 +199,7 @@ class MultiCSR extends Component {
       result = (
         <div>
           <p>
-            <label htmlFor="many-progress">
+            <label htmlFor="multi-progress">
               {pendingWordsCount
                 ? `Waiting for results for ${pendingWordsCount} ${
                     pendingWordsCount === 1 ? 'word' : 'words'
@@ -208,7 +208,7 @@ class MultiCSR extends Component {
                     allWordsCount === 1 ? 'word' : 'words'
                   } you entered.`}
               <progress
-                id="many-progress"
+                id="multi-progress"
                 max={1}
                 value={proportionComplete}
               ></progress>
@@ -256,7 +256,7 @@ class MultiCSR extends Component {
     return (
       <div className="fulmar-background">
         <Header textBeforeTitle="Multi-word Look-up" />
-        <div className={multiStyles.many}>
+        <div className={multiStyles.multi}>
           <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
           </p>
@@ -266,11 +266,11 @@ class MultiCSR extends Component {
             onSubmit={(e) => e.preventDefault()}
             role="search"
           >
-            <label htmlFor="many-textarea" className="visually-hidden">
+            <label htmlFor="multi-textarea" className="visually-hidden">
               Latin words
             </label>
             <textarea
-              id="many-textarea"
+              id="multi-textarea"
               title="Latin words"
               name="search"
               value={this.state.input}

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import findMany from '../../lib/words/many'
+import findMany from '../../lib/words/multi'
 import MultiCSR from '../../components/multiComponents/MultiCSR'
 import MultiSSR from '../../components/multiComponents/MultiSSR'
 
