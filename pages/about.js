@@ -466,13 +466,29 @@ const About = (props) => {
             </p>
           </section>
 
+          <section id="multi-word-look-up">
+            <h2>Multi-word Look-up</h2>
+            <p>
+              If you want to search for many Latin words in velut at once, use
+              the <Link href="/many">Multi-word Look-up</Link>.
+            </p>
+            <p>This will give you links to the ones that are in velut.</p>
+            <p>
+              I also have an online tool for{' '}
+              <a href="https://www.duncanritchie.co.uk/velut-dictionary-links">
+                looking several words up in several dictionaries
+              </a>
+              . This isn’t on the velut website, but the Multi-word Look-up
+              links to it if you search for words that are not in velut.
+            </p>
+          </section>
+
           <section id="advanced-search">
             <h2>Advanced Search</h2>
             <p>
-              One of the newest features of velut is its{' '}
-              <Link href="/advanced">Advanced Search</Link>, which lets you find
-              Latin words that match a given scansion and/or spelling, with
-              support for wildcards.
+              The <Link href="/advanced">Advanced Search</Link> of velut lets
+              you find Latin words that match a given scansion and/or spelling,
+              with support for wildcards.
             </p>
             <p>
               <Link href="/advanced/?spelling=f_s&amp;scansion=LLX">

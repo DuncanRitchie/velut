@@ -33,6 +33,9 @@ const AboutContents = () => {
           <Link href="#english-to-latin">English to Latin</Link>
         </li>
         <li>
+          <Link href="#multi-word-look-up">Multi-word Look-up</Link>
+        </li>
+        <li>
           <Link href="#advanced-search">Advanced Search</Link>
         </li>
         <li>
