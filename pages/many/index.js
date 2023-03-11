@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import findMany from '../../lib/words/many'
-import ManyCSR from '../../components/manyComponents/MultiCSR'
-import ManySSR from '../../components/manyComponents/MultiSSR'
+import MultiCSR from '../../components/manyComponents/MultiCSR'
+import MultiSSR from '../../components/manyComponents/MultiSSR'
 
 // Many is a JSX element rendered at /many/
 // If "ssr=true" is in the query, the ManySSR component is rendered,
@@ -26,7 +26,7 @@ const Many = (props) => {
   return (
     <>
       <ManyHead />
-      {props.ssr ? <ManySSR {...props} /> : <ManyCSR {...props} />}
+      {props.ssr ? <MultiSSR {...props} /> : <MultiCSR {...props} />}
     </>
   )
 }

@@ -25,7 +25,7 @@ function Redirect({ newUrl, callback }) {
   return <span>Redirecting…</span>
 }
 
-class ManyCSR extends Component {
+class MultiCSR extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -305,4 +305,4 @@ class ManyCSR extends Component {
   }
 }
 
-export default ManyCSR
+export default MultiCSR
