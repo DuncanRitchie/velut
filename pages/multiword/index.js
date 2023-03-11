@@ -26,7 +26,7 @@ const Multi = (props) => {
   return (
     <>
       <MultiHead />
-      {props.ssr ? <MultiSSR {...props} /> : <MultiCSR {...props} />}
+      {props.ssr == 'true' ? <MultiSSR {...props} /> : <MultiCSR {...props} />}
     </>
   )
 }
