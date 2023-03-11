@@ -15,8 +15,6 @@
   border: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
   text-align: left;
   border-top: 0.1875rem solid #c2b170;
 }
@@ -30,17 +28,23 @@
   margin: 0;
 }
 
-/* Labels for text inputs */
-.advancedSearch label:not(input + label) {
+/* Containers for labels for text inputs */
+.advancedSearch div p > span {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   flex-wrap: wrap;
-  margin: 0.125rem 0 0.5rem;
 }
 
-.advancedSearch label small {
+/* Labels for text inputs */
+.advancedSearch label:not(input + label) {
+  margin: 0.125rem 0.25rem 0.25rem 0;
+}
+
+/* Example text for the text inputs */
+.advancedSearch span small {
   line-height: 1.3333em;
-  margin: 0.3333em 0 0;
+  margin: 0 0 0.5rem;
 }
 
 /* Labels for checkbox & radio-buttons */

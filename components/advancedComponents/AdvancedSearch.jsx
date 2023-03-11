@@ -63,19 +63,20 @@ class AdvancedSearch extends Component {
         <div>
           <div id="advanced-search-spelling">
             <p>
-              <label htmlFor="spelling-input">
-                Spelling:
-                <small>
+              <span>
+                <label htmlFor="spelling-input">Spelling:</label>
+                {/* #spelling-example is rephrased for screen-readers by #spelling-example-sr */}
+                <small id="spelling-example" aria-hidden="true">
                   For example, <code>Vvis</code> →{' '}
                   <b lang="la">avis, ovis, ūvīs&nbsp;…</b>
                 </small>
-              </label>
+              </span>
               <input
                 id="spelling-input"
                 name="spelling"
                 value={this.state.spelling.unsanitised}
                 onChange={this.handleInput}
-                aria-describedby="advanced-rubric-spelling"
+                aria-describedby="spelling-example-sr"
                 type="text"
                 lang="la"
                 autoCapitalize="none"
@@ -84,24 +85,29 @@ class AdvancedSearch extends Component {
                 spellCheck="false"
                 enterKeyHint="search"
               />
+              <small id="spelling-example-sr" hidden>
+                For example, capital <code>V</code> lowercase <code>vis</code>{' '}
+                gives <b lang="la">ovis, uvis</b>, et cetera
+              </small>
             </p>
           </div>
 
           <div id="advanced-search-scansion">
             <p>
-              <label htmlFor="scansion-input">
-                Scansion:
-                <small>
+              <span>
+                <label htmlFor="scansion-input">Scansion:</label>
+                {/* #scansion-example is rephrased for screen-readers by #scansion-example-sr */}
+                <small id="scansion-example" aria-hidden="true">
                   For example, <code>lsslss</code> →{' '}
                   <b lang="la">ambitiōsior, convenientia&nbsp;…</b>
                 </small>
-              </label>
+              </span>
               <input
                 id="scansion-input"
                 name="scansion"
                 value={this.state.scansion.unsanitised}
                 onChange={this.handleInput}
-                aria-describedby="advanced-rubric-scansion"
+                aria-describedby="scansion-example-sr"
                 type="text"
                 lang="la"
                 autoCapitalize="none"
@@ -110,6 +116,10 @@ class AdvancedSearch extends Component {
                 spellCheck="false"
                 enterKeyHint="search"
               />
+              <small id="scansion-example-sr" hidden>
+                For example, <code>L S S L S S</code> gives{' '}
+                <b lang="la">ambitiōsior, convenientia</b>, et cetera
+              </small>
             </p>
             <p>
               <input
