@@ -27,7 +27,8 @@ let Footer = () => {
   const showSubwords = !doesUrlBeginWith('subwords')
   //// A URL such as /about/re shows the Word page for “rē”, not About,
   //// so link to About should be shown if there is a second part to the URL.
-  //// Ditto for Advanced.
+  //// Ditto for Advanced and Many.
+  const showMany = !doesUrlBeginWith('many') || thereIsSecondPartOfUrl
   const showAdvanced = !doesUrlBeginWith('advanced') || thereIsSecondPartOfUrl
   const showAbout = !doesUrlBeginWith('about') || thereIsSecondPartOfUrl
 
@@ -51,6 +52,12 @@ let Footer = () => {
             </li>
           )}
 
+          {showMany && (
+            <li>
+              <Link href="/many">Multi</Link>
+            </li>
+          )}
+
           {showSubwords && (
             <li>
               <Link href="/subwords">Subwords</Link>
@@ -65,7 +72,7 @@ let Footer = () => {
 
           {showAbout && (
             <li>
-              <Link href="/about">About velut</Link>
+              <Link href="/about">About</Link>
             </li>
           )}
         </ul>
