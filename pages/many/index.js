@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import findMany from '../../lib/words/many'
-import MultiCSR from '../../components/manyComponents/MultiCSR'
-import MultiSSR from '../../components/manyComponents/MultiSSR'
+import MultiCSR from '../../components/multiComponents/MultiCSR'
+import MultiSSR from '../../components/multiComponents/MultiSSR'
 
 // Many is a JSX element rendered at /many/
 // If "ssr=true" is in the query, the ManySSR component is rendered,
