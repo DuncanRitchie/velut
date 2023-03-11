@@ -13,7 +13,7 @@ import ManySSR from '../../components/manyComponents/ManySSR'
 const ManyHead = () => {
   return (
     <Head>
-      <title>Look-up of many words on velut — a Latin rhyming dictionary</title>
+      <title>Multi-word Look-up on velut — a Latin rhyming dictionary</title>
       <meta
         name="Description"
         content="Lists of words that are and are not in the velut dictionary"

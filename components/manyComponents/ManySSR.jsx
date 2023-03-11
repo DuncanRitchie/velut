@@ -109,7 +109,7 @@ class ManySSR extends Component {
     }
     return (
       <div className="fulmar-background">
-        <Header textBeforeTitle="Look-up of many words" />
+        <Header textBeforeTitle="Multi-word Look-up" />
         <div className={manyStyles.many}>
           <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
