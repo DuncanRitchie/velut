@@ -470,7 +470,7 @@ const About = (props) => {
             <h2>Multi-word Look-up</h2>
             <p>
               If you want to search for many Latin words in velut at once, use
-              the <Link href="/many">Multi-word Look-up</Link>.
+              the <Link href="/multiword">Multi-word Look-up</Link>.
             </p>
             <p>This will give you links to the ones that are in velut.</p>
             <p>

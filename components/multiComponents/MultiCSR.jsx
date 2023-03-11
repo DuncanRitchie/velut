@@ -56,7 +56,7 @@ class MultiCSR extends Component {
   setUrlFromInput = (searchedWordsArray) => {
     const searchedWordsAsString = searchedWordsArray.join(' ')
     const urlParams = new URLSearchParams([['search', searchedWordsAsString]])
-    const newUrl = `../../many/?${urlParams}`
+    const newUrl = `../../multiword/?${urlParams}`
     this.setState({ newUrl, redirectNeeded: true })
   }
 

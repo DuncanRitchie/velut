@@ -28,7 +28,7 @@ let Footer = () => {
   //// A URL such as /about/re shows the Word page for “rē”, not About,
   //// so link to About should be shown if there is a second part to the URL.
   //// Ditto for Advanced and Multi.
-  const showMulti = !doesUrlBeginWith('many') || thereIsSecondPartOfUrl
+  const showMulti = !doesUrlBeginWith('multiword') || thereIsSecondPartOfUrl
   const showAdvanced = !doesUrlBeginWith('advanced') || thereIsSecondPartOfUrl
   const showAbout = !doesUrlBeginWith('about') || thereIsSecondPartOfUrl
 
@@ -54,7 +54,7 @@ let Footer = () => {
 
           {showMulti && (
             <li>
-              <Link href="/many">Multi</Link>
+              <Link href="/multiword">Multi</Link>
             </li>
           )}
 

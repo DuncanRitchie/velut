@@ -3,7 +3,7 @@ import findMany from '../../lib/words/multi'
 import MultiCSR from '../../components/multiComponents/MultiCSR'
 import MultiSSR from '../../components/multiComponents/MultiSSR'
 
-// Multi is a JSX element rendered at /many/
+// Multi is a JSX element rendered at /multiword/
 // If "ssr=true" is in the query, the MultiSSR component is rendered,
 // which fetches the data in `getServerSideProps` and renders the data
 // on the server-side.
