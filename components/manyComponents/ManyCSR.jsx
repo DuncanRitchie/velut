@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Header from '../header/Header'
 import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
-import manyStyles from '../../css/Many.module.css'
+import manyStyles from '../../css/Multi.module.css'
 import searchStyles from '../../components/search/Search.module.css'
 import {
   getHrefForDictionaryLinks,
