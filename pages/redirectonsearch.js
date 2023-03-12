@@ -4,7 +4,7 @@ import urlFromSearch from '../lib/urlFromSearch'
 function RedirectOnSearchPage() {}
 
 export const getServerSideProps = async ({ query, res }) => {
-  const newLocation = urlFromSearch(query)
+  const newLocation = await urlFromSearch(query)
   res.writeHead(301, { Location: newLocation })
   res.end()
   return { props: {} }
