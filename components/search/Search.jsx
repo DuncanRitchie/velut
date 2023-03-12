@@ -42,10 +42,10 @@ class Search extends Component {
     }
   }
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault()
     const router = this.props.router
-    const newLocation = await urlFromSearch(this.state)
+    const newLocation = urlFromSearch(this.state)
     router.push(newLocation)
   }
 
