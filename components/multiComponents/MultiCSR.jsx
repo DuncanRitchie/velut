@@ -199,7 +199,7 @@ class MultiCSR extends Component {
       result = (
         <div>
           <p>
-            <label htmlFor="multi-progress">
+            <label htmlFor="multi-progress" aria-live="polite">
               {pendingWordsCount
                 ? `Waiting for results for ${pendingWordsCount} ${
                     pendingWordsCount === 1 ? 'word' : 'words'
