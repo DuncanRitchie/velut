@@ -10,7 +10,6 @@ let Header = (props) => {
         <br />
         <abbr
           className={styles.title}
-          lang="la"
           title="Useful Tables of Excellent Latin Vocabulary"
         >
           velut
