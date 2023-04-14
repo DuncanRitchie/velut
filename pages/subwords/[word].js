@@ -65,12 +65,11 @@ const Subwords = ({ input, subwords, randomCountdownQuestionExample }) => {
       </p>
     )
   }
+  const title = `Subwords of “${input}” on velut — a Latin rhyming dictionary`
   return (
     <>
       <Head>
-        <title>
-          Subwords of “{input}” on velut — a Latin rhyming dictionary
-        </title>
+        <title>{title}</title>
         <meta
           name="Description"
           content={`Latin words made from the letters of “${input}”`}
