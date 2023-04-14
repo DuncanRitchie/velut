@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
-import { randomCountdownQuestionWeighted } from '../../lib/words/subwords'
+import { randomCountdownQuestionWeighted } from '../../lib/words/subwordsHelpers'
 import styles from '../../css/Subsites.module.css'
 
 const SubwordsHome = ({ randomCountdownQuestionExample }) => {
