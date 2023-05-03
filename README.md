@@ -10,15 +10,19 @@ This GitHub repo is publicly visible. The site is hosted by [Fly](https://fly.io
 
 ## Architecture
 
-I store all the data in an Excel file, which is now more than 90MB in size, but I add to it frequently. Every few weeks I convert the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and use mongoimport to replace my two MongoDB Atlas collections.
-
-The velut website (in this repository) is a Next.js site that reads from the two collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Multi-word page (www.velut.co.uk/multiwordiword) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
+The velut website (in this repository) is a Next.js site that reads from two MongoDB collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Multi-word page (www.velut.co.uk/multiword) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
 
 ### Old version with Create React App
 
 When I first made the velut website, it was a single-page application that had the same functionality, but using an [Express](https://expressjs.com/) server on the backend and client-side–rendered [React.js](https://reactjs.org/) on the frontend (using [Create React App](https://create-react-app.dev/)). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
 
 (MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so I’m keeping the branchnames “main” and “mern”.)
+
+### Local data storage
+
+All the data you see on the website are stored in an an Excel file, which is now more than 90MB in size. Until recently, I added to it frequently, converted the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and used mongoimport to replace my two MongoDB Atlas collections.
+
+I am now well into the process of replacing Excel with custom Json, JavaScript, and MongoDB. See the “Ongoing work” section below.
 
 ## Functionality
 
@@ -52,17 +56,13 @@ Displayed below is the page for the word “opportūna”, showing that it is di
 
 ## Ongoing work
 
-Though there are several smaller tasks I’d like to get done, most of my efforts on velut nowadays are in two areas:
+Most of my efforts on velut nowadays are towards its de-Excellation. I do not want to be using Excel for this project!
 
-### Data collection
+I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off it by creating webpages and websites that replicate the functionality that I have had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making [more](https://www.duncanritchie.co.uk/code#velut-projects).
 
-There are many common Latin words that are not yet in the velut database, and I’d like them to be.
+At the moment, most of this work involves a script I’m writing to generate all the forms I want of all the lemmata I have. For the details of how I’m doing this, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
 
-### De-Excellation
-
-I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off Excel by creating webpages and websites that replicate the functionality that I have/had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making [more](https://www.duncanritchie.co.uk/code#velut-projects).
-
-For the details of how I’m doing this, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
+There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include. But, that will have to wait. My priority is finishing my script for generating forms and ensuring that I am no longer using Excel for velut.
 
 ## Development cycle
 
