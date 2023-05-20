@@ -2,19 +2,20 @@ import mongoose from 'mongoose'
 
 const lemmaSchema = new mongoose.Schema(
   {
-    Ord: Number,
+    // Ord: Number,
     Word: String,
     PartOfSpeech: String,
     Meanings: String,
     Notes: String,
     Transliterations: String,
-    Scansion: String,
-    SyllableCount: Number,
+    // Scansion: String,
+    // SyllableCount: Number,
     Root: String,
-    FormCount: Number,
+    // FormCount: Number,
     NoTypeTag: String,
     NoMacra: String,
     NoMacraLowerCase: String,
+    Forms: Object,
   },
   { collection: 'lemmata' },
 )
