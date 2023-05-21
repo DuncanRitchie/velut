@@ -81,7 +81,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(1)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">{this.props.children[0]}</span>
+              {this.props.children[0]}
             </button>
             <button
               id={`${this.props.id}-tab-2`}
@@ -93,7 +93,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(2)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">{this.props.children[2]}</span>
+              {this.props.children[2]}
             </button>
             <button
               id={`${this.props.id}-tab-3`}
@@ -105,7 +105,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(3)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">{this.props.children[4]}</span>
+              {this.props.children[4]}
             </button>
             <button
               id={`${this.props.id}-tab-4`}
@@ -117,7 +117,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(4)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">{this.props.children[6]}</span>
+              {this.props.children[6]}
             </button>
           </div>
 
