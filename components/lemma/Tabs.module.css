@@ -1,77 +1,44 @@
-/* This CSS is loosely adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/ to work with CSS Modules */
+/* This CSS is adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/ */
 
 .tabs {
-  font-family: 'lucida grande', sans-serif;
+  margin-bottom: 1rem;
 }
 
 .tabs [role='tablist'] {
+  margin-top: 0.25rem;
   min-width: 100%;
 }
 
-.tabs [role='tab'],
-.tabs [role='tab']:focus,
-.tabs [role='tab']:hover {
+.tabs [role='tab'] {
   display: inline-block;
   position: relative;
   z-index: 2;
-  top: 2px;
-  margin: 0;
-  margin-top: 4px;
-  padding: 3px 3px 4px;
-  border: 1px solid hsl(219deg 1% 72%);
-  border-bottom: 2px solid hsl(219deg 1% 72%);
-  border-radius: 5px 5px 0 0;
-  background: hsl(220deg 20% 94%);
-  /* outline: none; */
-  font-weight: bold;
-  max-width: 22%;
+  margin: 0.25rem 0.25rem -2px 0;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid #58522c;
+  border-radius: 0.3333rem 0.3333rem 0 0;
+  background: #fcf0be;
+  background-image: radial-gradient(transparent 50%, #efe1ab80 100%);
   overflow: hidden;
   text-align: left;
-  cursor: pointer;
 }
 
 .tabs [role='tab'][aria-selected='true'] {
-  padding: 2px 2px 4px;
   margin-top: 0;
-  border-width: 2px;
-  border-top-width: 6px;
-  border-top-color: rgb(36 116 214);
-  border-bottom-color: hsl(220deg 43% 99%);
-  background: hsl(220deg 43% 99%);
-}
-
-.tabs [role='tab'][aria-selected='false'] {
-  border-bottom: 1px solid hsl(219deg 1% 72%);
-}
-
-.tabs [role='tab'] span.focus {
-  display: inline-block;
-  margin: 2px;
-  padding: 4px 6px;
-}
-
-.tabs [role='tab']:hover span.focus,
-.tabs [role='tab']:focus span.focus,
-.tabs [role='tab']:active span.focus {
-  padding: 2px 4px;
-  border: 2px solid rgb(36 116 214);
-  border-radius: 3px;
+  border-top-width: 0.1875rem;
+  border-bottom-color: #fffdf4;
+  background: #fffdf4;
 }
 
 .tabs [role='tabpanel'] {
-  padding: 5px;
-  border: 2px solid hsl(219deg 1% 72%);
-  border-radius: 0 5px 5px;
-  background: hsl(220deg 43% 99%);
-  min-height: 10em;
-  width: 100%;
-  overflow: auto;
+  margin-top: 1px;
+  padding: 0.5rem;
+  border: 1px solid #58522c;
+  border-radius: 0 0.3333rem 0.3333rem;
+  background: #fffdf4;
+  width: calc(100% - 1rem);
 }
 
 .tabPanelHidden[role='tabpanel'] {
   display: none;
-}
-
-.tabs [role='tabpanel'] p {
-  margin: 0;
 }

@@ -58,9 +58,17 @@ const FormsTableWithEnclitics = ({
   return (
     <details
       open
-      style={{ textAlign: 'left', tabSize: 2, paddingLeft: '1rem' }}
+      style={{
+        textAlign: 'left',
+        tabSize: 2,
+        marginLeft: '1rem',
+        width: 'calc(100% - 2rem)',
+      }}
     >
-      <summary>All generated forms</summary>
+      <summary style={{ display: 'inline', width: 'max-content' }}>
+        All generated forms
+      </summary>
+      <Tabs />
 
       <details open>
         <summary>Unencliticized</summary>
@@ -133,7 +141,6 @@ const FormsTable = ({
   } else {
     return (
       <>
-        <Tabs />
         <FormsTableWithoutEnclitics
           formsFromWordsCollection={formsFromWordsCollection}
           Forms={Forms}
