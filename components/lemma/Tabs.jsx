@@ -65,8 +65,7 @@ class Tabs extends Component {
     return (
       <>
         <div className={styles.tabs}>
-          {/* <h3 id="tablist-1">Danish Composers</h3> */}
-          <div role="tablist" aria-labelledby="tablist-1" className="automatic">
+          <div role="tablist" aria-labelledby={'lemma' + '-forms-summary'}>
             <button
               id="tab-1"
               type="button"
@@ -77,7 +76,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(1)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">Maria Ahlefeldt</span>
+              <span className="focus">{this.props.children[0]}</span>
             </button>
             <button
               id="tab-2"
@@ -89,7 +88,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(2)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">Carl Andersen</span>
+              <span className="focus">{this.props.children[2]}</span>
             </button>
             <button
               id="tab-3"
@@ -101,7 +100,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(3)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">Ida da Fonseca</span>
+              <span className="focus">{this.props.children[4]}</span>
             </button>
             <button
               id="tab-4"
@@ -113,7 +112,7 @@ class Tabs extends Component {
               onClick={() => this.switchTab(4)}
               onKeyDown={this.onKeyDown}
             >
-              <span className="focus">Peter Müller</span>
+              <span className="focus">{this.props.children[6]}</span>
             </button>
           </div>
 
@@ -124,15 +123,7 @@ class Tabs extends Component {
             aria-labelledby="tab-1"
             className={this.state.currentTab === 1 ? '' : styles.tabPanelHidden}
           >
-            <p>
-              Maria Theresia Ahlefeldt (16 January 1755 – 20 December 1810) was
-              a Danish, (originally German), composer. She is known as the first
-              female composer in Denmark. Maria Theresia composed music for
-              several ballets, operas, and plays of the royal theatre. She was
-              given good critic as a composer and described as a “
-              <span lang="da">virkelig Tonekunstnerinde</span>” ('a True Artist
-              of Music').
-            </p>
+            {this.props.children[1]}
           </div>
           <div
             id="tabpanel-2"
@@ -141,15 +132,7 @@ class Tabs extends Component {
             aria-labelledby="tab-2"
             className={this.state.currentTab === 2 ? '' : styles.tabPanelHidden}
           >
-            <p>
-              Carl Joachim Andersen (29 April 1847 – 7 May 1909) was a Danish
-              flutist, conductor and composer born in Copenhagen, son of the
-              flutist Christian Joachim Andersen. Both as a virtuoso and as
-              composer of flute music, he is considered one of the best of his
-              time. He was considered to be a tough leader and teacher and
-              demanded as such a lot from his orchestras but through that style
-              he reached a high level.
-            </p>
+            {this.props.children[3]}
           </div>
           <div
             id="tabpanel-3"
@@ -158,15 +141,7 @@ class Tabs extends Component {
             aria-labelledby="tab-3"
             className={this.state.currentTab === 3 ? '' : styles.tabPanelHidden}
           >
-            <p>
-              Ida Henriette da Fonseca (July 27, 1802 – July 6, 1858) was a
-              Danish opera singer and composer. Ida Henriette da Fonseca was the
-              daughter of Abraham da Fonseca (1776–1849) and Marie Sofie
-              Kiærskou (1784–1863). She and her sister Emilie da Fonseca were
-              students of Giuseppe Siboni, choir master of the Opera in
-              Copenhagen. She was given a place at the royal Opera alongside her
-              sister the same year she debuted in 1827.
-            </p>
+            {this.props.children[5]}
           </div>
           <div
             id="tabpanel-4"
@@ -175,13 +150,7 @@ class Tabs extends Component {
             aria-labelledby="tab-4"
             className={this.state.currentTab === 4 ? '' : styles.tabPanelHidden}
           >
-            <p>
-              Peter Erasmus Lange-Müller (1 December 1850 – 26 February 1926)
-              was a Danish composer and pianist. His compositional style was
-              influenced by Danish folk music and by the work of Robert
-              Schumann; Johannes Brahms; and his Danish countrymen, including
-              J.P.E. Hartmann.
-            </p>
+            {this.props.children[7]}
           </div>
           <script></script>
         </div>

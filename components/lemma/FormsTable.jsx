@@ -65,60 +65,48 @@ const FormsTableWithEnclitics = ({
         width: 'calc(100% - 2rem)',
       }}
     >
-      <summary style={{ display: 'inline', width: 'max-content' }}>
+      <summary
+        id={'lemma' + '-forms-summary'}
+        style={{ display: 'inline', width: 'max-content' }}
+      >
         All generated forms
       </summary>
-      <Tabs />
-
-      <details open>
-        <summary>Unencliticized</summary>
-
+      <Tabs>
+        Unencliticized
         <FormsTableForSomeForms
           formsFromWordsCollection={formsFromWordsCollection}
           Forms={Forms.unencliticized}
           linkBase={linkBase}
           currentWordHyphenated={currentWordHyphenated}
         />
-      </details>
-
-      {Forms.ne ? (
-        <details open>
-          <summary>-ne</summary>
-
+        {Forms.ne ? '-ne' : null}
+        {Forms.ne ? (
           <FormsTableForSomeForms
             formsFromWordsCollection={formsFromWordsCollection}
             Forms={Forms.ne}
             linkBase={linkBase}
             currentWordHyphenated={currentWordHyphenated}
           />
-        </details>
-      ) : null}
-
-      {Forms.que ? (
-        <details open>
-          <summary>-que</summary>
-
+        ) : null}
+        {Forms.que ? '-que' : null}
+        {Forms.que ? (
           <FormsTableForSomeForms
             formsFromWordsCollection={formsFromWordsCollection}
             Forms={Forms.que}
             linkBase={linkBase}
             currentWordHyphenated={currentWordHyphenated}
           />
-        </details>
-      ) : null}
-
-      {Forms.ve ? (
-        <details open>
-          <summary>-ve</summary>
-
+        ) : null}
+        {Forms.ve ? '-ve' : null}
+        {Forms.ve ? (
           <FormsTableForSomeForms
             formsFromWordsCollection={formsFromWordsCollection}
             Forms={Forms.ve}
             linkBase={linkBase}
             currentWordHyphenated={currentWordHyphenated}
           />
-        </details>
-      ) : null}
+        ) : null}
+      </Tabs>
     </details>
   )
 }

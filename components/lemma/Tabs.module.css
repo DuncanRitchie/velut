@@ -1,9 +1,5 @@
 /* This CSS is adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/ */
 
-.tabs {
-  margin-bottom: 1rem;
-}
-
 .tabs [role='tablist'] {
   margin-top: 0.25rem;
   min-width: 100%;
