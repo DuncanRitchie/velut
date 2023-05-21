@@ -50,6 +50,7 @@ const FormsTableWithoutEnclitics = ({
 }
 
 const FormsTableWithEnclitics = ({
+  id,
   formsFromWordsCollection,
   Forms,
   lemma,
@@ -72,7 +73,7 @@ const FormsTableWithEnclitics = ({
       >
         All generated forms
       </summary>
-      <Tabs ariaLabelledBy={lemma + '-forms-summary'}>
+      <Tabs id={id} ariaLabelledBy={lemma + '-forms-summary'}>
         Unencliticized
         <FormsTableForSomeForms
           formsFromWordsCollection={formsFromWordsCollection}
@@ -122,6 +123,7 @@ const FormsTable = ({
   if (Forms.unencliticized) {
     return (
       <FormsTableWithEnclitics
+        id={lemma}
         formsFromWordsCollection={formsFromWordsCollection}
         Forms={Forms}
         lemma={lemma}

@@ -4,7 +4,8 @@ import styles from './Tabs.module.css'
 // Adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
 
 class Tabs extends Component {
-  //// Props here are ariaLabelledBy (string) and children.
+  //// Props here are id (string), ariaLabelledBy (string) and children.
+  //// ID simply needs to be unique for each Tabs on a page.
   //// Children should be an even number of elements,
   //// in the order tabSummary1, tabContent1, tabSummary2, tabContent2, etc.
 
@@ -22,7 +23,7 @@ class Tabs extends Component {
     this.setState({ currentTab: tabIndex })
     //// This isn’t how you’re supposed to focus an element in React
     //// (you should use refs), but it works well enough.
-    document.getElementById('tab-' + tabIndex).focus()
+    document.getElementById(`${this.props.id}-tab-${tabIndex}`).focus()
   }
 
   onKeyDown(event) {
@@ -71,11 +72,11 @@ class Tabs extends Component {
         <div className={styles.tabs}>
           <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
             <button
-              id="tab-1"
+              id={`${this.props.id}-tab-1`}
               type="button"
               role="tab"
               aria-selected={this.state.currentTab === 1}
-              aria-controls="tabpanel-1"
+              aria-controls={`${this.props.id}-tabpanel-1`}
               tabIndex={this.state.currentTab === 1 ? '' : '-1'}
               onClick={() => this.switchTab(1)}
               onKeyDown={this.onKeyDown}
@@ -83,11 +84,11 @@ class Tabs extends Component {
               <span className="focus">{this.props.children[0]}</span>
             </button>
             <button
-              id="tab-2"
+              id={`${this.props.id}-tab-2`}
               type="button"
               role="tab"
               aria-selected={this.state.currentTab === 2}
-              aria-controls="tabpanel-2"
+              aria-controls={`${this.props.id}-tabpanel-2`}
               tabIndex={this.state.currentTab === 2 ? '' : '-1'}
               onClick={() => this.switchTab(2)}
               onKeyDown={this.onKeyDown}
@@ -95,11 +96,11 @@ class Tabs extends Component {
               <span className="focus">{this.props.children[2]}</span>
             </button>
             <button
-              id="tab-3"
+              id={`${this.props.id}-tab-3`}
               type="button"
               role="tab"
               aria-selected={this.state.currentTab === 3}
-              aria-controls="tabpanel-3"
+              aria-controls={`${this.props.id}-tabpanel-3`}
               tabIndex={this.state.currentTab === 3 ? '' : '-1'}
               onClick={() => this.switchTab(3)}
               onKeyDown={this.onKeyDown}
@@ -107,11 +108,11 @@ class Tabs extends Component {
               <span className="focus">{this.props.children[4]}</span>
             </button>
             <button
-              id="tab-4"
+              id={`${this.props.id}-tab-4`}
               type="button"
               role="tab"
               aria-selected={this.state.currentTab === 4}
-              aria-controls="tabpanel-4"
+              aria-controls={`${this.props.id}-tabpanel-4`}
               tabIndex={this.state.currentTab === 4 ? '' : '-1'}
               onClick={() => this.switchTab(4)}
               onKeyDown={this.onKeyDown}
@@ -121,37 +122,37 @@ class Tabs extends Component {
           </div>
 
           <div
-            id="tabpanel-1"
+            id={`${this.props.id}-tabpanel-1`}
             role="tabpanel"
             tabIndex="0"
-            aria-labelledby="tab-1"
+            aria-labelledby={`${this.props.id}-tab-1`}
             className={this.state.currentTab === 1 ? '' : styles.tabPanelHidden}
           >
             {this.props.children[1]}
           </div>
           <div
-            id="tabpanel-2"
+            id={`${this.props.id}-tabpanel-2`}
             role="tabpanel"
             tabIndex="0"
-            aria-labelledby="tab-2"
+            aria-labelledby={`${this.props.id}-tab-2`}
             className={this.state.currentTab === 2 ? '' : styles.tabPanelHidden}
           >
             {this.props.children[3]}
           </div>
           <div
-            id="tabpanel-3"
+            id={`${this.props.id}-tabpanel-3`}
             role="tabpanel"
             tabIndex="0"
-            aria-labelledby="tab-3"
+            aria-labelledby={`${this.props.id}-tab-3`}
             className={this.state.currentTab === 3 ? '' : styles.tabPanelHidden}
           >
             {this.props.children[5]}
           </div>
           <div
-            id="tabpanel-4"
+            id={`${this.props.id}-tabpanel-4`}
             role="tabpanel"
             tabIndex="0"
-            aria-labelledby="tab-4"
+            aria-labelledby={`${this.props.id}-tab-4`}
             className={this.state.currentTab === 4 ? '' : styles.tabPanelHidden}
           >
             {this.props.children[7]}
