@@ -16,7 +16,7 @@ const FormsTableForSomeForms = ({
   currentWordHyphenated,
 }) => {
   return (
-    <pre>
+    <pre style={{ overflowX: 'auto' }}>
       {prettyPrintJson(Forms)
         .split('\n')
         .map((line, index) => (
