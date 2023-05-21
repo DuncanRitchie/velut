@@ -1,4 +1,4 @@
-import { Component, useRef } from 'react'
+import { Component } from 'react'
 import styles from './Tabs.module.css'
 
 // Adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
