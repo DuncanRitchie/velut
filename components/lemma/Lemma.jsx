@@ -4,6 +4,7 @@ const greece = '../../images/greece.png'
 const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
+import FormsTable from './FormsTable'
 
 const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
   // Currently we have `formsFromWordsCollection` for forms that we had in Excel and that are now in the `words` MongoDB collection.
@@ -122,7 +123,14 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
         <p>Transliterations: {mappedTransliterations}</p>
       ) : null}
       {mappedForms ? <p>Forms: {mappedForms}</p> : null}
-      {Forms ? <p>Forms: {JSON.stringify(Forms)}</p> : null}
+      {Forms ? (
+        <FormsTable
+          Forms={Forms}
+          formsFromWordsCollection={formsFromWordsCollection}
+          linkBase={linkBase}
+          currentWordHyphenated={currentWordHyphenated}
+        />
+      ) : null}
       <p>
         {Root ? (
           <>Cognates: {mappedCognates}</>
