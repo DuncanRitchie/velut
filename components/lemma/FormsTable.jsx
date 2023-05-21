@@ -80,7 +80,7 @@ const FormsTableWithEnclitics = ({
           linkBase={linkBase}
           currentWordHyphenated={currentWordHyphenated}
         />
-        {Forms.ne ? '-ne' : null}
+        {Forms.ne ? <span lang="la">-ne</span> : null}
         {Forms.ne ? (
           <FormsTableForSomeForms
             formsFromWordsCollection={formsFromWordsCollection}
@@ -89,7 +89,7 @@ const FormsTableWithEnclitics = ({
             currentWordHyphenated={currentWordHyphenated}
           />
         ) : null}
-        {Forms.que ? '-que' : null}
+        {Forms.que ? <span lang="la">-que</span> : null}
         {Forms.que ? (
           <FormsTableForSomeForms
             formsFromWordsCollection={formsFromWordsCollection}
@@ -98,7 +98,7 @@ const FormsTableWithEnclitics = ({
             currentWordHyphenated={currentWordHyphenated}
           />
         ) : null}
-        {Forms.ve ? '-ve' : null}
+        {Forms.ve ? <span lang="la">-ve</span> : null}
         {Forms.ve ? (
           <FormsTableForSomeForms
             formsFromWordsCollection={formsFromWordsCollection}
