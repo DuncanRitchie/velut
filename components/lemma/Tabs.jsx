@@ -4,6 +4,10 @@ import styles from './Tabs.module.css'
 // Adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
 
 class Tabs extends Component {
+  //// Props here are ariaLabelledBy (string) and children.
+  //// Children should be an even number of elements,
+  //// in the order tabSummary1, tabContent1, tabSummary2, tabContent2, etc.
+
   constructor(props) {
     super(props)
     this.state = {
@@ -65,7 +69,7 @@ class Tabs extends Component {
     return (
       <>
         <div className={styles.tabs}>
-          <div role="tablist" aria-labelledby={'lemma' + '-forms-summary'}>
+          <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
             <button
               id="tab-1"
               type="button"
@@ -152,7 +156,6 @@ class Tabs extends Component {
           >
             {this.props.children[7]}
           </div>
-          <script></script>
         </div>
       </>
     )

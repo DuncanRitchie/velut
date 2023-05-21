@@ -52,6 +52,7 @@ const FormsTableWithoutEnclitics = ({
 const FormsTableWithEnclitics = ({
   formsFromWordsCollection,
   Forms,
+  lemma,
   linkBase,
   currentWordHyphenated,
 }) => {
@@ -66,12 +67,12 @@ const FormsTableWithEnclitics = ({
       }}
     >
       <summary
-        id={'lemma' + '-forms-summary'}
+        id={lemma + '-forms-summary'}
         style={{ display: 'inline', width: 'max-content' }}
       >
         All generated forms
       </summary>
-      <Tabs>
+      <Tabs ariaLabelledBy={lemma + '-forms-summary'}>
         Unencliticized
         <FormsTableForSomeForms
           formsFromWordsCollection={formsFromWordsCollection}
@@ -114,6 +115,7 @@ const FormsTableWithEnclitics = ({
 const FormsTable = ({
   formsFromWordsCollection,
   Forms,
+  lemma,
   linkBase,
   currentWordHyphenated,
 }) => {
@@ -122,6 +124,7 @@ const FormsTable = ({
       <FormsTableWithEnclitics
         formsFromWordsCollection={formsFromWordsCollection}
         Forms={Forms}
+        lemma={lemma}
         linkBase={linkBase}
         currentWordHyphenated={currentWordHyphenated}
       />

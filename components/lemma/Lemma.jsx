@@ -127,6 +127,7 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
         <FormsTable
           Forms={Forms}
           formsFromWordsCollection={formsFromWordsCollection}
+          lemma={lemma.Lemma}
           linkBase={linkBase}
           currentWordHyphenated={currentWordHyphenated}
         />
