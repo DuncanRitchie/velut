@@ -74,13 +74,15 @@ const FormsTableWithEnclitics = ({
         All generated forms
       </summary>
       <Tabs id={id} ariaLabelledBy={lemma + '-forms-summary'}>
-        Unencliticized
-        <FormsTableForSomeForms
-          formsFromWordsCollection={formsFromWordsCollection}
-          Forms={Forms.unencliticized}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-        />
+        {Forms.unencliticized ? 'Unencliticized' : null}
+        {Forms.unencliticized ? (
+          <FormsTableForSomeForms
+            formsFromWordsCollection={formsFromWordsCollection}
+            Forms={Forms.unencliticized}
+            linkBase={linkBase}
+            currentWordHyphenated={currentWordHyphenated}
+          />
+        ) : null}
         {Forms.ne ? <span lang="la">-ne</span> : null}
         {Forms.ne ? (
           <FormsTableForSomeForms
@@ -120,7 +122,7 @@ const FormsTable = ({
   linkBase,
   currentWordHyphenated,
 }) => {
-  if (Forms.unencliticized) {
+  if (Forms.unencliticized || Forms.ne) {
     return (
       <FormsTableWithEnclitics
         id={lemma}
