@@ -66,36 +66,40 @@ class Tabs extends Component {
     }
   }
 
+  getChildren() {
+    return this.props.children?.filter?.(Boolean) ?? []
+  }
+
   componentDidMount() {
     // `children` is undefined if there are zero, is an element if there is one,
     // and is an array of elements if there are more than one.
-    if (!this.props.children?.length) {
+    if (!this.getChildren().length) {
       console.error(
         'Tabs component cannot be used without two or more children.',
       )
       return
     }
-    if (this.props.children.length % 2) {
+    if (this.getChildren().length % 2) {
       console.warn(
         'Tabs component should have an even number of children, but it has ' +
-          this.props.children.length,
+          this.getChildren().length,
       )
-      this.setState({ tabCount: (this.props.children.length + 1) / 2 })
+      this.setState({ tabCount: (this.getChildren().length + 1) / 2 })
       return
     }
 
-    this.setState({ tabCount: this.props.children.length / 2 })
+    this.setState({ tabCount: this.getChildren().length / 2 })
   }
 
   render() {
-    if (!this.props.children?.length) {
+    if (!this.getChildren().length) {
       return <></>
     }
 
-    const tabsChildren = this.props.children.filter(
+    const tabsChildren = this.getChildren().filter(
       (_, index) => index % 2 === 0,
     )
-    const panelsChildren = this.props.children.filter(
+    const panelsChildren = this.getChildren().filter(
       (_, index) => index % 2 === 1,
     )
 
