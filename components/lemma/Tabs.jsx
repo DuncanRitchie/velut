@@ -6,7 +6,7 @@ import styles from './Tabs.module.css'
 class Tabs extends Component {
   //// Props here are id (string), ariaLabelledBy (string) and children.
   //// ID simply needs to be unique for each Tabs on a page.
-  //// Children should be an even number of elements,
+  //// Children should be an even number of elements (must be more than one),
   //// in the order tabSummary1, tabPanelContent1, tabSummary2, tabPanelContent2, etc.
 
   constructor(props) {
@@ -67,16 +67,31 @@ class Tabs extends Component {
   }
 
   componentDidMount() {
+    // `children` is undefined if there are zero, is an element if there is one,
+    // and is an array of elements if there are more than one.
+    if (!this.props.children?.length) {
+      console.error(
+        'Tabs component cannot be used without two or more children.',
+      )
+      return
+    }
     if (this.props.children.length % 2) {
       console.warn(
-        'Tabs should have an even number of children, but it has ' +
+        'Tabs component should have an even number of children, but it has ' +
           this.props.children.length,
       )
+      this.setState({ tabCount: (this.props.children.length + 1) / 2 })
+      return
     }
+
     this.setState({ tabCount: this.props.children.length / 2 })
   }
 
   render() {
+    if (!this.props.children?.length) {
+      return <></>
+    }
+
     const tabsChildren = this.props.children.filter(
       (_, index) => index % 2 === 0,
     )
