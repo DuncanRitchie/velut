@@ -7,12 +7,12 @@ class Tabs extends Component {
   //// Props here are id (string), ariaLabelledBy (string) and children.
   //// ID simply needs to be unique for each Tabs on a page.
   //// Children should be an even number of elements,
-  //// in the order tabSummary1, tabContent1, tabSummary2, tabContent2, etc.
+  //// in the order tabSummary1, tabPanelContent1, tabSummary2, tabPanelContent2, etc.
 
   constructor(props) {
     super(props)
     this.state = {
-      currentTab: 1,
+      currentTab: 0,
       tabCount: 4,
     }
   }
@@ -35,8 +35,8 @@ class Tabs extends Component {
     switch (event.key) {
       case 'ArrowLeft':
         const prevTab =
-          this.state.currentTab === 1
-            ? this.state.tabCount
+          this.state.currentTab === 0
+            ? this.state.tabCount - 1
             : this.state.currentTab - 1
         this.switchTab(prevTab)
         stopDefaultBehaviour()
@@ -44,20 +44,20 @@ class Tabs extends Component {
 
       case 'ArrowRight':
         const nextTab =
-          this.state.currentTab === this.state.tabCount
-            ? 1
+          this.state.currentTab === this.state.tabCount - 1
+            ? 0
             : this.state.currentTab + 1
         this.switchTab(nextTab)
         stopDefaultBehaviour()
         break
 
       case 'Home':
-        this.switchTab(1)
+        this.switchTab(0)
         stopDefaultBehaviour()
         break
 
       case 'End':
-        this.switchTab(this.state.tabCount)
+        this.switchTab(this.state.tabCount - 1)
         stopDefaultBehaviour()
         break
 
@@ -66,97 +66,58 @@ class Tabs extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.children.length % 2) {
+      console.warn(
+        'Tabs should have an even number of children, but it has ' +
+          this.props.children.length,
+      )
+    }
+    this.setState({ tabCount: this.props.children.length / 2 })
+  }
+
   render() {
-    // TO DO: Refactor to not hard-code four tabs.
+    const tabsChildren = this.props.children.filter(
+      (_, index) => index % 2 === 0,
+    )
+    const panelsChildren = this.props.children.filter(
+      (_, index) => index % 2 === 1,
+    )
+
     return (
       <div className={styles.tabs}>
         <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
-          <button
-            id={`${this.props.id}-tab-1`}
-            type="button"
-            role="tab"
-            aria-selected={this.state.currentTab === 1}
-            aria-controls={`${this.props.id}-tabpanel-1`}
-            tabIndex={this.state.currentTab === 1 ? '' : '-1'}
-            onClick={() => this.switchTab(1)}
-            onKeyDown={this.onKeyDown}
-          >
-            {this.props.children[0]}
-          </button>
-          <button
-            id={`${this.props.id}-tab-2`}
-            type="button"
-            role="tab"
-            aria-selected={this.state.currentTab === 2}
-            aria-controls={`${this.props.id}-tabpanel-2`}
-            tabIndex={this.state.currentTab === 2 ? '' : '-1'}
-            onClick={() => this.switchTab(2)}
-            onKeyDown={this.onKeyDown}
-          >
-            {this.props.children[2]}
-          </button>
-          <button
-            id={`${this.props.id}-tab-3`}
-            type="button"
-            role="tab"
-            aria-selected={this.state.currentTab === 3}
-            aria-controls={`${this.props.id}-tabpanel-3`}
-            tabIndex={this.state.currentTab === 3 ? '' : '-1'}
-            onClick={() => this.switchTab(3)}
-            onKeyDown={this.onKeyDown}
-          >
-            {this.props.children[4]}
-          </button>
-          <button
-            id={`${this.props.id}-tab-4`}
-            type="button"
-            role="tab"
-            aria-selected={this.state.currentTab === 4}
-            aria-controls={`${this.props.id}-tabpanel-4`}
-            tabIndex={this.state.currentTab === 4 ? '' : '-1'}
-            onClick={() => this.switchTab(4)}
-            onKeyDown={this.onKeyDown}
-          >
-            {this.props.children[6]}
-          </button>
+          {tabsChildren.map((child, index) => (
+            <button
+              id={`${this.props.id}-tab-${index}`}
+              key={index}
+              type="button"
+              role="tab"
+              aria-selected={this.state.currentTab === index}
+              aria-controls={`${this.props.id}-tabpanel-${index}`}
+              tabIndex={this.state.currentTab === index ? '' : -1}
+              onClick={() => this.switchTab(index)}
+              onKeyDown={this.onKeyDown}
+            >
+              {child}
+            </button>
+          ))}
         </div>
 
-        <div
-          id={`${this.props.id}-tabpanel-1`}
-          role="tabpanel"
-          tabIndex="0"
-          aria-labelledby={`${this.props.id}-tab-1`}
-          className={this.state.currentTab === 1 ? '' : styles.tabPanelHidden}
-        >
-          {this.props.children[1]}
-        </div>
-        <div
-          id={`${this.props.id}-tabpanel-2`}
-          role="tabpanel"
-          tabIndex="0"
-          aria-labelledby={`${this.props.id}-tab-2`}
-          className={this.state.currentTab === 2 ? '' : styles.tabPanelHidden}
-        >
-          {this.props.children[3]}
-        </div>
-        <div
-          id={`${this.props.id}-tabpanel-3`}
-          role="tabpanel"
-          tabIndex="0"
-          aria-labelledby={`${this.props.id}-tab-3`}
-          className={this.state.currentTab === 3 ? '' : styles.tabPanelHidden}
-        >
-          {this.props.children[5]}
-        </div>
-        <div
-          id={`${this.props.id}-tabpanel-4`}
-          role="tabpanel"
-          tabIndex="0"
-          aria-labelledby={`${this.props.id}-tab-4`}
-          className={this.state.currentTab === 4 ? '' : styles.tabPanelHidden}
-        >
-          {this.props.children[7]}
-        </div>
+        {panelsChildren.map((child, index) => (
+          <div
+            id={`${this.props.id}-tabpanel-${index}`}
+            key={index}
+            role="tabpanel"
+            tabIndex={0}
+            aria-labelledby={`${this.props.id}-tab-${index}`}
+            className={
+              this.state.currentTab === index ? '' : styles.tabPanelHidden
+            }
+          >
+            {child}
+          </div>
+        ))}
       </div>
     )
   }
