@@ -255,6 +255,19 @@ progress::-webkit-progress-value {
   box-shadow: 0.0625rem 0 0.125rem rgba(0, 0, 0, 0.5) inset;
 }
 
+dl {
+  margin: 0;
+}
+
+dt,
+dd {
+  line-height: 1.3333em;
+}
+
+dd {
+  margin-left: 1.5rem;
+}
+
 /*
 Styles for invisible content accessible to screen-readers, taken from
 https://gomakethings.com/revisting-aria-label-versus-a-visually-hidden-class/
