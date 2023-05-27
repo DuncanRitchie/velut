@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import Tabs from './Tabs'
+import LatinLink from '../latinlink/LatinLink'
 
 //// This function is copied from the Inflector.
 function prettyPrintJson(text) {
@@ -15,18 +16,43 @@ const FormsTableForSomeForms = ({
   linkBase,
   currentWordHyphenated,
 }) => {
-  return (
-    <pre style={{ overflowX: 'auto' }}>
-      {prettyPrintJson(Forms)
-        .split('\n')
-        .map((line, index) => (
-          <Fragment key={index}>
-            {line}
-            <br />
+  if (!Forms) {
+    return <>No forms!</>
+  }
+  if (Array.isArray(Forms)) {
+    return Forms.map((form) => {
+      if (formsFromWordsCollection.includes(form)) {
+        return (
+          <Fragment key={form}>
+            <LatinLink
+              linkBase={linkBase}
+              targetWord={form}
+              currentWordHyphenated={currentWordHyphenated}
+            ></LatinLink>{' '}
           </Fragment>
-        ))}
-    </pre>
-  )
+        )
+      } else {
+        return <Fragment key={form}>{form} </Fragment>
+      }
+    })
+  } else {
+    const keyValuePairs = Object.entries(Forms).map(([key, value]) => {
+      return (
+        <Fragment key={key}>
+          <dt>{key}</dt>
+          <dd>
+            <FormsTableForSomeForms
+              formsFromWordsCollection={formsFromWordsCollection}
+              Forms={value}
+              linkBase={linkBase}
+              currentWordHyphenated={currentWordHyphenated}
+            />
+          </dd>
+        </Fragment>
+      )
+    })
+    return <dl>{keyValuePairs}</dl>
+  }
 }
 
 const FormsTableWithoutEnclitics = ({
