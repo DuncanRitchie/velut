@@ -257,11 +257,48 @@ progress::-webkit-progress-value {
 
 dl {
   margin: 0;
+  position: relative;
+}
+
+dl:not(dl dl dl) {
+  display: flex;
+  column-gap: 0.3333em;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Dashes down the left side of inner <dl>s */
+dl dl::before {
+  content: '';
+  position: absolute;
+  transform: translateX(-0.925em);
+  width: 1px;
+  height: calc(100% - 0.4625em);
+  background-image: repeating-linear-gradient(
+    0deg,
+    #34311a,
+    #34311a 0.25em,
+    transparent,
+    transparent 0.6666em
+  );
+  opacity: 0.75;
+}
+
+dl:not(dl dl dl) > div {
+  flex-grow: 1;
 }
 
 dt,
 dd {
   line-height: 1.3333em;
+}
+
+dt {
+  display: inline-block;
+  padding: 0.125em 0.5em;
+  font-style: italic;
+  font-weight: bold;
+  color: #34311a;
 }
 
 dd {
