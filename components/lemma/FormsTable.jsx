@@ -38,7 +38,7 @@ const FormsTableForSomeForms = ({
   } else {
     const keyValuePairs = Object.entries(Forms).map(([key, value]) => {
       return (
-        <Fragment key={key}>
+        <div key={key}>
           <dt>{key}</dt>
           <dd>
             <FormsTableForSomeForms
@@ -48,7 +48,7 @@ const FormsTableForSomeForms = ({
               currentWordHyphenated={currentWordHyphenated}
             />
           </dd>
-        </Fragment>
+        </div>
       )
     })
     return <dl>{keyValuePairs}</dl>
