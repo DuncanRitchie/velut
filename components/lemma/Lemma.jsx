@@ -122,7 +122,7 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
       {mappedTransliterations ? (
         <p>Transliterations: {mappedTransliterations}</p>
       ) : null}
-      {mappedForms ? <p>Forms: {mappedForms}</p> : null}
+      {mappedForms && !Forms ? <p>Forms: {mappedForms}</p> : null}
       {Forms ? (
         <FormsTable
           Forms={Forms}
