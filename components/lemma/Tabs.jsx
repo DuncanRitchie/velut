@@ -128,7 +128,6 @@ class Tabs extends Component {
             id={`${this.props.id}-tabpanel-${index}`}
             key={index}
             role="tabpanel"
-            tabIndex={0}
             aria-labelledby={`${this.props.id}-tab-${index}`}
             className={
               this.state.currentTab === index ? '' : styles.tabPanelHidden
