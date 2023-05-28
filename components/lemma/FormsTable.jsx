@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import Tabs from './Tabs'
 import LatinLink from '../latinlink/LatinLink'
+import styles from './FormsTable.module.css'
 
 // Most of the keys in the form data are suitable for display,
 // but keys of more than one word will need added spaces.
@@ -153,8 +154,8 @@ const FormsTable = ({
   linkBase,
   currentWordHyphenated,
 }) => {
-  if (Forms.unencliticized || Forms.ne) {
-    return (
+  const formsTable =
+    Forms.unencliticized || Forms.ne ? (
       <FormsTableWithEnclitics
         id={lemma}
         formsFromWordsCollection={formsFromWordsCollection}
@@ -163,19 +164,16 @@ const FormsTable = ({
         linkBase={linkBase}
         currentWordHyphenated={currentWordHyphenated}
       />
+    ) : (
+      <FormsTableWithoutEnclitics
+        formsFromWordsCollection={formsFromWordsCollection}
+        Forms={Forms}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+      />
     )
-  } else {
-    return (
-      <>
-        <FormsTableWithoutEnclitics
-          formsFromWordsCollection={formsFromWordsCollection}
-          Forms={Forms}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-        />
-      </>
-    )
-  }
+
+  return <div className={styles.formsTable}>{formsTable}</div>
 }
 
 export default FormsTable
