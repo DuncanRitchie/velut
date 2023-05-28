@@ -2,14 +2,6 @@ import { Fragment } from 'react'
 import Tabs from './Tabs'
 import LatinLink from '../latinlink/LatinLink'
 
-//// This function is copied from the Inflector.
-function prettyPrintJson(text) {
-  return JSON.stringify(text, null, '\t')
-    .replace(/(?<=": \[)\n\s*/g, '') // Delete newline at start of array
-    .replace(/(?<="|\d)\n\s*(?=\])/g, '') // Delete newline at end of array
-    .replace(/\n\s+(?=[^:{}]+\n)/g, ' ') // Delete newlines between array items
-}
-
 // Most of the keys in the form data are suitable for display,
 // but keys of more than one word will need added spaces.
 const prettyPrintKey = (key) => {
