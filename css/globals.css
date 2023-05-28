@@ -281,7 +281,30 @@ dl dl::before {
     transparent,
     transparent 0.6666em
   );
-  opacity: 0.75;
+  opacity: 0.3333;
+}
+
+/* Dashes across the top side of inner <dl>s */
+dl dl::after {
+  content: '';
+  position: absolute;
+  top: -0.625em;
+  width: calc(100% - 0.4625em);
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    270deg,
+    #34311a,
+    #34311a 0.25em,
+    transparent,
+    transparent 0.6666em
+  );
+  opacity: 0.3333;
+}
+
+/* Hovering over a <dl> makes its dashes (and its ancestor <dl>s’ dashes) more prominent. */
+dl dl:hover::before,
+dl dl:hover::after {
+  opacity: 1;
 }
 
 dl:not(dl dl dl) > div {
@@ -295,10 +318,22 @@ dd {
 
 dt {
   display: inline-block;
-  padding: 0.125em 0.5em;
+  padding: 0.1em 0.45em;
   font-style: italic;
   font-weight: bold;
   color: #34311a;
+  background-color: #fffdf4;
+  border: 1px solid transparent;
+  border-radius: 0.25em 0 0 0;
+  border-bottom: none;
+  border-right: none;
+  position: relative /* needed for z-index */;
+  z-index: 1 /* must be in front of dashes */;
+}
+
+dl div:hover > dt {
+  background-image: linear-gradient(to bottom right, #efe1ab, transparent);
+  border-color: #34311a;
 }
 
 dd {
