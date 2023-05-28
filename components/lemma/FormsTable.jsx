@@ -10,6 +10,19 @@ function prettyPrintJson(text) {
     .replace(/\n\s+(?=[^:{}]+\n)/g, ' ') // Delete newlines between array items
 }
 
+// Most of the keys in the form data are suitable for display,
+// but keys of more than one word will need added spaces.
+const prettyPrintKey = (key) => {
+  switch (key) {
+    case 'futureperfect':
+      return 'future perfect'
+    default:
+      return key
+  }
+}
+
+// This is a recursive function that produces nested <dl> elements,
+// matching the Json structure of the Forms data that were passed in.
 const FormsTableForSomeForms = ({
   formsFromWordsCollection,
   Forms,
@@ -39,7 +52,7 @@ const FormsTableForSomeForms = ({
     const keyValuePairs = Object.entries(Forms).map(([key, value]) => {
       return (
         <div key={key}>
-          <dt>{key}</dt>
+          <dt>{prettyPrintKey(key)}</dt>
           <dd>
             <FormsTableForSomeForms
               formsFromWordsCollection={formsFromWordsCollection}
