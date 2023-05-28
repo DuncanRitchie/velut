@@ -33,6 +33,7 @@
   border-radius: 0 0.3333rem 0.3333rem;
   background: #fffdf4;
   width: calc(100% - 1rem);
+  overflow-x: auto;
 }
 
 .tabPanelHidden[role='tabpanel'] {
