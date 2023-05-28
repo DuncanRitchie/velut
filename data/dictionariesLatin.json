@@ -68,10 +68,6 @@
     "Formula": "http://webxicon.org/search.php?q=INPUT&l=8&l2=3"
   },
   {
-    "Dictionary": "Whitaker’s Words",
-    "Formula": "http://archives.nd.edu/cgi-bin/wordz.pl?keyword=INPUT"
-  },
-  {
     "Dictionary": "Wiktionary",
     "Formula": "https://en.wiktionary.org/wiki/INPUT#Latin"
   }
