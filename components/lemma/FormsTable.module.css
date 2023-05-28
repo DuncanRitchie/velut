@@ -1,3 +1,15 @@
+.formsTable details {
+  text-align: left;
+  tab-size: 2;
+  margin-left: 1rem;
+  width: calc(100% - 2rem);
+}
+
+.formsTable summary {
+  display: inline;
+  width: max-content;
+}
+
 .formsTable dl {
   margin: 0;
   position: relative;

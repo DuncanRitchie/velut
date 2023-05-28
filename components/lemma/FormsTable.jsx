@@ -68,7 +68,7 @@ const FormsTableWithoutEnclitics = ({
   currentWordHyphenated,
 }) => {
   return (
-    <details open style={{ textAlign: 'left', tabSize: 2 }}>
+    <details open>
       <summary>All generated forms</summary>
 
       <FormsTableForSomeForms
@@ -90,21 +90,8 @@ const FormsTableWithEnclitics = ({
   currentWordHyphenated,
 }) => {
   return (
-    <details
-      open
-      style={{
-        textAlign: 'left',
-        tabSize: 2,
-        marginLeft: '1rem',
-        width: 'calc(100% - 2rem)',
-      }}
-    >
-      <summary
-        id={lemma + '-forms-summary'}
-        style={{ display: 'inline', width: 'max-content' }}
-      >
-        All generated forms
-      </summary>
+    <details open>
+      <summary id={lemma + '-forms-summary'}>All generated forms</summary>
       <Tabs id={id} ariaLabelledBy={lemma + '-forms-summary'}>
         {Forms.unencliticized ? 'Unencliticized' : null}
         {Forms.unencliticized ? (
