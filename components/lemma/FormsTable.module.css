@@ -6,8 +6,9 @@
 }
 
 .formsTable summary {
-  display: inline;
   width: max-content;
+  margin-right: auto;
+  margin-bottom: 0.5em;
 }
 
 .formsTable dl {
