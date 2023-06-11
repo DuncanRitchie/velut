@@ -4,16 +4,18 @@ import styles from './Tabs.module.css'
 // Adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
 
 class Tabs extends Component {
-  //// Props here are id (string), ariaLabelledBy (string) and children.
+  //// Props here are id (string), ariaLabelledBy (string), startTab (integer), and children.
   //// ID simply needs to be unique for each Tabs on a page.
+  //// startTab must be an index of a tab (ie, an integer, 0 or more, less than the number of tabs).
   //// Children should be an even number of elements (must be more than one),
   //// in the order tabSummary1, tabPanelContent1, tabSummary2, tabPanelContent2, etc.
 
   constructor(props) {
     super(props)
     this.state = {
-      currentTab: 0,
+      currentTab: this.props.startTab || 0,
       tabCount: 4,
+      tabShouldBeSetAutomatically: true,
     }
   }
   switchTab = this.switchTab.bind(this)
@@ -70,7 +72,21 @@ class Tabs extends Component {
     return this.props.children?.filter?.(Boolean) ?? []
   }
 
+  setTabIfNeeded() {
+    if (!this.state.tabShouldBeSetAutomatically) {
+      return
+    }
+    if (this.props.startTab || this.props.startTab === 0) {
+      this.setState({
+        currentTab: this.props.startTab,
+      })
+    }
+    this.setState({ tabShouldBeSetAutomatically: false })
+  }
+
   componentDidMount() {
+    this.setTabIfNeeded()
+
     // `children` is undefined if there are zero, is an element if there is one,
     // and is an array of elements if there are more than one.
     if (!this.getChildren().length) {
@@ -89,6 +105,13 @@ class Tabs extends Component {
     }
 
     this.setState({ tabCount: this.getChildren().length / 2 })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.setState({ tabShouldBeSetAutomatically: true })
+      this.setTabIfNeeded()
+    }
   }
 
   render() {

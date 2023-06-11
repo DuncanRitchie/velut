@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import Tabs from './Tabs'
 import LatinLink from '../latinlink/LatinLink'
 import styles from './FormsTable.module.css'
+import { hyphensToMacra } from '../../lib/words/diacritics'
 
 // Most of the keys in the form data are suitable for display,
 // but keys of more than one word will need added spaces.
@@ -81,6 +82,25 @@ const FormsTableWithoutEnclitics = ({
   )
 }
 
+// The first tab that has the current word on it will be shown by default.
+const getTabForCurrentWord = (allForms, currentWordHyphenated) => {
+  // We could pass `currentWord` in as a prop of FormsTable,
+  // but we’re already passing the hyphenated version in so let’s use that.
+  const currentWord = hyphensToMacra(currentWordHyphenated)
+
+  const doesFormsObjectContainCurrentWord = (someForms) => {
+    if (Array.isArray(someForms)) {
+      return someForms.includes(currentWord)
+    }
+    return Object.values(someForms).some(doesFormsObjectContainCurrentWord)
+  }
+  const foundIndex = Object.values(allForms).findIndex((value) =>
+    doesFormsObjectContainCurrentWord(value),
+  )
+  // findIndex returns -1 if the word wasn’t found; let’s avoid that.
+  return foundIndex === -1 ? 0 : foundIndex
+}
+
 const FormsTableWithEnclitics = ({
   id,
   formsFromWordsCollection,
@@ -92,7 +112,11 @@ const FormsTableWithEnclitics = ({
   return (
     <details open>
       <summary id={lemma + '-forms-summary'}>All generated forms</summary>
-      <Tabs id={id} ariaLabelledBy={lemma + '-forms-summary'}>
+      <Tabs
+        id={id}
+        ariaLabelledBy={lemma + '-forms-summary'}
+        startTab={getTabForCurrentWord(Forms, currentWordHyphenated)}
+      >
         {Forms.unencliticized ? 'Unencliticized' : null}
         {Forms.unencliticized ? (
           <FormsTableForSomeForms
