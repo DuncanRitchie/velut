@@ -75,6 +75,11 @@ body :focus {
   outline: dashed 2px #34311a /* Average of the .title gradient colours */;
 }
 
+/* Browsers that don’t support :focus-visible will use the previous :focus styles  */
+body :focus:not(:focus-visible) {
+  outline: none;
+}
+
 h2 {
   font-size: 1.5rem;
   padding-right: 0.375rem;
