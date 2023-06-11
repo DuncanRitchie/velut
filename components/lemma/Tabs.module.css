@@ -13,8 +13,8 @@
   padding: 0.5rem 0.625rem;
   border: 1px solid #58522c;
   border-radius: 0.3333rem 0.3333rem 0 0;
-  background: #fcf0be;
-  background-image: radial-gradient(transparent 50%, #efe1ab80 100%);
+  background: #f0f4f5;
+  background-image: radial-gradient(transparent 50%, #b7dde180 100%);
   overflow: hidden;
   text-align: left;
 }
@@ -24,6 +24,11 @@
   border-top-width: 0.1875rem;
   border-bottom-color: #fffdf4;
   background: #fffdf4;
+}
+
+.tabs [role='tab']:hover {
+  background: transparent;
+  background-image: none;
 }
 
 .tabs [role='tabpanel'] {
