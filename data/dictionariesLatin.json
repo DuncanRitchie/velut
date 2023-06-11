@@ -36,10 +36,6 @@
     "Formula": "http://logeion.uchicago.edu/INPUT"
   },
   {
-    "Dictionary": "Morganianum",
-    "Formula": "http://neolatinlexicon.org/search/latin?search=INPUT"
-  },
-  {
     "Dictionary": "Notre-Dame",
     "Formula": "https://archives.nd.edu/cgi-bin/lookup.pl?stem=INPUT&ending="
   },
