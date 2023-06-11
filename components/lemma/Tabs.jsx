@@ -15,7 +15,6 @@ class Tabs extends Component {
     this.state = {
       currentTab: this.props.startTab || 0,
       tabCount: 4,
-      tabShouldBeSetAutomatically: true,
     }
   }
   switchTab = this.switchTab.bind(this)
@@ -72,20 +71,16 @@ class Tabs extends Component {
     return this.props.children?.filter?.(Boolean) ?? []
   }
 
-  setTabIfNeeded() {
-    if (!this.state.tabShouldBeSetAutomatically) {
-      return
-    }
+  setTabToStartTab() {
     if (this.props.startTab || this.props.startTab === 0) {
       this.setState({
         currentTab: this.props.startTab,
       })
     }
-    this.setState({ tabShouldBeSetAutomatically: false })
   }
 
   componentDidMount() {
-    this.setTabIfNeeded()
+    this.setTabToStartTab()
 
     // `children` is undefined if there are zero, is an element if there is one,
     // and is an array of elements if there are more than one.
@@ -109,8 +104,7 @@ class Tabs extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.id !== this.props.id) {
-      this.setState({ tabShouldBeSetAutomatically: true })
-      this.setTabIfNeeded()
+      this.setTabToStartTab()
     }
   }
 
