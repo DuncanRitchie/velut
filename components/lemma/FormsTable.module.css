@@ -58,8 +58,9 @@
 }
 
 /* Hovering over a <dl> makes its dashes (and its ancestor <dl>s’ dashes) more prominent. */
-.formsTable dl dl:hover::before,
-.formsTable dl dl:hover::after {
+/* In fact, this happens when hovering over any part of the <div> that wraps the <dl>. */
+.formsTable dl div:hover > dd > dl::before,
+.formsTable dl div:hover > dd > dl::after {
   opacity: 1;
 }
 
