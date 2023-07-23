@@ -34,7 +34,6 @@ const WordPage = ({
   let footNameArticle = 'a'
   let mappedRhymes = []
   let mappedHomographs = []
-  let wordLemmata = []
   let mappedLemmata = []
   // All Links to other velut words will begin with linkBase.
   const linkBase = type === '' ? '/' : '/' + type + '/'
@@ -92,23 +91,20 @@ const WordPage = ({
       })
     }
     // Let’s do the lemmata. We will render an element for every lemma listed against the input.
-    wordLemmata = lemmata || []
-    if (wordLemmata) {
-      mappedLemmata = wordLemmata.map((lemma, index) => {
-        if (lemma) {
-          return (
-            <Lemma
-              key={index}
-              lemma={lemma}
-              linkBase={linkBase}
-              currentWordHyphenated={currentWordHyphenated}
-            />
-          )
-        } else {
-          return null
-        }
-      })
-    }
+    mappedLemmata = lemmata.map((lemma, index) => {
+      if (lemma) {
+        return (
+          <Lemma
+            key={index}
+            lemma={lemma}
+            linkBase={linkBase}
+            currentWordHyphenated={currentWordHyphenated}
+          />
+        )
+      } else {
+        return null
+      }
+    })
   }
   {
     /* If no word was found, the document title & description need to come from the input. */
@@ -154,12 +150,22 @@ const WordPage = ({
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
               <h2>Lemma information</h2>
-              <p>
-                <strong lang="la">{foundWord.Word}</strong> belongs to the
-                following {wordLemmata.length}{' '}
-                {wordLemmata.length === 1 ? 'lemma' : 'lemmata'}:
-              </p>
-              {mappedLemmata ? mappedLemmata : null}
+              {lemmata.length ? (
+                <>
+                  <p>
+                    <strong lang="la">{foundWord.Word}</strong> belongs to the
+                    following {lemmata.length}{' '}
+                    {lemmata.length === 1 ? 'lemma' : 'lemmata'}:
+                  </p>
+                  {mappedLemmata}
+                </>
+              ) : (
+                <p>
+                  There’s been a mistake — velut has no lemma information for{' '}
+                  <strong lang="la">{foundWord.Word}</strong>. Please try
+                  another word.
+                </p>
+              )}
             </div>
           ) : (
             <>
@@ -217,13 +223,13 @@ export async function getServerSideProps({ params, res }) {
     const { rhymes, headingToDisplay } = rhymesObject
 
     const lemmataObject = await getLemmata(wordAsObject)
-    const lemmata = JSON.parse(lemmataObject.lemmata)
+    const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
 
     return {
       props: {
         foundWord: wordAsObject,
         homographs,
-        lemmata: lemmata || [],
+        lemmata: lemmata,
         rhymes,
         search: wordParam,
         headingToDisplay,
