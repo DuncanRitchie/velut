@@ -165,24 +165,29 @@ const FormsTable = ({
   linkBase,
   currentWordHyphenated,
 }) => {
-  const formsTable =
-    Forms.unencliticized || Forms.ne ? (
-      <FormsTableWithEnclitics
-        id={lemma}
-        formsFromWordsCollection={formsFromWordsCollection}
-        Forms={Forms}
-        lemma={lemma}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-      />
-    ) : (
-      <FormsTableWithoutEnclitics
-        formsFromWordsCollection={formsFromWordsCollection}
-        Forms={Forms}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-      />
-    )
+  const isDisplayedInTabs = !!(
+    Forms.unencliticized ||
+    Forms.ne ||
+    Forms.que ||
+    Forms.ve
+  )
+  const formsTable = isDisplayedInTabs ? (
+    <FormsTableWithEnclitics
+      id={lemma}
+      formsFromWordsCollection={formsFromWordsCollection}
+      Forms={Forms}
+      lemma={lemma}
+      linkBase={linkBase}
+      currentWordHyphenated={currentWordHyphenated}
+    />
+  ) : (
+    <FormsTableWithoutEnclitics
+      formsFromWordsCollection={formsFromWordsCollection}
+      Forms={Forms}
+      linkBase={linkBase}
+      currentWordHyphenated={currentWordHyphenated}
+    />
+  )
 
   return <div className={styles.formsTable}>{formsTable}</div>
 }
