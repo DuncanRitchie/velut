@@ -44,3 +44,12 @@
 .tabPanelHidden[role='tabpanel'] {
   display: none;
 }
+
+/* If forms on a tab are not being shown in description lists,
+they should align with the text in the first tab button.
+Tab buttons have inline padding of 0.625rem and tab-panels have
+0.5rem, therefore an extra inline padding of 0.125rem is needed.
+I’m assuming every form is inside an element such as <a> or <span>. */
+.tabs [role='tabpanel'] > :not(dl) {
+  padding: 0 0.125rem;
+}
