@@ -96,3 +96,9 @@
 .formsTable dd {
   margin-left: 1.5rem;
 }
+
+/* This is for lists of generated forms that are simple arrays,
+not displayed in Tabs nor in description lists. Eg, conjunctions. */
+:not([role='tabpanel']) > .formsTable > details > :not(summary):not(dl) {
+  padding: 0 0.625rem;
+}
