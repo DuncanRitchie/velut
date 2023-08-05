@@ -5,6 +5,7 @@ import styles from '../css/About.module.css'
 import Header from '../components/header/Header'
 import LatinLink from '../components/latinlink/LatinLink'
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
+import { Fragment } from 'react'
 
 export async function getServerSideProps() {
   const summaryData = await getSummary()
@@ -255,22 +256,25 @@ const DeExcellation = (props) => {
               Anyway, here’s the list of lemmata with the forms I want to delete
               from velut.
             </p>
-            <dl>
-              {props.summary?.errata?.map(({ lemma, incorrectForms }) => {
-                return (
-                  <>
-                    <dt>{superscriptLemmaTag(lemma)}</dt>
-                    <dd>
-                      {incorrectForms.map((form) => (
-                        <>
-                          <LatinLink targetWord={form} />{' '}
-                        </>
-                      ))}
-                    </dd>
-                  </>
-                )
-              })}
-            </dl>
+            <details>
+              <summary>Show/hide list</summary>
+              <dl>
+                {props.summary?.errata?.map(({ lemma, incorrectForms }) => {
+                  return (
+                    <Fragment key={lemma}>
+                      <dt>{superscriptLemmaTag(lemma)}</dt>
+                      <dd>
+                        {incorrectForms.map((form) => (
+                          <Fragment key={form}>
+                            <LatinLink targetWord={form} />{' '}
+                          </Fragment>
+                        ))}
+                      </dd>
+                    </Fragment>
+                  )
+                })}
+              </dl>
+            </details>
           </section>
         </main>
       </div>

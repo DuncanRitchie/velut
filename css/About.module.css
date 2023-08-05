@@ -18,7 +18,9 @@
 }
 
 .about main p,
-.about main ul {
+.about main ul,
+.about main dl,
+.about main details {
   margin-top: 0;
   margin-bottom: 0;
   text-align: left;
@@ -37,6 +39,22 @@
 
 .about section ul {
   width: 100%;
+}
+
+.about dt {
+  padding: 0 1rem 0 1rem;
+  color: #34311a;
+  font-style: italic;
+}
+
+.about dd {
+  margin-left: 0;
+  padding: 0.25rem 1rem 0.75rem 3rem;
+}
+
+.about summary {
+  padding-bottom: 1rem;
+  padding-left: 0.75rem;
 }
 
 /* Copied from Advanced Rubric */
