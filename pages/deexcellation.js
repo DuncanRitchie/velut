@@ -22,6 +22,13 @@ const DeExcellation = (props) => {
   const successesOrNoTestDataCount =
     (props.summary?.inflectorCounts.successes || 0) +
     (props.summary?.inflectorCounts.noTestData || 0)
+
+  const incorrectFormsCount = props.summary?.errata?.reduce(
+    (accumulated, currentErratum) =>
+      accumulated + currentErratum.incorrectForms.length,
+    0,
+  )
+
   const dateLastUpdatedEnglish = (() => {
     //// I’m really looking forward to the Temporal API being supported.
     if (!props.summary?.lastUpdatedDate) {
@@ -78,14 +85,73 @@ const DeExcellation = (props) => {
               aim of removing all usage of Excel.
             </p>
             <p>
-              This gives me the opportunity to improve how certain features
-              appear on the website. A major example is the list of forms for
-              each lemma. The tabular nature of Excel meant I couldn’t have the
-              more complex data-structures that are useful for storing
-              grammatical data about all the forms compactly. In essence, I can
-              use Excel to say that <LatinLink targetWord="verbī" /> is a form
-              of <LatinLink targetWord="verbum" />, but it was very hard to
-              store the information about it being genitive singular.
+              It’s a huge amount of work to do, and there are mistakes and
+              omissions in my data which I will not emend until this
+              “de-Excellation” work is finished (or nearly finished). So I made
+              this page, to give updates on it while it was in progress.
+            </p>
+            <p>
+              Statistics in bold were last updated on{' '}
+              <strong>{dateLastUpdatedEnglish}</strong>.
+            </p>
+          </section>
+
+          <section>
+            <h2>Stages of de-Excellation</h2>
+            <p>
+              The creation of this website in 2019 was itself part of the
+              process of creating substitutes for functionality I had in Excel.
+              This is because I can use my Excel file to look up what data I
+              have on a given word, and the website allows anyone to see that
+              information too.
+            </p>
+            <p>
+              I had a sheet in Excel for producing certain data for each word,
+              mostly phonetic data such as the metrical scansion or the location
+              of the stressed syllable. In 2022 I made a JavaScript script to do
+              this instead: my{' '}
+              <a href="https://www.duncanritchie.co.uk/velut-word-data-generator/">
+                Word Data Generator
+              </a>
+              .
+            </p>
+            <p>
+              In a similar vein, I used Excel to store each word and the lemmata
+              that it is a form of, and I had used Excel to generate some of
+              those forms for a given lemma. But I wanted to bring more
+              automation to the generation of inflected forms, so I now have a
+              JavaScript script to do that: my{' '}
+              <a href="https://www.duncanritchie.co.uk/velut-inflector/">
+                Inflector
+              </a>
+              .
+            </p>
+            <p>
+              More detail about where I’m currently at with the Inflector is
+              below. I also have a{' '}
+              <a href="https://github.com/DuncanRitchie/velut/blob/main/plan.md">
+                Markdown document on GitHub
+              </a>{' '}
+              in which I break the work down into steps and say when I completed
+              each step.
+            </p>
+          </section>
+
+          <section>
+            <h2>About the lists of forms</h2>
+            <p>
+              The “de-Excellation” of velut brings many benefits to how I manage
+              the dictionary behind the scenes. But it also gives me the
+              opportunity to improve how certain features appear on the website.
+              A major example is the list of forms for each lemma.
+            </p>
+            <p>
+              The tabular nature of Excel meant I couldn’t have the more complex
+              data-structures that are useful for storing grammatical data about
+              all the forms compactly. In essence, I can use Excel to say that{' '}
+              <LatinLink targetWord="verbī" /> is a form of{' '}
+              <LatinLink targetWord="verbum" />, but it was very hard to store
+              the information about it being genitive singular.
             </p>
             <p>
               (It’s theoretically possible, but in practice implausible for the
@@ -101,10 +167,10 @@ const DeExcellation = (props) => {
               <LatinLink targetWord="verbīs" /> <LatinLink targetWord="verbō" />{' '}
               <LatinLink targetWord="verbum" />. (I know{' '}
               <LatinLink targetWord="verbōrum" /> is missing — I didn’t include
-              every form.)
+              every form.) It couldn’t really be more informative.
             </p>
             <p>
-              In Excel, I added the forms manually, which has the advantage of
+              And I was adding the forms manually, which has the advantage of
               not leading to the sorts of errors you get by generating forms
               through code. If a lemma is irregular, it was easy for me include
               the irregular forms. If a lemma doesn’t make sense in the plural
@@ -115,7 +181,7 @@ const DeExcellation = (props) => {
               errors in copying one cell to another — and it was difficult to
               correct them in Excel. I also couldn’t include all the forms for
               all lemmata, nor the parsing information about each form, as I’ve
-              said.
+              said. And adding the forms I did have was a bit tedious.
             </p>
             <p>
               In October 2022, I exported all the data about lemmata and their
@@ -147,16 +213,13 @@ const DeExcellation = (props) => {
               going through all my lemmata and confirming that the forms
               information looks okay!
             </p>
-            <p>
-              Last updated: <strong>{dateLastUpdatedEnglish}</strong>.
-            </p>
           </section>
 
           <section>
             <h2>Progress on writing the Inflector</h2>
             <p>
-              I have {props.summary?.inflectorCounts.total} lemmata in total, of
-              which:
+              I have <strong>{props.summary?.inflectorCounts.total}</strong>{' '}
+              lemmata in total, of which:
             </p>
             <ul>
               <li>
@@ -201,18 +264,22 @@ const DeExcellation = (props) => {
             </p>
             <p>
               So I’m checking all {props.summary?.inflectorCounts.total} lemmata
-              manually:
+              manually.
             </p>
             <ul>
               <li>
-                {props.summary?.inflectorCounts.manuallyChecked} lemmata have
-                been confirmed by me to have correct forms coming from the
-                Inflector. (Or, occasionally, the lemma itself is wrong, and
-                correcting it is on my to-do list!)
+                <strong>
+                  {props.summary?.inflectorCounts.manuallyChecked}
+                </strong>{' '}
+                lemmata have been confirmed by me to have correct forms coming
+                from the Inflector. (Or, occasionally, the lemma itself is
+                wrong, and correcting it is on my to-do list!)
               </li>
               <li>
-                {props.summary?.inflectorCounts.toBeManuallyChecked} lemmata are
-                yet to be checked.
+                <strong>
+                  {props.summary?.inflectorCounts.toBeManuallyChecked}
+                </strong>{' '}
+                lemmata are yet to be checked.
               </li>
             </ul>
             <p>
@@ -242,6 +309,11 @@ const DeExcellation = (props) => {
               verb. It should be its own lemma.) In other cases, the
               macronization is incorrect, or the form is wrong for other
               reasons.
+            </p>
+            <p>
+              There are <strong>{incorrectFormsCount}</strong> incorrect forms
+              on the list below, among{' '}
+              <strong>{props.summary?.errata?.length}</strong> lemmata.
             </p>
             <p>
               If the <em>lemma</em> itself is wrong, this is not acknowledged in
