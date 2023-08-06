@@ -61,6 +61,7 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
   }
 
   // Create JSX for the forms that are already in the words collection.
+  // Forms are skipped if they are in the summary collection as an erratum.
   const mappedForms = formsFromWordsCollection ? (
     formsFromWordsCollection.map((form, index) => {
       if (incorrectForms?.includes(form)) {
@@ -73,25 +74,6 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
             targetWord={form}
             currentWordHyphenated={currentWordHyphenated}
           />{' '}
-        </Fragment>
-      )
-    })
-  ) : (
-    <></>
-  )
-
-  // Create JSX for the incorrect forms that are in the words collection, but also in the summary collection as an erratum.
-  const mappedIncorrectForms = incorrectForms ? (
-    incorrectForms.map((form, index) => {
-      return (
-        <Fragment key={index}>
-          <s>
-            <LatinLink
-              linkBase={linkBase}
-              targetWord={form}
-              currentWordHyphenated={currentWordHyphenated}
-            />
-          </s>{' '}
         </Fragment>
       )
     })
@@ -148,12 +130,6 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
         <p>Transliterations: {mappedTransliterations}</p>
       ) : null}
       {mappedForms && !Forms ? <p>Forms: {mappedForms}</p> : null}
-      {incorrectForms?.length && !Forms ? (
-        <p>
-          Incorrect forms that will be removed from velut:{' '}
-          {mappedIncorrectForms}
-        </p>
-      ) : null}
       {Forms ? (
         <FormsTable
           Forms={Forms}
