@@ -27,14 +27,16 @@ const WordPage = ({
   homographs,
   rhymes,
   type,
-  lemmata,
+  correctLemmata,
+  incorrectLemmata,
   headingToDisplay,
 }) => {
   let footName = ''
   let footNameArticle = 'a'
   let mappedRhymes = []
   let mappedHomographs = []
-  let mappedLemmata = []
+  let mappedCorrectLemmata = []
+  let mappedIncorrectLemmata = []
   // All Links to other velut words will begin with linkBase.
   const linkBase = type === '' ? '/' : '/' + type + '/'
 
@@ -90,8 +92,8 @@ const WordPage = ({
         )
       })
     }
-    // Let’s do the lemmata. We will render an element for every lemma listed against the input.
-    mappedLemmata = lemmata.map((lemma, index) => {
+    // Let’s do the (correct) lemmata. We will render an element for every lemma listed against the input.
+    mappedCorrectLemmata = correctLemmata.map((lemma, index) => {
       if (lemma) {
         return (
           <Lemma
@@ -100,6 +102,26 @@ const WordPage = ({
             linkBase={linkBase}
             currentWordHyphenated={currentWordHyphenated}
           />
+        )
+      } else {
+        return null
+      }
+    })
+    // And we’ll also make JSX for the incorrect lemmata!
+    // If I assigned a lemma to a word when I was storing the data in Excel, but realised that it was wrong when I was writing/testing the Inflector, it is recorded as an incorrect lemma in the `summary` collection in the database.
+    // As of writing this, the `words` and `lemmata` collections still have data from Excel, so incorrect words still appear on velut.
+    // The code here, and other code for handling incorrect lemmata, will be removed when the `words` collection has been refreshed based on the output of the Inflector, since incorrect words will no longer be in the collection.
+    mappedIncorrectLemmata = incorrectLemmata.map((lemma, index, array) => {
+      if (lemma) {
+        return (
+          <Fragment key={index}>
+            <LatinLink
+              targetWord={lemma.Lemma}
+              linkBase={linkBase}
+              currentWordHyphenated={currentWordHyphenated}
+            />
+            {index < array.length - 1 ? ' ' : <></>}
+          </Fragment>
         )
       } else {
         return null
@@ -150,21 +172,34 @@ const WordPage = ({
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
               <h2>Lemma information</h2>
-              {lemmata.length ? (
+              {correctLemmata.length ? (
                 <>
                   <p>
                     <strong lang="la">{foundWord.Word}</strong> belongs to the
-                    following {lemmata.length}{' '}
-                    {lemmata.length === 1 ? 'lemma' : 'lemmata'}:
+                    following {correctLemmata.length}{' '}
+                    {correctLemmata.length === 1 ? 'lemma' : 'lemmata'}:
                   </p>
-                  {mappedLemmata}
+                  {mappedCorrectLemmata}
                 </>
               ) : (
-                <p>
-                  There’s been a mistake — velut has no lemma information for{' '}
-                  <strong lang="la">{foundWord.Word}</strong>. Please try
-                  another word.
-                </p>
+                <>
+                  {incorrectLemmata.length ? (
+                    <p>
+                      There’s been a mistake — the word{' '}
+                      <strong lang="la">{foundWord.Word}</strong> was added to
+                      velut as a form of the{' '}
+                      {incorrectLemmata.length === 1 ? 'lemma' : 'lemmata'}{' '}
+                      {mappedIncorrectLemmata}, but this is probably wrong. I
+                      will remove it if it’s unacceptable Latin!
+                    </p>
+                  ) : (
+                    <p>
+                      There’s been a mistake — velut has no lemma information
+                      for <strong lang="la">{foundWord.Word}</strong>. Please
+                      try another word.
+                    </p>
+                  )}
+                </>
               )}
             </div>
           ) : (
@@ -225,11 +260,20 @@ export async function getServerSideProps({ params, res }) {
     const lemmataObject = await getLemmata(wordAsObject)
     const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
 
+    const lemmataWithFormIncorrect = lemmata.filter((lemma) => {
+      return lemma.incorrectForms?.includes(wordAsObject.Word)
+    })
+
+    const lemmataWithFormCorrect = lemmata.filter((lemma) => {
+      return !lemma.incorrectForms?.includes(wordAsObject.Word)
+    })
+
     return {
       props: {
         foundWord: wordAsObject,
         homographs,
-        lemmata: lemmata,
+        incorrectLemmata: lemmataWithFormIncorrect,
+        correctLemmata: lemmataWithFormCorrect,
         rhymes,
         search: wordParam,
         headingToDisplay,

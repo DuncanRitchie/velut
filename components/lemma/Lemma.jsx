@@ -19,8 +19,11 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
     Root,
     cognates,
     formsFromWordsCollection,
+    incorrectForms,
     Forms,
   } = lemma
+
+  Forms = null
 
   // If there are transliterations in Ancient Greek, they will appear next to a Greek flag
   // and be labelled as lang="grc". Ditto for Hebrew with the Israeli flag and lang="he".
@@ -60,6 +63,9 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
   // Create JSX for the forms that are already in the words collection.
   const mappedForms = formsFromWordsCollection ? (
     formsFromWordsCollection.map((form, index) => {
+      if (incorrectForms?.includes(form)) {
+        return <></>
+      }
       return (
         <Fragment key={index}>
           <LatinLink
@@ -67,6 +73,25 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
             targetWord={form}
             currentWordHyphenated={currentWordHyphenated}
           />{' '}
+        </Fragment>
+      )
+    })
+  ) : (
+    <></>
+  )
+
+  // Create JSX for the incorrect forms that are in the words collection, but also in the summary collection as an erratum.
+  const mappedIncorrectForms = incorrectForms ? (
+    incorrectForms.map((form, index) => {
+      return (
+        <Fragment key={index}>
+          <s>
+            <LatinLink
+              linkBase={linkBase}
+              targetWord={form}
+              currentWordHyphenated={currentWordHyphenated}
+            />
+          </s>{' '}
         </Fragment>
       )
     })
@@ -123,6 +148,12 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
         <p>Transliterations: {mappedTransliterations}</p>
       ) : null}
       {mappedForms && !Forms ? <p>Forms: {mappedForms}</p> : null}
+      {incorrectForms?.length && !Forms ? (
+        <p>
+          Incorrect forms that will be removed from velut:{' '}
+          {mappedIncorrectForms}
+        </p>
+      ) : null}
       {Forms ? (
         <FormsTable
           Forms={Forms}
