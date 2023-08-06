@@ -84,6 +84,11 @@ const FormsTableWithoutEnclitics = ({
 
 // The first tab that has the current word on it will be shown by default.
 const getTabForCurrentWord = (allForms, currentWordHyphenated) => {
+  // If there’s no current word, default to the first tab.
+  if (!currentWordHyphenated) {
+    return 0
+  }
+
   // We could pass `currentWord` in as a prop of FormsTable,
   // but we’re already passing the hyphenated version in so let’s use that.
   const currentWord = hyphensToMacra(currentWordHyphenated)
