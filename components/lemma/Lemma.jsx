@@ -23,8 +23,6 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
     Forms,
   } = lemma
 
-  Forms = null
-
   // If there are transliterations in Ancient Greek, they will appear next to a Greek flag
   // and be labelled as lang="grc". Ditto for Hebrew with the Israeli flag and lang="he".
   // All the transliterations for the lemma come into props as a single string to be processed here.
