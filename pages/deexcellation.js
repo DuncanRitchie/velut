@@ -43,7 +43,7 @@ const DeExcellation = (props) => {
       'Thursday',
       'Friday',
       'Saturday',
-    ][date.getDate()]
+    ][date.getDay()]
     const month = [
       'January',
       'February',
@@ -58,7 +58,7 @@ const DeExcellation = (props) => {
       'November',
       'December',
     ][date.getMonth()]
-    return `${dayOfWeek} ${date.getDay()} ${month} ${date.getFullYear()}`
+    return `${dayOfWeek} ${date.getDate()} ${month} ${date.getFullYear()}`
   })()
 
   return (
@@ -230,7 +230,7 @@ const DeExcellation = (props) => {
               <li>
                 <strong>{props.summary?.inflectorCounts.mismatches}</strong> are
                 lemmata for which the Inflector generates forms, but not all the
-                forms that I had in Excel (plus more forms, potentially).
+                forms that I had in Excel.
               </li>
               <li>
                 <strong>
