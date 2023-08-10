@@ -107,7 +107,14 @@ const About = (props) => {
               recently ported it all to the{' '}
               <a href="https://nextjs.org/">Next.js</a> framework, which makes
               it work even if you don’t have JavaScript enabled in your browser.
-              And the site is often faster to load now. Pretty cool!
+              And the site is often faster to load now.
+            </p>
+            <p>
+              But moving to Next.js is not the end of my ambitions for velut. I
+              do not intend to keep using Excel for this project any more than I
+              have to. See the <a href="#future-plans">Future plans</a> section
+              for how I’m changing how the data are generated and stored. It’s a
+              lot of work, but it will be pretty cool when it’s all sorted.
             </p>
             <p>
               Speaking of “pretty” and “cool”, the bird pictured is a fulmar,{' '}
@@ -602,7 +609,7 @@ const About = (props) => {
               and <a href="#web-development">Web development</a>
               ), I use a massive Excel file to generate, check, and store all
               the data for all the vocabulary. This has many downsides, so I’ve
-              been making little websites and webpages to do whatever I had
+              been making little webpages and scripts to do whatever I had
               written Excel formulae to do. This has enabled me to trim parts of
               my Excel file while still adding words and lemmata. I’m still very
               far away from abandoning Excel altogether, but I’m definitely
@@ -612,21 +619,36 @@ const About = (props) => {
               On a more lexicographical note, as mentioned under{' '}
               <a href="#word-compilation">Word compilation</a>, most of the
               lemmata are missing some inflected forms. (Adjectives and verbs
-              are particularly under-represented.) I’m currently writing a
+              are particularly under-represented.) I’ve recently written a
               script that will generate all the forms I want for all the lemmata
-              I have. This should also mean I can present the inflections in
+              I have. This will also mean I can present the inflections in
               proper tables, showing what’s singular/plural/nominative/genitive
-              etc. It’s taking a while because I’m trying to avoid producing
-              anything nonsensical.
+              etc.
+            </p>
+            <p>
+              I’m in the middle of reviewing the output of my script. It’s
+              taking a while because I’m checking each of the{' '}
+              {props.lemmaCount || '13000+'} lemmata individually. After that’s
+              done, I will update the live website with all the generated forms.
+            </p>
+            <p>
+              For more information about my efforts to remove Excel from velut,
+              including details about my script for creating inflected forms,
+              see my page about{' '}
+              <Link href="/deexcellation">the “de-Excellation” of velut</Link>.
             </p>
             <p>
               Also, roughly 1% of lemmata are missing information about
               cognates. I’m working to redress this.
             </p>
             <p>
-              velut contains {props.wordCount || '120000+'} words belonging to{' '}
-              {props.lemmaCount || '13000+'} lemmata. There are plenty more I
-              will add!
+              velut contains{' '}
+              <strong>{props.wordCount || '120000+'} words</strong> belonging to{' '}
+              <strong>{props.lemmaCount || '13000+'} lemmata</strong>. The
+              number of words will rise dramatically when I switch to using my
+              new script for generating forms, but there are also plenty more
+              lemmata I will add… after I’ve updated all my existing lemmata. By
+              that point, I’ll no longer be using Excel at all for velut.
             </p>
           </section>
         </main>
