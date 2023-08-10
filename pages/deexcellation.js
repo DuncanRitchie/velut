@@ -29,6 +29,18 @@ const DeExcellation = (props) => {
     0,
   )
 
+  const writingInflectorProgressPercent = (
+    (successesOrNoTestDataCount /
+      (props.summary?.inflectorCounts.total ?? Infinity)) *
+    100
+  ).toPrecision(3)
+
+  const checkingInflectorProgressPercent = (
+    ((props.summary?.inflectorCounts.manuallyChecked ?? 0) /
+      (props.summary?.inflectorCounts.total || Infinity)) *
+    100
+  ).toPrecision(3)
+
   const dateLastUpdatedEnglish = (() => {
     //// I’m really looking forward to the Temporal API being supported.
     if (!props.summary?.lastUpdatedDate) {
@@ -223,9 +235,10 @@ const DeExcellation = (props) => {
             </p>
             <ul>
               <li>
-                <strong>{successesOrNoTestDataCount}</strong> are lemmata for
-                which the Inflector generates all the forms that I had in Excel
-                (plus more forms, potentially).
+                <strong>{successesOrNoTestDataCount}</strong> (or{' '}
+                <strong>{writingInflectorProgressPercent}%</strong>) are lemmata
+                for which the Inflector generates all the forms that I had in
+                Excel (plus more forms, potentially).
               </li>
               <li>
                 <strong>{props.summary?.inflectorCounts.mismatches}</strong> are
@@ -243,9 +256,8 @@ const DeExcellation = (props) => {
               </li>
             </ul>
             <p>
-              Here’s what {successesOrNoTestDataCount} /{' '}
-              {props.summary?.inflectorCounts.total} looks like as a
-              progress-bar:
+              Here’s what {writingInflectorProgressPercent}
+              % looks like as a progress-bar:
               <progress
                 min="0"
                 max={props.summary?.inflectorCounts.total}
@@ -271,9 +283,10 @@ const DeExcellation = (props) => {
                 <strong>
                   {props.summary?.inflectorCounts.manuallyChecked}
                 </strong>{' '}
-                lemmata have been confirmed by me to have correct forms coming
-                from the Inflector. (Or, occasionally, the lemma itself is
-                wrong, and correcting it is on my to-do list!)
+                lemmata (<strong>{checkingInflectorProgressPercent}%</strong>)
+                have been confirmed by me to have correct forms coming from the
+                Inflector. (Or, occasionally, the lemma itself is wrong, and
+                correcting it is on my to-do list!)
               </li>
               <li>
                 <strong>
@@ -283,9 +296,8 @@ const DeExcellation = (props) => {
               </li>
             </ul>
             <p>
-              Here’s what {props.summary?.inflectorCounts.manuallyChecked} /{' '}
-              {props.summary?.inflectorCounts.total} looks like as a
-              progress-bar:
+              Here’s what {checkingInflectorProgressPercent}
+              % looks like as a progress-bar:
               <progress
                 min="0"
                 max={props.summary?.inflectorCounts.total}
