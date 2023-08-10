@@ -88,7 +88,7 @@ const DeExcellation = (props) => {
         <Header textBeforeTitle="De-Excellation" />
 
         <main>
-          <section>
+          <section id="preamble">
             <h2>Preamble</h2>
             <p>
               Since the beginning of velut in early 2016, I have been using
@@ -108,7 +108,7 @@ const DeExcellation = (props) => {
             </p>
           </section>
 
-          <section>
+          <section id="stages-of-deexcellation">
             <h2>Stages of de-Excellation</h2>
             <p>
               The creation of this website in 2019 was itself part of the
@@ -149,7 +149,7 @@ const DeExcellation = (props) => {
             </p>
           </section>
 
-          <section>
+          <section id="about-the-lists-of-forms">
             <h2>About the lists of forms</h2>
             <p>
               The “de-Excellation” of velut brings many benefits to how I manage
@@ -212,10 +212,19 @@ const DeExcellation = (props) => {
               all lemmata) needs more information about the lemma in question.
             </p>
             <p>
-              Below, you can see the list of all the forms that I’ve decided not
-              to keep. I also show my progress in making the Inflector generate
-              forms for each lemma, and then my progress in checking those
-              forms.
+              Below, you can see the{' '}
+              <a href="#incorrect-forms">
+                list of all the forms that I’ve decided not to keep
+              </a>
+              . I also show my progress in{' '}
+              <a href="#progress-on-writing-the-inflector">
+                making the Inflector generate forms for each lemma
+              </a>
+              , and then my progress in{' '}
+              <a href="#progress-on-checking-the-inflectors-output">
+                checking those forms
+              </a>
+              .
             </p>
             <p>
               You see, the data from Excel tell me what forms the Inflector
@@ -227,7 +236,7 @@ const DeExcellation = (props) => {
             </p>
           </section>
 
-          <section>
+          <section id="progress-on-writing-the-inflector">
             <h2>Progress on writing the Inflector</h2>
             <p>
               I have <strong>{props.summary?.inflectorCounts.total}</strong>{' '}
@@ -266,7 +275,7 @@ const DeExcellation = (props) => {
             </p>
           </section>
 
-          <section>
+          <section id="progress-on-checking-the-inflectors-output">
             <h2>Progress on checking the Inflector’s output</h2>
             <p>
               The Inflector can replicate all the forms that I had in Excel, for
@@ -306,7 +315,7 @@ const DeExcellation = (props) => {
             </p>
           </section>
 
-          <section>
+          <section id="incorrect-forms">
             <h2>Incorrect forms</h2>
             <p>
               These are forms that I had added to Excel, and were thus on the
