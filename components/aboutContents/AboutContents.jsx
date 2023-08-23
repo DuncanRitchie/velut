@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import styles from './AboutContents.module.css'
 
 const AboutContents = () => {
   return (
-    <nav className="contents" aria-labelledby="on-this-page">
+    <nav className={styles.contents} aria-labelledby="on-this-page">
       <h2 id="on-this-page">On this page</h2>
       <ul>
         <li>

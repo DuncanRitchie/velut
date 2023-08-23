@@ -1,4 +1,5 @@
-.multisearch {
+/* Thanks to CSS Modules this doesn’t clash with the Search component’s .search */
+.search {
   padding-bottom: 2rem;
 }
 

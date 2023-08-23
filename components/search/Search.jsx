@@ -2,6 +2,7 @@ import { withRouter } from 'next/router'
 import { Component } from 'react'
 import routes from '../../data/routes.json'
 import urlFromSearch from '../../lib/urlFromSearch'
+import styles from './Search.module.css'
 
 class Search extends Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class Search extends Component {
       // If client doesn’t have JavaScript, `action` & `method` are used.
       // If client has JavaScript, the `onSubmit` is used.
       <form
-        className="search"
+        className={styles.search}
         action="/redirectonsearch"
         method="get"
         onSubmit={this.handleSubmit}
@@ -97,7 +98,7 @@ class Search extends Component {
         {this.props.hideDropdown ? (
           <input name="type" type="hidden" value={this.state.type}></input>
         ) : (
-          <div className="dropdown with-dropdown-arrow">
+          <div className={styles.dropdown + ' with-dropdown-arrow'}>
             <label htmlFor="rhyme-type-dropdown" className="visually-hidden">
               Type of rhymes to include
             </label>
@@ -113,7 +114,7 @@ class Search extends Component {
         )}
 
         {/* The button to load the new page. */}
-        <button className="searchButton" type="submit">
+        <button className={styles.searchButton} type="submit">
           Search!
         </button>
         <br />

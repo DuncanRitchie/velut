@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import getAnagrams from '../../lib/words/anagramphrases'
+import styles from '../../css/Subsites.module.css'
 
 // <Anagrams/> is a JSX element rendered at /anagramphrases/:word
 
@@ -58,7 +59,7 @@ const Anagrams = ({ input, anagrams, error }) => {
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="Anagram phrases" />
-        <p className="subsiteHomeRubric">
+        <p className={styles.subsiteHomeRubric}>
           Caution — searches may take some minutes or fail completely.
         </p>
         <Search
@@ -68,7 +69,7 @@ const Anagrams = ({ input, anagrams, error }) => {
           lang="zxx"
           hideDropdown={true}
         />
-        <div className="subsiteResult">{result}</div>
+        <div className={styles.subsiteResult}>{result}</div>
       </div>
     </>
   )

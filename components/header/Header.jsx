@@ -1,19 +1,21 @@
+import styles from './Header.module.css'
+
 let Header = (props) => {
   return (
-    <header className="header">
+    <header className={styles.header}>
       {/* Pages that don’t have `textBeforeTitle` have <h1> outside of Header */}
       {props.textBeforeTitle && <h1>{props.textBeforeTitle}</h1>}
       <p>
-        <span className="titleAuthor">Duncan Ritchie’s</span>
+        <span className={styles.titleAuthor}>Duncan Ritchie’s</span>
         <br />
         <abbr
-          className="title"
+          className={styles.title}
           title="Useful Tables of Excellent Latin Vocabulary"
         >
           velut
         </abbr>
       </p>
-      <p className="titleFull" lang="la">
+      <p className={styles.titleFull} lang="la">
         Vocābulōrum Excellentium
         <br />
         Latīnōrum Ūtilēs Tabulae

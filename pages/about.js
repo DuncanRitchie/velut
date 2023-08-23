@@ -5,6 +5,7 @@ import Search from '../components/search/Search'
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
 import { count as wordsCount } from '../lib/words/count'
 import { count as lemmataCount } from '../lib/lemmata/count'
+import styles from '../css/About.module.css'
 import AboutContents from '../components/aboutContents/AboutContents'
 
 export async function getServerSideProps() {
@@ -29,7 +30,7 @@ const About = (props) => {
           content="Explanation of the purpose and functionality of velut, the Latin vocabulary website"
         />
       </Head>
-      <div className="about fulmar-background">
+      <div className={styles.about + ' fulmar-background'}>
         <Header textBeforeTitle="About" />
 
         <main>

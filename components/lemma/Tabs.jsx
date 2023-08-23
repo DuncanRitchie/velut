@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import styles from './Tabs.module.css'
 
 // Adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
 
@@ -120,7 +121,7 @@ class Tabs extends Component {
     )
 
     return (
-      <div className="tabs">
+      <div className={styles.tabs}>
         <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
           {tabsChildren.map((child, index) => (
             <button
@@ -145,7 +146,9 @@ class Tabs extends Component {
             key={index}
             role="tabpanel"
             aria-labelledby={`${this.props.id}-tab-${index}`}
-            className={this.state.currentTab === index ? '' : 'tabPanelHidden'}
+            className={
+              this.state.currentTab === index ? '' : styles.tabPanelHidden
+            }
           >
             {child}
           </div>

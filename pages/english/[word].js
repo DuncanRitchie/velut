@@ -4,6 +4,7 @@ import Search from '../../components/search/Search'
 import Lemma from '../../components/lemma/Lemma'
 import Dictionaries from '../../components/dictionaries/Dictionaries'
 import getEnglish from '../../lib/lemmata/english'
+import styles from '../../css/Subsites.module.css'
 
 const English = ({ lemmata, sanitisedInput }) => {
   const mappedLemmata = lemmata.map((lemma) => {
@@ -33,7 +34,7 @@ const English = ({ lemmata, sanitisedInput }) => {
 
         {lemmata.length ? (
           <>
-            <div className="wordInfo">
+            <div className={styles.wordInfo}>
               <h2>Search results</h2>
               <p>
                 There{' '}
@@ -46,7 +47,7 @@ const English = ({ lemmata, sanitisedInput }) => {
             </div>
           </>
         ) : (
-          <p className="showingResultsFor">
+          <p className={styles.showingResultsFor}>
             No results were found for “{sanitisedInput}”. Please try a different
             search.
           </p>

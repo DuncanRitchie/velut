@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import dictionariesLatin from '../../data/dictionariesLatin.json'
 import dictionariesEnglish from '../../data/dictionariesEnglish.json'
 import { noMacra } from '../../lib/words/diacritics'
+import styles from './Dictionaries.module.css'
 
 let Dictionaries = ({ sanitisedInput, category }) => {
   let plainInput = noMacra(sanitisedInput)
@@ -17,10 +18,10 @@ let Dictionaries = ({ sanitisedInput, category }) => {
   })
   return (
     <>
-      <h2 className="dictionariesHeading page-width">
+      <h2 className={styles.dictionariesHeading + ' page-width'}>
         Links to other {category} sites
       </h2>
-      <p className="dictionariesP page-width">{mappedDics}</p>
+      <p className={styles.dictionariesP + ' page-width'}>{mappedDics}</p>
     </>
   )
 }

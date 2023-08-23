@@ -1,5 +1,3 @@
-/* Imports are at the end of this file. */
-
 body {
   margin: 0;
   padding: 0;
@@ -109,7 +107,7 @@ p + p:not(.title-full) {
   padding-bottom: 0.625rem;
 }
 
-p:last-child:not(.titleFull):not(.dictionaries-p) {
+p:last-child:not(.dictionaries-p) {
   padding-bottom: 1.5rem;
 }
 
@@ -321,20 +319,3 @@ See also: https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
     max-width: initial;
   }
 }
-
-/* This should be all the files in the /css folder except globals.css itself! */
-@import url(./About.css);
-@import url(./AboutContents.css);
-@import url(./AdvancedRubric.css);
-@import url(./AdvancedSearch.css);
-@import url(./Dictionaries.css);
-@import url(./Footer.css);
-@import url(./FormsTable.css);
-@import url(./Header.css);
-@import url(./Home.css);
-@import url(./Multi.css);
-@import url(./Search.css);
-@import url(./Subsites.css);
-@import url(./Tabs.css);
-@import url(./TemporaryWarning.css);
-@import url(./Word.css);

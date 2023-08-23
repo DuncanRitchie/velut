@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import Tabs from './Tabs'
 import LatinLink from '../latinlink/LatinLink'
+import styles from './FormsTable.module.css'
 import { hyphensToMacra } from '../../lib/words/diacritics'
 
 // Most of the keys in the form data are suitable for display,
@@ -193,7 +194,7 @@ const FormsTable = ({
     />
   )
 
-  return <div className="formsTable">{formsTable}</div>
+  return <div className={styles.formsTable}>{formsTable}</div>
 }
 
 export default FormsTable

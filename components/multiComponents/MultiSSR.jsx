@@ -1,6 +1,9 @@
 import { Component, Fragment } from 'react'
 import Header from '../header/Header'
 import LatinLink from '../latinlink/LatinLink'
+import subsitesStyles from '../../css/Subsites.module.css'
+import multiStyles from '../../css/Multi.module.css'
+import searchStyles from '../../components/search/Search.module.css'
 import { getHrefForDictionaryLinks } from '../../lib/words/multiHelpers'
 
 class MultiSSR extends Component {
@@ -107,11 +110,14 @@ class MultiSSR extends Component {
     return (
       <div className="fulmar-background">
         <Header textBeforeTitle="Multi-word Look-up" />
-        <div className="multi">
-          <p className="subsiteHomeRubric">
+        <div className={multiStyles.multi}>
+          <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
           </p>
-          <form className="search multisearch" role="search">
+          <form
+            className={searchStyles.search + ' ' + multiStyles.search}
+            role="search"
+          >
             <label htmlFor="multi-textarea" className="visually-hidden">
               Latin words
             </label>
@@ -126,12 +132,12 @@ class MultiSSR extends Component {
             <noscript>
               <input hidden name="ssr" value="true" onChange="void()" />
             </noscript>
-            <button className="searchButton" type="submit">
+            <button className={searchStyles.searchButton} type="submit">
               Search!
             </button>
           </form>
           {!this.props.isHomepage && (
-            <div className="subsiteResult">{resultJSX}</div>
+            <div className={subsitesStyles.subsiteResult}>{resultJSX}</div>
           )}
         </div>
       </div>

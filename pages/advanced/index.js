@@ -6,13 +6,14 @@ import AdvancedRubric from '../../components/advancedComponents/AdvancedRubric'
 import AdvancedSearch from '../../components/advancedComponents/AdvancedSearch'
 import findAdvanced from '../../lib/words/advanced'
 import { macraToHyphens } from '../../lib/words/diacritics'
+import styles from '../../css/Subsites.module.css'
 
 const Advanced = ({ query, isHomepage, words, error }) => {
   if (isHomepage) {
     return (
       <>
         <AdvancedHead />
-        <div className="advanced fulmar-background">
+        <div className={styles.advanced + ' fulmar-background'}>
           <Header textBeforeTitle="Advanced Search" />
           <AdvancedSearch query={query} />
           <AdvancedRubric />
@@ -59,12 +60,12 @@ const Advanced = ({ query, isHomepage, words, error }) => {
     return (
       <>
         <AdvancedHead />
-        <div className="advanced fulmar-background">
+        <div className={styles.advanced + ' fulmar-background'}>
           <Header textBeforeTitle="Advanced Search" />
           <div>
             <AdvancedSearch query={query} />
             <AdvancedRubric />
-            <div className="subsiteResult">
+            <div className={styles.subsiteResult}>
               <h2>Search results</h2>
               {result}
             </div>
