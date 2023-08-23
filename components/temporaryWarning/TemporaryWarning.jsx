@@ -1,8 +1,6 @@
-import styles from './TemporaryWarning.module.css'
-
 const TemporaryWarning = () => {
   return (
-    <aside className={styles.warning}>
+    <aside className="warning">
       <details>
         <summary>Warning</summary>
         <p>

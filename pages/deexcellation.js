@@ -1,7 +1,6 @@
 import Head from 'next/head'
 
 import { getSummary } from '../lib/summary'
-import styles from '../css/About.module.css'
 import Header from '../components/header/Header'
 import LatinLink from '../components/latinlink/LatinLink'
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
@@ -84,7 +83,7 @@ const DeExcellation = (props) => {
           content="How Excel is being removed from the architecture of velut, the Latin vocabulary website"
         />
       </Head>
-      <div className={styles.about + ' fulmar-background'}>
+      <div className="about fulmar-background">
         <Header textBeforeTitle="De-Excellation" />
 
         <main>

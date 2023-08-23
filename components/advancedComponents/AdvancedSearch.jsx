@@ -1,6 +1,4 @@
 import { Component } from 'react'
-import searchStyles from '../search/Search.module.css'
-import advancedStyles from './AdvancedSearch.module.css'
 
 class AdvancedSearch extends Component {
   constructor(props) {
@@ -56,10 +54,7 @@ class AdvancedSearch extends Component {
   render() {
     // Now we’re ready to return JSX.
     return (
-      <form
-        className={advancedStyles.advancedSearch + ' ' + searchStyles.search}
-        role="search"
-      >
+      <form className="advancedSearch search" role="search">
         <div>
           <div id="advanced-search-spelling">
             <p>
@@ -177,11 +172,7 @@ class AdvancedSearch extends Component {
         </div>
 
         {/* The button to load the new page. */}
-        <button
-          id="search-button"
-          className={searchStyles.searchButton}
-          type="submit"
-        >
+        <button id="search-button" className="searchButton" type="submit">
           Search!
         </button>
       </form>

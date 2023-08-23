@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
-import styles from '../../css/Subsites.module.css'
 
 const AnagramsHome = () => {
   return (
@@ -15,10 +14,10 @@ const AnagramsHome = () => {
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="Anagram phrases" />
-        <p className={styles.subsiteHomeRubric}>
+        <p className="subsiteHomeRubric">
           This will help you find Latin phrases that are anagrams!
         </p>
-        <p className={styles.subsiteHomeRubric}>
+        <p className="subsiteHomeRubric">
           Caution — searches may take some minutes. Searches longer than ten
           characters may fail completely.
         </p>

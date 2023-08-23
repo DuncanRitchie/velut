@@ -9,7 +9,6 @@ import {
   deleteCharacters,
   randomCountdownQuestionWeighted,
 } from '../../lib/words/subwordsHelpers'
-import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word
 
@@ -85,7 +84,7 @@ const Subwords = ({ input, subwords, randomCountdownQuestionExample }) => {
             hideDropdown={true}
             word={input}
           />
-          <div className={styles.subsiteResult}>{result}</div>
+          <div className="subsiteResult">{result}</div>
         </div>
       </div>
     </>

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import styles from './Footer.module.css'
 
 let Footer = () => {
   //// Footer has a list of links to different sections of velut, but the current section does not get linked to.
@@ -33,11 +32,11 @@ let Footer = () => {
   const showAbout = !doesUrlBeginWith('about') || thereIsSecondPartOfUrl
 
   return (
-    <footer className={styles.footer}>
+    <footer className="footer">
       <nav aria-label="Main navigation">
         <ul>
           <li>
-            <span className={styles.footerCopyright}>© Duncan Ritchie</span>
+            <span className="footerCopyright">© Duncan Ritchie</span>
           </li>
 
           {showHome && (

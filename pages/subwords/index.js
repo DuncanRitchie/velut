@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import { randomCountdownQuestionWeighted } from '../../lib/words/subwordsHelpers'
-import styles from '../../css/Subsites.module.css'
 
 const SubwordsHome = ({ randomCountdownQuestionExample }) => {
   return (
@@ -17,7 +16,7 @@ const SubwordsHome = ({ randomCountdownQuestionExample }) => {
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="Subwords" />
-        <p className={styles.subsiteHomeRubric}>
+        <p className="subsiteHomeRubric">
           This will help you find Latin words that can be made with the letters
           you specify. Type some letters below!
         </p>
@@ -27,7 +26,7 @@ const SubwordsHome = ({ randomCountdownQuestionExample }) => {
           lang="zxx"
           hideDropdown={true}
         />
-        <p className={styles.subsiteHomeRubric}>
+        <p className="subsiteHomeRubric">
           Alternatively, search for a random string:{' '}
           <Link href={'/subwords/' + randomCountdownQuestionExample}>
             {randomCountdownQuestionExample}

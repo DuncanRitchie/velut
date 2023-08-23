@@ -17,9 +17,6 @@ import LatinLink from '../../components/latinlink/LatinLink'
 import { hyphensToMacra, macraToHyphens } from '../../lib/words/diacritics'
 import getScansionDescription from '../../lib/words/scansion'
 
-import styles from '../../css/Word.module.css'
-import subsiteStyles from '../../css/Subsites.module.css'
-
 const WordPage = ({
   sanitisedInput,
   randomWord,
@@ -147,13 +144,11 @@ const WordPage = ({
       <div className="fulmar-background">
         <Header />
         <Search type={type} searchbarLabel="Latin word" word={sanitisedInput} />
-        <p className={subsiteStyles.showingResultsFor + ' page-width'}>
-          Showing results for
-        </p>
-        <h1 className={styles.foundWord + ' page-width'} lang="la">
+        <p className="showingResultsFor page-width">Showing results for</p>
+        <h1 className="foundWord page-width" lang="la">
           {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
         </h1>
-        <div className={subsiteStyles.wordInfo}>
+        <div className="wordInfo">
           {foundWord ? (
             <div>
               {mappedHomographs.length > 1 ? (
@@ -161,7 +156,7 @@ const WordPage = ({
               ) : null}
               <p>
                 The word <strong lang="la">{foundWord.Word}</strong> could scan
-                as <span className={styles.scansion}>{foundWord.Scansion}</span>
+                as <span className="scansion">{foundWord.Scansion}</span>
                 {footName ? (
                   <>
                     {' '}

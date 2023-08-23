@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import styles from './AdvancedRubric.module.css'
 
 const AdvancedRubric = () => {
   return (
-    <details className={styles.advancedRubric}>
+    <details className="advancedRubric">
       <summary>Show/hide how to use the Advanced Search</summary>
       <h2>How to use</h2>
       <p>

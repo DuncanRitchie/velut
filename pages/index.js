@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/header/Header'
 import Search from '../components/search/Search'
-import styles from '../css/Home.module.css'
 
 const Home = ({ type = '/' }) => {
   return (
@@ -9,15 +8,15 @@ const Home = ({ type = '/' }) => {
       <Head>
         <title>velut — a Latin rhyming dictionary</title>
       </Head>
-      <div className={styles.home + ' fulmar-background-big'}>
+      <div className="home fulmar-background-big">
         <Header />
-        <h1 className={styles.homeRubric + 'textWithBackground'}>
+        <h1 className="homeRubric">
           <span className="textWithBackground">
             Latin rhymes &amp;&nbsp;more!
           </span>
         </h1>
         <Search type={type} searchbarLabel="Latin word" />
-        <p className={styles.homeRubric}>
+        <p className="homeRubric">
           <span className="textWithBackground">
             Enter a Latin word in the searchbar&nbsp;above,
             <br />

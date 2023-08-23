@@ -2,9 +2,6 @@ import { Component, Fragment, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Header from '../header/Header'
 import LatinLink from '../latinlink/LatinLink'
-import subsitesStyles from '../../css/Subsites.module.css'
-import multiStyles from '../../css/Multi.module.css'
-import searchStyles from '../../components/search/Search.module.css'
 import {
   getHrefForDictionaryLinks,
   splitIntoWords,
@@ -256,13 +253,13 @@ class MultiCSR extends Component {
     return (
       <div className="fulmar-background">
         <Header textBeforeTitle="Multi-word Look-up" />
-        <div className={multiStyles.multi}>
-          <p className={subsitesStyles.subsiteHomeRubric}>
+        <div className="multi">
+          <p className="subsiteHomeRubric">
             Search for several Latin words by entering them into the box below!
           </p>
           {/* Form submission does not cause a full page reload if JavaScript is enabled. */}
           <form
-            className={searchStyles.search + ' ' + multiStyles.search}
+            className="search multisearch"
             onSubmit={(e) => e.preventDefault()}
             role="search"
           >
@@ -281,16 +278,14 @@ class MultiCSR extends Component {
               <input hidden name="ssr" value="true" onChange="void()" />
             </noscript>
             <button
-              className={searchStyles.searchButton}
+              className="searchButton"
               type="submit"
               onClick={this.fetchWords}
             >
               Search!
             </button>
           </form>
-          {resultsAreRendered && (
-            <div className={subsitesStyles.subsiteResult}>{result}</div>
-          )}
+          {resultsAreRendered && <div className="subsiteResult">{result}</div>}
           {this.state.redirectNeeded && (
             <Redirect
               newUrl={this.state.newUrl}
