@@ -147,10 +147,8 @@ const WordPage = ({
       <div className="fulmar-background">
         <Header />
         <Search type={type} searchbarLabel="Latin word" word={sanitisedInput} />
-        <p className={subsiteStyles.showingResultsFor + ' page-width'}>
-          Showing results for
-        </p>
-        <h1 className={styles.foundWord + ' page-width'} lang="la">
+        <p className={subsiteStyles.showingResultsFor}>Showing results for</p>
+        <h1 className={styles.foundWord} lang="la">
           {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
         </h1>
         <div className={subsiteStyles.wordInfo}>

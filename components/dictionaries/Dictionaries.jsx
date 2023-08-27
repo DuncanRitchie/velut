@@ -18,10 +18,10 @@ let Dictionaries = ({ sanitisedInput, category }) => {
   })
   return (
     <>
-      <h2 className={styles.dictionariesHeading + ' page-width'}>
+      <h2 className={styles.dictionariesHeading}>
         Links to other {category} sites
       </h2>
-      <p className={styles.dictionariesP + ' page-width'}>{mappedDics}</p>
+      <p className={styles.dictionariesP}>{mappedDics}</p>
     </>
   )
 }
