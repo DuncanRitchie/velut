@@ -1,7 +1,6 @@
 .advancedRubric ul,
 .advancedRubric li {
-  display: block;
-  max-width: 100%;
+  width: 100%;
 }
 
 .advancedRubric {
@@ -80,10 +79,4 @@
 .advancedRubric ul + p {
   padding-top: 0;
   padding-bottom: 1.25rem;
-}
-
-@media print {
-  .advancedRubric {
-    max-width: initial;
-  }
 }
