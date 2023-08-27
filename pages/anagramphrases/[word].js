@@ -46,12 +46,11 @@ const Anagrams = ({ input, anagrams, error }) => {
   } else {
     result = <p>No anagrams found!&nbsp; Try a different input.</p>
   }
+  const title = `Anagrams of “${input}” on velut — a Latin rhyming dictionary`
   return (
     <>
       <Head>
-        <title>
-          Anagrams of “{input}” on velut — a Latin rhyming dictionary
-        </title>
+        <title>{title}</title>
         <meta
           name="Description"
           content={`Latin multi-word anagrams of “${input}”`}
