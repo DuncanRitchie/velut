@@ -8,7 +8,7 @@
 }
 
 .advancedSearch div input[type='text'] {
-  width: calc(100% - 1rem);
+  width: 100%;
 }
 
 .advancedSearch > div > div {

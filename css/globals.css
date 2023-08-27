@@ -15,6 +15,17 @@ code {
 
 @import url(../public/fonts/fonts.css);
 
+:root {
+  --page-width: min(calc(100% - 1.125rem), 46.875rem);
+  --searchbar-width: min(calc(66vw + 1rem), 46.875rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 18px;
@@ -42,9 +53,7 @@ button {
 }
 
 ul {
-  min-width: fit-content;
-  width: calc(100vw - 0.75rem);
-  max-width: 47.875rem;
+  width: var(--page-width);
   margin: 0 auto;
   padding: 0;
 }
@@ -156,12 +165,12 @@ summary:active {
 }
 
 /* .showingResultsFor,.foundWord,.dictionariesHeading,.dictionariesP { */
-.page-width {
-  width: calc(100% - 1.875rem);
-  max-width: 46.125rem;
+/* .page-width {
+  width: var(--page-width);
+  --page-width: min(calc(100% - 1.875rem), 46.125rem);
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 .inline-flag {
   height: 1em;
@@ -191,7 +200,7 @@ summary::before {
   background-position: center;
   background-size: 0.7rem;
   display: inline-block;
-  width: 0.8rem;
+  width: 1.3rem;
   padding-right: 0.5rem;
 }
 
@@ -312,10 +321,7 @@ See also: https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
 
 @media print {
   /* Allow elements to be full-width. */
-  .showing-results-for,
-  .found-word,
-  .word-info,
-  p {
-    max-width: initial;
+  :root {
+    --page-width: unset;
   }
 }

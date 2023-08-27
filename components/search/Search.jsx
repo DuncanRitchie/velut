@@ -117,7 +117,6 @@ class Search extends Component {
         <button className={styles.searchButton} type="submit">
           Search!
         </button>
-        <br />
       </form>
     )
   }

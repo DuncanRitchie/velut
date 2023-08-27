@@ -5,11 +5,8 @@
 }
 
 .advancedRubric {
-  width: calc(100% - 3rem);
-  max-width: 46.875rem;
-  margin-top: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  width: var(--page-width);
+  margin: 1.5rem auto 0;
 }
 
 .advancedRubric summary {
