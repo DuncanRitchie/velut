@@ -64,15 +64,26 @@
   margin-top: 3.5rem;
 }
 
+/* This is meant for the list of anagrams on Anagram Phrases. */
+/* For some reason, .anagrams doesn’t work as a selector, but ul:lang(la) does. */
+.subsiteResult ul:lang(la) {
+  list-style: none;
+}
+
+.subsiteResult ul:lang(la) li {
+  padding-bottom: 0.5rem;
+}
+
 @media print {
   /* Display a grey bullet between Anagram Phrases results instead of a line-break. */
-  /* This doesn’t actually work because the anagrams are not in spans! */
-  .subsiteResult br {
-    display: none;
+  .subsiteResult ul:lang(la) {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .subsiteResult span:not(:first-of-type)::before {
+  .subsiteResult ul:lang(la) li:not(:first-of-type)::before {
     color: #adadad;
     content: ' • ';
+    white-space: pre-wrap;
   }
 }

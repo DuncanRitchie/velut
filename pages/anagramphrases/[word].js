@@ -11,12 +11,7 @@ const Anagrams = ({ input, anagrams, error }) => {
   let mappedAnagrams = []
   if (anagrams) {
     mappedAnagrams = anagrams.map((anagram, index) => {
-      return (
-        <Fragment key={index}>
-          {anagram}
-          <br />
-        </Fragment>
-      )
+      return <li key={index}>{anagram}</li>
     })
   }
   let result = null
@@ -40,7 +35,9 @@ const Anagrams = ({ input, anagrams, error }) => {
             : `are the ${mappedAnagrams.length} Latin anagrams`}{' '}
           of <strong lang="zxx">{input}</strong>.
         </p>
-        <p lang="la">{mappedAnagrams}</p>
+        <ul lang="la" className="anagrams">
+          {mappedAnagrams}
+        </ul>
       </div>
     )
   } else {
