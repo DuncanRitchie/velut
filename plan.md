@@ -4,6 +4,8 @@ For context, see [this project’s readme](https://github.com/DuncanRitchie/velu
 
 I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that I use to manage velut, in addition to the gigantic Excel file. I’ll probably be making more webpages and Node scripts to fulfil the steps below. The steps are (mostly) in chronological order.
 
+More words and statistics are on a dedicated <a href="https://www.velut.co.uk/deexcellation">de-Excellation page</a> of the velut website.
+
 - [x] Port velut to Next.js. <ins>Completed 2022-07-23.</ins>
 - [x] Decide whether to cancel my Render subscription for serving the MERN version. <ins>Subscription suspended 2022-09-10.</ins>
 - [x] Write a [blogpost about how I ported velut to Next.js](https://www.duncanritchie.co.uk/blog/porting-velut-to-nextjs). This isn’t urgent, but I should write it before I forget what I did! <ins>Eventually completed 2023-01-28.</ins>
@@ -50,7 +52,7 @@ I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that 
       ![Declension table for the noun ‘verbum’, with singular and plural forms for the six grammatical cases](https://github.com/DuncanRitchie/velut-screenshots/blob/main/compressed/wiktionary-declension-table.png)
 - [x] Ensure I can push the inflection-table work to production and _not_ see the inflection-tables on the live website. The flat list of forms will continue to be shown if a lemma doesn’t have the `Forms` field. <ins>True as of 2023-05-28.</ins>
 - [x] Decide whether inflection-tables should include encliticized forms. <ins>True as of 2023-05-28 — I’ve made a nice tabs component to switch between enclitics.</ins>
-- [ ] Confirm that, if unencliticized forms are generated that are not in Excel, they are _all_ worthy of being added to velut. Seeing the forms in the tables will help with this.
+- [ ] Confirm that, if unencliticized forms are generated that are not in Excel, they are _all_ worthy of being added to velut. Seeing the forms in the tables will help with this. <ins>In progress. A section on the velut website shows <a href="https://www.velut.co.uk/deexcellation#progress-on-checking-the-inflectors-output">where I’m at in checking the output of the Inflector</a>.</ins>
 - [ ] Implement programmatic handling of ambiguously stressed forms.<br><br>
       What do I mean by this?<br><br>
       Some pairs of lemmata have particular forms that are identical except for the stress.
