@@ -7,6 +7,7 @@ I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that 
 More words and statistics are on a dedicated <a href="https://www.velut.co.uk/deexcellation">de-Excellation page</a> of the velut website.
 
 - [x] Port velut to Next.js. <ins>Completed 2022-07-23.</ins>
+- [x] Write this plan for how to finish the de-Excellation of velut. <ins>Done 2022-07-23, though I have added to the plan since.</ins>
 - [x] Decide whether to cancel my Render subscription for serving the MERN version. <ins>Subscription suspended 2022-09-10.</ins>
 - [x] Write a [blogpost about how I ported velut to Next.js](https://www.duncanritchie.co.uk/blog/porting-velut-to-nextjs). This isn’t urgent, but I should write it before I forget what I did! <ins>Eventually completed 2023-01-28.</ins>
 - [x] Make a webpage (or similar) that replaces the Excel sheet `wordsform`, which generates the phonetic data (etc) for each word. (Top-right in the [Excel screenshot](https://github.com/DuncanRitchie/velut#excel) in the readme.) It doesn’t need database access. <ins>[Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator) completed 2022-09-29.</ins>
