@@ -646,9 +646,10 @@ const About = (props) => {
               <strong>{props.wordCount || '120000+'} words</strong> belonging to{' '}
               <strong>{props.lemmaCount || '13000+'} lemmata</strong>. The
               number of words will rise dramatically when I switch to using my
-              new script for generating forms, but there are also plenty more
-              lemmata I will add… after I’ve updated all my existing lemmata. By
-              that point, I’ll no longer be using Excel at all for velut.
+              new script for generating forms. There are also plenty more
+              lemmata that I will add… after I’ve updated all my existing
+              lemmata. By that point, I’ll no longer be using Excel at all for
+              velut.
             </p>
           </section>
         </main>
