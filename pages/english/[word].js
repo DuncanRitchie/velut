@@ -34,7 +34,7 @@ const English = ({ lemmata, sanitisedInput }) => {
 
         {lemmata.length ? (
           <>
-            <div className={styles.wordInfo}>
+            <div className={styles.subsiteResult}>
               <h2>Search results</h2>
               <p>
                 There{' '}
