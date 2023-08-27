@@ -166,9 +166,9 @@ summary:active {
 
 .inline-flag {
   height: 1em;
-  transform: translateY(0.12em);
-  margin-left: 4px;
-  margin-right: 2px;
+  transform: translateY(0.125em);
+  margin-left: 0.25em;
+  margin-right: 0.125em;
 }
 
 textarea {
