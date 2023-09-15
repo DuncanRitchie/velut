@@ -214,7 +214,11 @@ const DeExcellation = (props) => {
               all lemmata) needs more information about the lemma in question.
             </p>
             <p>
-              Below, you can see the{' '}
+              Below, you can see a{' '}
+              <a href="#example-forms">
+                sample of forms that I will be generating
+              </a>
+              , and the{' '}
               <a href="#incorrect-forms">
                 list of all the forms that I’ve decided not to keep
               </a>
