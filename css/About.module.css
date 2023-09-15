@@ -19,10 +19,10 @@
 .about main p,
 .about main ul,
 .about main dl,
-.about main details {
-  margin-top: 0;
-  margin-bottom: 0;
-  width: 100%;
+.about main details,
+.exampleFormsWrapper {
+  margin: 0 auto;
+  width: calc(var(--page-width) + 1rem);
   text-align: left;
   background: rgba(255, 253, 244, 0.95);
 }
@@ -60,4 +60,8 @@
   margin: 0;
   display: list-item;
   list-style: disc inside;
+}
+
+.exampleFormsWrapper {
+  padding: 0.25rem 0.75rem 1.25rem;
 }

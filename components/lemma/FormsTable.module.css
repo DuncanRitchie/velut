@@ -9,6 +9,7 @@
   width: max-content;
   margin-right: auto;
   margin-bottom: 0.5em;
+  padding: 0;
 }
 
 .formsTable dl {
@@ -70,6 +71,7 @@
 
 .formsTable dt,
 .formsTable dd {
+  padding: 0;
   line-height: 1.3333em;
 }
 

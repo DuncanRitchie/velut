@@ -1,11 +1,13 @@
 import Head from 'next/head'
+import { Fragment } from 'react'
 
 import { getSummary } from '../lib/summary'
 import styles from '../css/About.module.css'
 import Header from '../components/header/Header'
 import LatinLink from '../components/latinlink/LatinLink'
+import FormsTable from '../components/lemma/FormsTable'
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
-import { Fragment } from 'react'
+import formsExample from '../data/forms-example.json'
 
 export async function getServerSideProps() {
   const summaryData = await getSummary()
@@ -234,6 +236,29 @@ const DeExcellation = (props) => {
               going through all my lemmata and confirming that the forms
               information looks okay!
             </p>
+          </section>
+
+          <section id="example-forms">
+            <h2>Example forms</h2>
+            <p>
+              Here are the forms I’m generating for <i lang="la">verbum</i>, so
+              you can get a preview of how the tables are going to look.
+            </p>
+            <p>
+              Some of the forms below are displayed as links and some are not,
+              on the basis of whether I currently have them on the live website.
+              But eventually all the forms will be live, so they’ll all be
+              links.
+            </p>
+            <div className={styles.exampleFormsWrapper}>
+              <FormsTable
+                Forms={formsExample.Forms}
+                formsFromWordsCollection={formsExample.formsFromExcel}
+                lemma="verbum"
+                linkBase="/"
+                currentWordHyphenated=""
+              />
+            </div>
           </section>
 
           <section id="progress-on-writing-the-inflector">
