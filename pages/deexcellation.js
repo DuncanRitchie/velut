@@ -344,7 +344,7 @@ const DeExcellation = (props) => {
             </p>
           </section>
 
-          <section id="incorrect-forms">
+          <section id="incorrect-forms" className={styles.incorrectForms}>
             <h2>Incorrect forms</h2>
             <p>
               These are forms that I had added to Excel, and were thus on the
