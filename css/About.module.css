@@ -53,7 +53,8 @@
 }
 
 /* Copied from Advanced Rubric */
-.about section li {
+/* The :not here is not the most elegant CSS.*/
+.about section li:not(.exampleFormsWrapper li) {
   line-height: 1.6em;
   padding: 0.625rem 1.125rem 0.625rem 1.25rem;
   margin: 0;
