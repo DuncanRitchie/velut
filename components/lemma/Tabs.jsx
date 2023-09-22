@@ -15,6 +15,7 @@ class Tabs extends Component {
     this.state = {
       currentTab: this.props.startTab || 0,
       tabCount: 4,
+      jsEnabled: false,
     }
   }
   switchTab = this.switchTab.bind(this)
@@ -80,6 +81,7 @@ class Tabs extends Component {
   }
 
   componentDidMount() {
+    this.setState({ jsEnabled: true })
     this.setTabToStartTab()
 
     // `children` is undefined if there are zero, is an element if there is one,
@@ -119,9 +121,16 @@ class Tabs extends Component {
     const panelsChildren = this.getChildren().filter(
       (_, index) => index % 2 === 1,
     )
+    const jsEnabledClass = this.state.jsEnabled
+      ? styles.jsEnabled
+      : styles.jsDisabled
 
     return (
-      <div className={styles.tabs}>
+      <div
+        className={styles.tabs + ' ' + jsEnabledClass}
+        style={{ '--tabs-count': this.state.tabCount }}
+      >
+        {/* This is a proper tab-list, shown if JS is enabled. */}
         <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
           {tabsChildren.map((child, index) => (
             <button
@@ -140,19 +149,32 @@ class Tabs extends Component {
           ))}
         </div>
 
-        {panelsChildren.map((child, index) => (
-          <div
-            id={`${this.props.id}-tabpanel-${index}`}
-            key={index}
-            role="tabpanel"
-            aria-labelledby={`${this.props.id}-tab-${index}`}
-            className={
-              this.state.currentTab === index ? '' : styles.tabPanelHidden
-            }
-          >
-            {child}
+        {/* This is a HTML-only tab-list and a bit hacky, shown if JS is disabled. */}
+        <ul>
+          {tabsChildren.map((child, index) => (
+            <li key={index}>
+              <a href={`#${this.props.id}-tabpanel-${index}`}>{child}</a>
+            </li>
+          ))}
+        </ul>
+
+        <div className={styles.tabPanelsWrapper}>
+          <div className={styles.tabPanelsContainer}>
+            {panelsChildren.map((child, index) => (
+              <div
+                id={`${this.props.id}-tabpanel-${index}`}
+                key={index}
+                role="tabpanel"
+                aria-labelledby={`${this.props.id}-tab-${index}`}
+                className={
+                  this.state.currentTab === index ? '' : styles.tabPanelHidden
+                }
+              >
+                {child}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     )
   }
