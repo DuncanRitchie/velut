@@ -5,7 +5,26 @@ const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
-import { shouldGeneratedFormsBeShownForLemma } from '../../lib/lemmata'
+
+console.debug({
+  NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR:
+    process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR,
+})
+
+// The env var should be something like "Proper noun, Conjunction"
+// which is processed here to ['Proper noun', 'Conjunction']
+// In production, it lists the parts of speech that I have finished
+// checking the generated forms for.
+// The prefix NEXT_PUBLIC_ on the key prevents hydration errors
+// by allowing Next.js to use the env var on the client-side.
+const partsOfSpeechToShowGeneratedFormsFor =
+  process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map((x) =>
+    x.trim(),
+  ) ?? []
+
+function shouldGeneratedFormsBeShownForLemma(lemma) {
+  return partsOfSpeechToShowGeneratedFormsFor.includes(lemma.PartOfSpeech)
+}
 
 const Lemma = ({
   lemma,
