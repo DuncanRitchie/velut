@@ -12,17 +12,14 @@ import FormsTable from './FormsTable'
 // checking the generated forms for.
 // The prefix NEXT_PUBLIC_ on the key prevents hydration errors
 // by allowing Next.js to use the env var on the client-side.
+// The env var must be defined in a .env file (.env.local etc);
+// otherwise hydration will fail.
+const partsOfSpeechToShowGeneratedFormsFor =
+  process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map((x) =>
+    x.trim(),
+  ) ?? []
+
 function shouldGeneratedFormsBeShownForLemma(lemma) {
-  console.debug({
-    NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR:
-      process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR,
-  })
-
-  const partsOfSpeechToShowGeneratedFormsFor =
-    process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map((x) =>
-      x.trim(),
-    ) ?? []
-
   return partsOfSpeechToShowGeneratedFormsFor.includes(lemma.PartOfSpeech)
 }
 
