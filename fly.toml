@@ -15,6 +15,7 @@ kill_timeout = "5s"
 
 [env]
   PORT = "8080"
+  NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR = "Proper noun,Conjunction,Pronoun"
 
 [[services]]
   protocol = "tcp"
