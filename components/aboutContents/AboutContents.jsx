@@ -30,6 +30,9 @@ const AboutContents = () => {
           <Link href="#lemmata">Lemmata</Link>
         </li>
         <li>
+          <Link href="#forms">Forms</Link>
+        </li>
+        <li>
           <Link href="#english-to-latin">English to Latin</Link>
         </li>
         <li>
