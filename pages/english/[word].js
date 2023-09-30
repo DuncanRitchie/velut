@@ -8,7 +8,14 @@ import styles from '../../css/Subsites.module.css'
 
 const English = ({ lemmata, sanitisedInput }) => {
   const mappedLemmata = lemmata.map((lemma) => {
-    return <Lemma key={lemma.Lemma} lemma={lemma} linkBase="../" />
+    return (
+      <Lemma
+        key={lemma.Lemma}
+        lemma={lemma}
+        linkBase="../"
+        showFormsByDefault={false}
+      />
+    )
   })
 
   const pageTitle = `English “${sanitisedInput}” to Latin on velut — a Latin rhyming dictionary`

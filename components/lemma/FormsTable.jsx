@@ -4,6 +4,15 @@ import LatinLink from '../latinlink/LatinLink'
 import styles from './FormsTable.module.css'
 import { hyphensToMacra } from '../../lib/words/diacritics'
 
+// Allows me to control whether an instance of <details>
+// is open (expanded) by default.
+const Details = ({ openByDefault, children }) => {
+  if (openByDefault) {
+    return <details open>{children}</details>
+  }
+  return <details>{children}</details>
+}
+
 // Most of the keys in the form data are suitable for display,
 // but keys of more than one word will need added spaces.
 const prettyPrintKey = (key) => {
@@ -67,9 +76,10 @@ const FormsTableWithoutEnclitics = ({
   Forms,
   linkBase,
   currentWordHyphenated,
+  openByDefault,
 }) => {
   return (
-    <details open>
+    <Details openByDefault={openByDefault}>
       <summary>All generated forms</summary>
 
       <FormsTableForSomeForms
@@ -78,7 +88,7 @@ const FormsTableWithoutEnclitics = ({
         linkBase={linkBase}
         currentWordHyphenated={currentWordHyphenated}
       />
-    </details>
+    </Details>
   )
 }
 
@@ -113,9 +123,10 @@ const FormsTableWithEnclitics = ({
   lemma,
   linkBase,
   currentWordHyphenated,
+  openByDefault,
 }) => {
   return (
-    <details open>
+    <Details openByDefault={openByDefault}>
       <summary id={lemma + '-forms-summary'}>All generated forms</summary>
       <Tabs
         id={id}
@@ -159,7 +170,7 @@ const FormsTableWithEnclitics = ({
           />
         ) : null}
       </Tabs>
-    </details>
+    </Details>
   )
 }
 
@@ -169,6 +180,7 @@ const FormsTable = ({
   lemma,
   linkBase,
   currentWordHyphenated,
+  openByDefault = true,
 }) => {
   const isDisplayedInTabs = !!(
     Forms.unencliticized ||
@@ -184,6 +196,7 @@ const FormsTable = ({
       lemma={lemma}
       linkBase={linkBase}
       currentWordHyphenated={currentWordHyphenated}
+      openByDefault={openByDefault}
     />
   ) : (
     <FormsTableWithoutEnclitics
@@ -191,6 +204,7 @@ const FormsTable = ({
       Forms={Forms}
       linkBase={linkBase}
       currentWordHyphenated={currentWordHyphenated}
+      openByDefault={openByDefault}
     />
   )
 
