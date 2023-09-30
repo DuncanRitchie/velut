@@ -5,6 +5,7 @@ const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
+import { shouldGeneratedFormsBeShownForLemma } from '../../lib/lemmata'
 
 const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
   // Currently we have `formsFromWordsCollection` for forms that we had in Excel and that are now in the `words` MongoDB collection.
@@ -97,6 +98,8 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
     <></>
   )
 
+  const shouldGeneratedFormsBeShown = shouldGeneratedFormsBeShownForLemma(lemma)
+
   return (
     <div className="lemma">
       {/* superscriptLemmaTag() replaces anything in square brackets with a superscript. */}
@@ -127,8 +130,10 @@ const Lemma = ({ linkBase, lemma, currentWordHyphenated }) => {
       {mappedTransliterations ? (
         <p>Transliterations: {mappedTransliterations}</p>
       ) : null}
-      {mappedForms && !Forms ? <p>Forms: {mappedForms}</p> : null}
-      {Forms ? (
+      {mappedForms && !shouldGeneratedFormsBeShown ? (
+        <p>Sample of forms: {mappedForms}</p>
+      ) : null}
+      {shouldGeneratedFormsBeShown ? (
         <FormsTable
           Forms={Forms}
           formsFromWordsCollection={formsFromWordsCollection}
