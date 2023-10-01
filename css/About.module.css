@@ -56,7 +56,7 @@
 /* The :not here is not the most elegant CSS.*/
 .about section li:not(.exampleFormsWrapper li) {
   line-height: 1.6em;
-  padding: 0.625rem 1.125rem 0.625rem 1.25rem;
+  padding: 0.5rem 1.125rem;
   margin: 0;
   display: list-item;
   list-style: disc inside;
