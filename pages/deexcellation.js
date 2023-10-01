@@ -75,6 +75,19 @@ const DeExcellation = (props) => {
     return `${dayOfWeek} ${date.getDate()} ${month} ${date.getFullYear()}`
   })()
 
+  const listFormatter = new Intl.ListFormat('en', {
+    style: 'long',
+    type: 'conjunction',
+  })
+  const showGeneratedFormsFor =
+    process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map(
+      (pos) => pos.toLowerCase() + 's',
+    )
+  // Will be something like "proper nouns, conjunctions, and pronouns"
+  const stringOfPartsOfSpeechToShowGeneratedFormsFor = listFormatter.format(
+    showGeneratedFormsFor,
+  )
+
   return (
     <>
       <Head>
@@ -240,13 +253,24 @@ const DeExcellation = (props) => {
               going through all my lemmata and confirming that the forms
               information looks okay!
             </p>
+            <p>
+              Once I have confirmed that all lemmata of a part of speech are
+              given the correct forms by the Inflector, I can switch from
+              showing a simple list of forms to displaying the full
+              inflection-tables on the live website. Currently, the parts of
+              speech that I display inflection-tables for are{' '}
+              {stringOfPartsOfSpeechToShowGeneratedFormsFor}.
+            </p>
           </section>
 
           <section id="example-forms">
             <h2>Example forms</h2>
             <p>
               Here are the forms I’m generating for <i lang="la">verbum</i>, so
-              you can get a preview of how the tables are going to look.
+              you can get a sense of how the tables are going to look. (Tables
+              are already shown for{' '}
+              {stringOfPartsOfSpeechToShowGeneratedFormsFor}, but there’s no
+              harm in me putting a table on this page too.)
             </p>
             <p>
               Some of the forms below are displayed as links and some are not,
@@ -341,6 +365,12 @@ const DeExcellation = (props) => {
                 max={props.summary?.inflectorCounts.total}
                 value={props.summary?.inflectorCounts.manuallyChecked}
               />
+            </p>
+            <p>
+              The {props.summary?.inflectorCounts.manuallyChecked} lemmata that
+              I’ve checked include all{' '}
+              {stringOfPartsOfSpeechToShowGeneratedFormsFor}. So those are the
+              parts of speech that I display inflection-tables for.
             </p>
           </section>
 
