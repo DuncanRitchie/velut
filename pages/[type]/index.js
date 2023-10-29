@@ -119,6 +119,7 @@ const WordPage = ({
               targetWord={lemma.Lemma}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
+              isLemma={true}
             />
             {index < array.length - 1 ? ' ' : <></>}
           </Fragment>
