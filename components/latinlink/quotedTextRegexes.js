@@ -2,7 +2,7 @@
 
 //// This string is interpolated into regexes for finding runs of characters that cannot be in Latin words.
 //// Any piece of text in between such runs of characters will be treated as a Latin word (rendered with LatinLink).
-//// Currently, the characters are whitespace, quote-marks, and forward slashes.
+//// Currently, the characters are whitespace, quote-marks, and some other punctuation.
 //// If the need arises, more characters can be added between the square brackets.
 //// The \\s here is \s meaning whitespace, with the backward slash escaped.
 const punctuationSubregex = `[\\s‘’/,;]+`
