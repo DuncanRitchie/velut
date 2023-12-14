@@ -4,8 +4,8 @@
 //// Any piece of text in between such runs of characters will be treated as a Latin word (rendered with LatinLink).
 //// Currently, the characters are whitespace, quote-marks, and some other punctuation.
 //// If the need arises, more characters can be added between the square brackets.
-//// The \\s here is \s meaning whitespace, with the backward slash escaped.
-const punctuationSubregex = `[\\s‘’/,;]+`
+//// The \\s here is \s meaning whitespace, with the backward slash escaped; likewise with \\[\\] meaning square brackets.
+const punctuationSubregex = `[\\s‘’/,;\\[\\]]+`
 
 //// This regex matches immediately before and immediately after a run of punctuation/whitespace — ie, at any word boundary.
 //// (So it’s similar to /\b/ but better adapted for velut.)
