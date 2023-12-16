@@ -2,10 +2,10 @@
   position: fixed;
   /* `position: absolute` would have the same effect because .warning is not inside an element that scrolls. */
   top: 0.25rem;
-  right: 1.25rem;
+  right: 1.125rem;
   z-index: 10;
   min-width: min(15rem, calc(100% - 1.5rem));
-  width: min(calc(50% - 46.875rem / 2 - 1.75rem), 29.17%);
+  width: min(calc(50% - 25.375rem), 29.17%);
   max-width: calc(100% - 1.5rem);
   background: rgba(255, 253, 244, 0.95);
   /* Same gradient as About contents <li>s */
