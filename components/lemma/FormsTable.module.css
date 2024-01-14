@@ -104,9 +104,15 @@
   margin-left: var(--forms-offset-left);
 }
 
-/* This applies to all lemmata, but is specifically for lists of generated forms
-that are simple arrays, not displayed in Tabs nor in description lists. Eg, interjections, potentially. */
-:not([role='tabpanel']) > .formsTable > details > :not(summary):not(dl) {
-  padding: 0;
-  padding-left: calc(var(--forms-offset-left) * 5 / 12);
+/* The div here is expected to be the Tabs component.
+I would use .tabs in the selector but CSS Modules makes it a different class
+and it’s not worth merging this CSS file with the Tabs one. */
+.formsTable > details > div {
+  padding: 0 calc(var(--forms-offset-left) * 1 / 6);
+}
+
+/* This is specifically for lists of generated forms that are simple arrays,
+not displayed in Tabs nor in description lists. Eg, interjections, potentially. */
+.formsTable > details > :not(summary):not(div):not(dl) {
+  padding: 0 calc(var(--forms-offset-left) * 5 / 12);
 }
