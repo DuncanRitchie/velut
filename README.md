@@ -91,7 +91,7 @@ In production (ie, on the live website), generated forms for parts of speech tha
 To set an environment variable in production, I use the Fly command-line interface:
 
 ```bash
-flyctl secrets set NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR="Proper noun,Conjunction,Pronoun"
+flyctl secrets set NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR="Proper noun,Conjunction,Pronoun,Noun"
 ```
 
 ## Development cycle
