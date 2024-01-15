@@ -1,3 +1,8 @@
+.formsTable {
+  --forms-offset-left: 1.5rem;
+  --forms-offset-left: clamp(1rem, 5vw, 1.5rem);
+}
+
 .formsTable details {
   text-align: left;
   tab-size: 2;
@@ -28,7 +33,7 @@
 .formsTable dl dl::before {
   content: '';
   position: absolute;
-  transform: translateX(-0.925em);
+  transform: translateX(calc(0.575rem - var(--forms-offset-left)));
   width: 1px;
   height: calc(100% - 0.4625em);
   background-image: repeating-linear-gradient(
@@ -96,11 +101,18 @@
 }
 
 .formsTable dd {
-  margin-left: 1.5rem;
+  margin-left: var(--forms-offset-left);
 }
 
-/* This is for lists of generated forms that are simple arrays,
-not displayed in Tabs nor in description lists. Eg, conjunctions. */
-:not([role='tabpanel']) > .formsTable > details > :not(summary):not(dl) {
-  padding: 0 0.625rem;
+/* The div here is expected to be the Tabs component.
+I would use .tabs in the selector but CSS Modules makes it a different class
+and it’s not worth merging this CSS file with the Tabs one. */
+.formsTable > details > div {
+  padding: 0 calc(var(--forms-offset-left) * 1 / 6);
+}
+
+/* This is specifically for lists of generated forms that are simple arrays,
+not displayed in Tabs nor in description lists. Eg, interjections, potentially. */
+.formsTable > details > :not(summary):not(div):not(dl) {
+  padding: 0 calc(var(--forms-offset-left) * 5 / 12);
 }

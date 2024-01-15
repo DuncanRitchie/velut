@@ -333,8 +333,8 @@ const DeExcellation = (props) => {
             <p>
               The Inflector can replicate all the forms that I had in Excel, for
               all lemmata. But there may still be mistakes in what the Inflector
-              produces, either because of a flaw in my lemmata data-file or
-              (less likely) a bug in how the Inflector handles that data-file.
+              produces, either because of flaws in my lemmata data-file or (less
+              likely) bugs in how the Inflector handles that data-file.
             </p>
             <p>
               So I’m checking all {props.summary?.inflectorCounts.total} lemmata

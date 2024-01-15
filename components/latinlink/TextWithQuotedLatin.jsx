@@ -1,13 +1,19 @@
 import { Fragment } from 'react'
 import LatinLink from './LatinLink'
+import {
+  regexMatchingPunctuation,
+  regexMatchingQuotedText,
+  regexSplittingOnPunctuation,
+  regexSplittingOnQuotedText,
+} from './quotedTextRegexes'
 
 //// Converts a text string into a JSX array, where each word is a LatinLink but spaces and quote-marks are not.
 const LatinPhrase = ({ text, ...otherProps }) => {
   //// Split the string before and after any quote-mark or space. Eg, ‘ūsque ad’ -> ‘|ūsque| |ad|’
-  const substrings = text.split(/(?=[\s‘’]+)|(?<=[\s‘’]+)/)
+  const substrings = text.split(regexSplittingOnPunctuation)
   //// Convert the substrings to JSX depending on whether they are words or quote-marks/spaces.
   const jsx = substrings.map((substring, index) => {
-    const innerJSX = /[\s‘’]+/.test(substring) ? (
+    const innerJSX = regexMatchingPunctuation.test(substring) ? (
       substring
     ) : (
       <LatinLink targetWord={substring} {...otherProps} />
@@ -22,10 +28,10 @@ const LatinPhrase = ({ text, ...otherProps }) => {
 //// "‘ūsque ad’" and "‘ūsque quāque’" become LatinPhrase elements.
 const TextWithQuotedLatin = ({ text, ...otherProps }) => {
   //// Split the string before and after the quoted text.
-  const substrings = text.split(/(?=‘.+’)|(?<=‘.+’)/)
+  const substrings = text.split(regexSplittingOnQuotedText)
   //// Convert the substrings to JSX depending on whether they are quoted.
   const jsx = substrings.map((substring, index) => {
-    const innerJSX = /‘.+’/.test(substring) ? (
+    const innerJSX = regexMatchingQuotedText.test(substring) ? (
       <LatinPhrase text={substring} {...otherProps} />
     ) : (
       substring

@@ -23,6 +23,12 @@ function shouldGeneratedFormsBeShownForLemma(lemma) {
   return partsOfSpeechToShowGeneratedFormsFor.includes(lemma.PartOfSpeech)
 }
 
+// Eg iūs[>iūrō] => lemma-iūs-iūrō
+function getLemmaId({ Lemma }) {
+  // Replace instances of square/angle brackets with hyphens, then delete trailing hyphens.
+  return 'lemma-' + Lemma.replace(/[\[\]<>]+/g, '-').replace(/-$/, '')
+}
+
 const Lemma = ({
   lemma,
   linkBase,
@@ -122,7 +128,7 @@ const Lemma = ({
   const shouldGeneratedFormsBeShown = shouldGeneratedFormsBeShownForLemma(lemma)
 
   return (
-    <div className="lemma">
+    <div className="lemma" id={getLemmaId(lemma)}>
       {/* superscriptLemmaTag() replaces anything in square brackets with a superscript. */}
       <h3 lang="la">{superscriptLemmaTag(lemma.Lemma)}</h3>
       {PartOfSpeech ? (

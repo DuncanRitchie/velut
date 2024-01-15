@@ -6,10 +6,11 @@ const TemporaryWarning = () => {
       <details>
         <summary>Warning</summary>
         <p>
-          I added all the words in velut manually. I’m in the middle of creating
-          a script for automatically generating inflected forms. There are many
-          mistakes and omissions in the lists of forms, but they will not be
-          emended until I’ve finished this script.
+          I added all the words in velut manually. I’ve created a script for
+          automatically generating inflected forms, but I need to check it’s all
+          correct. There are many mistakes and omissions in the lists of forms
+          on this website, but they will not be emended until I’ve finished
+          reviewing all forms.
         </p>
       </details>
     </aside>

@@ -60,9 +60,39 @@ Most of my efforts on velut nowadays are towards its de-Excellation. I do not wa
 
 I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off it by creating webpages and websites that replicate the functionality that I have had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making [more](https://www.duncanritchie.co.uk/code#velut-projects).
 
-At the moment, most of this work involves a script I’m writing to generate all the forms I want of all the lemmata I have. For the details of how I’m doing this, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
+At the moment, most of this work involves a script I’ve written to generate all the forms I want of all the lemmata I have.
+My script generates forms for all the lemmata, but I need to manually review its output.
+For the details, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
 
-There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include. But, that will have to wait. My priority is finishing my script for generating forms and ensuring that I am no longer using Excel for velut.
+There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include.
+But, that will have to wait.
+My priority is finishing my script for generating forms (or finishing checking that it’s all correct) and ensuring that I am no longer using Excel for velut.
+
+## Environment variables
+
+For development, there is a .env.local file in the root directory.
+The file looks like this:
+
+```env
+MONGODB_URI=mongodb://127.0.0.1:27017/velut-local?retryWrites=true&w=majority
+NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR=Proper noun,Conjunction,Pronoun,Noun,Interjection,Preposition,Adverb,Adjective,Verb
+```
+
+(It’s not in version control in case I change the MongoDB connection string to point to the live database, which is obviously sensitive.)
+
+In Next.js, environment variables beginning with “NEXT_PUBLIC” are accessible on the client-side.
+The `NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR` variable is a list of parts of speech; it exists because I’m currently transitioning the inflected forms that are displayed on the website.
+If a lemma belongs to a part of speech in the list, a full table of programmatically-generated forms is displayed for the lemma.
+Otherwise, the only forms displayed are those I manually added to velut.
+
+In development, generated forms should be shown for all parts of speech, so I can review them.
+In production (ie, on the live website), generated forms for parts of speech that I have not reviewed are not shown.
+
+To set an environment variable in production, I use the Fly command-line interface:
+
+```bash
+flyctl secrets set NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR="Proper noun,Conjunction,Pronoun,Noun"
+```
 
 ## Development cycle
 
@@ -72,7 +102,7 @@ The command I use to open a development server at http://localhost:3000/ is:
 npm run dev
 ```
 
-The MongoDB connection string is given by `MONGODB_URI` in a .env.local file in the root directory.
+(There needs to be a .env.local file as explained under “Environment variables”.)
 
 To redeploy, I simply push to the main branch on GitHub.
 
