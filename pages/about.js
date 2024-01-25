@@ -387,40 +387,31 @@ const About = (props) => {
             <ul>
               <li>
                 <Link href="/Caecilius">
-                  {/* Next.js 13 seems to require <a> tags inside <Link> elements here, but not elsewhere. */}
-                  <a>
-                    {superscriptLemmaTag('Caecilius[prn]')} and{' '}
-                    {superscriptLemmaTag('Caecilius[adj]')}
-                  </a>
+                  {superscriptLemmaTag('Caecilius[prn]')} and{' '}
+                  {superscriptLemmaTag('Caecilius[adj]')}
                 </Link>{' '}
                 are different parts of speech (proper noun and adjective
                 respectively);
               </li>
               <li>
                 <Link href="/be-ta" lang="la">
-                  <a>
-                    {superscriptLemmaTag('bēta[bētae]')} and{' '}
-                    {superscriptLemmaTag('bēta[bēta]')}
-                  </a>
+                  {superscriptLemmaTag('bēta[bētae]')} and{' '}
+                  {superscriptLemmaTag('bēta[bēta]')}
                 </Link>{' '}
                 have different genitives (letter names are indeclinable!);
               </li>
               <li>
                 <Link href="/sero-" lang="la">
-                  <a>
-                    {superscriptLemmaTag('serō[satum]')},{' '}
-                    {superscriptLemmaTag('serō[sertum]')}, and{' '}
-                    {superscriptLemmaTag('serō[serātum]')}
-                  </a>
+                  {superscriptLemmaTag('serō[satum]')},{' '}
+                  {superscriptLemmaTag('serō[sertum]')}, and{' '}
+                  {superscriptLemmaTag('serō[serātum]')}
                 </Link>{' '}
                 have different participles;
               </li>
               <li>
                 <Link href="/iu-s" lang="la">
-                  <a>
-                    {superscriptLemmaTag('iūs[>iūrō]')} and{' '}
-                    {superscriptLemmaTag('iūs[>iūsculum]')}
-                  </a>
+                  {superscriptLemmaTag('iūs[>iūrō]')} and{' '}
+                  {superscriptLemmaTag('iūs[>iūsculum]')}
                 </Link>{' '}
                 have different etymological derivatives.
               </li>
