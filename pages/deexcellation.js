@@ -199,9 +199,10 @@ const DeExcellation = (props) => {
             <p>
               And I was adding the forms manually, which has the advantage of
               not leading to the sorts of errors you get by generating forms
-              through code. If a lemma is irregular, it was easy for me include
-              the irregular forms. If a lemma doesn’t make sense in the plural
-              (or comparative, etc), I could easily avoid adding those forms.
+              through code. If a lemma is irregular, it was easy for me to
+              include the irregular forms. If a lemma doesn’t make sense in the
+              plural (or comparative, etc), I could easily avoid adding those
+              forms.
             </p>
             <p>
               But it also led to several mistakes due to human error — typos and
