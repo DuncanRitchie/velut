@@ -182,6 +182,11 @@ which would give the arrow as a ::marker pseudo-element.) */
 summary {
   display: block;
 }
+/* Fallback in case `display: block` doesn’t work. */
+summary::marker {
+  display: none;
+  color: transparent;
+}
 
 /* Arrow next to Search dropdown & <summary> */
 .with-dropdown-arrow::after,
@@ -212,7 +217,23 @@ summary::before {
   transform: rotate(-0.25turn);
 }
 
-details[open] summary::before {
+details > *:not(summary) {
+  display: grid;
+  transition: grid-template-rows 1s, color 1s;
+  overflow: hidden;
+}
+
+details.open > *:not(summary) {
+  grid-template-rows: 1fr;
+  color: green;
+}
+
+details:not(.open) > *:not(summary) {
+  grid-template-rows: 0fr;
+  color: pink;
+}
+
+details.open summary::before {
   transform: rotate(0turn);
 }
 

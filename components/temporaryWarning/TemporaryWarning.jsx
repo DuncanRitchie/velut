@@ -1,9 +1,10 @@
+import Disclosure from '../disclosure/Disclosure'
 import styles from './TemporaryWarning.module.css'
 
 const TemporaryWarning = () => {
   return (
     <aside className={styles.warning}>
-      <details>
+      <Disclosure>
         <summary>Warning</summary>
         <p>
           I added all the words in velut manually. I’ve created a script for
@@ -12,7 +13,7 @@ const TemporaryWarning = () => {
           on this website, but they will not be emended until I’ve finished
           reviewing all forms.
         </p>
-      </details>
+      </Disclosure>
     </aside>
   )
 }
