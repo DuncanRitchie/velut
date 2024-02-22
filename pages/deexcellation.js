@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { getSummary } from '../lib/summary'
+import { getShowGeneratedFormsString } from '../lib/lemmata'
 import styles from '../css/About.module.css'
 import Header from '../components/header/Header'
 import LatinLink from '../components/latinlink/LatinLink'
@@ -75,18 +76,9 @@ const DeExcellation = (props) => {
     return `${dayOfWeek} ${date.getDate()} ${month} ${date.getFullYear()}`
   })()
 
-  const listFormatter = new Intl.ListFormat('en', {
-    style: 'long',
-    type: 'conjunction',
-  })
-  const showGeneratedFormsFor =
-    process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map(
-      (pos) => pos.toLowerCase() + 's',
-    )
   // Will be something like "proper nouns, conjunctions, and pronouns"
-  const stringOfPartsOfSpeechToShowGeneratedFormsFor = listFormatter.format(
-    showGeneratedFormsFor,
-  )
+  const stringOfPartsOfSpeechToShowGeneratedFormsFor =
+    getShowGeneratedFormsString()
 
   return (
     <>
