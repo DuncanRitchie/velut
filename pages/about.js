@@ -657,7 +657,7 @@ const About = (props) => {
             <p>
               As I’ve explained above (under <a href="#backstory">Backstory</a>{' '}
               and <a href="#web-development">Web development</a>
-              ), I use a massive Excel file to generate, check, and store all
+              ), I used a massive Excel file to generate, check, and store all
               the data for all the vocabulary. This has many downsides, so I’ve
               been making little webpages and scripts to do whatever I had
               written Excel formulae to do. This has enabled me to trim parts of
@@ -668,7 +668,7 @@ const About = (props) => {
             <p>
               On a more lexicographical note, as mentioned under{' '}
               <a href="#forms">Forms</a> and{' '}
-              <a href="#word-compilation">Word compilation</a>, most of the
+              <a href="#word-compilation">Word compilation</a>, many of the
               lemmata are missing some inflected forms. (Adjectives and verbs
               are particularly under-represented.) I’ve recently written a
               script that will generate all the forms I want for all the lemmata
