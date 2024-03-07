@@ -1,17 +1,26 @@
 .formsTable {
   --forms-offset-left: 1.5rem;
   --forms-offset-left: clamp(1rem, 5vw, 1.5rem);
+  --forms-table-margin-inline: 0rem;
+  width: calc(100% + 2 * var(--forms-table-margin-inline));
+  margin-left: calc(-1 * var(--forms-table-margin-inline));
+}
+
+.formsTable.fullWidth {
+  --forms-offset-left: calc(clamp(1rem, 5vw, 1.5rem) / 2);
+  --forms-table-margin-inline: calc(50vw - 1rem - var(--page-width) / 2);
 }
 
 .formsTable details {
   text-align: left;
   tab-size: 2;
-  margin-left: 1rem;
-  width: calc(100% - 2rem);
+  margin-inline: 1rem;
+  min-width: calc(100% - 2rem);
 }
 
 .formsTable summary {
   width: max-content;
+  margin-left: var(--forms-table-margin-inline);
   margin-right: auto;
   margin-bottom: 0.5em;
   padding: 0;
@@ -95,9 +104,15 @@
   z-index: 1 /* must be in front of dashes */;
 }
 
+.formsTable.fullWidth dt {
+  font-size: 0.75em;
+  opacity: 0.5;
+}
+
 .formsTable dl div:hover > dt {
   background-image: linear-gradient(to bottom right, #efe1ab, transparent);
   border-color: #34311a;
+  opacity: 1;
 }
 
 .formsTable dd {

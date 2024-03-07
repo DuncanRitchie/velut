@@ -181,6 +181,7 @@ const FormsTable = ({
   linkBase,
   currentWordHyphenated,
   openByDefault = true,
+  isFullWidth = false,
 }) => {
   const isDisplayedInTabs = !!(
     Forms.unencliticized ||
@@ -208,7 +209,11 @@ const FormsTable = ({
     />
   )
 
-  return <div className={styles.formsTable}>{formsTable}</div>
+  const classNames = isFullWidth
+    ? styles.formsTable + ' ' + styles.fullWidth
+    : styles.formsTable
+
+  return <div className={classNames}>{formsTable}</div>
 }
 
 export default FormsTable

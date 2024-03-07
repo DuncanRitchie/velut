@@ -13,6 +13,8 @@
 .tabs > ul {
   margin-top: 0.25rem;
   min-width: 100%;
+  min-width: calc(100% - 2 * var(--forms-table-margin-inline, 0));
+  margin-left: var(--forms-table-margin-inline, 0);
 }
 
 .tabs [role='tab'],
@@ -61,6 +63,10 @@
   padding: 0.5rem;
   border: 1px solid #58522c;
   border-radius: 0 0.3333rem 0.3333rem;
+  /* The top-left corner is only rounded if --forms-table-margin-inline is more than what the rounding would be. */
+  border-top-left-radius: calc(
+    max(min(var(--forms-table-margin-inline, 0rem), 0.3333rem), 0rem)
+  );
   background: #fffdf4;
   overflow-x: auto;
   scroll-margin-top: 5rem;
