@@ -14,12 +14,16 @@ const LatinLink = ({
     ? targetWordHyphenated.replace(/\[[^\]]*\]/g, '')
     : targetWordHyphenated
   //// If the target address is the same as the current page, no link should be displayed.
-  const shouldDisplayLink = !(to === currentWordHyphenated)
-  return shouldDisplayLink ? (
-    <Link href={linkBase + to} lang="la">
-      {text}
-    </Link>
-  ) : (
+  const shouldDisplayLink = to !== currentWordHyphenated
+
+  if (shouldDisplayLink) {
+    return (
+      <Link href={linkBase + to} lang="la">
+        {text}
+      </Link>
+    )
+  }
+  return (
     <span lang="la" className="link-to-current-word">
       {text}
     </span>
