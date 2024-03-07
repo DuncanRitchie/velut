@@ -13,7 +13,7 @@ const English = ({ lemmata, sanitisedInput }) => {
         key={lemma.Lemma}
         lemma={lemma}
         linkBase="../"
-        showFormsByDefault={false}
+        showFormsAndCognates={false}
       />
     )
   })
