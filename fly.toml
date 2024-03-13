@@ -11,7 +11,6 @@ kill_timeout = "5s"
   auto_rollback = true
 
 [build]
-  builder = "heroku/builder:22"
 
 [env]
   PORT = "8080"
