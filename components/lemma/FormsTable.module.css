@@ -105,14 +105,14 @@
 }
 
 .formsTable.fullWidth dt {
+  color: #34311ac0;
   font-size: 0.75em;
-  opacity: 0.5;
 }
 
 .formsTable dl div:hover > dt {
   background-image: linear-gradient(to bottom right, #efe1ab, transparent);
   border-color: #34311a;
-  opacity: 1;
+  color: #34311a;
 }
 
 .formsTable dd {
