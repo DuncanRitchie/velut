@@ -4,6 +4,8 @@ For context, see [this project’s readme](https://github.com/DuncanRitchie/velu
 
 I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that I use to manage velut, in addition to the gigantic Excel file. I’ll probably be making more webpages and Node scripts to fulfil the steps below. The steps are (mostly) in chronological order.
 
+A [diagram of the new architecture](#diagram-of-new-architecture) is after the plan.
+
 More words and statistics are on a dedicated <a href="https://www.velut.co.uk/deexcellation">de-Excellation page</a> of the velut website.
 
 - [x] Port velut to Next.js. <ins>Completed 2022-07-23.</ins>
@@ -88,5 +90,36 @@ More words and statistics are on a dedicated <a href="https://www.velut.co.uk/de
 
 - [ ] Ensure everything in the Excel file exists outside of it.
 - [ ] Evaluate whether I should discard the development database and switch back to using the production database in development.
+- [ ] Evaluate whether I should delete (or repurpose) the page on the website that shows my progress in checking the output of the Inflector.
 - [ ] Evaluate whether the Excel file can be deprecated.
 - [ ] Continue adding words and going through issues. (I have several private Trello boards, including one for velut.)
+
+## Diagram of new architecture
+
+### Explanation of diagram
+
+The Json of source lemmata data is read by the Inflector, which generates a Json summary of Inflector work, which is imported into the `summary` MongoDB collection. The Inflector also generates a Json array of lemmata with their forms, which is imported into the `lemmata` MongoDB collection and is read by the Lemmata Collator. The Lemmata Collator generates a simple list of words with their lemmata, which is read by the Word Data Generator to generate a Json array of word data, which is imported into the `words` MongoDB collection. The three MongoDB collections are read by the velut website.
+
+(Note that the “summary” of Inflector work is only useful while I’m moving to the new architecture, since it’s used by the [de-Excellation page](https://www.velut.co.uk/deexcellation) that displays my progress with that. If I delete that page, I can get rid of that branch of the diagram and go back to having only two MongoDB collections.)
+
+### Diagram
+
+```mermaid
+flowchart TD
+      accTitle: New architecture of velut
+      accDescr: Text equivalent in explanation above
+
+    A[fa:fa-file Json of source lemmata data] --> |is read by| B(fa:fa-scroll Inflector)
+    B --> |generates| C[fa:fa-file Json summary of Inflector work]
+    B --> |generates| D[fa:fa-file Json array of lemmata with their forms]
+    D --> |is read by| E(fa:fa-scroll Lemmata Collator)
+    E --> |generates| F[fa:fa-file simple list of words with their lemmata]
+    F --> |is read by| G(fa:fa-scroll Word Data Generator)
+    G --> |generates| H[fa:fa-file Json array of word data]
+    C --> |is imported into| I[fa:fa-database `summary` MongoDB collection]
+    D --> |is imported into| J[fa:fa-database `lemmata` MongoDB collection]
+    H --> |is imported into| K[fa:fa-database `words` MongoDB collection]
+    I --> |is read by| L[fa:fa-globe velut website]
+    J --> |is read by| L
+    K --> |is read by| L
+```
