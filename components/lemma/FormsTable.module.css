@@ -31,6 +31,10 @@
   position: relative;
 }
 
+.formsTable dl:not(dl dl) {
+  margin-right: 0.25em;
+}
+
 .formsTable dl:not(dl dl dl) {
   display: flex;
   column-gap: 0.3333em;
@@ -117,6 +121,10 @@
 
 .formsTable dd {
   margin-left: var(--forms-offset-left);
+}
+
+.formsTable dd:not(:has(> dl)) {
+  padding-right: 0.0625em;
 }
 
 /* The div here is expected to be the Tabs component.
