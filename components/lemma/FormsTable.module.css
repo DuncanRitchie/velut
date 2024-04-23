@@ -2,6 +2,7 @@
   --forms-offset-left: 1.5rem;
   --forms-offset-left: clamp(1rem, 5vw, 1.5rem);
   --forms-table-margin-inline: 0rem;
+  --forms-dt-font-size: 1em;
   width: calc(100% + 2 * var(--forms-table-margin-inline));
   margin-left: calc(-1 * var(--forms-table-margin-inline));
 }
@@ -9,6 +10,7 @@
 .formsTable.fullWidth {
   --forms-offset-left: calc(clamp(1rem, 5vw, 1.5rem) / 2);
   --forms-table-margin-inline: calc(50vw - 1rem - var(--page-width) / 2);
+  --forms-dt-font-size: 0.75em;
 }
 
 .formsTable details {
@@ -46,7 +48,9 @@
 .formsTable dl dl::before {
   content: '';
   position: absolute;
-  transform: translateX(calc(0.575rem - var(--forms-offset-left)));
+  transform: translateX(
+    calc(0.625 * var(--forms-dt-font-size) - var(--forms-offset-left))
+  );
   width: 1px;
   height: calc(100% - 0.4625em);
   background-image: repeating-linear-gradient(
@@ -98,6 +102,7 @@
   padding: 0.1em 0.45em;
   font-style: italic;
   font-weight: bold;
+  font-size: var(--forms-dt-font-size, 1em);
   color: #34311a;
   background-color: #fffdf4;
   border: 1px solid transparent;
@@ -110,7 +115,6 @@
 
 .formsTable.fullWidth dt {
   color: #34311ac0;
-  font-size: 0.75em;
 }
 
 .formsTable dl div:hover > dt {
