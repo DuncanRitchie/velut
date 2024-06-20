@@ -1,14 +1,13 @@
-import Head from 'next/head'
 import Header from '../components/header/Header'
 import Search from '../components/search/Search'
+import '../css/globals.css'
 import styles from '../css/Home.module.css'
 
-const Home = ({ type = '/' }) => {
+export const metadata = { title: 'velut — a Latin rhyming dictionary' }
+
+export default function Page({ type = '/' }) {
   return (
     <>
-      <Head>
-        <title>velut — a Latin rhyming dictionary</title>
-      </Head>
       <div className={styles.home + ' fulmar-background-big'}>
         <Header />
         <h1 className={styles.homeRubric + 'textWithBackground'}>
@@ -28,5 +27,3 @@ const Home = ({ type = '/' }) => {
     </>
   )
 }
-
-export default Home
