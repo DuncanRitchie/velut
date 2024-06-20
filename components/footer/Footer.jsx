@@ -1,13 +1,14 @@
+'use client'
+
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import styles from './Footer.module.css'
 
-let Footer = () => {
+export default () => {
   //// Footer has a list of links to different sections of velut, but the current section does not get linked to.
   //// So we need to work out what the current section is.
 
-  const router = useRouter()
-  const currentUrl = router.route
+  const currentUrl = usePathname()
   const firstPartOfUrl = currentUrl.split('/').filter(Boolean)[0]
   const thereIsSecondPartOfUrl =
     currentUrl.split('/').filter(Boolean).length > 1
@@ -80,5 +81,3 @@ let Footer = () => {
     </footer>
   )
 }
-
-export default Footer
