@@ -1,6 +1,7 @@
 // Adapted from https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-2-creating-a-root-layout
 
 import Footer from '../components/footer/Footer'
+import '../css/globals.css'
 
 // Docs for metadata fields: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
 export const metadata = {

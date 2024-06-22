@@ -1,6 +1,5 @@
 import Header from '../components/header/Header'
 import Search from '../components/search/Search'
-import '../css/globals.css'
 import styles from '../css/Home.module.css'
 
 export const metadata = { title: 'velut — a Latin rhyming dictionary' }
