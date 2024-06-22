@@ -11,11 +11,12 @@ import styles from './Tabs.module.css'
 //// Children should be an even number of elements (must be more than one),
 //// in the order tabSummary1, tabPanelContent1, tabSummary2, tabPanelContent2, etc.
 export default function Tabs({ id, ariaLabelledBy, startTab, children }) {
-  return <>Temporary Tabs component</>
+  console.log({ id, ariaLabelledBy, startTab, children })
 
   const [currentTab, setCurrentTab] = useState(startTab || 0)
-  const [tabCount, setTabCount] = useState(4)
-  const [jsEnabled, setJsEnabled] = useState(false)
+  let tabCount = 4
+  let jsEnabled = true
+  // const [jsEnabled, setJsEnabled] = useState(false)
   useEffect(() => {
     setTabToStartTab()
   }, [id])
@@ -62,7 +63,12 @@ export default function Tabs({ id, ariaLabelledBy, startTab, children }) {
   }
 
   function getChildren() {
-    return children?.filter?.(Boolean) ?? []
+    return (
+      children
+        ?.filter?.(Boolean)
+        .map((child) => (typeof child === 'string' ? <>{child}</> : child)) ??
+      []
+    )
   }
 
   function setTabToStartTab() {
@@ -71,8 +77,9 @@ export default function Tabs({ id, ariaLabelledBy, startTab, children }) {
     }
   }
 
-  setJsEnabled(true)
-  setTabToStartTab()
+  // setJsEnabled(true)
+
+  console.log({ getChildren: getChildren() })
 
   // `children` is undefined if there are zero, is an element if there is one,
   // and is an array of elements if there are more than one.
@@ -85,11 +92,11 @@ export default function Tabs({ id, ariaLabelledBy, startTab, children }) {
       'Tabs component should have an even number of children, but it has ' +
         getChildren().length,
     )
-    setTabsCount((getChildren().length + 1) / 2)
+    tabCount = (getChildren().length + 1) / 2
     return
   }
 
-  setTabCount(getChildren().length / 2)
+  tabCount = getChildren().length / 2
 
   if (!getChildren().length) {
     return <></>
