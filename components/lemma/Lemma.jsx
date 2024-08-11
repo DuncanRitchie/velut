@@ -29,12 +29,7 @@ function getLemmaId({ Lemma }) {
   return 'lemma-' + Lemma.replace(/[\[\]<>]+/g, '-').replace(/-$/, '')
 }
 
-const Forms = ({
-  lemma,
-  linkBase,
-  currentWordHyphenated,
-  showFormsAndCognates,
-}) => {
+const Forms = ({ lemma, linkBase, currentWordHyphenated }) => {
   let { formsFromWordsCollection, incorrectForms, Forms } = lemma
 
   // Create JSX for the forms that are already in the words collection.
@@ -60,38 +55,35 @@ const Forms = ({
 
   const shouldGeneratedFormsBeShown = shouldGeneratedFormsBeShownForLemma(lemma)
 
-  return (
-    <>
-      {mappedForms && !shouldGeneratedFormsBeShown ? (
-        <p>Sample of forms: {mappedForms}</p>
-      ) : null}
-      {shouldGeneratedFormsBeShown && lemma.PartOfSpeech !== 'Verb' ? (
-        <FormsTable
-          Forms={Forms}
-          formsFromWordsCollection={formsFromWordsCollection}
-          lemma={lemma.Lemma}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-          openByDefault={true}
-          /* The forms table should be full-width if there are enough forms to fill the width.
-      This is likeliest if it’s an adjective with comparative forms, or a verb. */
-          isFullWidth={
-            (lemma.PartOfSpeech === 'Adjective' &&
-              Forms.unencliticized?.comparative) ||
-            lemma.PartOfSpeech === 'Verb'
-          }
-        />
-      ) : null}
-      {shouldGeneratedFormsBeShown && lemma.PartOfSpeech === 'Verb' ? (
-        <VerbForms
-          lemma={lemma}
-          formsFromWordsCollection={formsFromWordsCollection}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-        />
-      ) : null}
-    </>
-  )
+  if (shouldGeneratedFormsBeShown && lemma.PartOfSpeech !== 'Verb') {
+    return (
+      <FormsTable
+        Forms={Forms}
+        formsFromWordsCollection={formsFromWordsCollection}
+        lemma={lemma.Lemma}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+        openByDefault={true}
+        /* The forms table should be full-width if there are enough forms to fill the width.
+        This is likeliest if it’s an adjective with comparative forms. */
+        isFullWidth={
+          lemma.PartOfSpeech === 'Adjective' &&
+          Forms.unencliticized?.comparative
+        }
+      />
+    )
+  }
+  if (shouldGeneratedFormsBeShown && lemma.PartOfSpeech === 'Verb') {
+    return (
+      <VerbForms
+        lemma={lemma}
+        formsFromWordsCollection={formsFromWordsCollection}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+      />
+    )
+  }
+  return <p>Sample of forms: {mappedForms}</p>
 }
 
 const VerbForms = ({
