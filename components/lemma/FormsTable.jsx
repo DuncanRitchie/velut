@@ -77,10 +77,11 @@ const FormsTableWithoutEnclitics = ({
   linkBase,
   currentWordHyphenated,
   openByDefault,
+  summary = 'Forms',
 }) => {
   return (
     <Details openByDefault={openByDefault}>
-      <summary>All generated forms</summary>
+      <summary>{summary}</summary>
 
       <FormsTableForSomeForms
         formsFromWordsCollection={formsFromWordsCollection}
@@ -124,10 +125,11 @@ const FormsTableWithEnclitics = ({
   linkBase,
   currentWordHyphenated,
   openByDefault,
+  summary = 'Forms',
 }) => {
   return (
     <Details openByDefault={openByDefault}>
-      <summary id={lemma + '-forms-summary'}>All generated forms</summary>
+      <summary id={lemma + '-forms-summary'}>{summary}</summary>
       <Tabs
         id={id}
         ariaLabelledBy={lemma + '-forms-summary'}
@@ -182,6 +184,7 @@ const FormsTable = ({
   currentWordHyphenated,
   openByDefault = true,
   isFullWidth = false,
+  summary = 'All generated forms',
 }) => {
   const isDisplayedInTabs = !!(
     Forms.unencliticized ||
@@ -198,6 +201,7 @@ const FormsTable = ({
       linkBase={linkBase}
       currentWordHyphenated={currentWordHyphenated}
       openByDefault={openByDefault}
+      summary={summary}
     />
   ) : (
     <FormsTableWithoutEnclitics
@@ -206,6 +210,7 @@ const FormsTable = ({
       linkBase={linkBase}
       currentWordHyphenated={currentWordHyphenated}
       openByDefault={openByDefault}
+      summary={summary}
     />
   )
 

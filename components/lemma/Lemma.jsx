@@ -65,7 +65,7 @@ const Forms = ({
       {mappedForms && !shouldGeneratedFormsBeShown ? (
         <p>Sample of forms: {mappedForms}</p>
       ) : null}
-      {shouldGeneratedFormsBeShown ? (
+      {shouldGeneratedFormsBeShown && lemma.PartOfSpeech !== 'Verb' ? (
         <FormsTable
           Forms={Forms}
           formsFromWordsCollection={formsFromWordsCollection}
@@ -82,6 +82,63 @@ const Forms = ({
           }
         />
       ) : null}
+      {shouldGeneratedFormsBeShown && lemma.PartOfSpeech === 'Verb' ? (
+        <VerbForms
+          lemma={lemma}
+          formsFromWordsCollection={formsFromWordsCollection}
+          linkBase={linkBase}
+          currentWordHyphenated={currentWordHyphenated}
+        />
+      ) : null}
+    </>
+  )
+}
+
+const VerbForms = ({
+  lemma,
+  formsFromWordsCollection,
+  linkBase,
+  currentWordHyphenated,
+}) => {
+  if (!lemma.Forms) {
+    throw Error(`Lemma ${lemma.Lemma} has no Forms property.`)
+  }
+  // Initialise two forms objects: one with all the forms, one with none.
+  const nonParticipleForms = structuredClone(lemma.Forms)
+  const participleForms = {}
+
+  // Move the participle forms from the object that has all the forms to the object that has none.
+  ;['unencliticized', 'ne', 'que', 've'].forEach((enclitic) => {
+    delete nonParticipleForms[enclitic].participle
+
+    participleForms[enclitic] = {
+      participle: lemma.Forms[enclitic].participle,
+    }
+  })
+
+  return (
+    <>
+      <FormsTable
+        summary="All forms except participles"
+        Forms={nonParticipleForms}
+        formsFromWordsCollection={formsFromWordsCollection}
+        lemma={lemma.Lemma}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+        openByDefault={true}
+        isFullWidth={true}
+      />
+
+      <FormsTable
+        summary="Participles"
+        Forms={participleForms}
+        formsFromWordsCollection={formsFromWordsCollection}
+        lemma={lemma.Lemma}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+        openByDefault={true}
+        isFullWidth={false}
+      />
     </>
   )
 }
