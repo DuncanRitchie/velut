@@ -24,6 +24,11 @@ const prettyPrintKey = (key) => {
   }
 }
 
+// The ID of each Tabs component needs to be distinct.
+// This will be the case as long as `lemma` and `summary` are sensible string values (eg "amō", "participles").
+const getTabsId = ({ lemma, summary }) =>
+  `${lemma}-${summary.replace(/\s/g, '').toLowerCase()}`
+
 // This is a recursive function that produces nested <dl> elements,
 // matching the Json structure of the Forms data that were passed in.
 const FormsTableForSomeForms = ({
@@ -127,12 +132,14 @@ const FormsTableWithEnclitics = ({
   openByDefault,
   summary = 'Forms',
 }) => {
+  const tabsId = getTabsId({ lemma, summary })
+
   return (
     <Details openByDefault={openByDefault}>
-      <summary id={lemma + '-forms-summary'}>{summary}</summary>
+      <summary id={tabsId + '-summary'}>{summary}</summary>
       <Tabs
         id={id}
-        ariaLabelledBy={lemma + '-forms-summary'}
+        ariaLabelledBy={tabsId + '-summary'}
         startTab={getTabForCurrentWord(Forms, currentWordHyphenated)}
       >
         {Forms.unencliticized ? 'Unencliticized' : null}
@@ -192,9 +199,10 @@ const FormsTable = ({
     Forms.que ||
     Forms.ve
   )
+  const tabsId = getTabsId({ lemma, summary })
   const formsTable = isDisplayedInTabs ? (
     <FormsTableWithEnclitics
-      id={lemma}
+      id={tabsId}
       formsFromWordsCollection={formsFromWordsCollection}
       Forms={Forms}
       lemma={lemma}
