@@ -13,8 +13,12 @@
 .tabs > ul {
   margin-top: 0.25rem;
   min-width: 100%;
-  min-width: calc(100% - 2 * var(--forms-table-margin-inline, 0));
-  margin-left: var(--forms-table-margin-inline, 0);
+}
+
+/* This isn’t perfect at keeping the tablist left-aligned with the tabpanels on mobile. But it’s not terrible. */
+[class*='fullWidth'] .tabs [role='tablist'],
+[class*='fullWidth'] .tabs > ul {
+  margin-left: calc(1px - 0.3333rem);
 }
 
 .tabs [role='tab'],
@@ -70,6 +74,11 @@
   background: #fffdf4;
   overflow-x: auto;
   scroll-margin-top: 5rem;
+}
+
+[class*='fullWidth'] .tabs [role='tabpanel'] {
+  width: calc(100% + 2 * var(--forms-table-margin-inline));
+  margin-left: calc(-1 * var(--forms-table-margin-inline));
 }
 
 .jsEnabled .tabPanelHidden[role='tabpanel'] {
