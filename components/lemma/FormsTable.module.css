@@ -3,6 +3,7 @@
   --forms-offset-left: clamp(1rem, 5vw, 1.5rem);
   --forms-table-margin-inline: 0rem;
   --forms-dt-font-size: 1em;
+  margin: 0.5rem 0;
 }
 
 .formsTable:not(p + .formsTable) {
