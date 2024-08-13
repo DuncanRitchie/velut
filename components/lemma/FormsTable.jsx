@@ -29,6 +29,36 @@ const prettyPrintKey = (key) => {
 const getTabsId = ({ lemma, summary }) =>
   `${lemma}-${summary.replace(/\s/g, '').toLowerCase()}`
 
+// `formsArray` is the array of strings that are forms to be displayed.
+// `formsFromWordsCollection` is the array of strings that are words already in velut.
+// This component displays the forms as links if they are in velut, and plaintext otherwise.
+// Eg simplified, ["amantēs", "amantīs"] => <><a href="/amante-s">amantēs</a> amantīs</>
+const LatinLinksOrPlainText = ({
+  formsArray,
+  formsFromWordsCollection,
+  linkBase,
+  currentWordHyphenated,
+}) => {
+  if (!formsArray) {
+    return <></>
+  }
+  return formsArray.map((form) => {
+    if (formsFromWordsCollection.includes(form)) {
+      return (
+        <Fragment key={form}>
+          <LatinLink
+            linkBase={linkBase}
+            targetWord={form}
+            currentWordHyphenated={currentWordHyphenated}
+          ></LatinLink>{' '}
+        </Fragment>
+      )
+    } else {
+      return <Fragment key={form}>{form} </Fragment>
+    }
+  })
+}
+
 // This is a recursive function that produces nested <dl> elements,
 // matching the Json structure of the Forms data that were passed in.
 const FormsTableForSomeForms = ({
@@ -41,20 +71,11 @@ const FormsTableForSomeForms = ({
     return <>No forms!</>
   }
   if (Array.isArray(Forms)) {
-    return Forms.map((form) => {
-      if (formsFromWordsCollection.includes(form)) {
-        return (
-          <Fragment key={form}>
-            <LatinLink
-              linkBase={linkBase}
-              targetWord={form}
-              currentWordHyphenated={currentWordHyphenated}
-            ></LatinLink>{' '}
-          </Fragment>
-        )
-      } else {
-        return <Fragment key={form}>{form} </Fragment>
-      }
+    return LatinLinksOrPlainText({
+      formsArray: Forms,
+      formsFromWordsCollection,
+      linkBase,
+      currentWordHyphenated,
     })
   } else {
     const keyValuePairs = Object.entries(Forms).map(([key, value]) => {
@@ -230,3 +251,4 @@ const FormsTable = ({
 }
 
 export default FormsTable
+export { Details, LatinLinksOrPlainText, getTabForCurrentWord, getTabsId }

@@ -5,6 +5,7 @@ const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
+import VerbFormsTable from './VerbFormsTable'
 
 // The env var should be something like "Proper noun, Conjunction"
 // which is processed here to ['Proper noun', 'Conjunction']
@@ -111,7 +112,7 @@ const VerbForms = ({
 
   return (
     <>
-      <FormsTable
+      <VerbFormsTable
         summary="All forms except participles"
         Forms={nonParticipleForms}
         formsFromWordsCollection={formsFromWordsCollection}
@@ -119,6 +120,16 @@ const VerbForms = ({
         linkBase={linkBase}
         currentWordHyphenated={currentWordHyphenated}
         openByDefault={true}
+      />
+
+      <FormsTable
+        summary="All forms except participles (old layout)"
+        Forms={nonParticipleForms}
+        formsFromWordsCollection={formsFromWordsCollection}
+        lemma={lemma.Lemma}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+        openByDefault={false}
         isFullWidth={true}
       />
 
