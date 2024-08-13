@@ -6,6 +6,7 @@ import {
 } from './FormsTable'
 import Tabs from './Tabs'
 import styles from './FormsTable.module.css'
+import verbStyles from './VerbFormsTable.module.css'
 
 const TableForSomeVerbForms = ({
   formsFromWordsCollection,
@@ -241,6 +242,8 @@ const TableForSomeVerbForms = ({
               )}
             </td>
           </tr>
+        </tbody>
+        <tbody>
           <tr>
             <th rowSpan="3">passive</th>
             <th>present</th>
@@ -496,6 +499,8 @@ const TableForSomeVerbForms = ({
               )}
             </td>
           </tr>
+        </tbody>
+        <tbody>
           <tr>
             <th rowSpan="2">passive</th>
             <th>present</th>
@@ -652,6 +657,8 @@ const TableForSomeVerbForms = ({
               )}
             </td>
           </tr>
+        </tbody>
+        <tbody>
           <tr>
             <th rowSpan="2">passive</th>
             <th>present</th>
@@ -766,7 +773,6 @@ const TableForSomeVerbForms = ({
       <table>
         <thead>
           <tr>
-            <th rowSpan="2"></th>
             <th colSpan="4">gerund</th>
             <th colSpan="2">supine</th>
           </tr>
@@ -781,7 +787,6 @@ const TableForSomeVerbForms = ({
         </thead>
         <tbody>
           <tr>
-            <th></th>
             <td>{generateLatinLinksOrPlainText(Forms.gerund.accusative)}</td>
             <td>{generateLatinLinksOrPlainText(Forms.gerund.genitive)}</td>
             <td>{generateLatinLinksOrPlainText(Forms.gerund.dative)}</td>
@@ -807,9 +812,10 @@ const VerbFormsTable = ({
 }) => {
   const tabsId = getTabsId({ lemma, summary })
 
+  // I could probably refactor this CSS Modules malarkey.
   const classNames = isFullWidth
-    ? styles.formsTable + ' ' + styles.fullWidth
-    : styles.formsTable
+    ? `${styles.formsTable} ${styles.fullWidth} ${verbStyles.verbFormsTable}`
+    : styles.formsTable + ' ' + verbStyles.verbFormsTable
 
   return (
     <div className={classNames}>

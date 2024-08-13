@@ -1,0 +1,40 @@
+.verbFormsTable table {
+  min-width: 100%;
+  border-spacing: 0;
+  --forms-dt-font-size: 0.875em;
+}
+
+.verbFormsTable table tr th,
+.verbFormsTable table tr td {
+  padding: 0.125em 0.45em;
+}
+
+.verbFormsTable table tr th:first-child {
+  min-width: 10ch;
+}
+
+.verbFormsTable table tr th:not(:empty) {
+  font-style: italic;
+  font-weight: bold;
+  font-size: var(--forms-dt-font-size, 1em);
+  color: #34311a;
+  border: 1px solid transparent;
+  /* This is #34311a with less opacity */
+  border-top-color: hsla(53, 33%, 15%, 33.33%);
+  border-left-color: hsla(53, 33%, 15%, 33.33%);
+  border-radius: 0.25em 0 0 0;
+}
+
+/* Highlight row headings when a cell is hovered */
+.verbFormsTable table tr:hover th:nth-last-child(8):not(:empty),
+.verbFormsTable
+  table
+  tr:has(:is(td, th:not([rowspan])):hover)
+  th:nth-last-child(7):not(:empty),
+.verbFormsTable table tbody:hover th[rowspan]:not(:empty),
+.verbFormsTable table:hover thead th[rowspan]:first-child:not(:empty) {
+  background-image: linear-gradient(to bottom right, #efe1ab, transparent);
+  border-top-color: #34311a;
+  border-left-color: #34311a;
+  color: #34311a;
+}
