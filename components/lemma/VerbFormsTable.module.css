@@ -61,3 +61,44 @@
   border-left-color: #34311a;
   color: #34311a;
 }
+
+.verbFormsTable td {
+  position: relative;
+}
+
+/* The dashes are similar to those used on FormsTable, but on the right & bottom sides and only shown on hover. */
+/* Dashes down the right side of data-cells */
+.verbFormsTable td:hover::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0.125em;
+  width: 1px;
+  height: calc(100% - 0.4625em);
+  background-image: repeating-linear-gradient(
+    0deg,
+    #34311a,
+    #34311a 0.25em,
+    transparent,
+    transparent 0.6666em
+  );
+  opacity: 0.3333;
+}
+
+/* Dashes across the bottom side of data-cells */
+.verbFormsTable td:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 0.4625em);
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    270deg,
+    #34311a,
+    #34311a 0.25em,
+    transparent,
+    transparent 0.6666em
+  );
+  opacity: 0.3333;
+}
