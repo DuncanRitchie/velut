@@ -33,13 +33,29 @@
   th:nth-last-child(7):not(:empty),
 .verbFormsTable table tbody:hover th[rowspan]:not(:empty),
 .verbFormsTable table:hover thead th[rowspan]:first-child:not(:empty),
-/* and also column headings */
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-of-type(1):hover) thead tr th:nth-last-child(1):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-of-type(2):hover) thead tr th:nth-last-child(2):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-of-type(3):hover) thead tr th:nth-last-child(3):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-of-type(4):hover) thead tr th:nth-last-child(4):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-of-type(5):hover) thead tr th:nth-last-child(5):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-of-type(6):hover) thead tr th:nth-last-child(6):not([colspan]) {
+/* and also single-column headings */
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(1):hover) thead tr th:nth-last-child(1):not([colspan]),
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(2):hover) thead tr th:nth-last-child(2):not([colspan]),
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(3):hover) thead tr th:nth-last-child(3):not([colspan]),
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(4):hover) thead tr th:nth-last-child(4):not([colspan]),
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(5):hover) thead tr th:nth-last-child(5):not([colspan]),
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(6):hover) thead tr th:nth-last-child(6):not([colspan]),
+/* and also multi-column headings for indicative/subjunctive/imperative/infinitive */
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(1):hover) thead tr th:nth-last-child(1)[colspan="3"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(2):hover) thead tr th:nth-last-child(1)[colspan="3"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(3):hover) thead tr th:nth-last-child(1)[colspan="3"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(4):hover) thead tr th:nth-last-child(2)[colspan="3"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(5):hover) thead tr th:nth-last-child(2)[colspan="3"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(6):hover) thead tr th:nth-last-child(2)[colspan="3"],
+/* and also multi-column headings for supine/gerund, because colSpan is different there */
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(1):hover) thead tr th:nth-last-child(1)[colspan="2"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(2):hover) thead tr th:nth-last-child(1)[colspan="2"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(3):hover) thead tr th:nth-last-child(2)[colspan="4"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(4):hover) thead tr th:nth-last-child(2)[colspan="4"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(5):hover) thead tr th:nth-last-child(2)[colspan="4"],
+.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(6):hover) thead tr th:nth-last-child(2)[colspan="4"],
+/* and let’s make sure that any multi-column headings are highlighted on hover */
+.verbFormsTable table th[colspan]:not(:empty):hover {
   background-image: linear-gradient(to bottom right, #efe1ab, transparent);
   border-top-color: #34311a;
   border-left-color: #34311a;

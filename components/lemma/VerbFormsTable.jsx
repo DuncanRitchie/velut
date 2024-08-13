@@ -732,7 +732,10 @@ const TableForSomeVerbForms = ({
       <table>
         <thead>
           <tr>
-            <th rowSpan="2">infinitive</th>
+            {/* Strictly speaking this doesn’t need a colSpan, but it makes the CSS easier! */}
+            <th rowSpan="2" colSpan="2">
+              infinitive
+            </th>
             <th colSpan="3">active</th>
             <th colSpan="3">passive</th>
           </tr>
@@ -747,7 +750,8 @@ const TableForSomeVerbForms = ({
         </thead>
         <tbody>
           <tr>
-            <th></th>
+            {/* The colSpan here matches that of the “infinitive” header cell. */}
+            <th colSpan="2"></th>
             <td>
               {generateLatinLinksOrPlainText(Forms.infinitive.active.present)}
             </td>
