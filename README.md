@@ -112,6 +112,8 @@ To redeploy, I simply push to the main branch on GitHub.
 
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the HTML contains no &lt;table&gt; tags, while the backend dispatches queries to MongoDB collections rather than any tables in a relational database.
 
+(However, I’m working on adding inflection-tables for verbs, and those will be in &lt;table&gt; tags.)
+
 All the data have been collated manually by me in my spare time. Yes, really. Therefore, many lemmata are not represented, and most of the lemmata that are represented do not have all possible inflected forms. (My [plan for de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md) covers how I’m going to solve the latter.) If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
 
 For more information, see https://www.velut.co.uk/about; for more information about me, see my website at https://www.duncanritchie.co.uk.
