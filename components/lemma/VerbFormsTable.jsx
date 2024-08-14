@@ -13,14 +13,6 @@ import verbStyles from './VerbFormsTable.module.css'
 // might become HTML <td className="infinitive active present">clāmāre</td>
 
 const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
-  const generateLatinLinksOrPlainText = (formsArray) => (
-    <LatinLinksOrPlainText
-      formsArray={formsArray}
-      formsFromWordsCollection={formsFromWordsCollection}
-      linkBase={linkBase}
-      currentWordHyphenated={currentWordHyphenated}
-    />
-  )
   const VerbDataCell = ({ className }) => {
     const classesArray = className.split(' ')
     let forms = Forms
@@ -30,7 +22,17 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
       }
       forms = forms[key]
     })
-    return <td className={className}>{generateLatinLinksOrPlainText(forms)}</td>
+
+    return (
+      <td className={className}>
+        <LatinLinksOrPlainText
+          formsArray={forms}
+          formsFromWordsCollection={formsFromWordsCollection}
+          linkBase={linkBase}
+          currentWordHyphenated={currentWordHyphenated}
+        />
+      </td>
+    )
   }
 
   // Hardly any verbs should have a column for a future active infinitive.
