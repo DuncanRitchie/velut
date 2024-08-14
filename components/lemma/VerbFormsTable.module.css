@@ -25,37 +25,46 @@
   border-radius: 0.25em 0 0 0;
 }
 
-/* Highlight row headings when a cell is hovered */
-.verbFormsTable table tr:hover th:nth-last-child(8):not(:empty),
-.verbFormsTable
-  table
-  tr:has(:is(td, th:not([rowspan])):hover)
-  th:nth-last-child(7):not(:empty),
-.verbFormsTable table tbody:hover th[rowspan]:not(:empty),
-.verbFormsTable table:hover thead th[rowspan]:first-child:not(:empty),
-/* and also single-column headings */
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(1):hover) thead tr th:nth-last-child(1):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(2):hover) thead tr th:nth-last-child(2):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(3):hover) thead tr th:nth-last-child(3):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(4):hover) thead tr th:nth-last-child(4):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(5):hover) thead tr th:nth-last-child(5):not([colspan]),
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(6):hover) thead tr th:nth-last-child(6):not([colspan]),
-/* and also multi-column headings for indicative/subjunctive/imperative/infinitive */
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(1):hover) thead tr th:nth-last-child(1)[colspan="3"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(2):hover) thead tr th:nth-last-child(1)[colspan="3"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(3):hover) thead tr th:nth-last-child(1)[colspan="3"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(4):hover) thead tr th:nth-last-child(2)[colspan="3"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(5):hover) thead tr th:nth-last-child(2)[colspan="3"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(6):hover) thead tr th:nth-last-child(2)[colspan="3"],
-/* and also multi-column headings for supine/gerund, because colSpan is different there */
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(1):hover) thead tr th:nth-last-child(1)[colspan="2"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(2):hover) thead tr th:nth-last-child(1)[colspan="2"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(3):hover) thead tr th:nth-last-child(2)[colspan="4"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(4):hover) thead tr th:nth-last-child(2)[colspan="4"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(5):hover) thead tr th:nth-last-child(2)[colspan="4"],
-.verbFormsTable table:has(:is(td, th:not([colspan])):nth-last-child(6):hover) thead tr th:nth-last-child(2)[colspan="4"],
-/* and let’s make sure that any multi-column headings are highlighted on hover */
-.verbFormsTable table th[colspan]:not(:empty):hover {
+/*
+Highlight th cells when matching td/th are hovered.
+The selector *= means “contains” and $= means “ends with”, so this will highlight th cells with classes that end with the substrings that the hovered cell’s class contains.
+We’re writing [class*='CLASS'] and not .CLASS because we’re using CSS Modules which mangles the CSS when we use the simpler syntax.
+Consequently we need to be careful that 'future' doesn’t match as a substring of 'futureperfect' & 'perfect' doesn’t match as a substring of 'imperfect', 'pluperfect', 'futureperfect'.
+*/
+.verbFormsTable table:has([class*='indicative']:hover) th[class$='indicative'],
+.verbFormsTable table:has([class*='active']:hover) th[class$='active'],
+.verbFormsTable table:has([class*='passive']:hover) th[class$='passive'],
+.verbFormsTable table:has([class*='singular']:hover) th[class$='singular'],
+.verbFormsTable table:has([class*='singular first']:hover) th[class$='singular first'],
+.verbFormsTable table:has([class*='singular second']:hover) th[class$='singular second'],
+.verbFormsTable table:has([class*='singular third']:hover) th[class$='singular third'],
+.verbFormsTable table:has([class*='plural']:hover) th[class$='plural'],
+.verbFormsTable table:has([class*='plural first']:hover) th[class$='plural first'],
+.verbFormsTable table:has([class*='plural second']:hover) th[class$='plural second'],
+.verbFormsTable table:has([class*='plural third']:hover) th[class$='plural third'],
+.verbFormsTable tbody:has([class*='present']:hover) th[class$='present'],
+.verbFormsTable tbody:has([class*='imperfect']:hover) th[class$='imperfect'],
+.verbFormsTable tbody:has([class*='future']:not([class*='futureperfect']):hover) th[class$='future'],
+.verbFormsTable tbody:has([class*=' perfect']:hover) th[class$=' perfect'],
+.verbFormsTable tbody:has([class*='pluperfect']:hover) th[class$='pluperfect'],
+.verbFormsTable tbody:has([class*='futureperfect']:hover) th[class$='futureperfect'],
+.verbFormsTable table:has([class*='subjunctive']:hover) th[class$='subjunctive'],
+.verbFormsTable table:has([class*='imperative']:hover) th[class$='imperative'],
+.verbFormsTable table:has([class*='infinitive']:hover) th[class$='infinitive']:not(:empty),
+.verbFormsTable table:has([class*='active present']:hover) thead th[class$='active present'],
+.verbFormsTable table:has([class*='active past']:hover) thead th[class$='active past'],
+.verbFormsTable table:has([class*='active future']:hover) thead th[class$='active future'],
+.verbFormsTable table:has([class*='passive present']:hover) thead th[class$='passive present'],
+.verbFormsTable table:has([class*='passive past']:hover) thead th[class$='passive past'],
+.verbFormsTable table:has([class*='passive future']:hover) thead th[class$='passive future'],
+.verbFormsTable table:has([class*='gerund']:hover) th[class$='gerund'],
+.verbFormsTable table:has([class*='supine']:hover) th[class$='supine'],
+.verbFormsTable table:has([class*='gerund accusative']:hover) th[class$='gerund accusative'],
+.verbFormsTable table:has([class*='gerund genitive']:hover) th[class$='gerund genitive'],
+.verbFormsTable table:has([class*='gerund dative']:hover) th[class$='gerund dative'],
+.verbFormsTable table:has([class*='gerund ablative']:hover) th[class$='gerund ablative'],
+.verbFormsTable table:has([class*='supine accusative']:hover) th[class$='supine accusative'],
+.verbFormsTable table:has([class*='supine ablative']:hover) th[class$='supine ablative'] {
   background-image: linear-gradient(to bottom right, #efe1ab, transparent);
   border-top-color: #34311a;
   border-left-color: #34311a;
