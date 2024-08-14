@@ -308,17 +308,13 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <th colSpan="3" className="infinitive active">
               active
             </th>
-            <th colSpan="3" className="infinitive passive">
-              passive
-            </th>
+            <th className="infinitive passive">passive</th>
           </tr>
           <tr>
             <th className="infinitive active present">present</th>
             <th className="infinitive active perfect">perfect</th>
             <th className="infinitive active future">future</th>
             <th className="infinitive passive present">present</th>
-            <th className="infinitive passive perfect">perfect</th>
-            <th className="infinitive passive future">future</th>
           </tr>
         </thead>
         <tbody>
@@ -329,8 +325,6 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="infinitive active perfect" />
             <VerbDataCell className="infinitive active future" />
             <VerbDataCell className="infinitive passive present" />
-            <VerbDataCell className="infinitive passive perfect" />
-            <VerbDataCell className="infinitive passive future" />
           </tr>
         </tbody>
       </table>

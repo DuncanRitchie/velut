@@ -55,8 +55,6 @@ Consequently we need to be careful that 'future' doesn’t match as a substring 
 .verbFormsTable table:has([class*='active perfect']:hover) thead th[class$='active perfect'],
 .verbFormsTable table:has([class*='active future']:hover) thead th[class$='active future'],
 .verbFormsTable table:has([class*='passive present']:hover) thead th[class$='passive present'],
-.verbFormsTable table:has([class*='passive perfect']:hover) thead th[class$='passive perfect'],
-.verbFormsTable table:has([class*='passive future']:hover) thead th[class$='passive future'],
 .verbFormsTable table:has([class*='gerund']:hover) th[class$='gerund'],
 .verbFormsTable table:has([class*='supine']:hover) th[class$='supine'],
 .verbFormsTable table:has([class*='gerund accusative']:hover) th[class$='gerund accusative'],
