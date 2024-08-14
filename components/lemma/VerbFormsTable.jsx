@@ -244,18 +244,16 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <th rowSpan="2" colSpan="2" className="imperative">
               imperative
             </th>
-            <th colSpan="3" className="imperative singular">
+            <th colSpan="2" className="imperative singular">
               singular
             </th>
-            <th colSpan="3" className="imperative plural">
+            <th colSpan="2" className="imperative plural">
               plural
             </th>
           </tr>
           <tr>
-            <th className="imperative singular first">first</th>
             <th className="imperative singular second">second</th>
             <th className="imperative singular third">third</th>
-            <th className="imperative plural first">first</th>
             <th className="imperative plural second">second</th>
             <th className="imperative plural third">third</th>
           </tr>
@@ -266,19 +264,15 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
               active
             </th>
             <th className="imperative active present">present</th>
-            <VerbDataCell className="imperative active present singular first" />
             <VerbDataCell className="imperative active present singular second" />
             <VerbDataCell className="imperative active present singular third" />
-            <VerbDataCell className="imperative active present plural first" />
             <VerbDataCell className="imperative active present plural second" />
             <VerbDataCell className="imperative active present plural third" />
           </tr>
           <tr>
             <th className="imperative active future">future</th>
-            <VerbDataCell className="imperative active future singular first" />
             <VerbDataCell className="imperative active future singular second" />
             <VerbDataCell className="imperative active future singular third" />
-            <VerbDataCell className="imperative active future plural first" />
             <VerbDataCell className="imperative active future plural second" />
             <VerbDataCell className="imperative active future plural third" />
           </tr>
@@ -289,19 +283,15 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
               passive
             </th>
             <th className="imperative passive present">present</th>
-            <VerbDataCell className="imperative passive present singular first" />
             <VerbDataCell className="imperative passive present singular second" />
             <VerbDataCell className="imperative passive present singular third" />
-            <VerbDataCell className="imperative passive present plural first" />
             <VerbDataCell className="imperative passive present plural second" />
             <VerbDataCell className="imperative passive present plural third" />
           </tr>
           <tr>
             <th className="imperative passive future">future</th>
-            <VerbDataCell className="imperative passive future singular first" />
             <VerbDataCell className="imperative passive future singular second" />
             <VerbDataCell className="imperative passive future singular third" />
-            <VerbDataCell className="imperative passive future plural first" />
             <VerbDataCell className="imperative passive future plural second" />
             <VerbDataCell className="imperative passive future plural third" />
           </tr>
