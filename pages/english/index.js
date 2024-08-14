@@ -8,22 +8,12 @@ const EnglishHome = () => {
     <>
       <Head>
         <title>English to Latin on velut — a Latin rhyming dictionary</title>
-        <meta
-          name="Description"
-          content="Latin words for the English word you enter"
-        />
+        <meta name="Description" content="Latin words for the English word you enter" />
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="English to Latin" />
-        <p className={styles.subsiteHomeRubric}>
-          Enter something English and this will suggest Latin translations!
-        </p>
-        <Search
-          type="english"
-          searchbarLabel="English word"
-          lang="en"
-          hideDropdown={true}
-        />
+        <p className={styles.subsiteHomeRubric}>Enter something English and this will suggest Latin translations!</p>
+        <Search type="english" searchbarLabel="English word" lang="en" hideDropdown={true} />
       </div>
     </>
   )

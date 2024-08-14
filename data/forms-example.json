@@ -1,1 +1,85 @@
-{"Forms":{"unencliticized":{"neuter":{"singular":{"nominative":["verbum"],"vocative":["verbum"],"accusative":["verbum"],"genitive":["verbī"],"dative":["verbō"],"ablative":["verbō"]},"plural":{"nominative":["verba"],"vocative":["verba"],"accusative":["verba"],"genitive":["verbōrum"],"dative":["verbīs"],"ablative":["verbīs"]}}},"ne":{"neuter":{"singular":{"nominative":["verbumne"],"vocative":["verbumne"],"accusative":["verbumne"],"genitive":["verbīne"],"dative":["verbōne"],"ablative":["verbōne"]},"plural":{"nominative":["verbane"],"vocative":["verbane"],"accusative":["verbane"],"genitive":["verbōrumne"],"dative":["verbīsne"],"ablative":["verbīsne"]}}},"que":{"neuter":{"singular":{"nominative":["verbumque"],"vocative":["verbumque"],"accusative":["verbumque"],"genitive":["verbīque"],"dative":["verbōque"],"ablative":["verbōque"]},"plural":{"nominative":["verbaque"],"vocative":["verbaque"],"accusative":["verbaque"],"genitive":["verbōrumque"],"dative":["verbīsque"],"ablative":["verbīsque"]}}},"ve":{"neuter":{"singular":{"nominative":["verbumve"],"vocative":["verbumve"],"accusative":["verbumve"],"genitive":["verbīve"],"dative":["verbōve"],"ablative":["verbōve"]},"plural":{"nominative":["verbave"],"vocative":["verbave"],"accusative":["verbave"],"genitive":["verbōrumve"],"dative":["verbīsve"],"ablative":["verbīsve"]}}}},"formsFromExcel":["verba","verbī","verbīs","verbō","verbum"]}
+{
+  "Forms": {
+    "unencliticized": {
+      "neuter": {
+        "singular": {
+          "nominative": ["verbum"],
+          "vocative": ["verbum"],
+          "accusative": ["verbum"],
+          "genitive": ["verbī"],
+          "dative": ["verbō"],
+          "ablative": ["verbō"]
+        },
+        "plural": {
+          "nominative": ["verba"],
+          "vocative": ["verba"],
+          "accusative": ["verba"],
+          "genitive": ["verbōrum"],
+          "dative": ["verbīs"],
+          "ablative": ["verbīs"]
+        }
+      }
+    },
+    "ne": {
+      "neuter": {
+        "singular": {
+          "nominative": ["verbumne"],
+          "vocative": ["verbumne"],
+          "accusative": ["verbumne"],
+          "genitive": ["verbīne"],
+          "dative": ["verbōne"],
+          "ablative": ["verbōne"]
+        },
+        "plural": {
+          "nominative": ["verbane"],
+          "vocative": ["verbane"],
+          "accusative": ["verbane"],
+          "genitive": ["verbōrumne"],
+          "dative": ["verbīsne"],
+          "ablative": ["verbīsne"]
+        }
+      }
+    },
+    "que": {
+      "neuter": {
+        "singular": {
+          "nominative": ["verbumque"],
+          "vocative": ["verbumque"],
+          "accusative": ["verbumque"],
+          "genitive": ["verbīque"],
+          "dative": ["verbōque"],
+          "ablative": ["verbōque"]
+        },
+        "plural": {
+          "nominative": ["verbaque"],
+          "vocative": ["verbaque"],
+          "accusative": ["verbaque"],
+          "genitive": ["verbōrumque"],
+          "dative": ["verbīsque"],
+          "ablative": ["verbīsque"]
+        }
+      }
+    },
+    "ve": {
+      "neuter": {
+        "singular": {
+          "nominative": ["verbumve"],
+          "vocative": ["verbumve"],
+          "accusative": ["verbumve"],
+          "genitive": ["verbīve"],
+          "dative": ["verbōve"],
+          "ablative": ["verbōve"]
+        },
+        "plural": {
+          "nominative": ["verbave"],
+          "vocative": ["verbave"],
+          "accusative": ["verbave"],
+          "genitive": ["verbōrumve"],
+          "dative": ["verbīsve"],
+          "ablative": ["verbīsve"]
+        }
+      }
+    }
+  },
+  "formsFromExcel": ["verba", "verbī", "verbīs", "verbō", "verbum"]
+}

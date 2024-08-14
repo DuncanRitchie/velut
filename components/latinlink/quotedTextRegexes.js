@@ -9,9 +9,7 @@ const punctuationSubregex = `[\\s‘’/,;?!\\[\\]]+`
 
 //// This regex matches immediately before and immediately after a run of punctuation/whitespace — ie, at any word boundary.
 //// (So it’s similar to /\b/ but better adapted for velut.)
-const regexSplittingOnPunctuation = new RegExp(
-  `(?=${punctuationSubregex})|(?<=${punctuationSubregex})`,
-)
+const regexSplittingOnPunctuation = new RegExp(`(?=${punctuationSubregex})|(?<=${punctuationSubregex})`)
 //// This regex simply matches a run of punctuation/whitespace.
 const regexMatchingPunctuation = new RegExp(punctuationSubregex)
 
@@ -19,14 +17,7 @@ const regexMatchingPunctuation = new RegExp(punctuationSubregex)
 //// a regex that matches immediately before and immediately after single-quoted text,
 //// and a regex that simply matches a piece of single-quoted text.
 const quotedTextSubregex = `‘.+’`
-const regexSplittingOnQuotedText = new RegExp(
-  `(?=${quotedTextSubregex})|(?<=${quotedTextSubregex})`,
-)
+const regexSplittingOnQuotedText = new RegExp(`(?=${quotedTextSubregex})|(?<=${quotedTextSubregex})`)
 const regexMatchingQuotedText = new RegExp(quotedTextSubregex)
 
-export {
-  regexSplittingOnPunctuation,
-  regexMatchingPunctuation,
-  regexSplittingOnQuotedText,
-  regexMatchingQuotedText,
-}
+export { regexSplittingOnPunctuation, regexMatchingPunctuation, regexSplittingOnQuotedText, regexMatchingQuotedText }

@@ -6,8 +6,7 @@ import styles from './Dictionaries.module.css'
 
 let Dictionaries = ({ sanitisedInput, category }) => {
   let plainInput = noMacra(sanitisedInput)
-  let dictionaries =
-    category === 'Latin' ? dictionariesLatin : dictionariesEnglish
+  let dictionaries = category === 'Latin' ? dictionariesLatin : dictionariesEnglish
   let mappedDics = dictionaries.map((dic, index) => {
     return (
       <Fragment key={index}>
@@ -18,9 +17,7 @@ let Dictionaries = ({ sanitisedInput, category }) => {
   })
   return (
     <>
-      <h2 className={styles.dictionariesHeading}>
-        Links to other {category} sites
-      </h2>
+      <h2 className={styles.dictionariesHeading}>Links to other {category} sites</h2>
       <p className={styles.dictionariesP}>{mappedDics}</p>
     </>
   )

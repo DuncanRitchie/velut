@@ -35,8 +35,7 @@ class Search extends Component {
     const props = this.props
     if (prevProps.word !== props.word || prevProps.type !== props.type) {
       this.setState({
-        word:
-          this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
+        word: this.props.word?.trim() || this.props.sanitisedInput?.trim() || '',
         type: this.props.type || '',
       })
     }
@@ -102,12 +101,7 @@ class Search extends Component {
             <label htmlFor="rhyme-type-dropdown" className="visually-hidden">
               Type of rhymes to include
             </label>
-            <select
-              name="type"
-              id="rhyme-type-dropdown"
-              value={this.state.type}
-              onChange={this.handleType}
-            >
+            <select name="type" id="rhyme-type-dropdown" value={this.state.type} onChange={this.handleType}>
               {dropdownOptions}
             </select>
           </div>

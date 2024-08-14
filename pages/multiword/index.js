@@ -14,10 +14,7 @@ const MultiHead = () => {
   return (
     <Head>
       <title>Multi-word Look-up on velut — a Latin rhyming dictionary</title>
-      <meta
-        name="Description"
-        content="Lists of words that are and are not in the velut dictionary"
-      />
+      <meta name="Description" content="Lists of words that are and are not in the velut dictionary" />
     </Head>
   )
 }

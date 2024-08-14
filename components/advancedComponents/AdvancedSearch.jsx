@@ -56,10 +56,7 @@ class AdvancedSearch extends Component {
   render() {
     // Now we’re ready to return JSX.
     return (
-      <form
-        className={advancedStyles.advancedSearch + ' ' + searchStyles.search}
-        role="search"
-      >
+      <form className={advancedStyles.advancedSearch + ' ' + searchStyles.search} role="search">
         <div>
           <div id="advanced-search-spelling">
             <p>
@@ -67,8 +64,7 @@ class AdvancedSearch extends Component {
                 <label htmlFor="spelling-input">Spelling:</label>
                 {/* #spelling-example is rephrased for screen-readers by #spelling-example-sr */}
                 <small id="spelling-example" aria-hidden="true">
-                  For example, <code>Vvis</code> →{' '}
-                  <b lang="la">avis, ovis, ūvīs&nbsp;…</b>
+                  For example, <code>Vvis</code> → <b lang="la">avis, ovis, ūvīs&nbsp;…</b>
                 </small>
               </span>
               <input
@@ -86,8 +82,8 @@ class AdvancedSearch extends Component {
                 enterKeyHint="search"
               />
               <small id="spelling-example-sr" hidden>
-                For example, capital <code>V</code> lowercase <code>vis</code>{' '}
-                gives <b lang="la">ovis, uvis</b>, et cetera
+                For example, capital <code>V</code> lowercase <code>vis</code> gives <b lang="la">ovis, uvis</b>, et
+                cetera
               </small>
             </p>
           </div>
@@ -98,8 +94,7 @@ class AdvancedSearch extends Component {
                 <label htmlFor="scansion-input">Scansion:</label>
                 {/* #scansion-example is rephrased for screen-readers by #scansion-example-sr */}
                 <small id="scansion-example" aria-hidden="true">
-                  For example, <code>lsslss</code> →{' '}
-                  <b lang="la">ambitiōsior, convenientia&nbsp;…</b>
+                  For example, <code>lsslss</code> → <b lang="la">ambitiōsior, convenientia&nbsp;…</b>
                 </small>
               </span>
               <input
@@ -117,8 +112,7 @@ class AdvancedSearch extends Component {
                 enterKeyHint="search"
               />
               <small id="scansion-example-sr" hidden>
-                For example, <code>L S S L S S</code> gives{' '}
-                <b lang="la">ambitiōsior, convenientia</b>, et cetera
+                For example, <code>L S S L S S</code> gives <b lang="la">ambitiōsior, convenientia</b>, et cetera
               </small>
             </p>
             <p>
@@ -134,10 +128,7 @@ class AdvancedSearch extends Component {
             </p>
           </div>
 
-          <div
-            id="advanced-search-sort"
-            aria-describedby="advanced-rubric-sort"
-          >
+          <div id="advanced-search-sort" aria-describedby="advanced-rubric-sort">
             <p>
               <input
                 type="radio"
@@ -169,19 +160,13 @@ class AdvancedSearch extends Component {
                 value="ecclesiastical"
                 checked={this.state.sort === 'ecclesiastical'}
               />
-              <label htmlFor="sort-ecclesiastical">
-                Sort by ecclesiastical rhyme
-              </label>
+              <label htmlFor="sort-ecclesiastical">Sort by ecclesiastical rhyme</label>
             </p>
           </div>
         </div>
 
         {/* The button to load the new page. */}
-        <button
-          id="search-button"
-          className={searchStyles.searchButton}
-          type="submit"
-        >
+        <button id="search-button" className={searchStyles.searchButton} type="submit">
           Search!
         </button>
       </form>

@@ -5,10 +5,7 @@ import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import multiStyles from '../../css/Multi.module.css'
 import searchStyles from '../../components/search/Search.module.css'
-import {
-  getHrefForDictionaryLinks,
-  splitIntoWords,
-} from '../../lib/words/multiHelpers'
+import { getHrefForDictionaryLinks, splitIntoWords } from '../../lib/words/multiHelpers'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -104,8 +101,7 @@ class MultiCSR extends Component {
           else {
             fetcher(`/api/word/isInDictionary?word=${word}`)
               .then((response) => {
-                let { allWords, pendingWords, foundWords, missingWords } =
-                  this.state
+                let { allWords, pendingWords, foundWords, missingWords } = this.state
                 const foundWord = response.success ? response.word.Word : null
                 //// If the word is in velut, the value of `foundWord` is that of the Word field, ie simply the macronized word.
                 //// If the word is not in velut, it will still be added to `allWords`, but its value will be `undefined`.
@@ -143,27 +139,23 @@ class MultiCSR extends Component {
   }
 
   render() {
-    const foundWordsMapped = [...this.state.distinctWords].map(
-      (enteredWord, index) => {
-        const foundWord = this.state.allWords.get(enteredWord)
-        return foundWord ? (
-          <Fragment key={index}>
-            <LatinLink linkBase="../" targetWord={foundWord} />{' '}
-          </Fragment>
-        ) : null
-      },
-    )
+    const foundWordsMapped = [...this.state.distinctWords].map((enteredWord, index) => {
+      const foundWord = this.state.allWords.get(enteredWord)
+      return foundWord ? (
+        <Fragment key={index}>
+          <LatinLink linkBase="../" targetWord={foundWord} />{' '}
+        </Fragment>
+      ) : null
+    })
 
-    const missingWordsMapped = [...this.state.distinctWords].map(
-      (enteredWord, index) => {
-        const foundWord = this.state.allWords.get(enteredWord)
-        return foundWord || this.state.pendingWords.has(enteredWord) ? null : (
-          <Fragment key={index}>
-            <strong>{enteredWord}</strong>{' '}
-          </Fragment>
-        )
-      },
-    )
+    const missingWordsMapped = [...this.state.distinctWords].map((enteredWord, index) => {
+      const foundWord = this.state.allWords.get(enteredWord)
+      return foundWord || this.state.pendingWords.has(enteredWord) ? null : (
+        <Fragment key={index}>
+          <strong>{enteredWord}</strong>{' '}
+        </Fragment>
+      )
+    })
 
     const allWordsMapped = this.state.searchedWords
       ? this.state.searchedWords.map((word, index) => {
@@ -201,17 +193,11 @@ class MultiCSR extends Component {
           <p>
             <label htmlFor="multi-progress" aria-live="polite">
               {pendingWordsCount
-                ? `Waiting for results for ${pendingWordsCount} ${
-                    pendingWordsCount === 1 ? 'word' : 'words'
-                  }…`
+                ? `Waiting for results for ${pendingWordsCount} ${pendingWordsCount === 1 ? 'word' : 'words'}…`
                 : `Showing results for all of the ${allWordsCount} ${
                     allWordsCount === 1 ? 'word' : 'words'
                   } you entered.`}
-              <progress
-                id="multi-progress"
-                max={1}
-                value={proportionComplete}
-              ></progress>
+              <progress id="multi-progress" max={1} value={proportionComplete}></progress>
             </label>
           </p>
 
@@ -230,23 +216,14 @@ class MultiCSR extends Component {
               <p lang="la">{missingWordsMapped}</p>
               {/* My velut-dictionary-links site generates links to several Latin websites. */}
               <p>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={getHrefForDictionaryLinks(this.state.missingWords)}
-                >
-                  Look up the missing{' '}
-                  {missingWordsCount === 1 ? 'word' : 'words'} in other
-                  dictionaries (opens in new tab).
+                <a target="_blank" rel="noopener noreferrer" href={getHrefForDictionaryLinks(this.state.missingWords)}>
+                  Look up the missing {missingWordsCount === 1 ? 'word' : 'words'} in other dictionaries (opens in new
+                  tab).
                 </a>
               </p>
             </>
           ) : (
-            <p>
-              {pendingWordsCount
-                ? 'Please wait…'
-                : 'Everything you searched for is in velut!'}
-            </p>
+            <p>{pendingWordsCount ? 'Please wait…' : 'Everything you searched for is in velut!'}</p>
           )}
           <h2>All words entered</h2>
           <p lang="la">{allWordsMapped}</p>
@@ -280,17 +257,11 @@ class MultiCSR extends Component {
             <noscript>
               <input hidden name="ssr" value="true" onChange="void()" />
             </noscript>
-            <button
-              className={searchStyles.searchButton}
-              type="submit"
-              onClick={this.fetchWords}
-            >
+            <button className={searchStyles.searchButton} type="submit" onClick={this.fetchWords}>
               Search!
             </button>
           </form>
-          {resultsAreRendered && (
-            <div className={subsitesStyles.subsiteResult}>{result}</div>
-          )}
+          {resultsAreRendered && <div className={subsitesStyles.subsiteResult}>{result}</div>}
           {this.state.redirectNeeded && (
             <Redirect
               newUrl={this.state.newUrl}

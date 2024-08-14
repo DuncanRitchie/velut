@@ -71,16 +71,12 @@ class MultiSSR extends Component {
       resultJSX = (
         <div>
           <p>
-            Showing results for all of the {distinctWordsCount}{' '}
-            {distinctWordsCount === 1 ? 'word' : 'words'} you entered.
+            Showing results for all of the {distinctWordsCount} {distinctWordsCount === 1 ? 'word' : 'words'} you
+            entered.
           </p>
 
           <h2>Words in velut ({foundWordsCount})</h2>
-          {foundWordsCount ? (
-            <p lang="la">{foundWordsJSX}</p>
-          ) : (
-            <p>Nothing you searched for is in velut!</p>
-          )}
+          {foundWordsCount ? <p lang="la">{foundWordsJSX}</p> : <p>Nothing you searched for is in velut!</p>}
 
           <h2>Words not in velut ({missingWordsCount})</h2>
           {missingWordsCount ? (
@@ -88,14 +84,9 @@ class MultiSSR extends Component {
               <p lang="la">{missingWordsJSX}</p>
               {/* My velut-dictionary-links site generates links to several Latin websites. */}
               <p>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={getHrefForDictionaryLinks(missingWords)}
-                >
-                  Look up the missing{' '}
-                  {missingWordsCount === 1 ? 'word' : 'words'} in other
-                  dictionaries (opens in new tab).
+                <a target="_blank" rel="noopener noreferrer" href={getHrefForDictionaryLinks(missingWords)}>
+                  Look up the missing {missingWordsCount === 1 ? 'word' : 'words'} in other dictionaries (opens in new
+                  tab).
                 </a>
               </p>
             </>
@@ -114,10 +105,7 @@ class MultiSSR extends Component {
           <p className={subsitesStyles.subsiteHomeRubric}>
             Search for several Latin words by entering them into the box below!
           </p>
-          <form
-            className={searchStyles.search + ' ' + multiStyles.search}
-            role="search"
-          >
+          <form className={searchStyles.search + ' ' + multiStyles.search} role="search">
             <label htmlFor="multi-textarea" className="visually-hidden">
               Latin words
             </label>
@@ -136,9 +124,7 @@ class MultiSSR extends Component {
               Search!
             </button>
           </form>
-          {!this.props.isHomepage && (
-            <div className={subsitesStyles.subsiteResult}>{resultJSX}</div>
-          )}
+          {!this.props.isHomepage && <div className={subsitesStyles.subsiteResult}>{resultJSX}</div>}
         </div>
       </div>
     )

@@ -5,10 +5,7 @@ import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import { noMacra } from '../../lib/words/diacritics'
 import getSubwords from '../../lib/words/subwords'
-import {
-  deleteCharacters,
-  randomCountdownQuestionWeighted,
-} from '../../lib/words/subwordsHelpers'
+import { deleteCharacters, randomCountdownQuestionWeighted } from '../../lib/words/subwordsHelpers'
 import styles from '../../css/Subsites.module.css'
 
 // <Subwords/> is a JSX element rendered at /subwords/:word
@@ -43,13 +40,10 @@ const Subwords = ({ input, subwords, randomCountdownQuestionExample }) => {
     result = (
       <div>
         <p>
-          Here{' '}
-          {mappedWords.length === 1
-            ? 'is the 1 Latin word'
-            : `are the ${mappedWords.length} Latin words`}{' '}
-          that can be made out of letters in <strong lang="zxx">{input}</strong>
-          .&nbsp; You can click on a word (if it’s not a perfect anagram) to
-          delete its letters from <strong lang="zxx">{input}</strong>.
+          Here {mappedWords.length === 1 ? 'is the 1 Latin word' : `are the ${mappedWords.length} Latin words`} that can
+          be made out of letters in <strong lang="zxx">{input}</strong>
+          .&nbsp; You can click on a word (if it’s not a perfect anagram) to delete its letters from{' '}
+          <strong lang="zxx">{input}</strong>.
         </p>
         <p lang="la">{mappedWords}</p>
       </div>
@@ -58,10 +52,7 @@ const Subwords = ({ input, subwords, randomCountdownQuestionExample }) => {
     result = (
       <p>
         No subwords found!&nbsp; Try a different input, such as{' '}
-        <Link href={'./' + randomCountdownQuestionExample}>
-          {randomCountdownQuestionExample}
-        </Link>
-        .
+        <Link href={'./' + randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.
       </p>
     )
   }
@@ -70,10 +61,7 @@ const Subwords = ({ input, subwords, randomCountdownQuestionExample }) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta
-          name="Description"
-          content={`Latin words made from the letters of “${input}”`}
-        />
+        <meta name="Description" content={`Latin words made from the letters of “${input}”`} />
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="Subwords" />

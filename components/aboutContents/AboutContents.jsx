@@ -22,9 +22,7 @@ const AboutContents = () => {
           <Link href="#rhymes">Rhymes</Link>
         </li>
         <li>
-          <Link href="#consonyms-anagrams-and-subwords">
-            Consonyms, anagrams, and subwords
-          </Link>
+          <Link href="#consonyms-anagrams-and-subwords">Consonyms, anagrams, and subwords</Link>
         </li>
         <li>
           <Link href="#lemmata">Lemmata</Link>

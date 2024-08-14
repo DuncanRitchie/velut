@@ -36,11 +36,7 @@ const Advanced = ({ query, isHomepage, words, error }) => {
     }
     let result = null
     if (error) {
-      result = (
-        <p>
-          Results could not be found; please try a different search. {error}
-        </p>
-      )
+      result = <p>Results could not be found; please try a different search. {error}</p>
     } else if (mappedWords.length) {
       result = (
         <div>

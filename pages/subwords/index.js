@@ -10,29 +10,17 @@ const SubwordsHome = ({ randomCountdownQuestionExample }) => {
     <>
       <Head>
         <title>Subwords on velut — a Latin rhyming dictionary</title>
-        <meta
-          name="Description"
-          content="Latin words made from the letters of what you enter"
-        />
+        <meta name="Description" content="Latin words made from the letters of what you enter" />
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="Subwords" />
         <p className={styles.subsiteHomeRubric}>
-          This will help you find Latin words that can be made with the letters
-          you specify. Type some letters below!
+          This will help you find Latin words that can be made with the letters you specify. Type some letters below!
         </p>
-        <Search
-          type="subwords"
-          searchbarLabel="Text to find subwords of"
-          lang="zxx"
-          hideDropdown={true}
-        />
+        <Search type="subwords" searchbarLabel="Text to find subwords of" lang="zxx" hideDropdown={true} />
         <p className={styles.subsiteHomeRubric}>
           Alternatively, search for a random string:{' '}
-          <Link href={'/subwords/' + randomCountdownQuestionExample}>
-            {randomCountdownQuestionExample}
-          </Link>
-          .
+          <Link href={'/subwords/' + randomCountdownQuestionExample}>{randomCountdownQuestionExample}</Link>.
         </p>
       </div>
     </>

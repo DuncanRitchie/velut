@@ -18,10 +18,7 @@ const Anagrams = ({ input, anagrams, error }) => {
   if (error) {
     result = (
       <>
-        <p>
-          There was an error in fetching your anagrams! Please try again later,
-          or try another search.
-        </p>
+        <p>There was an error in fetching your anagrams! Please try again later, or try another search.</p>
         <p>{error}</p>
       </>
     )
@@ -30,9 +27,7 @@ const Anagrams = ({ input, anagrams, error }) => {
       <div>
         <p>
           Here{' '}
-          {mappedAnagrams.length === 1
-            ? 'is the 1 Latin anagram'
-            : `are the ${mappedAnagrams.length} Latin anagrams`}{' '}
+          {mappedAnagrams.length === 1 ? 'is the 1 Latin anagram' : `are the ${mappedAnagrams.length} Latin anagrams`}{' '}
           of <strong lang="zxx">{input}</strong>.
         </p>
         <ul lang="la" className="anagrams">
@@ -48,16 +43,11 @@ const Anagrams = ({ input, anagrams, error }) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta
-          name="Description"
-          content={`Latin multi-word anagrams of “${input}”`}
-        />
+        <meta name="Description" content={`Latin multi-word anagrams of “${input}”`} />
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="Anagram phrases" />
-        <p className={styles.subsiteHomeRubric}>
-          Caution — searches may take some minutes or fail completely.
-        </p>
+        <p className={styles.subsiteHomeRubric}>Caution — searches may take some minutes or fail completely.</p>
         <Search
           type="anagramphrases"
           word={input}

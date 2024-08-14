@@ -1,9 +1,4 @@
-import {
-  Details,
-  getTabForCurrentWord,
-  getTabsId,
-  LatinLinksOrPlainText,
-} from './FormsTable'
+import { Details, getTabForCurrentWord, getTabsId, LatinLinksOrPlainText } from './FormsTable'
 import Tabs from './Tabs'
 import styles from './FormsTable.module.css'
 import verbStyles from './VerbFormsTable.module.css'
@@ -17,12 +12,7 @@ import verbStyles from './VerbFormsTable.module.css'
 // For example, <VerbDataCell className="infinitive active present" />
 // might become HTML <td className="infinitive active present">clāmāre</td>
 
-const TableForSomeVerbForms = ({
-  formsFromWordsCollection,
-  Forms,
-  linkBase,
-  currentWordHyphenated,
-}) => {
+const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
   const generateLatinLinksOrPlainText = (formsArray) => (
     <LatinLinksOrPlainText
       formsArray={formsArray}

@@ -7,9 +7,7 @@ const FiveHundred = ({ type = '/' }) => {
   return (
     <>
       <Head>
-        <title>
-          Internal server error on velut — a Latin rhyming dictionary
-        </title>
+        <title>Internal server error on velut — a Latin rhyming dictionary</title>
       </Head>
       <div className={styles.home + ' fulmar-background'}>
         <Header textBeforeTitle="Internal server error" />

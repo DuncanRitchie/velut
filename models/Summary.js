@@ -36,5 +36,4 @@ const summarySchema = new mongoose.Schema(
 )
 
 //// If Summary is already on the Mongoose model, we use it, otherwise add it.
-export default mongoose.models?.summary ||
-  mongoose.model('summary', summarySchema)
+export default mongoose.models?.summary || mongoose.model('summary', summarySchema)

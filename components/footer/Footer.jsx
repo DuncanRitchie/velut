@@ -9,15 +9,11 @@ let Footer = () => {
   const router = useRouter()
   const currentUrl = router.route
   const firstPartOfUrl = currentUrl.split('/').filter(Boolean)[0]
-  const thereIsSecondPartOfUrl =
-    currentUrl.split('/').filter(Boolean).length > 1
+  const thereIsSecondPartOfUrl = currentUrl.split('/').filter(Boolean).length > 1
 
   const doesUrlBeginWith = (token) => {
     return (
-      (firstPartOfUrl &&
-        currentUrl !== '/' &&
-        !firstPartOfUrl.startsWith('?') &&
-        firstPartOfUrl === token) ||
+      (firstPartOfUrl && currentUrl !== '/' && !firstPartOfUrl.startsWith('?') && firstPartOfUrl === token) ||
       firstPartOfUrl?.startsWith(token + '?')
     )
   }

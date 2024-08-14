@@ -84,13 +84,7 @@ Consequently we need to be careful that 'future' doesn’t match as a substring 
   bottom: 0.125em;
   width: 1px;
   height: calc(100% - 0.4625em);
-  background-image: repeating-linear-gradient(
-    0deg,
-    #34311a,
-    #34311a 0.25em,
-    transparent,
-    transparent 0.6666em
-  );
+  background-image: repeating-linear-gradient(0deg, #34311a, #34311a 0.25em, transparent, transparent 0.6666em);
   opacity: 0.3333;
 }
 
@@ -102,12 +96,6 @@ Consequently we need to be careful that 'future' doesn’t match as a substring 
   bottom: 0;
   width: calc(100% - 0.4625em);
   height: 1px;
-  background-image: repeating-linear-gradient(
-    270deg,
-    #34311a,
-    #34311a 0.25em,
-    transparent,
-    transparent 0.6666em
-  );
+  background-image: repeating-linear-gradient(270deg, #34311a, #34311a 0.25em, transparent, transparent 0.6666em);
   opacity: 0.3333;
 }

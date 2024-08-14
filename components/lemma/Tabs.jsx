@@ -36,19 +36,13 @@ class Tabs extends Component {
 
     switch (event.key) {
       case 'ArrowLeft':
-        const prevTab =
-          this.state.currentTab === 0
-            ? this.state.tabCount - 1
-            : this.state.currentTab - 1
+        const prevTab = this.state.currentTab === 0 ? this.state.tabCount - 1 : this.state.currentTab - 1
         this.switchTab(prevTab)
         stopDefaultBehaviour()
         break
 
       case 'ArrowRight':
-        const nextTab =
-          this.state.currentTab === this.state.tabCount - 1
-            ? 0
-            : this.state.currentTab + 1
+        const nextTab = this.state.currentTab === this.state.tabCount - 1 ? 0 : this.state.currentTab + 1
         this.switchTab(nextTab)
         stopDefaultBehaviour()
         break
@@ -87,16 +81,11 @@ class Tabs extends Component {
     // `children` is undefined if there are zero, is an element if there is one,
     // and is an array of elements if there are more than one.
     if (!this.getChildren().length) {
-      console.error(
-        'Tabs component cannot be used without two or more children.',
-      )
+      console.error('Tabs component cannot be used without two or more children.')
       return
     }
     if (this.getChildren().length % 2) {
-      console.warn(
-        'Tabs component should have an even number of children, but it has ' +
-          this.getChildren().length,
-      )
+      console.warn('Tabs component should have an even number of children, but it has ' + this.getChildren().length)
       this.setState({ tabCount: (this.getChildren().length + 1) / 2 })
       return
     }
@@ -115,21 +104,12 @@ class Tabs extends Component {
       return <></>
     }
 
-    const tabsChildren = this.getChildren().filter(
-      (_, index) => index % 2 === 0,
-    )
-    const panelsChildren = this.getChildren().filter(
-      (_, index) => index % 2 === 1,
-    )
-    const jsEnabledClass = this.state.jsEnabled
-      ? styles.jsEnabled
-      : styles.jsDisabled
+    const tabsChildren = this.getChildren().filter((_, index) => index % 2 === 0)
+    const panelsChildren = this.getChildren().filter((_, index) => index % 2 === 1)
+    const jsEnabledClass = this.state.jsEnabled ? styles.jsEnabled : styles.jsDisabled
 
     return (
-      <div
-        className={styles.tabs + ' ' + jsEnabledClass}
-        style={{ '--tabs-count': this.state.tabCount }}
-      >
+      <div className={styles.tabs + ' ' + jsEnabledClass} style={{ '--tabs-count': this.state.tabCount }}>
         {/* This is a proper tab-list, shown if JS is enabled. */}
         <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
           {tabsChildren.map((child, index) => (
@@ -166,9 +146,7 @@ class Tabs extends Component {
                 key={index}
                 role="tabpanel"
                 aria-labelledby={`${this.props.id}-tab-${index}`}
-                className={
-                  this.state.currentTab === index ? '' : styles.tabPanelHidden
-                }
+                className={this.state.currentTab === index ? '' : styles.tabPanelHidden}
               >
                 {child}
               </div>

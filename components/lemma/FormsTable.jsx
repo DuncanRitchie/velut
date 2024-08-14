@@ -26,19 +26,13 @@ const prettyPrintKey = (key) => {
 
 // The ID of each Tabs component needs to be distinct.
 // This will be the case as long as `lemma` and `summary` are sensible string values (eg "amō", "participles").
-const getTabsId = ({ lemma, summary }) =>
-  `${lemma}-${summary.replace(/\s/g, '').toLowerCase()}`
+const getTabsId = ({ lemma, summary }) => `${lemma}-${summary.replace(/\s/g, '').toLowerCase()}`
 
 // `formsArray` is the array of strings that are forms to be displayed.
 // `formsFromWordsCollection` is the array of strings that are words already in velut.
 // This component displays the forms as links if they are in velut, and plaintext otherwise.
 // Eg simplified, ["amantēs", "amantīs"] => <><a href="/amante-s">amantēs</a> amantīs</>
-const LatinLinksOrPlainText = ({
-  formsArray,
-  formsFromWordsCollection,
-  linkBase,
-  currentWordHyphenated,
-}) => {
+const LatinLinksOrPlainText = ({ formsArray, formsFromWordsCollection, linkBase, currentWordHyphenated }) => {
   if (!formsArray) {
     return <></>
   }
@@ -46,11 +40,7 @@ const LatinLinksOrPlainText = ({
     if (formsFromWordsCollection.includes(form)) {
       return (
         <Fragment key={form}>
-          <LatinLink
-            linkBase={linkBase}
-            targetWord={form}
-            currentWordHyphenated={currentWordHyphenated}
-          ></LatinLink>{' '}
+          <LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}></LatinLink>{' '}
         </Fragment>
       )
     } else {
@@ -61,12 +51,7 @@ const LatinLinksOrPlainText = ({
 
 // This is a recursive function that produces nested <dl> elements,
 // matching the Json structure of the Forms data that were passed in.
-const FormsTableForSomeForms = ({
-  formsFromWordsCollection,
-  Forms,
-  linkBase,
-  currentWordHyphenated,
-}) => {
+const FormsTableForSomeForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
   if (!Forms) {
     return <>No forms!</>
   }
@@ -136,9 +121,7 @@ const getTabForCurrentWord = (allForms, currentWordHyphenated) => {
     }
     return Object.values(someForms).some(doesFormsObjectContainCurrentWord)
   }
-  const foundIndex = Object.values(allForms).findIndex((value) =>
-    doesFormsObjectContainCurrentWord(value),
-  )
+  const foundIndex = Object.values(allForms).findIndex((value) => doesFormsObjectContainCurrentWord(value))
   // findIndex returns -1 if the word wasn’t found; let’s avoid that.
   return foundIndex === -1 ? 0 : foundIndex
 }
@@ -158,11 +141,7 @@ const FormsTableWithEnclitics = ({
   return (
     <Details openByDefault={openByDefault}>
       <summary id={tabsId + '-summary'}>{summary}</summary>
-      <Tabs
-        id={id}
-        ariaLabelledBy={tabsId + '-summary'}
-        startTab={getTabForCurrentWord(Forms, currentWordHyphenated)}
-      >
+      <Tabs id={id} ariaLabelledBy={tabsId + '-summary'} startTab={getTabForCurrentWord(Forms, currentWordHyphenated)}>
         {Forms.unencliticized ? 'Unencliticized' : null}
         {Forms.unencliticized ? (
           <FormsTableForSomeForms
@@ -214,12 +193,7 @@ const FormsTable = ({
   isFullWidth = false,
   summary = 'All generated forms',
 }) => {
-  const isDisplayedInTabs = !!(
-    Forms.unencliticized ||
-    Forms.ne ||
-    Forms.que ||
-    Forms.ve
-  )
+  const isDisplayedInTabs = !!(Forms.unencliticized || Forms.ne || Forms.que || Forms.ve)
   const tabsId = getTabsId({ lemma, summary })
   const formsTable = isDisplayedInTabs ? (
     <FormsTableWithEnclitics
@@ -243,9 +217,7 @@ const FormsTable = ({
     />
   )
 
-  const classNames = isFullWidth
-    ? styles.formsTable + ' ' + styles.fullWidth
-    : styles.formsTable
+  const classNames = isFullWidth ? styles.formsTable + ' ' + styles.fullWidth : styles.formsTable
 
   return <div className={classNames}>{formsTable}</div>
 }

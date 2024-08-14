@@ -8,14 +8,7 @@ import styles from '../../css/Subsites.module.css'
 
 const English = ({ lemmata, sanitisedInput }) => {
   const mappedLemmata = lemmata.map((lemma) => {
-    return (
-      <Lemma
-        key={lemma.Lemma}
-        lemma={lemma}
-        linkBase="../"
-        showFormsAndCognates={false}
-      />
-    )
+    return <Lemma key={lemma.Lemma} lemma={lemma} linkBase="../" showFormsAndCognates={false} />
   })
 
   const pageTitle = `English “${sanitisedInput}” to Latin on velut — a Latin rhyming dictionary`
@@ -24,46 +17,30 @@ const English = ({ lemmata, sanitisedInput }) => {
     <>
       <Head>
         <title>{pageTitle}</title>
-        <meta
-          name="Description"
-          content={`Latin words for the English “${sanitisedInput}”`}
-        />
+        <meta name="Description" content={`Latin words for the English “${sanitisedInput}”`} />
       </Head>
       <div className="fulmar-background">
         <Header textBeforeTitle="English to Latin" />
-        <Search
-          type="english"
-          word={sanitisedInput}
-          searchbarLabel="English word"
-          lang="en"
-          hideDropdown={true}
-        />
+        <Search type="english" word={sanitisedInput} searchbarLabel="English word" lang="en" hideDropdown={true} />
 
         {lemmata.length ? (
           <>
             <div className={styles.subsiteResult}>
               <h2>Search results</h2>
               <p>
-                There{' '}
-                {lemmata.length === 1
-                  ? 'is 1 lemma'
-                  : 'are ' + lemmata.length + ' lemmata'}{' '}
-                with meanings containing “{sanitisedInput}”.
+                There {lemmata.length === 1 ? 'is 1 lemma' : 'are ' + lemmata.length + ' lemmata'} with meanings
+                containing “{sanitisedInput}”.
               </p>
               {mappedLemmata}
             </div>
           </>
         ) : (
           <p className={styles.showingResultsFor}>
-            No results were found for “{sanitisedInput}”. Please try a different
-            search.
+            No results were found for “{sanitisedInput}”. Please try a different search.
           </p>
         )}
 
-        <Dictionaries
-          category="English-to-Latin"
-          sanitisedInput={sanitisedInput}
-        />
+        <Dictionaries category="English-to-Latin" sanitisedInput={sanitisedInput} />
       </div>
     </>
   )

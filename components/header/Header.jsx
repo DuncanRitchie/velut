@@ -8,10 +8,7 @@ let Header = (props) => {
       <p>
         <span className={styles.titleAuthor}>Duncan Ritchie’s</span>
         <br />
-        <abbr
-          className={styles.title}
-          title="Useful Tables of Excellent Latin Vocabulary"
-        >
+        <abbr className={styles.title} title="Useful Tables of Excellent Latin Vocabulary">
           velut
         </abbr>
       </p>

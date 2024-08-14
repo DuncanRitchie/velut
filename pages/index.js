@@ -12,9 +12,7 @@ const Home = ({ type = '/' }) => {
       <div className={styles.home + ' fulmar-background-big'}>
         <Header />
         <h1 className={styles.homeRubric + 'textWithBackground'}>
-          <span className="textWithBackground">
-            Latin rhymes &amp;&nbsp;more!
-          </span>
+          <span className="textWithBackground">Latin rhymes &amp;&nbsp;more!</span>
         </h1>
         <Search type={type} searchbarLabel="Latin word" />
         <p className={styles.homeRubric}>

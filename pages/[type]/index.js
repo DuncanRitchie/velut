@@ -41,8 +41,7 @@ const WordPage = ({
   const linkBase = type === '' ? '/' : '/' + type + '/'
 
   if (foundWord) {
-    const currentWordHyphenated =
-      foundWord.Word && macraToHyphens(foundWord.Word)
+    const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word)
 
     // Let’s find what metrical foot it is.
     if (foundWord.Scansion) {
@@ -65,11 +64,7 @@ const WordPage = ({
       mappedRhymes = rhymes.map((rhyme, index) => {
         return (
           <Fragment key={index}>
-            <LatinLink
-              linkBase={linkBase}
-              targetWord={rhyme}
-              currentWordHyphenated={currentWordHyphenated}
-            />{' '}
+            <LatinLink linkBase={linkBase} targetWord={rhyme} currentWordHyphenated={currentWordHyphenated} />{' '}
           </Fragment>
         )
       })
@@ -82,11 +77,7 @@ const WordPage = ({
           homograph !== foundWord.Word && (
             <Fragment key={index}>
               {' '}
-              <LatinLink
-                linkBase={linkBase}
-                targetWord={homograph}
-                currentWordHyphenated={currentWordHyphenated}
-              />
+              <LatinLink linkBase={linkBase} targetWord={homograph} currentWordHyphenated={currentWordHyphenated} />
             </Fragment>
           )
         )
@@ -95,14 +86,7 @@ const WordPage = ({
     // Let’s do the (correct) lemmata. We will render an element for every lemma listed against the input.
     mappedCorrectLemmata = correctLemmata.map((lemma, index) => {
       if (lemma) {
-        return (
-          <Lemma
-            key={index}
-            lemma={lemma}
-            linkBase={linkBase}
-            currentWordHyphenated={currentWordHyphenated}
-          />
-        )
+        return <Lemma key={index} lemma={lemma} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
       } else {
         return null
       }
@@ -155,12 +139,10 @@ const WordPage = ({
         <div className={subsiteStyles.wordInfo}>
           {foundWord ? (
             <div>
-              {mappedHomographs.length > 1 ? (
-                <p>(Other homographs:{mappedHomographs})</p>
-              ) : null}
+              {mappedHomographs.length > 1 ? <p>(Other homographs:{mappedHomographs})</p> : null}
               <p>
-                The word <strong lang="la">{foundWord.Word}</strong> could scan
-                as <span className={styles.scansion}>{foundWord.Scansion}</span>
+                The word <strong lang="la">{foundWord.Word}</strong> could scan as{' '}
+                <span className={styles.scansion}>{foundWord.Scansion}</span>
                 {footName ? (
                   <>
                     {' '}
@@ -174,8 +156,7 @@ const WordPage = ({
               {correctLemmata.length ? (
                 <>
                   <p>
-                    <strong lang="la">{foundWord.Word}</strong> belongs to the
-                    following {correctLemmata.length}{' '}
+                    <strong lang="la">{foundWord.Word}</strong> belongs to the following {correctLemmata.length}{' '}
                     {correctLemmata.length === 1 ? 'lemma' : 'lemmata'}:
                   </p>
                   {mappedCorrectLemmata}
@@ -184,18 +165,14 @@ const WordPage = ({
                 <>
                   {incorrectLemmata.length ? (
                     <p>
-                      There’s been a mistake — the word{' '}
-                      <strong lang="la">{foundWord.Word}</strong> was added to
-                      velut as a form of the{' '}
-                      {incorrectLemmata.length === 1 ? 'lemma' : 'lemmata'}{' '}
-                      {mappedIncorrectLemmata}, but this is probably wrong. I
-                      will remove it if it’s unacceptable Latin!
+                      There’s been a mistake — the word <strong lang="la">{foundWord.Word}</strong> was added to velut
+                      as a form of the {incorrectLemmata.length === 1 ? 'lemma' : 'lemmata'} {mappedIncorrectLemmata},
+                      but this is probably wrong. I will remove it if it’s unacceptable Latin!
                     </p>
                   ) : (
                     <p>
-                      There’s been a mistake — velut has no lemma information
-                      for <strong lang="la">{foundWord.Word}</strong>. Please
-                      try another word.
+                      There’s been a mistake — velut has no lemma information for{' '}
+                      <strong lang="la">{foundWord.Word}</strong>. Please try another word.
                     </p>
                   )}
                 </>
@@ -211,11 +188,7 @@ const WordPage = ({
                 .
               </p>
               <p>
-                Or do you want to search from{' '}
-                <Link href={'/english/' + sanitisedInput}>
-                  English to Latin
-                </Link>
-                ?
+                Or do you want to search from <Link href={'/english/' + sanitisedInput}>English to Latin</Link>?
               </p>
             </>
           )}
@@ -238,9 +211,7 @@ export async function getServerSideProps({ params, res }) {
   //// But "fu-lma-rus" should be treated as the word, not the type.
   //// So we get the type and the word from the URL, but if there’s no :word
   //// we use the :type as the word and the empty string as the type.
-  const wordParam = params.hasOwnProperty('word')
-    ? params.word
-    : params.type ?? ''
+  const wordParam = params.hasOwnProperty('word') ? params.word : params.type ?? ''
   const typeParam = params.hasOwnProperty('word') ? params.type : ''
   const sanitisedInput = wordParam
 

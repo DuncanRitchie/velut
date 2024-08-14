@@ -68,9 +68,7 @@
   border: 1px solid #58522c;
   border-radius: 0 0.3333rem 0.3333rem;
   /* The top-left corner is only rounded if --forms-table-margin-inline is more than what the rounding would be. */
-  border-top-left-radius: calc(
-    max(min(var(--forms-table-margin-inline, 0rem), 0.3333rem), 0rem)
-  );
+  border-top-left-radius: calc(max(min(var(--forms-table-margin-inline, 0rem), 0.3333rem), 0rem));
   background: #fffdf4;
   overflow-x: auto;
   scroll-margin-top: 5rem;
