@@ -33,6 +33,10 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
     return <td className={className}>{generateLatinLinksOrPlainText(forms)}</td>
   }
 
+  // Hardly any verbs should have a column for a future active infinitive.
+  // The only exceptions are ‘sum’ & its compounds, which have ‘fore’ as a contraction of ‘futūrus esse’.
+  const shouldShowFutureInfinitive = Boolean(Forms.infinitive?.active?.future)
+
   return (
     <>
       <table>
@@ -305,7 +309,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <th rowSpan="2" colSpan="2" className="infinitive">
               infinitive
             </th>
-            <th colSpan="3" className="infinitive active">
+            <th colSpan={shouldShowFutureInfinitive ? 3 : 2} className="infinitive active">
               active
             </th>
             <th className="infinitive passive">passive</th>
@@ -313,7 +317,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
           <tr>
             <th className="infinitive active present">present</th>
             <th className="infinitive active perfect">perfect</th>
-            <th className="infinitive active future">future</th>
+            {shouldShowFutureInfinitive ? <th className="infinitive active future">future</th> : null}
             <th className="infinitive passive present">present</th>
           </tr>
         </thead>
@@ -323,7 +327,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <th colSpan="2" className="infinitive"></th>
             <VerbDataCell className="infinitive active present" />
             <VerbDataCell className="infinitive active perfect" />
-            <VerbDataCell className="infinitive active future" />
+            {shouldShowFutureInfinitive ? <VerbDataCell className="infinitive active future" /> : null}
             <VerbDataCell className="infinitive passive present" />
           </tr>
         </tbody>
