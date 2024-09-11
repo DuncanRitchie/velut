@@ -6,7 +6,6 @@ import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
 import VerbFormsTable from './VerbFormsTable'
-import ParsingsList from '../parsingsList/ParsingsList'
 import { hyphensToMacra } from '../../lib/words/diacritics'
 
 // The env var should be something like "Proper noun, Conjunction"
@@ -229,7 +228,6 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
       {mappedTransliterations ? <p>Transliterations: {mappedTransliterations}</p> : null}
       {showFormsAndCognates ? (
         <>
-          <ParsingsList lemma={lemma} form={hyphensToMacra(currentWordHyphenated)} />
           <Forms
             lemma={lemma}
             linkBase={linkBase}
@@ -244,3 +242,4 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
 }
 
 export default Lemma
+export { getLemmaId }

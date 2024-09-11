@@ -1,13 +1,18 @@
 import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
+import { getLemmaId } from '../lemma/Lemma'
+import superscriptLemmaTag from '../lemma/superscriptLemmaTag'
+import styles from './ParsingsList.module.css'
 
-const ParsingsList = ({ lemma, form }) => {
-  let { Forms } = lemma
-
+const ParsingsList = ({ lemmata, form }) => {
   if (!form) {
     throw new Error('The prop `form` is required for ParsingsList.')
   }
-  if (!Forms) {
-    throw new Error('The prop `lemma` is required for ParsingsList and must have the `Forms` property.')
+  if (!lemmata) {
+    throw new Error('The prop `lemmata` is required for ParsingsList.')
+  }
+  const formsObjects = lemmata.map((lemma) => lemma.Forms)
+  if (formsObjects.includes(null)) {
+    throw new Error('The prop `lemmata` on ParsingsList must have the `Forms` property in all its objects.')
   }
 
   // Recursive function that trawls an object of forms looking for the given form, and returns the sequences of grammatical keys.
@@ -24,19 +29,30 @@ const ParsingsList = ({ lemma, form }) => {
     })
   }
 
-  // This formats the list with commas but no conjunction, eg
-  // “ablative singular masculine unencliticized, nominative singular masculine -ne, vocative singular masculine -ne”
-  const listFormatter = new Intl.ListFormat('en', {
-    style: 'long',
-    type: 'unit',
-  })
+  const parsingsJsx = lemmata.map((lemma) =>
+    getParsings(lemma.Forms, form, []).map((parsing) => (
+      <tr key={parsing}>
+        <td>
+          <a href={'#' + getLemmaId(lemma)}>{superscriptLemmaTag(lemma.Lemma)}</a>
+        </td>
+        <td>{parsing}</td>
+      </tr>
+    )),
+  )
 
   return (
-    <>
-      <p>
-        Parsings of <strong lang="la">{form}</strong>: {listFormatter.format(getParsings(Forms, form, []))}
-      </p>
-    </>
+    <details className={styles.parsingsList}>
+      <summary>Parsings</summary>
+      <table>
+        <thead>
+          <tr>
+            <th>Lemma</th>
+            <th>Parsing</th>
+          </tr>
+        </thead>
+        <tbody>{parsingsJsx}</tbody>
+      </table>
+    </details>
   )
 }
 

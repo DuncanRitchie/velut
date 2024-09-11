@@ -19,6 +19,7 @@ import getScansionDescription from '../../lib/words/scansion'
 
 import styles from '../../css/Word.module.css'
 import subsiteStyles from '../../css/Subsites.module.css'
+import ParsingsList from '../../components/parsingsList/ParsingsList'
 
 const WordPage = ({
   sanitisedInput,
@@ -152,9 +153,11 @@ const WordPage = ({
               </p>
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
-              <h2>Lemma information</h2>
+              <h2>Parsings</h2>
               {correctLemmata.length ? (
                 <>
+                  <ParsingsList form={foundWord.Word} lemmata={correctLemmata} />
+                  <h2>Lemma information</h2>
                   <p>
                     <strong lang="la">{foundWord.Word}</strong> belongs to the following {correctLemmata.length}{' '}
                     {correctLemmata.length === 1 ? 'lemma' : 'lemmata'}:
