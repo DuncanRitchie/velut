@@ -121,16 +121,18 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
         isFullWidth={true}
       />
 
-      <FormsTable
-        summary="Participles"
-        Forms={participleForms}
-        formsFromWordsCollection={formsFromWordsCollection}
-        lemma={lemma.Lemma}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-        openByDefault={true}
-        isFullWidth={false}
-      />
+      {participleForms.participle ? (
+        <FormsTable
+          summary="Participles"
+          Forms={participleForms}
+          formsFromWordsCollection={formsFromWordsCollection}
+          lemma={lemma.Lemma}
+          linkBase={linkBase}
+          currentWordHyphenated={currentWordHyphenated}
+          openByDefault={true}
+          isFullWidth={false}
+        />
+      ) : null}
     </>
   )
 }
