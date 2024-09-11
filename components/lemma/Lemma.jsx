@@ -33,7 +33,14 @@ function getLemmaId({ Lemma }) {
 const ParsingsList = ({ lemma, form }) => {
   let { Forms } = lemma
 
-  // Recursive function that trawls an object of forms looking for the given form.
+  if (!form) {
+    throw new Error('The prop `form` is required for ParsingsList.')
+  }
+  if (!Forms) {
+    throw new Error('The prop `lemma` is required for ParsingsList and must have the `Forms` property.')
+  }
+
+  // Recursive function that trawls an object of forms looking for the given form, and returns the sequences of grammatical keys.
   // Example return value:
   // ["ablative singular masculine unencliticized", "nominative singular masculine -ne", "vocative singular masculine -ne"]
   const getParsings = (formsObject, form, accumulatedTags) => {
@@ -47,15 +54,19 @@ const ParsingsList = ({ lemma, form }) => {
     })
   }
 
+  // This formats the list with commas but no conjunction, eg
+  // “ablative singular masculine unencliticized, nominative singular masculine -ne, vocative singular masculine -ne”
+  const listFormatter = new Intl.ListFormat('en', {
+    style: 'long',
+    type: 'unit',
+  })
+
   return (
-    <details>
-      <summary>Parsings of {form}</summary>
-      <ul>
-        {getParsings(Forms, form, []).map((parsing) => (
-          <li key={parsing}>{parsing}</li>
-        ))}
-      </ul>
-    </details>
+    <>
+      <p>
+        Parsings of <strong lang="la">{form}</strong>: {listFormatter.format(getParsings(Forms, form, []))}
+      </p>
+    </>
   )
 }
 
@@ -241,7 +252,6 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
           />
         )}
       </h3>
-      <ParsingsList lemma={lemma} form={hyphensToMacra(currentWordHyphenated)} />
       {PartOfSpeech ? <p>Part of speech: {PartOfSpeech.toLowerCase()}</p> : null}
       {Meanings ? (
         <p>
@@ -257,6 +267,7 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
       {mappedTransliterations ? <p>Transliterations: {mappedTransliterations}</p> : null}
       {showFormsAndCognates ? (
         <>
+          <ParsingsList lemma={lemma} form={hyphensToMacra(currentWordHyphenated)} />
           <Forms
             lemma={lemma}
             linkBase={linkBase}
