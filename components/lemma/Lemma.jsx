@@ -6,7 +6,7 @@ import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
 import VerbFormsTable from './VerbFormsTable'
-import { prettyPrintGrammaticalKey } from './FormsTable'
+import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
 import { hyphensToMacra } from '../../lib/words/diacritics'
 
 // The env var should be something like "Proper noun, Conjunction"

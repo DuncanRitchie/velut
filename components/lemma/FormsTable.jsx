@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import Tabs from './Tabs'
 import LatinLink from '../latinlink/LatinLink'
 import styles from './FormsTable.module.css'
+import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
 import { hyphensToMacra } from '../../lib/words/diacritics'
 
 // Allows me to control whether an instance of <details>
@@ -11,23 +12,6 @@ const Details = ({ openByDefault, children }) => {
     return <details open>{children}</details>
   }
   return <details>{children}</details>
-}
-
-// Most of the keys in the form data are suitable for display,
-// but keys of more than one word will need added spaces.
-const prettyPrintGrammaticalKey = (key) => {
-  switch (key) {
-    case 'futureperfect':
-      return 'future perfect'
-    case 'ne':
-      return '-ne'
-    case 'que':
-      return '-que'
-    case 've':
-      return '-ve'
-    default:
-      return key
-  }
 }
 
 // The ID of each Tabs component needs to be distinct.
@@ -229,4 +213,4 @@ const FormsTable = ({
 }
 
 export default FormsTable
-export { Details, LatinLinksOrPlainText, getTabForCurrentWord, getTabsId, prettyPrintGrammaticalKey }
+export { Details, LatinLinksOrPlainText, getTabForCurrentWord, getTabsId }
