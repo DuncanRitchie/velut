@@ -15,10 +15,16 @@ const Details = ({ openByDefault, children }) => {
 
 // Most of the keys in the form data are suitable for display,
 // but keys of more than one word will need added spaces.
-const prettyPrintKey = (key) => {
+const prettyPrintGrammaticalKey = (key) => {
   switch (key) {
     case 'futureperfect':
       return 'future perfect'
+    case 'ne':
+      return '-ne'
+    case 'que':
+      return '-que'
+    case 've':
+      return '-ve'
     default:
       return key
   }
@@ -66,7 +72,7 @@ const FormsTableForSomeForms = ({ formsFromWordsCollection, Forms, linkBase, cur
     const keyValuePairs = Object.entries(Forms).map(([key, value]) => {
       return (
         <div key={key}>
-          <dt>{prettyPrintKey(key)}</dt>
+          <dt>{prettyPrintGrammaticalKey(key)}</dt>
           <dd>
             <FormsTableForSomeForms
               formsFromWordsCollection={formsFromWordsCollection}
@@ -223,4 +229,4 @@ const FormsTable = ({
 }
 
 export default FormsTable
-export { Details, LatinLinksOrPlainText, getTabForCurrentWord, getTabsId }
+export { Details, LatinLinksOrPlainText, getTabForCurrentWord, getTabsId, prettyPrintGrammaticalKey }

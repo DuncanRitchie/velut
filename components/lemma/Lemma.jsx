@@ -6,6 +6,8 @@ import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
 import VerbFormsTable from './VerbFormsTable'
+import { prettyPrintGrammaticalKey } from './FormsTable'
+import { hyphensToMacra } from '../../lib/words/diacritics'
 
 // The env var should be something like "Proper noun, Conjunction"
 // which is processed here to ['Proper noun', 'Conjunction']
@@ -26,6 +28,35 @@ function shouldGeneratedFormsBeShownForLemma(lemma) {
 function getLemmaId({ Lemma }) {
   // Replace instances of square/angle brackets with hyphens, then delete trailing hyphens.
   return 'lemma-' + Lemma.replace(/[\[\]<>]+/g, '-').replace(/-$/, '')
+}
+
+const ParsingsList = ({ lemma, form }) => {
+  let { Forms } = lemma
+
+  // Recursive function that trawls an object of forms looking for the given form.
+  // Example return value:
+  // ["ablative singular masculine unencliticized", "nominative singular masculine -ne", "vocative singular masculine -ne"]
+  const getParsings = (formsObject, form, accumulatedTags) => {
+    return Object.entries(formsObject).flatMap(([key, value]) => {
+      if (Array.isArray(value)) {
+        if (value.includes(form)) {
+          return [key, ...accumulatedTags].map(prettyPrintGrammaticalKey).join(' ')
+        } else return []
+      }
+      return getParsings(value, form, [key, ...accumulatedTags])
+    })
+  }
+
+  return (
+    <details>
+      <summary>Parsings of {form}</summary>
+      <ul>
+        {getParsings(Forms, form, []).map((parsing) => (
+          <li key={parsing}>{parsing}</li>
+        ))}
+      </ul>
+    </details>
+  )
 }
 
 const Forms = ({ lemma, linkBase, currentWordHyphenated }) => {
@@ -210,6 +241,7 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
           />
         )}
       </h3>
+      <ParsingsList lemma={lemma} form={hyphensToMacra(currentWordHyphenated)} />
       {PartOfSpeech ? <p>Part of speech: {PartOfSpeech.toLowerCase()}</p> : null}
       {Meanings ? (
         <p>
