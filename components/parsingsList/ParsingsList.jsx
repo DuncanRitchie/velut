@@ -41,18 +41,15 @@ const ParsingsList = ({ lemmata, form }) => {
   )
 
   return (
-    <details className={styles.parsingsList}>
-      <summary>Parsings</summary>
-      <table>
-        <thead>
-          <tr>
-            <th>Lemma</th>
-            <th>Parsing</th>
-          </tr>
-        </thead>
-        <tbody>{parsingsJsx}</tbody>
-      </table>
-    </details>
+    <table className={styles.parsingsList}>
+      <thead>
+        <tr>
+          <th>Lemma</th>
+          <th>Parsing</th>
+        </tr>
+      </thead>
+      <tbody>{parsingsJsx}</tbody>
+    </table>
   )
 }
 

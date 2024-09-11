@@ -1,24 +1,17 @@
 .parsingsList {
   margin: 1rem;
   text-align: left;
-}
-
-.parsingsList summary {
-  margin-bottom: 0.5rem;
-}
-
-.parsingsList table {
-  width: 100%;
+  width: calc(100% - 2rem);
   padding: 0.5rem;
   border: 1px solid #58522c;
   border-radius: 0.3333rem;
 }
 
-.parsingsList table :is(th, td) {
+.parsingsList :is(th, td) {
   padding: 0.25rem;
 }
 
-.parsingsList table th {
+.parsingsList th {
   font-style: italic;
   font-weight: bold;
   color: #34311a;
