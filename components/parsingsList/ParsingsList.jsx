@@ -1,5 +1,5 @@
 import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
-import { getLemmaId } from '../lemma/Lemma'
+import { getLemmaId, shouldGeneratedFormsBeShownForLemma } from '../lemma/Lemma'
 import superscriptLemmaTag from '../lemma/superscriptLemmaTag'
 import styles from './ParsingsList.module.css'
 
@@ -10,15 +10,14 @@ const ParsingsList = ({ lemmata, form }) => {
   if (!lemmata) {
     throw new Error('The prop `lemmata` is required for ParsingsList.')
   }
-  const formsObjects = lemmata.map((lemma) => lemma.Forms)
-  if (formsObjects.includes(null)) {
-    throw new Error('The prop `lemmata` on ParsingsList must have the `Forms` property in all its objects.')
-  }
 
   // Recursive function that trawls an object of forms looking for the given form, and returns the sequences of grammatical keys.
   // Example return value:
   // ["ablative singular masculine unencliticized", "nominative singular masculine -ne", "vocative singular masculine -ne"]
   const getParsings = (formsObject, form, accumulatedTags) => {
+    if (!formsObject) {
+      return ['']
+    }
     return Object.entries(formsObject).flatMap(([key, value]) => {
       if (Array.isArray(value)) {
         if (value.includes(form)) {
@@ -35,7 +34,9 @@ const ParsingsList = ({ lemmata, form }) => {
         <td>
           <a href={'#' + getLemmaId(lemma)}>{superscriptLemmaTag(lemma.Lemma)}</a>
         </td>
-        <td>{parsing}</td>
+        <td>
+          {parsing} {shouldGeneratedFormsBeShownForLemma(lemma) ? null : <em>(not verified)</em>}
+        </td>
       </tr>
     )),
   )
