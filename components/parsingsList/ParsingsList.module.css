@@ -8,7 +8,8 @@
 }
 
 .parsingsList :is(th, td) {
-  padding: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  line-height: 1.6em;
 }
 
 .parsingsList th {
