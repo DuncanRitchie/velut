@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import ErrorBoundary from '../errorBoundary/errorBoundary'
 import styles from './Tabs.module.css'
 
 // Adapted from https://www.w3.org/WAI/ARIA/apg/patterns/tabs/examples/tabs-automatic/
@@ -109,51 +110,53 @@ class Tabs extends Component {
     const jsEnabledClass = this.state.jsEnabled ? styles.jsEnabled : styles.jsDisabled
 
     return (
-      <div className={styles.tabs + ' ' + jsEnabledClass} style={{ '--tabs-count': this.state.tabCount }}>
-        {/* This is a proper tab-list, shown if JS is enabled. */}
-        <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
-          {tabsChildren.map((child, index) => (
-            <button
-              id={`${this.props.id}-tab-${index}`}
-              key={index}
-              type="button"
-              role="tab"
-              aria-selected={this.state.currentTab === index}
-              aria-controls={`${this.props.id}-tabpanel-${index}`}
-              tabIndex={this.state.currentTab === index ? '' : -1}
-              onClick={() => this.switchTab(index)}
-              onKeyDown={this.onKeyDown}
-            >
-              {child}
-            </button>
-          ))}
-        </div>
-
-        {/* This is a HTML-only tab-list and a bit hacky, shown if JS is disabled. */}
-        <ul>
-          {tabsChildren.map((child, index) => (
-            <li key={index}>
-              <a href={`#${this.props.id}-tabpanel-${index}`}>{child}</a>
-            </li>
-          ))}
-        </ul>
-
-        <div className={styles.tabPanelsWrapper}>
-          <div className={styles.tabPanelsContainer}>
-            {panelsChildren.map((child, index) => (
-              <div
-                id={`${this.props.id}-tabpanel-${index}`}
+      <ErrorBoundary>
+        <div className={styles.tabs + ' ' + jsEnabledClass} style={{ '--tabs-count': this.state.tabCount }}>
+          {/* This is a proper tab-list, shown if JS is enabled. */}
+          <div role="tablist" aria-labelledby={this.props.ariaLabelledBy}>
+            {tabsChildren.map((child, index) => (
+              <button
+                id={`${this.props.id}-tab-${index}`}
                 key={index}
-                role="tabpanel"
-                aria-labelledby={`${this.props.id}-tab-${index}`}
-                className={this.state.currentTab === index ? '' : styles.tabPanelHidden}
+                type="button"
+                role="tab"
+                aria-selected={this.state.currentTab === index}
+                aria-controls={`${this.props.id}-tabpanel-${index}`}
+                tabIndex={this.state.currentTab === index ? '' : -1}
+                onClick={() => this.switchTab(index)}
+                onKeyDown={this.onKeyDown}
               >
                 {child}
-              </div>
+              </button>
             ))}
           </div>
+
+          {/* This is a HTML-only tab-list and a bit hacky, shown if JS is disabled. */}
+          <ul>
+            {tabsChildren.map((child, index) => (
+              <li key={index}>
+                <a href={`#${this.props.id}-tabpanel-${index}`}>{child}</a>
+              </li>
+            ))}
+          </ul>
+
+          <div className={styles.tabPanelsWrapper}>
+            <div className={styles.tabPanelsContainer}>
+              {panelsChildren.map((child, index) => (
+                <div
+                  id={`${this.props.id}-tabpanel-${index}`}
+                  key={index}
+                  role="tabpanel"
+                  aria-labelledby={`${this.props.id}-tab-${index}`}
+                  className={this.state.currentTab === index ? '' : styles.tabPanelHidden}
+                >
+                  {child}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      </ErrorBoundary>
     )
   }
 }
