@@ -7,6 +7,7 @@ import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
 import VerbFormsTable from './VerbFormsTable'
 import { hyphensToMacra } from '../../lib/words/diacritics'
+import ErrorBoundary from '../errorBoundary/errorBoundary'
 
 // The env var should be something like "Proper noun, Conjunction"
 // which is processed here to ['Proper noun', 'Conjunction']
@@ -197,47 +198,50 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
   }
 
   return (
-    <div className="lemma" id={getLemmaId(lemma)}>
-      {/* If forms and cognates are not shown, the heading should be a link
+    <ErrorBoundary>
+      <div className="lemma" id={getLemmaId(lemma)}>
+        {/* If forms and cognates are not shown, the heading should be a link
       to the word’s page which will have the forms and cognates */}
-      {/* superscriptLemmaTag() replaces anything in square brackets with a superscript. */}
-      <h3>
+        {/* superscriptLemmaTag() replaces anything in square brackets with a superscript. */}
+        <h3>
+          {showFormsAndCognates ? (
+            superscriptLemmaTag(lemma.Lemma)
+          ) : (
+            <LatinLink
+              targetWord={lemma.Lemma}
+              linkBase={linkBase}
+              currentWordHyphenated={currentWordHyphenated}
+              isLemma={true}
+            />
+          )}
+        </h3>
+        {PartOfSpeech ? <p>Part of speech: {PartOfSpeech.toLowerCase()}</p> : null}
+        {Meanings ? (
+          <p>
+            Meanings:{' '}
+            <TextWithQuotedLatin linkBase={linkBase} text={Meanings} currentWordHyphenated={currentWordHyphenated} />
+          </p>
+        ) : null}
+        {Notes ? (
+          <p>
+            Notes:{' '}
+            <TextWithQuotedLatin linkBase={linkBase} text={Notes} currentWordHyphenated={currentWordHyphenated} />
+          </p>
+        ) : null}
+        {mappedTransliterations ? <p>Transliterations: {mappedTransliterations}</p> : null}
         {showFormsAndCognates ? (
-          superscriptLemmaTag(lemma.Lemma)
-        ) : (
-          <LatinLink
-            targetWord={lemma.Lemma}
-            linkBase={linkBase}
-            currentWordHyphenated={currentWordHyphenated}
-            isLemma={true}
-          />
-        )}
-      </h3>
-      {PartOfSpeech ? <p>Part of speech: {PartOfSpeech.toLowerCase()}</p> : null}
-      {Meanings ? (
-        <p>
-          Meanings:{' '}
-          <TextWithQuotedLatin linkBase={linkBase} text={Meanings} currentWordHyphenated={currentWordHyphenated} />
-        </p>
-      ) : null}
-      {Notes ? (
-        <p>
-          Notes: <TextWithQuotedLatin linkBase={linkBase} text={Notes} currentWordHyphenated={currentWordHyphenated} />
-        </p>
-      ) : null}
-      {mappedTransliterations ? <p>Transliterations: {mappedTransliterations}</p> : null}
-      {showFormsAndCognates ? (
-        <>
-          <Forms
-            lemma={lemma}
-            linkBase={linkBase}
-            currentWordHyphenated={currentWordHyphenated}
-            showFormsAndCognates={showFormsAndCognates}
-          />
-          <Cognates lemma={lemma} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
-        </>
-      ) : null}
-    </div>
+          <>
+            <Forms
+              lemma={lemma}
+              linkBase={linkBase}
+              currentWordHyphenated={currentWordHyphenated}
+              showFormsAndCognates={showFormsAndCognates}
+            />
+            <Cognates lemma={lemma} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
+          </>
+        ) : null}
+      </div>
+    </ErrorBoundary>
   )
 }
 
