@@ -6,7 +6,6 @@ import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
 import VerbFormsTable from './VerbFormsTable'
-import { hyphensToMacra } from '../../lib/words/diacritics'
 import ErrorBoundary from '../errorBoundary/errorBoundary'
 
 // The env var should be something like "Proper noun, Conjunction"
@@ -88,13 +87,18 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
   // Initialise two forms objects: one with all the forms, one with none.
   const nonParticipleForms = structuredClone(lemma.Forms)
   const participleForms = {}
+  let hasParticiples = false
 
   // Move the participle forms from the object that has all the forms to the object that has none.
   ;['unencliticized', 'ne', 'que', 've'].forEach((enclitic) => {
     delete nonParticipleForms[enclitic].participle
 
-    participleForms[enclitic] = {
-      participle: lemma.Forms[enclitic].participle,
+    if (lemma.Forms[enclitic].participle) {
+      hasParticiples = true
+
+      participleForms[enclitic] = {
+        participle: lemma.Forms[enclitic].participle,
+      }
     }
   })
 
@@ -121,7 +125,7 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
         isFullWidth={true}
       />
 
-      {participleForms.participle ? (
+      {hasParticiples ? (
         <FormsTable
           summary="Participles"
           Forms={participleForms}
