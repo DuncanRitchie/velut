@@ -35,12 +35,10 @@ All my Latin words are macronized, meaning every long vowel is marked with a mac
 Other sections of the site let you find:
 
 - Latin words whose letters are contained in an input string (I call them [subwords](https://www.velut.co.uk/subwords)),
-<!-- - Latin [phrases that are anagrams](https://www.velut.co.uk/anagramphrases) of an input (this is not actually linked from elsewhere on the site, because it can be very slow!), -->
+- Latin [phrases that are anagrams](https://www.velut.co.uk/anagramphrases) of an input (this is not actually linked from elsewhere on the site, because it can be very slow!),
 - Latin lemmata [from an English meaning](https://www.velut.co.uk/english),
 - Latin words [that fit either](https://www.velut.co.uk/advanced) an input pattern of letters or an input metrical scansion, or both (added in November 2020), and
 - [many Latin words at once](https://www.velut.co.uk/multiword) (added in May 2021).
-
-I also have a feature for finding Latin phrases that are anagrams of an input, but this is temporarily disabled while I investigate performance concerns.
 
 ## Screenshots
 
