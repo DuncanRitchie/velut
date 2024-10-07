@@ -8,7 +8,7 @@ function Details({ openByDefault, children, className }) {
       return
     }
     if (event.target.matches('summary')) {
-      event.preventDefault() // (we'll toggle the element ourselves)
+      event.preventDefault()
       const details = event.target.closest('details')
       document.startViewTransition(() => details.toggleAttribute('open'))
     }
