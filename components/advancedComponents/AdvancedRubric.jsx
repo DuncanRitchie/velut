@@ -1,9 +1,11 @@
 import Link from 'next/link'
+
+import Details from '../details/Details'
 import styles from './AdvancedRubric.module.css'
 
 const AdvancedRubric = () => {
   return (
-    <details className={styles.advancedRubric}>
+    <Details className={styles.advancedRubric}>
       <summary>Show/hide how to use the Advanced Search</summary>
       <h2>How to use</h2>
       <p>This page allows you to search for Latin words by spelling, scansion, or both.</p>
@@ -116,7 +118,7 @@ const AdvancedRubric = () => {
           results.
         </p>
       </section>
-    </details>
+    </Details>
   )
 }
 

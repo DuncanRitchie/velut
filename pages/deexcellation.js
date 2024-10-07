@@ -7,6 +7,7 @@ import styles from '../css/About.module.css'
 import Header from '../components/header/Header'
 import LatinLink from '../components/latinlink/LatinLink'
 import FormsTable from '../components/lemma/FormsTable'
+import Details from '../components/details/Details'
 import superscriptLemmaTag from '../components/lemma/superscriptLemmaTag'
 import formsExample from '../data/forms-example.json'
 
@@ -299,7 +300,7 @@ const DeExcellation = (props) => {
               lemmata and updated this website with the forms.
             </p>
             <p>Anyway, here’s the list of lemmata with the forms I want to delete from velut.</p>
-            <details>
+            <Details>
               <summary>Show/hide list</summary>
               <dl>
                 {props.summary?.errata?.map(({ lemma, incorrectForms }) => {
@@ -317,7 +318,7 @@ const DeExcellation = (props) => {
                   )
                 })}
               </dl>
-            </details>
+            </Details>
           </section>
         </main>
       </div>

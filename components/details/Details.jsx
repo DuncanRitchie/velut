@@ -2,7 +2,7 @@
 // and to control whether instances of <details> are open (expanded) by default.
 // View transition code is adapted from https://www.patterns.dev/vanilla/view-transitions
 
-const Details = ({ openByDefault, children }) => {
+function Details({ openByDefault, children, className }) {
   function onClick(event) {
     if (!document.startViewTransition) {
       return
@@ -14,7 +14,7 @@ const Details = ({ openByDefault, children }) => {
     }
   }
   return (
-    <details open={openByDefault} onClick={onClick}>
+    <details open={openByDefault} onClick={onClick} className={className}>
       {children}
     </details>
   )

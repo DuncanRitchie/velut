@@ -205,4 +205,4 @@ const FormsTable = ({
 }
 
 export default FormsTable
-export { Details, LatinLinksOrPlainText, getTabForCurrentWord, getTabsId }
+export { LatinLinksOrPlainText, getTabForCurrentWord, getTabsId }
