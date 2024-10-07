@@ -1,18 +1,10 @@
 import { Fragment } from 'react'
 import Tabs from './Tabs'
 import LatinLink from '../latinlink/LatinLink'
-import styles from './FormsTable.module.css'
+import Details from '../details/Details'
 import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
 import { hyphensToMacra } from '../../lib/words/diacritics'
-
-// Allows me to control whether an instance of <details>
-// is open (expanded) by default.
-const Details = ({ openByDefault, children }) => {
-  if (openByDefault) {
-    return <details open>{children}</details>
-  }
-  return <details>{children}</details>
-}
+import styles from './FormsTable.module.css'
 
 // The ID of each Tabs component needs to be distinct.
 // This will be the case as long as `lemma` and `summary` are sensible string values (eg "amō", "participles").

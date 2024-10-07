@@ -234,6 +234,11 @@ if the arrow were directly on top of the text in the <select> */
   background-image: linear-gradient(90deg, transparent 0%, #b5e3de 50%);
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.1875s;
+}
+
 progress {
   width: 100%;
   height: 1.25rem;
