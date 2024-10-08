@@ -14,13 +14,15 @@ The velut website (in this repository) is a Next.js site that reads from two Mon
 
 ### Old version with Create React App
 
-When I first made the velut website, it was a single-page application that had the same functionality, but using an [Express](https://expressjs.com/) server on the backend and client-side–rendered [React.js](https://reactjs.org/) on the frontend (using [Create React App](https://create-react-app.dev/)). The code is on the [mern](https://github.com/DuncanRitchie/velut/tree/mern) branch.
+When I first made the velut website, it was a single-page application that had the same functionality, but using an [Express](https://expressjs.com/) server on the backend and client-side–rendered [React.js](https://reactjs.org/) on the frontend (using [Create React App](https://create-react-app.dev/)).
 
-(MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so I’m keeping the branchnames “main” and “mern”.)
+The code was on a branch called mern, whose last commit was [413ddae4](https://github.com/DuncanRitchie/velut/commit/413ddae4e872b91e376a4965146bc43f68d162d3) before I merged it into main (using the ours strategy so it didn’t change the main code, which was fully Next.js by that point).
+
+(MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so the branchnames “main” and “mern” made sense to me.)
 
 ### Local data storage
 
-All the data you see on the website are stored in an an Excel file, which is now more than 90MB in size. Until recently, I added to it frequently, converted the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and used mongoimport to replace my two MongoDB Atlas collections.
+Much of the word information you see on the website is stored in an an Excel file, which is now more than 90MB in size. Until recently, I added to it frequently, converted the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and used mongoimport to replace my two MongoDB Atlas collections.
 
 I am now well into the process of replacing Excel with custom Json, JavaScript, and MongoDB. See the “Ongoing work” section below.
 
