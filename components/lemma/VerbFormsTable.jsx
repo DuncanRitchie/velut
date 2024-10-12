@@ -14,7 +14,7 @@ import verbStyles from './VerbFormsTable.module.css'
 // might become HTML <td className="infinitive active present">clāmāre</td>
 
 const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
-  const VerbDataCell = ({ className }) => {
+  const VerbDataCell = ({ className, colSpan }) => {
     const classesArray = className.split(' ')
     let forms = Forms
     classesArray.forEach((key) => {
@@ -25,7 +25,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
     })
 
     return (
-      <td className={className}>
+      <td className={className} colSpan={colSpan || null}>
         <LatinLinksOrPlainText
           formsArray={forms}
           formsFromWordsCollection={formsFromWordsCollection}
@@ -43,6 +43,19 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
   return (
     <>
       <table>
+        {/* <col> elements are used in each <table> where columns should have consistent widths.
+        That is, the width of column-1 should ideally be the same in each table, etc.
+        <colgroup> is only really needed to make the HTML valid. */}
+        <colgroup>
+          <col className="column-1" />
+          <col className="column-2" />
+          <col className="column-3" />
+          <col className="column-4" />
+          <col className="column-5" />
+          <col className="column-6" />
+          <col className="column-7" />
+          <col className="column-8" />
+        </colgroup>
         <thead>
           <tr>
             <th rowSpan="2" colSpan="2" className="indicative">
@@ -158,6 +171,16 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
       </table>
 
       <table>
+        <colgroup>
+          <col className="column-1" />
+          <col className="column-2" />
+          <col className="column-3" />
+          <col className="column-4" />
+          <col className="column-5" />
+          <col className="column-6" />
+          <col className="column-7" />
+          <col className="column-8" />
+        </colgroup>
         <thead>
           <tr>
             <th rowSpan="2" colSpan="2" className="subjunctive">
@@ -246,12 +269,22 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
       </table>
 
       <table>
+        <colgroup>
+          <col className="column-1" />
+          <col className="column-2" />
+          <col className="column-3" />
+          <col className="column-4" />
+          <col className="column-5" />
+          <col className="column-6" />
+          <col className="column-7" />
+          <col className="column-8" />
+        </colgroup>
         <thead>
           <tr>
-            <th rowSpan="2" colSpan="2" className="imperative">
+            <th rowSpan="2" colSpan="3" className="imperative">
               imperative
             </th>
-            <th colSpan="2" className="imperative singular">
+            <th colSpan="3" className="imperative singular">
               singular
             </th>
             <th colSpan="2" className="imperative plural">
@@ -260,7 +293,9 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
           </tr>
           <tr>
             <th className="imperative singular second">second</th>
-            <th className="imperative singular third">third</th>
+            <th className="imperative singular third" colSpan="2">
+              third
+            </th>
             <th className="imperative plural second">second</th>
             <th className="imperative plural third">third</th>
           </tr>
@@ -270,16 +305,20 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <th rowSpan="2" className="imperative active">
               active
             </th>
-            <th className="imperative active present">present</th>
+            <th className="imperative active present" colSpan="2">
+              present
+            </th>
             <VerbDataCell className="imperative active present singular second" />
-            <VerbDataCell className="imperative active present singular third" />
+            <VerbDataCell className="imperative active present singular third" colSpan="2" />
             <VerbDataCell className="imperative active present plural second" />
             <VerbDataCell className="imperative active present plural third" />
           </tr>
           <tr>
-            <th className="imperative active future">future</th>
+            <th className="imperative active future" colSpan="2">
+              future
+            </th>
             <VerbDataCell className="imperative active future singular second" />
-            <VerbDataCell className="imperative active future singular third" />
+            <VerbDataCell className="imperative active future singular third" colSpan="2" />
             <VerbDataCell className="imperative active future plural second" />
             <VerbDataCell className="imperative active future plural third" />
           </tr>
@@ -289,16 +328,20 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <th rowSpan="2" className="imperative passive">
               passive
             </th>
-            <th className="imperative passive present">present</th>
+            <th className="imperative passive present" colSpan="2">
+              present
+            </th>
             <VerbDataCell className="imperative passive present singular second" />
-            <VerbDataCell className="imperative passive present singular third" />
+            <VerbDataCell className="imperative passive present singular third" colSpan="2" />
             <VerbDataCell className="imperative passive present plural second" />
             <VerbDataCell className="imperative passive present plural third" />
           </tr>
           <tr>
-            <th className="imperative passive future">future</th>
+            <th className="imperative passive future" colSpan="2">
+              future
+            </th>
             <VerbDataCell className="imperative passive future singular second" />
-            <VerbDataCell className="imperative passive future singular third" />
+            <VerbDataCell className="imperative passive future singular third" colSpan="2" />
             <VerbDataCell className="imperative passive future plural second" />
             <VerbDataCell className="imperative passive future plural third" />
           </tr>
@@ -306,6 +349,12 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
       </table>
 
       <table>
+        <colgroup>
+          {/* Because of cells having colSpan=2, the first two columns will merge to look like one column whose width is that of two columns. */}
+          <col className="column-1" />
+          <col className="column-2" />
+        </colgroup>
+        {/* We don’t need more <colgroup>/<col> elements in the infinitives table, because the widths of subsequent columns are not set. */}
         <thead>
           <tr>
             {/* Strictly speaking this doesn’t need a colSpan, but it makes the CSS easier! */}
