@@ -15,16 +15,18 @@
 
 /* For <col> elements, width is used instead of min-width (or indeed max-width).
 It’s a suggestion of how wide the columns will be, not an absolute rule.
-So it doesn’t matter that the widths don’t sum to 100%, and it doesn’t matter much
-that the widths don’t account for differing amounts of text in each column. */
+So it doesn’t matter that the widths don’t sum to 100% (as long as they’re less than 100%),
+and it doesn’t matter much that the widths don’t account for differing amounts of text in each column. */
 .verbFormsTable col {
-  width: 15%;
+  width: 10%;
 }
 /* These two columns are the two columns of header cells, which do not contain any verb forms. */
 /* The selector would be simply .column-1,.column-2 but CSS Modules messes with the class-names. */
-.verbFormsTable col[class*='column-1'],
+.verbFormsTable col[class*='column-1'] {
+  width: 5%;
+}
 .verbFormsTable col[class*='column-2'] {
-  width: 8.75%;
+  width: 7.5%;
 }
 /* The second-singular column is likely to contain syncopated forms and benefit from extra width! */
 .verbFormsTable col[class*='column-4'] {
