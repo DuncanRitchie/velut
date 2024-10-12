@@ -349,16 +349,14 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
       </table>
 
       <table>
+        {/* This <col> is specifically given a width in CSS. */}
         <colgroup>
-          {/* Because of cells having colSpan=2, the first two columns will merge to look like one column whose width is that of two columns. */}
-          <col className="column-1" />
-          <col className="column-2" />
+          <col />
         </colgroup>
         {/* We don’t need more <colgroup>/<col> elements in the infinitives table, because the widths of subsequent columns are not set. */}
         <thead>
           <tr>
-            {/* Strictly speaking this doesn’t need a colSpan, but it makes the CSS easier! */}
-            <th rowSpan="2" colSpan="2" className="infinitive">
+            <th rowSpan="2" className="infinitive">
               infinitive
             </th>
             <th colSpan={shouldShowFutureInfinitive ? 3 : 2} className="infinitive active">
@@ -375,8 +373,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </thead>
         <tbody>
           <tr>
-            {/* The colSpan here matches that of the “infinitive” header cell. */}
-            <th colSpan="2" className="infinitive"></th>
+            <th className="infinitive"></th>
             <VerbDataCell className="infinitive active present" />
             <VerbDataCell className="infinitive active perfect" />
             {shouldShowFutureInfinitive ? <VerbDataCell className="infinitive active future" /> : null}

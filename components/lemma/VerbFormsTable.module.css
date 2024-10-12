@@ -28,9 +28,9 @@ and it doesn’t matter much that the widths don’t account for differing amoun
 .verbFormsTable col[class*='column-2'] {
   width: 7.5%;
 }
-/* The second-singular column is likely to contain syncopated forms and benefit from extra width! */
-.verbFormsTable col[class*='column-4'] {
-  width: 21.875%;
+/* This is the <col> in the infinitives table, which only has one <col> specified. */
+.verbFormsTable table:nth-of-type(4) col {
+  width: 17.5%;
 }
 
 .verbFormsTable table tr th:not(:empty) {
