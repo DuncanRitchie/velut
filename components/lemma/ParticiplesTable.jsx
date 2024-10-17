@@ -13,6 +13,11 @@ import verbStyles from './VerbFormsTable.module.css'
 // For example, <VerbDataCell className="infinitive active present" />
 // might become HTML <td className="infinitive active present">clāmāre</td>
 
+// Note that ParticiplesTable may contain several instances of TableForSomeParticiples,
+// which in turn may contain several instances of TableForOneTenseAndVoice,
+// which in turn may contain several instances of ParticipleDataRow,
+// which in turn may contain several instances of VerbDataCell!
+
 const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
   const VerbDataCell = ({ className, colSpan }) => {
     const classesArray = className.split(' ')
@@ -40,6 +45,25 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
     if (!Forms.participle[voice]?.[tense]) {
       return null
     }
+
+    // The parameter would be called `case` but that’s a keyword in JavaScript.
+    const ParticipleDataRow = ({ grammaticalCase }) => {
+      if (!Forms.participle[voice]?.[tense]?.masculine?.singular?.[grammaticalCase]) {
+        return null
+      }
+      return (
+        <tr>
+          <th className={`participle ${voice} ${tense} ${grammaticalCase}`}>{grammaticalCase}</th>
+          <VerbDataCell className={`participle ${voice} ${tense} masculine singular ${grammaticalCase}`} />
+          <VerbDataCell className={`participle ${voice} ${tense} masculine plural ${grammaticalCase}`} />
+          <VerbDataCell className={`participle ${voice} ${tense} feminine singular ${grammaticalCase}`} />
+          <VerbDataCell className={`participle ${voice} ${tense} feminine plural ${grammaticalCase}`} />
+          <VerbDataCell className={`participle ${voice} ${tense} neuter singular ${grammaticalCase}`} />
+          <VerbDataCell className={`participle ${voice} ${tense} neuter plural ${grammaticalCase}`} />
+        </tr>
+      )
+    }
+
     return (
       <table>
         {/* <col> elements are used in each <table> where columns should have consistent widths.
@@ -78,60 +102,12 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th className={`participle ${voice} ${tense} nominative`}>nominative</th>
-            <VerbDataCell className={`participle ${voice} ${tense} masculine singular nominative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} masculine plural nominative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine singular nominative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine plural nominative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter singular nominative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter plural nominative`} />
-          </tr>
-          <tr>
-            <th className={`participle ${voice} ${tense} vocative`}>vocative</th>
-            <VerbDataCell className={`participle ${voice} ${tense} masculine singular vocative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} masculine plural vocative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine singular vocative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine plural vocative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter singular vocative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter plural vocative`} />
-          </tr>
-          <tr>
-            <th className={`participle ${voice} ${tense} accusative`}>accusative</th>
-            <VerbDataCell className={`participle ${voice} ${tense} masculine singular accusative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} masculine plural accusative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine singular accusative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine plural accusative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter singular accusative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter plural accusative`} />
-          </tr>
-          <tr>
-            <th className={`participle ${voice} ${tense} genitive`}>genitive</th>
-            <VerbDataCell className={`participle ${voice} ${tense} masculine singular genitive`} />
-            <VerbDataCell className={`participle ${voice} ${tense} masculine plural genitive`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine singular genitive`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine plural genitive`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter singular genitive`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter plural genitive`} />
-          </tr>
-          <tr>
-            <th className={`participle ${voice} ${tense} dative`}>dative</th>
-            <VerbDataCell className={`participle ${voice} ${tense} masculine singular dative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} masculine plural dative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine singular dative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine plural dative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter singular dative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter plural dative`} />
-          </tr>
-          <tr>
-            <th className={`participle ${voice} ${tense} ablative`}>ablative</th>
-            <VerbDataCell className={`participle ${voice} ${tense} masculine singular ablative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} masculine plural ablative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine singular ablative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} feminine plural ablative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter singular ablative`} />
-            <VerbDataCell className={`participle ${voice} ${tense} neuter plural ablative`} />
-          </tr>
+          <ParticipleDataRow grammaticalCase="nominative" />
+          <ParticipleDataRow grammaticalCase="vocative" />
+          <ParticipleDataRow grammaticalCase="accusative" />
+          <ParticipleDataRow grammaticalCase="genitive" />
+          <ParticipleDataRow grammaticalCase="dative" />
+          <ParticipleDataRow grammaticalCase="ablative" />
         </tbody>
       </table>
     )
