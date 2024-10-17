@@ -53,6 +53,7 @@
   transform: translateX(calc(0.625 * var(--forms-dt-font-size) - var(--forms-offset-left)));
   width: 1px;
   height: calc(100% - 0.4625em);
+  /* This looks a bit weird in Firefox when several <dl>s are nested, seems like a browser bug. */
   background-image: repeating-linear-gradient(0deg, #34311a, #34311a 0.25em, transparent, transparent 0.6666em);
   opacity: 0.3333;
 }
@@ -64,6 +65,7 @@
   top: -0.625em;
   width: calc(100% - 0.4625em);
   height: 1px;
+  /* This looks fine in Firefox, unlike the left-side dashes! */
   background-image: repeating-linear-gradient(270deg, #34311a, #34311a 0.25em, transparent, transparent 0.6666em);
   opacity: 0.3333;
 }
