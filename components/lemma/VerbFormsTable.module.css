@@ -132,3 +132,9 @@ Consequently we need to be careful that 'future' doesn’t match as a substring 
   background-image: repeating-linear-gradient(270deg, #34311a, #34311a 0.25em, transparent, transparent 0.6666em);
   opacity: 0.3333;
 }
+
+/* All participle tables should have the same width, the width of the widest table;
+this is achieved by having the tables inherit the width from the wrapper div. */
+.verbFormsTable div[class*='tablesWrapper'] {
+  min-width: fit-content;
+}

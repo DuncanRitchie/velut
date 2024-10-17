@@ -93,13 +93,13 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
   }
 
   return (
-    <>
+    <div className="tablesWrapper">
       <TableForOneTenseAndVoice tense="present" voice="active" />
       <TableForOneTenseAndVoice tense="perfect" voice="active" />
       <TableForOneTenseAndVoice tense="perfect" voice="passive" />
       <TableForOneTenseAndVoice tense="future" voice="active" />
       <TableForOneTenseAndVoice tense="future" voice="passive" />
-    </>
+    </div>
   )
 }
 
