@@ -29,7 +29,7 @@ and it doesn’t matter much that the widths don’t account for differing amoun
   width: 7.5%;
 }
 /* This is the <col> in the infinitives table, which only has one <col> specified. */
-.verbFormsTable table:nth-of-type(4) col {
+.verbFormsTable table:has([class*='infinitive']) col {
   width: 17.5%;
 }
 
