@@ -39,6 +39,9 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
       )
     }
 
+    // The future passive participle in Latin is better known as the gerundive.
+    const isGerundive = tense === 'future' && voice === 'passive'
+
     return (
       <table>
         {/* <col> elements are used in each <table> where columns should have consistent widths.
@@ -56,7 +59,7 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
         <thead>
           <tr>
             <th rowSpan="2" className={`participle ${voice} ${tense}`}>
-              {tense} {voice}
+              {isGerundive ? `gerundive (future passive)` : `${tense} ${voice}`}
             </th>
             <th colSpan="2" className={`participle ${voice} ${tense} masculine`}>
               masculine
