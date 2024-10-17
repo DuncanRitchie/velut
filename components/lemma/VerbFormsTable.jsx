@@ -12,28 +12,39 @@ import verbStyles from './VerbFormsTable.module.css'
 // Therefore the order of the grammatical keys is important.
 // For example, <VerbDataCell className="infinitive active present" />
 // might become HTML <td className="infinitive active present">clāmāre</td>
+// <VerbDataCell> is <GenericVerbDataCell> with some parameters curried in.
+const GenericVerbDataCell = ({
+  className,
+  colSpan,
+  formsFromWordsCollection,
+  Forms,
+  linkBase,
+  currentWordHyphenated,
+}) => {
+  const classesArray = className.split(' ')
+  let forms = Forms
+  classesArray.forEach((key) => {
+    if (!forms) {
+      return
+    }
+    forms = forms[key]
+  })
+
+  return (
+    <td className={className} colSpan={colSpan || null}>
+      <LatinLinksOrPlainText
+        formsArray={forms}
+        formsFromWordsCollection={formsFromWordsCollection}
+        linkBase={linkBase}
+        currentWordHyphenated={currentWordHyphenated}
+      />
+    </td>
+  )
+}
 
 const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
   const VerbDataCell = ({ className, colSpan }) => {
-    const classesArray = className.split(' ')
-    let forms = Forms
-    classesArray.forEach((key) => {
-      if (!forms) {
-        return
-      }
-      forms = forms[key]
-    })
-
-    return (
-      <td className={className} colSpan={colSpan || null}>
-        <LatinLinksOrPlainText
-          formsArray={forms}
-          formsFromWordsCollection={formsFromWordsCollection}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-        />
-      </td>
-    )
+    return GenericVerbDataCell({ className, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated })
   }
 
   // Hardly any verbs should have a column for a future active infinitive.
@@ -485,3 +496,4 @@ const VerbFormsTable = ({
 }
 
 export default VerbFormsTable
+export { GenericVerbDataCell }

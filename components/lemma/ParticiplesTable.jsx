@@ -1,44 +1,19 @@
-import { getTabForCurrentWord, getTabsId, LatinLinksOrPlainText } from './FormsTable'
+import { GenericVerbDataCell } from './VerbFormsTable'
+import { getTabForCurrentWord, getTabsId } from './FormsTable'
 import Tabs from './Tabs'
 import Details from '../details/Details'
 import styles from './FormsTable.module.css'
 import verbStyles from './VerbFormsTable.module.css'
 
-// Every <th> and every <td> cell has a className attribute that lists grammatical keys, eg "infinitive active present".
-// This enables the correct <th> cells to be highlighted when any <td> or <th> cell is hovered.
-// <th> cells are marked up directly in the JSX, but <VerbDataCell> is used for <td>.
-// The <VerbDataCell> component creates a <td> element with the given className, and the element’s content
-// is found from the Forms object by following the className (eg `Forms.infinitive.active.present`).
-// Therefore the order of the grammatical keys is important.
-// For example, <VerbDataCell className="infinitive active present" />
-// might become HTML <td className="infinitive active present">clāmāre</td>
-
-// Note that ParticiplesTable may contain several instances of TableForSomeParticiples,
-// which in turn may contain several instances of TableForOneTenseAndVoice,
-// which in turn may contain several instances of ParticipleDataRow,
-// which in turn may contain several instances of VerbDataCell!
+// Note that <ParticiplesTable> may contain several instances of <TableForSomeParticiples>,
+// which in turn may contain several instances of <TableForOneTenseAndVoice>,
+// which in turn may contain several instances of <ParticipleDataRow>,
+// which in turn may contain several instances of <VerbDataCell>!
+// <VerbDataCell> is <GenericVerbDataCell> with some parameters curried in.
 
 const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
   const VerbDataCell = ({ className, colSpan }) => {
-    const classesArray = className.split(' ')
-    let forms = Forms
-    classesArray.forEach((key) => {
-      if (!forms) {
-        return
-      }
-      forms = forms[key]
-    })
-
-    return (
-      <td className={className} colSpan={colSpan || null}>
-        <LatinLinksOrPlainText
-          formsArray={forms}
-          formsFromWordsCollection={formsFromWordsCollection}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-        />
-      </td>
-    )
+    return GenericVerbDataCell({ className, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated })
   }
 
   const TableForOneTenseAndVoice = ({ tense, voice }) => {
@@ -76,6 +51,7 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
           <col className="participle-column-4" />
           <col className="participle-column-5" />
           <col className="participle-column-6" />
+          <col className="participle-column-7" />
         </colgroup>
         <thead>
           <tr>
