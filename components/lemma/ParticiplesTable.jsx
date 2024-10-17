@@ -55,26 +55,26 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
         </colgroup>
         <thead>
           <tr>
-            <th rowSpan="2" className={`participle ${tense} ${voice}`}>
+            <th rowSpan="2" className={`participle ${voice} ${tense}`}>
               {tense} {voice}
             </th>
-            <th colSpan="2" className={`participle ${tense} ${voice} masculine`}>
+            <th colSpan="2" className={`participle ${voice} ${tense} masculine`}>
               masculine
             </th>
-            <th colSpan="2" className={`participle ${tense} ${voice} feminine`}>
+            <th colSpan="2" className={`participle ${voice} ${tense} feminine`}>
               feminine
             </th>
-            <th colSpan="2" className={`participle ${tense} ${voice} neuter`}>
+            <th colSpan="2" className={`participle ${voice} ${tense} neuter`}>
               neuter
             </th>
           </tr>
           <tr>
-            <th className={`participle ${tense} ${voice} masculine singular`}>singular</th>
-            <th className={`participle ${tense} ${voice} masculine plural`}>plural</th>
-            <th className={`participle ${tense} ${voice} feminine singular`}>singular</th>
-            <th className={`participle ${tense} ${voice} feminine plural`}>plural</th>
-            <th className={`participle ${tense} ${voice} neuter singular`}>singular</th>
-            <th className={`participle ${tense} ${voice} neuter plural`}>plural</th>
+            <th className={`participle ${voice} ${tense} masculine singular`}>singular</th>
+            <th className={`participle ${voice} ${tense} masculine plural`}>plural</th>
+            <th className={`participle ${voice} ${tense} feminine singular`}>singular</th>
+            <th className={`participle ${voice} ${tense} feminine plural`}>plural</th>
+            <th className={`participle ${voice} ${tense} neuter singular`}>singular</th>
+            <th className={`participle ${voice} ${tense} neuter plural`}>plural</th>
           </tr>
         </thead>
         <tbody>
