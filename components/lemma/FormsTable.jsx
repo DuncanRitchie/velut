@@ -18,6 +18,9 @@ const LatinLinksOrPlainText = ({ formsArray, formsFromWordsCollection, linkBase,
   if (!formsArray) {
     return <></>
   }
+  if (!Array.isArray(formsArray)) {
+    throw Error(`formsArray inside LatinLinksOrPlainText should be an array but is ${JSON.stringify(formsArray)}`)
+  }
   return formsArray.map((form) => {
     if (formsFromWordsCollection.includes(form)) {
       return (
