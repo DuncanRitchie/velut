@@ -58,11 +58,11 @@ Consequently we need to be careful that 'future' doesn’t match as a substring 
 .verbFormsTable table:has([class*='indicative']:hover) th[class$='indicative'],
 .verbFormsTable table:has([class*='active']:hover) th[class$='active'],
 .verbFormsTable table:has([class*='passive']:hover) th[class$='passive'],
-.verbFormsTable table:has([class*='singular']:hover) th[class$='singular'],
+.verbFormsTable table:not(:has([class*='participle'])):has([class*='singular']:hover) th[class$='singular'],
 .verbFormsTable table:has([class*='singular first']:hover) th[class$='singular first'],
 .verbFormsTable table:has([class*='singular second']:hover) th[class$='singular second'],
 .verbFormsTable table:has([class*='singular third']:hover) th[class$='singular third'],
-.verbFormsTable table:has([class*='plural']:hover) th[class$='plural'],
+.verbFormsTable table:not(:has([class*='participle'])):has([class*='plural']:hover) th[class$='plural'],
 .verbFormsTable table:has([class*='plural first']:hover) th[class$='plural first'],
 .verbFormsTable table:has([class*='plural second']:hover) th[class$='plural second'],
 .verbFormsTable table:has([class*='plural third']:hover) th[class$='plural third'],
@@ -91,7 +91,13 @@ Consequently we need to be careful that 'future' doesn’t match as a substring 
 .verbFormsTable table:has([class*='masculine']:hover) th[class$='masculine'],
 .verbFormsTable table:has([class*='feminine']:hover) th[class$='feminine'],
 .verbFormsTable table:has([class*='neuter']:hover) th[class$='neuter'],
-.verbFormsTable table:has([class*='participle']) tbody tr:hover th {
+.verbFormsTable table:has([class*='participle']) tbody tr:hover th,
+.verbFormsTable table:has([class*='masculine singular']:hover) th[class$='masculine singular'],
+.verbFormsTable table:has([class*='feminine singular']:hover) th[class$='feminine singular'],
+.verbFormsTable table:has([class*='neuter singular']:hover) th[class$='neuter singular'],
+.verbFormsTable table:has([class*='masculine plural']:hover) th[class$='masculine plural'],
+.verbFormsTable table:has([class*='feminine plural']:hover) th[class$='feminine plural'],
+.verbFormsTable table:has([class*='neuter plural']:hover) th[class$='neuter plural'] {
   background-image: linear-gradient(to bottom right, #efe1ab, transparent);
   border-top-color: #34311a;
   border-left-color: #34311a;
