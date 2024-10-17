@@ -33,6 +33,10 @@ and it doesn’t matter much that the widths don’t account for differing amoun
   width: 17.5%;
 }
 
+.verbFormsTable col[class*='participle-column'] {
+  width: 14.25%;
+}
+
 .verbFormsTable table tr th:not(:empty) {
   font-style: italic;
   font-weight: bold;

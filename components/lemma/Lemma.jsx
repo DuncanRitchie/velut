@@ -6,6 +6,7 @@ import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
 import FormsTable from './FormsTable'
 import VerbFormsTable from './VerbFormsTable'
+import ParticiplesTable from './ParticiplesTable'
 import ErrorBoundary from '../errorBoundary/errorBoundary'
 
 // The env var should be something like "Proper noun, Conjunction"
@@ -114,19 +115,8 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
         openByDefault={true}
       />
 
-      <FormsTable
-        summary="All forms except participles (old layout)"
-        Forms={nonParticipleForms}
-        formsFromWordsCollection={formsFromWordsCollection}
-        lemma={lemma.Lemma}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-        openByDefault={false}
-        isFullWidth={true}
-      />
-
       {hasParticiples ? (
-        <FormsTable
+        <ParticiplesTable
           summary="Participles"
           Forms={participleForms}
           formsFromWordsCollection={formsFromWordsCollection}
@@ -134,6 +124,19 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
           linkBase={linkBase}
           currentWordHyphenated={currentWordHyphenated}
           openByDefault={true}
+          isFullWidth={true}
+        />
+      ) : null}
+
+      {hasParticiples ? (
+        <FormsTable
+          summary="Participles (old format)"
+          Forms={participleForms}
+          formsFromWordsCollection={formsFromWordsCollection}
+          lemma={lemma.Lemma}
+          linkBase={linkBase}
+          currentWordHyphenated={currentWordHyphenated}
+          openByDefault={false}
           isFullWidth={false}
         />
       ) : null}
