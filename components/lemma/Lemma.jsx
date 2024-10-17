@@ -127,19 +127,6 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
           isFullWidth={true}
         />
       ) : null}
-
-      {hasParticiples ? (
-        <FormsTable
-          summary="Participles (old format)"
-          Forms={participleForms}
-          formsFromWordsCollection={formsFromWordsCollection}
-          lemma={lemma.Lemma}
-          linkBase={linkBase}
-          currentWordHyphenated={currentWordHyphenated}
-          openByDefault={false}
-          isFullWidth={false}
-        />
-      ) : null}
     </>
   )
 }
