@@ -23,7 +23,11 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
 
     // The parameter would be called `case` but that’s a keyword in JavaScript.
     const ParticipleDataRow = ({ grammaticalCase }) => {
-      if (!Forms.participle[voice]?.[tense]?.masculine?.singular?.[grammaticalCase]) {
+      // If the neuter singular doesn’t have forms for the case,
+      // we can assume that no other combination of gender & number will.
+      // When participles are generated for the impersonal passive, for example, these are
+      // neuter singular and will be shown even if there are no forms for other genders & numbers.
+      if (!Forms.participle[voice]?.[tense]?.neuter?.singular?.[grammaticalCase]) {
         return null
       }
       return (
