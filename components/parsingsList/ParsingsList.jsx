@@ -1,11 +1,7 @@
 import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
-import { getLemmaId, shouldGeneratedFormsBeShownForLemma } from '../lemma/Lemma'
+import { getLemmaId } from '../lemma/Lemma'
 import superscriptLemmaTag from '../lemma/superscriptLemmaTag'
 import styles from './ParsingsList.module.css'
-
-function haveFormsBeenChecked(lemma) {
-  return shouldGeneratedFormsBeShownForLemma(lemma) || lemma.FormsHaveBeenChecked
-}
 
 const ParsingsList = ({ lemmata, form }) => {
   if (!form) {
@@ -39,7 +35,7 @@ const ParsingsList = ({ lemmata, form }) => {
           <a href={'#' + getLemmaId(lemma)}>{superscriptLemmaTag(lemma.Lemma)}</a>
         </td>
         <td>
-          {parsing} {haveFormsBeenChecked(lemma) ? null : <em>(not verified)</em>}
+          {parsing} {lemma.FormsHaveBeenChecked ? null : <em>(not verified)</em>}
         </td>
       </tr>
     )),
