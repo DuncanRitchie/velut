@@ -67,6 +67,9 @@ const DeExcellation = (props) => {
 
   // Will be something like "proper nouns, conjunctions, and pronouns"
   const stringOfPartsOfSpeechToShowGeneratedFormsFor = getShowGeneratedFormsString()
+  // If that string contains “verbs”, all verbs will have their generated forms displayed.
+  // If the string does not contain “verbs”, some verbs will still have their generated forms displayed, because their forms have been checked.
+  const areSomeVerbsWaitingToBeShownGeneratedFormsFor = !stringOfPartsOfSpeechToShowGeneratedFormsFor.includes(' verbs')
 
   return (
     <>
@@ -188,7 +191,10 @@ const DeExcellation = (props) => {
               Once I have confirmed that all lemmata of a part of speech are given the correct forms by the Inflector, I
               can switch from showing a simple list of forms to displaying the full inflection-tables on the live
               website. Currently, the parts of speech that I display inflection-tables for are{' '}
-              {stringOfPartsOfSpeechToShowGeneratedFormsFor}.
+              {stringOfPartsOfSpeechToShowGeneratedFormsFor}.{' '}
+              {areSomeVerbsWaitingToBeShownGeneratedFormsFor
+                ? 'I also display inflection-tables for some verbs that have been checked.'
+                : null}
             </p>
           </section>
 
@@ -196,8 +202,9 @@ const DeExcellation = (props) => {
             <h2>Example forms</h2>
             <p>
               Here are the forms I’m generating for <i lang="la">verbum</i>, so you can get a sense of how the tables
-              are going to look. (Tables are already shown for {stringOfPartsOfSpeechToShowGeneratedFormsFor}, but
-              there’s no harm in me putting a table on this page too.)
+              are going to look. (Tables are already shown for {stringOfPartsOfSpeechToShowGeneratedFormsFor},{' '}
+              {areSomeVerbsWaitingToBeShownGeneratedFormsFor ? 'as well as some verbs,' : null} but there’s no harm in
+              me putting a table on this page too.)
             </p>
             <p>
               Some of the forms below are displayed as links and some are not, on the basis of whether I currently have
@@ -274,6 +281,9 @@ const DeExcellation = (props) => {
               The {props.summary?.inflectorCounts.manuallyChecked} lemmata that I’ve checked include all{' '}
               {stringOfPartsOfSpeechToShowGeneratedFormsFor}. So those are the parts of speech that I display
               inflection-tables for.
+              {areSomeVerbsWaitingToBeShownGeneratedFormsFor
+                ? ` Although I have not finished checking all verbs, I have checked some of them, and these may have inflection-tables displayed, too.`
+                : null}
             </p>
           </section>
 

@@ -21,7 +21,7 @@ const partsOfSpeechToShowGeneratedFormsFor =
   process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map((x) => x.trim()) ?? []
 
 function shouldGeneratedFormsBeShownForLemma(lemma) {
-  return partsOfSpeechToShowGeneratedFormsFor.includes(lemma.PartOfSpeech)
+  return partsOfSpeechToShowGeneratedFormsFor.includes(lemma.PartOfSpeech) || lemma.FormsHaveBeenChecked
 }
 
 // Eg iūs[>iūrō] => lemma-iūs-iūrō
