@@ -2,6 +2,8 @@
   min-width: 100%;
   border-spacing: 0;
   --forms-dt-font-size: 0.875em;
+  border-radius: 0.25em 0 0 0;
+  background-image: radial-gradient(ellipse at bottom right, transparent 67%, hsla(53, 50%, 45%, 10%));
 }
 
 .verbFormsTable table tr th,
@@ -47,6 +49,12 @@ and it doesn’t matter much that the widths don’t account for differing amoun
   border-top-color: hsla(53, 33%, 15%, 33.33%);
   border-left-color: hsla(53, 33%, 15%, 33.33%);
   border-radius: 0.25em 0 0 0;
+}
+
+/* Header cells for indicative, subjunctive, etc */
+.verbFormsTable table thead tr:first-of-type th:first-of-type,
+.verbFormsTable table thead th[class$='supine'] {
+  font-size: calc(1.0625 * var(--forms-dt-font-size, 1em));
 }
 
 /*
