@@ -60,7 +60,7 @@ Displayed below is the page for the word “opportūna”, showing that it is di
 
 Most of my efforts on velut nowadays are towards its de-Excellation. I do not want to be using Excel for this project!
 
-I rely heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off it by creating webpages and websites that replicate the functionality that I have had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making [more](https://www.duncanritchie.co.uk/code#velut-projects).
+I relied heavily on Excel for generating, checking, and storing the data. I am gradually weaning myself off it by creating webpages and websites that replicate the functionality that I have had in spreadsheets. The [velut website](https://www.velut.co.uk) itself is one example; the [Json generator](https://www.github.com/DuncanRitchie/velut-json-generator) is another; I’ve made and am making [more](https://www.duncanritchie.co.uk/code#velut-projects).
 
 At the moment, most of this work involves a script I’ve written to generate all the forms I want of all the lemmata I have.
 My script generates forms for all the lemmata, but I need to manually review its output.
@@ -68,7 +68,7 @@ For the details, see my [plan of de-Excellation](https://github.com/DuncanRitchi
 
 There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include.
 But, that will have to wait.
-My priority is finishing my script for generating forms (or finishing checking that it’s all correct) and ensuring that I am no longer using Excel for velut.
+My priority is finishing my script for generating forms (or finishing checking that it’s all correct) and completing the new architecture without Excel.
 
 ## Environment variables
 
@@ -107,6 +107,12 @@ npm run dev
 (There needs to be a .env.local file as explained under “Environment variables”.)
 
 To redeploy, I simply push to the main branch on GitHub.
+
+### Editing the data
+
+The source data about Latin vocabulary are in a private repo.
+My scripts for processing the data are in public repos (eg the [Inflector](https://github.com/DuncanRitchie/velut-inflector) and [Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator)) — these are written in JavaScript and they read and/or write Json.
+My scripts to refresh the database with the Json data (using mongoimport) are private, so as not to expose the MongoDB connection string.
 
 ## Miscellanea
 
