@@ -16,10 +16,15 @@ import verbStyles from './VerbFormsTable.module.css'
 // but I would still want the cell to be highlighted on hover.
 
 // Given an array of tags, eg ['indicative', 'active', 'present', 'singular', 'first'],
-// this function returns the IDs of the <th> cells that are headers for the cell,
-// such as ['indicative', 'singular', 'first-singular', 'active', 'present-active']
-// If the cell with these tags is <th>, the last header ID should be used for the `data-id` attribute.
-function getHeaderIds(tagsArray) {
+// this function returns the `data-` attributes that enable cells to be assigned to their headers.
+// For example, {
+//                'data-headers': 'indicative singular first-singular active present-active',
+//                'data-id': 'present-active',
+//              }
+// `data-id` is used on <th> elements and `data-headers` is used on both <th> & <td> elements.
+// `data-headers` is the space-delimited list of the IDs of the <th> cells that are headers for the cell,
+// `data-headers` always includes `data-id`, so hovering a <th> cell highlights it as one of its own headers.
+function getHeaderAttributes(tagsArray) {
   let headerIds = []
   const mood = tagsArray.find((key) =>
     ['indicative', 'subjunctive', 'imperative', 'infinitive', 'gerund', 'supine', 'participle'].includes(key),
@@ -66,13 +71,15 @@ function getHeaderIds(tagsArray) {
   } else if (gender) {
     headerIds.push(gender)
   }
-  return headerIds
+  // All cells have a `data-headers` attribute.
+  // The `data-id` doesn’t get used for <td> cells, but <th> cells need it.
+  return { 'data-headers': headerIds.join(' '), 'data-id': headerIds.at(-1) }
 }
 
 const VerbHeaderCell = ({ tags, colSpan, rowSpan, children }) => {
-  const headers = getHeaderIds(tags.split(' '))
+  const headerAttributes = getHeaderAttributes(tags.split(' '))
   return (
-    <th colSpan={colSpan} rowSpan={rowSpan} data-headers={headers.join(' ')} data-id={headers.at(-1)}>
+    <th colSpan={colSpan} rowSpan={rowSpan} {...headerAttributes}>
       {children}
     </th>
   )
@@ -97,8 +104,10 @@ const GenericVerbDataCell = ({ tags, colSpan, formsFromWordsCollection, Forms, l
     forms = forms[key]
   })
 
+  const headers = getHeaderAttributes(tagsArray)['data-headers']
+
   return (
-    <td data-headers={getHeaderIds(tagsArray).join(' ')} colSpan={colSpan || null}>
+    <td data-headers={headers} colSpan={colSpan || null}>
       <LatinLinksOrPlainText
         formsArray={forms}
         formsFromWordsCollection={formsFromWordsCollection}
