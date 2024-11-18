@@ -1,6 +1,6 @@
 import { getTabForCurrentWord, getTabsId } from './FormsTable'
 import { GenericVerbDataCell, VerbHeaderCell } from './VerbCells'
-import Tabs from './Tabs'
+import Tabs from '../tabs/Tabs'
 import Details from '../details/Details'
 import styles from './FormsTable.module.css'
 import verbStyles from './VerbFormsTable.module.css'

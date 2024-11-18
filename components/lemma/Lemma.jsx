@@ -4,9 +4,9 @@ const greece = '../../images/greece.png'
 const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
-import FormsTable from './FormsTable'
-import VerbFormsTable from './VerbFormsTable'
-import ParticiplesTable from './ParticiplesTable'
+import FormsTable from '../formsTableComponents/FormsTable'
+import VerbFormsTable from '../formsTableComponents/VerbFormsTable'
+import ParticiplesTable from '../formsTableComponents/ParticiplesTable'
 import ErrorBoundary from '../errorBoundary/errorBoundary'
 
 // The env var should be something like "Proper noun, Conjunction"

@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import Tabs from './Tabs'
+import Tabs from '../tabs/Tabs'
 import LatinLink from '../latinlink/LatinLink'
 import Details from '../details/Details'
 import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
