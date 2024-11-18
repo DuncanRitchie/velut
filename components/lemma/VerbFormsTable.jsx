@@ -4,14 +4,88 @@ import Details from '../details/Details'
 import styles from './FormsTable.module.css'
 import verbStyles from './VerbFormsTable.module.css'
 
+// In the tables of verb forms, <th> cells have `data-id` attributes, which are unique within the <table> element.
+// Every cell has a `data-headers` attribute, which lists the <th> cells (via their `data-id`) that are the headers for the cell.
+// This allows the appropriate header cells to be highlighted (via CSS) whenever a cell is hovered.
+
+// A more standard way of communicating what <th> cells are the headers of what <th>/<td> cells is to use `id` and `headers` attributes.
+// But screen-readers (etc) don’t have great support for that, and `id` elements must be unique to the page, not just to the table.
+// If my `data-id` & `data-headers` attributes are to be converted to `id` & `headers`, a unique key will need to be generated
+// for each table and appended to each ID, and my CSS would also require modification (unless the data- attributes are kept alongside `id`/`headers`).
+// Furthermore, a <th>’s `headers` attribute probably shouldn’t contain its own `id` (a cell cannot semantically be its own header),
+// but I would still want the cell to be highlighted on hover.
+
+// Given an array of classes, eg ['indicative', 'active', 'present', 'singular', 'first'],
+// this function returns the IDs of the <th> cells that are headers for the cell,
+// such as ['indicative', 'singular', 'first-singular', 'active', 'present-active']
+// If the cell with these classes is <th>, the last header ID should be used for the `data-id` attribute.
+function getHeaderIds(classesArray) {
+  let headerIds = []
+  const mood = classesArray.find((key) =>
+    ['indicative', 'subjunctive', 'imperative', 'infinitive', 'gerund', 'supine', 'participle'].includes(key),
+  )
+  const number = classesArray.find((key) => ['singular', 'plural'].includes(key))
+  const voice = classesArray.find((key) => ['active', 'passive'].includes(key))
+  const gerundOrSupine = classesArray.find((key) => ['gerund', 'supine'].includes(key))
+  const gender = classesArray.find((key) => ['masculine', 'feminine', 'neuter'].includes(key))
+  const person = classesArray.find((key) => ['first', 'second', 'third'].includes(key))
+  const tense = classesArray.find((key) =>
+    ['present', 'imperfect', 'future', 'perfect', 'pluperfect', 'futureperfect'].includes(key),
+  )
+  const grammaticalCase = classesArray.find((key) =>
+    ['nominative', 'vocative', 'accusative', 'genitive', 'dative', 'ablative'].includes(key),
+  )
+  // Since the last header ID will be used for the ID of any <th> cell, the order of the `push` statements below matters.
+  if (mood) {
+    headerIds.push(mood)
+  }
+  if (voice) {
+    headerIds.push(voice)
+    if (tense) {
+      headerIds.push(voice + '-' + tense)
+    }
+  }
+  if (grammaticalCase) {
+    if (gerundOrSupine) {
+      headerIds.push(gerundOrSupine)
+      headerIds.push(grammaticalCase + '-' + gerundOrSupine)
+    } else {
+      headerIds.push(grammaticalCase)
+    }
+  }
+  if (number) {
+    if (person) {
+      headerIds.push(number)
+      headerIds.push(person + '-' + number)
+    } else if (gender) {
+      headerIds.push(gender)
+      headerIds.push(number + '-' + gender)
+    } else {
+      headerIds.push(number)
+    }
+  } else if (gender) {
+    headerIds.push(gender)
+  }
+  return headerIds
+}
+
+const VerbHeaderCell = ({ className, colSpan, rowSpan, children }) => {
+  const headers = getHeaderIds(className.split(' '))
+  return (
+    <th colSpan={colSpan} rowSpan={rowSpan} data-headers={headers.join(' ')} data-id={headers.at(-1)}>
+      {children}
+    </th>
+  )
+}
+
 // Every <th> and every <td> cell has a className attribute that lists grammatical keys, eg "infinitive active present".
-// This enables the correct <th> cells to be highlighted when any <td> or <th> cell is hovered.
-// <th> cells are marked up directly in the JSX, but <VerbDataCell> is used for <td>.
-// The <VerbDataCell> component creates a <td> element with the given className, and the element’s content
+// This enables the correct <th> cells to be highlighted when any <td> or <th> cell is hovered (via the data-headers attribute).
+// <th>/<td> cells are not marked up directly in the JSX, but <VerbHeaderCell> & <VerbDataCell> are used instead.
+// The <VerbDataCell> component receives a className and creates a <td> element, and the element’s content
 // is found from the Forms object by following the className (eg `Forms.infinitive.active.present`).
 // Therefore the order of the grammatical keys is important.
 // For example, <VerbDataCell className="infinitive active present" />
-// might become HTML <td className="infinitive active present">clāmāre</td>
+// might become HTML <td data-headers="infinitive active present-active">clāmāre</td>
 // <VerbDataCell> is <GenericVerbDataCell> with some parameters curried in.
 const GenericVerbDataCell = ({
   className,
@@ -31,7 +105,7 @@ const GenericVerbDataCell = ({
   })
 
   return (
-    <td className={className} colSpan={colSpan || null}>
+    <td data-headers={getHeaderIds(classesArray).join(' ')} colSpan={colSpan || null}>
       <LatinLinksOrPlainText
         formsArray={forms}
         formsFromWordsCollection={formsFromWordsCollection}
@@ -69,31 +143,31 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </colgroup>
         <thead>
           <tr>
-            <th rowSpan="2" colSpan="2" className="indicative">
+            <VerbHeaderCell rowSpan="2" colSpan="2" className="indicative">
               indicative
-            </th>
-            <th colSpan="3" className="indicative singular">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="3" className="indicative singular">
               singular
-            </th>
-            <th colSpan="3" className="indicative plural">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="3" className="indicative plural">
               plural
-            </th>
+            </VerbHeaderCell>
           </tr>
           <tr>
-            <th className="indicative singular first">first</th>
-            <th className="indicative singular second">second</th>
-            <th className="indicative singular third">third</th>
-            <th className="indicative plural first">first</th>
-            <th className="indicative plural second">second</th>
-            <th className="indicative plural third">third</th>
+            <VerbHeaderCell className="indicative singular first">first</VerbHeaderCell>
+            <VerbHeaderCell className="indicative singular second">second</VerbHeaderCell>
+            <VerbHeaderCell className="indicative singular third">third</VerbHeaderCell>
+            <VerbHeaderCell className="indicative plural first">first</VerbHeaderCell>
+            <VerbHeaderCell className="indicative plural second">second</VerbHeaderCell>
+            <VerbHeaderCell className="indicative plural third">third</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th rowSpan="6" className="indicative active">
+            <VerbHeaderCell rowSpan="6" className="indicative active">
               active
-            </th>
-            <th className="indicative active present">present</th>
+            </VerbHeaderCell>
+            <VerbHeaderCell className="indicative active present">present</VerbHeaderCell>
             <VerbDataCell className="indicative active present singular first" />
             <VerbDataCell className="indicative active present singular second" />
             <VerbDataCell className="indicative active present singular third" />
@@ -102,7 +176,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative active present plural third" />
           </tr>
           <tr>
-            <th className="indicative active imperfect">imperfect</th>
+            <VerbHeaderCell className="indicative active imperfect">imperfect</VerbHeaderCell>
             <VerbDataCell className="indicative active imperfect singular first" />
             <VerbDataCell className="indicative active imperfect singular second" />
             <VerbDataCell className="indicative active imperfect singular third" />
@@ -111,7 +185,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative active imperfect plural third" />
           </tr>
           <tr>
-            <th className="indicative active future">future</th>
+            <VerbHeaderCell className="indicative active future">future</VerbHeaderCell>
             <VerbDataCell className="indicative active future singular first" />
             <VerbDataCell className="indicative active future singular second" />
             <VerbDataCell className="indicative active future singular third" />
@@ -120,7 +194,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative active future plural third" />
           </tr>
           <tr>
-            <th className="indicative active perfect">perfect</th>
+            <VerbHeaderCell className="indicative active perfect">perfect</VerbHeaderCell>
             <VerbDataCell className="indicative active perfect singular first" />
             <VerbDataCell className="indicative active perfect singular second" />
             <VerbDataCell className="indicative active perfect singular third" />
@@ -129,7 +203,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative active perfect plural third" />
           </tr>
           <tr>
-            <th className="indicative active pluperfect">pluperfect</th>
+            <VerbHeaderCell className="indicative active pluperfect">pluperfect</VerbHeaderCell>
             <VerbDataCell className="indicative active pluperfect singular first" />
             <VerbDataCell className="indicative active pluperfect singular second" />
             <VerbDataCell className="indicative active pluperfect singular third" />
@@ -138,7 +212,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative active pluperfect plural third" />
           </tr>
           <tr>
-            <th className="indicative active futureperfect">future perfect</th>
+            <VerbHeaderCell className="indicative active futureperfect">future perfect</VerbHeaderCell>
             <VerbDataCell className="indicative active futureperfect singular first" />
             <VerbDataCell className="indicative active futureperfect singular second" />
             <VerbDataCell className="indicative active futureperfect singular third" />
@@ -149,10 +223,10 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </tbody>
         <tbody>
           <tr>
-            <th rowSpan="3" className="indicative passive">
+            <VerbHeaderCell rowSpan="3" className="indicative passive">
               passive
-            </th>
-            <th className="indicative passive present">present</th>
+            </VerbHeaderCell>
+            <VerbHeaderCell className="indicative passive present">present</VerbHeaderCell>
             <VerbDataCell className="indicative passive present singular first" />
             <VerbDataCell className="indicative passive present singular second" />
             <VerbDataCell className="indicative passive present singular third" />
@@ -161,7 +235,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative passive present plural third" />
           </tr>
           <tr>
-            <th className="indicative passive imperfect">imperfect</th>
+            <VerbHeaderCell className="indicative passive imperfect">imperfect</VerbHeaderCell>
             <VerbDataCell className="indicative passive imperfect singular first" />
             <VerbDataCell className="indicative passive imperfect singular second" />
             <VerbDataCell className="indicative passive imperfect singular third" />
@@ -170,7 +244,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="indicative passive imperfect plural third" />
           </tr>
           <tr>
-            <th className="indicative passive future">future</th>
+            <VerbHeaderCell className="indicative passive future">future</VerbHeaderCell>
             <VerbDataCell className="indicative passive future singular first" />
             <VerbDataCell className="indicative passive future singular second" />
             <VerbDataCell className="indicative passive future singular third" />
@@ -194,31 +268,31 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </colgroup>
         <thead>
           <tr>
-            <th rowSpan="2" colSpan="2" className="subjunctive">
+            <VerbHeaderCell rowSpan="2" colSpan="2" className="subjunctive">
               subjunctive
-            </th>
-            <th colSpan="3" className="subjunctive singular">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="3" className="subjunctive singular">
               singular
-            </th>
-            <th colSpan="3" className="subjunctive plural">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="3" className="subjunctive plural">
               plural
-            </th>
+            </VerbHeaderCell>
           </tr>
           <tr>
-            <th className="subjunctive singular first">first</th>
-            <th className="subjunctive singular second">second</th>
-            <th className="subjunctive singular third">third</th>
-            <th className="subjunctive plural first">first</th>
-            <th className="subjunctive plural second">second</th>
-            <th className="subjunctive plural third">third</th>
+            <VerbHeaderCell className="subjunctive singular first">first</VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive singular second">second</VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive singular third">third</VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive plural first">first</VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive plural second">second</VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive plural third">third</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th rowSpan="4" className="subjunctive active">
+            <VerbHeaderCell rowSpan="4" className="subjunctive active">
               active
-            </th>
-            <th className="subjunctive active present">present</th>
+            </VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive active present">present</VerbHeaderCell>
             <VerbDataCell className="subjunctive active present singular first" />
             <VerbDataCell className="subjunctive active present singular second" />
             <VerbDataCell className="subjunctive active present singular third" />
@@ -227,7 +301,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="subjunctive active present plural third" />
           </tr>
           <tr>
-            <th className="subjunctive active imperfect">imperfect</th>
+            <VerbHeaderCell className="subjunctive active imperfect">imperfect</VerbHeaderCell>
             <VerbDataCell className="subjunctive active imperfect singular first" />
             <VerbDataCell className="subjunctive active imperfect singular second" />
             <VerbDataCell className="subjunctive active imperfect singular third" />
@@ -236,7 +310,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="subjunctive active imperfect plural third" />
           </tr>
           <tr>
-            <th className="subjunctive active perfect">perfect</th>
+            <VerbHeaderCell className="subjunctive active perfect">perfect</VerbHeaderCell>
             <VerbDataCell className="subjunctive active perfect singular first" />
             <VerbDataCell className="subjunctive active perfect singular second" />
             <VerbDataCell className="subjunctive active perfect singular third" />
@@ -245,7 +319,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="subjunctive active perfect plural third" />
           </tr>
           <tr>
-            <th className="subjunctive active pluperfect">pluperfect</th>
+            <VerbHeaderCell className="subjunctive active pluperfect">pluperfect</VerbHeaderCell>
             <VerbDataCell className="subjunctive active pluperfect singular first" />
             <VerbDataCell className="subjunctive active pluperfect singular second" />
             <VerbDataCell className="subjunctive active pluperfect singular third" />
@@ -256,10 +330,10 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </tbody>
         <tbody>
           <tr>
-            <th rowSpan="2" className="subjunctive passive">
+            <VerbHeaderCell rowSpan="2" className="subjunctive passive">
               passive
-            </th>
-            <th className="subjunctive passive present">present</th>
+            </VerbHeaderCell>
+            <VerbHeaderCell className="subjunctive passive present">present</VerbHeaderCell>
             <VerbDataCell className="subjunctive passive present singular first" />
             <VerbDataCell className="subjunctive passive present singular second" />
             <VerbDataCell className="subjunctive passive present singular third" />
@@ -268,7 +342,7 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
             <VerbDataCell className="subjunctive passive present plural third" />
           </tr>
           <tr>
-            <th className="subjunctive passive imperfect">imperfect</th>
+            <VerbHeaderCell className="subjunctive passive imperfect">imperfect</VerbHeaderCell>
             <VerbDataCell className="subjunctive passive imperfect singular first" />
             <VerbDataCell className="subjunctive passive imperfect singular second" />
             <VerbDataCell className="subjunctive passive imperfect singular third" />
@@ -292,42 +366,42 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </colgroup>
         <thead>
           <tr>
-            <th rowSpan="2" colSpan="3" className="imperative">
+            <VerbHeaderCell rowSpan="2" colSpan="3" className="imperative">
               imperative
-            </th>
-            <th colSpan="3" className="imperative singular">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="3" className="imperative singular">
               singular
-            </th>
-            <th colSpan="2" className="imperative plural">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="2" className="imperative plural">
               plural
-            </th>
+            </VerbHeaderCell>
           </tr>
           <tr>
-            <th className="imperative singular second">second</th>
-            <th className="imperative singular third" colSpan="2">
+            <VerbHeaderCell className="imperative singular second">second</VerbHeaderCell>
+            <VerbHeaderCell className="imperative singular third" colSpan="2">
               third
-            </th>
-            <th className="imperative plural second">second</th>
-            <th className="imperative plural third">third</th>
+            </VerbHeaderCell>
+            <VerbHeaderCell className="imperative plural second">second</VerbHeaderCell>
+            <VerbHeaderCell className="imperative plural third">third</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th rowSpan="2" className="imperative active">
+            <VerbHeaderCell rowSpan="2" className="imperative active">
               active
-            </th>
-            <th className="imperative active present" colSpan="2">
+            </VerbHeaderCell>
+            <VerbHeaderCell className="imperative active present" colSpan="2">
               present
-            </th>
+            </VerbHeaderCell>
             <VerbDataCell className="imperative active present singular second" />
             <VerbDataCell className="imperative active present singular third" colSpan="2" />
             <VerbDataCell className="imperative active present plural second" />
             <VerbDataCell className="imperative active present plural third" />
           </tr>
           <tr>
-            <th className="imperative active future" colSpan="2">
+            <VerbHeaderCell className="imperative active future" colSpan="2">
               future
-            </th>
+            </VerbHeaderCell>
             <VerbDataCell className="imperative active future singular second" />
             <VerbDataCell className="imperative active future singular third" colSpan="2" />
             <VerbDataCell className="imperative active future plural second" />
@@ -336,21 +410,21 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         </tbody>
         <tbody>
           <tr>
-            <th rowSpan="2" className="imperative passive">
+            <VerbHeaderCell rowSpan="2" className="imperative passive">
               passive
-            </th>
-            <th className="imperative passive present" colSpan="2">
+            </VerbHeaderCell>
+            <VerbHeaderCell className="imperative passive present" colSpan="2">
               present
-            </th>
+            </VerbHeaderCell>
             <VerbDataCell className="imperative passive present singular second" />
             <VerbDataCell className="imperative passive present singular third" colSpan="2" />
             <VerbDataCell className="imperative passive present plural second" />
             <VerbDataCell className="imperative passive present plural third" />
           </tr>
           <tr>
-            <th className="imperative passive future" colSpan="2">
+            <VerbHeaderCell className="imperative passive future" colSpan="2">
               future
-            </th>
+            </VerbHeaderCell>
             <VerbDataCell className="imperative passive future singular second" />
             <VerbDataCell className="imperative passive future singular third" colSpan="2" />
             <VerbDataCell className="imperative passive future plural second" />
@@ -367,24 +441,28 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
         {/* We don’t need more <colgroup>/<col> elements in the infinitives table, because the widths of subsequent columns are not set. */}
         <thead>
           <tr>
-            <th rowSpan="2" className="infinitive">
+            <VerbHeaderCell rowSpan="2" className="infinitive">
               infinitive
-            </th>
-            <th colSpan={shouldShowFutureInfinitive ? 3 : 2} className="infinitive active">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan={shouldShowFutureInfinitive ? 3 : 2} className="infinitive active">
               active
-            </th>
-            <th className="infinitive passive">passive</th>
+            </VerbHeaderCell>
+            <VerbHeaderCell className="infinitive passive">passive</VerbHeaderCell>
           </tr>
           <tr>
-            <th className="infinitive active present">present</th>
-            <th className="infinitive active perfect">perfect</th>
-            {shouldShowFutureInfinitive ? <th className="infinitive active future">future</th> : null}
-            <th className="infinitive passive present">present</th>
+            <VerbHeaderCell className="infinitive active present">present</VerbHeaderCell>
+            <VerbHeaderCell className="infinitive active perfect">perfect</VerbHeaderCell>
+            {shouldShowFutureInfinitive ? (
+              <VerbHeaderCell className="infinitive active future">future</VerbHeaderCell>
+            ) : null}
+            <VerbHeaderCell className="infinitive passive present">present</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th className="infinitive"></th>
+            <th className="infinitive" data-headers="infinitive">
+              {/* empty cell should not have data-id so can’t use VerbHeaderCell */}
+            </th>
             <VerbDataCell className="infinitive active present" />
             <VerbDataCell className="infinitive active perfect" />
             {shouldShowFutureInfinitive ? <VerbDataCell className="infinitive active future" /> : null}
@@ -396,20 +474,20 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
       <table>
         <thead>
           <tr>
-            <th colSpan="4" className="gerund">
+            <VerbHeaderCell colSpan="4" className="gerund">
               gerund
-            </th>
-            <th colSpan="2" className="supine">
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="2" className="supine">
               supine
-            </th>
+            </VerbHeaderCell>
           </tr>
           <tr>
-            <th className="gerund accusative">accusative</th>
-            <th className="gerund genitive">genitive</th>
-            <th className="gerund dative">dative</th>
-            <th className="gerund ablative">ablative</th>
-            <th className="supine accusative">accusative</th>
-            <th className="supine ablative">ablative</th>
+            <VerbHeaderCell className="gerund accusative">accusative</VerbHeaderCell>
+            <VerbHeaderCell className="gerund genitive">genitive</VerbHeaderCell>
+            <VerbHeaderCell className="gerund dative">dative</VerbHeaderCell>
+            <VerbHeaderCell className="gerund ablative">ablative</VerbHeaderCell>
+            <VerbHeaderCell className="supine accusative">accusative</VerbHeaderCell>
+            <VerbHeaderCell className="supine ablative">ablative</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>
@@ -496,4 +574,4 @@ const VerbFormsTable = ({
 }
 
 export default VerbFormsTable
-export { GenericVerbDataCell }
+export { GenericVerbDataCell, VerbHeaderCell }

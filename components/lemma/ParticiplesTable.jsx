@@ -1,4 +1,4 @@
-import { GenericVerbDataCell } from './VerbFormsTable'
+import { GenericVerbDataCell, VerbHeaderCell } from './VerbFormsTable'
 import { getTabForCurrentWord, getTabsId } from './FormsTable'
 import Tabs from './Tabs'
 import Details from '../details/Details'
@@ -32,7 +32,9 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
       }
       return (
         <tr>
-          <th className={`participle ${voice} ${tense} ${grammaticalCase}`}>{grammaticalCase}</th>
+          <VerbHeaderCell className={`participle ${voice} ${tense} ${grammaticalCase}`}>
+            {grammaticalCase}
+          </VerbHeaderCell>
           <VerbDataCell className={`participle ${voice} ${tense} masculine singular ${grammaticalCase}`} />
           <VerbDataCell className={`participle ${voice} ${tense} masculine plural ${grammaticalCase}`} />
           <VerbDataCell className={`participle ${voice} ${tense} feminine singular ${grammaticalCase}`} />
@@ -62,26 +64,26 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
         </colgroup>
         <thead>
           <tr>
-            <th rowSpan="2" className={`participle ${voice} ${tense}`}>
+            <VerbHeaderCell rowSpan="2" className={`participle ${voice} ${tense}`}>
               {isGerundive ? `gerundive (future passive)` : `${tense} ${voice}`}
-            </th>
-            <th colSpan="2" className={`participle ${voice} ${tense} masculine`}>
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="2" className={`participle ${voice} ${tense} masculine`}>
               masculine
-            </th>
-            <th colSpan="2" className={`participle ${voice} ${tense} feminine`}>
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="2" className={`participle ${voice} ${tense} feminine`}>
               feminine
-            </th>
-            <th colSpan="2" className={`participle ${voice} ${tense} neuter`}>
+            </VerbHeaderCell>
+            <VerbHeaderCell colSpan="2" className={`participle ${voice} ${tense} neuter`}>
               neuter
-            </th>
+            </VerbHeaderCell>
           </tr>
           <tr>
-            <th className={`participle ${voice} ${tense} masculine singular`}>singular</th>
-            <th className={`participle ${voice} ${tense} masculine plural`}>plural</th>
-            <th className={`participle ${voice} ${tense} feminine singular`}>singular</th>
-            <th className={`participle ${voice} ${tense} feminine plural`}>plural</th>
-            <th className={`participle ${voice} ${tense} neuter singular`}>singular</th>
-            <th className={`participle ${voice} ${tense} neuter plural`}>plural</th>
+            <VerbHeaderCell className={`participle ${voice} ${tense} masculine singular`}>singular</VerbHeaderCell>
+            <VerbHeaderCell className={`participle ${voice} ${tense} masculine plural`}>plural</VerbHeaderCell>
+            <VerbHeaderCell className={`participle ${voice} ${tense} feminine singular`}>singular</VerbHeaderCell>
+            <VerbHeaderCell className={`participle ${voice} ${tense} feminine plural`}>plural</VerbHeaderCell>
+            <VerbHeaderCell className={`participle ${voice} ${tense} neuter singular`}>singular</VerbHeaderCell>
+            <VerbHeaderCell className={`participle ${voice} ${tense} neuter plural`}>plural</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>

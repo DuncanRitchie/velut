@@ -31,7 +31,7 @@ and it doesn’t matter much that the widths don’t account for differing amoun
   width: 7.5%;
 }
 /* This is the <col> in the infinitives table, which only has one <col> specified. */
-.verbFormsTable table:has([class*='infinitive']) col {
+.verbFormsTable table:has([data-id*='infinitive']) col {
   width: 17.5%;
 }
 
@@ -57,55 +57,63 @@ and it doesn’t matter much that the widths don’t account for differing amoun
   font-size: calc(1.0625 * var(--forms-dt-font-size, 1em));
 }
 
-/*
-Highlight th cells when matching td/th are hovered.
-The selector *= means “contains” and $= means “ends with”, so this will highlight th cells with classes that end with the substrings that the hovered cell’s class contains.
-We’re writing [class*='CLASS'] and not .CLASS because we’re using CSS Modules which mangles the CSS when we use the simpler syntax.
-Consequently we need to be careful that 'future' doesn’t match as a substring of 'futureperfect' & 'perfect' doesn’t match as a substring of 'imperfect', 'pluperfect', 'futureperfect'.
-*/
-.verbFormsTable table:has([class*='indicative']:hover) th[class$='indicative'],
-.verbFormsTable table:has([class*='active']:hover) th[class$='active'],
-.verbFormsTable table:has([class*='passive']:hover) th[class$='passive'],
-.verbFormsTable table:not(:has([class*='participle'])):has([class*='singular']:hover) th[class$='singular'],
-.verbFormsTable table:has([class*='singular first']:hover) th[class$='singular first'],
-.verbFormsTable table:has([class*='singular second']:hover) th[class$='singular second'],
-.verbFormsTable table:has([class*='singular third']:hover) th[class$='singular third'],
-.verbFormsTable table:not(:has([class*='participle'])):has([class*='plural']:hover) th[class$='plural'],
-.verbFormsTable table:has([class*='plural first']:hover) th[class$='plural first'],
-.verbFormsTable table:has([class*='plural second']:hover) th[class$='plural second'],
-.verbFormsTable table:has([class*='plural third']:hover) th[class$='plural third'],
-.verbFormsTable tbody:has([class*='present']:hover) th[class$='present'],
-.verbFormsTable tbody:has([class*='imperfect']:hover) th[class$='imperfect'],
-.verbFormsTable tbody:has([class*='future']:not([class*='futureperfect']):hover) th[class$='future'],
-.verbFormsTable tbody:has([class*=' perfect']:hover) th[class$=' perfect'],
-.verbFormsTable tbody:has([class*='pluperfect']:hover) th[class$='pluperfect'],
-.verbFormsTable tbody:has([class*='futureperfect']:hover) th[class$='futureperfect'],
-.verbFormsTable table:has([class*='subjunctive']:hover) th[class$='subjunctive'],
-.verbFormsTable table:has([class*='imperative']:hover) th[class$='imperative'],
-.verbFormsTable table:has([class*='infinitive']:hover) th[class$='infinitive']:not(:empty),
-.verbFormsTable table:has([class*='active present']:hover) thead th[class$='active present'],
-.verbFormsTable table:has([class*='active perfect']:hover) thead th[class$='active perfect'],
-.verbFormsTable table:has([class*='active future']:hover) thead th[class$='active future'],
-.verbFormsTable table:has([class*='passive present']:hover) thead th[class$='passive present'],
-.verbFormsTable table:has([class*='gerund']:hover) th[class$='gerund'],
-.verbFormsTable table:has([class*='supine']:hover) th[class$='supine'],
-.verbFormsTable table:has([class*='gerund accusative']:hover) th[class$='gerund accusative'],
-.verbFormsTable table:has([class*='gerund genitive']:hover) th[class$='gerund genitive'],
-.verbFormsTable table:has([class*='gerund dative']:hover) th[class$='gerund dative'],
-.verbFormsTable table:has([class*='gerund ablative']:hover) th[class$='gerund ablative'],
-.verbFormsTable table:has([class*='supine accusative']:hover) th[class$='supine accusative'],
-.verbFormsTable table:has([class*='supine ablative']:hover) th[class$='supine ablative'],
-.verbFormsTable table:has([class*='participle']:hover) th[rowspan='2'],
-.verbFormsTable table:has([class*='masculine']:hover) th[class$='masculine'],
-.verbFormsTable table:has([class*='feminine']:hover) th[class$='feminine'],
-.verbFormsTable table:has([class*='neuter']:hover) th[class$='neuter'],
-.verbFormsTable table:has([class*='participle']) tbody tr:hover th,
-.verbFormsTable table:has([class*='masculine singular']:hover) th[class$='masculine singular'],
-.verbFormsTable table:has([class*='feminine singular']:hover) th[class$='feminine singular'],
-.verbFormsTable table:has([class*='neuter singular']:hover) th[class$='neuter singular'],
-.verbFormsTable table:has([class*='masculine plural']:hover) th[class$='masculine plural'],
-.verbFormsTable table:has([class*='feminine plural']:hover) th[class$='feminine plural'],
-.verbFormsTable table:has([class*='neuter plural']:hover) th[class$='neuter plural'] {
+/* Highlight <th> cells when matching th/td are hovered.
+Every <th> has a data-id attribute, which is unique within its <table>.
+Every cell (<td> & <th>) has a data-headers attribute, which lists all the IDs of the cell’s header cells.
+So every header cell should have a line of the selector below, in the format
+table:has([data-headers*='ID']:hover) th[data-id='ID']
+The selector *= means “contains”.
+Slightly special handling needs to be on `future` to stop `futureperfect` matching it.
+ */
+.verbFormsTable table:has([data-headers*='singular']:hover) th[data-id='singular'],
+.verbFormsTable table:has([data-headers*='first-singular']:hover) th[data-id='first-singular'],
+.verbFormsTable table:has([data-headers*='second-singular']:hover) th[data-id='second-singular'],
+.verbFormsTable table:has([data-headers*='third-singular']:hover) th[data-id='third-singular'],
+.verbFormsTable table:has([data-headers*='plural']:hover) th[data-id='plural'],
+.verbFormsTable table:has([data-headers*='first-plural']:hover) th[data-id='first-plural'],
+.verbFormsTable table:has([data-headers*='second-plural']:hover) th[data-id='second-plural'],
+.verbFormsTable table:has([data-headers*='third-plural']:hover) th[data-id='third-plural'],
+.verbFormsTable table:has([data-headers*='indicative']:hover) th[data-id='indicative'],
+.verbFormsTable table:has([data-headers*='subjunctive']:hover) th[data-id='subjunctive'],
+.verbFormsTable table:has([data-headers*='imperative']:hover) th[data-id='imperative'],
+.verbFormsTable table:has([data-headers*='infinitive']:hover) th[data-id='infinitive'],
+.verbFormsTable table:has([data-headers*='gerund']:hover) th[data-id='gerund'],
+.verbFormsTable table:has([data-headers*='supine']:hover) th[data-id='supine'],
+.verbFormsTable table:has([data-headers*='active']:hover) th[data-id='active'],
+.verbFormsTable table:has([data-headers*='active-present']:hover) th[data-id='active-present'],
+.verbFormsTable table:has([data-headers*='active-imperfect']:hover) th[data-id='active-imperfect'],
+.verbFormsTable
+  table:has([data-headers*='active-future']:not([data-headers*='futureperfect']):hover)
+  th[data-id='active-future'],
+.verbFormsTable table:has([data-headers*='active-perfect']:hover) th[data-id='active-perfect'],
+.verbFormsTable table:has([data-headers*='active-pluperfect']:hover) th[data-id='active-pluperfect'],
+.verbFormsTable table:has([data-headers*='active-futureperfect']:hover) th[data-id='active-futureperfect'],
+.verbFormsTable table:has([data-headers*='passive']:hover) th[data-id='passive'],
+.verbFormsTable table:has([data-headers*='passive-present']:hover) th[data-id='passive-present'],
+.verbFormsTable table:has([data-headers*='passive-imperfect']:hover) th[data-id='passive-imperfect'],
+.verbFormsTable table:has([data-headers*='passive-future']:hover) th[data-id='passive-future'],
+.verbFormsTable table:has([data-headers*='accusative-gerund']:hover) th[data-id='accusative-gerund'],
+.verbFormsTable table:has([data-headers*='genitive-gerund']:hover) th[data-id='genitive-gerund'],
+.verbFormsTable table:has([data-headers*='dative-gerund']:hover) th[data-id='dative-gerund'],
+.verbFormsTable table:has([data-headers*='ablative-gerund']:hover) th[data-id='ablative-gerund'],
+.verbFormsTable table:has([data-headers*='accusative-supine']:hover) th[data-id='accusative-supine'],
+.verbFormsTable table:has([data-headers*='ablative-supine']:hover) th[data-id='ablative-supine'],
+.verbFormsTable table:has([data-headers*='masculine']:hover) th[data-id='masculine'],
+.verbFormsTable table:has([data-headers*='singular-masculine']:hover) th[data-id='singular-masculine'],
+.verbFormsTable table:has([data-headers*='plural-masculine']:hover) th[data-id='plural-masculine'],
+.verbFormsTable table:has([data-headers*='feminine']:hover) th[data-id='feminine'],
+.verbFormsTable table:has([data-headers*='singular-feminine']:hover) th[data-id='singular-feminine'],
+.verbFormsTable table:has([data-headers*='plural-feminine']:hover) th[data-id='plural-feminine'],
+.verbFormsTable table:has([data-headers*='neuter']:hover) th[data-id='neuter'],
+.verbFormsTable table:has([data-headers*='singular-neuter']:hover) th[data-id='singular-neuter'],
+.verbFormsTable table:has([data-headers*='plural-neuter']:hover) th[data-id='plural-neuter'],
+.verbFormsTable table:has([data-headers*='nominative']:hover) th[data-id='nominative'],
+.verbFormsTable table:has([data-headers*='vocative']:hover) th[data-id='vocative'],
+.verbFormsTable table:has([data-headers*='accusative']:hover) th[data-id='accusative'],
+.verbFormsTable table:has([data-headers*='genitive']:hover) th[data-id='genitive'],
+.verbFormsTable table:has([data-headers*='dative']:hover) th[data-id='dative'],
+.verbFormsTable table:has([data-headers*='ablative']:hover) th[data-id='ablative'],
+.verbFormsTable table:has([data-headers*='passive-perfect']:hover) th[data-id='passive-perfect'] {
   background-image: linear-gradient(to bottom right, #efe1ab, transparent);
   border-top-color: #34311a;
   border-left-color: #34311a;
