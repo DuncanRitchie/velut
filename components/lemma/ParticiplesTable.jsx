@@ -1,4 +1,4 @@
-import { GenericVerbDataCell, VerbHeaderCell } from './VerbFormsTable'
+import { GenericVerbDataCell, VerbHeaderCell } from './VerbCells'
 import { getTabForCurrentWord, getTabsId } from './FormsTable'
 import Tabs from './Tabs'
 import Details from '../details/Details'
