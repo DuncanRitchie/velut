@@ -12,8 +12,8 @@ import verbStyles from './VerbFormsTable.module.css'
 // <VerbDataCell> is <GenericVerbDataCell> with some parameters curried in.
 
 const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
-  const VerbDataCell = ({ className, colSpan }) => {
-    return GenericVerbDataCell({ className, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated })
+  const VerbDataCell = ({ tags, colSpan }) => {
+    return GenericVerbDataCell({ tags, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated })
   }
 
   const TableForOneTenseAndVoice = ({ tense, voice }) => {
@@ -32,15 +32,13 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
       }
       return (
         <tr>
-          <VerbHeaderCell className={`participle ${voice} ${tense} ${grammaticalCase}`}>
-            {grammaticalCase}
-          </VerbHeaderCell>
-          <VerbDataCell className={`participle ${voice} ${tense} masculine singular ${grammaticalCase}`} />
-          <VerbDataCell className={`participle ${voice} ${tense} masculine plural ${grammaticalCase}`} />
-          <VerbDataCell className={`participle ${voice} ${tense} feminine singular ${grammaticalCase}`} />
-          <VerbDataCell className={`participle ${voice} ${tense} feminine plural ${grammaticalCase}`} />
-          <VerbDataCell className={`participle ${voice} ${tense} neuter singular ${grammaticalCase}`} />
-          <VerbDataCell className={`participle ${voice} ${tense} neuter plural ${grammaticalCase}`} />
+          <VerbHeaderCell tags={`participle ${voice} ${tense} ${grammaticalCase}`}>{grammaticalCase}</VerbHeaderCell>
+          <VerbDataCell tags={`participle ${voice} ${tense} masculine singular ${grammaticalCase}`} />
+          <VerbDataCell tags={`participle ${voice} ${tense} masculine plural ${grammaticalCase}`} />
+          <VerbDataCell tags={`participle ${voice} ${tense} feminine singular ${grammaticalCase}`} />
+          <VerbDataCell tags={`participle ${voice} ${tense} feminine plural ${grammaticalCase}`} />
+          <VerbDataCell tags={`participle ${voice} ${tense} neuter singular ${grammaticalCase}`} />
+          <VerbDataCell tags={`participle ${voice} ${tense} neuter plural ${grammaticalCase}`} />
         </tr>
       )
     }
@@ -64,26 +62,26 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
         </colgroup>
         <thead>
           <tr>
-            <VerbHeaderCell rowSpan="2" className={`participle ${voice} ${tense}`}>
+            <VerbHeaderCell rowSpan="2" tags={`participle ${voice} ${tense}`}>
               {isGerundive ? `gerundive (future passive)` : `${tense} ${voice}`}
             </VerbHeaderCell>
-            <VerbHeaderCell colSpan="2" className={`participle ${voice} ${tense} masculine`}>
+            <VerbHeaderCell colSpan="2" tags={`participle ${voice} ${tense} masculine`}>
               masculine
             </VerbHeaderCell>
-            <VerbHeaderCell colSpan="2" className={`participle ${voice} ${tense} feminine`}>
+            <VerbHeaderCell colSpan="2" tags={`participle ${voice} ${tense} feminine`}>
               feminine
             </VerbHeaderCell>
-            <VerbHeaderCell colSpan="2" className={`participle ${voice} ${tense} neuter`}>
+            <VerbHeaderCell colSpan="2" tags={`participle ${voice} ${tense} neuter`}>
               neuter
             </VerbHeaderCell>
           </tr>
           <tr>
-            <VerbHeaderCell className={`participle ${voice} ${tense} masculine singular`}>singular</VerbHeaderCell>
-            <VerbHeaderCell className={`participle ${voice} ${tense} masculine plural`}>plural</VerbHeaderCell>
-            <VerbHeaderCell className={`participle ${voice} ${tense} feminine singular`}>singular</VerbHeaderCell>
-            <VerbHeaderCell className={`participle ${voice} ${tense} feminine plural`}>plural</VerbHeaderCell>
-            <VerbHeaderCell className={`participle ${voice} ${tense} neuter singular`}>singular</VerbHeaderCell>
-            <VerbHeaderCell className={`participle ${voice} ${tense} neuter plural`}>plural</VerbHeaderCell>
+            <VerbHeaderCell tags={`participle ${voice} ${tense} masculine singular`}>singular</VerbHeaderCell>
+            <VerbHeaderCell tags={`participle ${voice} ${tense} masculine plural`}>plural</VerbHeaderCell>
+            <VerbHeaderCell tags={`participle ${voice} ${tense} feminine singular`}>singular</VerbHeaderCell>
+            <VerbHeaderCell tags={`participle ${voice} ${tense} feminine plural`}>plural</VerbHeaderCell>
+            <VerbHeaderCell tags={`participle ${voice} ${tense} neuter singular`}>singular</VerbHeaderCell>
+            <VerbHeaderCell tags={`participle ${voice} ${tense} neuter plural`}>plural</VerbHeaderCell>
           </tr>
         </thead>
         <tbody>
