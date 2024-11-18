@@ -1,6 +1,7 @@
 import { getTabForCurrentWord, getTabsId, LatinLinksOrPlainText } from './FormsTable'
 import Tabs from './Tabs'
 import Details from '../details/Details'
+import { grammaticalKeysByType as possibleKeys } from '../../lib/lemmata/grammaticalKeys'
 import styles from './FormsTable.module.css'
 import verbStyles from './VerbFormsTable.module.css'
 
@@ -26,21 +27,18 @@ import verbStyles from './VerbFormsTable.module.css'
 // `data-headers` always includes `data-id`, so hovering a <th> cell highlights it as one of its own headers.
 function getHeaderAttributes(tagsArray) {
   let headerIds = []
-  const mood = tagsArray.find((key) =>
-    ['indicative', 'subjunctive', 'imperative', 'infinitive', 'gerund', 'supine', 'participle'].includes(key),
-  )
-  const number = tagsArray.find((key) => ['singular', 'plural'].includes(key))
-  const voice = tagsArray.find((key) => ['active', 'passive'].includes(key))
-  const gerundOrSupine = tagsArray.find((key) => ['gerund', 'supine'].includes(key))
-  const gender = tagsArray.find((key) => ['masculine', 'feminine', 'neuter'].includes(key))
-  const person = tagsArray.find((key) => ['first', 'second', 'third'].includes(key))
-  const tense = tagsArray.find((key) =>
-    ['present', 'imperfect', 'future', 'perfect', 'pluperfect', 'futureperfect'].includes(key),
-  )
-  const grammaticalCase = tagsArray.find((key) =>
-    ['nominative', 'vocative', 'accusative', 'genitive', 'dative', 'ablative'].includes(key),
-  )
+  // In the array of tags, which one is the mood, the number, the voice, etc?
+  const mood = tagsArray.find((key) => possibleKeys.moods.includes(key))
+  const number = tagsArray.find((key) => possibleKeys.numbers.includes(key))
+  const voice = tagsArray.find((key) => possibleKeys.voices.includes(key))
+  const gerundOrSupine = tagsArray.find((key) => possibleKeys.gerundAndSupine.includes(key))
+  const gender = tagsArray.find((key) => possibleKeys.genders.includes(key))
+  const person = tagsArray.find((key) => possibleKeys.persons.includes(key))
+  const tense = tagsArray.find((key) => possibleKeys.tenses.includes(key))
+  const grammaticalCase = tagsArray.find((key) => possibleKeys.cases.includes(key))
+  // Now let’s populate the headerIds array.
   // Since the last header ID will be used for the ID of any <th> cell, the order of the `push` statements below matters.
+  // In creating the IDs, some keys need to be combined, because there may be more than one `present` row or `first` column (etc) and they need to be disambiguated.
   if (mood) {
     headerIds.push(mood)
   }
