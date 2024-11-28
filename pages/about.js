@@ -23,6 +23,9 @@ export async function getServerSideProps() {
 }
 
 const About = (props) => {
+  const numberFormatter = new Intl.NumberFormat('en-GB')
+  const wordCountFormatted = props.wordCount ? numberFormatter.format(props.wordCount) : '120000+'
+  const lemmaCountFormatted = props.lemmaCount ? numberFormatter.format(props.lemmaCount) : '13000+'
   return (
     <>
       <Head>
@@ -56,7 +59,7 @@ const About = (props) => {
             <p>
               So I wrote Excel formulae that found rhyming words in my data. And I kept adding more words, and I wrote
               more formulae to manage my words and find out more things about them. Three years later, I had close to
-              90,000 words.
+              90,000 words. (And it only got bigger from there.)
             </p>
             <p>
               I named the file{' '}
@@ -91,15 +94,20 @@ const About = (props) => {
               If you’re interested in seeing the code, you can do that too — the{' '}
               <a href="https://github.com/DuncanRitchie/velut">code for this website</a> is on GitHub. I&nbsp;originally
               built it with client-side–rendered <a href="https://reactjs.org/">React</a> and an{' '}
-              <a href="https://expressjs.com/">Express</a> backend. But I recently ported it all to the{' '}
+              <a href="https://expressjs.com/">Express</a> backend. But in 2022 I ported it all to the{' '}
               <a href="https://nextjs.org/">Next.js</a> framework, which makes it work even if you don’t have JavaScript
               enabled in your browser. And the site is often faster to load now.
             </p>
             <p>
-              But moving to Next.js is not the end of my ambitions for velut. I do not intend to keep using Excel for
-              this project any more than I have to. See the <a href="#future-plans">Future plans</a> section for how I’m
-              changing how the data are generated and stored. It’s a lot of work, but it will be pretty cool when it’s
-              all sorted.
+              But moving to Next.js was not the end of my ambitions for velut. I have replaced functionality that I had
+              in Excel with scripts that run against Json data on my computer. I’m now in the middle of checking the
+              output of one of my scripts (which creates the tables of inflected forms). Then I’ll make a script to make
+              all the inflected forms into words that can be searched for on the velut website. (Currently you can only
+              search for the {wordCountFormatted} words that I had had in Excel.)
+            </p>
+            <p>
+              See the <a href="#forms">Forms</a> section for more about how I’m changing how the data are generated and
+              stored. It’s a lot of work, but it will be pretty cool when it’s all sorted.
             </p>
             <p>
               Speaking of “pretty” and “cool”, the bird pictured is a fulmar,{' '}
@@ -388,13 +396,12 @@ const About = (props) => {
             <p>
               To fix this, I’ve written a script that generates forms programmatically, including grammatical labels. I
               call it the Inflector. I’m currently in the middle of checking the output of the Inflector, which means
-              checking each of my {props.lemmaCount} lemmata individually, so I can account for idiosyncrasies in the
+              checking each of my {lemmaCountFormatted} lemmata individually, so I can account for idiosyncrasies in the
               vocabulary.
             </p>
             <p>
               I’ve checked all {getShowGeneratedFormsString()}. Those lemmata now have their forms displayed in
-              reasonable inflection-tables on the velut website. Over time I will do the same for the remaining parts of
-              speech.
+              reasonable inflection-tables on the velut website. Over time I will do the same for the remaining lemmata.
             </p>
             <p>
               In addition to the inflection-tables, and in slight contradiction to what I said earlier about forms not
@@ -552,7 +559,7 @@ const About = (props) => {
               hope they’re of use to you too.
             </p>
             <p>
-              Of course, paper dictionaries and human Latinists can also be consulted. I still delve frequently into a
+              Of course, paper dictionaries and human Latinists can also be consulted. I still delve sometimes into a
               copy of Cassell’s from 1970!
             </p>
           </section>
@@ -560,28 +567,24 @@ const About = (props) => {
           <section id="future-plans">
             <h2>Future plans</h2>
             <p>
-              As I’ve explained above (under <a href="#backstory">Backstory</a> and{' '}
-              <a href="#web-development">Web development</a>
-              ), I used a massive Excel file to generate, check, and store all the data for all the vocabulary. This has
-              many downsides, so I’ve been making little webpages and scripts to do whatever I had written Excel
-              formulae to do. This has enabled me to trim parts of my Excel file while still adding words and lemmata.
-              I’m still very far away from abandoning Excel altogether, but I’m definitely making progress.
+              As mentioned under <a href="#forms">Forms</a> and <a href="#word-compilation">Word compilation</a>, many
+              of the lemmata are missing some inflected forms. (Verbs are particularly under-represented. And even if an
+              inflection-table is shown for a lemma, not all the forms are fully in velut.) I’ve recently written a
+              script that will generate all the forms I want for all the lemmata I have. I will need to finish reviewing
+              the output of this script before I display all the generated forms on the live website and make all of
+              them fully-fledged words that can be searched for.
+            </p>
+            <p>Also, roughly 0.5% of lemmata are missing information about cognates. I’m working to redress this.</p>
+            <p>
+              velut contains <strong>{wordCountFormatted} words</strong> belonging to{' '}
+              <strong>{lemmaCountFormatted} lemmata</strong>, not including words that are in inflection-tables but not
+              fully part of velut yet. The number of words will rise dramatically when I include everything from my new
+              script for generating forms. There are also plenty more lemmata that I will add… after I’ve finished
+              updating all my existing lemmata.
             </p>
             <p>
-              On a more lexicographical note, as mentioned under <a href="#forms">Forms</a> and{' '}
-              <a href="#word-compilation">Word compilation</a>, many of the lemmata are missing some inflected forms.
-              (Adjectives and verbs are particularly under-represented.) I’ve recently written a script that will
-              generate all the forms I want for all the lemmata I have. I will need to finish reviewing the output of
-              this script before I display all the generated forms on the live website and make all of them
-              fully-fledged words that can be searched for.
-            </p>
-            <p>Also, roughly 1% of lemmata are missing information about cognates. I’m working to redress this.</p>
-            <p>
-              velut contains <strong>{props.wordCount || '120000+'} words</strong> belonging to{' '}
-              <strong>{props.lemmaCount || '13000+'} lemmata</strong>, not including words that are in inflection-tables
-              but not fully part of velut yet. The number of words will rise dramatically when I include everything from
-              my new script for generating forms. There are also plenty more lemmata that I will add… after I’ve updated
-              all my existing lemmata. By that point, I’ll no longer be using Excel at all for velut.
+              If you find a problem with the website and have a GitHub account, you can{' '}
+              <a href="https://github.com/DuncanRitchie/velut/issues">raise an issue</a> there and I’ll get back to you.
             </p>
           </section>
         </main>
