@@ -300,14 +300,14 @@ See also: https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
     background-repeat: no-repeat;
   }
 
+  .fulmar-background {
+    background-size: 75vh;
+    background-position: calc(3rem + 5vw - 54vh) calc(10vw - 21vh - 1.25rem);
+  }
+
   .fulmar-background-big {
     background-size: calc(40vh + 40vw);
     background-position: -20vw calc(-16vw - 2vh + 11.375rem);
-  }
-
-  .fulmar-background:not(.fulmar-background-big) {
-    background-size: 75vh;
-    background-position: calc(3rem + 5vw - 54vh) calc(10vw - 21vh - 1.25rem);
   }
 }
 
