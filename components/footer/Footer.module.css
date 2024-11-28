@@ -28,18 +28,22 @@
   text-align: center;
 }
 
-.footer a:visited {
-  color: #4d314a;
+.footer a:link {
+  color: #0c457a;
 }
 
-.footer a:not(:visited) {
-  color: #0c457a;
+.footer a:visited {
+  color: #4d314a;
 }
 
 .footer a:hover {
   color: #0c457a;
   background: linear-gradient(to top, #d1f8e4, #d1f8e4);
   text-decoration: underline;
+}
+
+.footer a:active {
+  color: #892233;
 }
 
 @media print {
