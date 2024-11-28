@@ -1,5 +1,8 @@
 .footer {
   grid-area: footer;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
   /* This is a bright turquoise */
   background: linear-gradient(to bottom, #79c0b5, #9ff3c8);
 }
