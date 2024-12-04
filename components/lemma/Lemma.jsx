@@ -240,4 +240,4 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
 }
 
 export default Lemma
-export { getLemmaId, shouldGeneratedFormsBeShownForLemma }
+export { getLemmaId }
