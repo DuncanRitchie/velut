@@ -1,4 +1,5 @@
 # List of AI crawlers from https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt
+# This file exists on both DuncanRitchie.co.uk and velut.
 User-agent: AI2Bot
 User-agent: Ai2Bot-Dolma
 User-agent: Amazonbot
