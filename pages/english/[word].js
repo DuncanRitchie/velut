@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
 import Lemma from '../../components/lemma/Lemma'
@@ -35,9 +36,12 @@ const English = ({ lemmata, sanitisedInput }) => {
             </div>
           </>
         ) : (
-          <p className={styles.showingResultsFor}>
-            No results were found for “{sanitisedInput}”. Please try a different search.
-          </p>
+          <div className={styles.subsiteResult}>
+            <p>No results were found for “{sanitisedInput}”. Please try a different search.</p>
+            <p>
+              Or do you want to search from <Link href={'/' + sanitisedInput}>Latin to English</Link>?
+            </p>
+          </div>
         )}
 
         <Dictionaries category="English-to-Latin" sanitisedInput={sanitisedInput} />
