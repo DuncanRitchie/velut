@@ -5,7 +5,7 @@
   },
   {
     "Dictionary": "Forcellini",
-    "Formula": "http://lexica.linguax.com/forc2.php?searchedLG=INPUT"
+    "Formula": "http://lexica.linguax.com/forc.php?searchedLG=INPUT"
   },
   {
     "Dictionary": "Gaffiot",
@@ -36,12 +36,8 @@
     "Formula": "http://logeion.uchicago.edu/INPUT"
   },
   {
-    "Dictionary": "Notre-Dame",
-    "Formula": "https://archives.nd.edu/cgi-bin/lookup.pl?stem=INPUT&ending="
-  },
-  {
     "Dictionary": "Numen",
-    "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1"
+    "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1#:~:text=INPUT"
   },
   {
     "Dictionary": "Packard Humanities",
@@ -53,7 +49,7 @@
   },
   {
     "Dictionary": "Thesaurus Linguae Latinae",
-    "Formula": "https://www.degruyter.com/databasecontent?dbf_0=tll-fulltext&dbid=tll&dbq_0=INPUT&dbsource=%2Fdb%2Ftll&dbt_0=fulltext&o_0=AND&sort=ttl-lemma-sort"
+    "Formula": "https://tll.degruyter.com/results?type=0&field0=0&val0=INPUT&searchId=e"
   },
   {
     "Dictionary": "Tower of Babel",
