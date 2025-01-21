@@ -72,6 +72,10 @@ ul {
   }
 }
 
+*:not([lang='en']) {
+  hyphens: none;
+}
+
 /* Alegreya doesn’t have Hebrew characters, so any Hebrew gets displayed in a system font. */
 #__next *[lang='he'] {
   font-family: 'Alegreya Subset', serif;
