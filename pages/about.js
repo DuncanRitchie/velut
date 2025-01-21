@@ -552,7 +552,10 @@ const About = (props) => {
               <a href="https://latin.stackexchange.com/questions/867/which-online-latin-dictionaries-should-i-use-and-why">
                 this Latin Stack Exchange thread
               </a>
-              .
+            </p>
+            <p>
+              To search a corpus of mediaeval/Renaissance Latin poetry, try{' '}
+              <a href="https://open.unive.it/mqdq/ricerca/avanzata">Musisque Deoque</a>.
             </p>
             <p>
               I’m not affiliated with any external sites or responsible for their content. I’ve found them helpful, so I
