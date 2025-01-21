@@ -80,3 +80,13 @@
   padding-top: 0;
   padding-bottom: 1.25rem;
 }
+
+/* Justify-align body text on wider screens. */
+@media (min-width: 60ch) {
+  .advancedRubric p,
+  .advancedRubric ul {
+    text-align: justify;
+    hyphens: auto;
+    hyphenate-limit-chars: 10;
+  }
+}
