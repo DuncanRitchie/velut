@@ -26,16 +26,6 @@
   background: rgba(255, 253, 244, 0.95);
 }
 
-/* Justify-align body text on wider screens. */
-@media (min-width: 60ch) {
-  .about main p,
-  .about main ul {
-    text-align: justify;
-    hyphens: auto;
-    hyphenate-limit-chars: 10;
-  }
-}
-
 .about h2 + p {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;

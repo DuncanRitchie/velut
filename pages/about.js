@@ -35,7 +35,7 @@ const About = (props) => {
           content="Explanation of the purpose and functionality of velut, the Latin vocabulary website"
         />
       </Head>
-      <div className={styles.about + ' fulmar-background'}>
+      <div className={styles.about + ' fulmar-background canJustify'}>
         <Header textBeforeTitle="About" />
 
         <main>

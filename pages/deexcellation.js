@@ -87,7 +87,7 @@ const DeExcellation = (props) => {
       <div className={styles.about + ' fulmar-background'}>
         <Header textBeforeTitle="De-Excellation" />
 
-        <main>
+        <main className="canJustify">
           <section id="preamble">
             <h2>Preamble</h2>
             <p>

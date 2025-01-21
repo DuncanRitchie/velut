@@ -4,7 +4,7 @@ import styles from './AdvancedRubric.module.css'
 
 const AdvancedRubric = () => {
   return (
-    <Details className={styles.advancedRubric}>
+    <Details className={styles.advancedRubric + ' canJustify'}>
       <summary>Show/hide how to use the Advanced Search</summary>
       <h2>How to use</h2>
       <p>This page allows you to search for Latin words by spelling, scansion, or both.</p>
