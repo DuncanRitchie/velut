@@ -257,6 +257,7 @@ const DeExcellation = (props) => {
             <p>
               Here’s what {writingInflectorProgressPercent}
               % looks like as a progress-bar:
+              <br />
               <progress min="0" max={props.summary?.inflectorCounts.total} value={successesOrNoTestDataCount} />
             </p>
           </section>
@@ -282,8 +283,8 @@ const DeExcellation = (props) => {
               </li>
             </ul>
             <p>
-              Here’s what {checkingInflectorProgressPercent}
-              % looks like as a progress-bar:
+              Here’s what {checkingInflectorProgressPercent}% looks like as a progress-bar:
+              <br />
               <progress
                 min="0"
                 max={props.summary?.inflectorCounts.total}
