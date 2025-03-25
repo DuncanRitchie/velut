@@ -8,6 +8,7 @@ const nextConfig = {
       permanent: true,
     },
   ],
+  devIndicators: false,
 }
 
 module.exports = nextConfig
