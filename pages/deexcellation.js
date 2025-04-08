@@ -285,11 +285,16 @@ const DeExcellation = (props) => {
             <p>
               Here’s what {checkingInflectorProgressPercent}% looks like as a progress-bar:
               <br />
-              <progress
-                min="0"
-                max={props.summary?.inflectorCounts.total}
-                value={props.summary?.inflectorCounts.manuallyChecked}
-              />
+              {/* The ID of #checkingLemmataBar is the CSS selector for drawing notches representing the number of lemmata
+              I’d like to have checked by the end of each month in 2025.
+              It’s on a <span> because Firefox won’t render ::after pseudo-element on a <progress> */}
+              <span id={styles.checkingLemmataBar}>
+                <progress
+                  min="0"
+                  max={props.summary?.inflectorCounts.total}
+                  value={props.summary?.inflectorCounts.manuallyChecked}
+                />
+              </span>
             </p>
             <p>
               The {numberFormatter.format(props.summary?.inflectorCounts.manuallyChecked)} lemmata that I’ve checked
@@ -299,6 +304,24 @@ const DeExcellation = (props) => {
                 ? ` Although I have not finished checking all verbs, I have checked some of them, and these may have inflection-tables displayed, too.`
                 : null}
             </p>
+            <details id={styles.notchesDetails}>
+              <summary>About the notches</summary>
+              <p>
+                The progress-bar has six notches towards the end. The first one represents the number of lemmata I had
+                checked by the end of 2024. The other five notches represent where I aim to be by the end of
+                January/February/March/April/May 2025. I aim to have completed the checking of all lemmata by the end of
+                June 2025.
+              </p>
+              <ul>
+                <li>By the end of 2024, I had checked 11,800 lemmata.</li>
+                <li>By the end of Jan 2025, I want to have checked (at least) 12,188 lemmata.</li>
+                <li>By the end of Feb 2025, I want to have checked (at least) 12,576 lemmata.</li>
+                <li>By the end of Mar 2025, I want to have checked (at least) 12,964 lemmata.</li>
+                <li>By the end of Apr 2025, I want to have checked (at least) 13,352 lemmata.</li>
+                <li>By the end of May 2025, I want to have checked (at least) 13,740 lemmata.</li>
+                <li>By the end of Jun 2025, I want to have checked all 14,127 lemmata.</li>
+              </ul>
+            </details>
           </section>
 
           <section id="incorrect-forms" className={styles.incorrectForms}>
