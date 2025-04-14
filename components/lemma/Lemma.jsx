@@ -91,17 +91,19 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
   let hasParticiples = false
 
   // Move the participle forms from the object that has all the forms to the object that has none.
-  ;['unencliticized', 'ne', 'que', 've'].forEach((enclitic) => {
-    delete nonParticipleForms[enclitic].participle
+  ;['unencliticized', 'ne', 'que', 've']
+    .filter((enclitic) => lemma.Forms[enclitic]) // Only consider keys that we have verb forms for.
+    .forEach((enclitic) => {
+      delete nonParticipleForms[enclitic].participle
 
-    if (lemma.Forms[enclitic].participle) {
-      hasParticiples = true
+      if (lemma.Forms[enclitic].participle) {
+        hasParticiples = true
 
-      participleForms[enclitic] = {
-        participle: lemma.Forms[enclitic].participle,
+        participleForms[enclitic] = {
+          participle: lemma.Forms[enclitic].participle,
+        }
       }
-    }
-  })
+    })
 
   return (
     <>
