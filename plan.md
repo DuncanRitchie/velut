@@ -63,7 +63,7 @@ More words and statistics are on a dedicated <a href="https://www.velut.co.uk/de
       Note from 2024-10-18 — Because all the lemmata I have left to check are verbs, and going through all verbs will take a while, I have allowed verbs that have been checked to have their inflection-tables displayed on the live website.
       For other verbs, the list of forms from Excel will continue to be shown.
       The environment variable is still useful for documenting which parts of speech I’ve finished checking.
-- [ ] Consider removing the environment variable that controls which lemmata have inflection-tables — at this point, all lemmata should have them, even on the live website.
+- [x] Consider removing the environment variable that controls which lemmata have inflection-tables — at this point, all lemmata should have them, even on the live website. <ins>Env var removed 2025-05-31.</ins>
 - [ ] Implement programmatic handling of ambiguously stressed forms.<br><br>
       What do I mean by this?<br><br>
       Some pairs of lemmata have particular forms that are identical except for the stress.
