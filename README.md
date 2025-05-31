@@ -62,18 +62,17 @@ I added to the Excel file frequently, converted the data to Json — using a [we
 I am now well into the process of replacing Excel with my custom Json, JavaScript, and MongoDB.
 It feels good to not have to open up a 90MB file!
 
-My current stage is manually reviewing the output of my Inflector script (inflection-tables for all lemmata).
-This stage may take another few months because accuracy is important to me and I’m reviewing each of my 14,127 lemma individually.
-So far, I have reviewed most of the lemmata and published their inflection-tables to the live website.
+Very recently, I finished manually reviewing the output of my Inflector script (inflection-tables for all lemmata).
+Consequently, all lemmata have inflection-tables on the live website.
 
 The `words` collection, at the moment, consists of Latin words that I had in Excel, fed through the Word Data Generator.
 This means that words that I didn’t have in Excel cannot be searched for on the velut website — even if they appear in the inflection-tables that the Inflector creates.
-Eventually, I will be able to use the Inflector’s output for the input to the Word Data Generator (via a new script I alluded to earlier).
+Soon, I will be able to use the Inflector’s output for the input to the Word Data Generator (via a new script I alluded to earlier).
 That will mean every form in the inflection-tables will be in the `words` collection, and every form therefore will be a word that can be searched for on the website.
 
 There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include.
 But, that will have to wait.
-My priority is finishing my script for generating forms (or finishing checking that it’s all correct) and completing the new architecture without Excel.
+My priority is completing the new architecture without Excel.
 
 For the details, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
 
@@ -100,18 +99,9 @@ The file looks like this:
 
 ```env
 MONGODB_URI=mongodb://127.0.0.1:27017/velut-local?retryWrites=true&w=majority
-NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR=Proper noun,Conjunction,Pronoun,Noun,Interjection,Preposition,Adverb,Adjective,Verb
 ```
 
 (It’s not in version control in case I change the MongoDB connection string to point to the live database, which is obviously sensitive.)
-
-In Next.js, environment variables beginning with “NEXT_PUBLIC” are accessible on the client-side.
-The `NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR` variable is a list of parts of speech; it exists because I’m currently transitioning the inflected forms that are displayed on the website.
-If a lemma belongs to a part of speech in the list, a full table of programmatically-generated forms is displayed for the lemma.
-Otherwise, the only forms displayed are those I manually added to velut.
-
-In development, generated forms should be shown for all parts of speech, so I can review them.
-In production (ie, on the live website), generated forms for parts of speech that I have not reviewed are not shown.
 
 To set an environment variable in production, I use the Fly command-line interface:
 
