@@ -9,21 +9,6 @@ import VerbFormsTable from '../formsTables/VerbFormsTable'
 import ParticiplesTable from '../formsTables/ParticiplesTable'
 import ErrorBoundary from '../errorBoundary/errorBoundary'
 
-// The env var should be something like "Proper noun, Conjunction"
-// which is processed here to ['Proper noun', 'Conjunction']
-// In production, it lists the parts of speech that I have finished
-// checking the generated forms for.
-// The prefix NEXT_PUBLIC_ on the key prevents hydration errors
-// by allowing Next.js to use the env var on the client-side.
-// The env var must be defined in a .env file (.env.local etc);
-// otherwise hydration will fail.
-const partsOfSpeechToShowGeneratedFormsFor =
-  process.env.NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR?.split(',').map((x) => x.trim()) ?? []
-
-function shouldGeneratedFormsBeShownForLemma(lemma) {
-  return partsOfSpeechToShowGeneratedFormsFor.includes(lemma.PartOfSpeech) || lemma.FormsHaveBeenChecked
-}
-
 // Eg iūs[>iūrō] => lemma-iūs-iūrō
 function getLemmaId({ Lemma }) {
   // Replace instances of square/angle brackets with hyphens, then delete trailing hyphens.
@@ -31,11 +16,9 @@ function getLemmaId({ Lemma }) {
 }
 
 const Forms = ({ lemma, linkBase, currentWordHyphenated }) => {
-  let { formsFromWordsCollection, incorrectForms, Forms } = lemma
+  let { formsFromWordsCollection, Forms } = lemma
 
-  const shouldGeneratedFormsBeShown = shouldGeneratedFormsBeShownForLemma(lemma)
-
-  if (shouldGeneratedFormsBeShown && lemma.PartOfSpeech === 'Verb') {
+  if (lemma.PartOfSpeech === 'Verb') {
     return (
       <VerbForms
         lemma={lemma}
@@ -46,39 +29,19 @@ const Forms = ({ lemma, linkBase, currentWordHyphenated }) => {
     )
   }
 
-  if (shouldGeneratedFormsBeShown) {
-    return (
-      <FormsTable
-        Forms={Forms}
-        formsFromWordsCollection={formsFromWordsCollection}
-        lemma={lemma.Lemma}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-        openByDefault={true}
-        /* The forms table should be full-width if there are enough forms to fill the width.
+  return (
+    <FormsTable
+      Forms={Forms}
+      formsFromWordsCollection={formsFromWordsCollection}
+      lemma={lemma.Lemma}
+      linkBase={linkBase}
+      currentWordHyphenated={currentWordHyphenated}
+      openByDefault={true}
+      /* The forms table should be full-width if there are enough forms to fill the width.
         This is likeliest if it’s an adjective with comparative forms. */
-        isFullWidth={lemma.PartOfSpeech === 'Adjective' && Forms.unencliticized?.comparative}
-      />
-    )
-  }
-
-  // If generated forms should not be shown, we create JSX for the forms that are already in the words collection.
-  // Forms are skipped if they are in the summary collection as an erratum.
-  const mappedForms = formsFromWordsCollection ? (
-    formsFromWordsCollection.map((form, index) => {
-      if (incorrectForms?.includes(form)) {
-        return <></>
-      }
-      return (
-        <Fragment key={index}>
-          <LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated} />{' '}
-        </Fragment>
-      )
-    })
-  ) : (
-    <></>
+      isFullWidth={lemma.PartOfSpeech === 'Adjective' && Forms.unencliticized?.comparative}
+    />
   )
-  return <p>Sample of forms: {mappedForms}</p>
 }
 
 const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphenated }) => {

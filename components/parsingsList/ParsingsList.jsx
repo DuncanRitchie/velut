@@ -34,9 +34,7 @@ const ParsingsList = ({ lemmata, form }) => {
         <td>
           <a href={'#' + getLemmaId(lemma)}>{superscriptLemmaTag(lemma.Lemma)}</a>
         </td>
-        <td>
-          {parsing} {lemma.FormsHaveBeenChecked ? null : <em>(not verified)</em>}
-        </td>
+        <td>{parsing}</td>
       </tr>
     )),
   )
