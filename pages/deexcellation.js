@@ -65,12 +65,6 @@ const DeExcellation = (props) => {
     return `${dayOfWeek} ${date.getDate()} ${month} ${date.getFullYear()}`
   })()
 
-  // Will be something like "proper nouns, conjunctions, and pronouns"
-  const stringOfPartsOfSpeechToShowGeneratedFormsFor = getShowGeneratedFormsString()
-  // If that string contains “verbs”, all verbs will have their generated forms displayed.
-  // If the string does not contain “verbs”, some verbs will still have their generated forms displayed, because their forms have been checked.
-  const areSomeVerbsWaitingToBeShownGeneratedFormsFor = !stringOfPartsOfSpeechToShowGeneratedFormsFor.includes(' verbs')
-
   const numberFormatter = new Intl.NumberFormat('en-GB')
   // To add commas for the thousand marker of a number, I use numberFormatter.format()
   // I don’t expect the number to be null or undefined, but the formatter would return "0" and "NaN" respectively, and not throw.
@@ -179,33 +173,29 @@ const DeExcellation = (props) => {
               includes all the grammatical information I want too, so it says what’s a genitive singular, etc.
             </p>
             <p>
-              Happily, I can use the data from Excel to check the forms that the Inflector generates. So if I had forms
-              in Excel that the Inflector isn’t re-creating, I know about it. I can then decide whether each form is a
-              mistake and should never have been in velut, or it’s worth keeping. In the latter case, either there’s a
-              bug in the Inflector, or the Json file that the Inflector reads from (listing all lemmata) needs more
-              information about the lemma in question.
+              Happily, I could use the data from Excel to check the forms that the Inflector generates. So if I had
+              forms in Excel that the Inflector isn’t re-creating, I knew about it. I could then decide whether each
+              form is a mistake and should never have been in velut, or it’s worth keeping. In the latter case, either
+              there was a bug in the Inflector, or the Json file that the Inflector reads from (listing all lemmata)
+              needed more information about the lemma in question.
             </p>
             <p>
-              Below, you can see a <a href="#example-forms">sample of forms that I will be generating</a>, and the{' '}
+              Below, you can see a <a href="#example-forms">sample of forms that I am generating</a>, and the{' '}
               <a href="#incorrect-forms">list of all the forms that I’ve decided not to keep</a>. I also show my
               progress in{' '}
               <a href="#progress-on-writing-the-inflector">making the Inflector generate forms for each lemma</a>, and
               then my progress in <a href="#progress-on-checking-the-inflectors-output">checking those forms</a>.
             </p>
             <p>
-              You see, the data from Excel tell me what forms the Inflector misses, but the Inflector might still be
-              creating forms that aren’t really reasonable for a given lemma, or the grammatical labels (genitive
-              singular, etc) might be wrong. So I’m manually going through all my lemmata and confirming that the forms
-              information looks okay!
+              You see, the data from Excel tell me what forms the Inflector misses (currently none), but the Inflector
+              could still have been creating forms that weren’t really reasonable for a given lemma, or the grammatical
+              labels (genitive singular, etc) could have been wrong. So I’ve manually gone through all my lemmata and
+              confirmed that the forms information looks okay! (This took me about two years.)
             </p>
             <p>
-              Once I have confirmed that all lemmata of a part of speech are given the correct forms by the Inflector, I
-              can switch from showing a simple list of forms to displaying the full inflection-tables on the live
-              website. Currently, the parts of speech that I display inflection-tables for are{' '}
-              {stringOfPartsOfSpeechToShowGeneratedFormsFor}.{' '}
-              {areSomeVerbsWaitingToBeShownGeneratedFormsFor
-                ? 'I also display inflection-tables for some verbs that have been checked.'
-                : null}
+              After I confirmed that all lemmata of a part of speech are given the correct forms by the Inflector, I
+              switched from showing a simple list of forms to displaying the full inflection-tables on the live website.
+              Inflection-tables are now displayed for all lemmata.
             </p>
           </section>
 
@@ -213,9 +203,8 @@ const DeExcellation = (props) => {
             <h2>Example forms</h2>
             <p>
               Here are the forms I’m generating for <i lang="la">verbum</i>, so you can get a sense of how the tables
-              are going to look. (Tables are already shown for {stringOfPartsOfSpeechToShowGeneratedFormsFor},{' '}
-              {areSomeVerbsWaitingToBeShownGeneratedFormsFor ? 'as well as some verbs,' : null} but there’s no harm in
-              me putting a table on this page too.)
+              are going to look. (Tables are already shown for all lemmata, but there’s no harm in me putting a table on
+              this page too.)
             </p>
             <p>
               Some of the forms below are displayed as links and some are not, on the basis of whether I currently have
@@ -265,11 +254,13 @@ const DeExcellation = (props) => {
           <section id="progress-on-checking-the-inflectors-output">
             <h2>Progress on checking the Inflector’s output</h2>
             <p>
-              The Inflector can replicate all the forms that I had in Excel, for all lemmata. But there may still be
-              mistakes in what the Inflector produces, either because of flaws in my lemmata data-file or (less likely)
-              bugs in how the Inflector handles that data-file.
+              The Inflector can replicate all the forms that I had in Excel, for all lemmata. But even after that, there
+              still could have been mistakes in what the Inflector produces, either because of flaws in my lemmata
+              data-file or (less likely) bugs in how the Inflector handles that data-file.
             </p>
-            <p>So I’m checking all {numberFormatter.format(props.summary?.inflectorCounts.total)} lemmata manually.</p>
+            <p>
+              So I’ve been checking all {numberFormatter.format(props.summary?.inflectorCounts.total)} lemmata manually.
+            </p>
             <ul>
               <li>
                 <strong>{numberFormatter.format(props.summary?.inflectorCounts.manuallyChecked)}</strong> lemmata (
@@ -297,30 +288,27 @@ const DeExcellation = (props) => {
               </span>
             </p>
             <p>
-              The {numberFormatter.format(props.summary?.inflectorCounts.manuallyChecked)} lemmata that I’ve checked
-              include all {stringOfPartsOfSpeechToShowGeneratedFormsFor}. So those are the parts of speech that I
-              display inflection-tables for.
-              {areSomeVerbsWaitingToBeShownGeneratedFormsFor
-                ? ` Although I have not finished checking all verbs, I have checked some of them, and these may have inflection-tables displayed, too.`
-                : null}
+              Now I have checked all {numberFormatter.format(props.summary?.inflectorCounts.manuallyChecked)} lemmata, I
+              can display inflection-tables for all of them.
             </p>
             <details id={styles.notchesDetails}>
               <summary>About the notches</summary>
               <p>
                 The progress-bar has six notches towards the end. The first one represents the number of lemmata I had
-                checked by the end of 2024. The other five notches represent where I aim to be by the end of
-                January/February/March/April/May 2025. I aim to have completed the checking of all lemmata by the end of
-                June 2025.
+                checked by the end of 2024. The other five notches represent where I aimed to be by the end of
+                January/February/March/April/May 2025. I aimed to have completed the checking of all lemmata by the end
+                of June 2025.
               </p>
               <ul>
                 <li>By the end of 2024, I had checked 11,800 lemmata.</li>
-                <li>By the end of Jan 2025, I want to have checked (at least) 12,188 lemmata.</li>
-                <li>By the end of Feb 2025, I want to have checked (at least) 12,576 lemmata.</li>
-                <li>By the end of Mar 2025, I want to have checked (at least) 12,964 lemmata.</li>
-                <li>By the end of Apr 2025, I want to have checked (at least) 13,352 lemmata.</li>
-                <li>By the end of May 2025, I want to have checked (at least) 13,740 lemmata.</li>
-                <li>By the end of Jun 2025, I want to have checked all 14,127 lemmata.</li>
+                <li>By the end of Jan 2025, I wanted to have checked (at least) 12,188 lemmata.</li>
+                <li>By the end of Feb 2025, I wanted to have checked (at least) 12,576 lemmata.</li>
+                <li>By the end of Mar 2025, I wanted to have checked (at least) 12,964 lemmata.</li>
+                <li>By the end of Apr 2025, I wanted to have checked (at least) 13,352 lemmata.</li>
+                <li>By the end of May 2025, I wanted to have checked (at least) 13,740 lemmata.</li>
+                <li>By the end of Jun 2025, I wanted to have checked all 14,127 lemmata.</li>
               </ul>
+              <p>I actually finished checking the lemmata on May 31st, a month ahead of schedule.</p>
             </details>
           </section>
 
