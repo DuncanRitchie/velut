@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { Fragment } from 'react'
 
 import { getSummary } from '../lib/summary'
-import { getShowGeneratedFormsString } from '../lib/lemmata'
 import styles from '../css/About.module.css'
 import Header from '../components/header/Header'
 import LatinLink from '../components/latinlink/LatinLink'
