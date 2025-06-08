@@ -3,6 +3,16 @@
   "name": "velut",
   "compatibility_date": "2025-06-08",
   "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    {
+      "pattern": "velut.info",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.velut.info",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
