@@ -40,6 +40,7 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "wrangler": "^4.19.1"
   }
 }
