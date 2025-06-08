@@ -19,7 +19,6 @@ All my Latin words are macronized, meaning every long vowel is marked with a mac
 Other sections of the site let you find:
 
 - Latin words whose letters are contained in an input string (I call them [subwords](https://www.velut.co.uk/subwords)),
-- Latin [phrases that are anagrams](https://www.velut.co.uk/anagramphrases) of an input (this is not actually linked from elsewhere on the site, because it can be very slow!),
 - Latin lemmata [from an English meaning](https://www.velut.co.uk/english),
 - Latin words [that fit either](https://www.velut.co.uk/advanced) an input pattern of letters or an input metrical scansion, or both (added in November 2020), and
 - [many Latin words at once](https://www.velut.co.uk/multiword) (added in May 2021).
@@ -31,12 +30,14 @@ The velut website (in this repository) is a Next.js site that reads from two Mon
 Vocabulary data and scripts for processing them are in separate repos. I have a private Json file listing all lemmata (dictionary headwords), and public JavaScript scripts that process the Json into more Json, and that is what goes into the two MongoDB collections.
 
 The scripts include my:
+
 - [Inflector](https://github.com/DuncanRitchie/velut-inflector), which generates inflected forms for all lemmata; and
 - [Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator), which generates phonetic and other information about all words.
 
 There will also be a script that converts the output of the Inflector into the format needed for the Word Data Generator. This will enable all inflected forms to be words that you can search for and see rhymes for on the velut website.
 
 The two MongoDB collections are:
+
 - `lemmata`, in which every document (database record) is a “lemma” with information from the source Json file plus the inflected forms from the Inflector; and
 - `words`, in which every document is a “word” with information from the Word Data Generator.
 

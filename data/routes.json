@@ -60,12 +60,6 @@
     "headingToDisplay": "Subwords"
   },
   {
-    "route": "anagramphrases",
-    "searchField": null,
-    "functionName": "getAnagrams",
-    "headingToDisplay": "Anagram phrases"
-  },
-  {
     "route": "english",
     "searchField": null,
     "functionName": "getLemmataEnglish",

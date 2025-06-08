@@ -48,7 +48,7 @@
 
 @media print {
   .footer {
-    /* This is the same border as the sections in Subwords and AnagramPhrases have */
+    /* This is the same border as the sections in Subwords have */
     border-top: 0.1875rem solid #90cbd1;
     margin-top: 2.25rem;
   }

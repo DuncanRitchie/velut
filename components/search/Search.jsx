@@ -95,7 +95,7 @@ class Search extends Component {
           {/* The `type` parameter determines the type of results displayed on the page.
                 If the dropdown menu should appear on the page, it will set `type`.
                 Otherwise, `type` will come from a hidden <input> element.
-                The latter happens if the path begins with /about, /english, /subwords, or /anagramphrases. */}
+                The latter happens if the path begins with /about, /english, or /subwords. */}
           {this.props.hideDropdown ? (
             <input name="type" type="hidden" value={this.state.type}></input>
           ) : (
