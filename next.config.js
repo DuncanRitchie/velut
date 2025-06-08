@@ -7,6 +7,12 @@ const nextConfig = {
       destination: 'https://www.velut.co.uk/:path*',
       permanent: true,
     },
+    {
+      source: '/:path*',
+      has: [{ type: 'host', value: 'velut.info' }],
+      destination: 'https://www.velut.info/:path*',
+      permanent: true,
+    },
   ],
   devIndicators: false,
 }
