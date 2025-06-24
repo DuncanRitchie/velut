@@ -31,10 +31,11 @@ Vocabulary data and scripts for processing them are in separate repos. I have a 
 
 The scripts include my:
 
-- [Inflector](https://github.com/DuncanRitchie/velut-inflector), which generates inflected forms for all lemmata; and
+- [Inflector](https://github.com/DuncanRitchie/velut-inflector), which generates inflected forms for all lemmata;
+- [Lemmata Collator](https://github.com/DuncanRitchie/velut-lemmata-collator), which extracts from the Inflector’s output the words needed for the Word Data Generator; and
 - [Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator), which generates phonetic and other information about all words.
 
-There will also be a script that converts the output of the Inflector into the format needed for the Word Data Generator. This will enable all inflected forms to be words that you can search for and see rhymes for on the velut website.
+This will enable all inflected forms to be words that you can search for and see rhymes for on the velut website.
 
 The two MongoDB collections are:
 
@@ -68,7 +69,7 @@ Consequently, all lemmata have inflection-tables on the live website.
 
 The `words` collection, at the moment, consists of Latin words that I had in Excel, fed through the Word Data Generator.
 This means that words that I didn’t have in Excel cannot be searched for on the velut website — even if they appear in the inflection-tables that the Inflector creates.
-Soon, I will be able to use the Inflector’s output for the input to the Word Data Generator (via a new script I alluded to earlier).
+Soon, I will use the Inflector’s output for the input to the Word Data Generator (via a script I alluded to earlier).
 That will mean every form in the inflection-tables will be in the `words` collection, and every form therefore will be a word that can be searched for on the website.
 
 There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include.
