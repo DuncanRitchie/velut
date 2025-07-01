@@ -130,6 +130,21 @@ const WordPage = ({
     ? `${headingToDisplay} for “${foundWord.Word}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
     : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
 
+  // JSX for pagination links: first, previous, next, last.
+  // These do not get rendered if the link would be to the current page.
+  // Prev/next links also don’t get rendered if the current page is not in range (eg Page 5 of 3).
+  const firstPageLink = pageNumber > 1 ? <a href="?page=1">First page</a> : null
+  const prevPageLink =
+    pageNumber > 1 && pageNumber <= pagesCount ? <a href={`?page=${pageNumber - 1}`}>Previous page</a> : null
+  const nextPageLink = pageNumber < pagesCount ? <a href={`?page=${pageNumber + 1}`}>Next page</a> : null
+  const lastPageLink = pageNumber !== pagesCount ? <a href={`?page=${pagesCount}`}>Last page</a> : null
+
+  const paginationLinks = (
+    <>
+      {firstPageLink} {prevPageLink} {nextPageLink} {lastPageLink}{' '}
+    </>
+  )
+
   return (
     <>
       <Head>
@@ -161,7 +176,7 @@ const WordPage = ({
               <p>{mappedRhymes}</p>
               <p>
                 Showing {rhymes.length} results (results {firstRhymeNumber} to {lastRhymeNumber}) out of a possible{' '}
-                {numberFormatter.format(totalRhymesCount)}. Page {pageNumber} of {pagesCount}.
+                {numberFormatter.format(totalRhymesCount)}. Page {pageNumber} of {pagesCount}. {paginationLinks}
               </p>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
