@@ -27,6 +27,7 @@ const WordPage = ({
   foundWord,
   homographs,
   rhymes,
+  totalRhymesCount,
   type,
   correctLemmata,
   incorrectLemmata,
@@ -40,6 +41,7 @@ const WordPage = ({
   let mappedIncorrectLemmata = []
   // All Links to other velut words will begin with linkBase.
   const linkBase = type === '' ? '/' : '/' + type + '/'
+  const numberFormatter = new Intl.NumberFormat('en-GB')
 
   if (foundWord) {
     const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word)
@@ -153,6 +155,9 @@ const WordPage = ({
               </p>
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
+              <p>
+                Showing {rhymes.length} results out of a possible {numberFormatter.format(totalRhymesCount)}.
+              </p>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
                 <>
@@ -228,7 +233,7 @@ export async function getServerSideProps({ params, res }) {
     const { homographs } = homographsObject
 
     const rhymesObject = await getRhymes(wordAsObject, typeParam)
-    const { rhymes, headingToDisplay } = rhymesObject
+    const { rhymes, totalRhymesCount, headingToDisplay } = rhymesObject
 
     const lemmataObject = await getLemmata(wordAsObject)
     const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
@@ -248,6 +253,7 @@ export async function getServerSideProps({ params, res }) {
         incorrectLemmata: lemmataWithFormIncorrect,
         correctLemmata: lemmataWithFormCorrect,
         rhymes,
+        totalRhymesCount,
         search: wordParam,
         headingToDisplay,
         sanitisedInput,
