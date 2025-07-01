@@ -175,8 +175,10 @@ const WordPage = ({
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
               <p>
-                Showing {rhymes.length} results (results {firstRhymeNumber} to {lastRhymeNumber}) out of a possible{' '}
-                {numberFormatter.format(totalRhymesCount)}. Page {pageNumber} of {pagesCount}. {paginationLinks}
+                Showing {numberFormatter.format(rhymes.length)} results (results{' '}
+                {numberFormatter.format(firstRhymeNumber)} to {numberFormatter.format(lastRhymeNumber)}) out of a
+                possible {numberFormatter.format(totalRhymesCount)}. Page {numberFormatter.format(pageNumber)} of{' '}
+                {numberFormatter.format(pagesCount)}. {paginationLinks}
               </p>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
