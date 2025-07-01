@@ -28,6 +28,10 @@ const WordPage = ({
   homographs,
   rhymes,
   totalRhymesCount,
+  firstRhymeNumber,
+  lastRhymeNumber,
+  pageNumber,
+  pagesCount,
   type,
   correctLemmata,
   incorrectLemmata,
@@ -156,7 +160,8 @@ const WordPage = ({
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
               <p>
-                Showing {rhymes.length} results out of a possible {numberFormatter.format(totalRhymesCount)}.
+                Showing {rhymes.length} results (results {firstRhymeNumber} to {lastRhymeNumber}) out of a possible{' '}
+                {numberFormatter.format(totalRhymesCount)}. Page {pageNumber} of {pagesCount}.
               </p>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
@@ -209,7 +214,7 @@ const WordPage = ({
 
 export default WordPage
 
-export async function getServerSideProps({ params, res }) {
+export async function getServerSideProps({ params, query, res }) {
   await dbConnect()
 
   //// The URL is /:type/:word
@@ -222,6 +227,7 @@ export async function getServerSideProps({ params, res }) {
   const wordParam = params.hasOwnProperty('word') ? params.word : params.type ?? ''
   const typeParam = params.hasOwnProperty('word') ? params.type : ''
   const sanitisedInput = wordParam
+  const page = query.page || undefined
 
   //// Fetch the word object from the database.
   const word = await findOneWord(sanitisedInput)
@@ -232,8 +238,9 @@ export async function getServerSideProps({ params, res }) {
     const homographsObject = await getHomographs(wordAsObject)
     const { homographs } = homographsObject
 
-    const rhymesObject = await getRhymes(wordAsObject, typeParam)
-    const { rhymes, totalRhymesCount, headingToDisplay } = rhymesObject
+    const rhymesObject = await getRhymes(wordAsObject, typeParam, page)
+    const { rhymes, totalRhymesCount, firstRhymeNumber, lastRhymeNumber, pageNumber, pagesCount, headingToDisplay } =
+      rhymesObject
 
     const lemmataObject = await getLemmata(wordAsObject)
     const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
@@ -252,8 +259,12 @@ export async function getServerSideProps({ params, res }) {
         homographs,
         incorrectLemmata: lemmataWithFormIncorrect,
         correctLemmata: lemmataWithFormCorrect,
-        rhymes,
+        rhymes: rhymes ?? [],
         totalRhymesCount,
+        firstRhymeNumber,
+        lastRhymeNumber,
+        pageNumber,
+        pagesCount,
         search: wordParam,
         headingToDisplay,
         sanitisedInput,
