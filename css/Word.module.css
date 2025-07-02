@@ -18,3 +18,28 @@
   padding-left: 0.125em;
   letter-spacing: 0.125em;
 }
+
+.paginationTexts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.25em 1em;
+  padding: 0 0.75rem;
+}
+
+.paginationTexts p {
+  padding: 0;
+}
+
+.paginationTexts p:last-child {
+  padding-bottom: 0.75rem;
+}
+
+.paginationTexts a {
+  padding-inline: 0.125em;
+}
+
+.pageArrow {
+  font-size: 1.3em;
+}

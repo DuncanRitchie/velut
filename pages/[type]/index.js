@@ -151,11 +151,42 @@ const WordPage = ({
   // JSX for pagination links: first, previous, next, last.
   // These do not get rendered if the link would be to the current page.
   // Prev/next links also don’t get rendered if the current page is not in range (eg Page 5 of 3).
-  const firstPageLink = pageNumber > 1 ? <a href="?page=1">First page</a> : null
+  const firstPageLink =
+    pageNumber > 1 ? (
+      <a href="?page=1">
+        <span className={styles.pageArrow} aria-hidden="true">
+          {/*⭰*/}|←
+        </span>
+        &nbsp;First
+      </a>
+    ) : null
   const prevPageLink =
-    pageNumber > 1 && pageNumber <= pagesCount ? <a href={`?page=${pageNumber - 1}`}>Previous page</a> : null
-  const nextPageLink = pageNumber < pagesCount ? <a href={`?page=${pageNumber + 1}`}>Next page</a> : null
-  const lastPageLink = pageNumber !== pagesCount ? <a href={`?page=${pagesCount}`}>Last page</a> : null
+    pageNumber > 1 && pageNumber <= pagesCount ? (
+      <a href={`?page=${pageNumber - 1}`}>
+        <span className={styles.pageArrow} aria-hidden="true">
+          ←
+        </span>
+        &nbsp;Previous
+      </a>
+    ) : null
+  const nextPageLink =
+    pageNumber < pagesCount ? (
+      <a href={`?page=${pageNumber + 1}`}>
+        Next&nbsp;
+        <span className={styles.pageArrow} aria-hidden="true">
+          →
+        </span>
+      </a>
+    ) : null
+  const lastPageLink =
+    pageNumber !== pagesCount ? (
+      <a href={`?page=${pagesCount}`}>
+        Last&nbsp;
+        <span className={styles.pageArrow} aria-hidden="true">
+          {/*⭲*/}→|
+        </span>
+      </a>
+    ) : null
 
   const paginationLinks = (
     <>
@@ -192,9 +223,10 @@ const WordPage = ({
               </p>
               <h2>{headingToDisplay}</h2>
               {pageNumber <= pagesCount ? <p>{mappedRhymes}</p> : null}
-              <p>
-                {paginationText} {paginationLinks}
-              </p>
+              <div className={styles.paginationTexts}>
+                <p>{paginationText}</p>
+                <p>{paginationLinks}</p>
+              </div>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
                 <>
