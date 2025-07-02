@@ -129,12 +129,24 @@ const WordPage = ({
     ? `${headingToDisplay} for “${foundWord.Word}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
     : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
 
-  const paginationText = (
-    <>
-      There are {numberFormatter.format(totalRhymesCount)} possible {shortRhymesDescription}; this is page{' '}
-      {numberFormatter.format(pageNumber)} of {numberFormatter.format(pagesCount)}.
-    </>
-  )
+  // Eg "There are 5 possible rhymes; this is page 1 of 1."
+  // or "Page 12 is not a valid page-number. There is only 1 page of rhymes, for 5 possible rhymes."
+  // It is assumed that all values of `shortRhymesDescription` end with a plural s.
+  const paginationText =
+    pageNumber <= pagesCount ? (
+      <>
+        There {totalRhymesCount === 1 ? 'is' : 'are'} {numberFormatter.format(totalRhymesCount)} possible{' '}
+        {totalRhymesCount === 1 ? shortRhymesDescription.replace(/s$/, '') : shortRhymesDescription}; this is page{' '}
+        {numberFormatter.format(pageNumber)} of {numberFormatter.format(pagesCount)}.
+      </>
+    ) : (
+      <>
+        Page {pageNumber} is not a valid page-number. There {pagesCount === 1 ? 'is' : 'are'} only{' '}
+        {numberFormatter.format(pagesCount)} {pagesCount === 1 ? 'page' : 'pages'} of {shortRhymesDescription}, for{' '}
+        {numberFormatter.format(totalRhymesCount)} possible{' '}
+        {totalRhymesCount === 1 ? shortRhymesDescription.replace(/s$/, '') : shortRhymesDescription}.
+      </>
+    )
 
   // JSX for pagination links: first, previous, next, last.
   // These do not get rendered if the link would be to the current page.
@@ -179,7 +191,7 @@ const WordPage = ({
                 ) : null}
               </p>
               <h2>{headingToDisplay}</h2>
-              <p>{mappedRhymes}</p>
+              {pageNumber <= pagesCount ? <p>{mappedRhymes}</p> : null}
               <p>
                 {paginationText} {paginationLinks}
               </p>
