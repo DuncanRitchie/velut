@@ -28,7 +28,7 @@
   padding: 0 0.75rem;
 }
 
-.paginationTexts p {
+p + .paginationTexts p {
   padding: 0;
 }
 
