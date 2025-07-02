@@ -25,15 +25,20 @@
   justify-content: center;
   align-items: baseline;
   gap: 0.25em 1em;
-  padding: 0 0.75rem;
+  padding: 0 1rem 0.75rem;
 }
 
-p + .paginationTexts p {
+h2 + .paginationTexts {
+  padding-top: 0.75rem;
+}
+
+.paginationTexts p {
   padding: 0;
 }
 
-.paginationTexts p:last-child {
-  padding-bottom: 0.75rem;
+/* Hack for more specificity than a conflicting declaration in globals.css */
+.paginationTexts p + p:last-child {
+  padding-bottom: 0;
 }
 
 .paginationTexts a {
