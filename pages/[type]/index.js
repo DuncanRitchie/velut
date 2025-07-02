@@ -20,6 +20,7 @@ import getScansionDescription from '../../lib/words/scansion'
 import styles from '../../css/Word.module.css'
 import subsiteStyles from '../../css/Subsites.module.css'
 import ParsingsList from '../../components/parsingsList/ParsingsList'
+import PageArrow from '../../components/pageArrow/PageArrow'
 
 const WordPage = ({
   sanitisedInput,
@@ -154,18 +155,15 @@ const WordPage = ({
   const firstPageLink =
     pageNumber > 1 ? (
       <a href="?page=1">
-        <span className={styles.pageArrow} aria-hidden="true">
-          {/*⭰*/}|←
-        </span>
+        {/* An alternative would be ⭰ for the left-arrow-to-bar symbol. */}
+        <PageArrow>|←</PageArrow>
         &nbsp;First
       </a>
     ) : null
   const prevPageLink =
     pageNumber > 1 && pageNumber <= pagesCount ? (
       <a href={`?page=${pageNumber - 1}`}>
-        <span className={styles.pageArrow} aria-hidden="true">
-          ←
-        </span>
+        <PageArrow>←</PageArrow>
         &nbsp;Previous
       </a>
     ) : null
@@ -173,18 +171,15 @@ const WordPage = ({
     pageNumber < pagesCount ? (
       <a href={`?page=${pageNumber + 1}`}>
         Next&nbsp;
-        <span className={styles.pageArrow} aria-hidden="true">
-          →
-        </span>
+        <PageArrow>→</PageArrow>
       </a>
     ) : null
   const lastPageLink =
     pageNumber !== pagesCount ? (
       <a href={`?page=${pagesCount}`}>
         Last&nbsp;
-        <span className={styles.pageArrow} aria-hidden="true">
-          {/*⭲*/}→|
-        </span>
+        {/* An alternative would be ⭲ for the right-arrow-to-bar symbol. */}
+        <PageArrow>→|</PageArrow>
       </a>
     ) : null
 
