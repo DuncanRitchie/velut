@@ -28,14 +28,13 @@ const WordPage = ({
   homographs,
   rhymes,
   totalRhymesCount,
-  firstRhymeNumber,
-  lastRhymeNumber,
   pageNumber,
   pagesCount,
   type,
   correctLemmata,
   incorrectLemmata,
   headingToDisplay,
+  shortRhymesDescription,
 }) => {
   let footName = ''
   let footNameArticle = 'a'
@@ -130,6 +129,13 @@ const WordPage = ({
     ? `${headingToDisplay} for “${foundWord.Word}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
     : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
 
+  const paginationText = (
+    <>
+      There are {numberFormatter.format(totalRhymesCount)} possible {shortRhymesDescription}; this is page{' '}
+      {numberFormatter.format(pageNumber)} of {numberFormatter.format(pagesCount)}.
+    </>
+  )
+
   // JSX for pagination links: first, previous, next, last.
   // These do not get rendered if the link would be to the current page.
   // Prev/next links also don’t get rendered if the current page is not in range (eg Page 5 of 3).
@@ -175,10 +181,7 @@ const WordPage = ({
               <h2>{headingToDisplay}</h2>
               <p>{mappedRhymes}</p>
               <p>
-                Showing {numberFormatter.format(rhymes.length)} results (results{' '}
-                {numberFormatter.format(firstRhymeNumber)} to {numberFormatter.format(lastRhymeNumber)}) out of a
-                possible {numberFormatter.format(totalRhymesCount)}. Page {numberFormatter.format(pageNumber)} of{' '}
-                {numberFormatter.format(pagesCount)}. {paginationLinks}
+                {paginationText} {paginationLinks}
               </p>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
@@ -256,8 +259,7 @@ export async function getServerSideProps({ params, query, res }) {
     const { homographs } = homographsObject
 
     const rhymesObject = await getRhymes(wordAsObject, typeParam, page)
-    const { rhymes, totalRhymesCount, firstRhymeNumber, lastRhymeNumber, pageNumber, pagesCount, headingToDisplay } =
-      rhymesObject
+    const { rhymes, totalRhymesCount, pageNumber, pagesCount, headingToDisplay, shortRhymesDescription } = rhymesObject
 
     const lemmataObject = await getLemmata(wordAsObject)
     const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
@@ -278,12 +280,11 @@ export async function getServerSideProps({ params, query, res }) {
         correctLemmata: lemmataWithFormCorrect,
         rhymes: rhymes ?? [],
         totalRhymesCount,
-        firstRhymeNumber,
-        lastRhymeNumber,
         pageNumber,
         pagesCount,
         search: wordParam,
         headingToDisplay,
+        shortRhymesDescription,
         sanitisedInput,
         type: typeParam,
       },
