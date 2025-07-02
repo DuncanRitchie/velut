@@ -20,6 +20,7 @@ import getScansionDescription from '../../lib/words/scansion'
 import styles from '../../css/Word.module.css'
 import subsiteStyles from '../../css/Subsites.module.css'
 import ParsingsList from '../../components/parsingsList/ParsingsList'
+import PageArrow from '../../components/pageArrow/PageArrow'
 
 const WordPage = ({
   sanitisedInput,
@@ -27,10 +28,14 @@ const WordPage = ({
   foundWord,
   homographs,
   rhymes,
+  totalRhymesCount,
+  pageNumber,
+  pagesCount,
   type,
   correctLemmata,
   incorrectLemmata,
   headingToDisplay,
+  shortRhymesDescription,
 }) => {
   let footName = ''
   let footNameArticle = 'a'
@@ -40,6 +45,7 @@ const WordPage = ({
   let mappedIncorrectLemmata = []
   // All Links to other velut words will begin with linkBase.
   const linkBase = type === '' ? '/' : '/' + type + '/'
+  const numberFormatter = new Intl.NumberFormat('en-GB')
 
   if (foundWord) {
     const currentWordHyphenated = foundWord.Word && macraToHyphens(foundWord.Word)
@@ -124,6 +130,65 @@ const WordPage = ({
     ? `${headingToDisplay} for “${foundWord.Word}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
     : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
 
+  // Eg "There are 5 possible rhymes; this is page 1 of 1."
+  // or "Page 12 is not a valid page-number. There is only 1 page of rhymes, for 5 possible rhymes."
+  // It is assumed that all values of `shortRhymesDescription` end with a plural s.
+  const paginationText =
+    pageNumber <= pagesCount ? (
+      <>
+        There {totalRhymesCount === 1 ? 'is' : 'are'} {numberFormatter.format(totalRhymesCount)} possible{' '}
+        {totalRhymesCount === 1 ? shortRhymesDescription.replace(/s$/, '') : shortRhymesDescription}; this is page{' '}
+        {numberFormatter.format(pageNumber)} of {numberFormatter.format(pagesCount)}.
+      </>
+    ) : (
+      <>
+        Page {pageNumber} is not a valid page-number. There {pagesCount === 1 ? 'is' : 'are'} only{' '}
+        {numberFormatter.format(pagesCount)} {pagesCount === 1 ? 'page' : 'pages'} of {shortRhymesDescription}, for{' '}
+        {numberFormatter.format(totalRhymesCount)} possible{' '}
+        {totalRhymesCount === 1 ? shortRhymesDescription.replace(/s$/, '') : shortRhymesDescription}.
+      </>
+    )
+
+  // JSX for pagination links: first, previous, next, last.
+  // These do not get rendered if the link would be to the current page.
+  // Prev/next links also don’t get rendered if the current page is not in range (eg Page 5 of 3).
+  const firstPageLink =
+    pageNumber > 1 ? (
+      <a href="?page=1">
+        {/* An alternative would be ⭰ for the left-arrow-to-bar symbol. */}
+        <PageArrow>|←</PageArrow>
+        &nbsp;First
+      </a>
+    ) : null
+  const prevPageLink =
+    pageNumber > 1 && pageNumber <= pagesCount ? (
+      <a href={`?page=${pageNumber - 1}`}>
+        <PageArrow>←</PageArrow>
+        &nbsp;Previous
+      </a>
+    ) : null
+  const nextPageLink =
+    pageNumber < pagesCount ? (
+      <a href={`?page=${pageNumber + 1}`}>
+        Next&nbsp;
+        <PageArrow>→</PageArrow>
+      </a>
+    ) : null
+  const lastPageLink =
+    pageNumber !== pagesCount ? (
+      <a href={`?page=${pagesCount}`}>
+        Last&nbsp;
+        {/* An alternative would be ⭲ for the right-arrow-to-bar symbol. */}
+        <PageArrow>→|</PageArrow>
+      </a>
+    ) : null
+
+  const paginationLinks = (
+    <>
+      {firstPageLink} {prevPageLink} {nextPageLink} {lastPageLink}{' '}
+    </>
+  )
+
   return (
     <>
       <Head>
@@ -152,7 +217,11 @@ const WordPage = ({
                 ) : null}
               </p>
               <h2>{headingToDisplay}</h2>
-              <p>{mappedRhymes}</p>
+              {pageNumber <= pagesCount ? <p>{mappedRhymes}</p> : null}
+              <div className={styles.paginationTexts}>
+                <p>{paginationText}</p>
+                <p>{paginationLinks}</p>
+              </div>
               <h2>Parsings</h2>
               {correctLemmata.length ? (
                 <>
@@ -204,7 +273,7 @@ const WordPage = ({
 
 export default WordPage
 
-export async function getServerSideProps({ params, res }) {
+export async function getServerSideProps({ params, query, res }) {
   await dbConnect()
 
   //// The URL is /:type/:word
@@ -217,6 +286,7 @@ export async function getServerSideProps({ params, res }) {
   const wordParam = params.hasOwnProperty('word') ? params.word : params.type ?? ''
   const typeParam = params.hasOwnProperty('word') ? params.type : ''
   const sanitisedInput = wordParam
+  const page = query.page || undefined
 
   //// Fetch the word object from the database.
   const word = await findOneWord(sanitisedInput)
@@ -227,8 +297,8 @@ export async function getServerSideProps({ params, res }) {
     const homographsObject = await getHomographs(wordAsObject)
     const { homographs } = homographsObject
 
-    const rhymesObject = await getRhymes(wordAsObject, typeParam)
-    const { rhymes, headingToDisplay } = rhymesObject
+    const rhymesObject = await getRhymes(wordAsObject, typeParam, page)
+    const { rhymes, totalRhymesCount, pageNumber, pagesCount, headingToDisplay, shortRhymesDescription } = rhymesObject
 
     const lemmataObject = await getLemmata(wordAsObject)
     const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
@@ -247,9 +317,13 @@ export async function getServerSideProps({ params, res }) {
         homographs,
         incorrectLemmata: lemmataWithFormIncorrect,
         correctLemmata: lemmataWithFormCorrect,
-        rhymes,
+        rhymes: rhymes ?? [],
+        totalRhymesCount,
+        pageNumber,
+        pagesCount,
         search: wordParam,
         headingToDisplay,
+        shortRhymesDescription,
         sanitisedInput,
         type: typeParam,
       },

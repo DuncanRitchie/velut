@@ -3,55 +3,64 @@
     "route": "",
     "searchField": "PerfectRhyme",
     "sortFields": "Sort",
-    "headingToDisplay": "Perfect rhymes (classical)"
+    "headingToDisplay": "Perfect rhymes (classical)",
+    "shortRhymesDescription": "rhymes"
   },
   {
     "route": "vowels",
     "searchField": "RhymeVowels",
     "sortFields": "Sort",
-    "headingToDisplay": "Vowel rhymes (classical)"
+    "headingToDisplay": "Vowel rhymes (classical)",
+    "shortRhymesDescription": "rhymes"
   },
   {
     "route": "vowelsend",
     "searchField": "RhymeVowelsAndUltimaCoda",
     "sortFields": "Sort",
-    "headingToDisplay": "Vowel-and-end-consonant rhymes (classical)"
+    "headingToDisplay": "Vowel-and-end-consonant rhymes (classical)",
+    "shortRhymesDescription": "rhymes"
   },
   {
     "route": "ecclesperfect",
     "searchField": "EcclesPerfectRhyme",
     "sortFields": "EcclesSort",
-    "headingToDisplay": "Perfect rhymes (ecclesiastical)"
+    "headingToDisplay": "Perfect rhymes (ecclesiastical)",
+    "shortRhymesDescription": "rhymes"
   },
   {
     "route": "ecclesvowels",
     "searchField": "EcclesRhymeVowels",
     "sortFields": "EcclesSort",
-    "headingToDisplay": "Vowel rhymes (ecclesiastical)"
+    "headingToDisplay": "Vowel rhymes (ecclesiastical)",
+    "shortRhymesDescription": "rhymes"
   },
   {
     "route": "ecclesvowelsend",
     "searchField": "EcclesRhymeVowelsAndUltimaCoda",
     "sortFields": "EcclesSort",
-    "headingToDisplay": "Vowel-and-end-consonant rhymes (ecclesiastical)"
+    "headingToDisplay": "Vowel-and-end-consonant rhymes (ecclesiastical)",
+    "shortRhymesDescription": "rhymes"
   },
   {
     "route": "consonyms",
     "searchField": "AllConsonants",
     "sortFields": "NoMacraLowerCase NoMacra Word",
-    "headingToDisplay": "Consonyms"
+    "headingToDisplay": "Consonyms",
+    "shortRhymesDescription": "consonyms"
   },
   {
     "route": "anagrams",
     "searchField": "AlphOrderNoMacra",
     "sortFields": "NoMacraLowerCase NoMacra Word",
-    "headingToDisplay": "Anagrams"
+    "headingToDisplay": "Anagrams",
+    "shortRhymesDescription": "anagrams"
   },
   {
     "route": "scansion",
     "searchField": "Scansion",
     "sortFields": "NoMacraLowerCase NoMacra Word",
-    "headingToDisplay": "Words that scan the same"
+    "headingToDisplay": "Words that scan the same",
+    "shortRhymesDescription": "words"
   },
   {
     "route": "subwords",

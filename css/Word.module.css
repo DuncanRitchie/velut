@@ -18,3 +18,29 @@
   padding-left: 0.125em;
   letter-spacing: 0.125em;
 }
+
+.paginationTexts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.25em 1em;
+  padding: 0 1rem 0.75rem;
+}
+
+h2 + .paginationTexts {
+  padding-top: 0.75rem;
+}
+
+.paginationTexts p {
+  padding: 0;
+}
+
+/* Hack for more specificity than a conflicting declaration in globals.css */
+.paginationTexts p + p:last-child {
+  padding-bottom: 0;
+}
+
+.paginationTexts a {
+  padding-inline: 0.125em;
+}
