@@ -36,6 +36,10 @@
     "Formula": "http://logeion.uchicago.edu/INPUT"
   },
   {
+    "Dictionary": "Morcus",
+    "Formula": "https://morcus.net/dicts?q=INPUT&in=NUM-LnS-GAF&o=1"
+  },
+  {
     "Dictionary": "Numen",
     "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1#:~:text=INPUT"
   },
