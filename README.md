@@ -35,7 +35,7 @@ The scripts include my:
 - [Lemmata Collator](https://github.com/DuncanRitchie/velut-lemmata-collator), which extracts from the Inflector’s output the words needed for the Word Data Generator; and
 - [Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator), which generates phonetic and other information about all words.
 
-This will enable all inflected forms to be words that you can search for and see rhymes for on the velut website.
+This enables all inflected forms to be words that you can search for and see rhymes for on the velut website.
 
 The two MongoDB collections are:
 - `lemmata`, in which every document (database record) is a “lemma” with information from the source Json file plus the inflected forms from the Inflector; and
@@ -65,15 +65,11 @@ It feels good to not have to open up a 90MB file!
 
 Very recently, I finished manually reviewing the output of my Inflector script (inflection-tables for all lemmata).
 Consequently, all lemmata have inflection-tables on the live website.
+And I replaced the `words` collection with the forms from the Inflector, via the Lemmata Collator and Word Data Generator.
+This means that more than two million words can now be searched for on the website, and appear in lists of rhymes, even if I didn’t have them in Excel.
 
-The `words` collection, at the moment, consists of Latin words that I had in Excel, fed through the Word Data Generator.
-This means that words that I didn’t have in Excel cannot be searched for on the velut website — even if they appear in the inflection-tables that the Inflector creates.
-Soon, I will use the Inflector’s output for the input to the Word Data Generator (via a script I alluded to earlier).
-That will mean every form in the inflection-tables will be in the `words` collection, and every form therefore will be a word that can be searched for on the website.
-
-There’s still a lot of common Latin vocabulary that is not yet in the velut database, and that I’d like to include.
-But, that will have to wait.
-My priority is completing the new architecture without Excel.
+I still have some work to do to finesse the new architecture without Excel.
+Once that’s done, I’ll get back to adding Latin vocabulary to the dictionary — there’s still more I can include!
 
 For the details, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
 
@@ -130,6 +126,6 @@ My scripts to refresh the database (using mongoimport) are private, so as not to
 
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the backend dispatches queries to MongoDB collections rather than any tables in a relational database, and until recently the HTML contained no &lt;table&gt; tags.
 
-All the words have been collated manually by me in my spare time. Yes, really. (For the visible tables of inflected forms, I’ve generated them programmatically, but reviewed them manually.) Therefore, many lemmata are not represented, and most of the lemmata that are represented do not have all possible inflected forms. (My [plan for de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md) covers how I’m solving the latter.) If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
+All the lemmata have been collated manually by me in my spare time. All their forms have been generated programmatically, and reviewed manually, by me in my spare time. (Yes, really.) Therefore, many lemmata are not represented. If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
 
 For more information, see https://www.velut.co.uk/about; for more information about me, see my website at https://www.duncanritchie.co.uk.
