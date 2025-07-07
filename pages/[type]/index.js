@@ -124,11 +124,11 @@ const WordPage = ({
     /* If no word was found, the document title & description need to come from the input. */
   }
   const pageTitle = foundWord
-    ? `“${foundWord.Word}” on velut — a Latin rhyming dictionary`
-    : `“${sanitisedInput}” (word not found) on velut — a Latin rhyming dictionary`
+    ? `‘${foundWord.Word}’ on velut — a Latin rhyming dictionary`
+    : `‘${sanitisedInput}’ (word not found) on velut — a Latin rhyming dictionary`
   const pageDescription = foundWord
-    ? `${headingToDisplay} for “${foundWord.Word}”, also showing its meaning, forms, cognates, and links to other dictionaries.`
-    : `“${sanitisedInput}” was not found on velut; please check in other dictionaries.`
+    ? `${headingToDisplay} for ‘${foundWord.Word}’, also showing its meaning, forms, cognates, and links to other dictionaries.`
+    : `‘${sanitisedInput}’ was not found on velut; please check in other dictionaries.`
 
   // Eg "There are 5 possible rhymes; this is page 1 of 1."
   // or "Page 12 is not a valid page-number. There is only 1 page of rhymes, for 5 possible rhymes."
