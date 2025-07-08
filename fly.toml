@@ -5,7 +5,8 @@
 
 app = "velut"
 kill_signal = "SIGINT"
-kill_timeout = "5s"
+kill_timeout = "10s"
+primary_region = "lhr"
 
 [experimental]
   auto_rollback = true
@@ -32,7 +33,7 @@ kill_timeout = "5s"
     handlers = ["tls", "http"]
 
   [services.concurrency]
-    type = "connections"
+    type = "requests"
     hard_limit = 50
     soft_limit = 20
 
@@ -45,5 +46,5 @@ kill_timeout = "5s"
   [[services.tcp_checks]]
     interval = "15s"
     timeout = "2s"
-    grace_period = "1s"
+    grace_period = "15s"
     path = "/healthcheck"
