@@ -81,8 +81,8 @@ More words and statistics are on a dedicated <a href="https://www.velut.co.uk/de
 - [x] Replace the `words` collection in MongoDB _locally_ with the output of the Word Data Generator in the previous step. <ins>Done 2025-06-23.</ins>
 - [x] Perhaps make some quick fixes to the user interface — the number of rhymes given for a word should not be too huge, inflection-tables and lists of forms should not appear on the “English to Latin” page, etc. <ins>This was definitely needed because a word like <span lang="la">‘incommodissimumque’</span> has 41,470 rhymes (and that’s perfect rhymes) and it’s very inconvenient. Done 2025-07-02 — we now have pagination on the lists of rhymes.</ins>
 - [x] Replace the two collections in the production database with the local data. The new words and inflection-tables will now all be on the live website. <ins>Done 2025-07-05.</ins>
-- [ ] Ensure that whatever script I have to update a database updates both databases.
-- [ ] Check that it is relatively easy to add vocabulary to velut. This means:
+- [x] Ensure that whatever script I have to update a database updates both databases. <ins>True as of 2025-07-10 — I have a nice little Batch script that runs the Inflector, Lemmata Collator, and Word Data Generator, and imports the results to the local & production databases. And it waits for me to give it permission for each of those actions; this means it doesn’t have to do every action every time, and I can check how the results look in the Json or on the local instance before launching the next step.</ins>
+- [x] Check that it is relatively easy to add vocabulary to velut. <ins>Done 2025-07-11.</ins> This means:
 
       1. adding a lemma (or several!) to my relevant Json file,
       2. getting the inflected forms with the Inflector,
