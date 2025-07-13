@@ -15,7 +15,7 @@ More words and statistics are on a dedicated <a href="https://www.velut.co.uk/de
 - [x] Make a webpage (or similar) that replaces the Excel sheet `wordsform`, which generates the phonetic data (etc) for each word. (Top-right in the [Excel screenshot](https://github.com/DuncanRitchie/velut#excel) in the readme.) It doesn’t need database access. <ins>[Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator) completed 2022-09-29.</ins>
 - [x] For each lemma in velut, generate the list of forms already in velut. This should be something that can be repeated easily whenever I add to the Excel file. A webpage that has `<textarea>`s for relevant data would suffice. Name it the Forms Collator (or something better). <ins>[Forms Collator](https://github.com/DuncanRitchie/velut-forms-collator) completed 2022-10-08.</ins>
 - [x] Export the manually-entered data of `lemmata` into Json. (This is the Excel sheet bottom-left in the screenshot.) <ins>Done 2022-10-09.</ins>
-- [x] Stop adding words to the Excel file. <ins>I haven’t touched the Excel file since 2022-10-09.</ins>
+- [x] Stop adding words to the Excel file. <ins>I haven’t touched the Excel file since 2022-10-09.</ins> <ins>I’ve opened the file but only to confirm that everything in it I also had elsewhere.</ins>
 - [x] Write something that generates an empty list for each lemma. Name it the [Inflector](https://github.com/DuncanRitchie/velut-inflector). <ins>Done 2022-10-15</ins>
 - [x] Write tests that compare the output of the Forms Collator (the lists of forms already in velut) to the output of the Inflector (a set of empty lists, at this point in time). The tests will fail for all lemmata. <ins>Done 2022-10-15</ins>
 - [x] Make the Inflector return the lemma for conjunctions and prepositions, which will make some tests pass. <ins>Done 2022-10-15</ins>
@@ -91,9 +91,9 @@ More words and statistics are on a dedicated <a href="https://www.velut.co.uk/de
       5. importing to MongoDB (both locally and for production), and
       6. manually checking that the words look correct on the live website.
 
-- [ ] Ensure everything in the Excel file exists outside of it.
-- [ ] Evaluate whether I should discard the development database and switch back to using the production database in development.
-- [ ] Evaluate whether I should delete (or repurpose) the page on the website that shows my progress in checking the output of the Inflector.
+- [x] Ensure everything in the Excel file exists outside of it. <ins>True as of 2025-07-13.</ins>
+- [x] Evaluate whether I should discard the development database and switch back to using the production database in development. <ins>I’m keeping the development database, as of 2025-07-13.</ins>
+- [ ] Evaluate whether I should delete (or repurpose) the page on the website that shows my progress in checking the output of the Inflector. <ins>I’m converting it into a blog article. The `summary` collection will be deleted.</ins>
 - [ ] Evaluate whether the Excel file can be deprecated.
 - [ ] Continue adding words and going through issues. (I have several private Trello boards, including one for velut.)
 
