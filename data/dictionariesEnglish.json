@@ -28,6 +28,10 @@
     "Formula": "http://logeion.uchicago.edu/retro/INPUT"
   },
   {
+    "Dictionary": "Morcus",
+    "Formula": "https://morcus.net/dicts?q=INPUT&in=SnH-RnA-NUM&o=1"
+  },
+  {
     "Dictionary": "Numen",
     "Formula": "https://latinlexicon.org/search_english.php"
   },

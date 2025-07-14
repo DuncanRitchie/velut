@@ -12,7 +12,7 @@ const lemmaSchema = new mongoose.Schema(
     // SyllableCount: Number,
     Root: String,
     // FormCount: Number,
-    NoTypeTag: String,
+    // NoTypeTag: String,
     NoMacra: String,
     NoMacraLowerCase: String,
     Forms: Object,

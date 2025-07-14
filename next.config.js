@@ -15,6 +15,7 @@ const nextConfig = {
     },
   ],
   devIndicators: false,
+  serverExternalPackages: ['pino', 'pino-pretty'],
 }
 
 module.exports = nextConfig

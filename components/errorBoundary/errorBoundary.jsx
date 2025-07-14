@@ -1,4 +1,6 @@
 import { Component } from 'react'
+import { logger } from '../../lib/logger'
+const log = logger.child({ module: 'errorBoundary' })
 
 // Adapted from https://nextjs.org/docs/pages/building-your-application/configuring/error-handling
 class ErrorBoundary extends Component {
@@ -10,7 +12,7 @@ class ErrorBoundary extends Component {
     return { hasError: true }
   }
   componentDidCatch(error, errorInfo) {
-    console.log({ error, errorInfo })
+    log.err({ error, errorInfo })
   }
   render() {
     if (!this.state.hasError) {
