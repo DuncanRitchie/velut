@@ -34,7 +34,7 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.2.1",
+    "@opennextjs/cloudflare": "^1.5.1",
     "eslint-config-next": "15.0.2",
     "flat": "^5.0.2",
     "mongoose": "^8.8.3",
@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "prettier": "^2.7.1",
-    "wrangler": "^4.19.1"
+    "wrangler": "^4.25.0"
   }
 }
