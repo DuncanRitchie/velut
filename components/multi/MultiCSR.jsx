@@ -1,14 +1,11 @@
 import { Component, Fragment, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
 import Header from '../header/Header'
 import LatinLink from '../latinlink/LatinLink'
 import subsitesStyles from '../../css/Subsites.module.css'
 import multiStyles from '../../css/Multi.module.css'
 import searchStyles from '../../components/search/Search.module.css'
 import { getHrefForDictionaryLinks, splitIntoWords } from '../../lib/words/multiHelpers'
-import { logger } from '../../lib/logger'
-const log = logger.child({ module: 'MultiCSR' })
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -122,7 +119,7 @@ class MultiCSR extends Component {
                   missingWords,
                 })
               })
-              .catch((error) => log.error(error))
+              .catch((error) => console.error(error))
           }
         })
       },
