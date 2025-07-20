@@ -93,7 +93,7 @@ More words and statistics are on a dedicated <a href="https://www.velut.co.uk/de
 
 - [x] Ensure everything in the Excel file exists outside of it. <ins>True as of 2025-07-13.</ins>
 - [x] Evaluate whether I should discard the development database and switch back to using the production database in development. <ins>I’m keeping the development database, as of 2025-07-13.</ins>
-- [ ] At this point, there’s a `summary` MongoDB collection, which is used by the webpage that shows my progress with de-Excellation (/deexcellation). Make sure the website isn’t reading from this collection anywhere except on the /deexcellation page. (This step and some of the steps below were not in the original plan, but were added on 2025-07-20.)
+- [x] At this point, there’s a `summary` MongoDB collection, which is used by the webpage that shows my progress with de-Excellation (/deexcellation). Make sure the website isn’t reading from this collection anywhere except on the /deexcellation page. (This step and some of the steps below were not in the original plan, but were added on 2025-07-20.) <ins>Done 2025-07-20.</ins>
 - [ ] Write a blog article about the de-Excellation of velut, adapted from this plan and the webpage for showing my progress. The article should include a diagram of the new architecture (see below), the code for the Batch script (without database credentials, of course), and an explanation that the `summary` collection was useful and now isn’t.
 - [ ] Update the readme in this repo. It should have a link to the blog article, and no link to this plan or the /deexcellation page.
 - [ ] Delete the /deexcellation page.
