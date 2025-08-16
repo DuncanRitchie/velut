@@ -7,6 +7,7 @@ I’ve already made several webpages made with vanilla HTML/CSS/JavaScript that 
 A [diagram of the new architecture](#diagram-of-new-architecture) is after the plan.
 
 More words and statistics are on a dedicated <a href="https://www.velut.co.uk/deexcellation">de-Excellation page</a> of the velut website.
+And now that this plan is nearing completion, I have an [article on my blog](https://www.duncanritchie.co.uk/blog/deexcellation-of-velut) explaining the entire process of ridding velut of Excel.
 
 - [x] Port velut to Next.js. <ins>Completed 2022-07-23.</ins>
 - [x] Write this plan for how to finish the de-Excellation of velut. <ins>Done 2022-07-23, though I have added to the plan since.</ins>
