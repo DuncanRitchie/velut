@@ -100,7 +100,7 @@ And now that this plan is nearing completion, I have an [article on my blog](htt
 - [x] Delete the /deexcellation page. <ins>Done 2025-08-18.</ins>
 - [x] Delete the `summary` collection, locally and in production. <ins>Done 2025-08-18.</ins>
 - [x] Evaluate whether the Excel file can be deprecated. <ins>File evaluated as obsolete 2025-07-13. To be fair, it’s been pretty much obsolete since 2022-10-09.</ins>
-- [ ] Continue adding words and going through issues. (I have several private Trello boards, including several for velut.)
+- [x] Continue adding words and going through issues. (I have several private Trello boards, including several for velut.) <ins>Done 2025-08-18.</ins>
 
 When all the steps above have been ticked and dated, I will delete this file (plan.md).
 
