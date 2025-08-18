@@ -98,7 +98,7 @@ And now that this plan is nearing completion, I have an [article on my blog](htt
 - [x] Write a blog article about the de-Excellation of velut, adapted from this plan and the webpage for showing my progress. The article should include a diagram of the new architecture (see below), the code for the Batch script (without database credentials, of course), and an explanation that the `summary` collection was useful and now isn’t. <ins>[Article on de-Excellation](https://www.duncanritchie.co.uk/blog/deexcellation-of-velut) published 2025-08-16. I also published [some relevant graphs](https://www.duncanritchie.co.uk/blog/graphs-of-lemma-and-word-counts) in another article.</ins>
 - [x] Update the readme in this repo. It should have a link to the blog article, and no link to this plan or the /deexcellation page. <ins>Done 2025-08-18.</ins>
 - [x] Delete the /deexcellation page. <ins>Done 2025-08-18.</ins>
-- [ ] Delete the `summary` collection, locally and in production.
+- [x] Delete the `summary` collection, locally and in production. <ins>Done 2025-08-18.</ins>
 - [x] Evaluate whether the Excel file can be deprecated. <ins>File evaluated as obsolete 2025-07-13. To be fair, it’s been pretty much obsolete since 2022-10-09.</ins>
 - [ ] Continue adding words and going through issues. (I have several private Trello boards, including several for velut.)
 
