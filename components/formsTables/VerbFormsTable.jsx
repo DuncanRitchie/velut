@@ -402,7 +402,7 @@ const VerbFormsTable = ({
   currentWordHyphenated,
   openByDefault,
   isFullWidth = true,
-  summary = 'All generated forms',
+  summary = 'Forms',
 }) => {
   const tabsId = getTabsId({ lemma, summary })
 

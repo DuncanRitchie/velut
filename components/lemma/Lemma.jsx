@@ -71,7 +71,7 @@ const VerbForms = ({ lemma, formsFromWordsCollection, linkBase, currentWordHyphe
   return (
     <>
       <VerbFormsTable
-        summary="All forms except participles"
+        summary="Non-participle forms"
         Forms={nonParticipleForms}
         formsFromWordsCollection={formsFromWordsCollection}
         lemma={lemma.Lemma}
