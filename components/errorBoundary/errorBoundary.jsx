@@ -12,7 +12,7 @@ class ErrorBoundary extends Component {
     return { hasError: true }
   }
   componentDidCatch(error, errorInfo) {
-    log.err({ error, errorInfo })
+    log.error({ error, errorInfo })
   }
   render() {
     if (!this.state.hasError) {
