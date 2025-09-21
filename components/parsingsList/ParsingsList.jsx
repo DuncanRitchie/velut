@@ -2,6 +2,7 @@ import prettyPrintGrammaticalKey from '../../lib/lemmata/grammaticalKeys'
 import { getLemmaId } from '../lemma/Lemma'
 import superscriptLemmaTag from '../lemma/superscriptLemmaTag'
 import styles from './ParsingsList.module.css'
+import { Fragment } from 'react/jsx-runtime'
 
 const ParsingsList = ({ lemmata, form }) => {
   if (!form) {
@@ -28,13 +29,35 @@ const ParsingsList = ({ lemmata, form }) => {
     })
   }
 
+  // The parsing should look like "nominative singular neuter noun, with -ne" or "nominative singular neuter noun" if the word is unencliticized.
+  // Including the part of speech is particularly useful for prepositions, conjunctions, and interjections, which might not have grammatical tags otherwise.
+  const prettyPrintParsing = (parsing, partOfSpeech) => {
+    return (
+      parsing
+        .split(' ')
+        // Insert the part of speech before the last tag (which is either the enclitic or "unencliticized")
+        .toSpliced(-1, 0, partOfSpeech.toLowerCase())
+        .filter((tag) => tag !== 'unencliticized')
+        .map((tag) => {
+          if (tag.startsWith('-')) {
+            return (
+              <Fragment key={tag}>
+                , with <span lang="la">{tag}</span>
+              </Fragment>
+            )
+          }
+          return <Fragment key={tag}> {tag}</Fragment>
+        })
+    )
+  }
+
   const parsingsJsx = lemmata.map((lemma) =>
     getParsings(lemma.Forms, form, []).map((parsing) => (
       <tr key={parsing}>
         <td>
           <a href={'#' + getLemmaId(lemma)}>{superscriptLemmaTag(lemma.Lemma)}</a>
         </td>
-        <td>{parsing}</td>
+        <td>{prettyPrintParsing(parsing, lemma.PartOfSpeech)}</td>
       </tr>
     )),
   )
