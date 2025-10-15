@@ -112,6 +112,12 @@ const About = (props) => {
               </em>
               , a common sight where I was at uni.
             </p>
+            <p>
+              For more technical details (about velut, not fulmars), see my articles about{' '}
+              <a href="https://www.duncanritchie.co.uk/blog/porting-velut-to-nextjs">adopting Next.js</a> and{' '}
+              <a href="https://www.duncanritchie.co.uk/blog/deexcellation-of-velut">exorcizing Excel</a> on my personal
+              blog.
+            </p>
           </section>
 
           <section id="spelling">

@@ -18,8 +18,7 @@
 
 .about main p,
 .about main ul,
-.about main details,
-.exampleFormsWrapper {
+.about main details {
   margin: 0 auto;
   width: calc(var(--page-width) + 1rem);
   text-align: left;
@@ -36,91 +35,11 @@
   padding-bottom: 0.75rem;
 }
 
-.incorrectForms dt {
-  padding: 0 1rem 0 1rem;
-  color: #34311a;
-  font-style: italic;
-}
-
-.incorrectForms dd {
-  margin-left: 0;
-  padding: 0.25rem 1rem 0.75rem 3rem;
-}
-
-.incorrectForms summary {
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-}
-
 /* Copied from Advanced Rubric */
-/* The :not here is not the most elegant CSS.*/
-.about section li:not(.exampleFormsWrapper li) {
+.about section li {
   line-height: 1.6em;
   padding: 0.5rem 1.125rem;
   margin: 0;
   display: list-item;
   list-style: disc inside;
-}
-
-.exampleFormsWrapper {
-  padding: 0.25rem 0.75rem 1.25rem;
-}
-
-/* Wrapper for the progress-bar indicating how many lemmata I’ve checked the generated forms of.
-We’re drawing notches on the bar to represent where I was at at the end of 2024 and my targets for the next five months. */
-#checkingLemmataBar {
-  position: relative;
-}
-
-#checkingLemmataBar::after {
-  content: '';
-  position: absolute;
-  --notch-primary: black;
-  --notch-secondary: rgba(0, 0, 0, 33%);
-  --notch-width: 1px;
-  --notch-0: calc(100% * 11800 / 14127);
-  --notch-1: calc(100% * 12188 / 14127);
-  --notch-2: calc(100% * 12576 / 14127);
-  --notch-3: calc(100% * 12964 / 14127);
-  --notch-4: calc(100% * 13352 / 14127);
-  --notch-5: calc(100% * 13740 / 14127);
-  background: linear-gradient(
-    90deg,
-    transparent var(--notch-0),
-    var(--notch-primary) 0,
-    var(--notch-secondary) calc(var(--notch-0) + var(--notch-width)),
-    transparent 0,
-    transparent var(--notch-1),
-    var(--notch-primary) 0,
-    var(--notch-secondary) calc(var(--notch-1) + var(--notch-width)),
-    transparent 0,
-    transparent var(--notch-2),
-    var(--notch-primary) 0,
-    var(--notch-secondary) calc(var(--notch-2) + var(--notch-width)),
-    transparent 0,
-    transparent var(--notch-3),
-    var(--notch-primary) 0,
-    var(--notch-secondary) calc(var(--notch-3) + var(--notch-width)),
-    transparent 0,
-    transparent var(--notch-4),
-    var(--notch-primary) 0,
-    var(--notch-secondary) calc(var(--notch-4) + var(--notch-width)),
-    transparent 0,
-    transparent var(--notch-5),
-    var(--notch-primary) 0,
-    var(--notch-secondary) calc(var(--notch-5) + var(--notch-width)),
-    transparent 0
-  );
-  inset: 0;
-  top: -0.25em;
-  height: 0.25em;
-  width: 100%;
-}
-
-#notchesDetails {
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-}
-#notchesDetails summary {
-  padding-left: 1rem;
 }

@@ -176,7 +176,7 @@ const FormsTable = ({
   currentWordHyphenated,
   openByDefault = true,
   isFullWidth = false,
-  summary = 'All generated forms',
+  summary = 'Forms',
 }) => {
   const isDisplayedInTabs = !!(Forms.unencliticized || Forms.ne || Forms.que || Forms.ve)
   const tabsId = getTabsId({ lemma, summary })

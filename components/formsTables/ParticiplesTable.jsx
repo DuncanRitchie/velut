@@ -115,7 +115,7 @@ const ParticiplesTable = ({
   currentWordHyphenated,
   openByDefault,
   isFullWidth = true,
-  summary = 'All generated forms',
+  summary = 'Participles',
 }) => {
   const tabsId = getTabsId({ lemma, summary })
 

@@ -7,6 +7,7 @@ app = "velut"
 kill_signal = "SIGINT"
 kill_timeout = "10s"
 primary_region = "lhr"
+swap_size_mb = 512
 
 [experimental]
   auto_rollback = true
@@ -34,7 +35,7 @@ primary_region = "lhr"
 
   [services.concurrency]
     type = "requests"
-    hard_limit = 25
+    hard_limit = 16
     soft_limit = 10
 
   [[services.http_checks]]

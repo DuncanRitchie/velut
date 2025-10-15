@@ -27,10 +27,9 @@ Other sections of the site let you find:
 
 The velut website (in this repository) is a Next.js site that reads from two MongoDB collections in accordance with what the user searches for. None of its functionality requires client-side JavaScript, because the site is entirely server-side–rendered. However, the Multi-word page (www.velut.co.uk/multiword) uses client-side rendering if possible, as does the [Search component](https://github.com/DuncanRitchie/velut/blob/main/components/search/Search.jsx).
 
-Vocabulary data and scripts for processing them are in separate repos. I have a private Json file listing all lemmata (dictionary headwords), and public JavaScript scripts that process the Json into more Json, and that is what goes into the two MongoDB collections.
+Vocabulary data and scripts for processing them are in separate repos. I have a private Json file listing all lemmata (dictionary headwords) and a private Batch script I call the “Data Updater” (private so as not to expose the MongoDB connection string). The Data Updater runs JavaScript scripts — these are public — that process the Json into more Json, and uses mongoimport to put the output into the two MongoDB collections.
 
-The scripts include my:
-
+The JavaScript scripts are my:
 - [Inflector](https://github.com/DuncanRitchie/velut-inflector), which generates inflected forms for all lemmata;
 - [Lemmata Collator](https://github.com/DuncanRitchie/velut-lemmata-collator), which extracts from the Inflector’s output the words needed for the Word Data Generator; and
 - [Word Data Generator](https://github.com/DuncanRitchie/velut-word-data-generator), which generates phonetic and other information about all words.
@@ -42,7 +41,7 @@ The two MongoDB collections are:
 - `lemmata`, in which every document (database record) is a “lemma” with information from the source Json file plus the inflected forms from the Inflector; and
 - `words`, in which every document is a “word” with information from the Word Data Generator.
 
-There’s also a MongoDB collection called `summary`, but this is temporary.
+A [redacted copy of the “Data Updater”](https://www.duncanritchie.co.uk/blog/deexcellation-of-velut#the-data-updater) is in an article on my blog.
 
 ### Old version with Create React App
 
@@ -52,43 +51,19 @@ The code was on a branch called mern, whose last commit was [413ddae4](https://g
 
 (MERN stands for “MongoDB, Express, React, Node”. Technically the Next.js version is also MERN, because Next.js uses an Express server internally, but with the client-side–rendered version I wrote code that directly — expressly?! — calls Express, so the branchnames “main” and “mern” made sense to me.)
 
-### Excel and de-Excellation
+I wrote a blogpost about the [move to Next.js](https://www.duncanritchie.co.uk/blog/porting-velut-to-nextjs).
 
-velut started life as an Excel file, which over the years grew to more than 90MB in size.
-Much of the word information you see on the website is stored in it.
+### Old architecture with Microsoft Excel
 
-In 2019, I created the website to show the data publicly.
-But I still relied heavily on Excel for generating, checking, and storing the data.
-I added to the Excel file frequently, converted the data to Json — using a [webpage I made specifically for this purpose](https://github.com/DuncanRitchie/velut-json-generator) — and used mongoimport to replace my two MongoDB Atlas collections.
-
-I am now well into the process of replacing Excel with my custom Json, JavaScript, and MongoDB.
-It feels good to not have to open up a 90MB file!
-
-Very recently, I finished manually reviewing the output of my Inflector script (inflection-tables for all lemmata).
-Consequently, all lemmata have inflection-tables on the live website.
-And I replaced the `words` collection with the forms from the Inflector, via the Lemmata Collator and Word Data Generator.
-This means that more than two million words can now be searched for on the website, and appear in lists of rhymes, even if I didn’t have them in Excel.
-
-I still have some work to do to finesse the new architecture without Excel.
-Once that’s done, I’ll get back to adding Latin vocabulary to the dictionary — there’s still more I can include!
-
-For the details, see my [plan of de-Excellation](https://github.com/DuncanRitchie/velut/blob/main/plan.md).
+velut started life as an Excel file, in February 2016, which over the years grew to more than 90MB in size.
+Much of the word information you see on the website is stored in it, but I no longer use it.
+To read more about my Excel file, and how I planned and achieved the migration to an architecture without it, see my blogpost on the [de-Excellation of velut](https://www.duncanritchie.co.uk/blog/deexcellation-of-velut).
 
 ## Screenshots
-
-### Website
 
 Displayed below is the page for the word “opportūna”, showing that it is different to “opportūnā”, scans as long-long-long-short metrically, rhymes with words like “ūna” and “lūna”, and is a form of the lemma “opportūnus” (an adjective meaning “timely; suitable”). https://www.velut.co.uk/opportu-na.
 
 ![“opportūna” on velut](https://github.com/DuncanRitchie/velut-screenshots/blob/main/compressed/velut-web-opportuna.png)
-
-### Excel
-
-(The velut Excel file is pretty much deprecated, but some screenshots here won’t hurt.)
-
-The Excel file has nine sheets, of which four are shown below. The “words” sheet stores data on Latin words as plaintext. The “wordsform” sheet generates the data for the “words” sheet based on the inputs in columns B and C. The “lemmata” sheet stores data on Latin lemmata. The “output” sheet displays information (including rhymes and inflected forms) about whatever Latin word is typed in the orange cell.
-
-![Composite screenshot of four Excel sheets](https://github.com/DuncanRitchie/velut-screenshots/blob/main/compressed/velut-excel-4sheets.png)
 
 ## Environment variables
 
@@ -104,8 +79,11 @@ MONGODB_URI=mongodb://127.0.0.1:27017/velut-local?retryWrites=true&w=majority
 To set an environment variable in production, I use the Fly command-line interface:
 
 ```bash
-flyctl secrets set NEXT_PUBLIC_SHOW_GENERATED_FORMS_FOR="Proper noun,Conjunction,Pronoun,Noun,Preposition,Interjection,Adverb,Adjective"
+flyctl secrets set NEXT_PUBLIC_EXAMPLE="This is an example environment variable."
 ```
+
+The `NEXT_PUBLIC` prefix enables Next.js to use an environment variable on the client side.
+I don’t currently need that.
 
 ## Development cycle
 
@@ -121,8 +99,6 @@ To redeploy, I simply push to the main branch on GitHub.
 
 For how I edit the data with Json files and JavaScript scripts, see [“Architecture”](#architecture) above.
 
-My scripts to refresh the database (using mongoimport) are private, so as not to expose the MongoDB connection string.
-
 ## Miscellanea
 
 The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocabulary”. Ironically, the backend dispatches queries to MongoDB collections rather than any tables in a relational database, and until recently the HTML contained no &lt;table&gt; tags.
@@ -130,3 +106,4 @@ The name “velut” is an acronym for “Useful Tables of Excellent Latin Vocab
 All the lemmata have been collated manually by me in my spare time. All their forms have been generated programmatically, and reviewed manually, by me in my spare time. (Yes, really.) Therefore, many lemmata are not represented. If I’ve not included a word in velut, that doesn’t mean it’s not “good Latin”. Also true is the fact that some of the words in velut are not attested in surviving literature, but are reasonable inflected forms or are neologisms.
 
 For more information, see https://www.velut.co.uk/about; for more information about me, see my website at https://www.duncanritchie.co.uk.
+
