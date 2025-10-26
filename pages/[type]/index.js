@@ -4,10 +4,13 @@ import Link from 'next/link'
 
 import findOneWord from '../../lib/words/word'
 import dbConnect from '../../lib/dbConnect'
+import urlFromSearch from '../../lib/urlFromSearch'
 import getRandomWord from '../../lib/words/random'
 import getHomographs from '../../lib/words/homographs'
 import getRhymes from '../../lib/words/rhymes'
 import getLemmata from '../../lib/lemmata'
+
+import routes from '../../data/routes.json'
 
 import Header from '../../components/header/Header'
 import Search from '../../components/search/Search'
@@ -32,6 +35,7 @@ const WordPage = ({
   pageNumber,
   pagesCount,
   type,
+  isTypeParamValid,
   lemmata,
   headingToDisplay,
   shortRhymesDescription,
@@ -42,7 +46,7 @@ const WordPage = ({
   let mappedHomographs = []
   let mappedLemmata = []
   // All Links to other velut words will begin with linkBase.
-  const linkBase = type === '' ? '/' : '/' + type + '/'
+  const linkBase = isTypeParamValid ? (type === '' ? '/' : '/' + type + '/') : '/'
   const numberFormatter = new Intl.NumberFormat('en-GB')
 
   if (foundWord) {
@@ -89,13 +93,15 @@ const WordPage = ({
       })
     }
     // Let’s do the lemmata. We will render an element for every lemma listed against the input.
-    mappedLemmata = lemmata.map((lemma, index) => {
-      if (lemma) {
-        return <Lemma key={index} lemma={lemma} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
-      } else {
-        return null
-      }
-    })
+    mappedLemmata = isTypeParamValid
+      ? lemmata.map((lemma, index) => {
+          if (lemma) {
+            return <Lemma key={index} lemma={lemma} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
+          } else {
+            return null
+          }
+        })
+      : []
   }
   {
     /* If no word was found, the document title & description need to come from the input. */
@@ -175,65 +181,84 @@ const WordPage = ({
       <div className="fulmar-background">
         <Header />
         <Search type={type} searchbarLabel="Latin word" word={sanitisedInput} />
-        <p className={subsiteStyles.showingResultsFor}>Showing results for</p>
-        <h1 className={styles.foundWord} lang="la">
-          {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
-        </h1>
-        <div className={subsiteStyles.wordInfo}>
-          {foundWord ? (
-            <div>
-              {mappedHomographs.length > 1 ? <p>(Other homographs:{mappedHomographs})</p> : null}
-              <p>
-                The word <strong lang="la">{foundWord.Word}</strong> could scan as{' '}
-                <span className={styles.scansion}>{foundWord.Scansion}</span>
-                {footName ? (
-                  <>
-                    {' '}
-                    which&nbsp;is&nbsp;called {footNameArticle} {footName}.
-                  </>
-                ) : null}
-              </p>
-              <h2>{headingToDisplay}</h2>
-              {pageNumber <= pagesCount ? <p>{mappedRhymes}</p> : null}
-              <div className={styles.paginationTexts}>
-                <p>{paginationText}</p>
-                <p>{paginationLinks}</p>
-              </div>
-              <h2>Parsings</h2>
-              {lemmata.length ? (
-                <>
-                  <ParsingsList form={foundWord.Word} lemmata={lemmata} />
-                  <h2>Lemma information</h2>
+        {!isTypeParamValid && foundWord ? (
+          <div className={subsiteStyles.showingResultsFor}>
+            <p>
+              The parameter <i>{type}</i> is not a valid type of search! Did you mean to search for{' '}
+              <Link href={'/' + foundWord.Word} lang="la">
+                {foundWord.Word}
+              </Link>{' '}
+              as a Latin word?
+            </p>
+            <p>
+              Or do you want to search from <Link href={'/english/' + sanitisedInput}>English to Latin</Link>?
+            </p>
+          </div>
+        ) : null}
+        {isTypeParamValid || !foundWord ? (
+          <>
+            <p className={subsiteStyles.showingResultsFor}>Showing results for</p>
+            <h1 className={styles.foundWord} lang="la">
+              {foundWord ? foundWord.Word : hyphensToMacra(sanitisedInput)}
+            </h1>
+            <div className={subsiteStyles.wordInfo}>
+              {foundWord ? (
+                <div>
+                  {mappedHomographs.length > 1 ? <p>(Other homographs:{mappedHomographs})</p> : null}
                   <p>
-                    <strong lang="la">{foundWord.Word}</strong> belongs to the following {lemmata.length}{' '}
-                    {lemmata.length === 1 ? 'lemma' : 'lemmata'}:
+                    The word <strong lang="la">{foundWord.Word}</strong> could scan as{' '}
+                    <span className={styles.scansion}>{foundWord.Scansion}</span>
+                    {footName ? (
+                      <>
+                        {' '}
+                        which&nbsp;is&nbsp;called {footNameArticle} {footName}.
+                      </>
+                    ) : null}
                   </p>
-                  {mappedLemmata}
-                </>
+                  <h2>{headingToDisplay}</h2>
+                  {pageNumber <= pagesCount ? <p>{mappedRhymes}</p> : null}
+                  <div className={styles.paginationTexts}>
+                    <p>{paginationText}</p>
+                    <p>{paginationLinks}</p>
+                  </div>
+                  <h2>Parsings</h2>
+                  {lemmata.length ? (
+                    <>
+                      <ParsingsList form={foundWord.Word} lemmata={lemmata} />
+                      <h2>Lemma information</h2>
+                      <p>
+                        <strong lang="la">{foundWord.Word}</strong> belongs to the following {lemmata.length}{' '}
+                        {lemmata.length === 1 ? 'lemma' : 'lemmata'}:
+                      </p>
+                      {mappedLemmata}
+                    </>
+                  ) : (
+                    <>
+                      <p>
+                        There’s been a mistake — velut has no lemma information for{' '}
+                        <strong lang="la">{foundWord.Word}</strong>. Please try another word.
+                      </p>
+                    </>
+                  )}
+                </div>
               ) : (
                 <>
                   <p>
-                    There’s been a mistake — velut has no lemma information for{' '}
-                    <strong lang="la">{foundWord.Word}</strong>. Please try another word.
+                    Nothing was found. Try{' '}
+                    <Link href={linkBase + macraToHyphens(randomWord)} lang="la">
+                      {randomWord}
+                    </Link>
+                    .
+                  </p>
+                  <p>
+                    Or do you want to search from <Link href={'/english/' + sanitisedInput}>English to Latin</Link>?
                   </p>
                 </>
               )}
             </div>
-          ) : (
-            <>
-              <p>
-                Nothing was found. Try{' '}
-                <Link href={linkBase + macraToHyphens(randomWord)} lang="la">
-                  {randomWord}
-                </Link>
-                .
-              </p>
-              <p>
-                Or do you want to search from <Link href={'/english/' + sanitisedInput}>English to Latin</Link>?
-              </p>
-            </>
-          )}
-        </div>
+          </>
+        ) : null}
+
         <Dictionaries category="Latin" sanitisedInput={sanitisedInput} />
       </div>
     </>
@@ -254,8 +279,14 @@ export async function getServerSideProps({ params, query, res }) {
   //// we use the :type as the word and the empty string as the type.
   const wordParam = params.hasOwnProperty('word') ? params.word : params.type ?? ''
   const typeParam = params.hasOwnProperty('word') ? params.type : ''
+  const isTypeParamValid = routes.some((routeObject) => routeObject.route === typeParam)
   const sanitisedInput = wordParam
   const page = query.page || undefined
+
+  //// Routes like /nonsense/verbum display a 404 page linking to /verbum
+  if (!isTypeParamValid) {
+    res.statusCode = 404
+  }
 
   //// Fetch the word object from the database.
   const word = await findOneWord(sanitisedInput)
@@ -263,30 +294,44 @@ export async function getServerSideProps({ params, query, res }) {
   if (word.word) {
     const wordAsObject = word.word.toObject()
 
-    const homographsObject = await getHomographs(wordAsObject)
-    const { homographs } = homographsObject
+    if (isTypeParamValid) {
+      const homographsObject = await getHomographs(wordAsObject)
+      const { homographs } = homographsObject
 
-    const rhymesObject = await getRhymes(wordAsObject, typeParam, page)
-    const { rhymes, totalRhymesCount, pageNumber, pagesCount, headingToDisplay, shortRhymesDescription } = rhymesObject
+      const rhymesObject = await getRhymes(wordAsObject, typeParam, page)
+      const { rhymes, totalRhymesCount, pageNumber, pagesCount, headingToDisplay, shortRhymesDescription } =
+        rhymesObject
 
-    const lemmataObject = await getLemmata(wordAsObject)
-    const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
+      const lemmataObject = await getLemmata(wordAsObject)
+      const lemmata = JSON.parse(lemmataObject.lemmata ?? '[]')
 
-    return {
-      props: {
-        foundWord: wordAsObject,
-        homographs,
-        lemmata,
-        rhymes: rhymes ?? [],
-        totalRhymesCount,
-        pageNumber,
-        pagesCount,
-        search: wordParam,
-        headingToDisplay,
-        shortRhymesDescription,
-        sanitisedInput,
-        type: typeParam,
-      },
+      return {
+        props: {
+          foundWord: wordAsObject,
+          homographs,
+          lemmata,
+          rhymes: rhymes ?? [],
+          totalRhymesCount,
+          pageNumber,
+          pagesCount,
+          search: wordParam,
+          headingToDisplay,
+          shortRhymesDescription,
+          sanitisedInput,
+          type: typeParam,
+          isTypeParamValid,
+        },
+      }
+    } else {
+      return {
+        props: {
+          foundWord: wordAsObject,
+          search: wordParam,
+          sanitisedInput,
+          type: typeParam,
+          isTypeParamValid,
+        },
+      }
     }
   }
   //// If the word was not found, we find a random word and suggest it, with a 404 error.
@@ -300,6 +345,7 @@ export async function getServerSideProps({ params, query, res }) {
         randomWord,
         sanitisedInput,
         type: typeParam,
+        isTypeParamValid,
       },
     }
   }
