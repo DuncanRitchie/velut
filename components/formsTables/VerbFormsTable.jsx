@@ -5,9 +5,9 @@ import Details from '../details/Details'
 import styles from './FormsTable.module.css'
 import verbStyles from './VerbFormsTable.module.css'
 
-const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
+const TableForSomeVerbForms = ({ Forms, linkBase, currentWordHyphenated }) => {
   const VerbDataCell = ({ tags, colSpan }) => {
-    return GenericVerbDataCell({ tags, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated })
+    return GenericVerbDataCell({ tags, colSpan, Forms, linkBase, currentWordHyphenated })
   }
 
   // Hardly any verbs should have a column for a future active infinitive.
@@ -395,7 +395,6 @@ const TableForSomeVerbForms = ({ formsFromWordsCollection, Forms, linkBase, curr
 }
 
 const VerbFormsTable = ({
-  formsFromWordsCollection,
   Forms,
   lemma,
   linkBase,
@@ -423,7 +422,6 @@ const VerbFormsTable = ({
           {Forms.unencliticized ? 'Unencliticized' : null}
           {Forms.unencliticized ? (
             <TableForSomeVerbForms
-              formsFromWordsCollection={formsFromWordsCollection}
               Forms={Forms.unencliticized}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
@@ -431,17 +429,11 @@ const VerbFormsTable = ({
           ) : null}
           {Forms.ne ? <span lang="la">-ne</span> : null}
           {Forms.ne ? (
-            <TableForSomeVerbForms
-              formsFromWordsCollection={formsFromWordsCollection}
-              Forms={Forms.ne}
-              linkBase={linkBase}
-              currentWordHyphenated={currentWordHyphenated}
-            />
+            <TableForSomeVerbForms Forms={Forms.ne} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
           ) : null}
           {Forms.que ? <span lang="la">-que</span> : null}
           {Forms.que ? (
             <TableForSomeVerbForms
-              formsFromWordsCollection={formsFromWordsCollection}
               Forms={Forms.que}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
@@ -449,12 +441,7 @@ const VerbFormsTable = ({
           ) : null}
           {Forms.ve ? <span lang="la">-ve</span> : null}
           {Forms.ve ? (
-            <TableForSomeVerbForms
-              formsFromWordsCollection={formsFromWordsCollection}
-              Forms={Forms.ve}
-              linkBase={linkBase}
-              currentWordHyphenated={currentWordHyphenated}
-            />
+            <TableForSomeVerbForms Forms={Forms.ve} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
           ) : null}
         </Tabs>
       </Details>

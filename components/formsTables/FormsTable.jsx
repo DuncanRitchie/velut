@@ -11,39 +11,29 @@ import styles from './FormsTable.module.css'
 const getTabsId = ({ lemma, summary }) => `${lemma}-${summary.replace(/\s/g, '').toLowerCase()}`
 
 // `formsArray` is the array of strings that are forms to be displayed.
-// `formsFromWordsCollection` is the array of strings that are words already in velut.
-// This component displays the forms as links if they are in velut, and plaintext otherwise.
-// Eg simplified, ["amantēs", "amantīs"] => <><a href="/amante-s">amantēs</a> amantīs</>
-const LatinLinksOrPlainText = ({ formsArray, formsFromWordsCollection, linkBase, currentWordHyphenated }) => {
+const LatinLinks = ({ formsArray, linkBase, currentWordHyphenated }) => {
   if (!formsArray) {
     return <></>
   }
   if (!Array.isArray(formsArray)) {
     throw Error(`formsArray inside LatinLinksOrPlainText should be an array but is ${JSON.stringify(formsArray)}`)
   }
-  return formsArray.map((form) => {
-    if (formsFromWordsCollection.includes(form)) {
-      return (
-        <Fragment key={form}>
-          <LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}></LatinLink>{' '}
-        </Fragment>
-      )
-    } else {
-      return <Fragment key={form}>{form} </Fragment>
-    }
-  })
+  return formsArray.map((form) => (
+    <Fragment key={form}>
+      <LatinLink linkBase={linkBase} targetWord={form} currentWordHyphenated={currentWordHyphenated}></LatinLink>{' '}
+    </Fragment>
+  ))
 }
 
 // This is a recursive function that produces nested <dl> elements,
 // matching the Json structure of the Forms data that were passed in.
-const FormsTableForSomeForms = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
+const FormsTableForSomeForms = ({ Forms, linkBase, currentWordHyphenated }) => {
   if (!Forms) {
     return <>No forms!</>
   }
   if (Array.isArray(Forms)) {
-    return LatinLinksOrPlainText({
+    return LatinLinks({
       formsArray: Forms,
-      formsFromWordsCollection,
       linkBase,
       currentWordHyphenated,
     })
@@ -53,12 +43,7 @@ const FormsTableForSomeForms = ({ formsFromWordsCollection, Forms, linkBase, cur
         <div key={key}>
           <dt>{prettyPrintGrammaticalKey(key)}</dt>
           <dd>
-            <FormsTableForSomeForms
-              formsFromWordsCollection={formsFromWordsCollection}
-              Forms={value}
-              linkBase={linkBase}
-              currentWordHyphenated={currentWordHyphenated}
-            />
+            <FormsTableForSomeForms Forms={value} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
           </dd>
         </div>
       )
@@ -67,24 +52,12 @@ const FormsTableForSomeForms = ({ formsFromWordsCollection, Forms, linkBase, cur
   }
 }
 
-const FormsTableWithoutEnclitics = ({
-  formsFromWordsCollection,
-  Forms,
-  linkBase,
-  currentWordHyphenated,
-  openByDefault,
-  summary = 'Forms',
-}) => {
+const FormsTableWithoutEnclitics = ({ Forms, linkBase, currentWordHyphenated, openByDefault, summary = 'Forms' }) => {
   return (
     <Details openByDefault={openByDefault}>
       <summary>{summary}</summary>
 
-      <FormsTableForSomeForms
-        formsFromWordsCollection={formsFromWordsCollection}
-        Forms={Forms}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-      />
+      <FormsTableForSomeForms Forms={Forms} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
     </Details>
   )
 }
@@ -113,7 +86,6 @@ const getTabForCurrentWord = (allForms, currentWordHyphenated) => {
 
 const FormsTableWithEnclitics = ({
   id,
-  formsFromWordsCollection,
   Forms,
   lemma,
   linkBase,
@@ -130,7 +102,6 @@ const FormsTableWithEnclitics = ({
         {Forms.unencliticized ? 'Unencliticized' : null}
         {Forms.unencliticized ? (
           <FormsTableForSomeForms
-            formsFromWordsCollection={formsFromWordsCollection}
             Forms={Forms.unencliticized}
             linkBase={linkBase}
             currentWordHyphenated={currentWordHyphenated}
@@ -138,30 +109,15 @@ const FormsTableWithEnclitics = ({
         ) : null}
         {Forms.ne ? <span lang="la">-ne</span> : null}
         {Forms.ne ? (
-          <FormsTableForSomeForms
-            formsFromWordsCollection={formsFromWordsCollection}
-            Forms={Forms.ne}
-            linkBase={linkBase}
-            currentWordHyphenated={currentWordHyphenated}
-          />
+          <FormsTableForSomeForms Forms={Forms.ne} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
         ) : null}
         {Forms.que ? <span lang="la">-que</span> : null}
         {Forms.que ? (
-          <FormsTableForSomeForms
-            formsFromWordsCollection={formsFromWordsCollection}
-            Forms={Forms.que}
-            linkBase={linkBase}
-            currentWordHyphenated={currentWordHyphenated}
-          />
+          <FormsTableForSomeForms Forms={Forms.que} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
         ) : null}
         {Forms.ve ? <span lang="la">-ve</span> : null}
         {Forms.ve ? (
-          <FormsTableForSomeForms
-            formsFromWordsCollection={formsFromWordsCollection}
-            Forms={Forms.ve}
-            linkBase={linkBase}
-            currentWordHyphenated={currentWordHyphenated}
-          />
+          <FormsTableForSomeForms Forms={Forms.ve} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
         ) : null}
       </Tabs>
     </Details>
@@ -169,7 +125,6 @@ const FormsTableWithEnclitics = ({
 }
 
 const FormsTable = ({
-  formsFromWordsCollection,
   Forms,
   lemma,
   linkBase,
@@ -183,7 +138,6 @@ const FormsTable = ({
   const formsTable = isDisplayedInTabs ? (
     <FormsTableWithEnclitics
       id={tabsId}
-      formsFromWordsCollection={formsFromWordsCollection}
       Forms={Forms}
       lemma={lemma}
       linkBase={linkBase}
@@ -193,7 +147,6 @@ const FormsTable = ({
     />
   ) : (
     <FormsTableWithoutEnclitics
-      formsFromWordsCollection={formsFromWordsCollection}
       Forms={Forms}
       linkBase={linkBase}
       currentWordHyphenated={currentWordHyphenated}
@@ -208,4 +161,4 @@ const FormsTable = ({
 }
 
 export default FormsTable
-export { LatinLinksOrPlainText, getTabForCurrentWord, getTabsId }
+export { LatinLinks, getTabForCurrentWord, getTabsId }

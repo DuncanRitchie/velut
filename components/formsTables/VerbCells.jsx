@@ -1,4 +1,4 @@
-import { LatinLinksOrPlainText } from './FormsTable'
+import { LatinLinks } from './FormsTable'
 import { grammaticalKeysByType as possibleKeys } from '../../lib/lemmata/grammaticalKeys'
 
 // In the tables of verb forms, <th> cells have `data-id` attributes, which are unique within the <table> element.
@@ -88,7 +88,7 @@ const VerbHeaderCell = ({ tags, colSpan, rowSpan, children }) => {
 // For example, <VerbDataCell tags="infinitive active present" />
 // might become HTML <td data-headers="infinitive active present-active">clāmāre</td>
 // <VerbDataCell> is <GenericVerbDataCell> with some parameters curried in.
-const GenericVerbDataCell = ({ tags, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
+const GenericVerbDataCell = ({ tags, colSpan, Forms, linkBase, currentWordHyphenated }) => {
   const tagsArray = tags.split(' ')
   let forms = Forms
   tagsArray.forEach((key) => {
@@ -102,12 +102,7 @@ const GenericVerbDataCell = ({ tags, colSpan, formsFromWordsCollection, Forms, l
 
   return (
     <td data-headers={headers} colSpan={colSpan || null}>
-      <LatinLinksOrPlainText
-        formsArray={forms}
-        formsFromWordsCollection={formsFromWordsCollection}
-        linkBase={linkBase}
-        currentWordHyphenated={currentWordHyphenated}
-      />
+      <LatinLinks formsArray={forms} linkBase={linkBase} currentWordHyphenated={currentWordHyphenated} />
     </td>
   )
 }

@@ -11,9 +11,9 @@ import verbStyles from './VerbFormsTable.module.css'
 // which in turn may contain several instances of <VerbDataCell>!
 // <VerbDataCell> is <GenericVerbDataCell> with some parameters curried in.
 
-const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, currentWordHyphenated }) => {
+const TableForSomeParticiples = ({ Forms, linkBase, currentWordHyphenated }) => {
   const VerbDataCell = ({ tags, colSpan }) => {
-    return GenericVerbDataCell({ tags, colSpan, formsFromWordsCollection, Forms, linkBase, currentWordHyphenated })
+    return GenericVerbDataCell({ tags, colSpan, Forms, linkBase, currentWordHyphenated })
   }
 
   const TableForOneTenseAndVoice = ({ tense, voice }) => {
@@ -108,7 +108,6 @@ const TableForSomeParticiples = ({ formsFromWordsCollection, Forms, linkBase, cu
 }
 
 const ParticiplesTable = ({
-  formsFromWordsCollection,
   Forms,
   lemma,
   linkBase,
@@ -136,7 +135,6 @@ const ParticiplesTable = ({
           {Forms.unencliticized ? 'Unencliticized' : null}
           {Forms.unencliticized ? (
             <TableForSomeParticiples
-              formsFromWordsCollection={formsFromWordsCollection}
               Forms={Forms.unencliticized}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
@@ -145,7 +143,6 @@ const ParticiplesTable = ({
           {Forms.ne ? <span lang="la">-ne</span> : null}
           {Forms.ne ? (
             <TableForSomeParticiples
-              formsFromWordsCollection={formsFromWordsCollection}
               Forms={Forms.ne}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
@@ -154,7 +151,6 @@ const ParticiplesTable = ({
           {Forms.que ? <span lang="la">-que</span> : null}
           {Forms.que ? (
             <TableForSomeParticiples
-              formsFromWordsCollection={formsFromWordsCollection}
               Forms={Forms.que}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
@@ -163,7 +159,6 @@ const ParticiplesTable = ({
           {Forms.ve ? <span lang="la">-ve</span> : null}
           {Forms.ve ? (
             <TableForSomeParticiples
-              formsFromWordsCollection={formsFromWordsCollection}
               Forms={Forms.ve}
               linkBase={linkBase}
               currentWordHyphenated={currentWordHyphenated}
