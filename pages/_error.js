@@ -3,9 +3,6 @@ import Header from '../components/header/Header'
 import Search from '../components/search/Search'
 import styles from '../css/Home.module.css'
 
-import * as Sentry from '@sentry/nextjs'
-import Error from 'next/error'
-
 const ErrorPage = ({ type = '/' }) => {
   return (
     <>
@@ -21,13 +18,6 @@ const ErrorPage = ({ type = '/' }) => {
       </div>
     </>
   )
-}
-
-// Send props to Sentry.
-ErrorPage.getInitialProps = async (contextData) => {
-  await Sentry.captureUnderscoreErrorException(contextData)
-
-  return Error.getInitialProps(contextData)
 }
 
 export default ErrorPage
