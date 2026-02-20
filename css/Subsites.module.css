@@ -74,6 +74,10 @@
   padding-bottom: 0.5rem;
 }
 
+.wordInfo details:not([open]) summary {
+  padding-bottom: 1.5rem;
+}
+
 @media print {
   /* Display a grey bullet between Anagram Phrases results instead of a line-break. */
   .subsiteResult ul:lang(la) {

@@ -8,6 +8,7 @@ import FormsTable, { LatinLinks } from '../formsTables/FormsTable'
 import VerbFormsTable from '../formsTables/VerbFormsTable'
 import ParticiplesTable from '../formsTables/ParticiplesTable'
 import ErrorBoundary from '../errorBoundary/errorBoundary'
+import Details from '../details/Details'
 
 // Eg iūs[>iūrō] => lemma-iūs-iūrō
 function getLemmaId({ Lemma }) {
@@ -91,33 +92,33 @@ const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
   if (!Root && !Roots) {
     return <p>I have not assigned cognates for this lemma, sorry!</p>
   }
-  const mappedCognates = cognates ? (
-    cognates.map((lemmataGroup) =>
-      lemmataGroup.Lemmata.map((cognate, index) => {
-        return (
-          <Fragment key={index}>
-            <LatinLink
-              linkBase={linkBase}
-              targetWord={cognate.Lemma}
-              currentWordHyphenated={currentWordHyphenated}
-              isLemma={true}
-            />{' '}
-          </Fragment>
-        )
-      }),
-    )
-  ) : (
-    <></>
-  )
-  if (!Roots) {
-    return <p>Cognates: {mappedCognates}</p>
-  }
-  return (
-    <p>
-      Cognates across roots (<LatinLinks formsArray={Roots} />
-      ): {mappedCognates}
-    </p>
-  )
+  return cognates.map((cognateGroup) => (
+    <Details key={cognateGroup.Root}>
+      <summary>
+        Cognates of{' '}
+        <LatinLink
+          linkBase={linkBase}
+          targetWord={cognateGroup.Root}
+          currentWordHyphenated={currentWordHyphenated}
+          isLemma={true}
+        />
+      </summary>
+      <p>
+        {cognateGroup.Lemmata.map((cognate, index) => {
+          return (
+            <Fragment key={index}>
+              <LatinLink
+                linkBase={linkBase}
+                targetWord={cognate.Lemma}
+                currentWordHyphenated={currentWordHyphenated}
+                isLemma={true}
+              />{' '}
+            </Fragment>
+          )
+        })}
+      </p>
+    </Details>
+  ))
 }
 
 const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = true }) => {
