@@ -87,6 +87,14 @@ const VerbForms = ({ lemma, linkBase, currentWordHyphenated }) => {
   )
 }
 
+// This should probably be refactored, perhaps using a regex.
+function isGreek(word) {
+  return (
+    'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-1).toLowerCase()) ||
+    'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-2, 1).toLowerCase())
+  )
+}
+
 const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
   let { Root, Roots, cognates } = lemma
   if (!Root && !Roots) {
@@ -96,12 +104,16 @@ const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
     <Details key={cognateGroup.Root}>
       <summary>
         Cognates of{' '}
-        <LatinLink
-          linkBase={linkBase}
-          targetWord={cognateGroup.Root}
-          currentWordHyphenated={currentWordHyphenated}
-          isLemma={true}
-        />
+        {isGreek(cognateGroup.Root) ? (
+          <span lang="grc">{cognateGroup.Root}</span> // Some of my etymological roots are Greek lemmata, not Latin!
+        ) : (
+          <LatinLink
+            linkBase={linkBase}
+            targetWord={cognateGroup.Root}
+            currentWordHyphenated={currentWordHyphenated}
+            isLemma={true}
+          />
+        )}
       </summary>
       <p>
         {cognateGroup.Lemmata.map((cognate, index) => {
@@ -137,10 +149,7 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
       // We would be using emoji, but Windows won’t display national flag emoji.
       // let emoji = "🇮🇱"
       let flag = israel
-      if (
-        'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-1).toLowerCase()) ||
-        'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-2, 1).toLowerCase())
-      ) {
+      if (isGreek(word)) {
         alt = 'Ancient Greek'
         lang = 'grc'
         // emoji = "🇬🇷"
