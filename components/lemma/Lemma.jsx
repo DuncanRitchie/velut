@@ -87,12 +87,8 @@ const VerbForms = ({ lemma, linkBase, currentWordHyphenated }) => {
   )
 }
 
-// This should probably be refactored, perhaps using a regex.
 function isGreek(word) {
-  return (
-    'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-1).toLowerCase()) ||
-    'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-2, 1).toLowerCase())
-  )
+  return /[αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ]/i.test(word)
 }
 
 const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
