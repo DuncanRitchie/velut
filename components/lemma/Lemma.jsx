@@ -4,10 +4,11 @@ const greece = '../../images/greece.png'
 const israel = '../../images/israel.png'
 import LatinLink from '../latinlink/LatinLink'
 import TextWithQuotedLatin from '../latinlink/TextWithQuotedLatin'
-import FormsTable from '../formsTables/FormsTable'
+import FormsTable, { LatinLinks } from '../formsTables/FormsTable'
 import VerbFormsTable from '../formsTables/VerbFormsTable'
 import ParticiplesTable from '../formsTables/ParticiplesTable'
 import ErrorBoundary from '../errorBoundary/errorBoundary'
+import Details from '../details/Details'
 
 // Eg iūs[>iūrō] => lemma-iūs-iūrō
 function getLemmaId({ Lemma }) {
@@ -86,26 +87,46 @@ const VerbForms = ({ lemma, linkBase, currentWordHyphenated }) => {
   )
 }
 
+function isGreek(word) {
+  return /[αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ]/i.test(word)
+}
+
 const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
-  let { Root, cognates } = lemma
-  // Create JSX for the cognates.
-  const mappedCognates = cognates ? (
-    cognates.map((cognate, index) => {
-      return (
-        <Fragment key={index}>
+  let { Root, Roots, cognates } = lemma
+  if (!Root && !Roots) {
+    return <p>I have not assigned cognates for this lemma, sorry!</p>
+  }
+  return cognates.map((cognateGroup) => (
+    <Details key={cognateGroup.Root}>
+      <summary>
+        Cognates of{' '}
+        {isGreek(cognateGroup.Root) ? (
+          <span lang="grc">{cognateGroup.Root}</span> // Some of my etymological roots are Greek lemmata, not Latin!
+        ) : (
           <LatinLink
             linkBase={linkBase}
-            targetWord={cognate.Lemma}
+            targetWord={cognateGroup.Root}
             currentWordHyphenated={currentWordHyphenated}
             isLemma={true}
-          />{' '}
-        </Fragment>
-      )
-    })
-  ) : (
-    <></>
-  )
-  return <p>{Root ? <>Cognates: {mappedCognates}</> : 'I have not assigned cognates for this lemma, sorry!'}</p>
+          />
+        )}
+      </summary>
+      <p>
+        {cognateGroup.Lemmata.map((cognate, index) => {
+          return (
+            <Fragment key={index}>
+              <LatinLink
+                linkBase={linkBase}
+                targetWord={cognate.Lemma}
+                currentWordHyphenated={currentWordHyphenated}
+                isLemma={true}
+              />{' '}
+            </Fragment>
+          )
+        })}
+      </p>
+    </Details>
+  ))
 }
 
 const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = true }) => {
@@ -124,10 +145,7 @@ const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = 
       // We would be using emoji, but Windows won’t display national flag emoji.
       // let emoji = "🇮🇱"
       let flag = israel
-      if (
-        'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-1).toLowerCase()) ||
-        'αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ'.includes(word.substr(-2, 1).toLowerCase())
-      ) {
+      if (isGreek(word)) {
         alt = 'Ancient Greek'
         lang = 'grc'
         // emoji = "🇬🇷"

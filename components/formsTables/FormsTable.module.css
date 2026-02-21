@@ -3,7 +3,11 @@
   --forms-offset-left: clamp(1rem, 5vw, 1.5rem);
   --forms-table-margin-inline: 0rem;
   --forms-dt-font-size: 1em;
-  margin: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.formsTable:has(details[open]) {
+  margin-bottom: 0.75rem;
 }
 
 .formsTable:not(p + .formsTable) {
@@ -28,6 +32,10 @@
   margin-right: auto;
   margin-bottom: 0.5em;
   padding: 0;
+}
+
+.formsTable details:not([open]) > summary {
+  margin-bottom: 0.25em;
 }
 
 .formsTable dl {

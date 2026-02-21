@@ -227,6 +227,11 @@ details[open] summary::before {
   transform: rotate(0turn);
 }
 
+details:has(p) summary {
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
 /* Note: there is no easy way to target an open <select> in CSS like we can for <details>;
 however, `.with-dropdown-arrow:focus-within` would get us some of the way there. */
 
