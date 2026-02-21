@@ -31,8 +31,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@sentry/nextjs": "^10.22.0",
-    "eslint-config-next": "15.5.3",
+    "@sentry/nextjs": "^9.20.0",
+    "eslint-config-next": "^16.1.6",
     "flat": "^5.0.2",
     "mongoose": "^8.8.3",
     "next": "15.5.12",
