@@ -46,7 +46,9 @@ class Search extends Component {
     e.preventDefault()
     const router = this.props.router
     const newLocation = urlFromSearch(this.state)
-    router.push(newLocation)
+    if (newLocation !== router.pathname) {
+      router.push(newLocation)
+    }
   }
 
   render() {
