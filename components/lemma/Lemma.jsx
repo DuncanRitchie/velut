@@ -92,8 +92,8 @@ function isGreek(word) {
 }
 
 const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
-  let { Root, Roots, cognates } = lemma
-  if (!Root && !Roots) {
+  let { cognates } = lemma
+  if (!cognates.length) {
     return <p>I have not assigned cognates for this lemma, sorry!</p>
   }
   return cognates.map((cognateGroup) => (
