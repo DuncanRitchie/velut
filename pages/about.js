@@ -533,7 +533,10 @@ const About = (props) => {
 
           <section id="future-plans">
             <h2>Future plans</h2>
-            <p>Roughly 0.5% of lemmata are missing information about cognates. I’m working to redress this.</p>
+            <p>
+              The lists of cognates are incomplete, for some of the lemmata that have more than one root. I’m working to
+              redress this.
+            </p>
             <p>
               velut contains <strong>{wordCountFormatted} words</strong> belonging to{' '}
               <strong>{lemmaCountFormatted} lemmata</strong>. There are plenty more that I will add.
