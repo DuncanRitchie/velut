@@ -91,42 +91,80 @@ function isGreek(word) {
   return /[αβγδεζηθικλμνξοπρςτυφχψωἀάᾶήίὖώῶ]/i.test(word)
 }
 
+// Most of my etymological roots are Latin lemmata that can be rendered using <LatinLink> because they themselves are words in velut.
+// But some of the roots are given as Greek lemmata, which would not be rendered as a link.
+// And some of the roots are given as lemmata in non-Latin non-Greek languages, in the form "cel *dūnom",
+// meaning a Proto-Celtic word hypothesized as “dūnom”. This is also not rendered as a link.
+// The language codes are from ISO 639 https://iso639-3.sil.org/code_tables/639/data
+// Since reconstructed languages don’t have official codes, "cel" is officially a code for any Celtic language,
+// but for the sake of etymologies in velut I use "cel" for Proto-Celtic. Likewise, "gem" for Proto-Germanic.
+function parseRootString(root) {
+  const regexResults = /(\w+) (.+)/.exec(root)
+  if (regexResults) {
+    const [_, lang, word] = regexResults
+    return { lang: lang, word, isForLink: false }
+  }
+  if (isGreek(root)) {
+    return { lang: 'grc', word: root, isForLink: false }
+  }
+  return { lang: 'la', word: root, isForLink: true }
+}
+
+// Eg, "cel" => "Proto-Celtic"
+function getLanguageNameFromCode(code) {
+  const LANGUAGE_CODES_AND_NAMES = {
+    cel: 'Proto-Celtic',
+    en: 'English',
+    gem: 'Proto-Germanic',
+    grc: 'Ancient Greek',
+    la: 'Latin',
+  }
+  // If a language code is in my lemmata data but absent from the object above, I should add it.
+  return LANGUAGE_CODES_AND_NAMES[code] ?? `(language code ${code})`
+}
+
 const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
   let { cognates } = lemma
   if (!cognates.length) {
     return <p>I have not assigned cognates for this lemma, sorry!</p>
   }
-  return cognates.map((cognateGroup) => (
-    <Details key={cognateGroup.Root}>
-      <summary>
-        Cognates of{' '}
-        {isGreek(cognateGroup.Root) ? (
-          <span lang="grc">{cognateGroup.Root}</span> // Some of my etymological roots are Greek lemmata, not Latin!
-        ) : (
-          <LatinLink
-            linkBase={linkBase}
-            targetWord={cognateGroup.Root}
-            currentWordHyphenated={currentWordHyphenated}
-            isLemma={true}
-          />
-        )}
-      </summary>
-      <p>
-        {cognateGroup.Lemmata.map((cognate, index) => {
-          return (
-            <Fragment key={index}>
-              <LatinLink
-                linkBase={linkBase}
-                targetWord={cognate.Lemma}
-                currentWordHyphenated={currentWordHyphenated}
-                isLemma={true}
-              />{' '}
-            </Fragment>
-          )
-        })}
-      </p>
-    </Details>
-  ))
+  return cognates.map((cognateGroup) => {
+    const rootObject = parseRootString(cognateGroup.Root)
+    const rootJsx = rootObject.isForLink ? (
+      <LatinLink
+        linkBase={linkBase}
+        targetWord={cognateGroup.Root}
+        currentWordHyphenated={currentWordHyphenated}
+        isLemma={true}
+      />
+    ) : (
+      <span lang={rootObject.lang}>
+        {getLanguageNameFromCode(rootObject.lang)} {rootObject.lang === 'en' ? '“' : null}
+        {rootObject.word}
+        {rootObject.lang === 'en' ? '”' : null}
+      </span>
+    )
+
+    return (
+      <Details key={cognateGroup.Root}>
+        <summary>Cognates of {rootJsx}</summary>
+        <p>
+          {cognateGroup.Lemmata.map((cognate, index) => {
+            return (
+              <Fragment key={index}>
+                <LatinLink
+                  linkBase={linkBase}
+                  targetWord={cognate.Lemma}
+                  currentWordHyphenated={currentWordHyphenated}
+                  isLemma={true}
+                />{' '}
+              </Fragment>
+            )
+          })}
+        </p>
+      </Details>
+    )
+  })
 }
 
 const Lemma = ({ lemma, linkBase, currentWordHyphenated, showFormsAndCognates = true }) => {
