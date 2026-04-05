@@ -138,11 +138,14 @@ const Cognates = ({ lemma, linkBase, currentWordHyphenated }) => {
         isLemma={true}
       />
     ) : (
-      <span lang={rootObject.lang}>
-        {getLanguageNameFromCode(rootObject.lang)} {rootObject.lang === 'en' ? '“' : null}
-        {rootObject.word}
-        {rootObject.lang === 'en' ? '”' : null}
-      </span>
+      <>
+        {getLanguageNameFromCode(rootObject.lang)}{' '}
+        <span lang={rootObject.lang}>
+          {rootObject.lang === 'en' ? '“' : null}
+          {rootObject.word}
+          {rootObject.lang === 'en' ? '”' : null}
+        </span>
+      </>
     )
 
     return (
