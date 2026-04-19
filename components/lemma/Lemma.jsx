@@ -117,7 +117,10 @@ function getLanguageNameFromCode(code) {
     en: 'English',
     gem: 'Proto-Germanic',
     grc: 'Ancient Greek',
+    he: 'Hebrew',
     la: 'Latin',
+    phn: 'Phoenician',
+    sla: 'Proto-Slavic',
   }
   // If a language code is in my lemmata data but absent from the object above, I should add it.
   return LANGUAGE_CODES_AND_NAMES[code] ?? `(language code ${code})`
