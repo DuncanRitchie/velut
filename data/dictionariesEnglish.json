@@ -20,6 +20,10 @@
     "Formula": "https://www.latin-is-simple.com/en/vocabulary/search/?q=INPUT"
   },
   {
+    "Dictionary": "LatLex",
+    "Formula": "https://latinlexicon.org/search_english.php"
+  },
+  {
     "Dictionary": "Liddell–Scott–Jones",
     "Formula": "https://lsj.gr/wiki/INPUT"
   },
@@ -30,10 +34,6 @@
   {
     "Dictionary": "Morcus",
     "Formula": "https://morcus.net/dicts?q=INPUT&in=SnH-RnA-NUM&o=1"
-  },
-  {
-    "Dictionary": "Numen",
-    "Formula": "https://latinlexicon.org/search_english.php"
   },
   {
     "Dictionary": "Perseus",

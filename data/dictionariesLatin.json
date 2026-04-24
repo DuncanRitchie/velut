@@ -28,6 +28,10 @@
     "Formula": "https://www.latin-is-simple.com/en/vocabulary/search/?q=INPUT"
   },
   {
+    "Dictionary": "LatLex",
+    "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1#:~:text=INPUT"
+  },
+  {
     "Dictionary": "Liddell–Scott–Jones",
     "Formula": "https://lsj.gr/wiki/INPUT"
   },
@@ -38,10 +42,6 @@
   {
     "Dictionary": "Morcus",
     "Formula": "https://morcus.net/dicts?q=INPUT&in=NUM-LnS-GAF&o=1"
-  },
-  {
-    "Dictionary": "Numen",
-    "Formula": "http://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1#:~:text=INPUT"
   },
   {
     "Dictionary": "Packard Humanities",
