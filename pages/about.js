@@ -544,6 +544,7 @@ const About = (props) => {
             <p>
               If you find a problem with the website and have a GitHub account, you can{' '}
               <a href="https://github.com/DuncanRitchie/velut/issues">raise an issue</a> there and I’ll get back to you.
+              Or you can message <a href="https://www.linkedin.com/in/duncan-ritchie-uk/">me on LinkedIn</a>.
             </p>
           </section>
         </main>
