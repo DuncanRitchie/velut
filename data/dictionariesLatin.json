@@ -52,7 +52,11 @@
     "Formula": "http://www.perseus.tufts.edu/hopper/searchresults?target=la&all_words=INPUT&all_words_expand=on&phrase=&any_words=&exclude_words=&documents="
   },
   {
-    "Dictionary": "Thesaurus Linguae Latinae",
+    "Dictionary": "TLL (open access)",
+    "Formula": "https://tll-open.badw.de/de/thesaurus/lemmata#~0-is-INPUT~-0a-"
+  },
+  {
+    "Dictionary": "TLL (subscription)",
     "Formula": "https://tll.degruyter.com/results?type=0&field0=0&val0=INPUT&searchId=e"
   },
   {
