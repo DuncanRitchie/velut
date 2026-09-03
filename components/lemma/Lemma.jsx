@@ -114,6 +114,7 @@ function parseRootString(root) {
 function getLanguageNameFromCode(code) {
   const LANGUAGE_CODES_AND_NAMES = {
     cel: 'Proto-Celtic',
+    egy: 'Egyptian',
     en: 'English',
     gem: 'Proto-Germanic',
     grc: 'Ancient Greek',
